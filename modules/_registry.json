@@ -1,0 +1,136 @@
+{
+  "modules": [
+    {
+      "name": "Claude Skills-ccg",
+      "path": "modules/Claude Skills-ccg/commands.json",
+      "count": 1,
+      "has_docs": true
+    },
+    {
+      "name": "Claude Skills-ecc",
+      "path": "modules/Claude Skills-ecc/commands.json",
+      "count": 12,
+      "has_docs": true
+    },
+    {
+      "name": "Claude Skills-oh-my-claude",
+      "path": "modules/Claude Skills-oh-my-claude/commands.json",
+      "count": 15,
+      "has_docs": true
+    },
+    {
+      "name": "Claude Skills-openspec",
+      "path": "modules/Claude Skills-openspec/commands.json",
+      "count": 5,
+      "has_docs": true
+    },
+    {
+      "name": "Claude Skills-providers",
+      "path": "modules/Claude Skills-providers/commands.json",
+      "count": 3,
+      "has_docs": true
+    },
+    {
+      "name": "Claude Skills-regex",
+      "path": "modules/Claude Skills-regex/commands.json",
+      "count": 8,
+      "has_docs": true
+    },
+    {
+      "name": "Claude Skills-superpowers",
+      "path": "modules/Claude Skills-superpowers/commands.json",
+      "count": 11,
+      "has_docs": true
+    },
+    {
+      "name": "Claude Skills-ultrawork",
+      "path": "modules/Claude Skills-ultrawork/commands.json",
+      "count": 2,
+      "has_docs": true
+    },
+    {
+      "name": "Docker 命令",
+      "path": "modules/Docker 命令/commands.json",
+      "count": 19,
+      "has_docs": true
+    },
+    {
+      "name": "Git 命令",
+      "path": "modules/Git 命令/commands.json",
+      "count": 24,
+      "has_docs": true
+    },
+    {
+      "name": "GitHub CLI 命令",
+      "path": "modules/GitHub CLI 命令/commands.json",
+      "count": 30,
+      "has_docs": true
+    },
+    {
+      "name": "Kubernetes 命令",
+      "path": "modules/Kubernetes 命令/commands.json",
+      "count": 22,
+      "has_docs": true
+    },
+    {
+      "name": "Linux 命令",
+      "path": "modules/Linux 命令/commands.json",
+      "count": 42,
+      "has_docs": true
+    },
+    {
+      "name": "MySQL 命令",
+      "path": "modules/MySQL 命令/commands.json",
+      "count": 19,
+      "has_docs": true
+    },
+    {
+      "name": "PostgreSQL 命令",
+      "path": "modules/PostgreSQL 命令/commands.json",
+      "count": 25,
+      "has_docs": true
+    },
+    {
+      "name": "Redis-基本操作",
+      "path": "modules/Redis-基本操作/commands.json",
+      "count": 17,
+      "has_docs": true
+    },
+    {
+      "name": "Redis-哈希操作",
+      "path": "modules/Redis-哈希操作/commands.json",
+      "count": 12,
+      "has_docs": true
+    },
+    {
+      "name": "Redis-列表操作",
+      "path": "modules/Redis-列表操作/commands.json",
+      "count": 13,
+      "has_docs": true
+    },
+    {
+      "name": "Redis-有序集合",
+      "path": "modules/Redis-有序集合/commands.json",
+      "count": 13,
+      "has_docs": true
+    },
+    {
+      "name": "Redis-服务器命令",
+      "path": "modules/Redis-服务器命令/commands.json",
+      "count": 14,
+      "has_docs": true
+    },
+    {
+      "name": "Redis-键管理",
+      "path": "modules/Redis-键管理/commands.json",
+      "count": 15,
+      "has_docs": true
+    },
+    {
+      "name": "Redis-集合操作",
+      "path": "modules/Redis-集合操作/commands.json",
+      "count": 15,
+      "has_docs": true
+    }
+  ]
+}

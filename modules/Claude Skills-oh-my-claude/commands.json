@@ -1,0 +1,449 @@
+{
+  "module": "Claude Skills-oh-my-claude",
+  "version": "1.0",
+  "description": "Claude Skills-oh-my-claude 模块命令集合",
+  "commands": [
+    {
+      "dirPath": "/Claude Skills/oh-my-claude/",
+      "name": "autopilot 自动执行",
+      "keyword": "/oh-my-claudecode:autopilot",
+      "description": "AI 自动执行完整任务流程",
+      "data": {
+        "cmd": "/oh-my-claudecode:autopilot %{任务描述}%",
+        "extensions": [
+          {
+            "name": "详细日志模式",
+            "cmd": "/oh-my-claudecode:autopilot %{任务}% --verbose",
+            "params": {
+              "任务": { "type": "string", "required": true, "description": "要执行的任务", "example": "实现用户登录功能", "notes": "" }
+            },
+            "keyword": "autopilot verbose"
+          },
+          {
+            "name": "交互确认模式",
+            "cmd": "/oh-my-claudecode:autopilot %{任务}% --interactive",
+            "params": {
+              "任务": { "type": "string", "required": true, "description": "要执行的任务", "example": "实现用户登录功能", "notes": "" }
+            },
+            "keyword": "autopilot interactive"
+          },
+          {
+            "name": "查看历史",
+            "cmd": "/oh-my-claudecode:autopilot --history",
+            "params": {},
+            "keyword": "autopilot history"
+          },
+          {
+            "name": "恢复执行",
+            "cmd": "/oh-my-claudecode:autopilot --resume",
+            "params": {},
+            "keyword": "autopilot resume"
+          }
+        ],
+        "params": {
+          "任务描述": { "type": "string", "required": true, "description": "要执行的任务描述", "example": "实现用户登录功能", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Claude Skills/oh-my-claude/",
+      "name": "deep-interview 深度访谈",
+      "keyword": "/oh-my-claudecode:deep-interview",
+      "description": "Socratic 深度访谈明确需求",
+      "data": {
+        "cmd": "/oh-my-claudecode:deep-interview %{问题领域}%",
+        "extensions": [
+          {
+            "name": "技术选型咨询",
+            "cmd": "/oh-my-claudecode:deep-interview \"技术栈选型\"",
+            "params": {},
+            "keyword": "deep-interview 技术选型"
+          },
+          {
+            "name": "需求澄清",
+            "cmd": "/oh-my-claudecode:deep-interview \"功能需求澄清\"",
+            "params": {},
+            "keyword": "deep-interview 需求澄清"
+          },
+          {
+            "name": "架构设计讨论",
+            "cmd": "/oh-my-claudecode:deep-interview \"系统架构设计\"",
+            "params": {},
+            "keyword": "deep-interview 架构设计"
+          },
+          {
+            "name": "Bug 复现分析",
+            "cmd": "/oh-my-claudecode:deep-interview \"Bug 复现与根因分析\"",
+            "params": {},
+            "keyword": "deep-interview Bug 分析"
+          }
+        ],
+        "params": {
+          "问题领域": { "type": "string", "required": true, "description": "需要讨论的问题领域", "example": "项目优化方向", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Claude Skills/oh-my-claude/",
+      "name": "ralph 代码审查",
+      "keyword": "/oh-my-claudecode:ralph",
+      "description": "AI 代码审查助手",
+      "data": {
+        "cmd": "/oh-my-claudecode:ralph %{审查内容}%",
+        "extensions": [
+          {
+            "name": "审查代码质量",
+            "cmd": "/oh-my-claudecode:ralph \"审查 src/utils/helpers.ts 的代码质量\"",
+            "params": {},
+            "keyword": "ralph 代码质量"
+          },
+          {
+            "name": "安全漏洞检查",
+            "cmd": "/oh-my-claudecode:ralph \"检查登录模块的安全漏洞\"",
+            "params": {},
+            "keyword": "ralph 安全检查"
+          },
+          {
+            "name": "性能问题诊断",
+            "cmd": "/oh-my-claudecode:ralph \"诊断 API 性能瓶颈\"",
+            "params": {},
+            "keyword": "ralph 性能诊断"
+          }
+        ],
+        "params": {
+          "审查内容": { "type": "string", "required": true, "description": "需要审查的内容", "example": "用户认证模块", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Claude Skills/oh-my-claude/",
+      "name": "ralplan 共识规划",
+      "keyword": "/oh-my-claudecode:ralplan",
+      "description": "共识规划入口自动验证需求",
+      "data": {
+        "cmd": "/oh-my-claudecode:ralplan %{规划内容}%",
+        "extensions": [
+          {
+            "name": "创建实施计划",
+            "cmd": "/oh-my-claudecode:ralplan \"创建用户系统实施计划\"",
+            "params": {},
+            "keyword": "ralplan 实施计划"
+          },
+          {
+            "name": "审查现有计划",
+            "cmd": "/oh-my-claudecode:ralplan --review",
+            "params": {},
+            "keyword": "ralplan review"
+          }
+        ],
+        "params": {
+          "规划内容": { "type": "string", "required": true, "description": "规划内容或任务", "example": "开发用户注册功能", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Claude Skills/oh-my-claude/",
+      "name": "team 多 Agent 协作",
+      "keyword": "/oh-my-claudecode:team",
+      "description": "多 Agent 团队协作模式",
+      "data": {
+        "cmd": "/oh-my-claudecode:team %{任务描述}%",
+        "extensions": [
+          {
+            "name": "前端开发团队",
+            "cmd": "/oh-my-claudecode:team \"组建前端开发团队\"",
+            "params": {},
+            "keyword": "team 前端团队"
+          },
+          {
+            "name": "全栈开发团队",
+            "cmd": "/oh-my-claudecode:team \"组建全栈开发团队\"",
+            "params": {},
+            "keyword": "team 全栈团队"
+          },
+          {
+            "name": "审查团队",
+            "cmd": "/oh-my-claudecode:team \"组建代码审查团队\"",
+            "params": {},
+            "keyword": "team 审查团队"
+          }
+        ],
+        "params": {
+          "任务描述": { "type": "string", "required": true, "description": "团队任务描述", "example": "开发用户系统", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Claude Skills/oh-my-claude/",
+      "name": "ultrawork 并行执行",
+      "keyword": "/oh-my-claudecode:ultrawork",
+      "description": "高吞吐量并行执行引擎",
+      "data": {
+        "cmd": "/oh-my-claudecode:ultrawork %{任务列表}%",
+        "extensions": [
+          {
+            "name": "查看任务队列",
+            "cmd": "/oh-my-claudecode:ultrawork --queue",
+            "params": {},
+            "keyword": "ultrawork queue"
+          },
+          {
+            "name": "清理已完成任务",
+            "cmd": "/oh-my-claudecode:ultrawork --clear",
+            "params": {},
+            "keyword": "ultrawork clear"
+          }
+        ],
+        "params": {
+          "任务列表": { "type": "string", "required": true, "description": "要并行执行的任务列表", "example": "实现登录、注册、密码重置", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Claude Skills/oh-my-claude/",
+      "name": "ccg 三模型编排",
+      "keyword": "/oh-my-claudecode:ccg",
+      "description": "Claude-Codex-Gemini 三模型编排",
+      "data": {
+        "cmd": "/oh-my-claudecode:ccg %{任务描述}%",
+        "extensions": [
+          {
+            "name": "代码生成任务",
+            "cmd": "/oh-my-claudecode:ccg \"生成 RESTful API 代码\"",
+            "params": {},
+            "keyword": "ccg 代码生成"
+          },
+          {
+            "name": "审查任务",
+            "cmd": "/oh-my-claudecode:ccg --review",
+            "params": {},
+            "keyword": "ccg review"
+          }
+        ],
+        "params": {
+          "任务描述": { "type": "string", "required": true, "description": "要执行的任务描述", "example": "开发数据可视化组件", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Claude Skills/oh-my-claude/",
+      "name": "ask 顾问咨询",
+      "keyword": "/oh-my-claudecode:ask",
+      "description": "流程优先的顾问路由",
+      "data": {
+        "cmd": "/oh-my-claudecode:ask %{问题描述}%",
+        "extensions": [
+          {
+            "name": "架构咨询",
+            "cmd": "/oh-my-claudecode:ask \"系统应该采用微服务还是单体架构\"",
+            "params": {},
+            "keyword": "ask 架构咨询"
+          },
+          {
+            "name": "技术选型",
+            "cmd": "/oh-my-claudecode:ask \"前端框架应该选 React 还是 Vue\"",
+            "params": {},
+            "keyword": "ask 技术选型"
+          }
+        ],
+        "params": {
+          "问题描述": { "type": "string", "required": true, "description": "要咨询的问题描述", "example": "如何优化数据库查询性能", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Claude Skills/oh-my-claude/",
+      "name": "omc-setup 安装配置",
+      "keyword": "/oh-my-claudecode:omc-setup",
+      "description": "安装或刷新 oh-my-claudecode",
+      "data": {
+        "cmd": "/oh-my-claudecode:omc-setup",
+        "extensions": [
+          {
+            "name": "重新初始化",
+            "cmd": "/oh-my-claudecode:omc-setup --force",
+            "params": {},
+            "keyword": "omc-setup force"
+          },
+          {
+            "name": "仅更新配置",
+            "cmd": "/oh-my-claudecode:omc-setup --config-only",
+            "params": {},
+            "keyword": "omc-setup config"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Claude Skills/oh-my-claude/",
+      "name": "omc-doctor 诊断检查",
+      "keyword": "/oh-my-claudecode:omc-doctor",
+      "description": "诊断并修复 oh-my-claudecode 安装问题",
+      "data": {
+        "cmd": "/oh-my-claudecode:omc-doctor",
+        "extensions": [
+          {
+            "name": "检查配置",
+            "cmd": "/oh-my-claudecode:omc-doctor --config",
+            "params": {},
+            "keyword": "omc-doctor config"
+          },
+          {
+            "name": "检查插件",
+            "cmd": "/oh-my-claudecode:omc-doctor --plugins",
+            "params": {},
+            "keyword": "omc-doctor plugins"
+          },
+          {
+            "name": "检查网络",
+            "cmd": "/oh-my-claudecode:omc-doctor --network",
+            "params": {},
+            "keyword": "omc-doctor network"
+          },
+          {
+            "name": "重置配置",
+            "cmd": "/oh-my-claudecode:omc-doctor --reset",
+            "params": {},
+            "keyword": "omc-doctor reset"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Claude Skills/oh-my-claude/",
+      "name": "omc-teams CLI 团队协作",
+      "keyword": "/oh-my-claudecode:omc-teams",
+      "description": "Claude、Codex、Gemini 工作流 CLI 团队",
+      "data": {
+        "cmd": "/oh-my-claudecode:omc-teams %{任务描述}%",
+        "extensions": [
+          {
+            "name": "启动并行团队",
+            "cmd": "/oh-my-claudecode:omc-teams --parallel",
+            "params": {},
+            "keyword": "omc-teams parallel"
+          },
+          {
+            "name": "查看团队状态",
+            "cmd": "/oh-my-claudecode:omc-teams --status",
+            "params": {},
+            "keyword": "omc-teams status"
+          }
+        ],
+        "params": {
+          "任务描述": { "type": "string", "required": true, "description": "团队任务描述", "example": "完成数据迁移任务", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Claude Skills/oh-my-claude/",
+      "name": "self-improve 自我改进",
+      "keyword": "/oh-my-claudecode:self-improve",
+      "description": "自主进化代码改进引擎",
+      "data": {
+        "cmd": "/oh-my-claudecode:self-improve %{改进目标}%",
+        "extensions": [
+          {
+            "name": "改进代码质量",
+            "cmd": "/oh-my-claudecode:self-improve \"改进 src/utils/helpers.ts 的代码质量\"",
+            "params": {},
+            "keyword": "self-improve 代码质量"
+          },
+          {
+            "name": "性能优化",
+            "cmd": "/oh-my-claudecode:self-improve \"优化 API 响应时间\"",
+            "params": {},
+            "keyword": "self-improve 性能优化"
+          }
+        ],
+        "params": {
+          "改进目标": { "type": "string", "required": true, "description": "改进目标描述", "example": "优化用户认证模块性能", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Claude Skills/oh-my-claude/",
+      "name": "trace 证据追踪",
+      "keyword": "/oh-my-claudecode:trace",
+      "description": "证据驱动的追踪通道编排检查",
+      "data": {
+        "cmd": "/oh-my-claudecode:trace %{追踪目标}%",
+        "extensions": [
+          {
+            "name": "追踪代码执行",
+            "cmd": "/oh-my-claudecode:trace \"追踪 API 请求流程\"",
+            "params": {},
+            "keyword": "trace 执行流程"
+          },
+          {
+            "name": "追踪性能问题",
+            "cmd": "/oh-my-claudecode:trace \"追踪页面加载性能问题\"",
+            "params": {},
+            "keyword": "trace 性能问题"
+          }
+        ],
+        "params": {
+          "追踪目标": { "type": "string", "required": true, "description": "追踪目标描述", "example": "追踪用户登录流程", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Claude Skills/oh-my-claude/",
+      "name": "verify 验证",
+      "keyword": "/oh-my-claudecode:verify",
+      "description": "验证修改是否真正有效",
+      "data": {
+        "cmd": "/oh-my-claudecode:verify %{验证内容}%",
+        "extensions": [
+          {
+            "name": "验证构建",
+            "cmd": "/oh-my-claudecode:verify \"验证构建是否成功\"",
+            "params": {},
+            "keyword": "verify 构建"
+          },
+          {
+            "name": "验证测试",
+            "cmd": "/oh-my-claudecode:verify \"验证所有测试是否通过\"",
+            "params": {},
+            "keyword": "verify 测试"
+          }
+        ],
+        "params": {
+          "验证内容": { "type": "string", "required": true, "description": "要验证的内容", "example": "验证登录功能是否正常工作", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Claude Skills/oh-my-claude/",
+      "name": "cancel 取消模式",
+      "keyword": "/oh-my-claudecode:cancel",
+      "description": "取消任何活动的 OMC 模式",
+      "data": {
+        "cmd": "/oh-my-claudecode:cancel",
+        "extensions": [
+          {
+            "name": "取消 autopilot",
+            "cmd": "/oh-my-claudecode:cancel autopilot",
+            "params": {},
+            "keyword": "cancel autopilot"
+          },
+          {
+            "name": "取消 ralph",
+            "cmd": "/oh-my-claudecode:cancel ralph",
+            "params": {},
+            "keyword": "cancel ralph"
+          },
+          {
+            "name": "取消 ultrawork",
+            "cmd": "/oh-my-claudecode:cancel ultrawork",
+            "params": {},
+            "keyword": "cancel ultrawork"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

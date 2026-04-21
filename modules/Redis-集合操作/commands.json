@@ -1,0 +1,291 @@
+{
+  "module": "Redis-集合操作",
+  "version": "1.0",
+  "description": "Redis 集合操作模块命令集合",
+  "commands": [
+    {
+      "dirPath": "/Redis 命令/集合操作/",
+      "name": "sadd 添加集合成员",
+      "keyword": "sadd set 添加",
+      "description": "向集合添加一个或多个成员",
+      "data": {
+        "cmd": "sadd %{键名}% %{成员}%",
+        "extensions": [],
+        "params": {
+          "键名": { "type": "string", "required": true, "description": "集合键名", "example": "myset", "notes": "常用" },
+          "成员": { "type": "string", "required": true, "description": "要添加的成员", "example": "alice", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Redis 命令/集合操作/",
+      "name": "smembers 查看集合所有成员",
+      "keyword": "smembers set 查看",
+      "description": "返回集合中的所有成员",
+      "data": {
+        "cmd": "smembers %{键名}%",
+        "extensions": [],
+        "params": {
+          "键名": { "type": "string", "required": true, "description": "集合键名", "example": "myset", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Redis 命令/集合操作/",
+      "name": "sismember 判断集合成员",
+      "keyword": "sismember set 判断",
+      "description": "判断成员是否在集合中",
+      "data": {
+        "cmd": "sismember %{键名}% %{成员}%",
+        "extensions": [],
+        "params": {
+          "键名": { "type": "string", "required": true, "description": "集合键名", "example": "myset", "notes": "常用" },
+          "成员": { "type": "string", "required": true, "description": "要判断的成员", "example": "alice", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Redis 命令/集合操作/",
+      "name": "srem 删除集合成员",
+      "keyword": "srem set 删除",
+      "description": "从集合移除一个或多个成员",
+      "data": {
+        "cmd": "srem %{键名}% %{成员}%",
+        "extensions": [],
+        "params": {
+          "键名": { "type": "string", "required": true, "description": "集合键名", "example": "myset", "notes": "常用" },
+          "成员": { "type": "string", "required": true, "description": "要删除的成员", "example": "alice", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Redis 命令/集合操作/",
+      "name": "scard 获取集合基数",
+      "keyword": "scard set 基数",
+      "description": "返回集合的成员数量",
+      "data": {
+        "cmd": "scard %{键名}%",
+        "extensions": [],
+        "params": {
+          "键名": { "type": "string", "required": true, "description": "集合键名", "example": "myset", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Redis 命令/集合操作/",
+      "name": "spop 随机弹出成员",
+      "keyword": "spop set 弹出",
+      "description": "随机移除并返回集合中的一个或多个成员",
+      "data": {
+        "cmd": "spop %{键名}%",
+        "extensions": [
+          {
+            "name": "弹出多个成员",
+            "cmd": "spop %{键名}% %{数量}%",
+            "params": {
+              "键名": { "type": "string", "required": true, "description": "集合键名", "example": "myset", "notes": "" },
+              "数量": { "type": "integer", "required": true, "description": "弹出的成员数量", "example": "3", "notes": "" }
+            },
+            "keyword": "spop 多个"
+          }
+        ],
+        "params": {
+          "键名": { "type": "string", "required": true, "description": "集合键名", "example": "myset", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Redis 命令/集合操作/",
+      "name": "srandmember 随机获取成员",
+      "keyword": "srandmember set 随机",
+      "description": "随机返回集合中的一个或多个成员，不删除",
+      "data": {
+        "cmd": "srandmember %{键名}%",
+        "extensions": [
+          {
+            "name": "获取多个成员",
+            "cmd": "srandmember %{键名}% %{数量}%",
+            "params": {
+              "键名": { "type": "string", "required": true, "description": "集合键名", "example": "myset", "notes": "" },
+              "数量": { "type": "integer", "required": true, "description": "获取的成员数量", "example": "3", "notes": "" }
+            },
+            "keyword": "srandmember 多个"
+          }
+        ],
+        "params": {
+          "键名": { "type": "string", "required": true, "description": "集合键名", "example": "myset", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Redis 命令/集合操作/",
+      "name": "smove 移动集合成员",
+      "keyword": "smove set 移动",
+      "description": "将成员从源集合移动到目标集合",
+      "data": {
+        "cmd": "smove %{源键名}% %{目标键名}% %{成员}%",
+        "extensions": [],
+        "params": {
+          "源键名": { "type": "string", "required": true, "description": "源集合键名", "example": "myset1", "notes": "" },
+          "目标键名": { "type": "string", "required": true, "description": "目标集合键名", "example": "myset2", "notes": "" },
+          "成员": { "type": "string", "required": true, "description": "要移动的成员", "example": "alice", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Redis 命令/集合操作/",
+      "name": "sdiff 求集合差集",
+      "keyword": "sdiff set 差集",
+      "description": "返回第一个集合与后续集合的差集",
+      "data": {
+        "cmd": "sdiff %{键名1}% %{键名2}%",
+        "extensions": [
+          {
+            "name": "多集合差集",
+            "cmd": "sdiff %{键名1}% %{键名2}% %{键名3}%",
+            "params": {
+              "键名1": { "type": "string", "required": true, "description": "第一个集合键名", "example": "set1", "notes": "" },
+              "键名2": { "type": "string", "required": true, "description": "第二个集合键名", "example": "set2", "notes": "" },
+              "键名3": { "type": "string", "required": false, "description": "第三个集合键名", "example": "set3", "notes": "" }
+            },
+            "keyword": "sdiff 多集合"
+          }
+        ],
+        "params": {
+          "键名1": { "type": "string", "required": true, "description": "第一个集合键名", "example": "set1", "notes": "" },
+          "键名2": { "type": "string", "required": true, "description": "第二个集合键名", "example": "set2", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Redis 命令/集合操作/",
+      "name": "sinter 求集合交集",
+      "keyword": "sinter set 交集",
+      "description": "返回所有集合的交集",
+      "data": {
+        "cmd": "sinter %{键名1}% %{键名2}%",
+        "extensions": [
+          {
+            "name": "多集合交集",
+            "cmd": "sinter %{键名1}% %{键名2}% %{键名3}%",
+            "params": {
+              "键名1": { "type": "string", "required": true, "description": "第一个集合键名", "example": "set1", "notes": "" },
+              "键名2": { "type": "string", "required": true, "description": "第二个集合键名", "example": "set2", "notes": "" },
+              "键名3": { "type": "string", "required": false, "description": "第三个集合键名", "example": "set3", "notes": "" }
+            },
+            "keyword": "sinter 多集合"
+          }
+        ],
+        "params": {
+          "键名1": { "type": "string", "required": true, "description": "第一个集合键名", "example": "set1", "notes": "" },
+          "键名2": { "type": "string", "required": true, "description": "第二个集合键名", "example": "set2", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Redis 命令/集合操作/",
+      "name": "sunion 求集合并集",
+      "keyword": "sunion set 并集",
+      "description": "返回所有集合的并集",
+      "data": {
+        "cmd": "sunion %{键名1}% %{键名2}%",
+        "extensions": [
+          {
+            "name": "多集合并集",
+            "cmd": "sunion %{键名1}% %{键名2}% %{键名3}%",
+            "params": {
+              "键名1": { "type": "string", "required": true, "description": "第一个集合键名", "example": "set1", "notes": "" },
+              "键名2": { "type": "string", "required": true, "description": "第二个集合键名", "example": "set2", "notes": "" },
+              "键名3": { "type": "string", "required": false, "description": "第三个集合键名", "example": "set3", "notes": "" }
+            },
+            "keyword": "sunion 多集合"
+          }
+        ],
+        "params": {
+          "键名1": { "type": "string", "required": true, "description": "第一个集合键名", "example": "set1", "notes": "" },
+          "键名2": { "type": "string", "required": true, "description": "第二个集合键名", "example": "set2", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Redis 命令/集合操作/",
+      "name": "sdiffstore 存储集合差集",
+      "keyword": "sdiffstore set 差集 存储",
+      "description": "将差集结果存储到目标集合",
+      "data": {
+        "cmd": "sdiffstore %{目标键名}% %{键名1}% %{键名2}%",
+        "extensions": [],
+        "params": {
+          "目标键名": { "type": "string", "required": true, "description": "目标集合键名", "example": "result", "notes": "" },
+          "键名1": { "type": "string", "required": true, "description": "第一个集合键名", "example": "set1", "notes": "" },
+          "键名2": { "type": "string", "required": true, "description": "第二个集合键名", "example": "set2", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Redis 命令/集合操作/",
+      "name": "sinterstore 存储集合交集",
+      "keyword": "sinterstore set 交集 存储",
+      "description": "将交集结果存储到目标集合",
+      "data": {
+        "cmd": "sinterstore %{目标键名}% %{键名1}% %{键名2}%",
+        "extensions": [],
+        "params": {
+          "目标键名": { "type": "string", "required": true, "description": "目标集合键名", "example": "result", "notes": "" },
+          "键名1": { "type": "string", "required": true, "description": "第一个集合键名", "example": "set1", "notes": "" },
+          "键名2": { "type": "string", "required": true, "description": "第二个集合键名", "example": "set2", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Redis 命令/集合操作/",
+      "name": "sunionstore 存储集合并集",
+      "keyword": "sunionstore set 并集 存储",
+      "description": "将并集结果存储到目标集合",
+      "data": {
+        "cmd": "sunionstore %{目标键名}% %{键名1}% %{键名2}%",
+        "extensions": [],
+        "params": {
+          "目标键名": { "type": "string", "required": true, "description": "目标集合键名", "example": "result", "notes": "" },
+          "键名1": { "type": "string", "required": true, "description": "第一个集合键名", "example": "set1", "notes": "" },
+          "键名2": { "type": "string", "required": true, "description": "第二个集合键名", "example": "set2", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Redis 命令/集合操作/",
+      "name": "sscan 迭代集合",
+      "keyword": "sscan set 迭代",
+      "description": "增量迭代集合中的成员",
+      "data": {
+        "cmd": "sscan %{键名}% %{游标}%",
+        "extensions": [
+          {
+            "name": "指定匹配模式",
+            "cmd": "sscan %{键名}% %{游标}% match %{模式}%",
+            "params": {
+              "键名": { "type": "string", "required": true, "description": "集合键名", "example": "myset", "notes": "" },
+              "游标": { "type": "integer", "required": true, "description": "游标位置，0表示开始", "example": "0", "notes": "" },
+              "模式": { "type": "string", "required": false, "description": "匹配模式", "example": "user:*", "notes": "" }
+            },
+            "keyword": "sscan match"
+          },
+          {
+            "name": "指定返回数量",
+            "cmd": "sscan %{键名}% %{游标}% count %{数量}%",
+            "params": {
+              "键名": { "type": "string", "required": true, "description": "集合键名", "example": "myset", "notes": "" },
+              "游标": { "type": "integer", "required": true, "description": "游标位置，0表示开始", "example": "0", "notes": "" },
+              "数量": { "type": "integer", "required": false, "description": "返回元素数量", "example": "100", "notes": "" }
+            },
+            "keyword": "sscan count"
+          }
+        ],
+        "params": {
+          "键名": { "type": "string", "required": true, "description": "集合键名", "example": "myset", "notes": "" },
+          "游标": { "type": "integer", "required": true, "description": "游标位置，0表示开始新一轮迭代", "example": "0", "notes": "" }
+        }
+      }
+    }
+  ]
+}

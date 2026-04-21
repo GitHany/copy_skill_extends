@@ -1,0 +1,57 @@
+{
+  "dirPath": "/Claude Skills/ultrawork/",
+  "name": "ultrawork 最大并行",
+  "keyword": "/ultrawork",
+  "description": "多 agent 最大并行执行",
+  "data": {
+    "cmd": "/ultrawork %{任务描述}%",
+    "extensions": [
+      {
+        "name": "查看状态",
+        "cmd": "/ultrawork status",
+        "params": {},
+        "keyword": "ultrawork status"
+      },
+      {
+        "name": "取消任务",
+        "cmd": "/ultrawork cancel %{任务ID}%",
+        "params": {
+          "任务ID": { "type": "string", "required": true, "description": "任务ID", "example": "task-123", "notes": "" }
+        },
+        "keyword": "ultrawork cancel"
+      },
+      {
+        "name": "实现 API",
+        "cmd": "/ultrawork \"实现 %{API名称}% API，端点：%{端点路径}%，方法：%{HTTP方法}%\"",
+        "params": {
+          "API名称": { "type": "string", "required": true, "description": "API 名称", "example": "用户管理", "notes": "" },
+          "端点路径": { "type": "string", "required": true, "description": "API 端点路径", "example": "/api/users", "notes": "" },
+          "HTTP方法": { "type": "string", "required": true, "description": "HTTP 方法", "example": "GET", "notes": "" }
+        },
+        "keyword": "ultrawork 实现 API"
+      },
+      {
+        "name": "开发功能",
+        "cmd": "/ultrawork \"开发功能：%{功能描述}%，模块：%{所属模块}%，优先级：%{优先级}%\"",
+        "params": {
+          "功能描述": { "type": "string", "required": true, "description": "功能描述", "example": "用户权限管理", "notes": "" },
+          "所属模块": { "type": "string", "required": true, "description": "所属模块", "example": "auth", "notes": "" },
+          "优先级": { "type": "string", "required": false, "description": "优先级", "example": "高", "notes": "" }
+        },
+        "keyword": "ultrawork 开发功能"
+      },
+      {
+        "name": "批量修复 Bug",
+        "cmd": "/ultrawork \"并行修复 %{问题描述}%，涉及文件：%{文件列表}%\"",
+        "params": {
+          "问题描述": { "type": "string", "required": true, "description": "问题描述", "example": "TypeScript 类型错误", "notes": "" },
+          "文件列表": { "type": "string", "required": false, "description": "文件列表", "example": "src/utils/*.ts", "notes": "" }
+        },
+        "keyword": "ultrawork 修复 Bug"
+      }
+    ],
+    "params": {
+      "任务描述": { "type": "string", "required": true, "description": "任务描述", "example": "并行实现所有 REST API 端点", "notes": "" }
+    }
+  }
+}
