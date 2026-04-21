@@ -1,0 +1,577 @@
+{
+  "data": {
+    "commands": [
+      {
+        "dirPath": "/系统监控/",
+        "name": "top/htop 进程监控",
+        "keyword": "top htop 进程监控",
+        "description": "实时监控系统进程、CPU 和内存使用情况",
+        "data": {
+          "cmd": "top %{选项}%",
+          "extensions": [
+            {
+              "name": "交互式进程监控",
+              "cmd": "htop",
+              "params": {},
+              "keyword": "htop 交互式"
+            },
+            {
+              "name": "指定用户进程",
+              "cmd": "top -u %{用户名}%",
+              "params": {
+                "用户名": {
+                  "type": "string",
+                  "required": false,
+                  "description": "用户名",
+                  "example": "www-data",
+                  "notes": ""
+                }
+              },
+              "keyword": "top 用户进程"
+            },
+            {
+              "name": "指定PID监控",
+              "cmd": "top -p %{PID}%",
+              "params": {
+                "PID": {
+                  "type": "string",
+                  "required": false,
+                  "description": "进程ID",
+                  "example": "1234",
+                  "notes": ""
+                }
+              },
+              "keyword": "top 指定PID"
+            },
+            {
+              "name": "按CPU排序",
+              "cmd": "top -o %CPU",
+              "params": {},
+              "keyword": "top CPU排序"
+            },
+            {
+              "name": "按内存排序",
+              "cmd": "top -o %MEM",
+              "params": {},
+              "keyword": "top 内存排序"
+            },
+            {
+              "name": "设置刷新间隔",
+              "cmd": "top -d %{秒}%",
+              "params": {
+                "秒": {
+                  "type": "string",
+                  "required": false,
+                  "description": "刷新间隔（秒）",
+                  "example": "5",
+                  "notes": ""
+                }
+              },
+              "keyword": "top 刷新间隔"
+            }
+          ],
+          "params": {
+            "选项": {
+              "type": "string",
+              "required": false,
+              "description": "top 选项",
+              "example": "-d 5",
+              "notes": "常用"
+            }
+          }
+        }
+      },
+      {
+        "dirPath": "/系统监控/",
+        "name": "vmstat 虚拟内存统计",
+        "keyword": "vmstat 虚拟内存",
+        "description": "显示系统内存、进程、CPU活动等统计信息",
+        "data": {
+          "cmd": "vmstat %{间隔}% %{次数}%",
+          "extensions": [
+            {
+              "name": "显示内存详情",
+              "cmd": "vmstat -a",
+              "params": {},
+              "keyword": "vmstat 活跃内存"
+            },
+            {
+              "name": "显示磁盘统计",
+              "cmd": "vmstat -d",
+              "params": {},
+              "keyword": "vmstat 磁盘"
+            },
+            {
+              "name": "显示扩展统计",
+              "cmd": "vmstat -x",
+              "params": {},
+              "keyword": "vmstat 扩展统计"
+            },
+            {
+              "name": "显示 slab 缓存",
+              "cmd": "vmstat -m --sort=-%s | head -n 20",
+              "params": {},
+              "keyword": "vmstat slab缓存"
+            }
+          ],
+          "params": {
+            "间隔": {
+              "type": "string",
+              "required": false,
+              "description": "采样间隔（秒）",
+              "example": "2",
+              "notes": "可选"
+            },
+            "次数": {
+              "type": "string",
+              "required": false,
+              "description": "采样次数",
+              "example": "5",
+              "notes": "可选"
+            }
+          }
+        }
+      },
+      {
+        "dirPath": "/系统监控/",
+        "name": "iostat I/O统计",
+        "keyword": "iostat IO统计",
+        "description": "监控系统CPU和磁盘I/O统计信息",
+        "data": {
+          "cmd": "iostat %{选项}% %{间隔}% %{次数}%",
+          "extensions": [
+            {
+              "name": "显示CPU统计",
+              "cmd": "iostat -c",
+              "params": {},
+              "keyword": "iostat CPU统计"
+            },
+            {
+              "name": "显示磁盘统计",
+              "cmd": "iostat -d",
+              "params": {},
+              "keyword": "iostat 磁盘统计"
+            },
+            {
+              "name": "显示扩展统计",
+              "cmd": "iostat -x",
+              "params": {},
+              "keyword": "iostat 扩展统计"
+            },
+            {
+              "name": "人类可读格式",
+              "cmd": "iostat -h",
+              "params": {},
+              "keyword": "iostat 人类可读"
+            },
+            {
+              "name": "指定设备",
+              "cmd": "iostat -p %{设备}%",
+              "params": {
+                "设备": {
+                  "type": "string",
+                  "required": false,
+                  "description": "设备名",
+                  "example": "sda",
+                  "notes": ""
+                }
+              },
+              "keyword": "iostat 指定设备"
+            },
+            {
+              "name": "持续监控",
+              "cmd": "iostat -xz 2 10",
+              "params": {},
+              "keyword": "iostat 持续监控"
+            }
+          ],
+          "params": {
+            "选项": {
+              "type": "string",
+              "required": false,
+              "description": "iostat 选项",
+              "example": "-x",
+              "notes": "常用"
+            },
+            "间隔": {
+              "type": "string",
+              "required": false,
+              "description": "采样间隔（秒）",
+              "example": "2",
+              "notes": "可选"
+            },
+            "次数": {
+              "type": "string",
+              "required": false,
+              "description": "采样次数",
+              "example": "5",
+              "notes": "可选"
+            }
+          }
+        }
+      },
+      {
+        "dirPath": "/系统监控/",
+        "name": "free 内存使用",
+        "keyword": "free 内存使用",
+        "description": "显示系统内存使用情况（物理内存和交换空间）",
+        "data": {
+          "cmd": "free %{选项}%",
+          "extensions": [
+            {
+              "name": "人类可读格式",
+              "cmd": "free -h",
+              "params": {},
+              "keyword": "free 人类可读"
+            },
+            {
+              "name": "持续监控",
+              "cmd": "free -h -s %{秒}%",
+              "params": {
+                "秒": {
+                  "type": "string",
+                  "required": false,
+                  "description": "刷新间隔（秒）",
+                  "example": "2",
+                  "notes": ""
+                }
+              },
+              "keyword": "free 持续监控"
+            },
+            {
+              "name": "显示总计",
+              "cmd": "free -ht",
+              "params": {},
+              "keyword": "free 显示总计"
+            },
+            {
+              "name": "以MB为单位",
+              "cmd": "free -m",
+              "params": {},
+              "keyword": "free MB单位"
+            },
+            {
+              "name": "实时监控",
+              "cmd": "watch -n 1 free -h",
+              "params": {},
+              "keyword": "free 实时监控"
+            }
+          ],
+          "params": {
+            "选项": {
+              "type": "string",
+              "required": false,
+              "description": "free 选项",
+              "example": "-h",
+              "notes": "常用"
+            }
+          }
+        }
+      },
+      {
+        "dirPath": "/系统监控/",
+        "name": "df/du 磁盘使用",
+        "keyword": "df du 磁盘使用",
+        "description": "显示磁盘空间使用情况和目录大小",
+        "data": {
+          "cmd": "df %{选项}% %{路径}%",
+          "extensions": [
+            {
+              "name": "人类可读格式",
+              "cmd": "df -h",
+              "params": {},
+              "keyword": "df 人类可读"
+            },
+            {
+              "name": "显示所有文件系统",
+              "cmd": "df -a",
+              "params": {},
+              "keyword": "df 所有文件系统"
+            },
+            {
+              "name": "显示文件系统类型",
+              "cmd": "df -T -t ext4",
+              "params": {},
+              "keyword": "df 文件系统类型"
+            },
+            {
+              "name": "显示inode使用",
+              "cmd": "df -i",
+              "params": {},
+              "keyword": "df inode"
+            },
+            {
+              "name": "目录总大小",
+              "cmd": "du -sh %{路径}%",
+              "params": {
+                "路径": {
+                  "type": "string",
+                  "required": false,
+                  "description": "目录路径",
+                  "example": "/var/log",
+                  "notes": ""
+                }
+              },
+              "keyword": "du 目录总大小"
+            },
+            {
+              "name": "子目录大小排序",
+              "cmd": "du -sh %{路径}%/*/ | sort -hr",
+              "params": {
+                "路径": {
+                  "type": "string",
+                  "required": false,
+                  "description": "目录路径",
+                  "example": "/home",
+                  "notes": ""
+                }
+              },
+              "keyword": "du 子目录排序"
+            },
+            {
+              "name": "最大文件列表",
+              "cmd": "du -ah %{路径}% | sort -rh | head -n 10",
+              "params": {
+                "路径": {
+                  "type": "string",
+                  "required": false,
+                  "description": "目录路径",
+                  "example": "/",
+                  "notes": ""
+                }
+              },
+              "keyword": "du 最大文件"
+            }
+          ],
+          "params": {
+            "选项": {
+              "type": "string",
+              "required": false,
+              "description": "df 选项",
+              "example": "-h",
+              "notes": "常用"
+            },
+            "路径": {
+              "type": "string",
+              "required": false,
+              "description": "路径",
+              "example": "/home",
+              "notes": "可选"
+            }
+          }
+        }
+      },
+      {
+        "dirPath": "/系统监控/",
+        "name": "uptime 系统负载",
+        "keyword": "uptime 系统负载",
+        "description": "显示系统运行时间、平均负载和在线用户数",
+        "data": {
+          "cmd": "uptime %{选项}%",
+          "extensions": [
+            {
+              "name": "简洁模式",
+              "cmd": "uptime -s",
+              "params": {},
+              "keyword": "uptime 启动时间"
+            },
+            {
+              "name": "人类可读格式",
+              "cmd": "uptime -p",
+              "params": {},
+              "keyword": "uptime 人类可读"
+            },
+            {
+              "name": "显示历史负载",
+              "cmd": "uptime",
+              "params": {},
+              "keyword": "uptime 历史负载"
+            },
+            {
+              "name": "查看启动时间",
+              "cmd": "who -b",
+              "params": {},
+              "keyword": "who 启动时间"
+            }
+          ],
+          "params": {
+            "选项": {
+              "type": "string",
+              "required": false,
+              "description": "uptime 选项",
+              "example": "-p",
+              "notes": "可选"
+            }
+          }
+        }
+      },
+      {
+        "dirPath": "/系统监控/",
+        "name": "watch 周期性执行",
+        "keyword": "watch 周期执行",
+        "description": "周期性地执行命令并全屏显示输出",
+        "data": {
+          "cmd": "watch %{选项}% %{命令}%",
+          "extensions": [
+            {
+              "name": "每2秒执行",
+              "cmd": "watch -n 2 %{命令}%",
+              "params": {
+                "命令": {
+                  "type": "string",
+                  "required": true,
+                  "description": "要执行的命令",
+                  "example": "df -h",
+                  "notes": ""
+                }
+              },
+              "keyword": "watch 每2秒"
+            },
+            {
+              "name": "高亮差异",
+              "cmd": "watch -d %{命令}%",
+              "params": {
+                "命令": {
+                  "type": "string",
+                  "required": true,
+                  "description": "要执行的命令",
+                  "example": "free -h",
+                  "notes": ""
+                }
+              },
+              "keyword": "watch 高亮差异"
+            },
+            {
+              "name": "持续监控内存",
+              "cmd": "watch -n 1 free -h",
+              "params": {},
+              "keyword": "watch 监控内存"
+            },
+            {
+              "name": "持续监控进程",
+              "cmd": "watch -n 2 'ps aux | head -1'",
+              "params": {},
+              "keyword": "watch 监控进程"
+            },
+            {
+              "name": "持续监控磁盘",
+              "cmd": "watch -n 5 df -h",
+              "params": {},
+              "keyword": "watch 监控磁盘"
+            }
+          ],
+          "params": {
+            "选项": {
+              "type": "string",
+              "required": false,
+              "description": "watch 选项",
+              "example": "-n 2",
+              "notes": "常用"
+            },
+            "命令": {
+              "type": "string",
+              "required": true,
+              "description": "要周期性执行的命令",
+              "example": "df -h",
+              "notes": ""
+            }
+          }
+        }
+      },
+      {
+        "dirPath": "/系统监控/",
+        "name": "lsof 查看打开的文件",
+        "keyword": "lsof 打开文件",
+        "description": "列出打开的文件和网络连接",
+        "data": {
+          "cmd": "lsof %{选项}%",
+          "extensions": [
+            {
+              "name": "查看所有打开文件",
+              "cmd": "lsof",
+              "params": {},
+              "keyword": "lsof 所有文件"
+            },
+            {
+              "name": "查看指定用户",
+              "cmd": "lsof -u %{用户名}%",
+              "params": {
+                "用户名": {
+                  "type": "string",
+                  "required": false,
+                  "description": "用户名",
+                  "example": "www-data",
+                  "notes": ""
+                }
+              },
+              "keyword": "lsof 用户文件"
+            },
+            {
+              "name": "查看指定进程",
+              "cmd": "lsof -p %{PID}%",
+              "params": {
+                "PID": {
+                  "type": "string",
+                  "required": false,
+                  "description": "进程ID",
+                  "example": "1234",
+                  "notes": ""
+                }
+              },
+              "keyword": "lsof 进程文件"
+            },
+            {
+              "name": "查看网络连接",
+              "cmd": "lsof -i",
+              "params": {},
+              "keyword": "lsof 网络连接"
+            },
+            {
+              "name": "查看TCP连接",
+              "cmd": "lsof -i TCP",
+              "params": {},
+              "keyword": "lsof TCP"
+            },
+            {
+              "name": "查看端口占用",
+              "cmd": "lsof -i :%{端口}%",
+              "params": {
+                "端口": {
+                  "type": "string",
+                  "required": false,
+                  "description": "端口号",
+                  "example": "80",
+                  "notes": ""
+                }
+              },
+              "keyword": "lsof 端口"
+            },
+            {
+              "name": "递归查看目录",
+              "cmd": "lsof +D %{目录}%",
+              "params": {
+                "目录": {
+                  "type": "string",
+                  "required": false,
+                  "description": "目录路径",
+                  "example": "/var/log",
+                  "notes": ""
+                }
+              },
+              "keyword": "lsof 目录递归"
+            }
+          ],
+          "params": {
+            "选项": {
+              "type": "string",
+              "required": false,
+              "description": "lsof 选项",
+              "example": "-i",
+              "notes": "常用"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,859 @@
+{
+  "module": "Shell脚本模板",
+  "version": "1.0",
+  "description": "Shell脚本模板 模块命令集合",
+  "commands": [
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "find 文件查找",
+      "keyword": "find 查找文件 搜索",
+      "description": "在目录树中搜索文件",
+      "data": {
+        "cmd": "find %{路径}% %{选项}% -name \"%{文件名}%\"",
+        "extensions": [
+          {
+            "name": "按名称查找",
+            "cmd": "find /path -name \"*.log\"",
+            "params": {},
+            "keyword": "find 按名称"
+          },
+          {
+            "name": "按类型查找",
+            "cmd": "find /path -type f -name \"*.txt\"",
+            "params": {},
+            "keyword": "find 文件类型"
+          },
+          {
+            "name": "按大小查找",
+            "cmd": "find /path -size +100M",
+            "params": {},
+            "keyword": "find 按大小"
+          },
+          {
+            "name": "按时间查找",
+            "cmd": "find /path -mtime -7",
+            "params": {},
+            "keyword": "find 修改时间"
+          },
+          {
+            "name": "查找并执行",
+            "cmd": "find /path -name \"*.log\" -exec gzip {} \\;",
+            "params": {},
+            "keyword": "find 执行命令"
+          },
+          {
+            "name": "排除目录",
+            "cmd": "find /path -not -path \"*/node_modules/*\"",
+            "params": {},
+            "keyword": "find 排除目录"
+          }
+        ],
+        "params": {
+          "路径": {
+            "type": "string",
+            "required": true,
+            "description": "搜索的起始路径",
+            "example": "/home/user",
+            "notes": ""
+          },
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "find 选项",
+            "example": "-type f",
+            "notes": "常用"
+          },
+          "文件名": {
+            "type": "string",
+            "required": true,
+            "description": "要查找的文件名模式",
+            "example": "*.log",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "grep 文本搜索",
+      "keyword": "grep 搜索 查找 内容",
+      "description": "在文件中搜索匹配的模式",
+      "data": {
+        "cmd": "grep %{选项}% \"%{模式}%\" %{文件路径}%",
+        "extensions": [
+          {
+            "name": "递归搜索目录",
+            "cmd": "grep -r \"pattern\" /path/to/dir",
+            "params": {},
+            "keyword": "grep 递归搜索"
+          },
+          {
+            "name": "显示行号",
+            "cmd": "grep -n \"pattern\" filename",
+            "params": {},
+            "keyword": "grep 行号"
+          },
+          {
+            "name": "忽略大小写",
+            "cmd": "grep -i \"pattern\" filename",
+            "params": {},
+            "keyword": "grep 忽略大小写"
+          },
+          {
+            "name": "仅显示文件名",
+            "cmd": "grep -l \"pattern\" *.log",
+            "params": {},
+            "keyword": "grep 文件名"
+          },
+          {
+            "name": "正则表达式搜索",
+            "cmd": "grep -E \"regex\" filename",
+            "params": {},
+            "keyword": "grep 正则"
+          },
+          {
+            "name": "统计匹配行数",
+            "cmd": "grep -c \"pattern\" filename",
+            "params": {},
+            "keyword": "grep 统计"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "grep 选项",
+            "example": "-rn",
+            "notes": "常用"
+          },
+          "模式": {
+            "type": "string",
+            "required": true,
+            "description": "要搜索的模式或正则表达式",
+            "example": "error",
+            "notes": ""
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要搜索的文件路径",
+            "example": "/var/log/syslog",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "awk 数据处理",
+      "keyword": "awk 数据处理 文本",
+      "description": "强大的文本分析和报告生成工具",
+      "data": {
+        "cmd": "awk '%{模式}%' %{文件路径}%",
+        "extensions": [
+          {
+            "name": "打印指定列",
+            "cmd": "awk '{print $1,$3}' filename",
+            "params": {},
+            "keyword": "awk 打印列"
+          },
+          {
+            "name": "按分隔符提取",
+            "cmd": "awk -F',' '{print $2}' filename",
+            "params": {},
+            "keyword": "awk 分隔符"
+          },
+          {
+            "name": "条件筛选",
+            "cmd": "awk '/pattern/ {print $0}' filename",
+            "params": {},
+            "keyword": "awk 条件"
+          },
+          {
+            "name": "数值计算",
+            "cmd": "awk '{sum+=$1} END {print sum}' filename",
+            "params": {},
+            "keyword": "awk 计算"
+          },
+          {
+            "name": "格式化输出",
+            "cmd": "awk 'printf \"%s: %.2f\\n\", $1, $2' filename",
+            "params": {},
+            "keyword": "awk 格式化"
+          },
+          {
+            "name": "多条件判断",
+            "cmd": "awk '$3 > 100 {print $1}' filename",
+            "params": {},
+            "keyword": "awk 多条件"
+          }
+        ],
+        "params": {
+          "模式": {
+            "type": "string",
+            "required": true,
+            "description": "awk 模式和动作",
+            "example": "'{print $1}'",
+            "notes": ""
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要处理的文件路径",
+            "example": "/home/user/data.txt",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "sed 流编辑",
+      "keyword": "sed 流编辑 替换",
+      "description": "流编辑器，用于文本替换和转换",
+      "data": {
+        "cmd": "sed %{选项}% 's/%{原字符串}%/%{新字符串}%/%{标志}%' %{文件路径}%",
+        "extensions": [
+          {
+            "name": "全局替换",
+            "cmd": "sed 's/old/new/g' filename",
+            "params": {},
+            "keyword": "sed 全局替换"
+          },
+          {
+            "name": "原地替换",
+            "cmd": "sed -i 's/old/new/g' filename",
+            "params": {},
+            "keyword": "sed 原地编辑"
+          },
+          {
+            "name": "删除行",
+            "cmd": "sed '2d' filename",
+            "params": {},
+            "keyword": "sed 删除行"
+          },
+          {
+            "name": "插入文本",
+            "cmd": "sed '1i\\new line' filename",
+            "params": {},
+            "keyword": "sed 插入"
+          },
+          {
+            "name": "追加文本",
+            "cmd": "sed '$a\\new line' filename",
+            "params": {},
+            "keyword": "sed 追加"
+          },
+          {
+            "name": "正则替换",
+            "cmd": "sed -E 's/[0-9]+/NUM/g' filename",
+            "params": {},
+            "keyword": "sed 正则"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "sed 选项",
+            "example": "-i",
+            "notes": "-i 原地编辑"
+          },
+          "原字符串": {
+            "type": "string",
+            "required": true,
+            "description": "要替换的原字符串",
+            "example": "old",
+            "notes": ""
+          },
+          "新字符串": {
+            "type": "string",
+            "required": true,
+            "description": "替换后的新字符串",
+            "example": "new",
+            "notes": ""
+          },
+          "标志": {
+            "type": "string",
+            "required": false,
+            "description": "替换标志",
+            "example": "g",
+            "notes": "g 全局替换"
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要处理的文件路径",
+            "example": "/home/user/data.txt",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "xargs 参数传递",
+      "keyword": "xargs 参数",
+      "description": "将标准输入转换为命令行参数",
+      "data": {
+        "cmd": "xargs %{选项}% %{命令}%",
+        "extensions": [
+          {
+            "name": "批量删除文件",
+            "cmd": "find . -name \"*.tmp\" | xargs rm",
+            "params": {},
+            "keyword": "xargs 删除"
+          },
+          {
+            "name": "指定参数位置",
+            "cmd": "echo \"file1 file2\" | xargs -n 1 cp target/",
+            "params": {},
+            "keyword": "xargs 逐个"
+          },
+          {
+            "name": "配合 grep 使用",
+            "cmd": "grep -l \"pattern\" *.log | xargs rm",
+            "params": {},
+            "keyword": "xargs grep"
+          },
+          {
+            "name": "询问确认",
+            "cmd": "cat list.txt | xargs -p rm",
+            "params": {},
+            "keyword": "xargs 确认"
+          },
+          {
+            "name": "指定分隔符",
+            "cmd": "echo \"a,b,c\" | xargs -d',' echo",
+            "params": {},
+            "keyword": "xargs 分隔符"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "xargs 选项",
+            "example": "-n 1",
+            "notes": "-n 每行几个参数"
+          },
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "要执行的命令",
+            "example": "rm",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "tar 压缩解压",
+      "keyword": "tar 打包 压缩",
+      "description": "打包和压缩文件",
+      "data": {
+        "cmd": "tar %{动作}% %{压缩包}% %{路径}%",
+        "extensions": [
+          {
+            "name": "打包压缩",
+            "cmd": "tar -czvf archive.tar.gz /path/to/dir",
+            "params": {},
+            "keyword": "tar 压缩"
+          },
+          {
+            "name": "解包",
+            "cmd": "tar -xzvf archive.tar.gz",
+            "params": {},
+            "keyword": "tar 解压"
+          },
+          {
+            "name": "查看内容",
+            "cmd": "tar -tzvf archive.tar.gz",
+            "params": {},
+            "keyword": "tar 列出内容"
+          },
+          {
+            "name": "追加文件",
+            "cmd": "tar -rvf archive.tar newfile.txt",
+            "params": {},
+            "keyword": "tar 追加"
+          },
+          {
+            "name": "排除文件",
+            "cmd": "tar -czvf archive.tar.gz --exclude='*.log' /path",
+            "params": {},
+            "keyword": "tar 排除"
+          },
+          {
+            "name": "解压到目录",
+            "cmd": "tar -xzvf archive.tar.gz -C /target/dir",
+            "params": {},
+            "keyword": "tar 指定目录"
+          }
+        ],
+        "params": {
+          "动作": {
+            "type": "string",
+            "required": true,
+            "description": "tar 操作选项",
+            "example": "-czvf",
+            "notes": "常用"
+          },
+          "压缩包": {
+            "type": "string",
+            "required": true,
+            "description": "压缩包名称",
+            "example": "backup.tar.gz",
+            "notes": ""
+          },
+          "路径": {
+            "type": "string",
+            "required": true,
+            "description": "要打包的目录或文件路径",
+            "example": "/home/user/data",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "zip/unzip 打包",
+      "keyword": "zip unzip 压缩 打包",
+      "description": "压缩和解压 zip 格式文件",
+      "data": {
+        "cmd": "zip %{选项}% %{压缩包名称}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "压缩目录",
+            "cmd": "zip -r archive.zip /path/to/dir",
+            "params": {},
+            "keyword": "zip 压缩目录"
+          },
+          {
+            "name": "解压",
+            "cmd": "unzip archive.zip",
+            "params": {},
+            "keyword": "unzip 解压"
+          },
+          {
+            "name": "解压到目录",
+            "cmd": "unzip archive.zip -d /target/dir",
+            "params": {},
+            "keyword": "unzip 指定目录"
+          },
+          {
+            "name": "查看内容",
+            "cmd": "unzip -l archive.zip",
+            "params": {},
+            "keyword": "unzip 列表"
+          },
+          {
+            "name": "排除文件",
+            "cmd": "zip -r archive.zip folder/ -x \"*.log\"",
+            "params": {},
+            "keyword": "zip 排除"
+          },
+          {
+            "name": "最大压缩比",
+            "cmd": "zip -9 archive.zip file.txt",
+            "params": {},
+            "keyword": "zip 最大压缩"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "zip 选项",
+            "example": "-r",
+            "notes": "可选"
+          },
+          "压缩包名称": {
+            "type": "string",
+            "required": true,
+            "description": "压缩包名称",
+            "example": "backup.zip",
+            "notes": ""
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要压缩的文件或目录路径",
+            "example": "/home/user/data",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "cut 文本切割",
+      "keyword": "cut 切割 字段",
+      "description": "从每行中提取指定字段",
+      "data": {
+        "cmd": "cut %{选项}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "按字节提取",
+            "cmd": "cut -b 1-10 filename",
+            "params": {},
+            "keyword": "cut 字节"
+          },
+          {
+            "name": "按字符提取",
+            "cmd": "cut -c 1-5 filename",
+            "params": {},
+            "keyword": "cut 字符"
+          },
+          {
+            "name": "按分隔符提取列",
+            "cmd": "cut -d',' -f1,3 filename",
+            "params": {},
+            "keyword": "cut 提取列"
+          },
+          {
+            "name": "排除字段",
+            "cmd": "cut -d':' --complement -f1 /etc/passwd",
+            "params": {},
+            "keyword": "cut 排除"
+          },
+          {
+            "name": "输出分隔符",
+            "cmd": "cut -d',' -f1,3 -o' | ' filename",
+            "params": {},
+            "keyword": "cut 输出分隔"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": true,
+            "description": "cut 选项",
+            "example": "-d',' -f1",
+            "notes": ""
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要处理的文件路径",
+            "example": "/home/user/data.csv",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "sort 排序",
+      "keyword": "sort 排序",
+      "description": "对文本行进行排序",
+      "data": {
+        "cmd": "sort %{选项}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "反向排序",
+            "cmd": "sort -r filename",
+            "params": {},
+            "keyword": "sort 反向"
+          },
+          {
+            "name": "数字排序",
+            "cmd": "sort -n filename",
+            "params": {},
+            "keyword": "sort 数字"
+          },
+          {
+            "name": "去重排序",
+            "cmd": "sort -u filename",
+            "params": {},
+            "keyword": "sort 去重"
+          },
+          {
+            "name": "按列排序",
+            "cmd": "sort -t',' -k2 filename",
+            "params": {},
+            "keyword": "sort 列"
+          },
+          {
+            "name": "忽略大小写",
+            "cmd": "sort -f filename",
+            "params": {},
+            "keyword": "sort 忽略大小写"
+          },
+          {
+            "name": "人类可读排序",
+            "cmd": "sort -h filename",
+            "params": {},
+            "keyword": "sort 人类可读"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "sort 选项",
+            "example": "-r",
+            "notes": "可选"
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要排序的文件路径",
+            "example": "/home/user/data.txt",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "uniq 去重",
+      "keyword": "uniq 去重",
+      "description": "显示或忽略重复的行",
+      "data": {
+        "cmd": "uniq %{选项}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "统计重复次数",
+            "cmd": "uniq -c filename",
+            "params": {},
+            "keyword": "uniq 计数"
+          },
+          {
+            "name": "仅显示重复行",
+            "cmd": "uniq -d filename",
+            "params": {},
+            "keyword": "uniq 重复行"
+          },
+          {
+            "name": "仅显示唯一行",
+            "cmd": "uniq -u filename",
+            "params": {},
+            "keyword": "uniq 唯一行"
+          },
+          {
+            "name": "忽略大小写",
+            "cmd": "uniq -i filename",
+            "params": {},
+            "keyword": "uniq 忽略大小写"
+          },
+          {
+            "name": "跳过字段比较",
+            "cmd": "uniq -f 1 filename",
+            "params": {},
+            "keyword": "uniq 跳过字段"
+          },
+          {
+            "name": "相邻去重",
+            "cmd": "sort filename | uniq",
+            "params": {},
+            "keyword": "uniq 排序后去重"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "uniq 选项",
+            "example": "-c",
+            "notes": "可选"
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要处理的文件路径",
+            "example": "/home/user/data.txt",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "wc 统计",
+      "keyword": "wc 统计 行数",
+      "description": "统计文件的行数、词数和字节数",
+      "data": {
+        "cmd": "wc %{选项}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "统计行数",
+            "cmd": "wc -l filename",
+            "params": {},
+            "keyword": "wc 行数"
+          },
+          {
+            "name": "统计词数",
+            "cmd": "wc -w filename",
+            "params": {},
+            "keyword": "wc 词数"
+          },
+          {
+            "name": "统计字符数",
+            "cmd": "wc -c filename",
+            "params": {},
+            "keyword": "wc 字符"
+          },
+          {
+            "name": "最长行字节",
+            "cmd": "wc -L filename",
+            "params": {},
+            "keyword": "wc 最长行"
+          },
+          {
+            "name": "统计目录文件数",
+            "cmd": "ls -1 | wc -l",
+            "params": {},
+            "keyword": "wc 文件数"
+          },
+          {
+            "name": "递归统计文件",
+            "cmd": "find . -type f | wc -l",
+            "params": {},
+            "keyword": "wc 递归"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "wc 选项",
+            "example": "-l",
+            "notes": "可选"
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要统计的文件路径",
+            "example": "/home/user/log.txt",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "head 文件头",
+      "keyword": "head 开头 头部",
+      "description": "显示文件开头部分内容",
+      "data": {
+        "cmd": "head %{选项}% -n %{行数}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "查看前10行",
+            "cmd": "head -n 10 filename",
+            "params": {},
+            "keyword": "head 10行"
+          },
+          {
+            "name": "查看前N字节",
+            "cmd": "head -c 100 filename",
+            "params": {},
+            "keyword": "head 字节"
+          },
+          {
+            "name": "静默模式",
+            "cmd": "head -q filename",
+            "params": {},
+            "keyword": "head 静默"
+          },
+          {
+            "name": "显示文件头",
+            "cmd": "head -v filename",
+            "params": {},
+            "keyword": "head 显示头"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "head 选项",
+            "example": "-n",
+            "notes": "可选"
+          },
+          "行数": {
+            "type": "string",
+            "required": true,
+            "description": "显示的行数",
+            "example": "20",
+            "notes": ""
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要查看的文件路径",
+            "example": "/var/log/syslog",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "tail 文件尾",
+      "keyword": "tail 末尾 尾部",
+      "description": "显示文件末尾部分内容",
+      "data": {
+        "cmd": "tail %{选项}% -n %{行数}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "实时跟踪日志",
+            "cmd": "tail -f /var/log/syslog",
+            "params": {},
+            "keyword": "tail 实时跟踪"
+          },
+          {
+            "name": "查看后10行",
+            "cmd": "tail -n 10 filename",
+            "params": {},
+            "keyword": "tail 10行"
+          },
+          {
+            "name": "从第N行开始",
+            "cmd": "tail -n +100 filename",
+            "params": {},
+            "keyword": "tail 从行号"
+          },
+          {
+            "name": "跟踪多个文件",
+            "cmd": "tail -f file1.log file2.log",
+            "params": {},
+            "keyword": "tail 多文件"
+          },
+          {
+            "name": "显示最后N字节",
+            "cmd": "tail -c 1024 filename",
+            "params": {},
+            "keyword": "tail 字节"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "tail 选项",
+            "example": "-f",
+            "notes": "可选，-f 实时跟踪"
+          },
+          "行数": {
+            "type": "string",
+            "required": true,
+            "description": "显示的行数",
+            "example": "20",
+            "notes": ""
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要查看的文件路径",
+            "example": "/var/log/syslog",
+            "notes": ""
+          }
+        }
+      }
+    }
+  ]
+}

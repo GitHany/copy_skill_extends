@@ -1,6 +1,407 @@
 {
   "data": [
     {
+      "name": "docker-compose build",
+      "keyword": "docker compose build",
+      "description": "构建服务镜像",
+      "data": {
+        "cmd": "docker-compose build%{service}%",
+        "params": [
+          {
+            "name": "service",
+            "type": "string",
+            "default": "",
+            "description": "指定服务名称（留空则构建全部）",
+            "example": "web"
+          }
+        ],
+        "extensions": [
+          {
+            "name": "强制构建",
+            "keyword": "docker-compose build --no-cache",
+            "description": "不使用缓存强制构建",
+            "cmd": "docker-compose build --no-cache%{service}%"
+          },
+          {
+            "name": "并行构建",
+            "keyword": "docker-compose build --parallel",
+            "description": "并行构建多个服务",
+            "cmd": "docker-compose build --parallel%{service}%"
+          },
+          {
+            "name": "强制拉取",
+            "keyword": "docker-compose build --pull",
+            "description": "总是拉取基础镜像",
+            "cmd": "docker-compose build --pull%{service}%"
+          }
+        ]
+      }
+    },
+    {
+      "name": "docker-compose config",
+      "keyword": "docker compose config",
+      "description": "验证并查看 Compose 配置",
+      "data": {
+        "cmd": "docker-compose config%{quiet}%",
+        "params": [
+          {
+            "name": "quiet",
+            "type": "flag",
+            "default": "",
+            "description": "-q 只输出验证结果",
+            "example": "-q"
+          }
+        ],
+        "extensions": [
+          {
+            "name": "服务列表",
+            "keyword": "docker-compose config --services",
+            "description": "列出配置中的服务",
+            "cmd": "docker-compose config --services"
+          },
+          {
+            "name": "卷列表",
+            "keyword": "docker-compose config --volumes",
+            "description": "列出配置中的卷",
+            "cmd": "docker-compose config --volumes"
+          },
+          {
+            "name": "转换格式",
+            "keyword": "docker-compose -f convert",
+            "description": "转换为指定格式输出",
+            "cmd": "docker-compose -f %{file}% convert"
+          }
+        ]
+      }
+    },
+    {
+      "name": "docker-compose down",
+      "keyword": "docker compose down",
+      "description": "停止并移除 Docker Compose 服务",
+      "data": {
+        "cmd": "docker-compose down%{volumes}% %{project_name}%",
+        "params": [
+          {
+            "name": "volumes",
+            "type": "flag",
+            "default": "",
+            "description": "-v 同时移除数据卷",
+            "example": "-v"
+          },
+          {
+            "name": "project_name",
+            "type": "string",
+            "default": "",
+            "description": "指定项目名称（-p 参数）",
+            "example": "-p myproject"
+          }
+        ],
+        "extensions": [
+          {
+            "name": "清除镜像",
+            "keyword": "docker-compose down --rmi",
+            "description": "同时移除相关镜像",
+            "cmd": "docker-compose down --rmi %{all_local}% %{volumes}%"
+          },
+          {
+            "name": "清除全部",
+            "keyword": "docker-compose down -v --rmi all",
+            "description": "停止服务、移除容器、数据卷、镜像",
+            "cmd": "docker-compose down -v --rmi all"
+          }
+        ]
+      }
+    },
+    {
+      "name": "docker-compose exec",
+      "keyword": "docker compose exec",
+      "description": "在运行中的容器内执行命令",
+      "data": {
+        "cmd": "docker-compose exec%{service}% %{command}%",
+        "params": [
+          {
+            "name": "service",
+            "type": "string",
+            "default": "",
+            "description": "服务名称",
+            "example": "web"
+          },
+          {
+            "name": "command",
+            "type": "string",
+            "default": "",
+            "description": "要执行的命令",
+            "example": "bash"
+          }
+        ],
+        "extensions": [
+          {
+            "name": "交互式",
+            "keyword": "docker-compose exec -it",
+            "description": "交互式终端模式",
+            "cmd": "docker-compose exec -it %{service}% %{command}%"
+          },
+          {
+            "name": "指定用户",
+            "keyword": "docker-compose exec -u",
+            "description": "以指定用户身份执行",
+            "cmd": "docker-compose exec -u %{user}% %{service}% %{command}%"
+          },
+          {
+            "name": "工作目录",
+            "keyword": "docker-compose exec -w",
+            "description": "指定工作目录",
+            "cmd": "docker-compose exec -w %{dir}% %{service}% %{command}%"
+          }
+        ]
+      }
+    },
+    {
+      "name": "docker-compose logs",
+      "keyword": "docker compose logs",
+      "description": "查看容器日志",
+      "data": {
+        "cmd": "docker-compose logs%{follow}% %{service}%",
+        "params": [
+          {
+            "name": "follow",
+            "type": "flag",
+            "default": "",
+            "description": "-f 实时跟踪日志",
+            "example": "-f"
+          },
+          {
+            "name": "service",
+            "type": "string",
+            "default": "",
+            "description": "指定服务名称",
+            "example": "web"
+          }
+        ],
+        "extensions": [
+          {
+            "name": "尾随行数",
+            "keyword": "docker-compose logs --tail",
+            "description": "显示最后 N 行日志",
+            "cmd": "docker-compose logs --tail %{lines}% %{service}%"
+          },
+          {
+            "name": "时间戳",
+            "keyword": "docker-compose logs -t",
+            "description": "显示时间戳",
+            "cmd": "docker-compose logs -t%{service}%"
+          },
+          {
+            "name": "最近时间",
+            "keyword": "docker-compose logs --since",
+            "description": "显示最近时间内的日志",
+            "cmd": "docker-compose logs --since %{time}% %{service}%"
+          }
+        ]
+      }
+    },
+    {
+      "name": "docker-compose ps",
+      "keyword": "docker compose ps",
+      "description": "查看容器状态",
+      "data": {
+        "cmd": "docker-compose ps%{service}%",
+        "params": [
+          {
+            "name": "service",
+            "type": "string",
+            "default": "",
+            "description": "指定服务名称",
+            "example": "web"
+          }
+        ],
+        "extensions": [
+          {
+            "name": "详细状态",
+            "keyword": "docker-compose ps -a",
+            "description": "显示所有容器（包括已停止）",
+            "cmd": "docker-compose ps -a%{service}%"
+          },
+          {
+            "name": "格式化输出",
+            "keyword": "docker-compose ps --format",
+            "description": "格式化输出（json/table)",
+            "cmd": "docker-compose ps --format %{format}%"
+          }
+        ]
+      }
+    },
+    {
+      "name": "docker-compose pull",
+      "keyword": "docker compose pull",
+      "description": "拉取服务镜像",
+      "data": {
+        "cmd": "docker-compose pull%{service}%",
+        "params": [
+          {
+            "name": "service",
+            "type": "string",
+            "default": "",
+            "description": "指定服务名称（留空则拉取全部）",
+            "example": "web"
+          }
+        ],
+        "extensions": [
+          {
+            "name": "忽略失败",
+            "keyword": "docker-compose pull --ignore-pull-failures",
+            "description": "忽略拉取失败继续执行",
+            "cmd": "docker-compose pull --ignore-pull-failures%{service}%"
+          },
+          {
+            "name": "并行拉取",
+            "keyword": "docker-compose pull --parallel",
+            "description": "并行拉取多个镜像",
+            "cmd": "docker-compose pull --parallel%{service}%"
+          },
+          {
+            "name": "静默模式",
+            "keyword": "docker-compose pull -q",
+            "description": "静默模式拉取",
+            "cmd": "docker-compose pull -q%{service}%"
+          }
+        ]
+      }
+    },
+    {
+      "name": "docker-compose run",
+      "keyword": "docker compose run",
+      "description": "在服务容器中运行命令",
+      "data": {
+        "cmd": "docker-compose run%{detach}% %{service}% %{command}%",
+        "params": [
+          {
+            "name": "detach",
+            "type": "flag",
+            "default": "",
+            "description": "-d 后台运行",
+            "example": "-d"
+          },
+          {
+            "name": "service",
+            "type": "string",
+            "default": "",
+            "description": "服务名称",
+            "example": "web"
+          },
+          {
+            "name": "command",
+            "type": "string",
+            "default": "",
+            "description": "要执行的命令",
+            "example": "bash"
+          }
+        ],
+        "extensions": [
+          {
+            "name": "覆盖命令",
+            "keyword": "docker-compose run --rm",
+            "description": "命令执行完毕后删除容器",
+            "cmd": "docker-compose run --rm %{service}% %{command}%"
+          },
+          {
+            "name": "交互式",
+            "keyword": "docker-compose run -it",
+            "description": "交互式终端模式",
+            "cmd": "docker-compose run -it %{service}% %{command}%"
+          },
+          {
+            "name": "指定入口点",
+            "keyword": "docker-compose run --entrypoint",
+            "description": "覆盖默认入口点",
+            "cmd": "docker-compose run --entrypoint %{entrypoint}% %{service}% %{command}%"
+          }
+        ]
+      }
+    },
+    {
+      "name": "docker-compose scale",
+      "keyword": "docker compose scale",
+      "description": "扩缩容服务实例数量",
+      "data": {
+        "cmd": "docker-compose scale%{service}=%{num}%",
+        "params": [
+          {
+            "name": "service",
+            "type": "string",
+            "default": "",
+            "description": "服务名称",
+            "example": "web"
+          },
+          {
+            "name": "num",
+            "type": "number",
+            "default": "",
+            "description": "实例数量",
+            "example": "3"
+          }
+        ],
+        "extensions": [
+          {
+            "name": "多服务扩缩",
+            "keyword": "docker-compose scale multiple",
+            "description": "同时扩缩多个服务",
+            "cmd": "docker-compose scale %{service1}%=%{num1}% %{service2}%=%{num2}%"
+          },
+          {
+            "name": "扩展约束",
+            "keyword": "docker-compose up --scale",
+            "description": "启动时设置服务副本数",
+            "cmd": "docker-compose up -d --scale %{service}%=%{num}%"
+          }
+        ]
+      }
+    },
+    {
+      "name": "docker-compose up",
+      "keyword": "docker compose up",
+      "description": "启动 Docker Compose 服务（前台或后台）",
+      "data": {
+        "cmd": "docker-compose up%{detached}% %{project_name}%",
+        "params": [
+          {
+            "name": "detached",
+            "type": "flag",
+            "default": "",
+            "description": "-d 后台运行模式",
+            "example": "-d"
+          },
+          {
+            "name": "project_name",
+            "type": "string",
+            "default": "",
+            "description": "指定项目名称（-p 参数）",
+            "example": "-p myproject"
+          }
+        ],
+        "extensions": [
+          {
+            "name": "重建启动",
+            "keyword": "docker-compose up --build",
+            "description": "强制重新构建并启动服务",
+            "cmd": "docker-compose up --build%{detached}%"
+          },
+          {
+            "name": "强制重建",
+            "keyword": "docker-compose up --force-recreate",
+            "description": "强制重新创建容器",
+            "cmd": "docker-compose up --force-recreate%{detached}%"
+          },
+          {
+            "name": "指定文件",
+            "keyword": "docker-compose -f",
+            "description": "使用指定的 compose 文件",
+            "cmd": "docker-compose -f %{file}% up%{detached}%"
+          }
+        ]
+      }
+    },
+    {
       "dirPath": "/Claude Skills/ccg/",
       "name": "ccg 代码生成",
       "keyword": "/ccg",
@@ -6431,6 +6832,701 @@
             "example": "CI",
             "notes": ""
           },
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHubActions/",
+      "name": "gh issue create 创建 Issue",
+      "keyword": "gh issue create",
+      "description": "创建新的 GitHub Issue",
+      "data": {
+        "cmd": "gh issue create --title \"%{title}%\" --body \"%{body}%\"",
+        "extensions": [
+          {
+            "name": "创建并指定标签",
+            "cmd": "gh issue create --title \"%{title}%\" --body \"%{body}%\" --label %{label}%",
+            "params": {},
+            "keyword": "gh issue create 标签"
+          },
+          {
+            "name": "创建并指定受理人",
+            "cmd": "gh issue create --title \"%{title}%\" --body \"%{body}%\" --assignee %{assignee}%",
+            "params": {},
+            "keyword": "gh issue create 受理人"
+          },
+          {
+            "name": "创建里程碑",
+            "cmd": "gh issue create --title \"%{title}%\" --body \"%{body}%\" --milestone \"%{milestone}%\"",
+            "params": {},
+            "keyword": "gh issue create 里程碑"
+          },
+          {
+            "name": "打开编辑器交互创建",
+            "cmd": "gh issue create",
+            "params": {},
+            "keyword": "gh issue create 编辑器"
+          },
+          {
+            "name": "创建到指定仓库",
+            "cmd": "gh issue create --repo %{owner}/%{repo}% --title \"%{title}%\" --body \"%{body}%\"",
+            "params": {},
+            "keyword": "gh issue create 仓库"
+          }
+        ],
+        "params": {
+          "title": {
+            "type": "string",
+            "required": true,
+            "description": "Issue 标题",
+            "example": "登录功能报错",
+            "notes": "常用"
+          },
+          "body": {
+            "type": "string",
+            "required": false,
+            "description": "Issue 描述正文",
+            "example": "复现步骤：1. 打开页面 2. 点击登录",
+            "notes": "可选"
+          },
+          "label": {
+            "type": "string",
+            "required": false,
+            "description": "标签名称",
+            "example": "bug",
+            "notes": "可选，多个用逗号分隔"
+          },
+          "assignee": {
+            "type": "string",
+            "required": false,
+            "description": "受理人用户名",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "milestone": {
+            "type": "string",
+            "required": false,
+            "description": "里程碑标题",
+            "example": "v1.0",
+            "notes": "可选"
+          },
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHubActions/",
+      "name": "gh issue list 列出 Issue",
+      "keyword": "gh issue list",
+      "description": "列出仓库的 Issue",
+      "data": {
+        "cmd": "gh issue list",
+        "extensions": [
+          {
+            "name": "查看指定仓库",
+            "cmd": "gh issue list --repo %{owner}/%{repo}%",
+            "params": {},
+            "keyword": "gh issue list 仓库"
+          },
+          {
+            "name": "按状态筛选",
+            "cmd": "gh issue list --state %{state}%",
+            "params": {},
+            "keyword": "gh issue list 状态"
+          },
+          {
+            "name": "按标签筛选",
+            "cmd": "gh issue list --label %{label}%",
+            "params": {},
+            "keyword": "gh issue list 标签"
+          },
+          {
+            "name": "按作者筛选",
+            "cmd": "gh issue list --author %{author}%",
+            "params": {},
+            "keyword": "gh issue list 作者"
+          },
+          {
+            "name": "按受理人筛选",
+            "cmd": "gh issue list --assignee %{assignee}%",
+            "params": {},
+            "keyword": "gh issue list 受理人"
+          },
+          {
+            "name": "限制数量",
+            "cmd": "gh issue list --limit %{number}%",
+            "params": {},
+            "keyword": "gh issue list 数量"
+          },
+          {
+            "name": "搜索 Issue",
+            "cmd": "gh issue list --search \"%{query}%\"",
+            "params": {},
+            "keyword": "gh issue list 搜索"
+          }
+        ],
+        "params": {
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          },
+          "state": {
+            "type": "string",
+            "required": false,
+            "description": "Issue 状态",
+            "example": "open",
+            "notes": "可选: open/closed/all"
+          },
+          "label": {
+            "type": "string",
+            "required": false,
+            "description": "标签名称",
+            "example": "bug",
+            "notes": "可选"
+          },
+          "author": {
+            "type": "string",
+            "required": false,
+            "description": "作者用户名",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "assignee": {
+            "type": "string",
+            "required": false,
+            "description": "受理人用户名",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "number": {
+            "type": "number",
+            "required": false,
+            "description": "返回数量上限",
+            "example": "20",
+            "notes": "常用，可选"
+          },
+          "query": {
+            "type": "string",
+            "required": false,
+            "description": "搜索关键词",
+            "example": "error in login",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHubActions/",
+      "name": "gh pr checkout 检出 Pull Request",
+      "keyword": "gh pr checkout",
+      "description": "将 PR 检出到本地分支",
+      "data": {
+        "cmd": "gh pr checkout %{pr_number}%",
+        "extensions": [
+          {
+            "name": "检出并拉取",
+            "cmd": "gh pr checkout %{pr_number}% --fetch",
+            "params": {},
+            "keyword": "gh pr checkout 拉取"
+          },
+          {
+            "name": "检出指定仓库 PR",
+            "cmd": "gh pr checkout %{pr_number}% --repo %{owner}/%{repo}%",
+            "params": {},
+            "keyword": "gh pr checkout 仓库"
+          }
+        ],
+        "params": {
+          "pr_number": {
+            "type": "number",
+            "required": true,
+            "description": "PR 编号",
+            "example": "123",
+            "notes": "常用"
+          },
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHubActions/",
+      "name": "gh pr create 创建 Pull Request",
+      "keyword": "gh pr create",
+      "description": "创建新的 Pull Request",
+      "data": {
+        "cmd": "gh pr create --title \"%{title}%\" --body \"%{body}%\"",
+        "extensions": [
+          {
+            "name": "创建并指定审查者",
+            "cmd": "gh pr create --title \"%{title}%\" --body \"%{body}%\" --reviewer %{reviewer}%",
+            "params": {},
+            "keyword": "gh pr create 审查者"
+          },
+          {
+            "name": "创建并指定标签",
+            "cmd": "gh pr create --title \"%{title}%\" --body \"%{body}%\" --label %{label}%",
+            "params": {},
+            "keyword": "gh pr create 标签"
+          },
+          {
+            "name": "创建并指定受理人",
+            "cmd": "gh pr create --title \"%{title}%\" --body \"%{body}%\" --assignee %{assignee}%",
+            "params": {},
+            "keyword": "gh pr create 受理人"
+          },
+          {
+            "name": "创建草稿 PR",
+            "cmd": "gh pr create --title \"%{title}%\" --body \"%{body}%\" --draft",
+            "params": {},
+            "keyword": "gh pr create 草稿"
+          },
+          {
+            "name": "创建并推送分支",
+            "cmd": "gh pr create --title \"%{title}%\" --body \"%{body}%\" --push",
+            "params": {},
+            "keyword": "gh pr create 推送"
+          },
+          {
+            "name": "指定目标分支",
+            "cmd": "gh pr create --title \"%{title}%\" --body \"%{body}%\" --base %{base_branch}%",
+            "params": {},
+            "keyword": "gh pr create 目标分支"
+          },
+          {
+            "name": "创建到指定仓库",
+            "cmd": "gh pr create --repo %{owner}/%{repo}% --title \"%{title}%\" --body \"%{body}%\"",
+            "params": {},
+            "keyword": "gh pr create 仓库"
+          }
+        ],
+        "params": {
+          "title": {
+            "type": "string",
+            "required": true,
+            "description": "PR 标题",
+            "example": "feat: 添加用户登录功能",
+            "notes": "常用"
+          },
+          "body": {
+            "type": "string",
+            "required": false,
+            "description": "PR 描述正文",
+            "example": "实现了用户注册和登录功能",
+            "notes": "可选"
+          },
+          "reviewer": {
+            "type": "string",
+            "required": false,
+            "description": "审查者用户名",
+            "example": "octocat,hubot",
+            "notes": "可选，多个用逗号分隔"
+          },
+          "label": {
+            "type": "string",
+            "required": false,
+            "description": "标签",
+            "example": "feature,bugfix",
+            "notes": "可选，多个用逗号分隔"
+          },
+          "assignee": {
+            "type": "string",
+            "required": false,
+            "description": "受理人",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "base_branch": {
+            "type": "string",
+            "required": false,
+            "description": "目标分支",
+            "example": "main",
+            "notes": "可选，默认为仓库默认分支"
+          },
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHubActions/",
+      "name": "gh pr status 查看 PR 状态",
+      "keyword": "gh pr status",
+      "description": "查看当前分支关联的 Pull Request 状态",
+      "data": {
+        "cmd": "gh pr status",
+        "extensions": [
+          {
+            "name": "查看指定仓库 PR 状态",
+            "cmd": "gh pr status --repo %{owner}/%{repo}%",
+            "params": {},
+            "keyword": "gh pr status 仓库"
+          },
+          {
+            "name": "显示详细信息",
+            "cmd": "gh pr status --verbose",
+            "params": {},
+            "keyword": "gh pr status 详细"
+          },
+          {
+            "name": "显示 JSON 格式",
+            "cmd": "gh pr status --json %{fields}%",
+            "params": {},
+            "keyword": "gh pr status JSON"
+          }
+        ],
+        "params": {
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          },
+          "fields": {
+            "type": "string",
+            "required": false,
+            "description": "JSON 输出字段",
+            "example": "number,title,state",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHubActions/",
+      "name": "gh run cancel 取消运行",
+      "keyword": "gh run cancel",
+      "description": "取消正在运行的 GitHub Actions 工作流",
+      "data": {
+        "cmd": "gh run cancel %{run_id}%",
+        "extensions": [
+          {
+            "name": "取消指定仓库运行",
+            "cmd": "gh run cancel %{run_id}% --repo %{owner}/%{repo}%",
+            "params": {},
+            "keyword": "gh run cancel 仓库"
+          }
+        ],
+        "params": {
+          "run_id": {
+            "type": "number",
+            "required": true,
+            "description": "运行 ID",
+            "example": "123456789",
+            "notes": "常用"
+          },
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHubActions/",
+      "name": "gh run list 查看运行列表",
+      "keyword": "gh run list",
+      "description": "列出 GitHub Actions 工作流运行记录",
+      "data": {
+        "cmd": "gh run list",
+        "extensions": [
+          {
+            "name": "限制返回数量",
+            "cmd": "gh run list --limit %{number}%",
+            "params": {},
+            "keyword": "gh run list 数量"
+          },
+          {
+            "name": "按状态筛选",
+            "cmd": "gh run list --status %{status}%",
+            "params": {},
+            "keyword": "gh run list 状态"
+          },
+          {
+            "name": "按分支筛选",
+            "cmd": "gh run list --branch %{branch}%",
+            "params": {},
+            "keyword": "gh run list 分支"
+          },
+          {
+            "name": "按工作流筛选",
+            "cmd": "gh run list --workflow %{workflow}%",
+            "params": {},
+            "keyword": "gh run list 工作流"
+          },
+          {
+            "name": "监控运行状态",
+            "cmd": "gh run list --watch",
+            "params": {},
+            "keyword": "gh run list 监控"
+          }
+        ],
+        "params": {
+          "number": {
+            "type": "number",
+            "required": false,
+            "description": "返回数量上限",
+            "example": "20",
+            "notes": "常用，可选"
+          },
+          "status": {
+            "type": "string",
+            "required": false,
+            "description": "运行状态",
+            "example": "success",
+            "notes": "可选: queued/in_progress/success/failure/cancelled"
+          },
+          "branch": {
+            "type": "string",
+            "required": false,
+            "description": "分支名称",
+            "example": "main",
+            "notes": "可选"
+          },
+          "workflow": {
+            "type": "string",
+            "required": false,
+            "description": "工作流名称或 ID",
+            "example": "CI",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHubActions/",
+      "name": "gh run watch 监控运行",
+      "keyword": "gh run watch",
+      "description": "实时监控 GitHub Actions 工作流运行状态",
+      "data": {
+        "cmd": "gh run watch %{run_id}%",
+        "extensions": [
+          {
+            "name": "监控指定仓库运行",
+            "cmd": "gh run watch %{run_id}% --repo %{owner}/%{repo}%",
+            "params": {},
+            "keyword": "gh run watch 仓库"
+          },
+          {
+            "name": "间隔时间（秒）",
+            "cmd": "gh run watch %{run_id}% --interval %{seconds}%",
+            "params": {},
+            "keyword": "gh run watch 间隔"
+          }
+        ],
+        "params": {
+          "run_id": {
+            "type": "number",
+            "required": true,
+            "description": "运行 ID",
+            "example": "123456789",
+            "notes": ""
+          },
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          },
+          "seconds": {
+            "type": "number",
+            "required": false,
+            "description": "轮询间隔（秒）",
+            "example": "10",
+            "notes": "可选，默认 5 秒"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHubActions/",
+      "name": "gh workflow disable 禁用工作流",
+      "keyword": "gh workflow disable",
+      "description": "禁用指定的 GitHub Actions 工作流",
+      "data": {
+        "cmd": "gh workflow disable %{workflow_id}%",
+        "extensions": [
+          {
+            "name": "禁用指定仓库工作流",
+            "cmd": "gh workflow disable %{workflow_id}% --repo %{owner}/%{repo}%",
+            "params": {},
+            "keyword": "gh workflow disable 仓库"
+          }
+        ],
+        "params": {
+          "workflow_id": {
+            "type": "string",
+            "required": true,
+            "description": "工作流名称或 ID",
+            "example": "CI",
+            "notes": ""
+          },
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHubActions/",
+      "name": "gh workflow enable 启用工作流",
+      "keyword": "gh workflow enable",
+      "description": "启用指定的 GitHub Actions 工作流",
+      "data": {
+        "cmd": "gh workflow enable %{workflow_id}%",
+        "extensions": [
+          {
+            "name": "启用指定仓库工作流",
+            "cmd": "gh workflow enable %{workflow_id}% --repo %{owner}/%{repo}%",
+            "params": {},
+            "keyword": "gh workflow enable 仓库"
+          }
+        ],
+        "params": {
+          "workflow_id": {
+            "type": "string",
+            "required": true,
+            "description": "工作流名称或 ID",
+            "example": "CI",
+            "notes": ""
+          },
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHubActions/",
+      "name": "gh workflow list 列出工作流",
+      "keyword": "gh workflow list",
+      "description": "列出仓库中所有 GitHub Actions 工作流",
+      "data": {
+        "cmd": "gh workflow list",
+        "extensions": [
+          {
+            "name": "显示禁用的工作流",
+            "cmd": "gh workflow list --all",
+            "params": {},
+            "keyword": "gh workflow list 禁用"
+          },
+          {
+            "name": "查看指定仓库",
+            "cmd": "gh workflow list --repo %{owner}/%{repo}%",
+            "params": {},
+            "keyword": "gh workflow list 仓库"
+          }
+        ],
+        "params": {
           "owner": {
             "type": "string",
             "required": false,
@@ -13737,6 +14833,1033 @@
       }
     },
     {
+      "dirPath": "/Python命令/",
+      "name": "pip check 检查依赖",
+      "keyword": "pip check 检查",
+      "description": "检查已安装包的依赖冲突",
+      "data": {
+        "cmd": "pip check",
+        "extensions": [
+          {
+            "name": "检查特定包",
+            "cmd": "pip check %{包名}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "numpy",
+                "notes": ""
+              }
+            },
+            "keyword": "pip check 包"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "pip install 安装包",
+      "keyword": "pip install 安装",
+      "description": "使用 pip 安装 Python 包",
+      "data": {
+        "cmd": "pip install %{包名}%",
+        "extensions": [
+          {
+            "name": "安装指定版本",
+            "cmd": "pip install %{包名}%==%{版本号}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "requests",
+                "notes": "常用"
+              },
+              "版本号": {
+                "type": "string",
+                "required": true,
+                "description": "版本号",
+                "example": "2.28.0",
+                "notes": ""
+              }
+            },
+            "keyword": "pip install 版本"
+          },
+          {
+            "name": "安装 requirements",
+            "cmd": "pip install -r requirements.txt",
+            "params": {},
+            "keyword": "pip install requirements"
+          },
+          {
+            "name": "安装多个包",
+            "cmd": "pip install %{包1}% %{包2}%",
+            "params": {
+              "包1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个包名",
+                "example": "flask",
+                "notes": "常用"
+              },
+              "包2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个包名",
+                "example": "django",
+                "notes": "常用"
+              }
+            },
+            "keyword": "pip install 多个"
+          },
+          {
+            "name": "安装到用户目录",
+            "cmd": "pip install --user %{包名}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "virtualenv",
+                "notes": ""
+              }
+            },
+            "keyword": "pip install 用户"
+          },
+          {
+            "name": "升级包",
+            "cmd": "pip install --upgrade %{包名}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "pip",
+                "notes": "常用"
+              }
+            },
+            "keyword": "pip install 升级"
+          },
+          {
+            "name": "从 Git 安装",
+            "cmd": "pip install git+%{仓库URL}%",
+            "params": {
+              "仓库URL": {
+                "type": "string",
+                "required": true,
+                "description": "Git 仓库地址",
+                "example": "https://github.com/user/repo.git",
+                "notes": ""
+              }
+            },
+            "keyword": "pip install git"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "包名称",
+            "example": "requests",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "pip list 查看已安装包",
+      "keyword": "pip list 查看",
+      "description": "列出所有已安装的 Python 包",
+      "data": {
+        "cmd": "pip list",
+        "extensions": [
+          {
+            "name": "输出格式化为 requirements",
+            "cmd": "pip freeze",
+            "params": {},
+            "keyword": "pip freeze"
+          },
+          {
+            "name": "可编辑包（开发模式）",
+            "cmd": "pip list -e",
+            "params": {},
+            "keyword": "pip list 开发"
+          },
+          {
+            "name": "按格式输出",
+            "cmd": "pip freeze --format=%{格式}%",
+            "params": {
+              "格式": {
+                "type": "string",
+                "required": true,
+                "description": "输出格式",
+                "example": "freeze",
+                "notes": ""
+              }
+            },
+            "keyword": "pip freeze 格式"
+          },
+          {
+            "name": "保存依赖到文件",
+            "cmd": "pip freeze > requirements.txt",
+            "params": {},
+            "keyword": "pip freeze 保存"
+          },
+          {
+            "name": "查看过期包",
+            "cmd": "pip list --outdated",
+            "params": {},
+            "keyword": "pip list 过期"
+          },
+          {
+            "name": "查看可升级包",
+            "cmd": "pip list --upgradable",
+            "params": {},
+            "keyword": "pip list 可升级"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "pip show 查看包信息",
+      "keyword": "pip show 信息",
+      "description": "显示包的详细信息",
+      "data": {
+        "cmd": "pip show %{包名}%",
+        "extensions": [
+          {
+            "name": "查看包含文件",
+            "cmd": "pip show -f %{包名}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "requests",
+                "notes": "常用"
+              }
+            },
+            "keyword": "pip show 文件"
+          },
+          {
+            "name": "输出 JSON 格式",
+            "cmd": "pip show %{包名}% --format=json",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "flask",
+                "notes": ""
+              }
+            },
+            "keyword": "pip show json"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "包名称",
+            "example": "requests",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "pip uninstall 卸载包",
+      "keyword": "pip uninstall 卸载",
+      "description": "卸载 Python 包",
+      "data": {
+        "cmd": "pip uninstall %{包名}%",
+        "extensions": [
+          {
+            "name": "卸载多个包",
+            "cmd": "pip uninstall %{包1}% %{包2}%",
+            "params": {
+              "包1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个包名",
+                "example": "requests",
+                "notes": ""
+              },
+              "包2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个包名",
+                "example": "flask",
+                "notes": ""
+              }
+            },
+            "keyword": "pip uninstall 多个"
+          },
+          {
+            "name": "自动确认卸载",
+            "cmd": "pip uninstall -y %{包名}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "numpy",
+                "notes": "常用"
+              }
+            },
+            "keyword": "pip uninstall 确认"
+          },
+          {
+            "name": "从 requirements 卸载",
+            "cmd": "pip uninstall -r requirements.txt -y",
+            "params": {},
+            "keyword": "pip uninstall requirements"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "包名称",
+            "example": "numpy",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "pipenv install 安装依赖",
+      "keyword": "pipenv 安装",
+      "description": "使用 Pipenv 安装项目依赖",
+      "data": {
+        "cmd": "pipenv install %{包名}%",
+        "extensions": [
+          {
+            "name": "安装所有依赖",
+            "cmd": "pipenv install",
+            "params": {},
+            "keyword": "pipenv install 全部"
+          },
+          {
+            "name": "安装开发依赖",
+            "cmd": "pipenv install --dev %{包名}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "pytest",
+                "notes": ""
+              }
+            },
+            "keyword": "pipenv install dev"
+          },
+          {
+            "name": "安装特定版本",
+            "cmd": "pipenv install %{包名}%==%{版本}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "flask",
+                "notes": ""
+              },
+              "版本": {
+                "type": "string",
+                "required": true,
+                "description": "版本号",
+                "example": "2.0.0",
+                "notes": ""
+              }
+            },
+            "keyword": "pipenv 版本"
+          },
+          {
+            "name": "从 Pipfile 安装",
+            "cmd": "pipenv install --ignore-pipfile",
+            "params": {},
+            "keyword": "pipenv Pipfile"
+          },
+          {
+            "name": "同步 Pipfile",
+            "cmd": "pipenv sync",
+            "params": {},
+            "keyword": "pipenv sync"
+          },
+          {
+            "name": "生成 requirements",
+            "cmd": "pipenv lock --requirements",
+            "params": {},
+            "keyword": "pipenv requirements"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": false,
+            "description": "包名称",
+            "example": "requests",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "pipenv shell 进入环境",
+      "keyword": "pipenv shell 环境",
+      "description": "激活 Pipenv 虚拟环境 Shell",
+      "data": {
+        "cmd": "pipenv shell",
+        "extensions": [
+          {
+            "name": "进入交互式环境",
+            "cmd": "pipenv shell",
+            "params": {},
+            "keyword": "pipenv shell 交互"
+          },
+          {
+            "name": "运行命令不激活",
+            "cmd": "pipenv run %{命令}%",
+            "params": {
+              "命令": {
+                "type": "string",
+                "required": true,
+                "description": "要执行的命令",
+                "example": "python app.py",
+                "notes": "常用"
+              }
+            },
+            "keyword": "pipenv run"
+          },
+          {
+            "name": "运行 Python",
+            "cmd": "pipenv run python %{脚本}%",
+            "params": {
+              "脚本": {
+                "type": "string",
+                "required": true,
+                "description": "Python 脚本路径",
+                "example": "main.py",
+                "notes": "常用"
+              }
+            },
+            "keyword": "pipenv run python"
+          },
+          {
+            "name": "退出环境",
+            "cmd": "exit",
+            "params": {},
+            "keyword": "pipenv 退出"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "poetry add 添加依赖",
+      "keyword": "poetry add 添加",
+      "description": "使用 Poetry 添加项目依赖",
+      "data": {
+        "cmd": "poetry add %{包名}%",
+        "extensions": [
+          {
+            "name": "添加生产依赖",
+            "cmd": "poetry add %{包名}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "flask",
+                "notes": "常用"
+              }
+            },
+            "keyword": "poetry add 包"
+          },
+          {
+            "name": "添加开发依赖",
+            "cmd": "poetry add --group dev %{包名}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "pytest",
+                "notes": ""
+              }
+            },
+            "keyword": "poetry add dev"
+          },
+          {
+            "name": "添加特定版本",
+            "cmd": "poetry add %{包名}%^%{版本}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "requests",
+                "notes": ""
+              },
+              "版本": {
+                "type": "string",
+                "required": true,
+                "description": "版本号",
+                "example": "2.28",
+                "notes": ""
+              }
+            },
+            "keyword": "poetry add 版本"
+          },
+          {
+            "name": "添加 Git 依赖",
+            "cmd": "poetry add git+%{仓库URL}%",
+            "params": {
+              "仓库URL": {
+                "type": "string",
+                "required": true,
+                "description": "Git 仓库地址",
+                "example": "https://github.com/user/repo.git",
+                "notes": ""
+              }
+            },
+            "keyword": "poetry add git"
+          },
+          {
+            "name": "添加路径依赖",
+            "cmd": "poetry add --path %{路径}%",
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "本地路径",
+                "example": "./packages/mylib",
+                "notes": ""
+              }
+            },
+            "keyword": "poetry add path"
+          },
+          {
+            "name": "移除依赖",
+            "cmd": "poetry remove %{包名}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "flask",
+                "notes": ""
+              }
+            },
+            "keyword": "poetry remove"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "包名称",
+            "example": "requests",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "poetry install 安装依赖",
+      "keyword": "poetry install",
+      "description": "使用 Poetry 安装项目依赖",
+      "data": {
+        "cmd": "poetry install",
+        "extensions": [
+          {
+            "name": "安装所有依赖",
+            "cmd": "poetry install",
+            "params": {},
+            "keyword": "poetry install 全部"
+          },
+          {
+            "name": "安装开发依赖",
+            "cmd": "poetry install --with dev",
+            "params": {},
+            "keyword": "poetry install dev"
+          },
+          {
+            "name": "仅生产依赖",
+            "cmd": "poetry install --only prod",
+            "params": {},
+            "keyword": "poetry install prod"
+          },
+          {
+            "name": "安装并同步",
+            "cmd": "poetry install --sync",
+            "params": {},
+            "keyword": "poetry install sync"
+          },
+          {
+            "name": "离线安装",
+            "cmd": "poetry install --no-interaction --offline",
+            "params": {},
+            "keyword": "poetry install 离线"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "poetry run 执行命令",
+      "keyword": "poetry run 执行",
+      "description": "在 Poetry 虚拟环境中执行命令",
+      "data": {
+        "cmd": "poetry run %{命令}%",
+        "extensions": [
+          {
+            "name": "运行 Python",
+            "cmd": "poetry run python %{脚本}%",
+            "params": {
+              "脚本": {
+                "type": "string",
+                "required": true,
+                "description": "Python 脚本路径",
+                "example": "main.py",
+                "notes": "常用"
+              }
+            },
+            "keyword": "poetry run python"
+          },
+          {
+            "name": "运行 pytest",
+            "cmd": "poetry run pytest",
+            "params": {},
+            "keyword": "poetry run pytest"
+          },
+          {
+            "name": "运行 black 格式化",
+            "cmd": "poetry run black %{目录}%",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径",
+                "example": "src",
+                "notes": ""
+              }
+            },
+            "keyword": "poetry run black"
+          },
+          {
+            "name": "运行 flake8 检查",
+            "cmd": "poetry run flake8",
+            "params": {},
+            "keyword": "poetry run flake8"
+          },
+          {
+            "name": "运行 mypy 类型检查",
+            "cmd": "poetry run mypy %{目录}%",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径",
+                "example": "src",
+                "notes": ""
+              }
+            },
+            "keyword": "poetry run mypy"
+          },
+          {
+            "name": "运行自定义脚本（pyproject.toml）",
+            "cmd": "poetry run %{脚本名}%",
+            "params": {
+              "脚本名": {
+                "type": "string",
+                "required": true,
+                "description": "脚本名称",
+                "example": "dev",
+                "notes": ""
+              }
+            },
+            "keyword": "poetry run 自定义"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "要执行的命令",
+            "example": "python app.py",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "poetry shell 进入环境",
+      "keyword": "poetry shell 环境",
+      "description": "激活 Poetry 虚拟环境",
+      "data": {
+        "cmd": "poetry shell",
+        "extensions": [
+          {
+            "name": "进入交互式环境",
+            "cmd": "poetry shell",
+            "params": {},
+            "keyword": "poetry shell 交互"
+          },
+          {
+            "name": "运行命令不激活",
+            "cmd": "poetry run %{命令}%",
+            "params": {
+              "命令": {
+                "type": "string",
+                "required": true,
+                "description": "要执行的命令",
+                "example": "python app.py",
+                "notes": "常用"
+              }
+            },
+            "keyword": "poetry run"
+          },
+          {
+            "name": "运行 Python 脚本",
+            "cmd": "poetry run python %{脚本}%",
+            "params": {
+              "脚本": {
+                "type": "string",
+                "required": true,
+                "description": "Python 脚本路径",
+                "example": "main.py",
+                "notes": "常用"
+              }
+            },
+            "keyword": "poetry run python"
+          },
+          {
+            "name": "运行 pytest",
+            "cmd": "poetry run pytest",
+            "params": {},
+            "keyword": "poetry run pytest"
+          },
+          {
+            "name": "运行自定义脚本",
+            "cmd": "poetry run %{脚本名}%",
+            "params": {
+              "脚本名": {
+                "type": "string",
+                "required": true,
+                "description": "脚本名称",
+                "example": "manage.py",
+                "notes": ""
+              }
+            },
+            "keyword": "poetry run 脚本"
+          },
+          {
+            "name": "退出环境",
+            "cmd": "exit",
+            "params": {},
+            "keyword": "poetry 退出"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "python -m http.server 启动 HTTP 服务",
+      "keyword": "http.server 服务",
+      "description": "启动一个简单的 HTTP 服务器",
+      "data": {
+        "cmd": "python -m http.server %{端口}%",
+        "extensions": [
+          {
+            "name": "默认端口 8000",
+            "cmd": "python -m http.server",
+            "params": {},
+            "keyword": "http.server 默认"
+          },
+          {
+            "name": "指定端口",
+            "cmd": "python -m http.server %{端口}%",
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口号",
+                "example": "8080",
+                "notes": "常用"
+              }
+            },
+            "keyword": "http.server 端口"
+          },
+          {
+            "name": "绑定指定 IP",
+            "cmd": "python -m http.server %{端口}% --bind %{IP}%",
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口号",
+                "example": "8000",
+                "notes": ""
+              },
+              "IP": {
+                "type": "string",
+                "required": true,
+                "description": "绑定地址",
+                "example": "0.0.0.0",
+                "notes": ""
+              }
+            },
+            "keyword": "http.server 绑定"
+          },
+          {
+            "name": "指定目录",
+            "cmd": "python -m http.server %{端口}% --directory %{目录}%",
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口号",
+                "example": "8000",
+                "notes": ""
+              },
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "服务目录",
+                "example": "./public",
+                "notes": ""
+              }
+            },
+            "keyword": "http.server 目录"
+          }
+        ],
+        "params": {
+          "端口": {
+            "type": "string",
+            "required": false,
+            "description": "端口号",
+            "example": "8000",
+            "notes": "默认 8000"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "python -m json.tool JSON 格式化",
+      "keyword": "json.tool 格式化",
+      "description": "格式化或验证 JSON 文件",
+      "data": {
+        "cmd": "python -m json.tool %{文件}%",
+        "extensions": [
+          {
+            "name": "格式化文件",
+            "cmd": "python -m json.tool %{文件}%.json",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "JSON 文件路径",
+                "example": "data",
+                "notes": "常用"
+              }
+            },
+            "keyword": "json.tool 文件"
+          },
+          {
+            "name": "从 stdin 读取",
+            "cmd": "cat %{文件}%.json | python -m json.tool",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "JSON 文件路径",
+                "example": "config",
+                "notes": ""
+              }
+            },
+            "keyword": "json.tool stdin"
+          },
+          {
+            "name": "排序键",
+            "cmd": "python -m json.tool --indent 2 %{文件}%.json > %{输出}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "输入文件",
+                "example": "data",
+                "notes": ""
+              },
+              "输出": {
+                "type": "string",
+                "required": true,
+                "description": "输出文件",
+                "example": "formatted",
+                "notes": ""
+              }
+            },
+            "keyword": "json.tool 排序"
+          },
+          {
+            "name": "验证 JSON",
+            "cmd": "python -c \"import json; json.load(open('%{文件}%.json'))\"",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "JSON 文件路径",
+                "example": "config",
+                "notes": ""
+              }
+            },
+            "keyword": "json.tool 验证"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "JSON 文件路径",
+            "example": "data.json",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "python -m pip 调用内置模块",
+      "keyword": "python -m pip",
+      "description": "通过 python -m 调用 pip 模块",
+      "data": {
+        "cmd": "python -m pip %{操作}%",
+        "extensions": [
+          {
+            "name": "升级 pip",
+            "cmd": "python -m pip install --upgrade pip",
+            "params": {},
+            "keyword": "python -m pip 升级"
+          },
+          {
+            "name": "检查版本",
+            "cmd": "python -m pip --version",
+            "params": {},
+            "keyword": "python -m pip 版本"
+          },
+          {
+            "name": "安装包",
+            "cmd": "python -m pip install %{包名}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "numpy",
+                "notes": "常用"
+              }
+            },
+            "keyword": "python -m pip 安装"
+          },
+          {
+            "name": "冻结依赖",
+            "cmd": "python -m pip freeze",
+            "params": {},
+            "keyword": "python -m pip freeze"
+          }
+        ],
+        "params": {
+          "操作": {
+            "type": "string",
+            "required": true,
+            "description": "pip 操作",
+            "example": "install requests",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "python -m venv 创建虚拟环境",
+      "keyword": "venv 虚拟环境",
+      "description": "创建 Python 虚拟环境",
+      "data": {
+        "cmd": "python -m venv %{环境名}%",
+        "extensions": [
+          {
+            "name": "创建虚拟环境",
+            "cmd": "python -m venv venv",
+            "params": {},
+            "keyword": "venv 创建"
+          },
+          {
+            "name": "Windows 激活",
+            "cmd": "venv\\Scripts\\activate",
+            "params": {},
+            "keyword": "venv 激活 windows"
+          },
+          {
+            "name": "Linux/Mac 激活",
+            "cmd": "source venv/bin/activate",
+            "params": {},
+            "keyword": "venv 激活 linux"
+          },
+          {
+            "name": "退出虚拟环境",
+            "cmd": "deactivate",
+            "params": {},
+            "keyword": "venv 退出"
+          },
+          {
+            "name": "创建指定版本环境",
+            "cmd": "python3 -m venv %{环境名}% --python=%{版本}%",
+            "params": {
+              "环境名": {
+                "type": "string",
+                "required": true,
+                "description": "环境名称",
+                "example": "py38",
+                "notes": ""
+              },
+              "版本": {
+                "type": "string",
+                "required": true,
+                "description": "Python 版本",
+                "example": "python3.8",
+                "notes": ""
+              }
+            },
+            "keyword": "venv 指定版本"
+          }
+        ],
+        "params": {
+          "环境名": {
+            "type": "string",
+            "required": true,
+            "description": "环境名称",
+            "example": "venv",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
       "dirPath": "/Redis 命令/列表操作/",
       "name": "blpop 阻塞左弹出",
       "keyword": "blpop 列表 阻塞 左弹出",
@@ -18523,6 +20646,3643 @@
             "required": true,
             "description": "第二个集合键名",
             "example": "set2",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/SSH远程操作/",
+      "name": "scp 远程复制",
+      "keyword": "scp 远程复制",
+      "description": "通过SSH协议安全地复制文件到远程主机或从远程主机复制",
+      "data": {
+        "cmd": "scp %{源文件}% %{用户}%@%{主机}%:%{目标路径}%",
+        "extensions": [
+          {
+            "name": "复制目录（递归）",
+            "cmd": "scp -r %{源目录}% %{用户}%@%{主机}%:%{目标路径}%",
+            "params": {
+              "源目录": {
+                "type": "string",
+                "required": true,
+                "description": "源目录路径",
+                "example": "./mydir",
+                "notes": ""
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "root",
+                "notes": "常用"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机地址",
+                "example": "192.168.1.100",
+                "notes": "常用"
+              },
+              "目标路径": {
+                "type": "string",
+                "required": true,
+                "description": "目标路径",
+                "example": "/home/user/",
+                "notes": "常用"
+              }
+            },
+            "keyword": "scp 目录"
+          },
+          {
+            "name": "指定端口复制",
+            "cmd": "scp -P %{端口}% %{源文件}% %{用户}%@%{主机}%:%{目标路径}%",
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "SSH端口号",
+                "example": "2222",
+                "notes": ""
+              },
+              "源文件": {
+                "type": "string",
+                "required": true,
+                "description": "源文件路径",
+                "example": "file.txt",
+                "notes": "常用"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "root",
+                "notes": "常用"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机地址",
+                "example": "192.168.1.100",
+                "notes": "常用"
+              },
+              "目标路径": {
+                "type": "string",
+                "required": true,
+                "description": "目标路径",
+                "example": "/home/user/",
+                "notes": "常用"
+              }
+            },
+            "keyword": "scp 端口"
+          },
+          {
+            "name": "使用密钥文件复制",
+            "cmd": "scp -i %{密钥文件}% %{源文件}% %{用户}%@%{主机}%:%{目标路径}%",
+            "params": {
+              "密钥文件": {
+                "type": "string",
+                "required": true,
+                "description": "私钥文件路径",
+                "example": "~/.ssh/id_rsa",
+                "notes": ""
+              },
+              "源文件": {
+                "type": "string",
+                "required": true,
+                "description": "源文件路径",
+                "example": "file.txt",
+                "notes": "常用"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "root",
+                "notes": "常用"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机地址",
+                "example": "192.168.1.100",
+                "notes": "常用"
+              },
+              "目标路径": {
+                "type": "string",
+                "required": true,
+                "description": "目标路径",
+                "example": "/home/user/",
+                "notes": "常用"
+              }
+            },
+            "keyword": "scp 密钥"
+          },
+          {
+            "name": "从远程主机下载到本地",
+            "cmd": "scp %{用户}%@%{主机}%:%{远程文件}% %{本地路径}%",
+            "params": {
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "root",
+                "notes": "常用"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机地址",
+                "example": "192.168.1.100",
+                "notes": "常用"
+              },
+              "远程文件": {
+                "type": "string",
+                "required": true,
+                "description": "远程文件路径",
+                "example": "/home/user/file.txt",
+                "notes": "常用"
+              },
+              "本地路径": {
+                "type": "string",
+                "required": true,
+                "description": "本地目标路径",
+                "example": "./downloads/",
+                "notes": "常用"
+              }
+            },
+            "keyword": "scp 下载"
+          },
+          {
+            "name": "保留文件属性",
+            "cmd": "scp -p %{源文件}% %{用户}%@%{主机}%:%{目标路径}%",
+            "params": {
+              "源文件": {
+                "type": "string",
+                "required": true,
+                "description": "源文件路径",
+                "example": "file.txt",
+                "notes": "常用"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "root",
+                "notes": "常用"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机地址",
+                "example": "192.168.1.100",
+                "notes": "常用"
+              },
+              "目标路径": {
+                "type": "string",
+                "required": true,
+                "description": "目标路径",
+                "example": "/home/user/",
+                "notes": "常用"
+              }
+            },
+            "keyword": "scp 保留属性"
+          },
+          {
+            "name": "限速复制",
+            "cmd": "scp -l %{限速值}% %{源文件}% %{用户}%@%{主机}%:%{目标路径}%",
+            "params": {
+              "限速值": {
+                "type": "string",
+                "required": true,
+                "description": "限速值(Kbit/s)",
+                "example": "1024",
+                "notes": ""
+              },
+              "源文件": {
+                "type": "string",
+                "required": true,
+                "description": "源文件路径",
+                "example": "file.txt",
+                "notes": "常用"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "root",
+                "notes": "常用"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机地址",
+                "example": "192.168.1.100",
+                "notes": "常用"
+              },
+              "目标路径": {
+                "type": "string",
+                "required": true,
+                "description": "目标路径",
+                "example": "/home/user/",
+                "notes": "常用"
+              }
+            },
+            "keyword": "scp 限速"
+          }
+        ],
+        "params": {
+          "源文件": {
+            "type": "string",
+            "required": true,
+            "description": "源文件路径",
+            "example": "file.txt",
+            "notes": "常用"
+          },
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "用户名",
+            "example": "root",
+            "notes": "常用"
+          },
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "主机地址",
+            "example": "192.168.1.100",
+            "notes": "常用"
+          },
+          "目标路径": {
+            "type": "string",
+            "required": true,
+            "description": "目标路径",
+            "example": "/home/user/",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/SSH远程操作/",
+      "name": "sftp 远程文件传输",
+      "keyword": "sftp 远程文件传输",
+      "description": "通过SSH协议进行安全的文件传输",
+      "data": {
+        "cmd": "sftp %{用户}%@%{主机}%",
+        "extensions": [
+          {
+            "name": "指定端口连接",
+            "cmd": "sftp -P %{端口}% %{用户}%@%{主机}%",
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "SSH端口号",
+                "example": "2222",
+                "notes": ""
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "root",
+                "notes": "常用"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机地址",
+                "example": "192.168.1.100",
+                "notes": "常用"
+              }
+            },
+            "keyword": "sftp 端口"
+          },
+          {
+            "name": "使用密钥文件连接",
+            "cmd": "sftp -i %{密钥文件}% %{用户}%@%{主机}%",
+            "params": {
+              "密钥文件": {
+                "type": "string",
+                "required": true,
+                "description": "私钥文件路径",
+                "example": "~/.ssh/id_rsa",
+                "notes": ""
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "root",
+                "notes": "常用"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机地址",
+                "example": "192.168.1.100",
+                "notes": "常用"
+              }
+            },
+            "keyword": "sftp 密钥"
+          },
+          {
+            "name": "批处理模式执行命令",
+            "cmd": "sftp -b %{命令文件}% %{用户}%@%{主机}%",
+            "params": {
+              "命令文件": {
+                "type": "string",
+                "required": true,
+                "description": "批处理命令文件路径",
+                "example": "./sftp_commands.txt",
+                "notes": ""
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "root",
+                "notes": "常用"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机地址",
+                "example": "192.168.1.100",
+                "notes": "常用"
+              }
+            },
+            "keyword": "sftp 批处理"
+          }
+        ],
+        "params": {
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "用户名",
+            "example": "root",
+            "notes": "常用"
+          },
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "主机地址或域名",
+            "example": "192.168.1.100",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/SSH远程操作/",
+      "name": "ssh 远程连接",
+      "keyword": "ssh 远程连接",
+      "description": "通过SSH协议连接到远程主机",
+      "data": {
+        "cmd": "ssh %{用户}%@%{主机}%",
+        "extensions": [
+          {
+            "name": "指定端口连接",
+            "cmd": "ssh -p %{端口}% %{用户}%@%{主机}%",
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "SSH端口号",
+                "example": "2222",
+                "notes": ""
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "root",
+                "notes": "常用"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机地址",
+                "example": "192.168.1.100",
+                "notes": "常用"
+              }
+            },
+            "keyword": "ssh 端口"
+          },
+          {
+            "name": "使用密钥文件连接",
+            "cmd": "ssh -i %{密钥文件}% %{用户}%@%{主机}%",
+            "params": {
+              "密钥文件": {
+                "type": "string",
+                "required": true,
+                "description": "私钥文件路径",
+                "example": "~/.ssh/id_rsa",
+                "notes": ""
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "root",
+                "notes": "常用"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机地址",
+                "example": "192.168.1.100",
+                "notes": "常用"
+              }
+            },
+            "keyword": "ssh 密钥"
+          },
+          {
+            "name": "指定用户身份文件并指定端口",
+            "cmd": "ssh -p %{端口}% -i %{密钥文件}% %{用户}%@%{主机}%",
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "SSH端口号",
+                "example": "2222",
+                "notes": ""
+              },
+              "密钥文件": {
+                "type": "string",
+                "required": true,
+                "description": "私钥文件路径",
+                "example": "~/.ssh/id_rsa",
+                "notes": ""
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "root",
+                "notes": "常用"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机地址",
+                "example": "192.168.1.100",
+                "notes": "常用"
+              }
+            },
+            "keyword": "ssh 密钥端口"
+          },
+          {
+            "name": "跳板机连接",
+            "cmd": "ssh -J %{跳板用户}%@%{跳板主机}% %{用户}%@%{主机}%",
+            "params": {
+              "跳板用户": {
+                "type": "string",
+                "required": true,
+                "description": "跳板机用户名",
+                "example": "admin",
+                "notes": ""
+              },
+              "跳板主机": {
+                "type": "string",
+                "required": true,
+                "description": "跳板机地址",
+                "example": "bastion.example.com",
+                "notes": ""
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "目标用户名",
+                "example": "root",
+                "notes": "常用"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "目标主机地址",
+                "example": "192.168.1.100",
+                "notes": "常用"
+              }
+            },
+            "keyword": "ssh 跳板"
+          },
+          {
+            "name": "后台保持连接",
+            "cmd": "ssh -o ServerAliveInterval=60 %{用户}%@%{主机}%",
+            "params": {
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "root",
+                "notes": "常用"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机地址",
+                "example": "192.168.1.100",
+                "notes": "常用"
+              }
+            },
+            "keyword": "ssh 保活"
+          }
+        ],
+        "params": {
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "用户名",
+            "example": "root",
+            "notes": "常用"
+          },
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "主机地址或域名",
+            "example": "192.168.1.100",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/SSH远程操作/",
+      "name": "ssh-copy-id 复制公钥到远程主机",
+      "keyword": "ssh-copy-id 复制公钥",
+      "description": "将本地公钥复制到远程主机的authorized_keys实现无密码登录",
+      "data": {
+        "cmd": "ssh-copy-id %{用户}%@%{主机}%",
+        "extensions": [
+          {
+            "name": "指定端口复制公钥",
+            "cmd": "ssh-copy-id -p %{端口}% %{用户}%@%{主机}%",
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "SSH端口号",
+                "example": "2222",
+                "notes": ""
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "root",
+                "notes": "常用"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机地址",
+                "example": "192.168.1.100",
+                "notes": "常用"
+              }
+            },
+            "keyword": "ssh-copy-id 端口"
+          },
+          {
+            "name": "指定密钥文件复制公钥",
+            "cmd": "ssh-copy-id -i %{公钥文件}% %{用户}%@%{主机}%",
+            "params": {
+              "公钥文件": {
+                "type": "string",
+                "required": true,
+                "description": "公钥文件路径",
+                "example": "~/.ssh/id_rsa.pub",
+                "notes": ""
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "root",
+                "notes": "常用"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机地址",
+                "example": "192.168.1.100",
+                "notes": "常用"
+              }
+            },
+            "keyword": "ssh-copy-id 密钥文件"
+          },
+          {
+            "name": "复制到指定SSH路径",
+            "cmd": "ssh-copy-id -o \"IdentityFile=%{密钥文件}%\" %{用户}%@%{主机}%",
+            "params": {
+              "密钥文件": {
+                "type": "string",
+                "required": true,
+                "description": "私钥文件路径",
+                "example": "~/.ssh/id_rsa",
+                "notes": ""
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "root",
+                "notes": "常用"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机地址",
+                "example": "192.168.1.100",
+                "notes": "常用"
+              }
+            },
+            "keyword": "ssh-copy-id 指定密钥"
+          }
+        ],
+        "params": {
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "用户名",
+            "example": "root",
+            "notes": "常用"
+          },
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "主机地址或域名",
+            "example": "192.168.1.100",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/SSH远程操作/",
+      "name": "ssh-keygen 生成SSH密钥对",
+      "keyword": "ssh-keygen 生成密钥",
+      "description": "生成、管理SSH密钥对",
+      "data": {
+        "cmd": "ssh-keygen -t rsa -b 4096",
+        "extensions": [
+          {
+            "name": "生成RSA密钥对",
+            "cmd": "ssh-keygen -t rsa -b %{位数}% -C \"%{注释}%\"",
+            "params": {
+              "位数": {
+                "type": "string",
+                "required": true,
+                "description": "密钥位数",
+                "example": "4096",
+                "notes": "常用"
+              },
+              "注释": {
+                "type": "string",
+                "required": false,
+                "description": "密钥注释(邮箱)",
+                "example": "user@example.com",
+                "notes": ""
+              }
+            },
+            "keyword": "ssh-keygen rsa"
+          },
+          {
+            "name": "生成Ed25519密钥对",
+            "cmd": "ssh-keygen -t ed25519 -C \"%{注释}%\"",
+            "params": {
+              "注释": {
+                "type": "string",
+                "required": false,
+                "description": "密钥注释(邮箱)",
+                "example": "user@example.com",
+                "notes": ""
+              }
+            },
+            "keyword": "ssh-keygen ed25519"
+          },
+          {
+            "name": "指定密钥保存路径",
+            "cmd": "ssh-keygen -t %{类型}% -f %{密钥路径}%",
+            "params": {
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "密钥类型",
+                "example": "rsa",
+                "notes": "常用"
+              },
+              "密钥路径": {
+                "type": "string",
+                "required": true,
+                "description": "密钥保存路径",
+                "example": "~/.ssh/mykey",
+                "notes": ""
+              }
+            },
+            "keyword": "ssh-keygen 路径"
+          },
+          {
+            "name": "添加密码保护密钥",
+            "cmd": "ssh-keygen -p -f %{密钥文件}%",
+            "params": {
+              "密钥文件": {
+                "type": "string",
+                "required": true,
+                "description": "私钥文件路径",
+                "example": "~/.ssh/id_rsa",
+                "notes": "常用"
+              }
+            },
+            "keyword": "ssh-keygen 密码"
+          },
+          {
+            "name": "查看公钥",
+            "cmd": "ssh-keygen -y -f %{私钥文件}%",
+            "params": {
+              "私钥文件": {
+                "type": "string",
+                "required": true,
+                "description": "私钥文件路径",
+                "example": "~/.ssh/id_rsa",
+                "notes": ""
+              }
+            },
+            "keyword": "ssh-keygen 查看公钥"
+          },
+          {
+            "name": "显示指纹",
+            "cmd": "ssh-keygen -lf %{密钥文件}%",
+            "params": {
+              "密钥文件": {
+                "type": "string",
+                "required": true,
+                "description": "密钥文件路径",
+                "example": "~/.ssh/id_rsa.pub",
+                "notes": ""
+              }
+            },
+            "keyword": "ssh-keygen 指纹"
+          },
+          {
+            "name": "清除 passphrase",
+            "cmd": "ssh-keygen -p -N \"\" -f %{密钥文件}%",
+            "params": {
+              "密钥文件": {
+                "type": "string",
+                "required": true,
+                "description": "私钥文件路径",
+                "example": "~/.ssh/id_rsa",
+                "notes": ""
+              }
+            },
+            "keyword": "ssh-keygen 清除密码"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "awk 数据处理",
+      "keyword": "awk 数据处理 文本",
+      "description": "强大的文本分析和报告生成工具",
+      "data": {
+        "cmd": "awk '%{模式}%' %{文件路径}%",
+        "extensions": [
+          {
+            "name": "打印指定列",
+            "cmd": "awk '{print $1,$3}' filename",
+            "params": {},
+            "keyword": "awk 打印列"
+          },
+          {
+            "name": "按分隔符提取",
+            "cmd": "awk -F',' '{print $2}' filename",
+            "params": {},
+            "keyword": "awk 分隔符"
+          },
+          {
+            "name": "条件筛选",
+            "cmd": "awk '/pattern/ {print $0}' filename",
+            "params": {},
+            "keyword": "awk 条件"
+          },
+          {
+            "name": "数值计算",
+            "cmd": "awk '{sum+=$1} END {print sum}' filename",
+            "params": {},
+            "keyword": "awk 计算"
+          },
+          {
+            "name": "格式化输出",
+            "cmd": "awk 'printf \"%s: %.2f\\n\", $1, $2' filename",
+            "params": {},
+            "keyword": "awk 格式化"
+          },
+          {
+            "name": "多条件判断",
+            "cmd": "awk '$3 > 100 {print $1}' filename",
+            "params": {},
+            "keyword": "awk 多条件"
+          }
+        ],
+        "params": {
+          "模式": {
+            "type": "string",
+            "required": true,
+            "description": "awk 模式和动作",
+            "example": "'{print $1}'",
+            "notes": ""
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要处理的文件路径",
+            "example": "/home/user/data.txt",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "cut 文本切割",
+      "keyword": "cut 切割 字段",
+      "description": "从每行中提取指定字段",
+      "data": {
+        "cmd": "cut %{选项}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "按字节提取",
+            "cmd": "cut -b 1-10 filename",
+            "params": {},
+            "keyword": "cut 字节"
+          },
+          {
+            "name": "按字符提取",
+            "cmd": "cut -c 1-5 filename",
+            "params": {},
+            "keyword": "cut 字符"
+          },
+          {
+            "name": "按分隔符提取列",
+            "cmd": "cut -d',' -f1,3 filename",
+            "params": {},
+            "keyword": "cut 提取列"
+          },
+          {
+            "name": "排除字段",
+            "cmd": "cut -d':' --complement -f1 /etc/passwd",
+            "params": {},
+            "keyword": "cut 排除"
+          },
+          {
+            "name": "输出分隔符",
+            "cmd": "cut -d',' -f1,3 -o' | ' filename",
+            "params": {},
+            "keyword": "cut 输出分隔"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": true,
+            "description": "cut 选项",
+            "example": "-d',' -f1",
+            "notes": ""
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要处理的文件路径",
+            "example": "/home/user/data.csv",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "find 文件查找",
+      "keyword": "find 查找文件 搜索",
+      "description": "在目录树中搜索文件",
+      "data": {
+        "cmd": "find %{路径}% %{选项}% -name \"%{文件名}%\"",
+        "extensions": [
+          {
+            "name": "按名称查找",
+            "cmd": "find /path -name \"*.log\"",
+            "params": {},
+            "keyword": "find 按名称"
+          },
+          {
+            "name": "按类型查找",
+            "cmd": "find /path -type f -name \"*.txt\"",
+            "params": {},
+            "keyword": "find 文件类型"
+          },
+          {
+            "name": "按大小查找",
+            "cmd": "find /path -size +100M",
+            "params": {},
+            "keyword": "find 按大小"
+          },
+          {
+            "name": "按时间查找",
+            "cmd": "find /path -mtime -7",
+            "params": {},
+            "keyword": "find 修改时间"
+          },
+          {
+            "name": "查找并执行",
+            "cmd": "find /path -name \"*.log\" -exec gzip {} \\;",
+            "params": {},
+            "keyword": "find 执行命令"
+          },
+          {
+            "name": "排除目录",
+            "cmd": "find /path -not -path \"*/node_modules/*\"",
+            "params": {},
+            "keyword": "find 排除目录"
+          }
+        ],
+        "params": {
+          "路径": {
+            "type": "string",
+            "required": true,
+            "description": "搜索的起始路径",
+            "example": "/home/user",
+            "notes": ""
+          },
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "find 选项",
+            "example": "-type f",
+            "notes": "常用"
+          },
+          "文件名": {
+            "type": "string",
+            "required": true,
+            "description": "要查找的文件名模式",
+            "example": "*.log",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "grep 文本搜索",
+      "keyword": "grep 搜索 查找 内容",
+      "description": "在文件中搜索匹配的模式",
+      "data": {
+        "cmd": "grep %{选项}% \"%{模式}%\" %{文件路径}%",
+        "extensions": [
+          {
+            "name": "递归搜索目录",
+            "cmd": "grep -r \"pattern\" /path/to/dir",
+            "params": {},
+            "keyword": "grep 递归搜索"
+          },
+          {
+            "name": "显示行号",
+            "cmd": "grep -n \"pattern\" filename",
+            "params": {},
+            "keyword": "grep 行号"
+          },
+          {
+            "name": "忽略大小写",
+            "cmd": "grep -i \"pattern\" filename",
+            "params": {},
+            "keyword": "grep 忽略大小写"
+          },
+          {
+            "name": "仅显示文件名",
+            "cmd": "grep -l \"pattern\" *.log",
+            "params": {},
+            "keyword": "grep 文件名"
+          },
+          {
+            "name": "正则表达式搜索",
+            "cmd": "grep -E \"regex\" filename",
+            "params": {},
+            "keyword": "grep 正则"
+          },
+          {
+            "name": "统计匹配行数",
+            "cmd": "grep -c \"pattern\" filename",
+            "params": {},
+            "keyword": "grep 统计"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "grep 选项",
+            "example": "-rn",
+            "notes": "常用"
+          },
+          "模式": {
+            "type": "string",
+            "required": true,
+            "description": "要搜索的模式或正则表达式",
+            "example": "error",
+            "notes": ""
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要搜索的文件路径",
+            "example": "/var/log/syslog",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "head 文件头",
+      "keyword": "head 开头 头部",
+      "description": "显示文件开头部分内容",
+      "data": {
+        "cmd": "head %{选项}% -n %{行数}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "查看前10行",
+            "cmd": "head -n 10 filename",
+            "params": {},
+            "keyword": "head 10行"
+          },
+          {
+            "name": "查看前N字节",
+            "cmd": "head -c 100 filename",
+            "params": {},
+            "keyword": "head 字节"
+          },
+          {
+            "name": "静默模式",
+            "cmd": "head -q filename",
+            "params": {},
+            "keyword": "head 静默"
+          },
+          {
+            "name": "显示文件头",
+            "cmd": "head -v filename",
+            "params": {},
+            "keyword": "head 显示头"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "head 选项",
+            "example": "-n",
+            "notes": "可选"
+          },
+          "行数": {
+            "type": "string",
+            "required": true,
+            "description": "显示的行数",
+            "example": "20",
+            "notes": ""
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要查看的文件路径",
+            "example": "/var/log/syslog",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "sed 流编辑",
+      "keyword": "sed 流编辑 替换",
+      "description": "流编辑器，用于文本替换和转换",
+      "data": {
+        "cmd": "sed %{选项}% 's/%{原字符串}%/%{新字符串}%/%{标志}%' %{文件路径}%",
+        "extensions": [
+          {
+            "name": "全局替换",
+            "cmd": "sed 's/old/new/g' filename",
+            "params": {},
+            "keyword": "sed 全局替换"
+          },
+          {
+            "name": "原地替换",
+            "cmd": "sed -i 's/old/new/g' filename",
+            "params": {},
+            "keyword": "sed 原地编辑"
+          },
+          {
+            "name": "删除行",
+            "cmd": "sed '2d' filename",
+            "params": {},
+            "keyword": "sed 删除行"
+          },
+          {
+            "name": "插入文本",
+            "cmd": "sed '1i\\new line' filename",
+            "params": {},
+            "keyword": "sed 插入"
+          },
+          {
+            "name": "追加文本",
+            "cmd": "sed '$a\\new line' filename",
+            "params": {},
+            "keyword": "sed 追加"
+          },
+          {
+            "name": "正则替换",
+            "cmd": "sed -E 's/[0-9]+/NUM/g' filename",
+            "params": {},
+            "keyword": "sed 正则"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "sed 选项",
+            "example": "-i",
+            "notes": "-i 原地编辑"
+          },
+          "原字符串": {
+            "type": "string",
+            "required": true,
+            "description": "要替换的原字符串",
+            "example": "old",
+            "notes": ""
+          },
+          "新字符串": {
+            "type": "string",
+            "required": true,
+            "description": "替换后的新字符串",
+            "example": "new",
+            "notes": ""
+          },
+          "标志": {
+            "type": "string",
+            "required": false,
+            "description": "替换标志",
+            "example": "g",
+            "notes": "g 全局替换"
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要处理的文件路径",
+            "example": "/home/user/data.txt",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "sort 排序",
+      "keyword": "sort 排序",
+      "description": "对文本行进行排序",
+      "data": {
+        "cmd": "sort %{选项}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "反向排序",
+            "cmd": "sort -r filename",
+            "params": {},
+            "keyword": "sort 反向"
+          },
+          {
+            "name": "数字排序",
+            "cmd": "sort -n filename",
+            "params": {},
+            "keyword": "sort 数字"
+          },
+          {
+            "name": "去重排序",
+            "cmd": "sort -u filename",
+            "params": {},
+            "keyword": "sort 去重"
+          },
+          {
+            "name": "按列排序",
+            "cmd": "sort -t',' -k2 filename",
+            "params": {},
+            "keyword": "sort 列"
+          },
+          {
+            "name": "忽略大小写",
+            "cmd": "sort -f filename",
+            "params": {},
+            "keyword": "sort 忽略大小写"
+          },
+          {
+            "name": "人类可读排序",
+            "cmd": "sort -h filename",
+            "params": {},
+            "keyword": "sort 人类可读"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "sort 选项",
+            "example": "-r",
+            "notes": "可选"
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要排序的文件路径",
+            "example": "/home/user/data.txt",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "tail 文件尾",
+      "keyword": "tail 末尾 尾部",
+      "description": "显示文件末尾部分内容",
+      "data": {
+        "cmd": "tail %{选项}% -n %{行数}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "实时跟踪日志",
+            "cmd": "tail -f /var/log/syslog",
+            "params": {},
+            "keyword": "tail 实时跟踪"
+          },
+          {
+            "name": "查看后10行",
+            "cmd": "tail -n 10 filename",
+            "params": {},
+            "keyword": "tail 10行"
+          },
+          {
+            "name": "从第N行开始",
+            "cmd": "tail -n +100 filename",
+            "params": {},
+            "keyword": "tail 从行号"
+          },
+          {
+            "name": "跟踪多个文件",
+            "cmd": "tail -f file1.log file2.log",
+            "params": {},
+            "keyword": "tail 多文件"
+          },
+          {
+            "name": "显示最后N字节",
+            "cmd": "tail -c 1024 filename",
+            "params": {},
+            "keyword": "tail 字节"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "tail 选项",
+            "example": "-f",
+            "notes": "可选，-f 实时跟踪"
+          },
+          "行数": {
+            "type": "string",
+            "required": true,
+            "description": "显示的行数",
+            "example": "20",
+            "notes": ""
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要查看的文件路径",
+            "example": "/var/log/syslog",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "tar 压缩解压",
+      "keyword": "tar 打包 压缩",
+      "description": "打包和压缩文件",
+      "data": {
+        "cmd": "tar %{动作}% %{压缩包}% %{路径}%",
+        "extensions": [
+          {
+            "name": "打包压缩",
+            "cmd": "tar -czvf archive.tar.gz /path/to/dir",
+            "params": {},
+            "keyword": "tar 压缩"
+          },
+          {
+            "name": "解包",
+            "cmd": "tar -xzvf archive.tar.gz",
+            "params": {},
+            "keyword": "tar 解压"
+          },
+          {
+            "name": "查看内容",
+            "cmd": "tar -tzvf archive.tar.gz",
+            "params": {},
+            "keyword": "tar 列出内容"
+          },
+          {
+            "name": "追加文件",
+            "cmd": "tar -rvf archive.tar newfile.txt",
+            "params": {},
+            "keyword": "tar 追加"
+          },
+          {
+            "name": "排除文件",
+            "cmd": "tar -czvf archive.tar.gz --exclude='*.log' /path",
+            "params": {},
+            "keyword": "tar 排除"
+          },
+          {
+            "name": "解压到目录",
+            "cmd": "tar -xzvf archive.tar.gz -C /target/dir",
+            "params": {},
+            "keyword": "tar 指定目录"
+          }
+        ],
+        "params": {
+          "动作": {
+            "type": "string",
+            "required": true,
+            "description": "tar 操作选项",
+            "example": "-czvf",
+            "notes": "常用"
+          },
+          "压缩包": {
+            "type": "string",
+            "required": true,
+            "description": "压缩包名称",
+            "example": "backup.tar.gz",
+            "notes": ""
+          },
+          "路径": {
+            "type": "string",
+            "required": true,
+            "description": "要打包的目录或文件路径",
+            "example": "/home/user/data",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "uniq 去重",
+      "keyword": "uniq 去重",
+      "description": "显示或忽略重复的行",
+      "data": {
+        "cmd": "uniq %{选项}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "统计重复次数",
+            "cmd": "uniq -c filename",
+            "params": {},
+            "keyword": "uniq 计数"
+          },
+          {
+            "name": "仅显示重复行",
+            "cmd": "uniq -d filename",
+            "params": {},
+            "keyword": "uniq 重复行"
+          },
+          {
+            "name": "仅显示唯一行",
+            "cmd": "uniq -u filename",
+            "params": {},
+            "keyword": "uniq 唯一行"
+          },
+          {
+            "name": "忽略大小写",
+            "cmd": "uniq -i filename",
+            "params": {},
+            "keyword": "uniq 忽略大小写"
+          },
+          {
+            "name": "跳过字段比较",
+            "cmd": "uniq -f 1 filename",
+            "params": {},
+            "keyword": "uniq 跳过字段"
+          },
+          {
+            "name": "相邻去重",
+            "cmd": "sort filename | uniq",
+            "params": {},
+            "keyword": "uniq 排序后去重"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "uniq 选项",
+            "example": "-c",
+            "notes": "可选"
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要处理的文件路径",
+            "example": "/home/user/data.txt",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "wc 统计",
+      "keyword": "wc 统计 行数",
+      "description": "统计文件的行数、词数和字节数",
+      "data": {
+        "cmd": "wc %{选项}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "统计行数",
+            "cmd": "wc -l filename",
+            "params": {},
+            "keyword": "wc 行数"
+          },
+          {
+            "name": "统计词数",
+            "cmd": "wc -w filename",
+            "params": {},
+            "keyword": "wc 词数"
+          },
+          {
+            "name": "统计字符数",
+            "cmd": "wc -c filename",
+            "params": {},
+            "keyword": "wc 字符"
+          },
+          {
+            "name": "最长行字节",
+            "cmd": "wc -L filename",
+            "params": {},
+            "keyword": "wc 最长行"
+          },
+          {
+            "name": "统计目录文件数",
+            "cmd": "ls -1 | wc -l",
+            "params": {},
+            "keyword": "wc 文件数"
+          },
+          {
+            "name": "递归统计文件",
+            "cmd": "find . -type f | wc -l",
+            "params": {},
+            "keyword": "wc 递归"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "wc 选项",
+            "example": "-l",
+            "notes": "可选"
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要统计的文件路径",
+            "example": "/home/user/log.txt",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "xargs 参数传递",
+      "keyword": "xargs 参数",
+      "description": "将标准输入转换为命令行参数",
+      "data": {
+        "cmd": "xargs %{选项}% %{命令}%",
+        "extensions": [
+          {
+            "name": "批量删除文件",
+            "cmd": "find . -name \"*.tmp\" | xargs rm",
+            "params": {},
+            "keyword": "xargs 删除"
+          },
+          {
+            "name": "指定参数位置",
+            "cmd": "echo \"file1 file2\" | xargs -n 1 cp target/",
+            "params": {},
+            "keyword": "xargs 逐个"
+          },
+          {
+            "name": "配合 grep 使用",
+            "cmd": "grep -l \"pattern\" *.log | xargs rm",
+            "params": {},
+            "keyword": "xargs grep"
+          },
+          {
+            "name": "询问确认",
+            "cmd": "cat list.txt | xargs -p rm",
+            "params": {},
+            "keyword": "xargs 确认"
+          },
+          {
+            "name": "指定分隔符",
+            "cmd": "echo \"a,b,c\" | xargs -d',' echo",
+            "params": {},
+            "keyword": "xargs 分隔符"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "xargs 选项",
+            "example": "-n 1",
+            "notes": "-n 每行几个参数"
+          },
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "要执行的命令",
+            "example": "rm",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Shell脚本模板/",
+      "name": "zip/unzip 打包",
+      "keyword": "zip unzip 压缩 打包",
+      "description": "压缩和解压 zip 格式文件",
+      "data": {
+        "cmd": "zip %{选项}% %{压缩包名称}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "压缩目录",
+            "cmd": "zip -r archive.zip /path/to/dir",
+            "params": {},
+            "keyword": "zip 压缩目录"
+          },
+          {
+            "name": "解压",
+            "cmd": "unzip archive.zip",
+            "params": {},
+            "keyword": "unzip 解压"
+          },
+          {
+            "name": "解压到目录",
+            "cmd": "unzip archive.zip -d /target/dir",
+            "params": {},
+            "keyword": "unzip 指定目录"
+          },
+          {
+            "name": "查看内容",
+            "cmd": "unzip -l archive.zip",
+            "params": {},
+            "keyword": "unzip 列表"
+          },
+          {
+            "name": "排除文件",
+            "cmd": "zip -r archive.zip folder/ -x \"*.log\"",
+            "params": {},
+            "keyword": "zip 排除"
+          },
+          {
+            "name": "最大压缩比",
+            "cmd": "zip -9 archive.zip file.txt",
+            "params": {},
+            "keyword": "zip 最大压缩"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "zip 选项",
+            "example": "-r",
+            "notes": "可选"
+          },
+          "压缩包名称": {
+            "type": "string",
+            "required": true,
+            "description": "压缩包名称",
+            "example": "backup.zip",
+            "notes": ""
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要压缩的文件或目录路径",
+            "example": "/home/user/data",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "npm build 生产构建",
+      "keyword": "npm build 构建",
+      "description": "执行生产环境构建",
+      "data": {
+        "cmd": "npm run build",
+        "extensions": [
+          {
+            "name": "执行生产构建",
+            "cmd": "npm run build",
+            "params": {},
+            "keyword": "npm build 执行"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "npm dev 启动开发服务器",
+      "keyword": "npm dev 开发",
+      "description": "启动开发服务器",
+      "data": {
+        "cmd": "npm run dev",
+        "extensions": [
+          {
+            "name": "启动开发服务器",
+            "cmd": "npm run dev",
+            "params": {},
+            "keyword": "npm dev 启动"
+          },
+          {
+            "name": "带参数启动",
+            "cmd": "npm run dev -- --port %{端口}%",
+            "params": {},
+            "keyword": "npm dev 端口"
+          }
+        ],
+        "params": {
+          "端口": {
+            "type": "string",
+            "required": false,
+            "description": "开发服务器端口",
+            "example": "3000",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "npm init 初始化项目",
+      "keyword": "npm init 初始化",
+      "description": "初始化一个新的 npm 项目",
+      "data": {
+        "cmd": "npm init %{选项}%",
+        "extensions": [
+          {
+            "name": "使用默认值初始化",
+            "cmd": "npm init -y",
+            "params": {},
+            "keyword": "npm init 默认"
+          },
+          {
+            "name": "初始化为 ES 模块",
+            "cmd": "npm init -y --esm",
+            "params": {},
+            "keyword": "npm init esm"
+          },
+          {
+            "name": "指定作用域初始化",
+            "cmd": "npm init -y --scope=%{作用域}%",
+            "params": {},
+            "keyword": "npm init 作用域"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "init 选项",
+            "example": "-y",
+            "notes": "可选"
+          },
+          "作用域": {
+            "type": "string",
+            "required": false,
+            "description": "npm 作用域",
+            "example": "@myorg",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "npm install 安装依赖",
+      "keyword": "npm install 安装",
+      "description": "安装项目依赖包",
+      "data": {
+        "cmd": "npm install %{包名}%",
+        "extensions": [
+          {
+            "name": "安装并保存到 dependencies",
+            "cmd": "npm install %{包名}%",
+            "params": {},
+            "keyword": "npm install 保存"
+          },
+          {
+            "name": "安装到 devDependencies",
+            "cmd": "npm install -D %{包名}%",
+            "params": {},
+            "keyword": "npm install dev"
+          },
+          {
+            "name": "全局安装",
+            "cmd": "npm install -g %{包名}%",
+            "params": {},
+            "keyword": "npm 全局安装"
+          },
+          {
+            "name": "安装所有依赖",
+            "cmd": "npm install",
+            "params": {},
+            "keyword": "npm install 全部"
+          },
+          {
+            "name": "安装指定版本",
+            "cmd": "npm install %{包名}%@%{版本}%",
+            "params": {},
+            "keyword": "npm install 版本"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": false,
+            "description": "包名称",
+            "example": "lodash",
+            "notes": "可选，不填则安装所有依赖"
+          },
+          "版本": {
+            "type": "string",
+            "required": false,
+            "description": "包版本号",
+            "example": "4.17.21",
+            "notes": "可选，指定版本"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "npm list 查看依赖列表",
+      "keyword": "npm list 列表",
+      "description": "列出已安装的依赖包",
+      "data": {
+        "cmd": "npm list %{选项}%",
+        "extensions": [
+          {
+            "name": "列出顶层依赖",
+            "cmd": "npm list",
+            "params": {},
+            "keyword": "npm list 顶层"
+          },
+          {
+            "name": "列出所有依赖树",
+            "cmd": "npm list --all",
+            "params": {},
+            "keyword": "npm list 全部"
+          },
+          {
+            "name": "列出特定包",
+            "cmd": "npm list %{包名}%",
+            "params": {},
+            "keyword": "npm list 指定包"
+          },
+          {
+            "name": "列出 devDependencies",
+            "cmd": "npm list --dev",
+            "params": {},
+            "keyword": "npm list dev"
+          },
+          {
+            "name": "深度显示",
+            "cmd": "npm list --depth=%{深度}%",
+            "params": {},
+            "keyword": "npm list 深度"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "list 选项",
+            "example": "--all",
+            "notes": "可选"
+          },
+          "包名": {
+            "type": "string",
+            "required": false,
+            "description": "包名称",
+            "example": "lodash",
+            "notes": "可选"
+          },
+          "深度": {
+            "type": "string",
+            "required": false,
+            "description": "依赖树深度",
+            "example": "2",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "npm outdated 检查过期依赖",
+      "keyword": "npm outdated 过期",
+      "description": "检查哪些依赖有新版本可用",
+      "data": {
+        "cmd": "npm outdated",
+        "extensions": [
+          {
+            "name": "检查所有过期依赖",
+            "cmd": "npm outdated",
+            "params": {},
+            "keyword": "npm outdated 检查"
+          },
+          {
+            "name": "检查特定包",
+            "cmd": "npm outdated %{包名}%",
+            "params": {},
+            "keyword": "npm outdated 指定"
+          },
+          {
+            "name": "显示可升级列表",
+            "cmd": "npm outdated --json",
+            "params": {},
+            "keyword": "npm outdated json"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": false,
+            "description": "包名称",
+            "example": "lodash",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "npm run 执行脚本",
+      "keyword": "npm run 脚本",
+      "description": "运行 package.json 中定义的脚本",
+      "data": {
+        "cmd": "npm run %{脚本名}%",
+        "extensions": [
+          {
+            "name": "列出所有可用脚本",
+            "cmd": "npm run",
+            "params": {},
+            "keyword": "npm run 列表"
+          },
+          {
+            "name": "带参数运行脚本",
+            "cmd": "npm run %{脚本名}% -- --%{参数}%",
+            "params": {},
+            "keyword": "npm run 参数"
+          }
+        ],
+        "params": {
+          "脚本名": {
+            "type": "string",
+            "required": true,
+            "description": "脚本名称",
+            "example": "build",
+            "notes": ""
+          },
+          "参数": {
+            "type": "string",
+            "required": false,
+            "description": "传递给脚本的参数",
+            "example": "mode=production",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "npm uninstall 卸载依赖",
+      "keyword": "npm uninstall 卸载",
+      "description": "卸载项目依赖包",
+      "data": {
+        "cmd": "npm uninstall %{包名}%",
+        "extensions": [
+          {
+            "name": "卸载并从 package.json 移除",
+            "cmd": "npm uninstall %{包名}%",
+            "params": {},
+            "keyword": "npm uninstall 移除"
+          },
+          {
+            "name": "卸载 devDependencies",
+            "cmd": "npm uninstall -D %{包名}%",
+            "params": {},
+            "keyword": "npm uninstall dev"
+          },
+          {
+            "name": "卸载全局包",
+            "cmd": "npm uninstall -g %{包名}%",
+            "params": {},
+            "keyword": "npm 卸载全局"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "要卸载的包名称",
+            "example": "lodash",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "npm update 更新依赖",
+      "keyword": "npm update 升级",
+      "description": "更新依赖包到最新兼容版本",
+      "data": {
+        "cmd": "npm update %{包名}%",
+        "extensions": [
+          {
+            "name": "更新所有依赖",
+            "cmd": "npm update",
+            "params": {},
+            "keyword": "npm update 全部"
+          },
+          {
+            "name": "更新特定包",
+            "cmd": "npm update %{包名}%",
+            "params": {},
+            "keyword": "npm update 指定"
+          },
+          {
+            "name": "更新全局包",
+            "cmd": "npm update -g %{包名}%",
+            "params": {},
+            "keyword": "npm update 全局"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": false,
+            "description": "包名称",
+            "example": "lodash",
+            "notes": "可选，不填则更新所有"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "pnpm add 添加依赖",
+      "keyword": "pnpm add 安装",
+      "description": "使用 pnpm 添加项目依赖包",
+      "data": {
+        "cmd": "pnpm add %{包名}%",
+        "extensions": [
+          {
+            "name": "添加依赖",
+            "cmd": "pnpm add %{包名}%",
+            "params": {},
+            "keyword": "pnpm add 添加"
+          },
+          {
+            "name": "添加为 devDependencies",
+            "cmd": "pnpm add -D %{包名}%",
+            "params": {},
+            "keyword": "pnpm add dev"
+          },
+          {
+            "name": "添加为 optionalDependencies",
+            "cmd": "pnpm add -O %{包名}%",
+            "params": {},
+            "keyword": "pnpm add optional"
+          },
+          {
+            "name": "全局添加",
+            "cmd": "pnpm add -g %{包名}%",
+            "params": {},
+            "keyword": "pnpm 全局添加"
+          },
+          {
+            "name": "添加指定版本",
+            "cmd": "pnpm add %{包名}%@%{版本}%",
+            "params": {},
+            "keyword": "pnpm add 版本"
+          },
+          {
+            "name": "从 workspace 添加",
+            "cmd": "pnpm add %{包名}% --filter %{workspace}%",
+            "params": {},
+            "keyword": "pnpm add workspace"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "包名称",
+            "example": "lodash",
+            "notes": ""
+          },
+          "版本": {
+            "type": "string",
+            "required": false,
+            "description": "包版本号",
+            "example": "4.17.21",
+            "notes": "可选"
+          },
+          "workspace": {
+            "type": "string",
+            "required": false,
+            "description": "workspace 名称",
+            "example": "@myorg/app",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "pnpm build 生产构建",
+      "keyword": "pnpm build 构建",
+      "description": "使用 pnpm 执行生产环境构建",
+      "data": {
+        "cmd": "pnpm build",
+        "extensions": [
+          {
+            "name": "执行生产构建",
+            "cmd": "pnpm build",
+            "params": {},
+            "keyword": "pnpm build 执行"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "pnpm dev 启动开发服务器",
+      "keyword": "pnpm dev 开发",
+      "description": "使用 pnpm 启动开发服务器",
+      "data": {
+        "cmd": "pnpm dev",
+        "extensions": [
+          {
+            "name": "启动开发服务器",
+            "cmd": "pnpm dev",
+            "params": {},
+            "keyword": "pnpm dev 启动"
+          },
+          {
+            "name": "带参数启动",
+            "cmd": "pnpm dev -- --port %{端口}%",
+            "params": {},
+            "keyword": "pnpm dev 端口"
+          }
+        ],
+        "params": {
+          "端口": {
+            "type": "string",
+            "required": false,
+            "description": "开发服务器端口",
+            "example": "3000",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "pnpm list 查看依赖列表",
+      "keyword": "pnpm list 列表",
+      "description": "使用 pnpm 列出已安装的依赖包",
+      "data": {
+        "cmd": "pnpm list %{选项}%",
+        "extensions": [
+          {
+            "name": "列出所有依赖",
+            "cmd": "pnpm list",
+            "params": {},
+            "keyword": "pnpm list 全部"
+          },
+          {
+            "name": "列出顶层依赖",
+            "cmd": "pnpm list --depth 0",
+            "params": {},
+            "keyword": "pnpm list 顶层"
+          },
+          {
+            "name": "列出特定包",
+            "cmd": "pnpm list %{包名}%",
+            "params": {},
+            "keyword": "pnpm list 指定"
+          },
+          {
+            "name": "按依赖项查看",
+            "cmd": "pnpm list --recursive",
+            "params": {},
+            "keyword": "pnpm list 递归"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "list 选项",
+            "example": "--depth 0",
+            "notes": "可选"
+          },
+          "包名": {
+            "type": "string",
+            "required": false,
+            "description": "包名称",
+            "example": "lodash",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "pnpm remove 移除依赖",
+      "keyword": "pnpm remove 卸载",
+      "description": "使用 pnpm 移除项目依赖包",
+      "data": {
+        "cmd": "pnpm remove %{包名}%",
+        "extensions": [
+          {
+            "name": "移除依赖",
+            "cmd": "pnpm remove %{包名}%",
+            "params": {},
+            "keyword": "pnpm remove 移除"
+          },
+          {
+            "name": "移除全局包",
+            "cmd": "pnpm remove -g %{包名}%",
+            "params": {},
+            "keyword": "pnpm 全局移除"
+          },
+          {
+            "name": "从 workspace 移除",
+            "cmd": "pnpm remove %{包名}% --filter %{workspace}%",
+            "params": {},
+            "keyword": "pnpm remove workspace"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "要移除的包名称",
+            "example": "lodash",
+            "notes": ""
+          },
+          "workspace": {
+            "type": "string",
+            "required": false,
+            "description": "workspace 名称",
+            "example": "@myorg/app",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "yarn add 添加依赖",
+      "keyword": "yarn add 安装",
+      "description": "添加项目依赖包",
+      "data": {
+        "cmd": "yarn add %{包名}%",
+        "extensions": [
+          {
+            "name": "添加依赖",
+            "cmd": "yarn add %{包名}%",
+            "params": {},
+            "keyword": "yarn add 添加"
+          },
+          {
+            "name": "添加为 devDependencies",
+            "cmd": "yarn add -D %{包名}%",
+            "params": {},
+            "keyword": "yarn add dev"
+          },
+          {
+            "name": "添加为 optionalDependencies",
+            "cmd": "yarn add -O %{包名}%",
+            "params": {},
+            "keyword": "yarn add optional"
+          },
+          {
+            "name": "全局添加",
+            "cmd": "yarn global add %{包名}%",
+            "params": {},
+            "keyword": "yarn 全局添加"
+          },
+          {
+            "name": "添加指定版本",
+            "cmd": "yarn add %{包名}%@%{版本}%",
+            "params": {},
+            "keyword": "yarn add 版本"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "包名称",
+            "example": "lodash",
+            "notes": ""
+          },
+          "版本": {
+            "type": "string",
+            "required": false,
+            "description": "包版本号",
+            "example": "4.17.21",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "yarn build 生产构建",
+      "keyword": "yarn build 构建",
+      "description": "使用 yarn 执行生产环境构建",
+      "data": {
+        "cmd": "yarn build",
+        "extensions": [
+          {
+            "name": "执行生产构建",
+            "cmd": "yarn build",
+            "params": {},
+            "keyword": "yarn build 执行"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "yarn dev 启动开发服务器",
+      "keyword": "yarn dev 开发",
+      "description": "使用 yarn 启动开发服务器",
+      "data": {
+        "cmd": "yarn dev",
+        "extensions": [
+          {
+            "name": "启动开发服务器",
+            "cmd": "yarn dev",
+            "params": {},
+            "keyword": "yarn dev 启动"
+          },
+          {
+            "name": "带参数启动",
+            "cmd": "yarn dev -- --port %{端口}%",
+            "params": {},
+            "keyword": "yarn dev 端口"
+          }
+        ],
+        "params": {
+          "端口": {
+            "type": "string",
+            "required": false,
+            "description": "开发服务器端口",
+            "example": "3000",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "yarn list 查看依赖列表",
+      "keyword": "yarn list 列表",
+      "description": "列出已安装的依赖包",
+      "data": {
+        "cmd": "yarn list %{选项}%",
+        "extensions": [
+          {
+            "name": "列出所有依赖",
+            "cmd": "yarn list",
+            "params": {},
+            "keyword": "yarn list 全部"
+          },
+          {
+            "name": "列出顶层依赖",
+            "cmd": "yarn list --level 0",
+            "params": {},
+            "keyword": "yarn list 顶层"
+          },
+          {
+            "name": "过滤显示",
+            "cmd": "yarn list --pattern %{包名}%",
+            "params": {},
+            "keyword": "yarn list 过滤"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "list 选项",
+            "example": "--level 0",
+            "notes": "可选"
+          },
+          "包名": {
+            "type": "string",
+            "required": false,
+            "description": "包名称",
+            "example": "lodash",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "yarn remove 移除依赖",
+      "keyword": "yarn remove 卸载",
+      "description": "移除项目依赖包",
+      "data": {
+        "cmd": "yarn remove %{包名}%",
+        "extensions": [
+          {
+            "name": "移除依赖",
+            "cmd": "yarn remove %{包名}%",
+            "params": {},
+            "keyword": "yarn remove 移除"
+          },
+          {
+            "name": "移除全局包",
+            "cmd": "yarn global remove %{包名}%",
+            "params": {},
+            "keyword": "yarn 全局移除"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "要移除的包名称",
+            "example": "lodash",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "yarn upgrade 升级依赖",
+      "keyword": "yarn upgrade 升级",
+      "description": "升级依赖包到最新版本",
+      "data": {
+        "cmd": "yarn upgrade %{包名}%",
+        "extensions": [
+          {
+            "name": "升级所有依赖",
+            "cmd": "yarn upgrade",
+            "params": {},
+            "keyword": "yarn upgrade 全部"
+          },
+          {
+            "name": "升级特定包",
+            "cmd": "yarn upgrade %{包名}%",
+            "params": {},
+            "keyword": "yarn upgrade 指定"
+          },
+          {
+            "name": "升级到最新版本",
+            "cmd": "yarn upgrade --latest %{包名}%",
+            "params": {},
+            "keyword": "yarn upgrade 最新"
+          },
+          {
+            "name": "全局升级",
+            "cmd": "yarn global upgrade",
+            "params": {},
+            "keyword": "yarn 全局升级"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": false,
+            "description": "包名称",
+            "example": "lodash",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/系统监控/",
+      "name": "df/du 磁盘使用",
+      "keyword": "df du 磁盘使用",
+      "description": "显示磁盘空间使用情况和目录大小",
+      "data": {
+        "cmd": "df %{选项}% %{路径}%",
+        "extensions": [
+          {
+            "name": "人类可读格式",
+            "cmd": "df -h",
+            "params": {},
+            "keyword": "df 人类可读"
+          },
+          {
+            "name": "显示所有文件系统",
+            "cmd": "df -a",
+            "params": {},
+            "keyword": "df 所有文件系统"
+          },
+          {
+            "name": "显示文件系统类型",
+            "cmd": "df -T -t ext4",
+            "params": {},
+            "keyword": "df 文件系统类型"
+          },
+          {
+            "name": "显示inode使用",
+            "cmd": "df -i",
+            "params": {},
+            "keyword": "df inode"
+          },
+          {
+            "name": "目录总大小",
+            "cmd": "du -sh %{路径}%",
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": false,
+                "description": "目录路径",
+                "example": "/var/log",
+                "notes": ""
+              }
+            },
+            "keyword": "du 目录总大小"
+          },
+          {
+            "name": "子目录大小排序",
+            "cmd": "du -sh %{路径}%/*/ | sort -hr",
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": false,
+                "description": "目录路径",
+                "example": "/home",
+                "notes": ""
+              }
+            },
+            "keyword": "du 子目录排序"
+          },
+          {
+            "name": "最大文件列表",
+            "cmd": "du -ah %{路径}% | sort -rh | head -n 10",
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": false,
+                "description": "目录路径",
+                "example": "/",
+                "notes": ""
+              }
+            },
+            "keyword": "du 最大文件"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "df 选项",
+            "example": "-h",
+            "notes": "常用"
+          },
+          "路径": {
+            "type": "string",
+            "required": false,
+            "description": "路径",
+            "example": "/home",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/系统监控/",
+      "name": "free 内存使用",
+      "keyword": "free 内存使用",
+      "description": "显示系统内存使用情况（物理内存和交换空间）",
+      "data": {
+        "cmd": "free %{选项}%",
+        "extensions": [
+          {
+            "name": "人类可读格式",
+            "cmd": "free -h",
+            "params": {},
+            "keyword": "free 人类可读"
+          },
+          {
+            "name": "持续监控",
+            "cmd": "free -h -s %{秒}%",
+            "params": {
+              "秒": {
+                "type": "string",
+                "required": false,
+                "description": "刷新间隔（秒）",
+                "example": "2",
+                "notes": ""
+              }
+            },
+            "keyword": "free 持续监控"
+          },
+          {
+            "name": "显示总计",
+            "cmd": "free -ht",
+            "params": {},
+            "keyword": "free 显示总计"
+          },
+          {
+            "name": "以MB为单位",
+            "cmd": "free -m",
+            "params": {},
+            "keyword": "free MB单位"
+          },
+          {
+            "name": "实时监控",
+            "cmd": "watch -n 1 free -h",
+            "params": {},
+            "keyword": "free 实时监控"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "free 选项",
+            "example": "-h",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/系统监控/",
+      "name": "iostat I/O统计",
+      "keyword": "iostat IO统计",
+      "description": "监控系统CPU和磁盘I/O统计信息",
+      "data": {
+        "cmd": "iostat %{选项}% %{间隔}% %{次数}%",
+        "extensions": [
+          {
+            "name": "显示CPU统计",
+            "cmd": "iostat -c",
+            "params": {},
+            "keyword": "iostat CPU统计"
+          },
+          {
+            "name": "显示磁盘统计",
+            "cmd": "iostat -d",
+            "params": {},
+            "keyword": "iostat 磁盘统计"
+          },
+          {
+            "name": "显示扩展统计",
+            "cmd": "iostat -x",
+            "params": {},
+            "keyword": "iostat 扩展统计"
+          },
+          {
+            "name": "人类可读格式",
+            "cmd": "iostat -h",
+            "params": {},
+            "keyword": "iostat 人类可读"
+          },
+          {
+            "name": "指定设备",
+            "cmd": "iostat -p %{设备}%",
+            "params": {
+              "设备": {
+                "type": "string",
+                "required": false,
+                "description": "设备名",
+                "example": "sda",
+                "notes": ""
+              }
+            },
+            "keyword": "iostat 指定设备"
+          },
+          {
+            "name": "持续监控",
+            "cmd": "iostat -xz 2 10",
+            "params": {},
+            "keyword": "iostat 持续监控"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "iostat 选项",
+            "example": "-x",
+            "notes": "常用"
+          },
+          "间隔": {
+            "type": "string",
+            "required": false,
+            "description": "采样间隔（秒）",
+            "example": "2",
+            "notes": "可选"
+          },
+          "次数": {
+            "type": "string",
+            "required": false,
+            "description": "采样次数",
+            "example": "5",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/系统监控/",
+      "name": "lsof 查看打开的文件",
+      "keyword": "lsof 打开文件",
+      "description": "列出打开的文件和网络连接",
+      "data": {
+        "cmd": "lsof %{选项}%",
+        "extensions": [
+          {
+            "name": "查看所有打开文件",
+            "cmd": "lsof",
+            "params": {},
+            "keyword": "lsof 所有文件"
+          },
+          {
+            "name": "查看指定用户",
+            "cmd": "lsof -u %{用户名}%",
+            "params": {
+              "用户名": {
+                "type": "string",
+                "required": false,
+                "description": "用户名",
+                "example": "www-data",
+                "notes": ""
+              }
+            },
+            "keyword": "lsof 用户文件"
+          },
+          {
+            "name": "查看指定进程",
+            "cmd": "lsof -p %{PID}%",
+            "params": {
+              "PID": {
+                "type": "string",
+                "required": false,
+                "description": "进程ID",
+                "example": "1234",
+                "notes": ""
+              }
+            },
+            "keyword": "lsof 进程文件"
+          },
+          {
+            "name": "查看网络连接",
+            "cmd": "lsof -i",
+            "params": {},
+            "keyword": "lsof 网络连接"
+          },
+          {
+            "name": "查看TCP连接",
+            "cmd": "lsof -i TCP",
+            "params": {},
+            "keyword": "lsof TCP"
+          },
+          {
+            "name": "查看端口占用",
+            "cmd": "lsof -i :%{端口}%",
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": false,
+                "description": "端口号",
+                "example": "80",
+                "notes": ""
+              }
+            },
+            "keyword": "lsof 端口"
+          },
+          {
+            "name": "递归查看目录",
+            "cmd": "lsof +D %{目录}%",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": false,
+                "description": "目录路径",
+                "example": "/var/log",
+                "notes": ""
+              }
+            },
+            "keyword": "lsof 目录递归"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "lsof 选项",
+            "example": "-i",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/系统监控/",
+      "name": "top/htop 进程监控",
+      "keyword": "top htop 进程监控",
+      "description": "实时监控系统进程、CPU 和内存使用情况",
+      "data": {
+        "cmd": "top %{选项}%",
+        "extensions": [
+          {
+            "name": "交互式进程监控",
+            "cmd": "htop",
+            "params": {},
+            "keyword": "htop 交互式"
+          },
+          {
+            "name": "指定用户进程",
+            "cmd": "top -u %{用户名}%",
+            "params": {
+              "用户名": {
+                "type": "string",
+                "required": false,
+                "description": "用户名",
+                "example": "www-data",
+                "notes": ""
+              }
+            },
+            "keyword": "top 用户进程"
+          },
+          {
+            "name": "指定PID监控",
+            "cmd": "top -p %{PID}%",
+            "params": {
+              "PID": {
+                "type": "string",
+                "required": false,
+                "description": "进程ID",
+                "example": "1234",
+                "notes": ""
+              }
+            },
+            "keyword": "top 指定PID"
+          },
+          {
+            "name": "按CPU排序",
+            "cmd": "top -o %CPU",
+            "params": {},
+            "keyword": "top CPU排序"
+          },
+          {
+            "name": "按内存排序",
+            "cmd": "top -o %MEM",
+            "params": {},
+            "keyword": "top 内存排序"
+          },
+          {
+            "name": "设置刷新间隔",
+            "cmd": "top -d %{秒}%",
+            "params": {
+              "秒": {
+                "type": "string",
+                "required": false,
+                "description": "刷新间隔（秒）",
+                "example": "5",
+                "notes": ""
+              }
+            },
+            "keyword": "top 刷新间隔"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "top 选项",
+            "example": "-d 5",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/系统监控/",
+      "name": "uptime 系统负载",
+      "keyword": "uptime 系统负载",
+      "description": "显示系统运行时间、平均负载和在线用户数",
+      "data": {
+        "cmd": "uptime %{选项}%",
+        "extensions": [
+          {
+            "name": "简洁模式",
+            "cmd": "uptime -s",
+            "params": {},
+            "keyword": "uptime 启动时间"
+          },
+          {
+            "name": "人类可读格式",
+            "cmd": "uptime -p",
+            "params": {},
+            "keyword": "uptime 人类可读"
+          },
+          {
+            "name": "显示历史负载",
+            "cmd": "uptime",
+            "params": {},
+            "keyword": "uptime 历史负载"
+          },
+          {
+            "name": "查看启动时间",
+            "cmd": "who -b",
+            "params": {},
+            "keyword": "who 启动时间"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "uptime 选项",
+            "example": "-p",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/系统监控/",
+      "name": "vmstat 虚拟内存统计",
+      "keyword": "vmstat 虚拟内存",
+      "description": "显示系统内存、进程、CPU活动等统计信息",
+      "data": {
+        "cmd": "vmstat %{间隔}% %{次数}%",
+        "extensions": [
+          {
+            "name": "显示内存详情",
+            "cmd": "vmstat -a",
+            "params": {},
+            "keyword": "vmstat 活跃内存"
+          },
+          {
+            "name": "显示磁盘统计",
+            "cmd": "vmstat -d",
+            "params": {},
+            "keyword": "vmstat 磁盘"
+          },
+          {
+            "name": "显示扩展统计",
+            "cmd": "vmstat -x",
+            "params": {},
+            "keyword": "vmstat 扩展统计"
+          },
+          {
+            "name": "显示 slab 缓存",
+            "cmd": "vmstat -m --sort=-%s | head -n 20",
+            "params": {},
+            "keyword": "vmstat slab缓存"
+          }
+        ],
+        "params": {
+          "间隔": {
+            "type": "string",
+            "required": false,
+            "description": "采样间隔（秒）",
+            "example": "2",
+            "notes": "可选"
+          },
+          "次数": {
+            "type": "string",
+            "required": false,
+            "description": "采样次数",
+            "example": "5",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/系统监控/",
+      "name": "watch 周期性执行",
+      "keyword": "watch 周期执行",
+      "description": "周期性地执行命令并全屏显示输出",
+      "data": {
+        "cmd": "watch %{选项}% %{命令}%",
+        "extensions": [
+          {
+            "name": "每2秒执行",
+            "cmd": "watch -n 2 %{命令}%",
+            "params": {
+              "命令": {
+                "type": "string",
+                "required": true,
+                "description": "要执行的命令",
+                "example": "df -h",
+                "notes": ""
+              }
+            },
+            "keyword": "watch 每2秒"
+          },
+          {
+            "name": "高亮差异",
+            "cmd": "watch -d %{命令}%",
+            "params": {
+              "命令": {
+                "type": "string",
+                "required": true,
+                "description": "要执行的命令",
+                "example": "free -h",
+                "notes": ""
+              }
+            },
+            "keyword": "watch 高亮差异"
+          },
+          {
+            "name": "持续监控内存",
+            "cmd": "watch -n 1 free -h",
+            "params": {},
+            "keyword": "watch 监控内存"
+          },
+          {
+            "name": "持续监控进程",
+            "cmd": "watch -n 2 'ps aux | head -1'",
+            "params": {},
+            "keyword": "watch 监控进程"
+          },
+          {
+            "name": "持续监控磁盘",
+            "cmd": "watch -n 5 df -h",
+            "params": {},
+            "keyword": "watch 监控磁盘"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "watch 选项",
+            "example": "-n 2",
+            "notes": "常用"
+          },
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "要周期性执行的命令",
+            "example": "df -h",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/网络诊断/",
+      "name": "curl HTTP 请求",
+      "keyword": "curl HTTP 请求",
+      "description": "发送 HTTP 请求，支持多种协议",
+      "data": {
+        "cmd": "curl %{选项}% %{URL}%",
+        "extensions": [
+          {
+            "name": "下载文件",
+            "cmd": "curl -O %{URL}%",
+            "params": {},
+            "keyword": "curl 下载"
+          },
+          {
+            "name": "保存到文件",
+            "cmd": "curl -o %{文件名}% %{URL}%",
+            "params": {},
+            "keyword": "curl 保存文件"
+          },
+          {
+            "name": "发送 POST 请求",
+            "cmd": "curl -X POST -d \"%{数据}%\" %{URL}%",
+            "params": {},
+            "keyword": "curl POST"
+          },
+          {
+            "name": "设置请求头",
+            "cmd": "curl -H \"Content-Type: application/json\" %{URL}%",
+            "params": {},
+            "keyword": "curl 请求头"
+          },
+          {
+            "name": "跟随重定向",
+            "cmd": "curl -L %{URL}%",
+            "params": {},
+            "keyword": "curl 重定向"
+          },
+          {
+            "name": "显示响应头",
+            "cmd": "curl -I %{URL}%",
+            "params": {},
+            "keyword": "curl 响应头"
+          },
+          {
+            "name": "显示详细信息",
+            "cmd": "curl -v %{URL}%",
+            "params": {},
+            "keyword": "curl 详细"
+          },
+          {
+            "name": "跳过 SSL 验证",
+            "cmd": "curl -k %{URL}%",
+            "params": {},
+            "keyword": "curl 跳过SSL"
+          },
+          {
+            "name": "发送 JSON",
+            "cmd": "curl -X POST -H \"Content-Type: application/json\" -d '{\"key\":\"value\"}' %{URL}%",
+            "params": {},
+            "keyword": "curl JSON"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "curl 选项",
+            "example": "-X POST",
+            "notes": "可选"
+          },
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "请求 URL",
+            "example": "https://api.example.com",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/网络诊断/",
+      "name": "dig DNS 查询",
+      "keyword": "dig DNS 查询",
+      "description": "详细的 DNS 查询工具，比 nslookup 更强大",
+      "data": {
+        "cmd": "dig %{选项}% %{域名}%",
+        "extensions": [
+          {
+            "name": "查询 A 记录",
+            "cmd": "dig %{域名}%",
+            "params": {},
+            "keyword": "dig A记录"
+          },
+          {
+            "name": "查询 MX 记录",
+            "cmd": "dig %{域名}% mx",
+            "params": {},
+            "keyword": "dig MX记录"
+          },
+          {
+            "name": "指定 DNS 服务器",
+            "cmd": "dig @8.8.8.8 %{域名}%",
+            "params": {},
+            "keyword": "dig 指定DNS"
+          },
+          {
+            "name": "简短输出",
+            "cmd": "dig +short %{域名}%",
+            "params": {},
+            "keyword": "dig 简短"
+          },
+          {
+            "name": "追踪 DNS 解析",
+            "cmd": "dig +trace %{域名}%",
+            "params": {},
+            "keyword": "dig 追踪"
+          },
+          {
+            "name": "查询 NS 记录",
+            "cmd": "dig %{域名}% ns",
+            "params": {},
+            "keyword": "dig NS记录"
+          },
+          {
+            "name": "查询 TXT 记录",
+            "cmd": "dig %{域名}% txt",
+            "params": {},
+            "keyword": "dig TXT记录"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "dig 选项",
+            "example": "+short",
+            "notes": "可选"
+          },
+          "域名": {
+            "type": "string",
+            "required": true,
+            "description": "要查询的域名",
+            "example": "google.com",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/网络诊断/",
+      "name": "nc/netcat 网络瑞士军刀",
+      "keyword": "nc netcat 网络 瑞士军刀",
+      "description": "功能强大的网络工具，可用于端口扫描、传输文件、调试等",
+      "data": {
+        "cmd": "nc %{选项}% %{主机}% %{端口}%",
+        "extensions": [
+          {
+            "name": "端口扫描",
+            "cmd": "nc -zv %{主机}% %{端口}%",
+            "params": {},
+            "keyword": "nc 端口扫描"
+          },
+          {
+            "name": "端口范围扫描",
+            "cmd": "nc -zv %{主机}% 20-30",
+            "params": {},
+            "keyword": "nc 范围扫描"
+          },
+          {
+            "name": "传输文件",
+            "cmd": "nc -l %{端口}% > %{文件名}%",
+            "params": {},
+            "keyword": "nc 接收文件"
+          },
+          {
+            "name": "发送文件",
+            "cmd": "nc %{主机}% %{端口}% < %{文件}%",
+            "params": {},
+            "keyword": "nc 发送文件"
+          },
+          {
+            "name": "简单聊天服务器",
+            "cmd": "nc -l %{端口}%",
+            "params": {},
+            "keyword": "nc 聊天"
+          },
+          {
+            "name": "连接聊天",
+            "cmd": "nc %{主机}% %{端口}%",
+            "params": {},
+            "keyword": "nc 连接"
+          },
+          {
+            "name": "执行远程命令",
+            "cmd": "nc -e /bin/bash %{主机}% %{端口}%",
+            "params": {},
+            "keyword": "nc 远程命令"
+          },
+          {
+            "name": "HTTP 请求",
+            "cmd": "echo -e \"GET / HTTP/1.0\\r\\n\\r\\n\" | nc %{主机}% 80",
+            "params": {},
+            "keyword": "nc HTTP"
+          },
+          {
+            "name": "设置超时",
+            "cmd": "nc -w 3 %{主机}% %{端口}%",
+            "params": {},
+            "keyword": "nc 超时"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "nc 选项",
+            "example": "-zv",
+            "notes": "常用 -z 扫描，-v 详细，-l 监听"
+          },
+          "主机": {
+            "type": "string",
+            "required": false,
+            "description": "目标主机或 IP",
+            "example": "example.com",
+            "notes": "监听模式可省略"
+          },
+          "端口": {
+            "type": "string",
+            "required": true,
+            "description": "端口号",
+            "example": "80",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/网络诊断/",
+      "name": "netstat 网络连接状态",
+      "keyword": "netstat 网络 连接 状态",
+      "description": "显示网络连接、路由表、接口统计等信息",
+      "data": {
+        "cmd": "netstat %{选项}%",
+        "extensions": [
+          {
+            "name": "查看监听端口",
+            "cmd": "netstat -tulpn",
+            "params": {},
+            "keyword": "netstat 监听端口"
+          },
+          {
+            "name": "查看 TCP 连接",
+            "cmd": "netstat -t",
+            "params": {},
+            "keyword": "netstat TCP"
+          },
+          {
+            "name": "查看 UDP 连接",
+            "cmd": "netstat -u",
+            "params": {},
+            "keyword": "netstat UDP"
+          },
+          {
+            "name": "显示进程",
+            "cmd": "netstat -tlnp",
+            "params": {},
+            "keyword": "netstat 进程"
+          },
+          {
+            "name": "统计汇总",
+            "cmd": "netstat -s",
+            "params": {},
+            "keyword": "netstat 统计"
+          },
+          {
+            "name": "持续显示",
+            "cmd": "netstat -c",
+            "params": {},
+            "keyword": "netstat 持续"
+          },
+          {
+            "name": "路由表",
+            "cmd": "netstat -r",
+            "params": {},
+            "keyword": "netstat 路由"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "netstat 选项",
+            "example": "-tulpn",
+            "notes": "常用 -t TCP，-u UDP，-l 监听，-p 进程，-n 数字"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/网络诊断/",
+      "name": "nslookup DNS 查询",
+      "keyword": "nslookup DNS 查询",
+      "description": "查询域名系统 (DNS) 记录",
+      "data": {
+        "cmd": "nslookup %{域名}% %{DNS服务器}%",
+        "extensions": [
+          {
+            "name": "查询 A 记录",
+            "cmd": "nslookup %{域名}%",
+            "params": {},
+            "keyword": "nslookup A记录"
+          },
+          {
+            "name": "指定 DNS 服务器",
+            "cmd": "nslookup %{域名}% 8.8.8.8",
+            "params": {},
+            "keyword": "nslookup 指定DNS"
+          },
+          {
+            "name": "查询 MX 记录",
+            "cmd": "nslookup -type=mx %{域名}%",
+            "params": {},
+            "keyword": "nslookup MX"
+          },
+          {
+            "name": "查询 TXT 记录",
+            "cmd": "nslookup -type=txt %{域名}%",
+            "params": {},
+            "keyword": "nslookup TXT"
+          },
+          {
+            "name": "交互模式",
+            "cmd": "nslookup",
+            "params": {},
+            "keyword": "nslookup 交互"
+          }
+        ],
+        "params": {
+          "域名": {
+            "type": "string",
+            "required": true,
+            "description": "要查询的域名",
+            "example": "google.com",
+            "notes": ""
+          },
+          "DNS服务器": {
+            "type": "string",
+            "required": false,
+            "description": "指定的 DNS 服务器",
+            "example": "8.8.8.8",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/网络诊断/",
+      "name": "ping 连通性测试",
+      "keyword": "ping 连通 测试",
+      "description": "测试主机网络连通性",
+      "data": {
+        "cmd": "ping %{选项}% %{主机或IP}%",
+        "extensions": [
+          {
+            "name": "指定次数",
+            "cmd": "ping -c 4 %{主机}%",
+            "params": {},
+            "keyword": "ping 指定次数"
+          },
+          {
+            "name": "持续 ping",
+            "cmd": "ping %{主机}%",
+            "params": {},
+            "keyword": "ping 持续"
+          },
+          {
+            "name": "设置间隔",
+            "cmd": "ping -i 2 %{主机}%",
+            "params": {},
+            "keyword": "ping 间隔"
+          },
+          {
+            "name": "设置数据包大小",
+            "cmd": "ping -s 1000 %{主机}%",
+            "params": {},
+            "keyword": "ping 大数据包"
+          },
+          {
+            "name": "详细输出",
+            "cmd": "ping -v %{主机}%",
+            "params": {},
+            "keyword": "ping 详细"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "ping 选项",
+            "example": "-c 4",
+            "notes": "可选，如 -c 次数，-i 间隔"
+          },
+          "主机或IP": {
+            "type": "string",
+            "required": true,
+            "description": "目标主机名或 IP 地址",
+            "example": "google.com",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/网络诊断/",
+      "name": "telnet 端口测试",
+      "keyword": "telnet 端口 测试",
+      "description": "测试远程主机端口连通性",
+      "data": {
+        "cmd": "telnet %{主机}% %{端口}%",
+        "extensions": [
+          {
+            "name": "测试 HTTP 端口",
+            "cmd": "telnet %{主机}% 80",
+            "params": {},
+            "keyword": "telnet HTTP"
+          },
+          {
+            "name": "测试 HTTPS 端口",
+            "cmd": "telnet %{主机}% 443",
+            "params": {},
+            "keyword": "telnet HTTPS"
+          },
+          {
+            "name": "测试 SMTP 端口",
+            "cmd": "telnet %{主机}% 25",
+            "params": {},
+            "keyword": "telnet SMTP"
+          },
+          {
+            "name": "测试 SSH 端口",
+            "cmd": "telnet %{主机}% 22",
+            "params": {},
+            "keyword": "telnet SSH"
+          },
+          {
+            "name": "测试 MySQL 端口",
+            "cmd": "telnet %{主机}% 3306",
+            "params": {},
+            "keyword": "telnet MySQL"
+          },
+          {
+            "name": "测试 Redis 端口",
+            "cmd": "telnet %{主机}% 6379",
+            "params": {},
+            "keyword": "telnet Redis"
+          }
+        ],
+        "params": {
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "目标主机或 IP",
+            "example": "smtp.gmail.com",
+            "notes": ""
+          },
+          "端口": {
+            "type": "string",
+            "required": true,
+            "description": "目标端口",
+            "example": "80",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/网络诊断/",
+      "name": "traceroute/tracert 路由追踪",
+      "keyword": "traceroute tracert 路由 追踪",
+      "description": "追踪数据包经过的路由节点",
+      "data": {
+        "cmd": "traceroute %{选项}% %{主机}%",
+        "extensions": [
+          {
+            "name": "最大跳数",
+            "cmd": "traceroute -m 30 %{主机}%",
+            "params": {},
+            "keyword": "traceroute 最大跳数"
+          },
+          {
+            "name": "设置超时",
+            "cmd": "traceroute -w 5 %{主机}%",
+            "params": {},
+            "keyword": "traceroute 超时"
+          },
+          {
+            "name": "使用 ICMP",
+            "cmd": "traceroute -I %{主机}%",
+            "params": {},
+            "keyword": "traceroute ICMP"
+          },
+          {
+            "name": "Windows tracert",
+            "cmd": "tracert %{主机}%",
+            "params": {},
+            "keyword": "tracert Windows"
+          },
+          {
+            "name": "显示 IP 地址",
+            "cmd": "traceroute -n %{主机}%",
+            "params": {},
+            "keyword": "traceroute IP"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "traceroute 选项",
+            "example": "-m 30",
+            "notes": "可选"
+          },
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "目标主机或 IP",
+            "example": "google.com",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/网络诊断/",
+      "name": "wget 文件下载",
+      "keyword": "wget 下载",
+      "description": "非交互式网络文件下载工具",
+      "data": {
+        "cmd": "wget %{选项}% %{URL}%",
+        "extensions": [
+          {
+            "name": "指定文件名",
+            "cmd": "wget -O %{文件名}% %{URL}%",
+            "params": {},
+            "keyword": "wget 指定名称"
+          },
+          {
+            "name": "断点续传",
+            "cmd": "wget -c %{URL}%",
+            "params": {},
+            "keyword": "wget 续传"
+          },
+          {
+            "name": "后台下载",
+            "cmd": "wget -b %{URL}%",
+            "params": {},
+            "keyword": "wget 后台"
+          },
+          {
+            "name": "限速下载",
+            "cmd": "wget --limit-rate=200k %{URL}%",
+            "params": {},
+            "keyword": "wget 限速"
+          },
+          {
+            "name": "递归下载",
+            "cmd": "wget -r %{URL}%",
+            "params": {},
+            "keyword": "wget 递归"
+          },
+          {
+            "name": "认证下载",
+            "cmd": "wget --user=%{用户}% --password=%{密码}% %{URL}%",
+            "params": {},
+            "keyword": "wget 认证"
+          },
+          {
+            "name": "从文件读取 URL",
+            "cmd": "wget -i %{文件}%",
+            "params": {},
+            "keyword": "wget 文件列表"
+          },
+          {
+            "name": "只下载匹配文件",
+            "cmd": "wget -A \"*.pdf\" %{URL}%",
+            "params": {},
+            "keyword": "wget 匹配"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "wget 选项",
+            "example": "-c",
+            "notes": "可选"
+          },
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "下载链接",
+            "example": "https://example.com/file.zip",
             "notes": ""
           }
         }

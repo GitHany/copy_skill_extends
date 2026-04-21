@@ -1,0 +1,820 @@
+{
+  "module": "前端包管理器",
+  "version": "1.0",
+  "description": "前端包管理器 模块命令集合",
+  "commands": [
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "npm install 安装依赖",
+      "keyword": "npm install 安装",
+      "description": "安装项目依赖包",
+      "data": {
+        "cmd": "npm install %{包名}%",
+        "extensions": [
+          {
+            "name": "安装并保存到 dependencies",
+            "cmd": "npm install %{包名}%",
+            "params": {},
+            "keyword": "npm install 保存"
+          },
+          {
+            "name": "安装到 devDependencies",
+            "cmd": "npm install -D %{包名}%",
+            "params": {},
+            "keyword": "npm install dev"
+          },
+          {
+            "name": "全局安装",
+            "cmd": "npm install -g %{包名}%",
+            "params": {},
+            "keyword": "npm 全局安装"
+          },
+          {
+            "name": "安装所有依赖",
+            "cmd": "npm install",
+            "params": {},
+            "keyword": "npm install 全部"
+          },
+          {
+            "name": "安装指定版本",
+            "cmd": "npm install %{包名}%@%{版本}%",
+            "params": {},
+            "keyword": "npm install 版本"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": false,
+            "description": "包名称",
+            "example": "lodash",
+            "notes": "可选，不填则安装所有依赖"
+          },
+          "版本": {
+            "type": "string",
+            "required": false,
+            "description": "包版本号",
+            "example": "4.17.21",
+            "notes": "可选，指定版本"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "npm uninstall 卸载依赖",
+      "keyword": "npm uninstall 卸载",
+      "description": "卸载项目依赖包",
+      "data": {
+        "cmd": "npm uninstall %{包名}%",
+        "extensions": [
+          {
+            "name": "卸载并从 package.json 移除",
+            "cmd": "npm uninstall %{包名}%",
+            "params": {},
+            "keyword": "npm uninstall 移除"
+          },
+          {
+            "name": "卸载 devDependencies",
+            "cmd": "npm uninstall -D %{包名}%",
+            "params": {},
+            "keyword": "npm uninstall dev"
+          },
+          {
+            "name": "卸载全局包",
+            "cmd": "npm uninstall -g %{包名}%",
+            "params": {},
+            "keyword": "npm 卸载全局"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "要卸载的包名称",
+            "example": "lodash",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "npm run 执行脚本",
+      "keyword": "npm run 脚本",
+      "description": "运行 package.json 中定义的脚本",
+      "data": {
+        "cmd": "npm run %{脚本名}%",
+        "extensions": [
+          {
+            "name": "列出所有可用脚本",
+            "cmd": "npm run",
+            "params": {},
+            "keyword": "npm run 列表"
+          },
+          {
+            "name": "带参数运行脚本",
+            "cmd": "npm run %{脚本名}% -- --%{参数}%",
+            "params": {},
+            "keyword": "npm run 参数"
+          }
+        ],
+        "params": {
+          "脚本名": {
+            "type": "string",
+            "required": true,
+            "description": "脚本名称",
+            "example": "build",
+            "notes": ""
+          },
+          "参数": {
+            "type": "string",
+            "required": false,
+            "description": "传递给脚本的参数",
+            "example": "mode=production",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "npm dev 启动开发服务器",
+      "keyword": "npm dev 开发",
+      "description": "启动开发服务器",
+      "data": {
+        "cmd": "npm run dev",
+        "extensions": [
+          {
+            "name": "启动开发服务器",
+            "cmd": "npm run dev",
+            "params": {},
+            "keyword": "npm dev 启动"
+          },
+          {
+            "name": "带参数启动",
+            "cmd": "npm run dev -- --port %{端口}%",
+            "params": {},
+            "keyword": "npm dev 端口"
+          }
+        ],
+        "params": {
+          "端口": {
+            "type": "string",
+            "required": false,
+            "description": "开发服务器端口",
+            "example": "3000",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "npm build 生产构建",
+      "keyword": "npm build 构建",
+      "description": "执行生产环境构建",
+      "data": {
+        "cmd": "npm run build",
+        "extensions": [
+          {
+            "name": "执行生产构建",
+            "cmd": "npm run build",
+            "params": {},
+            "keyword": "npm build 执行"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "npm list 查看依赖列表",
+      "keyword": "npm list 列表",
+      "description": "列出已安装的依赖包",
+      "data": {
+        "cmd": "npm list %{选项}%",
+        "extensions": [
+          {
+            "name": "列出顶层依赖",
+            "cmd": "npm list",
+            "params": {},
+            "keyword": "npm list 顶层"
+          },
+          {
+            "name": "列出所有依赖树",
+            "cmd": "npm list --all",
+            "params": {},
+            "keyword": "npm list 全部"
+          },
+          {
+            "name": "列出特定包",
+            "cmd": "npm list %{包名}%",
+            "params": {},
+            "keyword": "npm list 指定包"
+          },
+          {
+            "name": "列出 devDependencies",
+            "cmd": "npm list --dev",
+            "params": {},
+            "keyword": "npm list dev"
+          },
+          {
+            "name": "深度显示",
+            "cmd": "npm list --depth=%{深度}%",
+            "params": {},
+            "keyword": "npm list 深度"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "list 选项",
+            "example": "--all",
+            "notes": "可选"
+          },
+          "包名": {
+            "type": "string",
+            "required": false,
+            "description": "包名称",
+            "example": "lodash",
+            "notes": "可选"
+          },
+          "深度": {
+            "type": "string",
+            "required": false,
+            "description": "依赖树深度",
+            "example": "2",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "npm outdated 检查过期依赖",
+      "keyword": "npm outdated 过期",
+      "description": "检查哪些依赖有新版本可用",
+      "data": {
+        "cmd": "npm outdated",
+        "extensions": [
+          {
+            "name": "检查所有过期依赖",
+            "cmd": "npm outdated",
+            "params": {},
+            "keyword": "npm outdated 检查"
+          },
+          {
+            "name": "检查特定包",
+            "cmd": "npm outdated %{包名}%",
+            "params": {},
+            "keyword": "npm outdated 指定"
+          },
+          {
+            "name": "显示可升级列表",
+            "cmd": "npm outdated --json",
+            "params": {},
+            "keyword": "npm outdated json"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": false,
+            "description": "包名称",
+            "example": "lodash",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "npm update 更新依赖",
+      "keyword": "npm update 升级",
+      "description": "更新依赖包到最新兼容版本",
+      "data": {
+        "cmd": "npm update %{包名}%",
+        "extensions": [
+          {
+            "name": "更新所有依赖",
+            "cmd": "npm update",
+            "params": {},
+            "keyword": "npm update 全部"
+          },
+          {
+            "name": "更新特定包",
+            "cmd": "npm update %{包名}%",
+            "params": {},
+            "keyword": "npm update 指定"
+          },
+          {
+            "name": "更新全局包",
+            "cmd": "npm update -g %{包名}%",
+            "params": {},
+            "keyword": "npm update 全局"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": false,
+            "description": "包名称",
+            "example": "lodash",
+            "notes": "可选，不填则更新所有"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "npm init 初始化项目",
+      "keyword": "npm init 初始化",
+      "description": "初始化一个新的 npm 项目",
+      "data": {
+        "cmd": "npm init %{选项}%",
+        "extensions": [
+          {
+            "name": "使用默认值初始化",
+            "cmd": "npm init -y",
+            "params": {},
+            "keyword": "npm init 默认"
+          },
+          {
+            "name": "初始化为 ES 模块",
+            "cmd": "npm init -y --esm",
+            "params": {},
+            "keyword": "npm init esm"
+          },
+          {
+            "name": "指定作用域初始化",
+            "cmd": "npm init -y --scope=%{作用域}%",
+            "params": {},
+            "keyword": "npm init 作用域"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "init 选项",
+            "example": "-y",
+            "notes": "可选"
+          },
+          "作用域": {
+            "type": "string",
+            "required": false,
+            "description": "npm 作用域",
+            "example": "@myorg",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "yarn add 添加依赖",
+      "keyword": "yarn add 安装",
+      "description": "添加项目依赖包",
+      "data": {
+        "cmd": "yarn add %{包名}%",
+        "extensions": [
+          {
+            "name": "添加依赖",
+            "cmd": "yarn add %{包名}%",
+            "params": {},
+            "keyword": "yarn add 添加"
+          },
+          {
+            "name": "添加为 devDependencies",
+            "cmd": "yarn add -D %{包名}%",
+            "params": {},
+            "keyword": "yarn add dev"
+          },
+          {
+            "name": "添加为 optionalDependencies",
+            "cmd": "yarn add -O %{包名}%",
+            "params": {},
+            "keyword": "yarn add optional"
+          },
+          {
+            "name": "全局添加",
+            "cmd": "yarn global add %{包名}%",
+            "params": {},
+            "keyword": "yarn 全局添加"
+          },
+          {
+            "name": "添加指定版本",
+            "cmd": "yarn add %{包名}%@%{版本}%",
+            "params": {},
+            "keyword": "yarn add 版本"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "包名称",
+            "example": "lodash",
+            "notes": ""
+          },
+          "版本": {
+            "type": "string",
+            "required": false,
+            "description": "包版本号",
+            "example": "4.17.21",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "yarn remove 移除依赖",
+      "keyword": "yarn remove 卸载",
+      "description": "移除项目依赖包",
+      "data": {
+        "cmd": "yarn remove %{包名}%",
+        "extensions": [
+          {
+            "name": "移除依赖",
+            "cmd": "yarn remove %{包名}%",
+            "params": {},
+            "keyword": "yarn remove 移除"
+          },
+          {
+            "name": "移除全局包",
+            "cmd": "yarn global remove %{包名}%",
+            "params": {},
+            "keyword": "yarn 全局移除"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "要移除的包名称",
+            "example": "lodash",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "yarn dev 启动开发服务器",
+      "keyword": "yarn dev 开发",
+      "description": "使用 yarn 启动开发服务器",
+      "data": {
+        "cmd": "yarn dev",
+        "extensions": [
+          {
+            "name": "启动开发服务器",
+            "cmd": "yarn dev",
+            "params": {},
+            "keyword": "yarn dev 启动"
+          },
+          {
+            "name": "带参数启动",
+            "cmd": "yarn dev -- --port %{端口}%",
+            "params": {},
+            "keyword": "yarn dev 端口"
+          }
+        ],
+        "params": {
+          "端口": {
+            "type": "string",
+            "required": false,
+            "description": "开发服务器端口",
+            "example": "3000",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "yarn build 生产构建",
+      "keyword": "yarn build 构建",
+      "description": "使用 yarn 执行生产环境构建",
+      "data": {
+        "cmd": "yarn build",
+        "extensions": [
+          {
+            "name": "执行生产构建",
+            "cmd": "yarn build",
+            "params": {},
+            "keyword": "yarn build 执行"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "yarn list 查看依赖列表",
+      "keyword": "yarn list 列表",
+      "description": "列出已安装的依赖包",
+      "data": {
+        "cmd": "yarn list %{选项}%",
+        "extensions": [
+          {
+            "name": "列出所有依赖",
+            "cmd": "yarn list",
+            "params": {},
+            "keyword": "yarn list 全部"
+          },
+          {
+            "name": "列出顶层依赖",
+            "cmd": "yarn list --level 0",
+            "params": {},
+            "keyword": "yarn list 顶层"
+          },
+          {
+            "name": "过滤显示",
+            "cmd": "yarn list --pattern %{包名}%",
+            "params": {},
+            "keyword": "yarn list 过滤"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "list 选项",
+            "example": "--level 0",
+            "notes": "可选"
+          },
+          "包名": {
+            "type": "string",
+            "required": false,
+            "description": "包名称",
+            "example": "lodash",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "yarn upgrade 升级依赖",
+      "keyword": "yarn upgrade 升级",
+      "description": "升级依赖包到最新版本",
+      "data": {
+        "cmd": "yarn upgrade %{包名}%",
+        "extensions": [
+          {
+            "name": "升级所有依赖",
+            "cmd": "yarn upgrade",
+            "params": {},
+            "keyword": "yarn upgrade 全部"
+          },
+          {
+            "name": "升级特定包",
+            "cmd": "yarn upgrade %{包名}%",
+            "params": {},
+            "keyword": "yarn upgrade 指定"
+          },
+          {
+            "name": "升级到最新版本",
+            "cmd": "yarn upgrade --latest %{包名}%",
+            "params": {},
+            "keyword": "yarn upgrade 最新"
+          },
+          {
+            "name": "全局升级",
+            "cmd": "yarn global upgrade",
+            "params": {},
+            "keyword": "yarn 全局升级"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": false,
+            "description": "包名称",
+            "example": "lodash",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "pnpm add 添加依赖",
+      "keyword": "pnpm add 安装",
+      "description": "使用 pnpm 添加项目依赖包",
+      "data": {
+        "cmd": "pnpm add %{包名}%",
+        "extensions": [
+          {
+            "name": "添加依赖",
+            "cmd": "pnpm add %{包名}%",
+            "params": {},
+            "keyword": "pnpm add 添加"
+          },
+          {
+            "name": "添加为 devDependencies",
+            "cmd": "pnpm add -D %{包名}%",
+            "params": {},
+            "keyword": "pnpm add dev"
+          },
+          {
+            "name": "添加为 optionalDependencies",
+            "cmd": "pnpm add -O %{包名}%",
+            "params": {},
+            "keyword": "pnpm add optional"
+          },
+          {
+            "name": "全局添加",
+            "cmd": "pnpm add -g %{包名}%",
+            "params": {},
+            "keyword": "pnpm 全局添加"
+          },
+          {
+            "name": "添加指定版本",
+            "cmd": "pnpm add %{包名}%@%{版本}%",
+            "params": {},
+            "keyword": "pnpm add 版本"
+          },
+          {
+            "name": "从 workspace 添加",
+            "cmd": "pnpm add %{包名}% --filter %{workspace}%",
+            "params": {},
+            "keyword": "pnpm add workspace"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "包名称",
+            "example": "lodash",
+            "notes": ""
+          },
+          "版本": {
+            "type": "string",
+            "required": false,
+            "description": "包版本号",
+            "example": "4.17.21",
+            "notes": "可选"
+          },
+          "workspace": {
+            "type": "string",
+            "required": false,
+            "description": "workspace 名称",
+            "example": "@myorg/app",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "pnpm remove 移除依赖",
+      "keyword": "pnpm remove 卸载",
+      "description": "使用 pnpm 移除项目依赖包",
+      "data": {
+        "cmd": "pnpm remove %{包名}%",
+        "extensions": [
+          {
+            "name": "移除依赖",
+            "cmd": "pnpm remove %{包名}%",
+            "params": {},
+            "keyword": "pnpm remove 移除"
+          },
+          {
+            "name": "移除全局包",
+            "cmd": "pnpm remove -g %{包名}%",
+            "params": {},
+            "keyword": "pnpm 全局移除"
+          },
+          {
+            "name": "从 workspace 移除",
+            "cmd": "pnpm remove %{包名}% --filter %{workspace}%",
+            "params": {},
+            "keyword": "pnpm remove workspace"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "要移除的包名称",
+            "example": "lodash",
+            "notes": ""
+          },
+          "workspace": {
+            "type": "string",
+            "required": false,
+            "description": "workspace 名称",
+            "example": "@myorg/app",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "pnpm dev 启动开发服务器",
+      "keyword": "pnpm dev 开发",
+      "description": "使用 pnpm 启动开发服务器",
+      "data": {
+        "cmd": "pnpm dev",
+        "extensions": [
+          {
+            "name": "启动开发服务器",
+            "cmd": "pnpm dev",
+            "params": {},
+            "keyword": "pnpm dev 启动"
+          },
+          {
+            "name": "带参数启动",
+            "cmd": "pnpm dev -- --port %{端口}%",
+            "params": {},
+            "keyword": "pnpm dev 端口"
+          }
+        ],
+        "params": {
+          "端口": {
+            "type": "string",
+            "required": false,
+            "description": "开发服务器端口",
+            "example": "3000",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "pnpm build 生产构建",
+      "keyword": "pnpm build 构建",
+      "description": "使用 pnpm 执行生产环境构建",
+      "data": {
+        "cmd": "pnpm build",
+        "extensions": [
+          {
+            "name": "执行生产构建",
+            "cmd": "pnpm build",
+            "params": {},
+            "keyword": "pnpm build 执行"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端包管理器/",
+      "name": "pnpm list 查看依赖列表",
+      "keyword": "pnpm list 列表",
+      "description": "使用 pnpm 列出已安装的依赖包",
+      "data": {
+        "cmd": "pnpm list %{选项}%",
+        "extensions": [
+          {
+            "name": "列出所有依赖",
+            "cmd": "pnpm list",
+            "params": {},
+            "keyword": "pnpm list 全部"
+          },
+          {
+            "name": "列出顶层依赖",
+            "cmd": "pnpm list --depth 0",
+            "params": {},
+            "keyword": "pnpm list 顶层"
+          },
+          {
+            "name": "列出特定包",
+            "cmd": "pnpm list %{包名}%",
+            "params": {},
+            "keyword": "pnpm list 指定"
+          },
+          {
+            "name": "按依赖项查看",
+            "cmd": "pnpm list --recursive",
+            "params": {},
+            "keyword": "pnpm list 递归"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "list 选项",
+            "example": "--depth 0",
+            "notes": "可选"
+          },
+          "包名": {
+            "type": "string",
+            "required": false,
+            "description": "包名称",
+            "example": "lodash",
+            "notes": "可选"
+          }
+        }
+      }
+    }
+  ]
+}

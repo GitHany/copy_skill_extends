@@ -4,7 +4,7 @@
 
 ## 功能特性
 
-- **345+ 命令覆盖**：Linux、Docker、Git、GitHub CLI、Kubernetes、MySQL、Redis、PostgreSQL 等
+- **436+ 命令覆盖**：Linux、Docker、Git、GitHub CLI、Kubernetes、MySQL、Redis、PostgreSQL、Python、前端包管理器等
 - **参数完整**：每个命令包含 type/required/description/example/notes
 - **双模式支持**：
   - **直接复制**：`params: {}` + 硬编码命令，一键复制
@@ -15,14 +15,17 @@
 
 ```
 copy_skill_extends/
-├── modules/                    # 各模块独立目录
+├── modules/                    # 各模块独立目录 (31个模块)
 │   ├── Docker 命令/
+│   ├── DockerCompose/
 │   ├── Git 命令/
 │   ├── GitHub CLI 命令/
+│   ├── GitHubActions/
 │   ├── Kubernetes 命令/
 │   ├── Linux 命令/
 │   ├── MySQL 命令/
 │   ├── PostgreSQL 命令/
+│   ├── Python命令/
 │   ├── Redis-基本操作/
 │   ├── Redis-哈希操作/
 │   ├── Redis-列表操作/
@@ -30,14 +33,14 @@ copy_skill_extends/
 │   ├── Redis-服务器命令/
 │   ├── Redis-键管理/
 │   ├── Redis-集合操作/
-│   ├── Claude Skills-oh-my-claude/
-│   ├── Claude Skills-ecc/
-│   ├── Claude Skills-ccg/
-│   ├── Claude Skills-openspec/
-│   ├── Claude Skills-providers/
-│   ├── Claude Skills-regex/
-│   ├── Claude Skills-superpowers/
-│   └── Claude Skills-ultrawork/
+│   ├── SSH远程操作/
+│   ├── Shell脚本模板/
+│   ├── Nginx命令/
+│   ├── 前端包管理器/
+│   ├── 系统监控/
+│   ├── 网络诊断/
+│   ├── Elasticsearch/
+│   └── Claude Skills-*/
 ├── scripts/
 │   └── merge_commands.py     # 合并脚本
 ├── docs/
@@ -134,11 +137,14 @@ python scripts/merge_commands.py
 |------|--------|
 | Linux 命令 | 43 |
 | Docker 命令 | 21 |
+| DockerCompose | 10 |
 | Git 命令 | 24 |
 | GitHub CLI 命令 | 33 |
+| GitHubActions | 11 |
 | Kubernetes 命令 | 29 |
 | MySQL 命令 | 19 |
 | PostgreSQL 命令 | 25 |
+| Python命令 | 15 |
 | Redis-基本操作 | 18 |
 | Redis-哈希操作 | 12 |
 | Redis-列表操作 | 13 |
@@ -146,8 +152,15 @@ python scripts/merge_commands.py
 | Redis-服务器命令 | 15 |
 | Redis-键管理 | 16 |
 | Redis-集合操作 | 15 |
+| SSH远程操作 | 5 |
+| Shell脚本模板 | 13 |
+| Nginx命令 | 5 |
+| 前端包管理器 | 20 |
+| 系统监控 | 8 |
+| 网络诊断 | 9 |
+| Elasticsearch | - |
 | Claude Skills | 50+ |
-| **总计** | **345+** |
+| **总计** | **436+** |
 
 ## 与 copy_skill 配合使用
 

@@ -1,0 +1,698 @@
+{
+  "module": "Python命令",
+  "version": "1.0",
+  "description": "Python 包管理与环境命令集合",
+  "commands": [
+    {
+      "dirPath": "/Python命令/",
+      "name": "pip install 安装包",
+      "keyword": "pip install 安装",
+      "description": "使用 pip 安装 Python 包",
+      "data": {
+        "cmd": "pip install %{包名}%",
+        "extensions": [
+          {
+            "name": "安装指定版本",
+            "cmd": "pip install %{包名}%==%{版本号}%",
+            "params": {
+              "包名": { "type": "string", "required": true, "description": "包名称", "example": "requests", "notes": "常用" },
+              "版本号": { "type": "string", "required": true, "description": "版本号", "example": "2.28.0", "notes": "" }
+            },
+            "keyword": "pip install 版本"
+          },
+          {
+            "name": "安装 requirements",
+            "cmd": "pip install -r requirements.txt",
+            "params": {},
+            "keyword": "pip install requirements"
+          },
+          {
+            "name": "安装多个包",
+            "cmd": "pip install %{包1}% %{包2}%",
+            "params": {
+              "包1": { "type": "string", "required": true, "description": "第一个包名", "example": "flask", "notes": "常用" },
+              "包2": { "type": "string", "required": true, "description": "第二个包名", "example": "django", "notes": "常用" }
+            },
+            "keyword": "pip install 多个"
+          },
+          {
+            "name": "安装到用户目录",
+            "cmd": "pip install --user %{包名}%",
+            "params": {
+              "包名": { "type": "string", "required": true, "description": "包名称", "example": "virtualenv", "notes": "" }
+            },
+            "keyword": "pip install 用户"
+          },
+          {
+            "name": "升级包",
+            "cmd": "pip install --upgrade %{包名}%",
+            "params": {
+              "包名": { "type": "string", "required": true, "description": "包名称", "example": "pip", "notes": "常用" }
+            },
+            "keyword": "pip install 升级"
+          },
+          {
+            "name": "从 Git 安装",
+            "cmd": "pip install git+%{仓库URL}%",
+            "params": {
+              "仓库URL": { "type": "string", "required": true, "description": "Git 仓库地址", "example": "https://github.com/user/repo.git", "notes": "" }
+            },
+            "keyword": "pip install git"
+          }
+        ],
+        "params": {
+          "包名": { "type": "string", "required": true, "description": "包名称", "example": "requests", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "pip uninstall 卸载包",
+      "keyword": "pip uninstall 卸载",
+      "description": "卸载 Python 包",
+      "data": {
+        "cmd": "pip uninstall %{包名}%",
+        "extensions": [
+          {
+            "name": "卸载多个包",
+            "cmd": "pip uninstall %{包1}% %{包2}%",
+            "params": {
+              "包1": { "type": "string", "required": true, "description": "第一个包名", "example": "requests", "notes": "" },
+              "包2": { "type": "string", "required": true, "description": "第二个包名", "example": "flask", "notes": "" }
+            },
+            "keyword": "pip uninstall 多个"
+          },
+          {
+            "name": "自动确认卸载",
+            "cmd": "pip uninstall -y %{包名}%",
+            "params": {
+              "包名": { "type": "string", "required": true, "description": "包名称", "example": "numpy", "notes": "常用" }
+            },
+            "keyword": "pip uninstall 确认"
+          },
+          {
+            "name": "从 requirements 卸载",
+            "cmd": "pip uninstall -r requirements.txt -y",
+            "params": {},
+            "keyword": "pip uninstall requirements"
+          }
+        ],
+        "params": {
+          "包名": { "type": "string", "required": true, "description": "包名称", "example": "numpy", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "pip list 查看已安装包",
+      "keyword": "pip list 查看",
+      "description": "列出所有已安装的 Python 包",
+      "data": {
+        "cmd": "pip list",
+        "extensions": [
+          {
+            "name": "输出格式化为 requirements",
+            "cmd": "pip freeze",
+            "params": {},
+            "keyword": "pip freeze"
+          },
+          {
+            "name": "可编辑包（开发模式）",
+            "cmd": "pip list -e",
+            "params": {},
+            "keyword": "pip list 开发"
+          },
+          {
+            "name": "按格式输出",
+            "cmd": "pip freeze --format=%{格式}%",
+            "params": {
+              "格式": { "type": "string", "required": true, "description": "输出格式", "example": "freeze", "notes": "" }
+            },
+            "keyword": "pip freeze 格式"
+          },
+          {
+            "name": "保存依赖到文件",
+            "cmd": "pip freeze > requirements.txt",
+            "params": {},
+            "keyword": "pip freeze 保存"
+          },
+          {
+            "name": "查看过期包",
+            "cmd": "pip list --outdated",
+            "params": {},
+            "keyword": "pip list 过期"
+          },
+          {
+            "name": "查看可升级包",
+            "cmd": "pip list --upgradable",
+            "params": {},
+            "keyword": "pip list 可升级"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "pip show 查看包信息",
+      "keyword": "pip show 信息",
+      "description": "显示包的详细信息",
+      "data": {
+        "cmd": "pip show %{包名}%",
+        "extensions": [
+          {
+            "name": "查看包含文件",
+            "cmd": "pip show -f %{包名}%",
+            "params": {
+              "包名": { "type": "string", "required": true, "description": "包名称", "example": "requests", "notes": "常用" }
+            },
+            "keyword": "pip show 文件"
+          },
+          {
+            "name": "输出 JSON 格式",
+            "cmd": "pip show %{包名}% --format=json",
+            "params": {
+              "包名": { "type": "string", "required": true, "description": "包名称", "example": "flask", "notes": "" }
+            },
+            "keyword": "pip show json"
+          }
+        ],
+        "params": {
+          "包名": { "type": "string", "required": true, "description": "包名称", "example": "requests", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "pip check 检查依赖",
+      "keyword": "pip check 检查",
+      "description": "检查已安装包的依赖冲突",
+      "data": {
+        "cmd": "pip check",
+        "extensions": [
+          {
+            "name": "检查特定包",
+            "cmd": "pip check %{包名}%",
+            "params": {
+              "包名": { "type": "string", "required": true, "description": "包名称", "example": "numpy", "notes": "" }
+            },
+            "keyword": "pip check 包"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "python -m venv 创建虚拟环境",
+      "keyword": "venv 虚拟环境",
+      "description": "创建 Python 虚拟环境",
+      "data": {
+        "cmd": "python -m venv %{环境名}%",
+        "extensions": [
+          {
+            "name": "创建虚拟环境",
+            "cmd": "python -m venv venv",
+            "params": {},
+            "keyword": "venv 创建"
+          },
+          {
+            "name": "Windows 激活",
+            "cmd": "venv\\Scripts\\activate",
+            "params": {},
+            "keyword": "venv 激活 windows"
+          },
+          {
+            "name": "Linux/Mac 激活",
+            "cmd": "source venv/bin/activate",
+            "params": {},
+            "keyword": "venv 激活 linux"
+          },
+          {
+            "name": "退出虚拟环境",
+            "cmd": "deactivate",
+            "params": {},
+            "keyword": "venv 退出"
+          },
+          {
+            "name": "创建指定版本环境",
+            "cmd": "python3 -m venv %{环境名}% --python=%{版本}%",
+            "params": {
+              "环境名": { "type": "string", "required": true, "description": "环境名称", "example": "py38", "notes": "" },
+              "版本": { "type": "string", "required": true, "description": "Python 版本", "example": "python3.8", "notes": "" }
+            },
+            "keyword": "venv 指定版本"
+          }
+        ],
+        "params": {
+          "环境名": { "type": "string", "required": true, "description": "环境名称", "example": "venv", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "python -m pip 调用内置模块",
+      "keyword": "python -m pip",
+      "description": "通过 python -m 调用 pip 模块",
+      "data": {
+        "cmd": "python -m pip %{操作}%",
+        "extensions": [
+          {
+            "name": "升级 pip",
+            "cmd": "python -m pip install --upgrade pip",
+            "params": {},
+            "keyword": "python -m pip 升级"
+          },
+          {
+            "name": "检查版本",
+            "cmd": "python -m pip --version",
+            "params": {},
+            "keyword": "python -m pip 版本"
+          },
+          {
+            "name": "安装包",
+            "cmd": "python -m pip install %{包名}%",
+            "params": {
+              "包名": { "type": "string", "required": true, "description": "包名称", "example": "numpy", "notes": "常用" }
+            },
+            "keyword": "python -m pip 安装"
+          },
+          {
+            "name": "冻结依赖",
+            "cmd": "python -m pip freeze",
+            "params": {},
+            "keyword": "python -m pip freeze"
+          }
+        ],
+        "params": {
+          "操作": { "type": "string", "required": true, "description": "pip 操作", "example": "install requests", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "python -m http.server 启动 HTTP 服务",
+      "keyword": "http.server 服务",
+      "description": "启动一个简单的 HTTP 服务器",
+      "data": {
+        "cmd": "python -m http.server %{端口}%",
+        "extensions": [
+          {
+            "name": "默认端口 8000",
+            "cmd": "python -m http.server",
+            "params": {},
+            "keyword": "http.server 默认"
+          },
+          {
+            "name": "指定端口",
+            "cmd": "python -m http.server %{端口}%",
+            "params": {
+              "端口": { "type": "string", "required": true, "description": "端口号", "example": "8080", "notes": "常用" }
+            },
+            "keyword": "http.server 端口"
+          },
+          {
+            "name": "绑定指定 IP",
+            "cmd": "python -m http.server %{端口}% --bind %{IP}%",
+            "params": {
+              "端口": { "type": "string", "required": true, "description": "端口号", "example": "8000", "notes": "" },
+              "IP": { "type": "string", "required": true, "description": "绑定地址", "example": "0.0.0.0", "notes": "" }
+            },
+            "keyword": "http.server 绑定"
+          },
+          {
+            "name": "指定目录",
+            "cmd": "python -m http.server %{端口}% --directory %{目录}%",
+            "params": {
+              "端口": { "type": "string", "required": true, "description": "端口号", "example": "8000", "notes": "" },
+              "目录": { "type": "string", "required": true, "description": "服务目录", "example": "./public", "notes": "" }
+            },
+            "keyword": "http.server 目录"
+          }
+        ],
+        "params": {
+          "端口": { "type": "string", "required": false, "description": "端口号", "example": "8000", "notes": "默认 8000" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "python -m json.tool JSON 格式化",
+      "keyword": "json.tool 格式化",
+      "description": "格式化或验证 JSON 文件",
+      "data": {
+        "cmd": "python -m json.tool %{文件}%",
+        "extensions": [
+          {
+            "name": "格式化文件",
+            "cmd": "python -m json.tool %{文件}%.json",
+            "params": {
+              "文件": { "type": "string", "required": true, "description": "JSON 文件路径", "example": "data", "notes": "常用" }
+            },
+            "keyword": "json.tool 文件"
+          },
+          {
+            "name": "从 stdin 读取",
+            "cmd": "cat %{文件}%.json | python -m json.tool",
+            "params": {
+              "文件": { "type": "string", "required": true, "description": "JSON 文件路径", "example": "config", "notes": "" }
+            },
+            "keyword": "json.tool stdin"
+          },
+          {
+            "name": "排序键",
+            "cmd": "python -m json.tool --indent 2 %{文件}%.json > %{输出}%",
+            "params": {
+              "文件": { "type": "string", "required": true, "description": "输入文件", "example": "data", "notes": "" },
+              "输出": { "type": "string", "required": true, "description": "输出文件", "example": "formatted", "notes": "" }
+            },
+            "keyword": "json.tool 排序"
+          },
+          {
+            "name": "验证 JSON",
+            "cmd": "python -c \"import json; json.load(open('%{文件}%.json'))\"",
+            "params": {
+              "文件": { "type": "string", "required": true, "description": "JSON 文件路径", "example": "config", "notes": "" }
+            },
+            "keyword": "json.tool 验证"
+          }
+        ],
+        "params": {
+          "文件": { "type": "string", "required": true, "description": "JSON 文件路径", "example": "data.json", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "pipenv install 安装依赖",
+      "keyword": "pipenv 安装",
+      "description": "使用 Pipenv 安装项目依赖",
+      "data": {
+        "cmd": "pipenv install %{包名}%",
+        "extensions": [
+          {
+            "name": "安装所有依赖",
+            "cmd": "pipenv install",
+            "params": {},
+            "keyword": "pipenv install 全部"
+          },
+          {
+            "name": "安装开发依赖",
+            "cmd": "pipenv install --dev %{包名}%",
+            "params": {
+              "包名": { "type": "string", "required": true, "description": "包名称", "example": "pytest", "notes": "" }
+            },
+            "keyword": "pipenv install dev"
+          },
+          {
+            "name": "安装特定版本",
+            "cmd": "pipenv install %{包名}%==%{版本}%",
+            "params": {
+              "包名": { "type": "string", "required": true, "description": "包名称", "example": "flask", "notes": "" },
+              "版本": { "type": "string", "required": true, "description": "版本号", "example": "2.0.0", "notes": "" }
+            },
+            "keyword": "pipenv 版本"
+          },
+          {
+            "name": "从 Pipfile 安装",
+            "cmd": "pipenv install --ignore-pipfile",
+            "params": {},
+            "keyword": "pipenv Pipfile"
+          },
+          {
+            "name": "同步 Pipfile",
+            "cmd": "pipenv sync",
+            "params": {},
+            "keyword": "pipenv sync"
+          },
+          {
+            "name": "生成 requirements",
+            "cmd": "pipenv lock --requirements",
+            "params": {},
+            "keyword": "pipenv requirements"
+          }
+        ],
+        "params": {
+          "包名": { "type": "string", "required": false, "description": "包名称", "example": "requests", "notes": "可选" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "pipenv shell 进入环境",
+      "keyword": "pipenv shell 环境",
+      "description": "激活 Pipenv 虚拟环境 Shell",
+      "data": {
+        "cmd": "pipenv shell",
+        "extensions": [
+          {
+            "name": "进入交互式环境",
+            "cmd": "pipenv shell",
+            "params": {},
+            "keyword": "pipenv shell 交互"
+          },
+          {
+            "name": "运行命令不激活",
+            "cmd": "pipenv run %{命令}%",
+            "params": {
+              "命令": { "type": "string", "required": true, "description": "要执行的命令", "example": "python app.py", "notes": "常用" }
+            },
+            "keyword": "pipenv run"
+          },
+          {
+            "name": "运行 Python",
+            "cmd": "pipenv run python %{脚本}%",
+            "params": {
+              "脚本": { "type": "string", "required": true, "description": "Python 脚本路径", "example": "main.py", "notes": "常用" }
+            },
+            "keyword": "pipenv run python"
+          },
+          {
+            "name": "退出环境",
+            "cmd": "exit",
+            "params": {},
+            "keyword": "pipenv 退出"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "poetry install 安装依赖",
+      "keyword": "poetry install",
+      "description": "使用 Poetry 安装项目依赖",
+      "data": {
+        "cmd": "poetry install",
+        "extensions": [
+          {
+            "name": "安装所有依赖",
+            "cmd": "poetry install",
+            "params": {},
+            "keyword": "poetry install 全部"
+          },
+          {
+            "name": "安装开发依赖",
+            "cmd": "poetry install --with dev",
+            "params": {},
+            "keyword": "poetry install dev"
+          },
+          {
+            "name": "仅生产依赖",
+            "cmd": "poetry install --only prod",
+            "params": {},
+            "keyword": "poetry install prod"
+          },
+          {
+            "name": "安装并同步",
+            "cmd": "poetry install --sync",
+            "params": {},
+            "keyword": "poetry install sync"
+          },
+          {
+            "name": "离线安装",
+            "cmd": "poetry install --no-interaction --offline",
+            "params": {},
+            "keyword": "poetry install 离线"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "poetry add 添加依赖",
+      "keyword": "poetry add 添加",
+      "description": "使用 Poetry 添加项目依赖",
+      "data": {
+        "cmd": "poetry add %{包名}%",
+        "extensions": [
+          {
+            "name": "添加生产依赖",
+            "cmd": "poetry add %{包名}%",
+            "params": {
+              "包名": { "type": "string", "required": true, "description": "包名称", "example": "flask", "notes": "常用" }
+            },
+            "keyword": "poetry add 包"
+          },
+          {
+            "name": "添加开发依赖",
+            "cmd": "poetry add --group dev %{包名}%",
+            "params": {
+              "包名": { "type": "string", "required": true, "description": "包名称", "example": "pytest", "notes": "" }
+            },
+            "keyword": "poetry add dev"
+          },
+          {
+            "name": "添加特定版本",
+            "cmd": "poetry add %{包名}%^%{版本}%",
+            "params": {
+              "包名": { "type": "string", "required": true, "description": "包名称", "example": "requests", "notes": "" },
+              "版本": { "type": "string", "required": true, "description": "版本号", "example": "2.28", "notes": "" }
+            },
+            "keyword": "poetry add 版本"
+          },
+          {
+            "name": "添加 Git 依赖",
+            "cmd": "poetry add git+%{仓库URL}%",
+            "params": {
+              "仓库URL": { "type": "string", "required": true, "description": "Git 仓库地址", "example": "https://github.com/user/repo.git", "notes": "" }
+            },
+            "keyword": "poetry add git"
+          },
+          {
+            "name": "添加路径依赖",
+            "cmd": "poetry add --path %{路径}%",
+            "params": {
+              "路径": { "type": "string", "required": true, "description": "本地路径", "example": "./packages/mylib", "notes": "" }
+            },
+            "keyword": "poetry add path"
+          },
+          {
+            "name": "移除依赖",
+            "cmd": "poetry remove %{包名}%",
+            "params": {
+              "包名": { "type": "string", "required": true, "description": "包名称", "example": "flask", "notes": "" }
+            },
+            "keyword": "poetry remove"
+          }
+        ],
+        "params": {
+          "包名": { "type": "string", "required": true, "description": "包名称", "example": "requests", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "poetry shell 进入环境",
+      "keyword": "poetry shell 环境",
+      "description": "激活 Poetry 虚拟环境",
+      "data": {
+        "cmd": "poetry shell",
+        "extensions": [
+          {
+            "name": "进入交互式环境",
+            "cmd": "poetry shell",
+            "params": {},
+            "keyword": "poetry shell 交互"
+          },
+          {
+            "name": "运行命令不激活",
+            "cmd": "poetry run %{命令}%",
+            "params": {
+              "命令": { "type": "string", "required": true, "description": "要执行的命令", "example": "python app.py", "notes": "常用" }
+            },
+            "keyword": "poetry run"
+          },
+          {
+            "name": "运行 Python 脚本",
+            "cmd": "poetry run python %{脚本}%",
+            "params": {
+              "脚本": { "type": "string", "required": true, "description": "Python 脚本路径", "example": "main.py", "notes": "常用" }
+            },
+            "keyword": "poetry run python"
+          },
+          {
+            "name": "运行 pytest",
+            "cmd": "poetry run pytest",
+            "params": {},
+            "keyword": "poetry run pytest"
+          },
+          {
+            "name": "运行自定义脚本",
+            "cmd": "poetry run %{脚本名}%",
+            "params": {
+              "脚本名": { "type": "string", "required": true, "description": "脚本名称", "example": "manage.py", "notes": "" }
+            },
+            "keyword": "poetry run 脚本"
+          },
+          {
+            "name": "退出环境",
+            "cmd": "exit",
+            "params": {},
+            "keyword": "poetry 退出"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Python命令/",
+      "name": "poetry run 执行命令",
+      "keyword": "poetry run 执行",
+      "description": "在 Poetry 虚拟环境中执行命令",
+      "data": {
+        "cmd": "poetry run %{命令}%",
+        "extensions": [
+          {
+            "name": "运行 Python",
+            "cmd": "poetry run python %{脚本}%",
+            "params": {
+              "脚本": { "type": "string", "required": true, "description": "Python 脚本路径", "example": "main.py", "notes": "常用" }
+            },
+            "keyword": "poetry run python"
+          },
+          {
+            "name": "运行 pytest",
+            "cmd": "poetry run pytest",
+            "params": {},
+            "keyword": "poetry run pytest"
+          },
+          {
+            "name": "运行 black 格式化",
+            "cmd": "poetry run black %{目录}%",
+            "params": {
+              "目录": { "type": "string", "required": true, "description": "目录路径", "example": "src", "notes": "" }
+            },
+            "keyword": "poetry run black"
+          },
+          {
+            "name": "运行 flake8 检查",
+            "cmd": "poetry run flake8",
+            "params": {},
+            "keyword": "poetry run flake8"
+          },
+          {
+            "name": "运行 mypy 类型检查",
+            "cmd": "poetry run mypy %{目录}%",
+            "params": {
+              "目录": { "type": "string", "required": true, "description": "目录路径", "example": "src", "notes": "" }
+            },
+            "keyword": "poetry run mypy"
+          },
+          {
+            "name": "运行自定义脚本（pyproject.toml）",
+            "cmd": "poetry run %{脚本名}%",
+            "params": {
+              "脚本名": { "type": "string", "required": true, "description": "脚本名称", "example": "dev", "notes": "" }
+            },
+            "keyword": "poetry run 自定义"
+          }
+        ],
+        "params": {
+          "命令": { "type": "string", "required": true, "description": "要执行的命令", "example": "python app.py", "notes": "常用" }
+        }
+      }
+    }
+  ]
+}

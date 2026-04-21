@@ -1,0 +1,702 @@
+{
+  "module": "GitHubActions",
+  "version": "1.0",
+  "description": "GitHub Actions workflow management commands",
+  "commands": [
+    {
+      "dirPath": "/GitHubActions/",
+      "name": "gh run list 查看运行列表",
+      "keyword": "gh run list",
+      "description": "列出 GitHub Actions 工作流运行记录",
+      "data": {
+        "cmd": "gh run list",
+        "extensions": [
+          {
+            "name": "限制返回数量",
+            "cmd": "gh run list --limit %{number}%",
+            "params": {},
+            "keyword": "gh run list 数量"
+          },
+          {
+            "name": "按状态筛选",
+            "cmd": "gh run list --status %{status}%",
+            "params": {},
+            "keyword": "gh run list 状态"
+          },
+          {
+            "name": "按分支筛选",
+            "cmd": "gh run list --branch %{branch}%",
+            "params": {},
+            "keyword": "gh run list 分支"
+          },
+          {
+            "name": "按工作流筛选",
+            "cmd": "gh run list --workflow %{workflow}%",
+            "params": {},
+            "keyword": "gh run list 工作流"
+          },
+          {
+            "name": "监控运行状态",
+            "cmd": "gh run list --watch",
+            "params": {},
+            "keyword": "gh run list 监控"
+          }
+        ],
+        "params": {
+          "number": {
+            "type": "number",
+            "required": false,
+            "description": "返回数量上限",
+            "example": "20",
+            "notes": "常用，可选"
+          },
+          "status": {
+            "type": "string",
+            "required": false,
+            "description": "运行状态",
+            "example": "success",
+            "notes": "可选: queued/in_progress/success/failure/cancelled"
+          },
+          "branch": {
+            "type": "string",
+            "required": false,
+            "description": "分支名称",
+            "example": "main",
+            "notes": "可选"
+          },
+          "workflow": {
+            "type": "string",
+            "required": false,
+            "description": "工作流名称或 ID",
+            "example": "CI",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHubActions/",
+      "name": "gh run watch 监控运行",
+      "keyword": "gh run watch",
+      "description": "实时监控 GitHub Actions 工作流运行状态",
+      "data": {
+        "cmd": "gh run watch %{run_id}%",
+        "extensions": [
+          {
+            "name": "监控指定仓库运行",
+            "cmd": "gh run watch %{run_id}% --repo %{owner}/%{repo}%",
+            "params": {},
+            "keyword": "gh run watch 仓库"
+          },
+          {
+            "name": "间隔时间（秒）",
+            "cmd": "gh run watch %{run_id}% --interval %{seconds}%",
+            "params": {},
+            "keyword": "gh run watch 间隔"
+          }
+        ],
+        "params": {
+          "run_id": {
+            "type": "number",
+            "required": true,
+            "description": "运行 ID",
+            "example": "123456789",
+            "notes": ""
+          },
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          },
+          "seconds": {
+            "type": "number",
+            "required": false,
+            "description": "轮询间隔（秒）",
+            "example": "10",
+            "notes": "可选，默认 5 秒"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHubActions/",
+      "name": "gh run cancel 取消运行",
+      "keyword": "gh run cancel",
+      "description": "取消正在运行的 GitHub Actions 工作流",
+      "data": {
+        "cmd": "gh run cancel %{run_id}%",
+        "extensions": [
+          {
+            "name": "取消指定仓库运行",
+            "cmd": "gh run cancel %{run_id}% --repo %{owner}/%{repo}%",
+            "params": {},
+            "keyword": "gh run cancel 仓库"
+          }
+        ],
+        "params": {
+          "run_id": {
+            "type": "number",
+            "required": true,
+            "description": "运行 ID",
+            "example": "123456789",
+            "notes": "常用"
+          },
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHubActions/",
+      "name": "gh workflow list 列出工作流",
+      "keyword": "gh workflow list",
+      "description": "列出仓库中所有 GitHub Actions 工作流",
+      "data": {
+        "cmd": "gh workflow list",
+        "extensions": [
+          {
+            "name": "显示禁用的工作流",
+            "cmd": "gh workflow list --all",
+            "params": {},
+            "keyword": "gh workflow list 禁用"
+          },
+          {
+            "name": "查看指定仓库",
+            "cmd": "gh workflow list --repo %{owner}/%{repo}%",
+            "params": {},
+            "keyword": "gh workflow list 仓库"
+          }
+        ],
+        "params": {
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHubActions/",
+      "name": "gh workflow disable 禁用工作流",
+      "keyword": "gh workflow disable",
+      "description": "禁用指定的 GitHub Actions 工作流",
+      "data": {
+        "cmd": "gh workflow disable %{workflow_id}%",
+        "extensions": [
+          {
+            "name": "禁用指定仓库工作流",
+            "cmd": "gh workflow disable %{workflow_id}% --repo %{owner}/%{repo}%",
+            "params": {},
+            "keyword": "gh workflow disable 仓库"
+          }
+        ],
+        "params": {
+          "workflow_id": {
+            "type": "string",
+            "required": true,
+            "description": "工作流名称或 ID",
+            "example": "CI",
+            "notes": ""
+          },
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHubActions/",
+      "name": "gh workflow enable 启用工作流",
+      "keyword": "gh workflow enable",
+      "description": "启用指定的 GitHub Actions 工作流",
+      "data": {
+        "cmd": "gh workflow enable %{workflow_id}%",
+        "extensions": [
+          {
+            "name": "启用指定仓库工作流",
+            "cmd": "gh workflow enable %{workflow_id}% --repo %{owner}/%{repo}%",
+            "params": {},
+            "keyword": "gh workflow enable 仓库"
+          }
+        ],
+        "params": {
+          "workflow_id": {
+            "type": "string",
+            "required": true,
+            "description": "工作流名称或 ID",
+            "example": "CI",
+            "notes": ""
+          },
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHubActions/",
+      "name": "gh issue create 创建 Issue",
+      "keyword": "gh issue create",
+      "description": "创建新的 GitHub Issue",
+      "data": {
+        "cmd": "gh issue create --title \"%{title}%\" --body \"%{body}%\"",
+        "extensions": [
+          {
+            "name": "创建并指定标签",
+            "cmd": "gh issue create --title \"%{title}%\" --body \"%{body}%\" --label %{label}%",
+            "params": {},
+            "keyword": "gh issue create 标签"
+          },
+          {
+            "name": "创建并指定受理人",
+            "cmd": "gh issue create --title \"%{title}%\" --body \"%{body}%\" --assignee %{assignee}%",
+            "params": {},
+            "keyword": "gh issue create 受理人"
+          },
+          {
+            "name": "创建里程碑",
+            "cmd": "gh issue create --title \"%{title}%\" --body \"%{body}%\" --milestone \"%{milestone}%\"",
+            "params": {},
+            "keyword": "gh issue create 里程碑"
+          },
+          {
+            "name": "打开编辑器交互创建",
+            "cmd": "gh issue create",
+            "params": {},
+            "keyword": "gh issue create 编辑器"
+          },
+          {
+            "name": "创建到指定仓库",
+            "cmd": "gh issue create --repo %{owner}/%{repo}% --title \"%{title}%\" --body \"%{body}%\"",
+            "params": {},
+            "keyword": "gh issue create 仓库"
+          }
+        ],
+        "params": {
+          "title": {
+            "type": "string",
+            "required": true,
+            "description": "Issue 标题",
+            "example": "登录功能报错",
+            "notes": "常用"
+          },
+          "body": {
+            "type": "string",
+            "required": false,
+            "description": "Issue 描述正文",
+            "example": "复现步骤：1. 打开页面 2. 点击登录",
+            "notes": "可选"
+          },
+          "label": {
+            "type": "string",
+            "required": false,
+            "description": "标签名称",
+            "example": "bug",
+            "notes": "可选，多个用逗号分隔"
+          },
+          "assignee": {
+            "type": "string",
+            "required": false,
+            "description": "受理人用户名",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "milestone": {
+            "type": "string",
+            "required": false,
+            "description": "里程碑标题",
+            "example": "v1.0",
+            "notes": "可选"
+          },
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHubActions/",
+      "name": "gh issue list 列出 Issue",
+      "keyword": "gh issue list",
+      "description": "列出仓库的 Issue",
+      "data": {
+        "cmd": "gh issue list",
+        "extensions": [
+          {
+            "name": "查看指定仓库",
+            "cmd": "gh issue list --repo %{owner}/%{repo}%",
+            "params": {},
+            "keyword": "gh issue list 仓库"
+          },
+          {
+            "name": "按状态筛选",
+            "cmd": "gh issue list --state %{state}%",
+            "params": {},
+            "keyword": "gh issue list 状态"
+          },
+          {
+            "name": "按标签筛选",
+            "cmd": "gh issue list --label %{label}%",
+            "params": {},
+            "keyword": "gh issue list 标签"
+          },
+          {
+            "name": "按作者筛选",
+            "cmd": "gh issue list --author %{author}%",
+            "params": {},
+            "keyword": "gh issue list 作者"
+          },
+          {
+            "name": "按受理人筛选",
+            "cmd": "gh issue list --assignee %{assignee}%",
+            "params": {},
+            "keyword": "gh issue list 受理人"
+          },
+          {
+            "name": "限制数量",
+            "cmd": "gh issue list --limit %{number}%",
+            "params": {},
+            "keyword": "gh issue list 数量"
+          },
+          {
+            "name": "搜索 Issue",
+            "cmd": "gh issue list --search \"%{query}%\"",
+            "params": {},
+            "keyword": "gh issue list 搜索"
+          }
+        ],
+        "params": {
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          },
+          "state": {
+            "type": "string",
+            "required": false,
+            "description": "Issue 状态",
+            "example": "open",
+            "notes": "可选: open/closed/all"
+          },
+          "label": {
+            "type": "string",
+            "required": false,
+            "description": "标签名称",
+            "example": "bug",
+            "notes": "可选"
+          },
+          "author": {
+            "type": "string",
+            "required": false,
+            "description": "作者用户名",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "assignee": {
+            "type": "string",
+            "required": false,
+            "description": "受理人用户名",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "number": {
+            "type": "number",
+            "required": false,
+            "description": "返回数量上限",
+            "example": "20",
+            "notes": "常用，可选"
+          },
+          "query": {
+            "type": "string",
+            "required": false,
+            "description": "搜索关键词",
+            "example": "error in login",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHubActions/",
+      "name": "gh pr create 创建 Pull Request",
+      "keyword": "gh pr create",
+      "description": "创建新的 Pull Request",
+      "data": {
+        "cmd": "gh pr create --title \"%{title}%\" --body \"%{body}%\"",
+        "extensions": [
+          {
+            "name": "创建并指定审查者",
+            "cmd": "gh pr create --title \"%{title}%\" --body \"%{body}%\" --reviewer %{reviewer}%",
+            "params": {},
+            "keyword": "gh pr create 审查者"
+          },
+          {
+            "name": "创建并指定标签",
+            "cmd": "gh pr create --title \"%{title}%\" --body \"%{body}%\" --label %{label}%",
+            "params": {},
+            "keyword": "gh pr create 标签"
+          },
+          {
+            "name": "创建并指定受理人",
+            "cmd": "gh pr create --title \"%{title}%\" --body \"%{body}%\" --assignee %{assignee}%",
+            "params": {},
+            "keyword": "gh pr create 受理人"
+          },
+          {
+            "name": "创建草稿 PR",
+            "cmd": "gh pr create --title \"%{title}%\" --body \"%{body}%\" --draft",
+            "params": {},
+            "keyword": "gh pr create 草稿"
+          },
+          {
+            "name": "创建并推送分支",
+            "cmd": "gh pr create --title \"%{title}%\" --body \"%{body}%\" --push",
+            "params": {},
+            "keyword": "gh pr create 推送"
+          },
+          {
+            "name": "指定目标分支",
+            "cmd": "gh pr create --title \"%{title}%\" --body \"%{body}%\" --base %{base_branch}%",
+            "params": {},
+            "keyword": "gh pr create 目标分支"
+          },
+          {
+            "name": "创建到指定仓库",
+            "cmd": "gh pr create --repo %{owner}/%{repo}% --title \"%{title}%\" --body \"%{body}%\"",
+            "params": {},
+            "keyword": "gh pr create 仓库"
+          }
+        ],
+        "params": {
+          "title": {
+            "type": "string",
+            "required": true,
+            "description": "PR 标题",
+            "example": "feat: 添加用户登录功能",
+            "notes": "常用"
+          },
+          "body": {
+            "type": "string",
+            "required": false,
+            "description": "PR 描述正文",
+            "example": "实现了用户注册和登录功能",
+            "notes": "可选"
+          },
+          "reviewer": {
+            "type": "string",
+            "required": false,
+            "description": "审查者用户名",
+            "example": "octocat,hubot",
+            "notes": "可选，多个用逗号分隔"
+          },
+          "label": {
+            "type": "string",
+            "required": false,
+            "description": "标签",
+            "example": "feature,bugfix",
+            "notes": "可选，多个用逗号分隔"
+          },
+          "assignee": {
+            "type": "string",
+            "required": false,
+            "description": "受理人",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "base_branch": {
+            "type": "string",
+            "required": false,
+            "description": "目标分支",
+            "example": "main",
+            "notes": "可选，默认为仓库默认分支"
+          },
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHubActions/",
+      "name": "gh pr checkout 检出 Pull Request",
+      "keyword": "gh pr checkout",
+      "description": "将 PR 检出到本地分支",
+      "data": {
+        "cmd": "gh pr checkout %{pr_number}%",
+        "extensions": [
+          {
+            "name": "检出并拉取",
+            "cmd": "gh pr checkout %{pr_number}% --fetch",
+            "params": {},
+            "keyword": "gh pr checkout 拉取"
+          },
+          {
+            "name": "检出指定仓库 PR",
+            "cmd": "gh pr checkout %{pr_number}% --repo %{owner}/%{repo}%",
+            "params": {},
+            "keyword": "gh pr checkout 仓库"
+          }
+        ],
+        "params": {
+          "pr_number": {
+            "type": "number",
+            "required": true,
+            "description": "PR 编号",
+            "example": "123",
+            "notes": "常用"
+          },
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHubActions/",
+      "name": "gh pr status 查看 PR 状态",
+      "keyword": "gh pr status",
+      "description": "查看当前分支关联的 Pull Request 状态",
+      "data": {
+        "cmd": "gh pr status",
+        "extensions": [
+          {
+            "name": "查看指定仓库 PR 状态",
+            "cmd": "gh pr status --repo %{owner}/%{repo}%",
+            "params": {},
+            "keyword": "gh pr status 仓库"
+          },
+          {
+            "name": "显示详细信息",
+            "cmd": "gh pr status --verbose",
+            "params": {},
+            "keyword": "gh pr status 详细"
+          },
+          {
+            "name": "显示 JSON 格式",
+            "cmd": "gh pr status --json %{fields}%",
+            "params": {},
+            "keyword": "gh pr status JSON"
+          }
+        ],
+        "params": {
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          },
+          "fields": {
+            "type": "string",
+            "required": false,
+            "description": "JSON 输出字段",
+            "example": "number,title,state",
+            "notes": "可选"
+          }
+        }
+      }
+    }
+  ]
+}

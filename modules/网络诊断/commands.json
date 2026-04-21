@@ -1,0 +1,616 @@
+{
+  "module": "网络诊断",
+  "version": "1.0",
+  "description": "网络诊断 命令模块集合",
+  "commands": [
+    {
+      "dirPath": "/网络诊断/",
+      "name": "ping 连通性测试",
+      "keyword": "ping 连通 测试",
+      "description": "测试主机网络连通性",
+      "data": {
+        "cmd": "ping %{选项}% %{主机或IP}%",
+        "extensions": [
+          {
+            "name": "指定次数",
+            "cmd": "ping -c 4 %{主机}%",
+            "params": {},
+            "keyword": "ping 指定次数"
+          },
+          {
+            "name": "持续 ping",
+            "cmd": "ping %{主机}%",
+            "params": {},
+            "keyword": "ping 持续"
+          },
+          {
+            "name": "设置间隔",
+            "cmd": "ping -i 2 %{主机}%",
+            "params": {},
+            "keyword": "ping 间隔"
+          },
+          {
+            "name": "设置数据包大小",
+            "cmd": "ping -s 1000 %{主机}%",
+            "params": {},
+            "keyword": "ping 大数据包"
+          },
+          {
+            "name": "详细输出",
+            "cmd": "ping -v %{主机}%",
+            "params": {},
+            "keyword": "ping 详细"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "ping 选项",
+            "example": "-c 4",
+            "notes": "可选，如 -c 次数，-i 间隔"
+          },
+          "主机或IP": {
+            "type": "string",
+            "required": true,
+            "description": "目标主机名或 IP 地址",
+            "example": "google.com",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/网络诊断/",
+      "name": "traceroute/tracert 路由追踪",
+      "keyword": "traceroute tracert 路由 追踪",
+      "description": "追踪数据包经过的路由节点",
+      "data": {
+        "cmd": "traceroute %{选项}% %{主机}%",
+        "extensions": [
+          {
+            "name": "最大跳数",
+            "cmd": "traceroute -m 30 %{主机}%",
+            "params": {},
+            "keyword": "traceroute 最大跳数"
+          },
+          {
+            "name": "设置超时",
+            "cmd": "traceroute -w 5 %{主机}%",
+            "params": {},
+            "keyword": "traceroute 超时"
+          },
+          {
+            "name": "使用 ICMP",
+            "cmd": "traceroute -I %{主机}%",
+            "params": {},
+            "keyword": "traceroute ICMP"
+          },
+          {
+            "name": "Windows tracert",
+            "cmd": "tracert %{主机}%",
+            "params": {},
+            "keyword": "tracert Windows"
+          },
+          {
+            "name": "显示 IP 地址",
+            "cmd": "traceroute -n %{主机}%",
+            "params": {},
+            "keyword": "traceroute IP"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "traceroute 选项",
+            "example": "-m 30",
+            "notes": "可选"
+          },
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "目标主机或 IP",
+            "example": "google.com",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/网络诊断/",
+      "name": "netstat 网络连接状态",
+      "keyword": "netstat 网络 连接 状态",
+      "description": "显示网络连接、路由表、接口统计等信息",
+      "data": {
+        "cmd": "netstat %{选项}%",
+        "extensions": [
+          {
+            "name": "查看监听端口",
+            "cmd": "netstat -tulpn",
+            "params": {},
+            "keyword": "netstat 监听端口"
+          },
+          {
+            "name": "查看 TCP 连接",
+            "cmd": "netstat -t",
+            "params": {},
+            "keyword": "netstat TCP"
+          },
+          {
+            "name": "查看 UDP 连接",
+            "cmd": "netstat -u",
+            "params": {},
+            "keyword": "netstat UDP"
+          },
+          {
+            "name": "显示进程",
+            "cmd": "netstat -tlnp",
+            "params": {},
+            "keyword": "netstat 进程"
+          },
+          {
+            "name": "统计汇总",
+            "cmd": "netstat -s",
+            "params": {},
+            "keyword": "netstat 统计"
+          },
+          {
+            "name": "持续显示",
+            "cmd": "netstat -c",
+            "params": {},
+            "keyword": "netstat 持续"
+          },
+          {
+            "name": "路由表",
+            "cmd": "netstat -r",
+            "params": {},
+            "keyword": "netstat 路由"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "netstat 选项",
+            "example": "-tulpn",
+            "notes": "常用 -t TCP，-u UDP，-l 监听，-p 进程，-n 数字"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/网络诊断/",
+      "name": "nslookup DNS 查询",
+      "keyword": "nslookup DNS 查询",
+      "description": "查询域名系统 (DNS) 记录",
+      "data": {
+        "cmd": "nslookup %{域名}% %{DNS服务器}%",
+        "extensions": [
+          {
+            "name": "查询 A 记录",
+            "cmd": "nslookup %{域名}%",
+            "params": {},
+            "keyword": "nslookup A记录"
+          },
+          {
+            "name": "指定 DNS 服务器",
+            "cmd": "nslookup %{域名}% 8.8.8.8",
+            "params": {},
+            "keyword": "nslookup 指定DNS"
+          },
+          {
+            "name": "查询 MX 记录",
+            "cmd": "nslookup -type=mx %{域名}%",
+            "params": {},
+            "keyword": "nslookup MX"
+          },
+          {
+            "name": "查询 TXT 记录",
+            "cmd": "nslookup -type=txt %{域名}%",
+            "params": {},
+            "keyword": "nslookup TXT"
+          },
+          {
+            "name": "交互模式",
+            "cmd": "nslookup",
+            "params": {},
+            "keyword": "nslookup 交互"
+          }
+        ],
+        "params": {
+          "域名": {
+            "type": "string",
+            "required": true,
+            "description": "要查询的域名",
+            "example": "google.com",
+            "notes": ""
+          },
+          "DNS服务器": {
+            "type": "string",
+            "required": false,
+            "description": "指定的 DNS 服务器",
+            "example": "8.8.8.8",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/网络诊断/",
+      "name": "dig DNS 查询",
+      "keyword": "dig DNS 查询",
+      "description": "详细的 DNS 查询工具，比 nslookup 更强大",
+      "data": {
+        "cmd": "dig %{选项}% %{域名}%",
+        "extensions": [
+          {
+            "name": "查询 A 记录",
+            "cmd": "dig %{域名}%",
+            "params": {},
+            "keyword": "dig A记录"
+          },
+          {
+            "name": "查询 MX 记录",
+            "cmd": "dig %{域名}% mx",
+            "params": {},
+            "keyword": "dig MX记录"
+          },
+          {
+            "name": "指定 DNS 服务器",
+            "cmd": "dig @8.8.8.8 %{域名}%",
+            "params": {},
+            "keyword": "dig 指定DNS"
+          },
+          {
+            "name": "简短输出",
+            "cmd": "dig +short %{域名}%",
+            "params": {},
+            "keyword": "dig 简短"
+          },
+          {
+            "name": "追踪 DNS 解析",
+            "cmd": "dig +trace %{域名}%",
+            "params": {},
+            "keyword": "dig 追踪"
+          },
+          {
+            "name": "查询 NS 记录",
+            "cmd": "dig %{域名}% ns",
+            "params": {},
+            "keyword": "dig NS记录"
+          },
+          {
+            "name": "查询 TXT 记录",
+            "cmd": "dig %{域名}% txt",
+            "params": {},
+            "keyword": "dig TXT记录"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "dig 选项",
+            "example": "+short",
+            "notes": "可选"
+          },
+          "域名": {
+            "type": "string",
+            "required": true,
+            "description": "要查询的域名",
+            "example": "google.com",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/网络诊断/",
+      "name": "curl HTTP 请求",
+      "keyword": "curl HTTP 请求",
+      "description": "发送 HTTP 请求，支持多种协议",
+      "data": {
+        "cmd": "curl %{选项}% %{URL}%",
+        "extensions": [
+          {
+            "name": "下载文件",
+            "cmd": "curl -O %{URL}%",
+            "params": {},
+            "keyword": "curl 下载"
+          },
+          {
+            "name": "保存到文件",
+            "cmd": "curl -o %{文件名}% %{URL}%",
+            "params": {},
+            "keyword": "curl 保存文件"
+          },
+          {
+            "name": "发送 POST 请求",
+            "cmd": "curl -X POST -d \"%{数据}%\" %{URL}%",
+            "params": {},
+            "keyword": "curl POST"
+          },
+          {
+            "name": "设置请求头",
+            "cmd": "curl -H \"Content-Type: application/json\" %{URL}%",
+            "params": {},
+            "keyword": "curl 请求头"
+          },
+          {
+            "name": "跟随重定向",
+            "cmd": "curl -L %{URL}%",
+            "params": {},
+            "keyword": "curl 重定向"
+          },
+          {
+            "name": "显示响应头",
+            "cmd": "curl -I %{URL}%",
+            "params": {},
+            "keyword": "curl 响应头"
+          },
+          {
+            "name": "显示详细信息",
+            "cmd": "curl -v %{URL}%",
+            "params": {},
+            "keyword": "curl 详细"
+          },
+          {
+            "name": "跳过 SSL 验证",
+            "cmd": "curl -k %{URL}%",
+            "params": {},
+            "keyword": "curl 跳过SSL"
+          },
+          {
+            "name": "发送 JSON",
+            "cmd": "curl -X POST -H \"Content-Type: application/json\" -d '{\"key\":\"value\"}' %{URL}%",
+            "params": {},
+            "keyword": "curl JSON"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "curl 选项",
+            "example": "-X POST",
+            "notes": "可选"
+          },
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "请求 URL",
+            "example": "https://api.example.com",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/网络诊断/",
+      "name": "wget 文件下载",
+      "keyword": "wget 下载",
+      "description": "非交互式网络文件下载工具",
+      "data": {
+        "cmd": "wget %{选项}% %{URL}%",
+        "extensions": [
+          {
+            "name": "指定文件名",
+            "cmd": "wget -O %{文件名}% %{URL}%",
+            "params": {},
+            "keyword": "wget 指定名称"
+          },
+          {
+            "name": "断点续传",
+            "cmd": "wget -c %{URL}%",
+            "params": {},
+            "keyword": "wget 续传"
+          },
+          {
+            "name": "后台下载",
+            "cmd": "wget -b %{URL}%",
+            "params": {},
+            "keyword": "wget 后台"
+          },
+          {
+            "name": "限速下载",
+            "cmd": "wget --limit-rate=200k %{URL}%",
+            "params": {},
+            "keyword": "wget 限速"
+          },
+          {
+            "name": "递归下载",
+            "cmd": "wget -r %{URL}%",
+            "params": {},
+            "keyword": "wget 递归"
+          },
+          {
+            "name": "认证下载",
+            "cmd": "wget --user=%{用户}% --password=%{密码}% %{URL}%",
+            "params": {},
+            "keyword": "wget 认证"
+          },
+          {
+            "name": "从文件读取 URL",
+            "cmd": "wget -i %{文件}%",
+            "params": {},
+            "keyword": "wget 文件列表"
+          },
+          {
+            "name": "只下载匹配文件",
+            "cmd": "wget -A \"*.pdf\" %{URL}%",
+            "params": {},
+            "keyword": "wget 匹配"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "wget 选项",
+            "example": "-c",
+            "notes": "可选"
+          },
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "下载链接",
+            "example": "https://example.com/file.zip",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/网络诊断/",
+      "name": "telnet 端口测试",
+      "keyword": "telnet 端口 测试",
+      "description": "测试远程主机端口连通性",
+      "data": {
+        "cmd": "telnet %{主机}% %{端口}%",
+        "extensions": [
+          {
+            "name": "测试 HTTP 端口",
+            "cmd": "telnet %{主机}% 80",
+            "params": {},
+            "keyword": "telnet HTTP"
+          },
+          {
+            "name": "测试 HTTPS 端口",
+            "cmd": "telnet %{主机}% 443",
+            "params": {},
+            "keyword": "telnet HTTPS"
+          },
+          {
+            "name": "测试 SMTP 端口",
+            "cmd": "telnet %{主机}% 25",
+            "params": {},
+            "keyword": "telnet SMTP"
+          },
+          {
+            "name": "测试 SSH 端口",
+            "cmd": "telnet %{主机}% 22",
+            "params": {},
+            "keyword": "telnet SSH"
+          },
+          {
+            "name": "测试 MySQL 端口",
+            "cmd": "telnet %{主机}% 3306",
+            "params": {},
+            "keyword": "telnet MySQL"
+          },
+          {
+            "name": "测试 Redis 端口",
+            "cmd": "telnet %{主机}% 6379",
+            "params": {},
+            "keyword": "telnet Redis"
+          }
+        ],
+        "params": {
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "目标主机或 IP",
+            "example": "smtp.gmail.com",
+            "notes": ""
+          },
+          "端口": {
+            "type": "string",
+            "required": true,
+            "description": "目标端口",
+            "example": "80",
+            "notes": ""
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/网络诊断/",
+      "name": "nc/netcat 网络瑞士军刀",
+      "keyword": "nc netcat 网络 瑞士军刀",
+      "description": "功能强大的网络工具，可用于端口扫描、传输文件、调试等",
+      "data": {
+        "cmd": "nc %{选项}% %{主机}% %{端口}%",
+        "extensions": [
+          {
+            "name": "端口扫描",
+            "cmd": "nc -zv %{主机}% %{端口}%",
+            "params": {},
+            "keyword": "nc 端口扫描"
+          },
+          {
+            "name": "端口范围扫描",
+            "cmd": "nc -zv %{主机}% 20-30",
+            "params": {},
+            "keyword": "nc 范围扫描"
+          },
+          {
+            "name": "传输文件",
+            "cmd": "nc -l %{端口}% > %{文件名}%",
+            "params": {},
+            "keyword": "nc 接收文件"
+          },
+          {
+            "name": "发送文件",
+            "cmd": "nc %{主机}% %{端口}% < %{文件}%",
+            "params": {},
+            "keyword": "nc 发送文件"
+          },
+          {
+            "name": "简单聊天服务器",
+            "cmd": "nc -l %{端口}%",
+            "params": {},
+            "keyword": "nc 聊天"
+          },
+          {
+            "name": "连接聊天",
+            "cmd": "nc %{主机}% %{端口}%",
+            "params": {},
+            "keyword": "nc 连接"
+          },
+          {
+            "name": "执行远程命令",
+            "cmd": "nc -e /bin/bash %{主机}% %{端口}%",
+            "params": {},
+            "keyword": "nc 远程命令"
+          },
+          {
+            "name": "HTTP 请求",
+            "cmd": "echo -e \"GET / HTTP/1.0\\r\\n\\r\\n\" | nc %{主机}% 80",
+            "params": {},
+            "keyword": "nc HTTP"
+          },
+          {
+            "name": "设置超时",
+            "cmd": "nc -w 3 %{主机}% %{端口}%",
+            "params": {},
+            "keyword": "nc 超时"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "nc 选项",
+            "example": "-zv",
+            "notes": "常用 -z 扫描，-v 详细，-l 监听"
+          },
+          "主机": {
+            "type": "string",
+            "required": false,
+            "description": "目标主机或 IP",
+            "example": "example.com",
+            "notes": "监听模式可省略"
+          },
+          "端口": {
+            "type": "string",
+            "required": true,
+            "description": "端口号",
+            "example": "80",
+            "notes": ""
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,538 @@
+{
+  "module": "Elasticsearch",
+  "version": "1.0",
+  "description": "Elasticsearch 命令模块命令集合",
+  "commands": [
+    {
+      "dirPath": "/Elasticsearch/",
+      "name": "curl CRUD 操作",
+      "keyword": "es curl CRUD",
+      "description": "Elasticsearch REST API CRUD 操作",
+      "data": {
+        "cmd": "curl -X %{METHOD}% http://%{主机}%:%{端口}%/%{索引名}%/%{类型名}%/%{文档ID}%",
+        "extensions": [
+          {
+            "name": "GET 查询文档",
+            "cmd": "curl -X GET \"http://localhost:9200/%{索引名}%/_search\"",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" }
+            },
+            "keyword": "ES GET 查询"
+          },
+          {
+            "name": "POST 创建/更新文档",
+            "cmd": "curl -X POST \"http://localhost:9200/%{索引名}%/_doc/%{文档ID}%\" -H \"Content-Type: application/json\" -d '%{JSON数据}%'",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+              "文档ID": { "type": "string", "required": true, "description": "文档 ID", "example": "1", "notes": "可选，不指定则自动生成" },
+              "JSON数据": { "type": "string", "required": true, "description": "JSON 文档内容", "example": "{\"name\":\"张三\",\"age\":30}", "notes": "" }
+            },
+            "keyword": "ES POST 创建"
+          },
+          {
+            "name": "PUT 创建/替换文档",
+            "cmd": "curl -X PUT \"http://localhost:9200/%{索引名}%/_doc/%{文档ID}%?pretty\" -H \"Content-Type: application/json\" -d '%{JSON数据}%'",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+              "文档ID": { "type": "string", "required": true, "description": "文档 ID", "example": "1", "notes": "" },
+              "JSON数据": { "type": "string", "required": true, "description": "JSON 文档内容", "example": "{\"name\":\"张三\",\"age\":30}", "notes": "" }
+            },
+            "keyword": "ES PUT 创建"
+          },
+          {
+            "name": "DELETE 删除文档",
+            "cmd": "curl -X DELETE \"http://localhost:9200/%{索引名}%/_doc/%{文档ID}%\"",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+              "文档ID": { "type": "string", "required": true, "description": "文档 ID", "example": "1", "notes": "" }
+            },
+            "keyword": "ES DELETE 删除"
+          },
+          {
+            "name": "HEAD 检查文档是否存在",
+            "cmd": "curl -I \"http://localhost:9200/%{索引名}%/_doc/%{文档ID}%\"",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+              "文档ID": { "type": "string", "required": true, "description": "文档 ID", "example": "1", "notes": "" }
+            },
+            "keyword": "ES HEAD 检查存在"
+          }
+        ],
+        "params": {
+          "METHOD": { "type": "string", "required": true, "description": "HTTP 方法", "example": "GET", "notes": "GET/POST/PUT/DELETE/HEAD" },
+          "主机": { "type": "string", "required": false, "description": "ES 主机", "example": "localhost", "notes": "默认 localhost" },
+          "端口": { "type": "string", "required": false, "description": "ES 端口", "example": "9200", "notes": "默认 9200" },
+          "索引名": { "type": "string", "required": false, "description": "索引名", "example": "myindex", "notes": "可选" },
+          "类型名": { "type": "string", "required": false, "description": "类型名", "example": "_doc", "notes": "ES 7+ 常用 _doc" },
+          "文档ID": { "type": "string", "required": false, "description": "文档 ID", "example": "1", "notes": "可选" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Elasticsearch/",
+      "name": "索引操作",
+      "keyword": "es 索引 index",
+      "description": "Elasticsearch 索引的创建、删除、查看等操作",
+      "data": {
+        "cmd": "curl -X PUT \"http://%{主机}%:%{端口}%/%{索引名}%\" -H \"Content-Type: application/json\" -d '%{索引配置}%'",
+        "extensions": [
+          {
+            "name": "创建索引(默认设置)",
+            "cmd": "curl -X PUT \"http://localhost:9200/%{索引名}%\"",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" }
+            },
+            "keyword": "ES 创建索引"
+          },
+          {
+            "name": "创建索引(带分片和副本)",
+            "cmd": "curl -X PUT \"http://localhost:9200/%{索引名}%\" -H \"Content-Type: application/json\" -d '{\"settings\":{\"number_of_shards\":3,\"number_of_replicas\":1}}'",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" }
+            },
+            "keyword": "ES 创建索引 配置"
+          },
+          {
+            "name": "删除索引",
+            "cmd": "curl -X DELETE \"http://localhost:9200/%{索引名}%\"",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" }
+            },
+            "keyword": "ES 删除索引"
+          },
+          {
+            "name": "查看所有索引",
+            "cmd": "curl -X GET \"http://localhost:9200/_cat/indices?v\"",
+            "params": {},
+            "keyword": "ES 查看索引"
+          },
+          {
+            "name": "查看单个索引信息",
+            "cmd": "curl -X GET \"http://localhost:9200/%{索引名}%\"",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" }
+            },
+            "keyword": "ES 索引信息"
+          },
+          {
+            "name": "检查索引是否存在",
+            "cmd": "curl -I \"http://localhost:9200/%{索引名}%\"",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" }
+            },
+            "keyword": "ES 索引存在"
+          },
+          {
+            "name": "打开索引",
+            "cmd": "curl -X POST \"http://localhost:9200/%{索引名}%/_open\"",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" }
+            },
+            "keyword": "ES 打开索引"
+          },
+          {
+            "name": "关闭索引",
+            "cmd": "curl -X POST \"http://localhost:9200/%{索引名}%/_close\"",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" }
+            },
+            "keyword": "ES 关闭索引"
+          }
+        ],
+        "params": {
+          "主机": { "type": "string", "required": false, "description": "ES 主机", "example": "localhost", "notes": "默认 localhost" },
+          "端口": { "type": "string", "required": false, "description": "ES 端口", "example": "9200", "notes": "默认 9200" },
+          "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+          "索引配置": { "type": "string", "required": false, "description": "索引配置 JSON", "example": "{\"settings\":{\"number_of_shards\":3,\"number_of_replicas\":1}}", "notes": "可选" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Elasticsearch/",
+      "name": "Mapping 操作",
+      "keyword": "es mapping 映射",
+      "description": "Elasticsearch 映射的创建和管理",
+      "data": {
+        "cmd": "curl -X PUT \"http://%{主机}%:%{端口}%/%{索引名}%/_mapping\" -H \"Content-Type: application/json\" -d '%{映射定义}%'",
+        "extensions": [
+          {
+            "name": "创建 Mapping",
+            "cmd": "curl -X PUT \"http://localhost:9200/%{索引名}%/_mapping\" -H \"Content-Type: application/json\" -d '{\"properties\":{\"name\":{\"type\":\"text\"},\"age\":{\"type\":\"integer\"},\"created_at\":{\"type\":\"date\"}}}'",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" }
+            },
+            "keyword": "ES 创建 Mapping"
+          },
+          {
+            "name": "查看 Mapping",
+            "cmd": "curl -X GET \"http://localhost:9200/%{索引名}%/_mapping\"",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" }
+            },
+            "keyword": "ES 查看 Mapping"
+          },
+          {
+            "name": "查看字段 Mapping",
+            "cmd": "curl -X GET \"http://localhost:9200/%{索引名}%/_mapping/field/%{字段名}%\"",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+              "字段名": { "type": "string", "required": true, "description": "字段名", "example": "name", "notes": "" }
+            },
+            "keyword": "ES 字段 Mapping"
+          },
+          {
+            "name": "添加字段 Mapping",
+            "cmd": "curl -X PUT \"http://localhost:9200/%{索引名}%/_mapping\" -H \"Content-Type: application/json\" -d '{\"properties\":{\"%{字段名}%\":{\"type\":\"%{字段类型}%\"}}}'",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+              "字段名": { "type": "string", "required": true, "description": "字段名", "example": "email", "notes": "" },
+              "字段类型": { "type": "string", "required": true, "description": "字段类型", "example": "keyword", "notes": "text/keyword/integer/date/boolean 等" }
+            },
+            "keyword": "ES 添加字段"
+          }
+        ],
+        "params": {
+          "主机": { "type": "string", "required": false, "description": "ES 主机", "example": "localhost", "notes": "默认 localhost" },
+          "端口": { "type": "string", "required": false, "description": "ES 端口", "example": "9200", "notes": "默认 9200" },
+          "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+          "映射定义": { "type": "string", "required": true, "description": "映射定义 JSON", "example": "{\"properties\":{\"name\":{\"type\":\"text\"}}}", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Elasticsearch/",
+      "name": "搜索查询",
+      "keyword": "es search 查询",
+      "description": "Elasticsearch 搜索和查询操作",
+      "data": {
+        "cmd": "curl -X POST \"http://%{主机}%:%{端口}%/%{索引名}%/_search\" -H \"Content-Type: application/json\" -d '%{查询JSON}%'",
+        "extensions": [
+          {
+            "name": "查询所有文档",
+            "cmd": "curl -X GET \"http://localhost:9200/%{索引名}%/_search?q=*\"",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" }
+            },
+            "keyword": "ES 查询所有"
+          },
+          {
+            "name": "Match 查询",
+            "cmd": "curl -X POST \"http://localhost:9200/%{索引名}%/_search\" -H \"Content-Type: application/json\" -d '{\"query\":{\"match\":{\"%{字段名}%\":\"%{搜索词}%\"}}}'",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+              "字段名": { "type": "string", "required": true, "description": "字段名", "example": "name", "notes": "" },
+              "搜索词": { "type": "string", "required": true, "description": "搜索词", "example": "张三", "notes": "" }
+            },
+            "keyword": "ES Match 查询"
+          },
+          {
+            "name": "Term 查询(精确匹配)",
+            "cmd": "curl -X POST \"http://localhost:9200/%{索引名}%/_search\" -H \"Content-Type: application/json\" -d '{\"query\":{\"term\":{\"%{字段名}%\":\"%{精确值}%\"}}}'",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+              "字段名": { "type": "string", "required": true, "description": "字段名", "example": "status", "notes": "" },
+              "精确值": { "type": "string", "required": true, "description": "精确值", "example": "active", "notes": "" }
+            },
+            "keyword": "ES Term 查询"
+          },
+          {
+            "name": "Bool 多条件查询",
+            "cmd": "curl -X POST \"http://localhost:9200/%{索引名}%/_search\" -H \"Content-Type: application/json\" -d '{\"query\":{\"bool\":{\"must\":[{\"match\":{\"name\":\"%{关键词}%\"}}],\"filter\":[{\"range\":{\"age\":{\"gte\":%{最小年龄}%}}}]}}}'",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+              "关键词": { "type": "string", "required": true, "description": "关键词", "example": "张三", "notes": "" },
+              "最小年龄": { "type": "string", "required": true, "description": "最小年龄", "example": "18", "notes": "" }
+            },
+            "keyword": "ES Bool 查询"
+          },
+          {
+            "name": "分页查询",
+            "cmd": "curl -X POST \"http://localhost:9200/%{索引名}%/_search\" -H \"Content-Type: application/json\" -d '{\"from\":%{起始位置}%,\"size\":%{每页数量}%,\"query\":{\"match_all\":{}}}'",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+              "起始位置": { "type": "string", "required": true, "description": "起始位置", "example": "0", "notes": "" },
+              "每页数量": { "type": "string", "required": true, "description": "每页数量", "example": "10", "notes": "" }
+            },
+            "keyword": "ES 分页查询"
+          },
+          {
+            "name": "排序查询",
+            "cmd": "curl -X POST \"http://localhost:9200/%{索引名}%/_search\" -H \"Content-Type: application/json\" -d '{\"sort\":[{\"%{排序字段}%\":{\"order\":\"%{排序方向}%\"}}],\"query\":{\"match_all\":{}}}'",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+              "排序字段": { "type": "string", "required": true, "description": "排序字段", "example": "created_at", "notes": "" },
+              "排序方向": { "type": "string", "required": true, "description": "排序方向", "example": "desc", "notes": "asc 或 desc" }
+            },
+            "keyword": "ES 排序查询"
+          },
+          {
+            "name": "高亮显示",
+            "cmd": "curl -X POST \"http://localhost:9200/%{索引名}%/_search\" -H \"Content-Type: application/json\" -d '{\"highlight\":{\"fields\":{\"%{字段名}%\":{}}},\"query\":{\"match\":{\"%{字段名}%\":\"%{搜索词}%\"}}}'",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+              "字段名": { "type": "string", "required": true, "description": "高亮字段名", "example": "content", "notes": "" },
+              "搜索词": { "type": "string", "required": true, "description": "搜索词", "example": "关键词", "notes": "" }
+            },
+            "keyword": "ES 高亮查询"
+          },
+          {
+            "name": "聚合查询",
+            "cmd": "curl -X POST \"http://localhost:9200/%{索引名}%/_search\" -H \"Content-Type: application/json\" -d '{\"aggs\":{\"%{聚合名称}%\":{\"terms\":{\"field\":\"%{聚合字段}%\"}}}}'",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+              "聚合名称": { "type": "string", "required": true, "description": "聚合名称", "example": "status_counts", "notes": "" },
+              "聚合字段": { "type": "string", "required": true, "description": "聚合字段", "example": "status", "notes": "" }
+            },
+            "keyword": "ES 聚合查询"
+          }
+        ],
+        "params": {
+          "主机": { "type": "string", "required": false, "description": "ES 主机", "example": "localhost", "notes": "默认 localhost" },
+          "端口": { "type": "string", "required": false, "description": "ES 端口", "example": "9200", "notes": "默认 9200" },
+          "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+          "查询JSON": { "type": "string", "required": true, "description": "查询 JSON", "example": "{\"query\":{\"match_all\":{}}}", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Elasticsearch/",
+      "name": "_count 和 _query",
+      "keyword": "es count 统计",
+      "description": "Elasticsearch 文档计数和条件查询",
+      "data": {
+        "cmd": "curl -X POST \"http://%{主机}%:%{端口}%/%{索引名}%/_count\" -H \"Content-Type: application/json\" -d '%{查询JSON}%'",
+        "extensions": [
+          {
+            "name": "统计文档数量",
+            "cmd": "curl -X GET \"http://localhost:9200/%{索引名}%/_count\"",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" }
+            },
+            "keyword": "ES Count 统计"
+          },
+          {
+            "name": "条件统计数量",
+            "cmd": "curl -X POST \"http://localhost:9200/%{索引名}%/_count\" -H \"Content-Type: application/json\" -d '{\"query\":{\"match\":{\"%{字段名}%\":\"%{值}%\"}}}'",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+              "字段名": { "type": "string", "required": true, "description": "字段名", "example": "status", "notes": "" },
+              "值": { "type": "string", "required": true, "description": "值", "example": "active", "notes": "" }
+            },
+            "keyword": "ES Count 条件"
+          },
+          {
+            "name": "_query 接口",
+            "cmd": "curl -X POST \"http://localhost:9200/%{索引名}%/_query\" -H \"Content-Type: application/json\" -d '{\"query\":{\"match_all\":{}}}'",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "可选，多索引用逗号分隔" }
+            },
+            "keyword": "ES _query"
+          },
+          {
+            "name": "Validate 查询",
+            "cmd": "curl -X POST \"http://localhost:9200/%{索引名}%/_validate/query\" -H \"Content-Type: application/json\" -d '{\"query\":{\"match\":{\"%{字段名}%\":\"%{值}%\"}}}'",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+              "字段名": { "type": "string", "required": true, "description": "字段名", "example": "name", "notes": "" },
+              "值": { "type": "string", "required": true, "description": "值", "example": "张三", "notes": "" }
+            },
+            "keyword": "ES Validate"
+          }
+        ],
+        "params": {
+          "主机": { "type": "string", "required": false, "description": "ES 主机", "example": "localhost", "notes": "默认 localhost" },
+          "端口": { "type": "string", "required": false, "description": "ES 端口", "example": "9200", "notes": "默认 9200" },
+          "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+          "查询JSON": { "type": "string", "required": false, "description": "查询 JSON", "example": "{\"query\":{\"match_all\":{}}}", "notes": "可选" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Elasticsearch/",
+      "name": "集群操作",
+      "keyword": "es cluster 集群 health",
+      "description": "Elasticsearch 集群健康和节点信息",
+      "data": {
+        "cmd": "curl -X GET \"http://%{主机}%:%{端口}%/_cluster/health\"",
+        "extensions": [
+          {
+            "name": "集群健康状态",
+            "cmd": "curl -X GET \"http://localhost:9200/_cluster/health\"",
+            "params": {},
+            "keyword": "ES 集群健康"
+          },
+          {
+            "name": "集群健康(简洁)",
+            "cmd": "curl -X GET \"http://localhost:9200/_cluster/health?pretty\"",
+            "params": {},
+            "keyword": "ES 集群健康 简洁"
+          },
+          {
+            "name": "指定索引健康",
+            "cmd": "curl -X GET \"http://localhost:9200/_cluster/health/%{索引名}%?pretty\"",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" }
+            },
+            "keyword": "ES 索引健康"
+          },
+          {
+            "name": "集群健康等待",
+            "cmd": "curl -X GET \"http://localhost:9200/_cluster/health?wait_for_status=%{状态}%&timeout=30s\"",
+            "params": {
+              "状态": { "type": "string", "required": true, "description": "等待状态", "example": "green", "notes": "green/yellow/red" }
+            },
+            "keyword": "ES 等待集群健康"
+          },
+          {
+            "name": "集群状态",
+            "cmd": "curl -X GET \"http://localhost:9200/_cluster/state\"",
+            "params": {},
+            "keyword": "ES 集群状态"
+          },
+          {
+            "name": "集群统计",
+            "cmd": "curl -X GET \"http://localhost:9200/_cluster/stats?pretty\"",
+            "params": {},
+            "keyword": "ES 集群统计"
+          },
+          {
+            "name": "节点列表",
+            "cmd": "curl -X GET \"http://localhost:9200/_cat/nodes?v\"",
+            "params": {},
+            "keyword": "ES 节点列表"
+          },
+          {
+            "name": "节点统计",
+            "cmd": "curl -X GET \"http://localhost:9200/_nodes/stats\"",
+            "params": {},
+            "keyword": "ES 节点统计"
+          },
+          {
+            "name": "单个节点统计",
+            "cmd": "curl -X GET \"http://localhost:9200/_nodes/%{节点ID}%/stats\"",
+            "params": {
+              "节点ID": { "type": "string", "required": true, "description": "节点 ID", "example": "node1", "notes": "" }
+            },
+            "keyword": "ES 单节点统计"
+          },
+          {
+            "name": "分片分配",
+            "cmd": "curl -X GET \"http://localhost:9200/_cat/shards?v\"",
+            "params": {},
+            "keyword": "ES 分片分配"
+          }
+        ],
+        "params": {
+          "主机": { "type": "string", "required": false, "description": "ES 主机", "example": "localhost", "notes": "默认 localhost" },
+          "端口": { "type": "string", "required": false, "description": "ES 端口", "example": "9200", "notes": "默认 9200" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Elasticsearch/",
+      "name": "文档操作",
+      "keyword": "es 文档 doc",
+      "description": "Elasticsearch 文档的 CRUD 操作",
+      "data": {
+        "cmd": "curl -X POST \"http://%{主机}%:%{端口}%/%{索引名}%/_doc/%{文档ID}%\" -H \"Content-Type: application/json\" -d '%{文档内容}%'",
+        "extensions": [
+          {
+            "name": "索引文档(自动生成ID)",
+            "cmd": "curl -X POST \"http://localhost:9200/%{索引名}%/_doc\" -H \"Content-Type: application/json\" -d '%{文档内容}%'",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+              "文档内容": { "type": "string", "required": true, "description": "JSON 文档内容", "example": "{\"name\":\"张三\",\"age\":30}", "notes": "" }
+            },
+            "keyword": "ES 索引文档"
+          },
+          {
+            "name": "索引文档(指定ID)",
+            "cmd": "curl -X PUT \"http://localhost:9200/%{索引名}%/_doc/%{文档ID}%\" -H \"Content-Type: application/json\" -d '%{文档内容}%'",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+              "文档ID": { "type": "string", "required": true, "description": "文档 ID", "example": "1", "notes": "" },
+              "文档内容": { "type": "string", "required": true, "description": "JSON 文档内容", "example": "{\"name\":\"张三\",\"age\":30}", "notes": "" }
+            },
+            "keyword": "ES PUT 文档"
+          },
+          {
+            "name": "获取文档",
+            "cmd": "curl -X GET \"http://localhost:9200/%{索引名}%/_doc/%{文档ID}%?pretty\"",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+              "文档ID": { "type": "string", "required": true, "description": "文档 ID", "example": "1", "notes": "" }
+            },
+            "keyword": "ES GET 文档"
+          },
+          {
+            "name": "检查文档是否存在",
+            "cmd": "curl -I \"http://localhost:9200/%{索引名}%/_doc/%{文档ID}%\"",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+              "文档ID": { "type": "string", "required": true, "description": "文档 ID", "example": "1", "notes": "" }
+            },
+            "keyword": "ES 文档存在"
+          },
+          {
+            "name": "更新文档",
+            "cmd": "curl -X POST \"http://localhost:9200/%{索引名}%/_update/%{文档ID}%\" -H \"Content-Type: application/json\" -d '{\"doc\":%{更新内容}%}'",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+              "文档ID": { "type": "string", "required": true, "description": "文档 ID", "example": "1", "notes": "" },
+              "更新内容": { "type": "string", "required": true, "description": "更新内容 JSON", "example": "{\"name\":\"李四\",\"age\":25}", "notes": "" }
+            },
+            "keyword": "ES UPDATE 文档"
+          },
+          {
+            "name": "脚本更新文档",
+            "cmd": "curl -X POST \"http://localhost:9200/%{索引名}%/_update/%{文档ID}%\" -H \"Content-Type: application/json\" -d '{\"script\":{\"source\":\"ctx._source.%{字段名}% += %{增量}%\",\"lang\":\"painless\"}}'",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+              "文档ID": { "type": "string", "required": true, "description": "文档 ID", "example": "1", "notes": "" },
+              "字段名": { "type": "string", "required": true, "description": "字段名", "example": "age", "notes": "" },
+              "增量": { "type": "string", "required": true, "description": "增量值", "example": "1", "notes": "" }
+            },
+            "keyword": "ES 脚本更新"
+          },
+          {
+            "name": "删除文档",
+            "cmd": "curl -X DELETE \"http://localhost:9200/%{索引名}%/_doc/%{文档ID}%\"",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+              "文档ID": { "type": "string", "required": true, "description": "文档 ID", "example": "1", "notes": "" }
+            },
+            "keyword": "ES DELETE 文档"
+          },
+          {
+            "name": "批量索引文档",
+            "cmd": "curl -X POST \"http://localhost:9200/_bulk\" -H \"Content-Type: application/json\" --data-binary '{\"index\":{\"_index\":\"%{索引名}%\",\"_id\":\"%{文档ID}%\"}}\\n%{文档内容}\\n'",
+            "params": {
+              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+              "文档ID": { "type": "string", "required": true, "description": "文档 ID", "example": "1", "notes": "" },
+              "文档内容": { "type": "string", "required": true, "description": "文档内容 JSON", "example": "{\"name\":\"张三\"}", "notes": "" }
+            },
+            "keyword": "ES Bulk 批量"
+          },
+          {
+            "name": "批量读取(mget)",
+            "cmd": "curl -X POST \"http://localhost:9200/_mget\" -H \"Content-Type: application/json\" -d '{\"docs\":[{\"_index\":\"%{索引名1}%\",\"_id\":\"%{文档ID1}%\"},{\"_index\":\"%{索引名2}%\",\"_id\":\"%{文档ID2}%\"}]}'",
+            "params": {
+              "索引名1": { "type": "string", "required": true, "description": "索引名1", "example": "myindex", "notes": "" },
+              "文档ID1": { "type": "string", "required": true, "description": "文档 ID1", "example": "1", "notes": "" },
+              "索引名2": { "type": "string", "required": true, "description": "索引名2", "example": "myindex", "notes": "" },
+              "文档ID2": { "type": "string", "required": true, "description": "文档 ID2", "example": "2", "notes": "" }
+            },
+            "keyword": "ES mget 批量读取"
+          }
+        ],
+        "params": {
+          "主机": { "type": "string", "required": false, "description": "ES 主机", "example": "localhost", "notes": "默认 localhost" },
+          "端口": { "type": "string", "required": false, "description": "ES 端口", "example": "9200", "notes": "默认 9200" },
+          "索引名": { "type": "string", "required": true, "description": "索引名", "example": "myindex", "notes": "" },
+          "文档ID": { "type": "string", "required": false, "description": "文档 ID", "example": "1", "notes": "可选" },
+          "文档内容": { "type": "string", "required": true, "description": "JSON 文档内容", "example": "{\"name\":\"张三\",\"age\":30}", "notes": "" }
+        }
+      }
+    }
+  ]
+}

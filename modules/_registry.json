@@ -1,6 +1,18 @@
 {
   "modules": [
     {
+      "name": "Elasticsearch",
+      "path": "modules/Elasticsearch/commands.json",
+      "count": 7,
+      "has_docs": true
+    },
+    {
+      "name": "SSH远程操作",
+      "path": "modules/SSH远程操作/commands.json",
+      "count": 5,
+      "has_docs": true
+    },
+    {
       "name": "Claude Skills-ccg",
       "path": "modules/Claude Skills-ccg/commands.json",
       "count": 1,
@@ -55,6 +67,12 @@
       "has_docs": true
     },
     {
+      "name": "DockerCompose",
+      "path": "modules/DockerCompose/commands.json",
+      "count": 10,
+      "has_docs": true
+    },
+    {
       "name": "Git 命令",
       "path": "modules/Git 命令/commands.json",
       "count": 24,
@@ -64,6 +82,12 @@
       "name": "GitHub CLI 命令",
       "path": "modules/GitHub CLI 命令/commands.json",
       "count": 30,
+      "has_docs": true
+    },
+    {
+      "name": "GitHubActions",
+      "path": "modules/GitHubActions/commands.json",
+      "count": 10,
       "has_docs": true
     },
     {
@@ -130,6 +154,36 @@
       "name": "Redis-集合操作",
       "path": "modules/Redis-集合操作/commands.json",
       "count": 15,
+      "has_docs": true
+    },
+    {
+      "name": "前端包管理器",
+      "path": "modules/前端包管理器/commands.json",
+      "count": 19,
+      "has_docs": true
+    },
+    {
+      "name": "网络诊断",
+      "path": "modules/网络诊断/commands.json",
+      "count": 8,
+      "has_docs": true
+    },
+    {
+      "name": "系统监控",
+      "path": "modules/系统监控/commands.json",
+      "count": 8,
+      "has_docs": true
+    },
+    {
+      "name": "Python命令",
+      "path": "modules/Python命令/commands.json",
+      "count": 15,
+      "has_docs": true
+    },
+    {
+      "name": "Shell脚本模板",
+      "path": "modules/Shell脚本模板/commands.json",
+      "count": 13,
       "has_docs": true
     }
   ]
