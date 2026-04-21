@@ -4,7 +4,7 @@
 
 ## 功能特性
 
-- **436+ 命令覆盖**：Linux、Docker、Git、GitHub CLI、Kubernetes、MySQL、Redis、PostgreSQL、Python、前端包管理器等
+- **443+ 命令覆盖**：Linux、Docker、Git、GitHub CLI、Kubernetes、MySQL、Redis、PostgreSQL、Python、前端包管理器等
 - **参数完整**：每个命令包含 type/required/description/example/notes
 - **双模式支持**：
   - **直接复制**：`params: {}` + 硬编码命令，一键复制
@@ -158,9 +158,9 @@ python scripts/merge_commands.py
 | 前端包管理器 | 20 |
 | 系统监控 | 8 |
 | 网络诊断 | 9 |
-| Elasticsearch | - |
+| Elasticsearch | 7 |
 | Claude Skills | 50+ |
-| **总计** | **436+** |
+| **总计** | **443+** |
 
 ## 与 copy_skill 配合使用
 
