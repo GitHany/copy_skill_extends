@@ -1,0 +1,1300 @@
+{
+  "module": "移动开发",
+  "version": "1.0",
+  "description": "移动端跨平台开发命令模块，包含 React Native、Flutter、Ionic、Capacitor、Cordova、Tauri 及 Android SDK、Xcode 工具命令",
+  "commands": [
+    {
+      "dirPath": "/移动开发/",
+      "name": "npx create-react-native-app 创建项目",
+      "keyword": "react-native create init app",
+      "description": "使用 create-react-native-app 脚手架创建 React Native 项目",
+      "data": {
+        "cmd": "npx create-react-native-app %{项目名称}%",
+        "extensions": [
+          {
+            "name": "创建 TypeScript 项目",
+            "cmd": "npx create-react-native-app %{项目名称}% --template react-native-template-typescript",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "MyReactApp", "notes": "常用" }
+            },
+            "keyword": "react-native typescript template"
+          },
+          {
+            "name": "指定版本创建",
+            "cmd": "npx create-react-native-app %{项目名称}% --version %{版本}%",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "MyReactApp", "notes": "" },
+              "版本": { "type": "string", "required": true, "description": "React Native 版本", "example": "0.70.0", "notes": "" }
+            },
+            "keyword": "react-native version"
+          }
+        ],
+        "params": {
+          "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "MyReactApp", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "npx react-native init 初始化项目",
+      "keyword": "react-native init 初始化项目",
+      "description": "使用 react-native CLI 初始化 React Native 项目",
+      "data": {
+        "cmd": "npx react-native@latest init %{项目名称}%",
+        "extensions": [
+          {
+            "name": "最新版本初始化",
+            "cmd": "npx react-native@latest init %{项目名称}%",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "MyProject", "notes": "常用" }
+            },
+            "keyword": "react-native latest init"
+          },
+          {
+            "name": "指定版本初始化",
+            "cmd": "npx react-native@0.72.0 init %{项目名称}%",
+            "params": {
+              "版本": { "type": "string", "required": true, "description": "React Native 版本", "example": "0.72.0", "notes": "" }
+            },
+            "keyword": "react-native specific version"
+          },
+          {
+            "name": "跳过依赖安装",
+            "cmd": "npx react-native init %{项目名称}% --skip-install",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "MyProject", "notes": "常用" }
+            },
+            "keyword": "react-native skip install"
+          }
+        ],
+        "params": {
+          "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "MyProject", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "npx react-native run-android 运行 Android 应用",
+      "keyword": "react-native run-android android",
+      "description": "在 Android 设备或模拟器上运行 React Native 应用",
+      "data": {
+        "cmd": "npx react-native run-android",
+        "extensions": [
+          {
+            "name": "指定设备运行",
+            "cmd": "npx react-native run-android --deviceId %{设备ID}%",
+            "params": {
+              "设备ID": { "type": "string", "required": true, "description": "设备 ID", "example": "emulator-5554", "notes": "常用" }
+            },
+            "keyword": "react-native device id"
+          },
+          {
+            "name": "Debug 模式运行",
+            "cmd": "npx react-native run-android --variant=debug",
+            "params": {},
+            "keyword": "react-native debug"
+          },
+          {
+            "name": "Release 模式运行",
+            "cmd": "npx react-native run-android --variant=release",
+            "params": {},
+            "keyword": "react-native release"
+          },
+          {
+            "name": "清缓存重新构建",
+            "cmd": "npx react-native run-android --reset-cache",
+            "params": {},
+            "keyword": "react-native reset-cache"
+          },
+          {
+            "name": "构建 Release APK",
+            "cmd": "cd android && ./gradlew assembleRelease",
+            "params": {},
+            "keyword": "gradle assemble release apk"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "npx react-native run-ios 运行 iOS 应用",
+      "keyword": "react-native run-ios ios simulator",
+      "description": "在 iOS 模拟器或设备上运行 React Native 应用",
+      "data": {
+        "cmd": "npx react-native run-ios",
+        "extensions": [
+          {
+            "name": "指定模拟器运行",
+            "cmd": "npx react-native run-ios --simulator=\"%{模拟器名}%\"",
+            "params": {
+              "模拟器名": { "type": "string", "required": true, "description": "模拟器名称", "example": "iPhone 15", "notes": "常用" }
+            },
+            "keyword": "react-native ios simulator"
+          },
+          {
+            "name": "指定真机运行",
+            "cmd": "npx react-native run-ios --device=\"%{设备名}%\"",
+            "params": {
+              "设备名": { "type": "string", "required": true, "description": "设备名称", "example": "iPhone", "notes": "" }
+            },
+            "keyword": "react-native ios device"
+          },
+          {
+            "name": "列出可用设备",
+            "cmd": "xcrun simctl list devices available",
+            "params": {},
+            "keyword": "xcrun simctl list devices"
+          },
+          {
+            "name": "Release 配置运行",
+            "cmd": "npx react-native run-ios --variant=Release --configuration=Release",
+            "params": {},
+            "keyword": "react-native ios release"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "react-native bundle 打包 JS Bundle",
+      "keyword": "react-native bundle 打包 jsbundle",
+      "description": "将 JavaScript 代码打包成 Bundle 文件，用于离线或发布",
+      "data": {
+        "cmd": "npx react-native bundle --platform %{平台}% --entry-file index.js --bundle-output %{输出路径}% --assets-dest %{资源目录}%",
+        "extensions": [
+          {
+            "name": "打包 iOS Bundle",
+            "cmd": "npx react-native bundle --platform ios --entry-file index.js --bundle-output ios/main.jsbundle --assets-dest ios",
+            "params": {},
+            "keyword": "react-native bundle ios"
+          },
+          {
+            "name": "打包 Android Bundle",
+            "cmd": "npx react-native bundle --platform android --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
+            "params": {},
+            "keyword": "react-native bundle android"
+          },
+          {
+            "name": "生产优化 Bundle",
+            "cmd": "npx react-native bundle --platform ios --entry-file index.js --bundle-output ios/main.jsbundle --dev false --minify true",
+            "params": {},
+            "keyword": "react-native bundle production"
+          }
+        ],
+        "params": {
+          "平台": { "type": "string", "required": true, "description": "目标平台", "example": "ios", "notes": "常用" },
+          "输出路径": { "type": "string", "required": true, "description": "Bundle 输出路径", "example": "ios/main.jsbundle", "notes": "常用" },
+          "资源目录": { "type": "string", "required": true, "description": "资源输出目录", "example": "ios", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "npx react-native start 启动 Metro 开发服务器",
+      "keyword": "react-native start metro server",
+      "description": "启动 Metro Bundler 开发服务器",
+      "data": {
+        "cmd": "npx react-native start",
+        "extensions": [
+          {
+            "name": "重置缓存启动",
+            "cmd": "npx react-native start --reset-cache",
+            "params": {},
+            "keyword": "metro reset cache"
+          },
+          {
+            "name": "指定端口启动",
+            "cmd": "npx react-native start --port %{端口}%",
+            "params": {
+              "端口": { "type": "number", "required": true, "description": "端口号", "example": "8082", "notes": "" }
+            },
+            "keyword": "metro port"
+          },
+          {
+            "name": "开启 HTTPS",
+            "cmd": "npx react-native start --https",
+            "params": {},
+            "keyword": "metro https"
+          },
+          {
+            "name": "自定义配置文件",
+            "cmd": "npx react-native start --config metro.config.js",
+            "params": {},
+            "keyword": "metro config"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "Expo 命令",
+      "keyword": "expo start publish build",
+      "description": "Expo 开发、构建和发布命令",
+      "data": {
+        "cmd": "npx expo %{命令}%",
+        "extensions": [
+          {
+            "name": "启动 Expo 开发服务器",
+            "cmd": "npx expo start",
+            "params": {},
+            "keyword": "expo start"
+          },
+          {
+            "name": "启动并打开 iOS",
+            "cmd": "npx expo start --ios",
+            "params": {},
+            "keyword": "expo ios"
+          },
+          {
+            "name": "启动并打开 Android",
+            "cmd": "npx expo start --android",
+            "params": {},
+            "keyword": "expo android"
+          },
+          {
+            "name": "发布到 Expo",
+            "cmd": "npx expo publish",
+            "params": {},
+            "keyword": "expo publish"
+          },
+          {
+            "name": "EAS 线上更新",
+            "cmd": "eas update --branch preview --message \"%{更新说明}%\"",
+            "params": {
+              "更新说明": { "type": "string", "required": true, "description": "更新描述", "example": "修复登录问题", "notes": "" }
+            },
+            "keyword": "eas update"
+          },
+          {
+            "name": "构建 Android APK",
+            "cmd": "eas build --platform android --profile preview",
+            "params": {},
+            "keyword": "eas build android"
+          },
+          {
+            "name": "预构建原生项目",
+            "cmd": "npx expo prebuild",
+            "params": {},
+            "keyword": "expo prebuild"
+          },
+          {
+            "name": "导出 Web 应用",
+            "cmd": "npx expo export --platform web",
+            "params": {},
+            "keyword": "expo export web"
+          }
+        ],
+        "params": {
+          "命令": { "type": "string", "required": true, "description": "Expo 子命令", "example": "start", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "flutter create 创建项目",
+      "keyword": "flutter create 项目 init",
+      "description": "使用 Flutter CLI 创建新项目",
+      "data": {
+        "cmd": "flutter create %{项目名称}%",
+        "extensions": [
+          {
+            "name": "创建项目",
+            "cmd": "flutter create %{项目名称}%",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my_app", "notes": "常用" }
+            },
+            "keyword": "flutter create"
+          },
+          {
+            "name": "指定组织",
+            "cmd": "flutter create --org %{组织名}% %{项目名称}%",
+            "params": {
+              "组织名": { "type": "string", "required": true, "description": "组织名（包名）", "example": "com.example", "notes": "" }
+            },
+            "keyword": "flutter create org"
+          },
+          {
+            "name": "指定平台",
+            "cmd": "flutter create --platforms=ios,android %{项目名称}%",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my_app", "notes": "常用" }
+            },
+            "keyword": "flutter create platforms"
+          },
+          {
+            "name": "创建桌面应用",
+            "cmd": "flutter create --platforms=windows,macos,linux %{项目名称}%",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my_app", "notes": "" }
+            },
+            "keyword": "flutter desktop"
+          },
+          {
+            "name": "创建 Web 应用",
+            "cmd": "flutter create --platforms=web %{项目名称}%",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my_app", "notes": "" }
+            },
+            "keyword": "flutter web"
+          }
+        ],
+        "params": {
+          "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my_app", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "flutter run 运行应用",
+      "keyword": "flutter run 启动 运行",
+      "description": "在指定设备上运行 Flutter 应用",
+      "data": {
+        "cmd": "flutter run",
+        "extensions": [
+          {
+            "name": "默认运行",
+            "cmd": "flutter run",
+            "params": {},
+            "keyword": "flutter run"
+          },
+          {
+            "name": "指定设备",
+            "cmd": "flutter run -d %{设备ID}%",
+            "params": {
+              "设备ID": { "type": "string", "required": true, "description": "设备 ID", "example": "chrome", "notes": "常用" }
+            },
+            "keyword": "flutter run device"
+          },
+          {
+            "name": "热重载模式",
+            "cmd": "flutter run --hot",
+            "params": {},
+            "keyword": "flutter hot"
+          },
+          {
+            "name": "发布模式运行",
+            "cmd": "flutter run --release",
+            "params": {},
+            "keyword": "flutter release"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "flutter build apk 构建 Android APK",
+      "keyword": "flutter build apk 打包",
+      "description": "构建 Android APK 或 App Bundle",
+      "data": {
+        "cmd": "flutter build apk",
+        "extensions": [
+          {
+            "name": "构建调试 APK",
+            "cmd": "flutter build apk",
+            "params": {},
+            "keyword": "flutter build debug"
+          },
+          {
+            "name": "构建发布 APK",
+            "cmd": "flutter build apk --release",
+            "params": {},
+            "keyword": "flutter build release"
+          },
+          {
+            "name": "构建 App Bundle（AAB）",
+            "cmd": "flutter build appbundle",
+            "params": {},
+            "keyword": "flutter appbundle"
+          },
+          {
+            "name": "指定目标架构",
+            "cmd": "flutter build apk --target-platform android-arm,android-arm64",
+            "params": {},
+            "keyword": "flutter target-platform"
+          },
+          {
+            "name": "代码压缩",
+            "cmd": "flutter build apk --shrink",
+            "params": {},
+            "keyword": "flutter shrink"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "flutter build ios 构建 iOS 应用",
+      "keyword": "flutter build ios xcode",
+      "description": "构建 iOS 应用（模拟器版或真机版）",
+      "data": {
+        "cmd": "flutter build ios --simulator --no-codesign",
+        "extensions": [
+          {
+            "name": "模拟器构建",
+            "cmd": "flutter build ios --simulator --no-codesign",
+            "params": {},
+            "keyword": "flutter ios simulator"
+          },
+          {
+            "name": "真机 Release 构建",
+            "cmd": "flutter build ios --release --no-codesign",
+            "params": {},
+            "keyword": "flutter ios release"
+          },
+          {
+            "name": "查看可用设备",
+            "cmd": "flutter devices",
+            "params": {},
+            "keyword": "flutter devices"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "flutter doctor 环境诊断",
+      "keyword": "flutter doctor 环境检查 诊断",
+      "description": "检查 Flutter 开发环境配置",
+      "data": {
+        "cmd": "flutter doctor",
+        "extensions": [
+          {
+            "name": "完整诊断",
+            "cmd": "flutter doctor",
+            "params": {},
+            "keyword": "flutter doctor"
+          },
+          {
+            "name": "详细输出",
+            "cmd": "flutter doctor -v",
+            "params": {},
+            "keyword": "flutter doctor verbose"
+          },
+          {
+            "name": "接受 Android 许可",
+            "cmd": "flutter doctor --android-licenses",
+            "params": {},
+            "keyword": "flutter android licenses"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "flutter --version 版本信息",
+      "keyword": "flutter version 版本",
+      "description": "查看 Flutter 和 Dart 版本信息",
+      "data": {
+        "cmd": "flutter --version",
+        "extensions": [
+          {
+            "name": "查看版本",
+            "cmd": "flutter --version",
+            "params": {},
+            "keyword": "flutter version"
+          },
+          {
+            "name": "查看 Dart 版本",
+            "cmd": "dart --version",
+            "params": {},
+            "keyword": "dart version"
+          },
+          {
+            "name": "升级 Flutter",
+            "cmd": "flutter upgrade",
+            "params": {},
+            "keyword": "flutter upgrade"
+          },
+          {
+            "name": "切换稳定版",
+            "cmd": "flutter channel stable",
+            "params": {},
+            "keyword": "flutter channel"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "dart pub get / dart run 包管理与运行",
+      "keyword": "dart pub get run 依赖",
+      "description": "Dart 包管理、脚本运行、代码格式化与静态分析",
+      "data": {
+        "cmd": "dart pub get",
+        "extensions": [
+          {
+            "name": "获取依赖",
+            "cmd": "dart pub get",
+            "params": {},
+            "keyword": "dart pub get"
+          },
+          {
+            "name": "添加依赖",
+            "cmd": "dart pub add %{依赖名}%",
+            "params": {
+              "依赖名": { "type": "string", "required": true, "description": "包名", "example": "http", "notes": "常用" }
+            },
+            "keyword": "dart pub add"
+          },
+          {
+            "name": "升级依赖",
+            "cmd": "dart pub upgrade",
+            "params": {},
+            "keyword": "dart pub upgrade"
+          },
+          {
+            "name": "运行 Dart 脚本",
+            "cmd": "dart run %{脚本名}%.dart",
+            "params": {
+              "脚本名": { "type": "string", "required": true, "description": "脚本文件名", "example": "main", "notes": "常用" }
+            },
+            "keyword": "dart run"
+          },
+          {
+            "name": "格式化代码",
+            "cmd": "dart format .",
+            "params": {},
+            "keyword": "dart format"
+          },
+          {
+            "name": "静态分析",
+            "cmd": "dart analyze",
+            "params": {},
+            "keyword": "dart analyze"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "sdkmanager 管理 Android SDK 组件",
+      "keyword": "sdkmanager sdk android",
+      "description": "使用 sdkmanager 安装、查看和管理 Android SDK 组件",
+      "data": {
+        "cmd": "sdkmanager --list_installed",
+        "extensions": [
+          {
+            "name": "列出已安装包",
+            "cmd": "sdkmanager --list_installed",
+            "params": {},
+            "keyword": "sdkmanager list"
+          },
+          {
+            "name": "安装 platform-tools",
+            "cmd": "sdkmanager \"platform-tools\"",
+            "params": {},
+            "keyword": "sdkmanager platform-tools"
+          },
+          {
+            "name": "安装 SDK 平台",
+            "cmd": "sdkmanager \"platforms;android-34\"",
+            "params": {},
+            "keyword": "sdkmanager platforms"
+          },
+          {
+            "name": "安装构建工具",
+            "cmd": "sdkmanager \"build-tools;34.0.0\"",
+            "params": {},
+            "keyword": "sdkmanager build-tools"
+          },
+          {
+            "name": "接受所有许可",
+            "cmd": "yes | sdkmanager --licenses",
+            "params": {},
+            "keyword": "sdkmanager licenses"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "adb Android 调试桥",
+      "keyword": "adb devices install logcat",
+      "description": "Android 调试桥，用于设备管理、应用安装、日志查看和文件传输",
+      "data": {
+        "cmd": "adb %{子命令}%",
+        "extensions": [
+          {
+            "name": "列出设备",
+            "cmd": "adb devices",
+            "params": {},
+            "keyword": "adb devices"
+          },
+          {
+            "name": "安装 APK",
+            "cmd": "adb install %{apk路径}%",
+            "params": {
+              "apk路径": { "type": "string", "required": true, "description": "APK 文件路径", "example": "./app-debug.apk", "notes": "常用" }
+            },
+            "keyword": "adb install"
+          },
+          {
+            "name": "覆盖安装",
+            "cmd": "adb install -r %{apk路径}%",
+            "params": {
+              "apk路径": { "type": "string", "required": true, "description": "APK 文件路径", "example": "./app-debug.apk", "notes": "常用" }
+            },
+            "keyword": "adb install replace"
+          },
+          {
+            "name": "卸载应用",
+            "cmd": "adb uninstall %{包名}%",
+            "params": {
+              "包名": { "type": "string", "required": true, "description": "应用包名", "example": "com.example.app", "notes": "常用" }
+            },
+            "keyword": "adb uninstall"
+          },
+          {
+            "name": "推送文件到设备",
+            "cmd": "adb push %{本地路径}% %{设备路径}%",
+            "params": {
+              "本地路径": { "type": "string", "required": true, "description": "本地文件路径", "example": "./data.txt", "notes": "常用" }
+            },
+            "keyword": "adb push"
+          },
+          {
+            "name": "从设备拉取文件",
+            "cmd": "adb pull %{设备路径}% %{本地路径}%",
+            "params": {
+              "设备路径": { "type": "string", "required": true, "description": "设备文件路径", "example": "/sdcard/data.txt", "notes": "常用" }
+            },
+            "keyword": "adb pull"
+          },
+          {
+            "name": "查看日志",
+            "cmd": "adb logcat",
+            "params": {},
+            "keyword": "adb logcat"
+          },
+          {
+            "name": "清除应用数据",
+            "cmd": "adb shell pm clear %{包名}%",
+            "params": {
+              "包名": { "type": "string", "required": true, "description": "应用包名", "example": "com.example.app", "notes": "常用" }
+            },
+            "keyword": "adb pm clear"
+          },
+          {
+            "name": "WiFi 无线调试",
+            "cmd": "adb tcpip 5555 && adb connect %{设备IP}%:5555",
+            "params": {
+              "设备IP": { "type": "string", "required": true, "description": "设备 IP 地址", "example": "192.168.1.100", "notes": "常用" }
+            },
+            "keyword": "adb wifi debug"
+          },
+          {
+            "name": "端口转发",
+            "cmd": "adb forward tcp:8080 tcp:8080",
+            "params": {},
+            "keyword": "adb forward"
+          },
+          {
+            "name": "重启设备",
+            "cmd": "adb reboot",
+            "params": {},
+            "keyword": "adb reboot"
+          }
+        ],
+        "params": {
+          "子命令": { "type": "string", "required": true, "description": "adb 子命令", "example": "devices", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "xcrun simctl 模拟器管理",
+      "keyword": "xcrun simctl simulator ios",
+      "description": "管理 iOS 模拟器的设备、开机、关机等操作",
+      "data": {
+        "cmd": "xcrun simctl list devices available",
+        "extensions": [
+          {
+            "name": "列出可用模拟器",
+            "cmd": "xcrun simctl list devices available",
+            "params": {},
+            "keyword": "simctl list available"
+          },
+          {
+            "name": "列出运行中的模拟器",
+            "cmd": "xcrun simctl list devices booted",
+            "params": {},
+            "keyword": "simctl list booted"
+          },
+          {
+            "name": "创建模拟器",
+            "cmd": "xcrun simctl create \"%{设备名}%\" --family %{机型}% --os %{系统版本}%",
+            "params": {
+              "设备名": { "type": "string", "required": true, "description": "设备名称", "example": "MyiPhone", "notes": "" }
+            },
+            "keyword": "simctl create"
+          },
+          {
+            "name": "开机模拟器",
+            "cmd": "xcrun simctl boot %{设备UUID}%",
+            "params": {
+              "设备UUID": { "type": "string", "required": true, "description": "设备 UUID", "example": "XXXX-XXXX", "notes": "" }
+            },
+            "keyword": "simctl boot"
+          },
+          {
+            "name": "关机模拟器",
+            "cmd": "xcrun simctl shutdown %{设备UUID}%",
+            "params": {
+              "设备UUID": { "type": "string", "required": true, "description": "设备 UUID", "example": "XXXX-XXXX", "notes": "" }
+            },
+            "keyword": "simctl shutdown"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "xcodebuild Xcode 构建",
+      "keyword": "xcodebuild build xcode ios",
+      "description": "使用 xcodebuild 命令行构建 Xcode 项目",
+      "data": {
+        "cmd": "xcodebuild -project %{项目名}%.xcodeproj -scheme %{scheme}% -sdk %{sdk}% -destination '%{目标}%' build",
+        "extensions": [
+          {
+            "name": "模拟器构建",
+            "cmd": "xcodebuild -project %{项目名}%.xcodeproj -scheme %{scheme}% -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15' build",
+            "params": {
+              "项目名": { "type": "string", "required": true, "description": "项目名", "example": "App", "notes": "常用" }
+            },
+            "keyword": "xcodebuild simulator"
+          },
+          {
+            "name": "真机 Release 构建",
+            "cmd": "xcodebuild -project %{项目名}%.xcodeproj -scheme %{scheme}% -sdk iphoneos -configuration Release build",
+            "params": {
+              "项目名": { "type": "string", "required": true, "description": "项目名", "example": "App", "notes": "常用" }
+            },
+            "keyword": "xcodebuild release"
+          },
+          {
+            "name": "清理构建",
+            "cmd": "xcodebuild clean",
+            "params": {},
+            "keyword": "xcodebuild clean"
+          },
+          {
+            "name": "列出 Schemes",
+            "cmd": "xcodebuild -list",
+            "params": {},
+            "keyword": "xcodebuild list"
+          }
+        ],
+        "params": {
+          "项目名": { "type": "string", "required": true, "description": "项目名（不含扩展名）", "example": "App", "notes": "常用" },
+          "scheme": { "type": "string", "required": true, "description": "Scheme 名称", "example": "App", "notes": "常用" },
+          "sdk": { "type": "string", "required": true, "description": "SDK 类型", "example": "iphonesimulator", "notes": "常用" },
+          "目标": { "type": "string", "required": true, "description": "目标位置", "example": "platform=iOS Simulator,name=iPhone 15", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "ionic start 创建 Ionic 项目",
+      "keyword": "ionic start 项目创建",
+      "description": "使用 Ionic CLI 创建新的跨平台项目",
+      "data": {
+        "cmd": "ionic start %{项目名称}% %{模板}%",
+        "extensions": [
+          {
+            "name": "创建空白项目",
+            "cmd": "ionic start %{项目名称}% blank",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-app", "notes": "常用" }
+            },
+            "keyword": "ionic blank"
+          },
+          {
+            "name": "创建标签页项目",
+            "cmd": "ionic start %{项目名称}% tabs",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-app", "notes": "常用" }
+            },
+            "keyword": "ionic tabs"
+          },
+          {
+            "name": "创建侧边菜单项目",
+            "cmd": "ionic start %{项目名称}% sidemenu",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-app", "notes": "" }
+            },
+            "keyword": "ionic sidemenu"
+          },
+          {
+            "name": "指定 Capacitor",
+            "cmd": "ionic start %{项目名称}% blank --capacitor",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-app", "notes": "常用" }
+            },
+            "keyword": "ionic capacitor"
+          }
+        ],
+        "params": {
+          "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-app", "notes": "常用" },
+          "模板": { "type": "string", "required": true, "description": "模板类型", "example": "blank", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "ionic build 构建应用",
+      "keyword": "ionic build 构建",
+      "description": "构建 Ionic Web 应用或原生应用",
+      "data": {
+        "cmd": "ionic build",
+        "extensions": [
+          {
+            "name": "构建 Web 应用",
+            "cmd": "ionic build",
+            "params": {},
+            "keyword": "ionic build"
+          },
+          {
+            "name": "生产构建",
+            "cmd": "ionic build --prod",
+            "params": {},
+            "keyword": "ionic build prod"
+          },
+          {
+            "name": "指定平台构建",
+            "cmd": "ionic build --platform %{平台}%",
+            "params": {
+              "平台": { "type": "string", "required": true, "description": "平台名称", "example": "android", "notes": "常用" }
+            },
+            "keyword": "ionic build platform"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "ionic serve 启动开发服务器",
+      "keyword": "ionic serve dev server",
+      "description": "启动 Ionic 开发服务器",
+      "data": {
+        "cmd": "ionic serve",
+        "extensions": [
+          {
+            "name": "启动服务",
+            "cmd": "ionic serve",
+            "params": {},
+            "keyword": "ionic serve"
+          },
+          {
+            "name": "指定端口",
+            "cmd": "ionic serve --port %{端口}%",
+            "params": {
+              "端口": { "type": "number", "required": true, "description": "端口号", "example": "8100", "notes": "常用" }
+            },
+            "keyword": "ionic serve port"
+          },
+          {
+            "name": "打开浏览器",
+            "cmd": "ionic serve --open",
+            "params": {},
+            "keyword": "ionic serve open"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "npx cap init 初始化 Capacitor",
+      "keyword": "cap init capacitor",
+      "description": "初始化 Capacitor 配置",
+      "data": {
+        "cmd": "npx cap init %{应用名}% %{包名}%",
+        "extensions": [
+          {
+            "name": "初始化项目",
+            "cmd": "npx cap init %{应用名}% %{包名}%",
+            "params": {
+              "应用名": { "type": "string", "required": true, "description": "应用显示名称", "example": "MyApp", "notes": "常用" },
+              "包名": { "type": "string", "required": true, "description": "包名/ID", "example": "com.example.myapp", "notes": "常用" }
+            },
+            "keyword": "cap init"
+          },
+          {
+            "name": "添加 iOS",
+            "cmd": "npx cap add ios",
+            "params": {},
+            "keyword": "cap add ios"
+          },
+          {
+            "name": "添加 Android",
+            "cmd": "npx cap add android",
+            "params": {},
+            "keyword": "cap add android"
+          },
+          {
+            "name": "添加 Electron",
+            "cmd": "npx cap add electron",
+            "params": {},
+            "keyword": "cap add electron"
+          },
+          {
+            "name": "检查配置",
+            "cmd": "npx cap doctor",
+            "params": {},
+            "keyword": "cap doctor"
+          }
+        ],
+        "params": {
+          "应用名": { "type": "string", "required": true, "description": "应用显示名称", "example": "MyApp", "notes": "常用" },
+          "包名": { "type": "string", "required": true, "description": "包名/ID", "example": "com.example.myapp", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "npx cap sync 同步原生项目",
+      "keyword": "cap sync sync 同步",
+      "description": "将 Web 资源同步到原生项目",
+      "data": {
+        "cmd": "npx cap sync",
+        "extensions": [
+          {
+            "name": "同步所有平台",
+            "cmd": "npx cap sync",
+            "params": {},
+            "keyword": "cap sync"
+          },
+          {
+            "name": "仅同步 iOS",
+            "cmd": "npx cap sync ios",
+            "params": {},
+            "keyword": "cap sync ios"
+          },
+          {
+            "name": "仅同步 Android",
+            "cmd": "npx cap sync android",
+            "params": {},
+            "keyword": "cap sync android"
+          },
+          {
+            "name": "用 Xcode 打开",
+            "cmd": "npx cap open ios",
+            "params": {},
+            "keyword": "cap open ios"
+          },
+          {
+            "name": "用 Android Studio 打开",
+            "cmd": "npx cap open android",
+            "params": {},
+            "keyword": "cap open android"
+          },
+          {
+            "name": "复制 Web 资源",
+            "cmd": "npx cap copy",
+            "params": {},
+            "keyword": "cap copy"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "ionic cordova platform add 添加 Cordova 平台",
+      "keyword": "cordova platform add 平台",
+      "description": "为 Cordova 项目添加 iOS/Android 平台支持",
+      "data": {
+        "cmd": "ionic cordova platform add %{平台}%",
+        "extensions": [
+          {
+            "name": "添加 iOS",
+            "cmd": "ionic cordova platform add ios",
+            "params": {},
+            "keyword": "cordova add ios"
+          },
+          {
+            "name": "添加 Android",
+            "cmd": "ionic cordova platform add android",
+            "params": {},
+            "keyword": "cordova add android"
+          },
+          {
+            "name": "指定版本",
+            "cmd": "ionic cordova platform add ios@6.0.0",
+            "params": {},
+            "keyword": "cordova version"
+          },
+          {
+            "name": "移除平台",
+            "cmd": "ionic cordova platform remove ios",
+            "params": {},
+            "keyword": "cordova remove platform"
+          }
+        ],
+        "params": {
+          "平台": { "type": "string", "required": true, "description": "平台名称", "example": "ios", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "ionic cordova build 构建 Cordova 应用",
+      "keyword": "cordova build 构建",
+      "description": "构建 Cordova 跨平台应用",
+      "data": {
+        "cmd": "ionic cordova build %{平台}%",
+        "extensions": [
+          {
+            "name": "构建 iOS",
+            "cmd": "ionic cordova build ios",
+            "params": {},
+            "keyword": "cordova build ios"
+          },
+          {
+            "name": "构建 Android",
+            "cmd": "ionic cordova build android",
+            "params": {},
+            "keyword": "cordova build android"
+          },
+          {
+            "name": "发布构建",
+            "cmd": "ionic cordova build ios --release",
+            "params": {},
+            "keyword": "cordova build release"
+          },
+          {
+            "name": "调试构建",
+            "cmd": "ionic cordova build android --debug",
+            "params": {},
+            "keyword": "cordova build debug"
+          }
+        ],
+        "params": {
+          "平台": { "type": "string", "required": true, "description": "平台名称", "example": "ios", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "ionic cordova run 在设备运行 Cordova 应用",
+      "keyword": "cordova run device 设备",
+      "description": "在 iOS/Android 设备上运行 Cordova 应用",
+      "data": {
+        "cmd": "ionic cordova run %{平台}%",
+        "extensions": [
+          {
+            "name": "iOS 运行",
+            "cmd": "ionic cordova run ios",
+            "params": {},
+            "keyword": "cordova run ios"
+          },
+          {
+            "name": "Android 运行",
+            "cmd": "ionic cordova run android",
+            "params": {},
+            "keyword": "cordova run android"
+          },
+          {
+            "name": "真机运行",
+            "cmd": "ionic cordova run ios --device",
+            "params": {},
+            "keyword": "cordova run device"
+          },
+          {
+            "name": "模拟器运行",
+            "cmd": "ionic cordova run ios --emulator",
+            "params": {},
+            "keyword": "cordova run emulator"
+          }
+        ],
+        "params": {
+          "平台": { "type": "string", "required": true, "description": "平台名称", "example": "ios", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "Cordova plugin 管理插件",
+      "keyword": "cordova plugin add 管理",
+      "description": "Cordova 插件的添加、移除和搜索",
+      "data": {
+        "cmd": "ionic cordova plugin add %{插件名}%",
+        "extensions": [
+          {
+            "name": "添加插件",
+            "cmd": "ionic cordova plugin add %{插件名}%",
+            "params": {
+              "插件名": { "type": "string", "required": true, "description": "插件名称", "example": "@capacitor/camera", "notes": "常用" }
+            },
+            "keyword": "cordova plugin add"
+          },
+          {
+            "name": "列出已装插件",
+            "cmd": "ionic cordova plugin list",
+            "params": {},
+            "keyword": "cordova plugin list"
+          },
+          {
+            "name": "移除插件",
+            "cmd": "ionic cordova plugin rm %{插件名}%",
+            "params": {
+              "插件名": { "type": "string", "required": true, "description": "插件名称", "example": "@capacitor/camera", "notes": "常用" }
+            },
+            "keyword": "cordova plugin rm"
+          },
+          {
+            "name": "搜索插件",
+            "cmd": "cordova plugin search %{关键词}%",
+            "params": {
+              "关键词": { "type": "string", "required": true, "description": "搜索关键词", "example": "camera", "notes": "常用" }
+            },
+            "keyword": "cordova plugin search"
+          }
+        ],
+        "params": {
+          "插件名": { "type": "string", "required": true, "description": "插件名称", "example": "@capacitor/camera", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "npm create tauri-app 创建 Tauri 项目",
+      "keyword": "tauri create 项目",
+      "description": "使用 create-tauri-app 创建 Tauri 桌面/移动应用项目",
+      "data": {
+        "cmd": "npm create tauri-app@latest %{项目名称}%",
+        "extensions": [
+          {
+            "name": "创建项目",
+            "cmd": "npm create tauri-app@latest %{项目名称}%",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-tauri-app", "notes": "常用" }
+            },
+            "keyword": "tauri create"
+          },
+          {
+            "name": "无框架模板",
+            "cmd": "npm create tauri-app@latest %{项目名称}% --template vanilla",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-tauri-app", "notes": "常用" }
+            },
+            "keyword": "tauri vanilla"
+          },
+          {
+            "name": "Vue+TypeScript 模板",
+            "cmd": "npm create tauri-app@latest %{项目名称}% --template vue-ts",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-tauri-app", "notes": "常用" }
+            },
+            "keyword": "tauri vue-ts"
+          },
+          {
+            "name": "React+TypeScript 模板",
+            "cmd": "npm create tauri-app@latest %{项目名称}% --template react-ts",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-tauri-app", "notes": "常用" }
+            },
+            "keyword": "tauri react-ts"
+          },
+          {
+            "name": "非交互式创建",
+            "cmd": "npm create tauri-app@latest %{项目名称}% --yes",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-tauri-app", "notes": "常用" }
+            },
+            "keyword": "tauri non-interactive"
+          }
+        ],
+        "params": {
+          "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-tauri-app", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "npm run tauri build 构建 Tauri 应用",
+      "keyword": "tauri build 构建",
+      "description": "构建 Tauri 生产版本应用",
+      "data": {
+        "cmd": "npm run tauri build",
+        "extensions": [
+          {
+            "name": "构建生产版本",
+            "cmd": "npm run tauri build",
+            "params": {},
+            "keyword": "tauri build"
+          },
+          {
+            "name": "开发模式",
+            "cmd": "npm run tauri dev",
+            "params": {},
+            "keyword": "tauri dev"
+          },
+          {
+            "name": "指定目标架构",
+            "cmd": "tauri build --target x86_64-pc-windows-msvc",
+            "params": {},
+            "keyword": "tauri target"
+          },
+          {
+            "name": "调试构建",
+            "cmd": "TAURI_DEBUG=1 npm run tauri build",
+            "params": {},
+            "keyword": "tauri debug build"
+          },
+          {
+            "name": "查看 Tauri 配置",
+            "cmd": "cat src-tauri/tauri.conf.json",
+            "params": {},
+            "keyword": "tauri config"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/移动开发/",
+      "name": "npm run tauri init 初始化 Tauri",
+      "keyword": "tauri init 初始化",
+      "description": "在现有项目中初始化 Tauri 配置",
+      "data": {
+        "cmd": "npm run tauri init",
+        "extensions": [
+          {
+            "name": "初始化配置",
+            "cmd": "npm run tauri init",
+            "params": {},
+            "keyword": "tauri init"
+          },
+          {
+            "name": "指定应用名和窗口标题",
+            "cmd": "npm run tauri init --app-name \"%{应用名}%\" --window-title \"%{窗口标题}%\"",
+            "params": {
+              "应用名": { "type": "string", "required": true, "description": "应用名称", "example": "MyApp", "notes": "常用" }
+            },
+            "keyword": "tauri init custom"
+          },
+          {
+            "name": "查看帮助",
+            "cmd": "npx tauri help init",
+            "params": {},
+            "keyword": "tauri help init"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

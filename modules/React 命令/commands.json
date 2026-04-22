@@ -1,0 +1,1007 @@
+{
+  "module": "React 命令",
+  "version": "1.0",
+  "description": "React 与 Next.js 命令模块集合",
+  "commands": [
+    {
+      "dirPath": "/React 命令/",
+      "name": "npx create-react-app 创建 React 项目",
+      "keyword": "create-react-app 创建 React 项目",
+      "description": "使用 Create React App 脚手架创建新的 React 项目",
+      "data": {
+        "cmd": "npx create-react-app %{项目名}%",
+        "extensions": [
+          {
+            "name": "创建 TypeScript 项目",
+            "cmd": "npx create-react-app %{项目名}% --template typescript",
+            "params": {
+              "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "my-react-app", "notes": "" }
+            },
+            "keyword": "create-react-app TypeScript"
+          },
+          {
+            "name": "创建 JavaScript 项目",
+            "cmd": "npx create-react-app %{项目名}% --template cra-template",
+            "params": {
+              "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "my-react-app", "notes": "" }
+            },
+            "keyword": "create-react-app JavaScript"
+          }
+        ],
+        "params": {
+          "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "my-react-app", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "npx create-next-app 创建 Next.js 项目",
+      "keyword": "create-next-app 创建 Next.js 项目",
+      "description": "使用 Create Next App 脚手架创建新的 Next.js 项目",
+      "data": {
+        "cmd": "npx create-next-app %{项目名}%",
+        "extensions": [
+          {
+            "name": "创建 TypeScript 项目",
+            "cmd": "npx create-next-app %{项目名}% --typescript",
+            "params": {
+              "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "my-next-app", "notes": "" }
+            },
+            "keyword": "create-next-app TypeScript"
+          },
+          {
+            "name": "创建 App Router 项目",
+            "cmd": "npx create-next-app %{项目名}% --app",
+            "params": {
+              "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "my-next-app", "notes": "" }
+            },
+            "keyword": "create-next-app App Router"
+          },
+          {
+            "name": "创建 Tailwind CSS 项目",
+            "cmd": "npx create-next-app %{项目名}% --tailwind",
+            "params": {
+              "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "my-next-app", "notes": "" }
+            },
+            "keyword": "create-next-app Tailwind"
+          },
+          {
+            "name": "创建 ESLint 项目",
+            "cmd": "npx create-next-app %{项目名}% --eslint",
+            "params": {
+              "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "my-next-app", "notes": "" }
+            },
+            "keyword": "create-next-app ESLint"
+          },
+          {
+            "name": "创建 src 目录项目",
+            "cmd": "npx create-next-app %{项目名}% --src-dir",
+            "params": {
+              "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "my-next-app", "notes": "" }
+            },
+            "keyword": "create-next-app src 目录"
+          },
+          {
+            "name": "组合多个选项创建",
+            "cmd": "npx create-next-app %{项目名}% --typescript --tailwind --eslint --app --src-dir",
+            "params": {
+              "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "my-next-app", "notes": "" }
+            },
+            "keyword": "create-next-app 组合选项"
+          }
+        ],
+        "params": {
+          "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "my-next-app", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "npm/yarn/pnpm 安装依赖",
+      "keyword": "npm yarn pnpm install 安装依赖",
+      "description": "在 React/Next.js 项目中安装依赖包",
+      "data": {
+        "cmd": "npm install %{包名}%",
+        "extensions": [
+          {
+            "name": "npm 安装依赖",
+            "cmd": "npm install",
+            "params": {},
+            "keyword": "npm install"
+          },
+          {
+            "name": "npm 安装开发依赖",
+            "cmd": "npm install %{包名}% --save-dev",
+            "params": {
+              "包名": { "type": "string", "required": true, "description": "npm 包名称", "example": "typescript @types/react", "notes": "" }
+            },
+            "keyword": "npm install 开发依赖"
+          },
+          {
+            "name": "yarn 安装依赖",
+            "cmd": "yarn add %{包名}%",
+            "params": {
+              "包名": { "type": "string", "required": true, "description": "包名称", "example": "react-router-dom", "notes": "" }
+            },
+            "keyword": "yarn add"
+          },
+          {
+            "name": "pnpm 安装依赖",
+            "cmd": "pnpm add %{包名}%",
+            "params": {
+              "包名": { "type": "string", "required": true, "description": "包名称", "example": "zustand", "notes": "" }
+            },
+            "keyword": "pnpm add"
+          },
+          {
+            "name": "npm 卸载依赖",
+            "cmd": "npm uninstall %{包名}%",
+            "params": {
+              "包名": { "type": "string", "required": true, "description": "包名称", "example": "lodash", "notes": "" }
+            },
+            "keyword": "npm uninstall"
+          },
+          {
+            "name": "npm 更新依赖",
+            "cmd": "npm update %{包名}%",
+            "params": {
+              "包名": { "type": "string", "required": true, "description": "包名称", "example": "react", "notes": "" }
+            },
+            "keyword": "npm update"
+          }
+        ],
+        "params": {
+          "包名": { "type": "string", "required": true, "description": "npm 包名称", "example": "react react-dom", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "npm run start / yarn start 启动开发服务器",
+      "keyword": "npm run start 启动开发服务器 React",
+      "description": "启动 React 项目的开发服务器",
+      "data": {
+        "cmd": "npm start",
+        "extensions": [
+          {
+            "name": "npm 启动开发服务器",
+            "cmd": "npm start",
+            "params": {},
+            "keyword": "npm start"
+          },
+          {
+            "name": "yarn 启动开发服务器",
+            "cmd": "yarn start",
+            "params": {},
+            "keyword": "yarn start"
+          },
+          {
+            "name": "pnpm 启动开发服务器",
+            "cmd": "pnpm dev",
+            "params": {},
+            "keyword": "pnpm dev"
+          },
+          {
+            "name": "指定端口启动",
+            "cmd": "PORT=%{端口}% npm start",
+            "params": {
+              "端口": { "type": "string", "required": true, "description": "端口号", "example": "3001", "notes": "" }
+            },
+            "keyword": "npm start 端口"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "npm run build 构建生产版本",
+      "keyword": "npm run build 构建生产版本 React",
+      "description": "构建 React 项目的生产版本",
+      "data": {
+        "cmd": "npm run build",
+        "extensions": [
+          {
+            "name": "npm 构建生产版本",
+            "cmd": "npm run build",
+            "params": {},
+            "keyword": "npm run build"
+          },
+          {
+            "name": "yarn 构建生产版本",
+            "cmd": "yarn build",
+            "params": {},
+            "keyword": "yarn build"
+          },
+          {
+            "name": "分析构建产物",
+            "cmd": "npm run build -- --analyze",
+            "params": {},
+            "keyword": "npm run build 分析"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "next dev 启动 Next.js 开发服务器",
+      "keyword": "next dev 启动开发服务器 Next.js",
+      "description": "启动 Next.js 项目的开发服务器",
+      "data": {
+        "cmd": "next dev",
+        "extensions": [
+          {
+            "name": "默认端口启动",
+            "cmd": "next dev",
+            "params": {},
+            "keyword": "next dev"
+          },
+          {
+            "name": "指定端口启动",
+            "cmd": "next dev --port %{端口}%",
+            "params": {
+              "端口": { "type": "string", "required": true, "description": "端口号", "example": "8080", "notes": "" }
+            },
+            "keyword": "next dev 端口"
+          },
+          {
+            "name": "指定主机启动",
+            "cmd": "next dev -H %{主机}%",
+            "params": {
+              "主机": { "type": "string", "required": true, "description": "主机地址", "example": "0.0.0.0", "notes": "" }
+            },
+            "keyword": "next dev 主机"
+          },
+          {
+            "name": "Turbo 模式启动",
+            "cmd": "next dev --turbo",
+            "params": {},
+            "keyword": "next dev turbo"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "next build 构建 Next.js 生产版本",
+      "keyword": "next build 构建生产版本 Next.js",
+      "description": "构建 Next.js 项目的生产版本",
+      "data": {
+        "cmd": "next build",
+        "extensions": [
+          {
+            "name": "构建生产版本",
+            "cmd": "next build",
+            "params": {},
+            "keyword": "next build"
+          },
+          {
+            "name": "分析构建产物",
+            "cmd": "next build --analyze",
+            "params": {},
+            "keyword": "next build 分析"
+          },
+          {
+            "name": "仅生成静态导出",
+            "cmd": "next build --export",
+            "params": {},
+            "keyword": "next build 导出"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "next start 启动 Next.js 生产服务器",
+      "keyword": "next start 启动生产服务器 Next.js",
+      "description": "启动 Next.js 生产环境服务器",
+      "data": {
+        "cmd": "next start",
+        "extensions": [
+          {
+            "name": "默认端口启动",
+            "cmd": "next start",
+            "params": {},
+            "keyword": "next start"
+          },
+          {
+            "name": "指定端口启动",
+            "cmd": "next start -p %{端口}%",
+            "params": {
+              "端口": { "type": "string", "required": true, "description": "端口号", "example": "3000", "notes": "" }
+            },
+            "keyword": "next start 端口"
+          },
+          {
+            "name": "指定主机启动",
+            "cmd": "next start -H %{主机}%",
+            "params": {
+              "主机": { "type": "string", "required": true, "description": "主机地址", "example": "0.0.0.0", "notes": "" }
+            },
+            "keyword": "next start 主机"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "next lint 运行 ESLint 检查",
+      "keyword": "next lint ESLint 代码检查",
+      "description": "运行 Next.js 内置的 ESLint 检查",
+      "data": {
+        "cmd": "next lint",
+        "extensions": [
+          {
+            "name": "运行 ESLint 检查",
+            "cmd": "next lint",
+            "params": {},
+            "keyword": "next lint"
+          },
+          {
+            "name": "修复可自动修复的问题",
+            "cmd": "next lint --fix",
+            "params": {},
+            "keyword": "next lint fix"
+          },
+          {
+            "name": "指定目录检查",
+            "cmd": "next lint --dir %{目录}%",
+            "params": {
+              "目录": { "type": "string", "required": true, "description": "目录路径", "example": "src", "notes": "" }
+            },
+            "keyword": "next lint 目录"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "npx tsc / tsc --init TypeScript 编译",
+      "keyword": "tsc TypeScript 编译检查",
+      "description": "TypeScript 编译检查命令",
+      "data": {
+        "cmd": "npx tsc --noEmit",
+        "extensions": [
+          {
+            "name": "类型检查不生成文件",
+            "cmd": "npx tsc --noEmit",
+            "params": {},
+            "keyword": "tsc noEmit"
+          },
+          {
+            "name": "初始化 tsconfig",
+            "cmd": "npx tsc --init",
+            "params": {},
+            "keyword": "tsc init"
+          },
+          {
+            "name": "编译所有 TypeScript 文件",
+            "cmd": "npx tsc",
+            "params": {},
+            "keyword": "tsc 编译"
+          },
+          {
+            "name": "指定配置文件编译",
+            "cmd": "npx tsc --project %{配置文件}%",
+            "params": {
+              "配置文件": { "type": "string", "required": true, "description": "tsconfig 文件路径", "example": "tsconfig.json", "notes": "" }
+            },
+            "keyword": "tsc 指定配置"
+          },
+          {
+            "name": "严格模式编译",
+            "cmd": "npx tsc --strict",
+            "params": {},
+            "keyword": "tsc strict"
+          },
+          {
+            "name": "观察模式自动编译",
+            "cmd": "npx tsc --watch",
+            "params": {},
+            "keyword": "tsc watch"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "react-router 命令路由",
+      "keyword": "react-router 路由安装",
+      "description": "React Router 路由库的安装和常用命令",
+      "data": {
+        "cmd": "npm install react-router-dom",
+        "extensions": [
+          {
+            "name": "安装 React Router DOM",
+            "cmd": "npm install react-router-dom",
+            "params": {},
+            "keyword": "react-router 安装"
+          },
+          {
+            "name": "安装 React Router v7",
+            "cmd": "npm install react-router",
+            "params": {},
+            "keyword": "react-router v7"
+          },
+          {
+            "name": "安装 TypeScript 类型",
+            "cmd": "npm install @types/react-router-dom --save-dev",
+            "params": {},
+            "keyword": "react-router types"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "useState Hook 状态管理",
+      "keyword": "useState Hook 状态",
+      "description": "React useState Hook 的常用模式和示例",
+      "data": {
+        "cmd": "const [state, setState] = useState(initialValue)",
+        "extensions": [
+          {
+            "name": "基础状态声明",
+            "cmd": "const [count, setCount] = useState(0)",
+            "params": {},
+            "keyword": "useState 基础"
+          },
+          {
+            "name": "对象状态声明",
+            "cmd": "const [user, setUser] = useState({ name: '', age: 0 })",
+            "params": {},
+            "keyword": "useState 对象"
+          },
+          {
+            "name": "函数式更新",
+            "cmd": "setCount(prev => prev + 1)",
+            "params": {},
+            "keyword": "useState 函数式更新"
+          },
+          {
+            "name": "泛型类型声明",
+            "cmd": "const [data, setData] = useState<DataType | null>(null)",
+            "params": {},
+            "keyword": "useState TypeScript"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "useEffect Hook 副作用",
+      "keyword": "useEffect Hook 副作用",
+      "description": "React useEffect Hook 的常用模式和依赖管理",
+      "data": {
+        "cmd": "useEffect(() => { effect; return () => cleanup; }, [deps])",
+        "extensions": [
+          {
+            "name": "组件挂载时执行",
+            "cmd": "useEffect(() => { console.log('mounted') }, [])",
+            "params": {},
+            "keyword": "useEffect 挂载"
+          },
+          {
+            "name": "依赖变化时执行",
+            "cmd": "useEffect(() => { fetchData(id) }, [id])",
+            "params": {},
+            "keyword": "useEffect 依赖"
+          },
+          {
+            "name": "清理副作用",
+            "cmd": "useEffect(() => { const timer = setInterval(...); return () => clearInterval(timer) }, [])",
+            "params": {},
+            "keyword": "useEffect 清理"
+          },
+          {
+            "name": "条件执行副作用",
+            "cmd": "useEffect(() => { if (userId) fetchData(userId) }, [userId])",
+            "params": {},
+            "keyword": "useEffect 条件"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "useContext Hook 跨组件通信",
+      "keyword": "useContext Hook 上下文",
+      "description": "React useContext Hook 用于跨组件层级传递数据",
+      "data": {
+        "cmd": "const value = useContext(MyContext)",
+        "extensions": [
+          {
+            "name": "消费 Context",
+            "cmd": "const theme = useContext(ThemeContext)",
+            "params": {},
+            "keyword": "useContext 消费"
+          },
+          {
+            "name": "创建并提供 Context",
+            "cmd": "const ThemeContext = createContext(defaultValue)",
+            "params": {},
+            "keyword": "createContext"
+          },
+          {
+            "name": "提供 Context 值",
+            "cmd": "<ThemeContext.Provider value={theme}>...</ThemeContext.Provider>",
+            "params": {},
+            "keyword": "Context.Provider"
+          },
+          {
+            "name": "自定义 Provider Hook",
+            "cmd": "function ThemeProvider({ children }) { const [theme, setTheme] = useState('light'); return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider> }",
+            "params": {},
+            "keyword": "useContext 自定义 Provider"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "useReducer Hook 复杂状态逻辑",
+      "keyword": "useReducer Hook 复杂状态",
+      "description": "React useReducer Hook 用于管理复杂状态逻辑",
+      "data": {
+        "cmd": "const [state, dispatch] = useReducer(reducer, initialState)",
+        "extensions": [
+          {
+            "name": "基础 reducer 用法",
+            "cmd": "const [state, dispatch] = useReducer((state, action) => { switch(action.type) { case 'INCREMENT': return { count: state.count + 1 } } }, { count: 0 })",
+            "params": {},
+            "keyword": "useReducer 基础"
+          },
+          {
+            "name": "指定初始状态",
+            "cmd": "const [state, dispatch] = useReducer(reducer, { count: 0 })",
+            "params": {},
+            "keyword": "useReducer 初始状态"
+          },
+          {
+            "name": "惰性初始化",
+            "cmd": "const [state, dispatch] = useReducer(reducer, initArg, init)",
+            "params": {},
+            "keyword": "useReducer 惰性初始化"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "useMemo 与 useCallback Hook 性能优化",
+      "keyword": "useMemo useCallback 性能优化",
+      "description": "React useMemo 和 useCallback Hook 用于性能优化",
+      "data": {
+        "cmd": "const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b])",
+        "extensions": [
+          {
+            "name": "useMemo 缓存计算值",
+            "cmd": "const sortedList = useMemo(() => items.sort((a, b) => a - b), [items])",
+            "params": {},
+            "keyword": "useMemo 排序"
+          },
+          {
+            "name": "useCallback 缓存回调",
+            "cmd": "const handleClick = useCallback((id) => { setData(prev => ({ ...prev, [id]: true })) }, [])",
+            "params": {},
+            "keyword": "useCallback"
+          },
+          {
+            "name": "配合 React.memo 使用",
+            "cmd": "const MemoComponent = React.memo(({ data }) => { return <div>{data}</div> })",
+            "params": {},
+            "keyword": "React.memo"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "Zustand 状态管理",
+      "keyword": "Zustand 状态管理安装",
+      "description": "Zustand 轻量级状态管理库的安装和常用命令",
+      "data": {
+        "cmd": "npm install zustand",
+        "extensions": [
+          {
+            "name": "安装 Zustand",
+            "cmd": "npm install zustand",
+            "params": {},
+            "keyword": "zustand 安装"
+          },
+          {
+            "name": "创建状态 store",
+            "cmd": "import { create } from 'zustand'; const useStore = create((set) => ({ count: 0, increment: () => set((state) => ({ count: state.count + 1 })) }))",
+            "params": {},
+            "keyword": "zustand create"
+          },
+          {
+            "name": "使用持久化中间件",
+            "cmd": "npm install zustand/middleware",
+            "params": {},
+            "keyword": "zustand persist"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "Redux Toolkit 状态管理",
+      "keyword": "Redux Toolkit 状态管理安装",
+      "description": "Redux Toolkit 官方推荐的状态管理方案安装",
+      "data": {
+        "cmd": "npm install @reduxjs/toolkit react-redux",
+        "extensions": [
+          {
+            "name": "安装 Redux Toolkit",
+            "cmd": "npm install @reduxjs/toolkit react-redux",
+            "params": {},
+            "keyword": "redux toolkit 安装"
+          },
+          {
+            "name": "创建 store",
+            "cmd": "import { configureStore } from '@reduxjs/toolkit'; const store = configureStore({ reducer: { counter: counterReducer } })",
+            "params": {},
+            "keyword": "configureStore"
+          },
+          {
+            "name": "创建 slice",
+            "cmd": "import { createSlice } from '@reduxjs/toolkit'; const counterSlice = createSlice({ name: 'counter', initialState: { value: 0 }, reducers: { increment: (state) => { state.value += 1 } } })",
+            "params": {},
+            "keyword": "createSlice"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "@testing-library/react 测试",
+      "keyword": "testing-library 测试 React 组件",
+      "description": "React Testing Library 测试命令和常用模式",
+      "data": {
+        "cmd": "npm install --save-dev @testing-library/react @testing-library/jest-dom",
+        "extensions": [
+          {
+            "name": "安装 React Testing Library",
+            "cmd": "npm install --save-dev @testing-library/react @testing-library/jest-dom",
+            "params": {},
+            "keyword": "testing-library 安装"
+          },
+          {
+            "name": "安装用户交互测试",
+            "cmd": "npm install --save-dev @testing-library/user-event",
+            "params": {},
+            "keyword": "user-event 安装"
+          },
+          {
+            "name": "运行测试",
+            "cmd": "npm test",
+            "params": {},
+            "keyword": "npm test"
+          },
+          {
+            "name": "监视模式运行测试",
+            "cmd": "npm test -- --watch",
+            "params": {},
+            "keyword": "npm test watch"
+          },
+          {
+            "name": "覆盖率测试",
+            "cmd": "npm test -- --coverage",
+            "params": {},
+            "keyword": "npm test coverage"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "next.config.js 配置",
+      "keyword": "next.config.js Next.js 配置",
+      "description": "Next.js 项目配置文件常用选项",
+      "data": {
+        "cmd": "module.exports = { reactStrictMode: true }",
+        "extensions": [
+          {
+            "name": "React 严格模式",
+            "cmd": "module.exports = { reactStrictMode: true }",
+            "params": {},
+            "keyword": "reactStrictMode"
+          },
+          {
+            "name": "配置图片域名",
+            "cmd": "module.exports = { images: { domains: ['example.com'] } }",
+            "params": {},
+            "keyword": "images domains"
+          },
+          {
+            "name": "配置环境变量",
+            "cmd": "module.exports = { env: { API_URL: process.env.API_URL } }",
+            "params": {},
+            "keyword": "env 环境变量"
+          },
+          {
+            "name": "配置 webpack 插件",
+            "cmd": "module.exports = { webpack: (config) => { config.plugins.push(new Plugin()); return config; } }",
+            "params": {},
+            "keyword": "webpack 配置"
+          },
+          {
+            "name": "配置重定向",
+            "cmd": "module.exports = { async redirects() { return [{ source: '/old', destination: '/new', permanent: false }] } }",
+            "params": {},
+            "keyword": "redirects 重定向"
+          },
+          {
+            "name": "配置响应头",
+            "cmd": "module.exports = { async headers() { return [{ source: '/:path*', headers: [{ key: 'X-Custom', value: 'value' }] }] } }",
+            "params": {},
+            "keyword": "headers 响应头"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "Next.js API Routes API 路由",
+      "keyword": "Next.js API Routes 接口",
+      "description": "Next.js API 路由的创建和常用模式",
+      "data": {
+        "cmd": "export default function handler(req, res) { res.status(200).json({ message: 'Hello' }) }",
+        "extensions": [
+          {
+            "name": "GET 请求处理",
+            "cmd": "export default function handler(req, res) { res.status(200).json({ data: [] }) }",
+            "params": {},
+            "keyword": "API GET"
+          },
+          {
+            "name": "POST 请求处理",
+            "cmd": "export default async function handler(req, res) { if (req.method === 'POST') { const body = req.body; res.status(201).json({ created: body }) } }",
+            "params": {},
+            "keyword": "API POST"
+          },
+          {
+            "name": "动态路由参数",
+            "cmd": "export default function handler(req, res) { const { id } = req.query; res.status(200).json({ id }) }",
+            "params": {},
+            "keyword": "API 动态路由"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "Next.js Middleware 中间件",
+      "keyword": "Next.js Middleware 中间件",
+      "description": "Next.js Middleware 中间件的创建和配置",
+      "data": {
+        "cmd": "import { NextResponse } from 'next/server'; export function middleware(request) { return NextResponse.next() }",
+        "extensions": [
+          {
+            "name": "基础中间件",
+            "cmd": "import { NextResponse } from 'next/server'; export function middleware(request) { return NextResponse.next() }",
+            "params": {},
+            "keyword": "middleware 基础"
+          },
+          {
+            "name": "中间件重定向",
+            "cmd": "import { NextResponse } from 'next/server'; export function middleware(request) { return NextResponse.redirect(new URL('/login', request.url)) }",
+            "params": {},
+            "keyword": "middleware 重定向"
+          },
+          {
+            "name": "中间件重写",
+            "cmd": "import { NextResponse } from 'next/server'; export function middleware(request) { return NextResponse.rewrite(new URL('/api/proxy', request.url)) }",
+            "params": {},
+            "keyword": "middleware 重写"
+          },
+          {
+            "name": "基于路径匹配",
+            "cmd": "export function middleware(request) { if (request.nextUrl.pathname.startsWith('/api')) { return NextResponse.next() } }",
+            "params": {},
+            "keyword": "middleware 路径匹配"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "next/image 图片优化",
+      "keyword": "next/image 图片优化组件",
+      "description": "Next.js Image 组件的常用配置和用法",
+      "data": {
+        "cmd": "import Image from 'next/image'",
+        "extensions": [
+          {
+            "name": "基础用法",
+            "cmd": "<Image src='/image.jpg' alt='description' width={500} height={300} />",
+            "params": {},
+            "keyword": "Image 基础"
+          },
+          {
+            "name": "外部图片",
+            "cmd": "<Image src='https://example.com/image.jpg' alt='desc' width={500} height={300} />",
+            "params": {},
+            "keyword": "Image 外部图片"
+          },
+          {
+            "name": "fill 布局",
+            "cmd": "<Image src='/image.jpg' alt='desc' fill style={{ objectFit: 'cover' }} />",
+            "params": {},
+            "keyword": "Image fill"
+          },
+          {
+            "name": "占位符",
+            "cmd": "<Image src='/image.jpg' alt='desc' placeholder='blur' blurDataURL='data:image/...' />",
+            "params": {},
+            "keyword": "Image placeholder"
+          },
+          {
+            "name": "priority 优先级",
+            "cmd": "<Image src='/image.jpg' alt='desc' priority />",
+            "params": {},
+            "keyword": "Image priority"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "next/font 字体优化",
+      "keyword": "next/font 字体优化",
+      "description": "Next.js Font 模块的常用配置和用法",
+      "data": {
+        "cmd": "import { Inter } from 'next/font/google'",
+        "extensions": [
+          {
+            "name": "Google Fonts",
+            "cmd": "import { Inter } from 'next/font/google'; const inter = Inter({ subsets: ['latin'] })",
+            "params": {},
+            "keyword": "next/font google"
+          },
+          {
+            "name": "本地字体",
+            "cmd": "import localFont from 'next/font/local'; const myFont = localFont({ src: './fonts/MyFont.woff2' })",
+            "params": {},
+            "keyword": "next/font local"
+          },
+          {
+            "name": "配置字体子集",
+            "cmd": "import { Noto_Sans_SC } from 'next/font/google'; const notoSans = Noto_Sans_SC({ subsets: ['latin'], weight: ['400', '700'] })",
+            "params": {},
+            "keyword": "next/font 子集"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "Static Site Generation (SSG) 静态生成",
+      "keyword": "SSG 静态生成 getStaticProps",
+      "description": "Next.js 静态站点生成（SSG）的常用模式",
+      "data": {
+        "cmd": "export async function getStaticProps() { return { props: { data } } }",
+        "extensions": [
+          {
+            "name": "页面静态生成",
+            "cmd": "export async function getStaticProps() { const data = await fetchData(); return { props: { data }, revalidate: 60 } }",
+            "params": {},
+            "keyword": "getStaticProps"
+          },
+          {
+            "name": "静态路径生成",
+            "cmd": "export async function getStaticPaths() { const paths = data.map(item => ({ params: { id: item.id } })); return { paths, fallback: false } }",
+            "params": {},
+            "keyword": "getStaticPaths"
+          },
+          {
+            "name": "增量静态再生成 (ISR)",
+            "cmd": "export async function getStaticProps() { return { props: { data }, revalidate: 3600 } }",
+            "params": {},
+            "keyword": "revalidate ISR"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "Server-Side Rendering (SSR) 服务端渲染",
+      "keyword": "SSR 服务端渲染 getServerSideProps",
+      "description": "Next.js 服务端渲染（SSR）的常用模式",
+      "data": {
+        "cmd": "export async function getServerSideProps(context) { const data = await fetchData(context.params.id); return { props: { data } } }",
+        "extensions": [
+          {
+            "name": "服务端获取数据",
+            "cmd": "export async function getServerSideProps(context) { const { req, res, params } = context; const data = await fetchData(); return { props: { data } } }",
+            "params": {},
+            "keyword": "getServerSideProps"
+          },
+          {
+            "name": "服务端重定向",
+            "cmd": "export async function getServerSideProps(context) { return { redirect: { destination: '/login', permanent: false } } }",
+            "params": {},
+            "keyword": "getServerSideProps redirect"
+          },
+          {
+            "name": "服务端 notFound",
+            "cmd": "export async function getServerSideProps(context) { const data = await fetchData(); if (!data) return { notFound: true }; return { props: { data } } }",
+            "params": {},
+            "keyword": "getServerSideProps notFound"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/React 命令/",
+      "name": "Vercel 部署 Next.js",
+      "keyword": "Vercel 部署 Next.js",
+      "description": "将 Next.js 项目部署到 Vercel 平台的命令",
+      "data": {
+        "cmd": "vercel",
+        "extensions": [
+          {
+            "name": "安装 Vercel CLI",
+            "cmd": "npm install -g vercel",
+            "params": {},
+            "keyword": "vercel 安装"
+          },
+          {
+            "name": "登录 Vercel",
+            "cmd": "vercel login",
+            "params": {},
+            "keyword": "vercel login"
+          },
+          {
+            "name": "部署项目",
+            "cmd": "vercel",
+            "params": {},
+            "keyword": "vercel 部署"
+          },
+          {
+            "name": "部署到生产环境",
+            "cmd": "vercel --prod",
+            "params": {},
+            "keyword": "vercel 生产环境"
+          },
+          {
+            "name": "拉取线上环境变量",
+            "cmd": "vercel env pull",
+            "params": {},
+            "keyword": "vercel env pull"
+          },
+          {
+            "name": "查看环境变量列表",
+            "cmd": "vercel env list",
+            "params": {},
+            "keyword": "vercel env list"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

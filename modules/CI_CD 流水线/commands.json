@@ -1,0 +1,1495 @@
+{
+  "module": "CI_CD 流水线",
+  "version": "1.0",
+  "description": "CI/CD 流水线完整命令集：GitHub Actions、GitLab CI、Jenkins、Terraform、Ansible、Docker Registry",
+  "commands": [
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "gh workflow list 列出工作流",
+      "keyword": "gh workflow list",
+      "description": "列出仓库中所有 GitHub Actions 工作流",
+      "data": {
+        "cmd": "gh workflow list",
+        "extensions": [
+          {
+            "name": "显示禁用的工作流",
+            "cmd": "gh workflow list --all",
+            "params": {},
+            "keyword": "gh workflow list 禁用"
+          },
+          {
+            "name": "查看指定仓库",
+            "cmd": "gh workflow list --repo %{owner}/%{repo}%",
+            "params": {},
+            "keyword": "gh workflow list 仓库"
+          }
+        ],
+        "params": {
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "gh workflow run 触发工作流",
+      "keyword": "gh workflow run",
+      "description": "手动触发 GitHub Actions 工作流运行",
+      "data": {
+        "cmd": "gh workflow run %{workflow_name}%",
+        "extensions": [
+          {
+            "name": "指定分支",
+            "cmd": "gh workflow run %{workflow_name}% --ref %{branch}%",
+            "params": {},
+            "keyword": "gh workflow run 分支"
+          },
+          {
+            "name": "传入输入参数",
+            "cmd": "gh workflow run %{workflow_name}% --field %{input}%",
+            "params": {},
+            "keyword": "gh workflow run 参数"
+          },
+          {
+            "name": "触发指定仓库工作流",
+            "cmd": "gh workflow run %{workflow_name}% --repo %{owner}/%{repo}%",
+            "params": {},
+            "keyword": "gh workflow run 仓库"
+          }
+        ],
+        "params": {
+          "workflow_name": {
+            "type": "string",
+            "required": true,
+            "description": "工作流文件名或 ID",
+            "example": "ci.yml",
+            "notes": "常用"
+          },
+          "branch": {
+            "type": "string",
+            "required": false,
+            "description": "触发分支",
+            "example": "main",
+            "notes": "可选，默认为仓库默认分支"
+          },
+          "input": {
+            "type": "string",
+            "required": false,
+            "description": "输入参数名=值",
+            "example": "env=production",
+            "notes": "可选，用于需要输入参数的工作流"
+          },
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "gh secret list 列出密钥",
+      "keyword": "gh secret list",
+      "description": "列出仓库中所有 GitHub Actions 密钥",
+      "data": {
+        "cmd": "gh secret list",
+        "extensions": [
+          {
+            "name": "查看指定仓库密钥",
+            "cmd": "gh secret list --repo %{owner}/%{repo}%",
+            "params": {},
+            "keyword": "gh secret list 仓库"
+          }
+        ],
+        "params": {
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "gh secret set 设置密钥",
+      "keyword": "gh secret set",
+      "description": "为 GitHub Actions 设置密钥",
+      "data": {
+        "cmd": "gh secret set %{secret_name}% --body \"%{value}%\"",
+        "extensions": [
+          {
+            "name": "从文件读取值",
+            "cmd": "gh secret set %{secret_name}% --from-file %{file_path}%",
+            "params": {},
+            "keyword": "gh secret set 文件"
+          },
+          {
+            "name": "设置环境级别密钥",
+            "cmd": "gh secret set %{secret_name}% --env %{env}%",
+            "params": {},
+            "keyword": "gh secret set 环境"
+          },
+          {
+            "name": "设置仓库级别密钥",
+            "cmd": "gh secret set %{secret_name}% --repo %{owner}/%{repo}%",
+            "params": {},
+            "keyword": "gh secret set 仓库"
+          }
+        ],
+        "params": {
+          "secret_name": {
+            "type": "string",
+            "required": true,
+            "description": "密钥名称",
+            "example": "API_TOKEN",
+            "notes": "常用，建议全大写"
+          },
+          "value": {
+            "type": "string",
+            "required": false,
+            "description": "密钥值",
+            "example": "ghp_xxxxxxxxxxxx",
+            "notes": "常用"
+          },
+          "file_path": {
+            "type": "string",
+            "required": false,
+            "description": "文件路径",
+            "example": "./token.txt",
+            "notes": "可选，用于大文件或二进制内容"
+          },
+          "env": {
+            "type": "string",
+            "required": false,
+            "description": "环境名称",
+            "example": "production",
+            "notes": "可选，默认为仓库级别"
+          },
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "gh secret delete 删除密钥",
+      "keyword": "gh secret delete",
+      "description": "删除 GitHub Actions 密钥",
+      "data": {
+        "cmd": "gh secret delete %{secret_name}%",
+        "extensions": [
+          {
+            "name": "删除指定仓库密钥",
+            "cmd": "gh secret delete %{secret_name}% --repo %{owner}/%{repo}%",
+            "params": {},
+            "keyword": "gh secret delete 仓库"
+          },
+          {
+            "name": "删除环境级别密钥",
+            "cmd": "gh secret delete %{secret_name}% --env %{env}%",
+            "params": {},
+            "keyword": "gh secret delete 环境"
+          }
+        ],
+        "params": {
+          "secret_name": {
+            "type": "string",
+            "required": true,
+            "description": "密钥名称",
+            "example": "API_TOKEN",
+            "notes": "常用"
+          },
+          "env": {
+            "type": "string",
+            "required": false,
+            "description": "环境名称",
+            "example": "production",
+            "notes": "可选"
+          },
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "gh variable list 列出变量",
+      "keyword": "gh variable list",
+      "description": "列出 GitHub Actions 仓库变量",
+      "data": {
+        "cmd": "gh variable list",
+        "extensions": [
+          {
+            "name": "查看指定仓库变量",
+            "cmd": "gh variable list --repo %{owner}/%{repo}%",
+            "params": {},
+            "keyword": "gh variable list 仓库"
+          }
+        ],
+        "params": {
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "gh variable set 设置变量",
+      "keyword": "gh variable set",
+      "description": "为 GitHub Actions 设置仓库变量",
+      "data": {
+        "cmd": "gh variable set %{var_name}% --body \"%{value}%\"",
+        "extensions": [
+          {
+            "name": "从文件读取值",
+            "cmd": "gh variable set %{var_name}% --from-file %{file_path}%",
+            "params": {},
+            "keyword": "gh variable set 文件"
+          },
+          {
+            "name": "设置环境级别变量",
+            "cmd": "gh variable set %{var_name}% --env %{env}%",
+            "params": {},
+            "keyword": "gh variable set 环境"
+          }
+        ],
+        "params": {
+          "var_name": {
+            "type": "string",
+            "required": true,
+            "description": "变量名称",
+            "example": "DEPLOY_REGION",
+            "notes": "常用，建议全大写"
+          },
+          "value": {
+            "type": "string",
+            "required": false,
+            "description": "变量值",
+            "example": "us-west-2",
+            "notes": "常用"
+          },
+          "file_path": {
+            "type": "string",
+            "required": false,
+            "description": "文件路径",
+            "example": "./config.json",
+            "notes": "可选"
+          },
+          "env": {
+            "type": "string",
+            "required": false,
+            "description": "环境名称",
+            "example": "staging",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "gh run rerun 重新运行",
+      "keyword": "gh run rerun",
+      "description": "重新运行一个失败的 GitHub Actions 工作流",
+      "data": {
+        "cmd": "gh run rerun %{run_id}%",
+        "extensions": [
+          {
+            "name": "重新运行指定仓库",
+            "cmd": "gh run rerun %{run_id}% --repo %{owner}/%{repo}%",
+            "params": {},
+            "keyword": "gh run rerun 仓库"
+          }
+        ],
+        "params": {
+          "run_id": {
+            "type": "number",
+            "required": true,
+            "description": "运行 ID",
+            "example": "123456789",
+            "notes": "常用"
+          },
+          "owner": {
+            "type": "string",
+            "required": false,
+            "description": "仓库所有者",
+            "example": "octocat",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "hello-world",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "terraform init 初始化",
+      "keyword": "terraform init",
+      "description": "初始化 Terraform 工作目录，下载 providers 和 modules",
+      "data": {
+        "cmd": "terraform init",
+        "extensions": [
+          {
+            "name": "指定插件目录",
+            "cmd": "terraform init -plugin-dir %{plugin_dir}%",
+            "params": {},
+            "keyword": "terraform init 插件目录"
+          },
+          {
+            "name": "后端配置初始化",
+            "cmd": "terraform init -backend-config=\"%{config}%\"",
+            "params": {},
+            "keyword": "terraform init 后端"
+          },
+          {
+            "name": "升级模块和 providers",
+            "cmd": "terraform init -upgrade",
+            "params": {},
+            "keyword": "terraform init 升级"
+          },
+          {
+            "name": "强制复制状态",
+            "cmd": "terraform init -force-copy",
+            "params": {},
+            "keyword": "terraform init 复制"
+          }
+        ],
+        "params": {
+          "plugin_dir": {
+            "type": "string",
+            "required": false,
+            "description": "插件目录路径",
+            "example": "/opt/terraform/plugins",
+            "notes": "可选"
+          },
+          "config": {
+            "type": "string",
+            "required": false,
+            "description": "后端配置键=值",
+            "example": "bucket=my-terraform-state",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "terraform plan 规划变更",
+      "keyword": "terraform plan",
+      "description": "生成执行计划，展示将要做的变更",
+      "data": {
+        "cmd": "terraform plan",
+        "extensions": [
+          {
+            "name": "输出到文件",
+            "cmd": "terraform plan -out %{plan_file}%",
+            "params": {},
+            "keyword": "terraform plan 输出文件"
+          },
+          {
+            "name": "目标资源",
+            "cmd": "terraform plan -target %{resource}%",
+            "params": {},
+            "keyword": "terraform plan 目标"
+          },
+          {
+            "name": "变量文件",
+            "cmd": "terraform plan -var-file %{var_file}%",
+            "params": {},
+            "keyword": "terraform plan 变量文件"
+          },
+          {
+            "name": "销毁模式",
+            "cmd": "terraform plan -destroy",
+            "params": {},
+            "keyword": "terraform plan 销毁"
+          }
+        ],
+        "params": {
+          "plan_file": {
+            "type": "string",
+            "required": false,
+            "description": "计划输出文件",
+            "example": "tfplan",
+            "notes": "可选，后续 terraform apply 使用"
+          },
+          "resource": {
+            "type": "string",
+            "required": false,
+            "description": "目标资源地址",
+            "example": "aws_instance.app",
+            "notes": "可选，限制计划范围"
+          },
+          "var_file": {
+            "type": "string",
+            "required": false,
+            "description": "变量文件路径",
+            "example": "prod.tfvars",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "terraform apply 执行变更",
+      "keyword": "terraform apply",
+      "description": "执行 Terraform 计划，创建或更新基础设施",
+      "data": {
+        "cmd": "terraform apply",
+        "extensions": [
+          {
+            "name": "应用指定计划文件",
+            "cmd": "terraform apply %{plan_file}%",
+            "params": {},
+            "keyword": "terraform apply 计划文件"
+          },
+          {
+            "name": "自动批准",
+            "cmd": "terraform apply -auto-approve",
+            "params": {},
+            "keyword": "terraform apply 自动批准"
+          },
+          {
+            "name": "变量文件",
+            "cmd": "terraform apply -var-file %{var_file}%",
+            "params": {},
+            "keyword": "terraform apply 变量文件"
+          },
+          {
+            "name": "目标资源",
+            "cmd": "terraform apply -target %{resource}%",
+            "params": {},
+            "keyword": "terraform apply 目标"
+          }
+        ],
+        "params": {
+          "plan_file": {
+            "type": "string",
+            "required": false,
+            "description": "计划文件路径",
+            "example": "tfplan",
+            "notes": "可选，默认为执行新生成的计划"
+          },
+          "var_file": {
+            "type": "string",
+            "required": false,
+            "description": "变量文件路径",
+            "example": "prod.tfvars",
+            "notes": "可选"
+          },
+          "resource": {
+            "type": "string",
+            "required": false,
+            "description": "目标资源地址",
+            "example": "aws_instance.app",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "terraform destroy 销毁资源",
+      "keyword": "terraform destroy",
+      "description": "销毁 Terraform 管理的基础设施资源",
+      "data": {
+        "cmd": "terraform destroy",
+        "extensions": [
+          {
+            "name": "自动批准",
+            "cmd": "terraform destroy -auto-approve",
+            "params": {},
+            "keyword": "terraform destroy 自动批准"
+          },
+          {
+            "name": "目标资源",
+            "cmd": "terraform destroy -target %{resource}%",
+            "params": {},
+            "keyword": "terraform destroy 目标"
+          },
+          {
+            "name": "变量文件",
+            "cmd": "terraform destroy -var-file %{var_file}%",
+            "params": {},
+            "keyword": "terraform destroy 变量文件"
+          }
+        ],
+        "params": {
+          "resource": {
+            "type": "string",
+            "required": false,
+            "description": "目标资源地址",
+            "example": "aws_instance.app",
+            "notes": "可选，限制销毁范围"
+          },
+          "var_file": {
+            "type": "string",
+            "required": false,
+            "description": "变量文件路径",
+            "example": "prod.tfvars",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "terraform validate 验证配置",
+      "keyword": "terraform validate",
+      "description": "验证 Terraform 配置的语法和逻辑正确性",
+      "data": {
+        "cmd": "terraform validate",
+        "extensions": [
+          {
+            "name": "指定目录",
+            "cmd": "terraform validate -json",
+            "params": {},
+            "keyword": "terraform validate JSON"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "terraform fmt 格式化配置",
+      "keyword": "terraform fmt",
+      "description": "格式化 Terraform 配置文件为标准风格",
+      "data": {
+        "cmd": "terraform fmt",
+        "extensions": [
+          {
+            "name": "递归格式化目录",
+            "cmd": "terraform fmt -recursive",
+            "params": {},
+            "keyword": "terraform fmt 递归"
+          },
+          {
+            "name": "列出需格式化的文件",
+            "cmd": "terraform fmt -list=true",
+            "params": {},
+            "keyword": "terraform fmt 列表"
+          },
+          {
+            "name": "检查格式（不修改）",
+            "cmd": "terraform fmt -check",
+            "params": {},
+            "keyword": "terraform fmt 检查"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "terraform show 查看状态",
+      "keyword": "terraform show",
+      "description": "以人类可读或 JSON 格式展示 Terraform 状态",
+      "data": {
+        "cmd": "terraform show",
+        "extensions": [
+          {
+            "name": "JSON 格式输出",
+            "cmd": "terraform show -json",
+            "params": {},
+            "keyword": "terraform show JSON"
+          },
+          {
+            "name": "查看指定状态文件",
+            "cmd": "terraform show %{state_file}%",
+            "params": {},
+            "keyword": "terraform show 状态文件"
+          }
+        ],
+        "params": {
+          "state_file": {
+            "type": "string",
+            "required": false,
+            "description": "状态文件路径",
+            "example": "terraform.tfstate",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "terraform output 查看输出",
+      "keyword": "terraform output",
+      "description": "查看 Terraform 声明的输出变量",
+      "data": {
+        "cmd": "terraform output",
+        "extensions": [
+          {
+            "name": "查看指定输出",
+            "cmd": "terraform output %{output_name}%",
+            "params": {},
+            "keyword": "terraform output 名称"
+          },
+          {
+            "name": "JSON 格式输出",
+            "cmd": "terraform output -json",
+            "params": {},
+            "keyword": "terraform output JSON"
+          }
+        ],
+        "params": {
+          "output_name": {
+            "type": "string",
+            "required": false,
+            "description": "输出变量名称",
+            "example": "instance_ip",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "terraform state 状态管理",
+      "keyword": "terraform state",
+      "description": "直接操作 Terraform 状态（列出、移动、拉取、推送）",
+      "data": {
+        "cmd": "terraform state %{subcommand}%",
+        "extensions": [
+          {
+            "name": "列出资源",
+            "cmd": "terraform state list",
+            "params": {},
+            "keyword": "terraform state 列出"
+          },
+          {
+            "name": "移动资源",
+            "cmd": "terraform state mv %{from}% %{to}%",
+            "params": {},
+            "keyword": "terraform state 移动"
+          },
+          {
+            "name": "拉取远程状态",
+            "cmd": "terraform state pull",
+            "params": {},
+            "keyword": "terraform state 拉取"
+          },
+          {
+            "name": "推送本地状态",
+            "cmd": "terraform state push %{state_file}%",
+            "params": {},
+            "keyword": "terraform state 推送"
+          }
+        ],
+        "params": {
+          "subcommand": {
+            "type": "string",
+            "required": true,
+            "description": "子命令",
+            "example": "list",
+            "notes": "可选: list/mv/pull/push/rm"
+          },
+          "from": {
+            "type": "string",
+            "required": false,
+            "description": "源资源地址",
+            "example": "aws_instance.old",
+            "notes": "用于 mv 子命令"
+          },
+          "to": {
+            "type": "string",
+            "required": false,
+            "description": "目标资源地址",
+            "example": "aws_instance.new",
+            "notes": "用于 mv 子命令"
+          },
+          "state_file": {
+            "type": "string",
+            "required": false,
+            "description": "状态文件路径",
+            "example": "terraform.tfstate",
+            "notes": "用于 push 子命令"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "ansible-playbook 执行剧本",
+      "keyword": "ansible-playbook",
+      "description": "执行 Ansible playbook 自动化配置管理",
+      "data": {
+        "cmd": "ansible-playbook %{playbook}%",
+        "extensions": [
+          {
+            "name": "指定清单文件",
+            "cmd": "ansible-playbook %{playbook}% -i %{inventory}%",
+            "params": {},
+            "keyword": "ansible-playbook 清单"
+          },
+          {
+            "name": "限制主机",
+            "cmd": "ansible-playbook %{playbook}% --limit %{hosts}%",
+            "params": {},
+            "keyword": "ansible-playbook 限制"
+          },
+          {
+            "name": "执行标签任务",
+            "cmd": "ansible-playbook %{playbook}% --tags %{tags}%",
+            "params": {},
+            "keyword": "ansible-playbook 标签"
+          },
+          {
+            "name": "检查模式（不执行）",
+            "cmd": "ansible-playbook %{playbook}% --check",
+            "params": {},
+            "keyword": "ansible-playbook 检查"
+          },
+          {
+            "name": "传递额外变量",
+            "cmd": "ansible-playbook %{playbook}% -e \"%{key}=%{value}%\"",
+            "params": {},
+            "keyword": "ansible-playbook 变量"
+          },
+          {
+            "name": "详细输出",
+            "cmd": "ansible-playbook %{playbook}% -v",
+            "params": {},
+            "keyword": "ansible-playbook 详细"
+          }
+        ],
+        "params": {
+          "playbook": {
+            "type": "string",
+            "required": true,
+            "description": "Playbook 文件路径",
+            "example": "site.yml",
+            "notes": "常用"
+          },
+          "inventory": {
+            "type": "string",
+            "required": false,
+            "description": "清单文件路径",
+            "example": "hosts.ini",
+            "notes": "可选"
+          },
+          "hosts": {
+            "type": "string",
+            "required": false,
+            "description": "目标主机",
+            "example": "webservers",
+            "notes": "可选"
+          },
+          "tags": {
+            "type": "string",
+            "required": false,
+            "description": "任务标签",
+            "example": "deploy",
+            "notes": "可选"
+          },
+          "key": {
+            "type": "string",
+            "required": false,
+            "description": "变量名",
+            "example": "env",
+            "notes": "用于 -e 参数"
+          },
+          "value": {
+            "type": "string",
+            "required": false,
+            "description": "变量值",
+            "example": "production",
+            "notes": "用于 -e 参数"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "ansible-vault 加密管理",
+      "keyword": "ansible-vault",
+      "description": "加密解密 Ansible 敏感数据文件",
+      "data": {
+        "cmd": "ansible-vault %{action}% %{file}%",
+        "extensions": [
+          {
+            "name": "创建加密文件",
+            "cmd": "ansible-vault create %{file}%",
+            "params": {},
+            "keyword": "ansible-vault 创建"
+          },
+          {
+            "name": "加密已有文件",
+            "cmd": "ansible-vault encrypt %{file}%",
+            "params": {},
+            "keyword": "ansible-vault 加密"
+          },
+          {
+            "name": "解密文件",
+            "cmd": "ansible-vault decrypt %{file}%",
+            "params": {},
+            "keyword": "ansible-vault 解密"
+          },
+          {
+            "name": "查看加密文件",
+            "cmd": "ansible-vault view %{file}%",
+            "params": {},
+            "keyword": "ansible-vault 查看"
+          },
+          {
+            "name": "指定密码文件",
+            "cmd": "ansible-vault %{action}% %{file}% --vault-password-file %{password_file}%",
+            "params": {},
+            "keyword": "ansible-vault 密码文件"
+          }
+        ],
+        "params": {
+          "action": {
+            "type": "string",
+            "required": true,
+            "description": "操作类型",
+            "example": "encrypt",
+            "notes": "可选: create/encrypt/decrypt/view/edit/rekey"
+          },
+          "file": {
+            "type": "string",
+            "required": true,
+            "description": "目标文件路径",
+            "example": "vars/secrets.yml",
+            "notes": "常用"
+          },
+          "password_file": {
+            "type": "string",
+            "required": false,
+            "description": "密码文件路径",
+            "example": ".vault_pass",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "ansible-galaxy 角色管理",
+      "keyword": "ansible-galaxy",
+      "description": "从 Ansible Galaxy 安装和管理 Roles/Collections",
+      "data": {
+        "cmd": "ansible-galaxy %{action}% %{name}%",
+        "extensions": [
+          {
+            "name": "从 Galaxy 安装",
+            "cmd": "ansible-galaxy role install %{role_name}%",
+            "params": {},
+            "keyword": "ansible-galaxy 安装角色"
+          },
+          {
+            "name": "安装 Collection",
+            "cmd": "ansible-galaxy collection install %{collection_name}%",
+            "params": {},
+            "keyword": "ansible-galaxy 安装集合"
+          },
+          {
+            "name": "初始化新角色",
+            "cmd": "ansible-galaxy role init %{role_name}%",
+            "params": {},
+            "keyword": "ansible-galaxy 初始化角色"
+          },
+          {
+            "name": "查看已安装列表",
+            "cmd": "ansible-galaxy role list",
+            "params": {},
+            "keyword": "ansible-galaxy 角色列表"
+          },
+          {
+            "name": "删除角色",
+            "cmd": "ansible-galaxy role remove %{role_name}%",
+            "params": {},
+            "keyword": "ansible-galaxy 删除角色"
+          }
+        ],
+        "params": {
+          "action": {
+            "type": "string",
+            "required": true,
+            "description": "操作类型",
+            "example": "role install",
+            "notes": "可选: role install/remove/list/init, collection install"
+          },
+          "name": {
+            "type": "string",
+            "required": true,
+            "description": "角色或集合名称",
+            "example": "geerlingguy.docker",
+            "notes": "常用"
+          },
+          "role_name": {
+            "type": "string",
+            "required": false,
+            "description": "角色名称",
+            "example": "myapp",
+            "notes": "用于 init/remove"
+          },
+          "collection_name": {
+            "type": "string",
+            "required": false,
+            "description": "Collection 名称",
+            "example": "community.general",
+            "notes": "用于 collection install"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "docker login 登录镜像仓库",
+      "keyword": "docker login",
+      "description": "登录 Docker 镜像仓库进行 push/pull 操作",
+      "data": {
+        "cmd": "docker login %{registry}%",
+        "extensions": [
+          {
+            "name": "指定用户名",
+            "cmd": "docker login %{registry}% -u %{username}%",
+            "params": {},
+            "keyword": "docker login 用户名"
+          },
+          {
+            "name": "登录 Docker Hub",
+            "cmd": "docker login",
+            "params": {},
+            "keyword": "docker login Hub"
+          },
+          {
+            "name": "登录阿里云",
+            "cmd": "docker login %{registry}% --username %{username}%",
+            "params": {},
+            "keyword": "docker login 阿里云"
+          }
+        ],
+        "params": {
+          "registry": {
+            "type": "string",
+            "required": false,
+            "description": "镜像仓库地址",
+            "example": "registry.example.com",
+            "notes": "可选，默认 Docker Hub"
+          },
+          "username": {
+            "type": "string",
+            "required": false,
+            "description": "用户名",
+            "example": "admin",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "docker push 推送镜像",
+      "keyword": "docker push",
+      "description": "将本地镜像推送到远程镜像仓库",
+      "data": {
+        "cmd": "docker push %{image}%",
+        "extensions": [
+          {
+            "name": "推送所有标签",
+            "cmd": "docker push %{image}% --all-tags",
+            "params": {},
+            "keyword": "docker push 所有标签"
+          },
+          {
+            "name": "指定仓库镜像",
+            "cmd": "docker push %{registry}/%{repo}/%{image}%:%{tag}%",
+            "params": {},
+            "keyword": "docker push 仓库"
+          },
+          {
+            "name": "压缩传输",
+            "cmd": "docker push %{image}%",
+            "params": {},
+            "keyword": "docker push 压缩"
+          }
+        ],
+        "params": {
+          "image": {
+            "type": "string",
+            "required": true,
+            "description": "镜像名称",
+            "example": "myapp:latest",
+            "notes": "常用"
+          },
+          "registry": {
+            "type": "string",
+            "required": false,
+            "description": "镜像仓库地址",
+            "example": "registry.example.com",
+            "notes": "可选"
+          },
+          "repo": {
+            "type": "string",
+            "required": false,
+            "description": "仓库名称",
+            "example": "myproject",
+            "notes": "可选"
+          },
+          "tag": {
+            "type": "string",
+            "required": false,
+            "description": "镜像标签",
+            "example": "v1.0.0",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "docker pull 拉取镜像",
+      "keyword": "docker pull",
+      "description": "从远程镜像仓库拉取镜像到本地",
+      "data": {
+        "cmd": "docker pull %{image}%",
+        "extensions": [
+          {
+            "name": "拉取指定版本",
+            "cmd": "docker pull %{image}%:%{tag}%",
+            "params": {},
+            "keyword": "docker pull 版本"
+          },
+          {
+            "name": "拉取所有标签",
+            "cmd": "docker pull %{image}% --all-tags",
+            "params": {},
+            "keyword": "docker pull 所有标签"
+          },
+          {
+            "name": "不压缩拉取",
+            "cmd": "docker pull %{image}% --disable-content-trust",
+            "params": {},
+            "keyword": "docker pull 不校验"
+          }
+        ],
+        "params": {
+          "image": {
+            "type": "string",
+            "required": true,
+            "description": "镜像名称",
+            "example": "nginx",
+            "notes": "常用"
+          },
+          "tag": {
+            "type": "string",
+            "required": false,
+            "description": "镜像标签",
+            "example": "latest",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "docker-compose up 启动服务",
+      "keyword": "docker-compose up",
+      "description": "创建并启动 docker-compose 定义的服务",
+      "data": {
+        "cmd": "docker-compose up",
+        "extensions": [
+          {
+            "name": "后台运行",
+            "cmd": "docker-compose up -d",
+            "params": {},
+            "keyword": "docker-compose up 后台"
+          },
+          {
+            "name": "重新构建镜像",
+            "cmd": "docker-compose up -d --build",
+            "params": {},
+            "keyword": "docker-compose up 重建"
+          },
+          {
+            "name": "指定 compose 文件",
+            "cmd": "docker-compose up -f %{file}% -d",
+            "params": {},
+            "keyword": "docker-compose up 文件"
+          },
+          {
+            "name": "启动并扩展服务",
+            "cmd": "docker-compose up -d --scale %{service}%=%{num}%",
+            "params": {},
+            "keyword": "docker-compose up 扩展"
+          },
+          {
+            "name": "移除旧容器",
+            "cmd": "docker-compose up -d --remove-orphans",
+            "params": {},
+            "keyword": "docker-compose up 移除孤立"
+          }
+        ],
+        "params": {
+          "file": {
+            "type": "string",
+            "required": false,
+            "description": "Compose 文件路径",
+            "example": "docker-compose.prod.yml",
+            "notes": "可选，默认为 docker-compose.yml"
+          },
+          "service": {
+            "type": "string",
+            "required": false,
+            "description": "服务名称",
+            "example": "web",
+            "notes": "用于 --scale"
+          },
+          "num": {
+            "type": "number",
+            "required": false,
+            "description": "实例数量",
+            "example": "3",
+            "notes": "用于 --scale"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "docker-compose down 停止服务",
+      "keyword": "docker-compose down",
+      "description": "停止并移除 docker-compose 管理的容器和网络",
+      "data": {
+        "cmd": "docker-compose down",
+        "extensions": [
+          {
+            "name": "同时删除数据卷",
+            "cmd": "docker-compose down -v",
+            "params": {},
+            "keyword": "docker-compose down 数据卷"
+          },
+          {
+            "name": "删除镜像",
+            "cmd": "docker-compose down --rmi %{rmi_type}%",
+            "params": {},
+            "keyword": "docker-compose down 镜像"
+          },
+          {
+            "name": "指定 compose 文件",
+            "cmd": "docker-compose down -f %{file}%",
+            "params": {},
+            "keyword": "docker-compose down 文件"
+          }
+        ],
+        "params": {
+          "file": {
+            "type": "string",
+            "required": false,
+            "description": "Compose 文件路径",
+            "example": "docker-compose.prod.yml",
+            "notes": "可选"
+          },
+          "rmi_type": {
+            "type": "string",
+            "required": false,
+            "description": "删除镜像类型",
+            "example": "all",
+            "notes": "可选: all/local"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "docker-compose build 构建服务",
+      "keyword": "docker-compose build",
+      "description": "构建 docker-compose 中定义的镜像",
+      "data": {
+        "cmd": "docker-compose build",
+        "extensions": [
+          {
+            "name": "构建指定服务",
+            "cmd": "docker-compose build %{service}%",
+            "params": {},
+            "keyword": "docker-compose build 服务"
+          },
+          {
+            "name": "强制重新构建",
+            "cmd": "docker-compose build --no-cache",
+            "params": {},
+            "keyword": "docker-compose build 无缓存"
+          },
+          {
+            "name": "并行构建",
+            "cmd": "docker-compose build --parallel",
+            "params": {},
+            "keyword": "docker-compose build 并行"
+          },
+          {
+            "name": "指定 compose 文件",
+            "cmd": "docker-compose build -f %{file}%",
+            "params": {},
+            "keyword": "docker-compose build 文件"
+          }
+        ],
+        "params": {
+          "service": {
+            "type": "string",
+            "required": false,
+            "description": "服务名称",
+            "example": "backend",
+            "notes": "可选"
+          },
+          "file": {
+            "type": "string",
+            "required": false,
+            "description": "Compose 文件路径",
+            "example": "docker-compose.prod.yml",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "jenkins-cli 构建任务",
+      "keyword": "jenkins",
+      "description": "使用 Jenkins CLI (jenkins-cli.jar) 执行构建和管理任务",
+      "data": {
+        "cmd": "java -jar jenkins-cli.jar -s %{jenkins_url}% build %{job_name}%",
+        "extensions": [
+          {
+            "name": "带参数构建",
+            "cmd": "java -jar jenkins-cli.jar -s %{jenkins_url}% build %{job_name}% -p %{param}%=%{value}%",
+            "params": {},
+            "keyword": "jenkins 参数构建"
+          },
+          {
+            "name": "等待构建完成",
+            "cmd": "java -jar jenkins-cli.jar -s %{jenkins_url}% build %{job_name}% -s -v",
+            "params": {},
+            "keyword": "jenkins 等待构建"
+          },
+          {
+            "name": "停止构建",
+            "cmd": "java -jar jenkins-cli.jar -s %{jenkins_url}% stop-builds %{job_name}%",
+            "params": {},
+            "keyword": "jenkins 停止构建"
+          },
+          {
+            "name": "禁用任务",
+            "cmd": "java -jar jenkins-cli.jar -s %{jenkins_url}% disable-job %{job_name}%",
+            "params": {},
+            "keyword": "jenkins 禁用任务"
+          },
+          {
+            "name": "启用任务",
+            "cmd": "java -jar jenkins-cli.jar -s %{jenkins_url}% enable-job %{job_name}%",
+            "params": {},
+            "keyword": "jenkins 启用任务"
+          },
+          {
+            "name": "复制任务",
+            "cmd": "java -jar jenkins-cli.jar -s %{jenkins_url}% copy-job %{src_job}% %{dst_job}%",
+            "params": {},
+            "keyword": "jenkins 复制任务"
+          },
+          {
+            "name": "删除任务",
+            "cmd": "java -jar jenkins-cli.jar -s %{jenkins_url}% delete-job %{job_name}%",
+            "params": {},
+            "keyword": "jenkins 删除任务"
+          }
+        ],
+        "params": {
+          "jenkins_url": {
+            "type": "string",
+            "required": true,
+            "description": "Jenkins 服务地址",
+            "example": "http://jenkins.example.com:8080",
+            "notes": "常用"
+          },
+          "job_name": {
+            "type": "string",
+            "required": true,
+            "description": "任务名称",
+            "example": "my-app-deploy",
+            "notes": "常用"
+          },
+          "param": {
+            "type": "string",
+            "required": false,
+            "description": "构建参数名",
+            "example": "ENV",
+            "notes": "用于参数化构建"
+          },
+          "value": {
+            "type": "string",
+            "required": false,
+            "description": "构建参数值",
+            "example": "production",
+            "notes": "用于参数化构建"
+          },
+          "src_job": {
+            "type": "string",
+            "required": false,
+            "description": "源任务名称",
+            "example": "my-app-template",
+            "notes": "用于 copy-job"
+          },
+          "dst_job": {
+            "type": "string",
+            "required": false,
+            "description": "目标任务名称",
+            "example": "my-app-prod",
+            "notes": "用于 copy-job"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD 流水线/",
+      "name": "gitlab-runner 注册运行器",
+      "keyword": "gitlab-runner register",
+      "description": "向 GitLab CI 注册新的 runner 执行器",
+      "data": {
+        "cmd": "gitlab-runner register",
+        "extensions": [
+          {
+            "name": "非交互式注册",
+            "cmd": "gitlab-runner register -n --url \"%{gitlab_url}%\" --registration-token \"%{token}%\" --executor \"%{executor}%\"",
+            "params": {},
+            "keyword": "gitlab-runner 非交互注册"
+          },
+          {
+            "name": "指定 Tags",
+            "cmd": "gitlab-runner register -n --url \"%{gitlab_url}%\" --registration-token \"%{token}%\" --tag-list \"%{tags}%\"",
+            "params": {},
+            "keyword": "gitlab-runner Tags"
+          },
+          {
+            "name": "列出已注册 runners",
+            "cmd": "gitlab-runner list",
+            "params": {},
+            "keyword": "gitlab-runner 列表"
+          },
+          {
+            "name": "启动 runner",
+            "cmd": "gitlab-runner run",
+            "params": {},
+            "keyword": "gitlab-runner 启动"
+          },
+          {
+            "name": "验证 runner 配置",
+            "cmd": "gitlab-runner verify",
+            "params": {},
+            "keyword": "gitlab-runner 验证"
+          },
+          {
+            "name": "注销 runner",
+            "cmd": "gitlab-runner unregister --url \"%{gitlab_url}%\" --token \"%{token}%\"",
+            "params": {},
+            "keyword": "gitlab-runner 注销"
+          }
+        ],
+        "params": {
+          "gitlab_url": {
+            "type": "string",
+            "required": true,
+            "description": "GitLab 实例 URL",
+            "example": "https://gitlab.example.com",
+            "notes": "常用"
+          },
+          "token": {
+            "type": "string",
+            "required": true,
+            "description": "注册 Token",
+            "example": "glrt-xxxxxxxxxxxx",
+            "notes": "常用"
+          },
+          "executor": {
+            "type": "string",
+            "required": false,
+            "description": "执行器类型",
+            "example": "docker",
+            "notes": "可选: docker/shell/ssh/kubernetes"
+          },
+          "tags": {
+            "type": "string",
+            "required": false,
+            "description": "Runner 标签（逗号分隔）",
+            "example": "docker,linux",
+            "notes": "可选"
+          }
+        }
+      }
+    }
+  ]
+}

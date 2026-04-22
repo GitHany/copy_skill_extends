@@ -1,0 +1,881 @@
+{
+  "module": "微服务架构",
+  "version": "1.0",
+  "description": "微服务架构核心组件命令行集合，涵盖服务发现、API网关、服务网格、分布式追踪、断路器、负载均衡等",
+  "commands": [
+    {
+      "dirPath": "/微服务架构/",
+      "name": "Consul Agent 启动",
+      "keyword": "consul agent",
+      "description": "启动 Consul Agent 开发模式",
+      "data": {
+        "cmd": "consul agent -dev -ui",
+        "extensions": [
+          {
+            "name": "以服务端模式启动",
+            "cmd": "consul agent -server -bootstrap-expect=3 -data-dir=/tmp/consul",
+            "params": {},
+            "keyword": "consul agent server"
+          },
+          {
+            "name": "指定数据中心",
+            "cmd": "consul agent -datacenter=dc1",
+            "params": {},
+            "keyword": "consul datacenter"
+          },
+          {
+            "name": "加入已有集群",
+            "cmd": "consul agent -retry-join=%{集群地址}%",
+            "params": {
+              "集群地址": { "type": "string", "required": true, "description": "集群节点地址", "example": "192.168.1.10", "notes": "必填" }
+            },
+            "keyword": "consul join"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/微服务架构/",
+      "name": "Consul Services 注册与查询",
+      "keyword": "consul services",
+      "description": "服务注册到 Consul 并查询",
+      "data": {
+        "cmd": "consul services register -name=%{服务名}% -address=%{地址}% -port=%{端口}%",
+        "extensions": [
+          {
+            "name": "查看所有注册服务",
+            "cmd": "curl localhost:8500/v1/catalog/services",
+            "params": {},
+            "keyword": "consul catalog services"
+          },
+          {
+            "name": "查看特定服务实例",
+            "cmd": "curl localhost:8500/v1/health/service/%{服务名}%",
+            "params": {
+              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "payment", "notes": "必填" }
+            },
+            "keyword": "consul health service"
+          },
+          {
+            "name": " deregister 服务",
+            "cmd": "consul services deregister -id=%{服务ID}%",
+            "params": {
+              "服务ID": { "type": "string", "required": true, "description": "服务 ID", "example": "payment-001", "notes": "必填" }
+            },
+            "keyword": "consul deregister"
+          }
+        ],
+        "params": {
+          "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "payment", "notes": "必填" },
+          "地址": { "type": "string", "required": true, "description": "服务地址", "example": "127.0.0.1", "notes": "必填" },
+          "端口": { "type": "string", "required": true, "description": "服务端口", "example": "8080", "notes": "必填" }
+        }
+      }
+    },
+    {
+      "dirPath": "/微服务架构/",
+      "name": "etcdctl 集群健康检查",
+      "keyword": "etcdctl cluster-health",
+      "description": "检查 etcd 集群健康状态",
+      "data": {
+        "cmd": "etcdctl cluster-health",
+        "extensions": [
+          {
+            "name": "查看成员列表",
+            "cmd": "etcdctl member list",
+            "params": {},
+            "keyword": "etcdctl member list"
+          },
+          {
+            "name": "写入 Key-Value",
+            "cmd": "etcdctl put %{key}% %{value}%",
+            "params": {
+              "key": { "type": "string", "required": true, "description": "键名", "example": "config/service", "notes": "必填" },
+              "value": { "type": "string", "required": true, "description": "值", "example": "localhost:8080", "notes": "必填" }
+            },
+            "keyword": "etcdctl put"
+          },
+          {
+            "name": "读取 Key",
+            "cmd": "etcdctl get %{key}%",
+            "params": {
+              "key": { "type": "string", "required": true, "description": "键名", "example": "config/service", "notes": "必填" }
+            },
+            "keyword": "etcdctl get"
+          },
+          {
+            "name": "监听 Key 变化",
+            "cmd": "etcdctl watch %{key}%",
+            "params": {
+              "key": { "type": "string", "required": true, "description": "键名", "example": "config/service", "notes": "必填" }
+            },
+            "keyword": "etcdctl watch"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/微服务架构/",
+      "name": "Eureka Maven 依赖",
+      "keyword": "eureka server maven",
+      "description": "Eureka 服务端 Maven 依赖配置（Java Spring Boot）",
+      "data": {
+        "cmd": "<!-- Eureka Server 依赖 -->\n<dependency>\n    <groupId>org.springframework.cloud</groupId>\n    <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>\n</dependency>\n\n<!-- Eureka Client 依赖 -->\n<dependency>\n    <groupId>org.springframework.cloud</groupId>\n    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>\n</dependency>",
+        "extensions": [
+          {
+            "name": "Eureka Server 配置（application.yml）",
+            "cmd": "server:\n  port: 8761\neureka:\n  instance:\n    hostname: localhost\n  client:\n    register-with-eureka: false\n    fetch-registry: false",
+            "params": {},
+            "keyword": "eureka server config"
+          },
+          {
+            "name": "Eureka Client 配置（application.yml）",
+            "cmd": "eureka:\n  client:\n    service-url:\n      defaultZone: http://localhost:8761/eureka/\n  instance:\n    prefer-ip-address: true",
+            "params": {},
+            "keyword": "eureka client config"
+          },
+          {
+            "name": "启用服务发现注解",
+            "cmd": "@EnableDiscoveryClient",
+            "params": {},
+            "keyword": "EnableDiscoveryClient"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/微服务架构/",
+      "name": "Nacos 服务注册",
+      "keyword": "nacos service register",
+      "description": "Nacos 服务注册与发现操作",
+      "data": {
+        "cmd": "curl -X POST 'http://%{NACOS_HOST}%:8848/nacos/v1/ns/instance' \\\n  -d 'serviceName=%{服务名}%' \\\n  -d 'ip=%{IP地址}%' \\\n  -d 'port=%{端口}%'",
+        "extensions": [
+          {
+            "name": "查询服务实例列表",
+            "cmd": "curl 'http://%{NACOS_HOST}%:8848/nacos/v1/ns/instance/list?serviceName=%{服务名}%'",
+            "params": {
+              "NACOS_HOST": { "type": "string", "required": false, "description": "Nacos 服务器地址", "example": "localhost", "notes": "默认 localhost" },
+              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "order-service", "notes": "必填" }
+            },
+            "keyword": "nacos query service"
+          },
+          {
+            "name": "发布配置",
+            "cmd": "curl -X POST 'http://%{NACOS_HOST}%:8848/nacos/v1/cs/configs' \\\n  -d 'dataId=%{配置ID}%' \\\n  -d 'group=%{分组}%' \\\n  -d 'content=%{内容}%'",
+            "params": {
+              "NACOS_HOST": { "type": "string", "required": false, "description": "Nacos 服务器地址", "example": "localhost", "notes": "默认 localhost" },
+              "配置ID": { "type": "string", "required": true, "description": "配置 ID", "example": "application.yml", "notes": "必填" },
+              "分组": { "type": "string", "required": false, "description": "配置分组", "example": "DEFAULT_GROUP", "notes": "默认 DEFAULT_GROUP" },
+              "内容": { "type": "string", "required": true, "description": "配置内容", "example": "server.port=8080", "notes": "必填" }
+            },
+            "keyword": "nacos publish config"
+          },
+          {
+            "name": "获取配置",
+            "cmd": "curl 'http://%{NACOS_HOST}%:8848/nacos/v1/cs/configs?dataId=%{配置ID}%&group=%{分组}%'",
+            "params": {
+              "NACOS_HOST": { "type": "string", "required": false, "description": "Nacos 服务器地址", "example": "localhost", "notes": "默认 localhost" },
+              "配置ID": { "type": "string", "required": true, "description": "配置 ID", "example": "application.yml", "notes": "必填" },
+              "分组": { "type": "string", "required": false, "description": "配置分组", "example": "DEFAULT_GROUP", "notes": "默认 DEFAULT_GROUP" }
+            },
+            "keyword": "nacos get config"
+          }
+        ],
+        "params": {
+          "NACOS_HOST": { "type": "string", "required": false, "description": "Nacos 服务器地址", "example": "localhost", "notes": "默认 localhost" },
+          "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "order-service", "notes": "必填" },
+          "IP地址": { "type": "string", "required": true, "description": "服务 IP 地址", "example": "192.168.1.100", "notes": "必填" },
+          "端口": { "type": "string", "required": true, "description": "服务端口", "example": "8080", "notes": "必填" }
+        }
+      }
+    },
+    {
+      "dirPath": "/微服务架构/",
+      "name": "Kong API Gateway 启动管理",
+      "keyword": "kong start",
+      "description": "Kong API 网关启动与管理命令",
+      "data": {
+        "cmd": "kong start",
+        "extensions": [
+          {
+            "name": "重新加载配置",
+            "cmd": "kong reload",
+            "params": {},
+            "keyword": "kong reload"
+          },
+          {
+            "name": "停止 Kong",
+            "cmd": "kong stop",
+            "params": {},
+            "keyword": "kong stop"
+          },
+          {
+            "name": "检查配置语法",
+            "cmd": "kong config parse /etc/kong/kong.yml",
+            "params": {},
+            "keyword": "kong config parse"
+          },
+          {
+            "name": "查看节点状态",
+            "cmd": "curl http://localhost:8001/",
+            "params": {},
+            "keyword": "kong status"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/微服务架构/",
+      "name": "Kong Route 与 Service 管理",
+      "keyword": "kong route service",
+      "description": "Kong 路由与服务配置",
+      "data": {
+        "cmd": "# 创建 Upstream（上游服务）\ncurl -i -X POST http://localhost:8001/upstreams \\\n  -d 'name=%{上游名}%' \\\n  -d 'healthchecks.active.url=http://%{上游名}%/health'\n\n# 创建 Target（后端实例）\ncurl -X POST http://localhost:8001/upstreams/%{上游名}%/targets \\\n  -d 'target=%{目标地址}%:%{目标端口}%'",
+        "extensions": [
+          {
+            "name": "创建 Service",
+            "cmd": "curl -i -X POST http://localhost:8001/services \\\n  -d 'name=%{服务名}%' \\\n  -d 'url=http://%{上游名}%/'",
+            "params": {
+              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "order-service", "notes": "必填" },
+              "上游名": { "type": "string", "required": true, "description": "上游名称", "example": "order-upstream", "notes": "必填" }
+            },
+            "keyword": "kong create service"
+          },
+          {
+            "name": "创建 Route",
+            "cmd": "curl -i -X POST http://localhost:8001/routes \\\n  -d 'name=%{路由名}%' \\\n  -d 'service.name=%{服务名}%' \\\n  -d 'paths[]=/%{路径}%'",
+            "params": {
+              "路由名": { "type": "string", "required": true, "description": "路由名称", "example": "order-route", "notes": "必填" },
+              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "order-service", "notes": "必填" },
+              "路径": { "type": "string", "required": true, "description": "路由路径", "example": "api/orders", "notes": "必填" }
+            },
+            "keyword": "kong create route"
+          },
+          {
+            "name": "启用限流插件",
+            "cmd": "curl -X POST http://localhost:8001/services/%{服务名}%/plugins \\\n  -d 'name=rate-limiting' \\\n  -d 'config.minute=100'",
+            "params": {
+              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "order-service", "notes": "必填" }
+            },
+            "keyword": "kong rate limiting"
+          }
+        ],
+        "params": {
+          "上游名": { "type": "string", "required": true, "description": "上游服务名称", "example": "order-upstream", "notes": "必填" },
+          "目标地址": { "type": "string", "required": true, "description": "后端实例地址", "example": "192.168.1.101", "notes": "必填" },
+          "目标端口": { "type": "string", "required": true, "description": "后端实例端口", "example": "8080", "notes": "必填" }
+        }
+      }
+    },
+    {
+      "dirPath": "/微服务架构/",
+      "name": "Nginx 网关配置",
+      "keyword": "nginx upstream",
+      "description": "Nginx upstream 负载均衡与网关配置",
+      "data": {
+        "cmd": "upstream %{上游名}% {\n    server %{后端1}% weight=5;\n    server %{后端2}% weight=5;\n    keepalive 32;\n}\n\nserver {\n    listen 80;\n    server_name %{域名}%;\n\n    location / {\n        proxy_pass http://%{上游名}%;\n        proxy_set_header Host $host;\n        proxy_set_header X-Real-IP $remote_addr;\n        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n    }\n}",
+        "extensions": [
+          {
+            "name": "Nginx 健康检查",
+            "cmd": "nginx -t",
+            "params": {},
+            "keyword": "nginx config test"
+          },
+          {
+            "name": "重新加载配置",
+            "cmd": "nginx -s reload",
+            "params": {},
+            "keyword": "nginx reload"
+          },
+          {
+            "name": "平滑升级",
+            "cmd": "nginx -s upgrade",
+            "params": {},
+            "keyword": "nginx upgrade"
+          }
+        ],
+        "params": {
+          "上游名": { "type": "string", "required": true, "description": "上游服务名称", "example": "order_backend", "notes": "必填" },
+          "后端1": { "type": "string", "required": true, "description": "后端服务器地址", "example": "192.168.1.101:8080", "notes": "必填" },
+          "后端2": { "type": "string", "required": true, "description": "后端服务器地址", "example": "192.168.1.102:8080", "notes": "必填" },
+          "域名": { "type": "string", "required": true, "description": "服务域名", "example": "api.example.com", "notes": "必填" }
+        }
+      }
+    },
+    {
+      "dirPath": "/微服务架构/",
+      "name": "AWS API Gateway REST API",
+      "keyword": "aws apigateway restapi",
+      "description": "AWS API Gateway REST API 创建与管理",
+      "data": {
+        "cmd": "aws apigateway create-rest-api --name '%{API名称}%'",
+        "extensions": [
+          {
+            "name": "创建资源",
+            "cmd": "aws apigateway create-resource --rest-api-id %{API_ID}% --parent-id %{父资源ID}% --path-part '%{路径}%'",
+            "params": {
+              "API_ID": { "type": "string", "required": true, "description": "API ID", "example": "abc123def", "notes": "必填" },
+              "父资源ID": { "type": "string", "required": true, "description": "父资源 ID", "example": "abc123", "notes": "必填" },
+              "路径": { "type": "string", "required": true, "description": "资源路径", "example": "orders", "notes": "必填" }
+            },
+            "keyword": "aws apigateway create-resource"
+          },
+          {
+            "name": "创建方法",
+            "cmd": "aws apigateway put-method --rest-api-id %{API_ID}% --resource-id %{资源ID}% --http-method GET --authorization-type NONE",
+            "params": {
+              "API_ID": { "type": "string", "required": true, "description": "API ID", "example": "abc123def", "notes": "必填" },
+              "资源ID": { "type": "string", "required": true, "description": "资源 ID", "example": "xyz789", "notes": "必填" }
+            },
+            "keyword": "aws apigateway put-method"
+          },
+          {
+            "name": "部署 API",
+            "cmd": "aws apigateway create-deployment --rest-api-id %{API_ID}% --stage-name '%{阶段名}%'",
+            "params": {
+              "API_ID": { "type": "string", "required": true, "description": "API ID", "example": "abc123def", "notes": "必填" },
+              "阶段名": { "type": "string", "required": true, "description": "部署阶段名", "example": "prod", "notes": "必填" }
+            },
+            "keyword": "aws apigateway deploy"
+          },
+          {
+            "name": "创建 Usage Plan",
+            "cmd": "aws apigateway create-usage-plan --name '%{计划名}%' --throttle burstLimit=100 --throttle rateLimit=50",
+            "params": {
+              "计划名": { "type": "string", "required": true, "description": "使用计划名称", "example": "basic-plan", "notes": "必填" }
+            },
+            "keyword": "aws apigateway usage plan"
+          }
+        ],
+        "params": {
+          "API名称": { "type": "string", "required": true, "description": "API Gateway 名称", "example": "OrderServiceAPI", "notes": "必填" }
+        }
+      }
+    },
+    {
+      "dirPath": "/微服务架构/",
+      "name": "Istioctl 安装与配置",
+      "keyword": "istioctl install",
+      "description": "Istio 安装与配置管理",
+      "data": {
+        "cmd": "istioctl install --set profile=%{配置集}%",
+        "extensions": [
+          {
+            "name": "Demo 配置集（开发环境）",
+            "cmd": "istioctl install --set profile=demo",
+            "params": {},
+            "keyword": "istioctl demo"
+          },
+          {
+            "name": "Minimal 配置集",
+            "cmd": "istioctl install --set profile=minimal",
+            "params": {},
+            "keyword": "istioctl minimal"
+          },
+          {
+            "name": "远程安装（不解压）",
+            "cmd": "istioctl install --set profile=%{配置集}% --set values.global.proxy.hub=%{镜像仓库}%",
+            "params": {
+              "配置集": { "type": "string", "required": true, "description": "Istio 配置集", "example": "default", "notes": "default/minimal/demo" },
+              "镜像仓库": { "type": "string", "required": false, "description": "代理镜像仓库", "example": "docker.io/istio", "notes": "可选" }
+            },
+            "keyword": "istioctl install remote"
+          },
+          {
+            "name": "卸载 Istio",
+            "cmd": "istioctl uninstall --purge",
+            "params": {},
+            "keyword": "istioctl uninstall"
+          }
+        ],
+        "params": {
+          "配置集": { "type": "string", "required": true, "description": "Istio 配置集", "example": "demo", "notes": "default/minimal/demo/remote" }
+        }
+      }
+    },
+    {
+      "dirPath": "/微服务架构/",
+      "name": "Istioctl 流量分析与诊断",
+      "keyword": "istioctl analyze",
+      "description": "Istio 流量分析与配置诊断",
+      "data": {
+        "cmd": "istioctl analyze",
+        "extensions": [
+          {
+            "name": "分析特定命名空间",
+            "cmd": "istioctl analyze -n %{命名空间}%",
+            "params": {
+              "命名空间": { "type": "string", "required": true, "description": "Kubernetes 命名空间", "example": "istio-system", "notes": "必填" }
+            },
+            "keyword": "istioctl analyze ns"
+          },
+          {
+            "name": "查看 Envoy 配置",
+            "cmd": "istioctl proxy-config cluster %{POD名}% -n %{命名空间}%",
+            "params": {
+              "POD名": { "type": "string", "required": true, "description": "Pod 名称", "example": "order-abc123", "notes": "必填" },
+              "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "default", "notes": "必填" }
+            },
+            "keyword": "istioctl proxy-config cluster"
+          },
+          {
+            "name": "查看路由配置",
+            "cmd": "istioctl proxy-config route %{POD名}% -n %{命名空间}%",
+            "params": {
+              "POD名": { "type": "string", "required": true, "description": "Pod 名称", "example": "order-abc123", "notes": "必填" },
+              "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "default", "notes": "必填" }
+            },
+            "keyword": "istioctl proxy-config route"
+          },
+          {
+            "name": "查看 Pod 状态",
+            "cmd": "istioctl ps %{POD名}% -n %{命名空间}%",
+            "params": {
+              "POD名": { "type": "string", "required": true, "description": "Pod 名称", "example": "order-abc123", "notes": "必填" },
+              "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "default", "notes": "必填" }
+            },
+            "keyword": "istioctl ps"
+          },
+          {
+            "name": "查看服务网格拓扑",
+            "cmd": "istioctl x describe service %{服务名}% -n %{命名空间}%",
+            "params": {
+              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "order-service", "notes": "必填" },
+              "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "default", "notes": "必填" }
+            },
+            "keyword": "istioctl describe service"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/微服务架构/",
+      "name": "Istio VirtualService 流量管理",
+      "keyword": "istio virtualservice",
+      "description": "Istio VirtualService 配置流量管理与金丝雀发布",
+      "data": {
+        "cmd": "apiVersion: networking.istio.io/v1alpha3\nkind: VirtualService\nmetadata:\n  name: %{服务名}%-vs\nspec:\n  hosts:\n  - %{服务名}%\n  http:\n  - route:\n    - destination:\n        host: %{服务名}%\n        subset: v1\n      weight: %{权重1}%\n    - destination:\n        host: %{服务名}%\n        subset: v2\n      weight: %{权重2}%",
+        "extensions": [
+          {
+            "name": "超时配置",
+            "cmd": "apiVersion: networking.istio.io/v1alpha3\nkind: VirtualService\nmetadata:\n  name: %{服务名}%-vs\nspec:\n  hosts:\n  - %{服务名}%\n  http:\n  - route:\n    - destination:\n        host: %{服务名}%\n    timeout: %{超时时间}%s",
+            "params": {
+              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "order-service", "notes": "必填" },
+              "超时时间": { "type": "string", "required": true, "description": "超时时间（秒）", "example": "5", "notes": "必填" }
+            },
+            "keyword": "istio virtualservice timeout"
+          },
+          {
+            "name": "熔断配置（DestinationRule）",
+            "cmd": "apiVersion: networking.istio.io/v1alpha3\nkind: DestinationRule\nmetadata:\n  name: %{服务名}%-dr\nspec:\n  host: %{服务名}%\n  trafficPolicy:\n    outlierDetection:\n      consecutive5xxErrors: 5\n      interval: 30s\n      baseEjectionTime: 30s",
+            "params": {
+              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "order-service", "notes": "必填" }
+            },
+            "keyword": "istio destinationrule circuit breaker"
+          }
+        ],
+        "params": {
+          "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "order-service", "notes": "必填" },
+          "权重1": { "type": "string", "required": true, "description": "版本1权重", "example": "90", "notes": "必填" },
+          "权重2": { "type": "string", "required": true, "description": "版本2权重", "example": "10", "notes": "必填" }
+        }
+      }
+    },
+    {
+      "dirPath": "/微服务架构/",
+      "name": "Linkerd 安装与管理",
+      "keyword": "linkerd install",
+      "description": "Linkerd 服务网格安装与运维",
+      "data": {
+        "cmd": "linkerd install | kubectl apply -f -",
+        "extensions": [
+          {
+            "name": "检查安装状态",
+            "cmd": "linkerd check",
+            "params": {},
+            "keyword": "linkerd check"
+          },
+          {
+            "name": "将命名空间加入网格",
+            "cmd": "linkerd inject %{命名空间}% | kubectl apply -f -",
+            "params": {
+              "命名空间": { "type": "string", "required": true, "description": "Kubernetes 命名空间", "example": "default", "notes": "必填" }
+            },
+            "keyword": "linkerd inject"
+          },
+          {
+            "name": "查看服务拓扑",
+            "cmd": "linkerd topology",
+            "params": {},
+            "keyword": "linkerd topology"
+          },
+          {
+            "name": "查看路由 stats",
+            "cmd": "linkerd routes svc/%{服务名}% --to svc/%{目标服务}%",
+            "params": {
+              "服务名": { "type": "string", "required": true, "description": "源服务名称", "example": "web", "notes": "必填" },
+              "目标服务": { "type": "string", "required": true, "description": "目标服务名称", "example": "api", "notes": "必填" }
+            },
+            "keyword": "linkerd routes"
+          },
+          {
+            "name": "健康检查",
+            "cmd": "linkerd edges deploy",
+            "params": {},
+            "keyword": "linkerd edges"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/微服务架构/",
+      "name": "Envoy 代理配置与启动",
+      "keyword": "envoy -c",
+      "description": "Envoy 代理启动与配置管理",
+      "data": {
+        "cmd": "envoy -c %{配置文件}% --service-cluster %{集群名}% --service-node %{节点名}%",
+        "extensions": [
+          {
+            "name": "热重载配置",
+            "cmd": "curl -X POST http://%{ADMIN地址}%:9901/quitquitquit",
+            "params": {
+              "ADMIN地址": { "type": "string", "required": true, "description": "Envoy 管理地址", "example": "localhost", "notes": "必填" }
+            },
+            "keyword": "envoy quit"
+          },
+          {
+            "name": "查看集群配置",
+            "cmd": "curl http://%{ADMIN地址}%:9901/config_dump | jq '.configs[] | select(.[\"@type\"]==\"type.googleapis.com/envoy.config.cluster.v3.Cluster\")'",
+            "params": {
+              "ADMIN地址": { "type": "string", "required": true, "description": "Envoy 管理地址", "example": "localhost", "notes": "必填" }
+            },
+            "keyword": "envoy config dump cluster"
+          },
+          {
+            "name": "更新日志等级",
+            "cmd": "curl -X POST http://%{ADMIN地址}%:9901/logging?level=debug",
+            "params": {
+              "ADMIN地址": { "type": "string", "required": true, "description": "Envoy 管理地址", "example": "localhost", "notes": "必填" }
+            },
+            "keyword": "envoy logging"
+          }
+        ],
+        "params": {
+          "配置文件": { "type": "string", "required": true, "description": "Envoy 配置文件路径", "example": "/etc/envoy/envoy.yaml", "notes": "必填" },
+          "集群名": { "type": "string", "required": true, "description": "服务集群名称", "example": "order-cluster", "notes": "必填" },
+          "节点名": { "type": "string", "required": true, "description": "服务节点名称", "example": "order-node-1", "notes": "必填" }
+        }
+      }
+    },
+    {
+      "dirPath": "/微服务架构/",
+      "name": "Jaegertracing 追踪查询",
+      "keyword": "jaeger query",
+      "description": "Jaeger 分布式追踪查询与管理",
+      "data": {
+        "cmd": "# 启动 Jaeger Query UI\njaeger-ui --query.ui-archive=http://localhost:14268",
+        "extensions": [
+          {
+            "name": "启动 all-in-one（开发模式）",
+            "cmd": "jaeger-all-in-one --collector.zipkin-http-port=9411",
+            "params": {},
+            "keyword": "jaeger all-in-one"
+          },
+          {
+            "name": "查看 trace（命令行）",
+            "cmd": "curl 'http://localhost:16686/api/traces/%{TRACE_ID}%' | jq .",
+            "params": {
+              "TRACE_ID": { "type": "string", "required": true, "description": "Trace ID", "example": "abc123def456", "notes": "必填" }
+            },
+            "keyword": "jaeger trace curl"
+          },
+          {
+            "name": "健康检查",
+            "cmd": "curl http://localhost:14269/health",
+            "params": {},
+            "keyword": "jaeger health"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/微服务架构/",
+      "name": "Zipkin 分布式追踪",
+      "keyword": "zipkin server",
+      "description": "Zipkin 追踪服务器启动与查询",
+      "data": {
+        "cmd": "# Docker 启动 Zipkin\ndocker run -d -p 9411:9411 openzipkin/zipkin",
+        "extensions": [
+          {
+            "name": "Docker Compose 启动",
+            "cmd": "version: '3'\nservices:\n  zipkin:\n    image: openzipkin/zipkin\n    ports:\n      - '9411:9411'\n    environment:\n      - STORAGE_TYPE=mysql\n      - MYSQL_HOST=localhost",
+            "params": {},
+            "keyword": "zipkin docker compose"
+          },
+          {
+            "name": "查询依赖关系",
+            "cmd": "curl 'http://localhost:9411/api/v2/dependencies?startTime=%{开始时间}%&endTime=%{结束时间}%'",
+            "params": {
+              "开始时间": { "type": "string", "required": true, "description": "开始时间（毫秒）", "example": "1609459200000", "notes": "必填" },
+              "结束时间": { "type": "string", "required": true, "description": "结束时间（毫秒）", "example": "1609545600000", "notes": "必填" }
+            },
+            "keyword": "zipkin dependencies"
+          },
+          {
+            "name": "查询 Span",
+            "cmd": "curl 'http://localhost:9411/api/v2/spans?serviceName=%{服务名}%'",
+            "params": {
+              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "order-service", "notes": "必填" }
+            },
+            "keyword": "zipkin spans"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/微服务架构/",
+      "name": "OpenTelemetry Collector 部署",
+      "keyword": "otelcol start",
+      "description": "OpenTelemetry Collector 启动与配置",
+      "data": {
+        "cmd": "otelcol --config=%{配置文件}%",
+        "extensions": [
+          {
+            "name": "Docker 运行 Collector",
+            "cmd": "docker run --rm \\\n  -p 4317:4317 \\\n  -p 4318:4318 \\\n  -v $(pwd)/otel-config.yaml:/etc/otelcol-config.yaml \\\n  otel/opentelemetry-collector \\\n  --config /etc/otelcol-config.yaml",
+            "params": {},
+            "keyword": "otelcol docker"
+          },
+          {
+            "name": "验证配置",
+            "cmd": "otelcol --config=%{配置文件}% --dry-run",
+            "params": {
+              "配置文件": { "type": "string", "required": true, "description": "配置文件路径", "example": "./config.yaml", "notes": "必填" }
+            },
+            "keyword": "otelcol dry run"
+          },
+          {
+            "name": "Exporter 推送测试数据",
+            "cmd": "curl -X POST http://localhost:4318/v1/traces \\\n  -H 'Content-Type: application/json' \\\n  -d @trace.json",
+            "params": {},
+            "keyword": "otelcol test trace"
+          }
+        ],
+        "params": {
+          "配置文件": { "type": "string", "required": true, "description": "Collector 配置文件路径", "example": "./config.yaml", "notes": "必填" }
+        }
+      }
+    },
+    {
+      "dirPath": "/微服务架构/",
+      "name": "Resilience4j 熔断器配置",
+      "keyword": "resilience4j circuitbreaker",
+      "description": "Resilience4j 熔断器 Java 配置示例",
+      "data": {
+        "cmd": "CircuitBreakerRegistry registry = CircuitBreakerRegistry.of(\n    CircuitBreakerConfig.custom()\n        .failureRateThreshold(50)\n        .slidingWindowSize(10)\n        .minimumNumberOfCalls(5)\n        .waitDurationInOpenState(Duration.ofSeconds(30))\n        .permittedNumberOfCallsInHalfOpenState(3)\n        .build()\n);\nCircuitBreaker circuitBreaker = registry.circuitBreaker(\"orderService\");",
+        "extensions": [
+          {
+            "name": "Retry 配置",
+            "cmd": "RetryRegistry retryRegistry = RetryRegistry.of(\n    RetryConfig.custom()\n        .maxAttempts(3)\n        .waitDuration(Duration.ofMillis(500))\n        .retryExceptions(IOException.class, TimeoutException.class)\n        .build()\n);\nRetry retry = retryRegistry.retry(\"orderRetry\");",
+            "params": {},
+            "keyword": "resilience4j retry config"
+          },
+          {
+            "name": "Bulkhead 配置",
+            "cmd": "BulkheadRegistry bulkheadRegistry = BulkheadRegistry.of(\n    BulkheadConfig.custom()\n        .maxConcurrentCalls(10)\n        .maxWaitDuration(Duration.ofMillis(100))\n        .build()\n);\nBulkhead bulkhead = bulkheadRegistry.bulkhead(\"orderBulkhead\");",
+            "params": {},
+            "keyword": "resilience4j bulkhead config"
+          },
+          {
+            "name": "Rate Limiter 配置",
+            "cmd": "RateLimiterRegistry rateLimiterRegistry = RateLimiterRegistry.of(\n    RateLimiterConfig.custom()\n        .limitForPeriod(100)\n        .limitRefreshPeriod(Duration.ofSeconds(1))\n        .timeoutDuration(Duration.ofMillis(500))\n        .build()\n);\nRateLimiter rateLimiter = rateLimiterRegistry.rateLimiter(\"orderRateLimiter\");",
+            "params": {},
+            "keyword": "resilience4j rate limiter config"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/微服务架构/",
+      "name": "Hystrix 命令行与监控",
+      "keyword": "hystrix stream",
+      "description": "Hystrix 断路器监控流与命令",
+      "data": {
+        "cmd": "# Hystrix Stream 端点（Spring Boot Actuator）\ncurl http://localhost:actuator/hystrix.stream",
+        "extensions": [
+          {
+            "name": "Hystrix Dashboard 启动",
+            "cmd": "java -jar hystrix-dashboard-*.jar",
+            "params": {},
+            "keyword": "hystrix dashboard"
+          },
+          {
+            "name": "Turbine Stream 聚合",
+            "cmd": "java -jar turbine-*.jar --spring.cloud.turbine.stream-config=%{配置}%",
+            "params": {
+              "配置": { "type": "string", "required": true, "description": "Turbine 配置", "example": "{...}", "notes": "必填" }
+            },
+            "keyword": "turbine stream"
+          },
+          {
+            "name": "Hystrix 配置（application.yml）",
+            "cmd": "hystrix:\n  command:\n    default:\n      circuitBreaker:\n        enabled: true\n        requestVolumeThreshold: 20\n        sleepWindowInMilliseconds: 5000\n      execution:\n        isolation:\n          thread:\n            timeoutInMilliseconds: 10000",
+            "params": {},
+            "keyword": "hystrix config yml"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/微服务架构/",
+      "name": "Prometheus 熔断器指标",
+      "keyword": "prometheus circuit breaker metrics",
+      "description": "通过 Prometheus 监控熔断器指标",
+      "data": {
+        "cmd": "# 查看熔断器状态指标（Resilience4j Prometheus）\ncurl http://localhost:8080/actuator/prometheus | grep circuitbreaker",
+        "extensions": [
+          {
+            "name": "Prometheus 抓取配置",
+            "cmd": "scrape_configs:\n  - job_name: 'microservices'\n    metrics_path: '/actuator/prometheus'\n    static_configs:\n      - targets: ['order-service:8080', 'payment-service:8080']",
+            "params": {},
+            "keyword": "prometheus scrape config"
+          },
+          {
+            "name": "查询熔断器熔断次数",
+            "cmd": "promtool query instant 'resilience4j_circuitbreaker_calls_total{state=\"closed\",name=\"%{服务名}%\"}'",
+            "params": {
+              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "order-service", "notes": "必填" }
+            },
+            "keyword": "prometheus query circuitbreaker"
+          },
+          {
+            "name": "告警规则配置",
+            "cmd": "groups:\n- name: circuit_breaker\n  rules:\n  - alert: CircuitBreakerOpen\n    expr: resilience4j_circuitbreaker_state{state=\"open\"} > 0\n    for: 1m\n    labels:\n      severity: critical",
+            "params": {},
+            "keyword": "prometheus alert circuit breaker"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/微服务架构/",
+      "name": "HAProxy 负载均衡配置",
+      "keyword": "haproxy.cfg",
+      "description": "HAProxy 负载均衡器完整配置",
+      "data": {
+        "cmd": "global\n    log localhost local0\n    maxconn 4096\n    user haproxy\n    group haproxy\n\ndefaults\n    log global\n    mode http\n    option httplog\n    timeout connect 5000ms\n    timeout client 50000ms\n    timeout server 50000ms\n\nfrontend http_front\n    bind *:80\n    default_backend web_back\n\nbackend web_back\n    balance roundrobin\n    option httpchk GET /health\n    server web1 %{后端1}% check inter 2000 rise 2 fall 3\n    server web2 %{后端2}% check inter 2000 rise 2 fall 3",
+        "extensions": [
+          {
+            "name": "HAProxy 统计页面",
+            "cmd": "listen stats\n    bind *:8400\n    stats enable\n    stats uri /stats\n    stats refresh 30s",
+            "params": {},
+            "keyword": "haproxy stats"
+          },
+          {
+            "name": "健康检查与权重",
+            "cmd": "server web1 %{后端1}% weight %{权重}% check",
+            "params": {
+              "后端1": { "type": "string", "required": true, "description": "后端地址", "example": "192.168.1.101:8080", "notes": "必填" },
+              "权重": { "type": "string", "required": true, "description": "权重值", "example": "100", "notes": "必填" }
+            },
+            "keyword": "haproxy weight"
+          },
+          {
+            "name": "配置语法检查",
+            "cmd": "haproxy -c -f /etc/haproxy/haproxy.cfg",
+            "params": {},
+            "keyword": "haproxy check config"
+          },
+          {
+            "name": "平滑重启",
+            "cmd": "haproxy -f /etc/haproxy/haproxy.cfg -sf $(cat /var/run/haproxy.pid)",
+            "params": {},
+            "keyword": "haproxy reload"
+          }
+        ],
+        "params": {
+          "后端1": { "type": "string", "required": true, "description": "后端服务器地址", "example": "192.168.1.101:8080", "notes": "必填" },
+          "后端2": { "type": "string", "required": true, "description": "后端服务器地址", "example": "192.168.1.102:8080", "notes": "必填" }
+        }
+      }
+    },
+    {
+      "dirPath": "/微服务架构/",
+      "name": "Traefik 反向代理与动态配置",
+      "keyword": "traefik",
+      "description": "Traefik 云原生反向代理与动态服务发现",
+      "data": {
+        "cmd": "# 启动 Traefik（Docker）\ndocker run -d -p 80:80 -p 8080:8080 \\\n  -v /var/run/docker.sock:/var/run/docker.sock \\\n  traefik:v2.10 --api.insecure=true --providers.docker",
+        "extensions": [
+          {
+            "name": "Docker Label 自动路由",
+            "cmd": "docker run -d \\\n  --label 'traefik.http.routers.order.rule=PathPrefix(`/order`)' \\\n  --label 'traefik.http.routers.order.entrypoints=web' \\\n  --label 'traefik.port=8080' \\\n  order-service:latest",
+            "params": {},
+            "keyword": "traefik docker label"
+          },
+          {
+            "name": "Let's Encrypt 自动 HTTPS",
+            "cmd": "traefik --api --entrypoints=webaddress=:80 --entrypoints=websecure.address=:443 \\\n  --certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web \\\n  --certificatesresolvers.myresolver.acme.storage=/acme.json",
+            "params": {},
+            "keyword": "traefik letsencrypt"
+          },
+          {
+            "name": "File Provider 静态配置",
+            "cmd": "--providers.file.filename=/etc/traefik/dynamic.yml",
+            "params": {},
+            "keyword": "traefik file provider"
+          },
+          {
+            "name": "限流中间件",
+            "cmd": "apiVersion: traefik.containo.us/v1alpha1\nkind: Middleware\nmetadata:\n  name: rate-limit\nspec:\n  rateLimit:\n    average: 100\n    burst: 50",
+            "params": {},
+            "keyword": "traefik rate limit middleware"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/微服务架构/",
+      "name": "Envoy 动态服务发现负载均衡",
+      "keyword": "envoy dynamic service discovery",
+      "description": "Envoy 动态服务发现与负载均衡配置",
+      "data": {
+        "cmd": "static_resources:\n  listeners:\n  - address:\n      socket_address:\n        address: 0.0.0.0\n        port_value: 8080\n    filter_chains:\n    - filters:\n      - name: envoy.filters.network.http_connection_manager\n        config:\n          stat_prefix: ingress_http\n          route_config:\n            virtual_hosts:\n            - name: service\n              domains: ['*']\n              routes:\n              - match: { prefix: '/' }\n                route:\n                  cluster: order_cluster\n          http_filters:\n          - name: envoy.filters.http.router\n  clusters:\n  - name: order_cluster\n    type: EDS\n    lb_policy: ROUND_ROBIN\n    eds_cluster_config:\n      service_name: order-service",
+        "extensions": [
+          {
+            "name": "主动健康检查配置",
+            "cmd": "  clusters:\n  - name: order_cluster\n    type: EDS\n    health_checks:\n    - timeout: 5s\n      interval: 10s\n      unhealthy_threshold: 3\n      healthy_threshold: 2\n      http_health_check:\n        path: '/health'",
+            "params": {},
+            "keyword": "envoy active health check"
+          },
+          {
+            "name": "熔断配置",
+            "cmd": "  clusters:\n  - name: order_cluster\n    circuit_breakers:\n      thresholds:\n      - max_connections: 100\n        max_pending_requests: 100\n        max_requests: 100\n        max_retries: 3",
+            "params": {},
+            "keyword": "envoy circuit breaker cluster"
+          },
+          {
+            "name": "金丝雀路由（权重分流）",
+            "cmd": "routes:\n- match: { prefix: '/' }\n  route:\n    weighted_clusters:\n      clusters:\n      - name: order-v1\n        weight: 90\n      - name: order-v2\n        weight: 10",
+            "params": {},
+            "keyword": "envoy weighted routing"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

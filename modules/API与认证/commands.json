@@ -1,0 +1,776 @@
+{
+  "module": "API与认证",
+  "version": "1.0",
+  "description": "API 设计与身份验证命令模块，涵盖 RESTful API、GraphQL、JWT、OAuth2、Passport.js、bcrypt、TOTP、限流、CORS、安全头等",
+  "commands": [
+    {
+      "dirPath": "/API与认证/",
+      "name": "jwt.sign 生成 JWT 令牌",
+      "keyword": "jwt.sign jwt生成 jwt签发",
+      "description": "使用 jsonwebtoken 库签发 JWT 访问令牌或刷新令牌",
+      "data": {
+        "cmd": "jwt.sign(%{payload}%, process.env.%{密钥环境变量}%, { expiresIn: '%{过期时间}%', algorithm: '%{算法}%' })",
+        "extensions": [
+          {
+            "name": "生成访问令牌",
+            "cmd": "jwt.sign({ userId: %{userId}%, role: '%{角色}%' }, process.env.%{环境变量}%, { expiresIn: '15m' })",
+            "params": {
+              "userId": { "type": "string", "required": true, "description": "用户 ID", "example": "12345", "notes": "" },
+              "角色": { "type": "string", "required": false, "description": "用户角色", "example": "admin", "notes": "可选，默认 user" },
+              "环境变量": { "type": "string", "required": true, "description": "JWT 密钥环境变量名", "example": "JWT_SECRET", "notes": "常用" }
+            },
+            "keyword": "jwt.sign 访问令牌"
+          },
+          {
+            "name": "生成刷新令牌",
+            "cmd": "jwt.sign({ userId: %{userId}%, type: 'refresh' }, process.env.%{环境变量}%, { expiresIn: '7d' })",
+            "params": {
+              "userId": { "type": "string", "required": true, "description": "用户 ID", "example": "12345", "notes": "" },
+              "环境变量": { "type": "string", "required": true, "description": "刷新令牌密钥环境变量", "example": "REFRESH_SECRET", "notes": "常用" }
+            },
+            "keyword": "jwt.sign 刷新令牌"
+          },
+          {
+            "name": "带算法和签发者",
+            "cmd": "jwt.sign({ userId: %{userId}% }, process.env.%{secret}%, { expiresIn: '%{expiry}%', algorithm: '%{algo}%', issuer: '%{issuer}%', audience: '%{aud}%' })",
+            "params": {
+              "userId": { "type": "string", "required": true, "description": "用户 ID", "example": "user_001", "notes": "" },
+              "secret": { "type": "string", "required": true, "description": "密钥环境变量名", "example": "JWT_SECRET", "notes": "" },
+              "expiry": { "type": "string", "required": true, "description": "过期时间", "example": "1h", "notes": "常用" },
+              "algo": { "type": "string", "required": false, "description": "签名算法", "example": "HS256", "notes": "默认 HS256" },
+              "issuer": { "type": "string", "required": false, "description": "签发者", "example": "my-app", "notes": "用于令牌校验" },
+              "aud": { "type": "string", "required": false, "description": "受众", "example": "users", "notes": "" }
+            },
+            "keyword": "jwt.sign issuer audience"
+          }
+        ],
+        "params": {
+          "payload": { "type": "string", "required": true, "description": "JWT 负载对象（用户信息）", "example": "{ userId: 123, role: 'admin' }", "notes": "常用" },
+          "密钥环境变量": { "type": "string", "required": true, "description": "JWT 密钥环境变量名", "example": "JWT_SECRET", "notes": "常用" },
+          "过期时间": { "type": "string", "required": false, "description": "令牌过期时间", "example": "7d", "notes": "常用" },
+          "算法": { "type": "string", "required": false, "description": "签名算法", "example": "HS256", "notes": "默认 HS256" }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "jwt.verify 验证 JWT 令牌",
+      "keyword": "jwt.verify jwt验证 jwt校验",
+      "description": "验证并解码 JWT 令牌，校验签名、过期时间、签发者和受众",
+      "data": {
+        "cmd": "jwt.verify(%{token}%, process.env.%{密钥环境变量}%, { algorithms: ['%{算法}%'], issuer: '%{issuer}%', audience: '%{audience}%' })",
+        "extensions": [
+          {
+            "name": "基础验证",
+            "cmd": "jwt.verify(%{token}%, process.env.%{secret}%)",
+            "params": {
+              "token": { "type": "string", "required": true, "description": "JWT 令牌字符串", "example": "eyJhbGciOiJIUzI1NiJ9...", "notes": "常用" },
+              "secret": { "type": "string", "required": true, "description": "密钥环境变量名", "example": "JWT_SECRET", "notes": "常用" }
+            },
+            "keyword": "jwt.verify 基础"
+          },
+          {
+            "name": "完整验证（签名+过期+issuer+audience）",
+            "cmd": "jwt.verify(%{token}%, process.env.%{secret}%, { algorithms: ['%{algo}%'], issuer: '%{issuer}%', audience: '%{audience}%' })",
+            "params": {
+              "token": { "type": "string", "required": true, "description": "JWT 令牌", "example": "eyJhbG...", "notes": "常用" },
+              "secret": { "type": "string", "required": true, "description": "密钥环境变量名", "example": "JWT_SECRET", "notes": "常用" },
+              "algo": { "type": "string", "required": false, "description": "允许的算法列表", "example": "HS256", "notes": "推荐指定" },
+              "issuer": { "type": "string", "required": false, "description": "预期签发者", "example": "my-app", "notes": "" },
+              "audience": { "type": "string", "required": false, "description": "预期受众", "example": "users", "notes": "" }
+            },
+            "keyword": "jwt.verify 完整校验"
+          },
+          {
+            "name": "带 try-catch 异常处理",
+            "cmd": "try { const decoded = jwt.verify(%{token}%, process.env.%{secret}%); } catch (e) { if (e.name === 'TokenExpiredError') { /* 令牌过期 */ } else if (e.name === 'JsonWebTokenError') { /* 签名无效 */ } }",
+            "params": {
+              "token": { "type": "string", "required": true, "description": "JWT 令牌", "example": "req.headers.authorization?.replace('Bearer ', '')", "notes": "常用" },
+              "secret": { "type": "string", "required": true, "description": "密钥环境变量名", "example": "JWT_SECRET", "notes": "常用" }
+            },
+            "keyword": "jwt.verify 异常处理"
+          }
+        ],
+        "params": {
+          "token": { "type": "string", "required": true, "description": "JWT 令牌字符串", "example": "eyJhbGciOiJIUzI1NiJ9...", "notes": "常用" },
+          "密钥环境变量": { "type": "string", "required": true, "description": "JWT 密钥环境变量名", "example": "JWT_SECRET", "notes": "常用" },
+          "算法": { "type": "string", "required": false, "description": "签名算法", "example": "HS256", "notes": "默认 HS256" },
+          "issuer": { "type": "string", "required": false, "description": "签发者", "example": "my-app", "notes": "" },
+          "audience": { "type": "string", "required": false, "description": "受众", "example": "users", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "jwt.decode 解码 JWT 令牌",
+      "keyword": "jwt.decode jwt解码 jwt查看",
+      "description": "解码 JWT 令牌为 header 和 payload（不验证签名，仅用于查看）",
+      "data": {
+        "cmd": "jwt.decode(%{token}%, { complete: true })",
+        "extensions": [
+          {
+            "name": "完整解码（包含 header 和 signature）",
+            "cmd": "jwt.decode(%{token}%, { complete: true })",
+            "params": {
+              "token": { "type": "string", "required": true, "description": "JWT 令牌字符串", "example": "eyJhbGciOiJIUzI1NiJ9...", "notes": "常用" }
+            },
+            "keyword": "jwt.decode 完整"
+          },
+          {
+            "name": "仅解码 payload",
+            "cmd": "jwt.decode(%{token}%)",
+            "params": {
+              "token": { "type": "string", "required": true, "description": "JWT 令牌", "example": "eyJhbG...", "notes": "常用" }
+            },
+            "keyword": "jwt.decode payload"
+          }
+        ],
+        "params": {
+          "token": { "type": "string", "required": true, "description": "JWT 令牌字符串", "example": "eyJhbGciOiJIUzI1NiJ9...", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "bcrypt.hash 哈希密码",
+      "keyword": "bcrypt.hash bcrypt哈希 密码哈希",
+      "description": "使用 bcrypt 将明文密码哈希为安全存储格式",
+      "data": {
+        "cmd": "bcrypt.hash(%{password}%, %{saltRounds}%)",
+        "extensions": [
+          {
+            "name": "标准哈希（12 轮盐）",
+            "cmd": "bcrypt.hash(%{password}%, 12)",
+            "params": {
+              "password": { "type": "string", "required": true, "description": "明文密码", "example": "UserPassword123!", "notes": "常用" }
+            },
+            "keyword": "bcrypt.hash 12轮"
+          },
+          {
+            "name": "异步哈希",
+            "cmd": "const hash = await bcrypt.hash(%{password}%, %{rounds}%)",
+            "params": {
+              "password": { "type": "string", "required": true, "description": "明文密码", "example": "SecurePass99", "notes": "常用" },
+              "rounds": { "type": "number", "required": true, "description": "盐轮数", "example": "12", "notes": "推荐 10-13" }
+            },
+            "keyword": "bcrypt hash async"
+          }
+        ],
+        "params": {
+          "password": { "type": "string", "required": true, "description": "明文密码", "example": "MySecurePassword123!", "notes": "常用" },
+          "saltRounds": { "type": "number", "required": true, "description": "盐轮数（成本因子）", "example": "12", "notes": "推荐 10-13，太高影响性能" }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "bcrypt.compare 验证密码",
+      "keyword": "bcrypt.compare bcrypt验证 密码校验",
+      "description": "将用户输入的明文密码与数据库中存储的 bcrypt 哈希值进行比对",
+      "data": {
+        "cmd": "bcrypt.compare(%{plainPassword}%, %{passwordHash}%)",
+        "extensions": [
+          {
+            "name": "登录时验证",
+            "cmd": "const match = await bcrypt.compare(req.body.%{passwordField}%, storedHash); if (!match) return res.status(401).json({ error: '无效凭证' });",
+            "params": {
+              "passwordField": { "type": "string", "required": true, "description": "请求体中的密码字段名", "example": "password", "notes": "常用" },
+              "storedHash": { "type": "string", "required": true, "description": "数据库中存储的密码哈希", "example": "user.passwordHash", "notes": "常用" }
+            },
+            "keyword": "bcrypt.compare 登录"
+          },
+          {
+            "name": "异步密码验证",
+            "cmd": "const isValid = await bcrypt.compare(%{input}%, %{hash}%);",
+            "params": {
+              "input": { "type": "string", "required": true, "description": "用户输入的密码", "example": "req.body.password", "notes": "常用" },
+              "hash": { "type": "string", "required": true, "description": "存储的哈希值", "example": "$2b$12$...", "notes": "常用" }
+            },
+            "keyword": "bcrypt compare 异步"
+          }
+        ],
+        "params": {
+          "plainPassword": { "type": "string", "required": true, "description": "用户输入的明文密码", "example": "UserPassword123!", "notes": "常用" },
+          "passwordHash": { "type": "string", "required": true, "description": "数据库中存储的 bcrypt 哈希值", "example": "$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36Vy.", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "speakeasy.totp.verify 验证 TOTP 验证码",
+      "keyword": "speakeasy totp verify 2fa验证 双重认证",
+      "description": "使用 speakeasy 验证用户提供的 TOTP 验证码（两步验证）",
+      "data": {
+        "cmd": "speakeasy.totp.verify({ secret: %{secret}%, encoding: 'base32', token: %{token}%, window: %{window}% })",
+        "extensions": [
+          {
+            "name": "标准 TOTP 验证",
+            "cmd": "speakeasy.totp.verify({ secret: user.%{totpSecretField}%, encoding: 'base32', token: req.body.%{codeField}%, window: 1 })",
+            "params": {
+              "totpSecretField": { "type": "string", "required": true, "description": "用户 TOTP 密钥字段名", "example": "totpSecret", "notes": "常用" },
+              "codeField": { "type": "string", "required": true, "description": "用户提交的验证码字段", "example": "code", "notes": "常用" }
+            },
+            "keyword": "speakeasy totp 验证"
+          },
+          {
+            "name": "严格模式（不允许时间窗口误差）",
+            "cmd": "speakeasy.totp.verify({ secret: %{secret}%, encoding: 'base32', token: %{token}%, window: 0 })",
+            "params": {
+              "secret": { "type": "string", "required": true, "description": "用户的 TOTP 密钥", "example": "JBSWY3DPEHPK3PXP", "notes": "" },
+              "token": { "type": "string", "required": true, "description": "用户输入的 6 位验证码", "example": "123456", "notes": "常用" }
+            },
+            "keyword": "totp 严格模式"
+          }
+        ],
+        "params": {
+          "secret": { "type": "string", "required": true, "description": "用户的 TOTP 密钥（base32 编码）", "example": "JBSWY3DPEHPK3PXP", "notes": "常用" },
+          "token": { "type": "string", "required": true, "description": "用户输入的 6 位 TOTP 验证码", "example": "123456", "notes": "常用" },
+          "window": { "type": "number", "required": false, "description": "允许的时间步长误差范围", "example": "1", "notes": "默认 0，建议 1 允许手机时间偏差" }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "speakeasy.generateSecret 生成 TOTP 密钥",
+      "keyword": "speakeasy generateSecret totp生成 2fa密钥",
+      "description": "为用户生成 TOTP（基于时间的一次性密码）密钥，用于设置两步验证",
+      "data": {
+        "cmd": "speakeasy.generateSecret({ name: '%{appName}:%{userEmail}%', issuer: '%{issuer}%', length: %{length}% })",
+        "extensions": [
+          {
+            "name": "标准 TOTP 密钥生成",
+            "cmd": "const secret = speakeasy.generateSecret({ name: '%{appName}:%{user}%', issuer: '%{issuer}%' }); const otpauthUrl = secret.otpauth_url;",
+            "params": {
+              "appName": { "type": "string", "required": true, "description": "应用名称", "example": "MyApp", "notes": "常用" },
+              "user": { "type": "string", "required": true, "description": "用户标识（邮箱或用户名）", "example": "user@example.com", "notes": "常用" },
+              "issuer": { "type": "string", "required": false, "description": "密钥颁发者名称", "example": "MyApp", "notes": "用于 Google Authenticator 显示" }
+            },
+            "keyword": "speakeasy generateSecret 标准"
+          },
+          {
+            "name": "生成二维码数据 URL",
+            "cmd": "const secret = speakeasy.generateSecret({ name: '%{name}%' }); const qrcodeUrl = await QRCode.toDataURL(secret.otpauth_url);",
+            "params": {
+              "name": { "type": "string", "required": true, "description": "OTP 名称", "example": "MyApp:user@example.com", "notes": "常用" }
+            },
+            "keyword": "speakeasy qrcode totp 二维码"
+          }
+        ],
+        "params": {
+          "appName": { "type": "string", "required": true, "description": "应用名称", "example": "MyApp", "notes": "常用" },
+          "userEmail": { "type": "string", "required": true, "description": "用户邮箱或标识", "example": "user@example.com", "notes": "常用" },
+          "issuer": { "type": "string", "required": false, "description": "颁发者名称", "example": "MyApp", "notes": "可选" },
+          "length": { "type": "number", "required": false, "description": "验证码长度", "example": "6", "notes": "默认 6" }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "passport.use 注册 Passport 策略",
+      "keyword": "passport use passport策略 passport注册",
+      "description": "使用 Passport.js 注册认证策略（本地策略、JWT 策略、OAuth 策略）",
+      "data": {
+        "cmd": "passport.use(new %{StrategyType}%(%{options}%, %{verifyCallback}%))",
+        "extensions": [
+          {
+            "name": "注册本地（用户名密码）策略",
+            "cmd": "passport.use(new LocalStrategy({ usernameField: '%{usernameField}%', passwordField: '%{passwordField}%' }, async (%{username}%, %{password}%, done) => { const user = await User.findOne({ %{usernameField}% }); if (!user) return done(null, false); const match = await bcrypt.compare(%{password}%, user.passwordHash); return done(null, match ? user : false); }))",
+            "params": {
+              "usernameField": { "type": "string", "required": false, "description": "用户名/邮箱字段名", "example": "email", "notes": "常用" },
+              "passwordField": { "type": "string", "required": false, "description": "密码字段名", "example": "password", "notes": "常用" },
+              "username": { "type": "string", "required": true, "description": "用户名参数名", "example": "email", "notes": "常用" },
+              "password": { "type": "string", "required": true, "description": "密码参数名", "example": "password", "notes": "常用" }
+            },
+            "keyword": "passport LocalStrategy 本地"
+          },
+          {
+            "name": "注册 JWT 策略",
+            "cmd": "passport.use(new JwtStrategy({ jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(), secretOrKey: process.env.%{secret}%, issuer: '%{issuer}%' }, (payload, done) => { User.findById(payload.userId).then(u => done(null, u || false)).catch(e => done(e, false)); }))",
+            "params": {
+              "secret": { "type": "string", "required": true, "description": "JWT 密钥环境变量名", "example": "JWT_SECRET", "notes": "常用" },
+              "issuer": { "type": "string", "required": false, "description": "签发者", "example": "my-app", "notes": "" }
+            },
+            "keyword": "passport JwtStrategy jwt"
+          },
+          {
+            "name": "注册 Google OAuth 策略",
+            "cmd": "passport.use(new GoogleStrategy({ clientID: process.env.%{clientID}%, clientSecret: process.env.%{clientSecret}%, callbackURL: '%{callbackURL}%' }, (accessToken, refreshToken, profile, done) => { User.findOrCreate({ googleId: profile.id }, (err, user) => done(err, user)); }))",
+            "params": {
+              "clientID": { "type": "string", "required": true, "description": "Google OAuth 客户端 ID 环境变量名", "example": "GOOGLE_CLIENT_ID", "notes": "常用" },
+              "clientSecret": { "type": "string", "required": true, "description": "Google OAuth 客户端密钥环境变量名", "example": "GOOGLE_CLIENT_SECRET", "notes": "常用" },
+              "callbackURL": { "type": "string", "required": true, "description": "OAuth 回调 URL", "example": "/auth/google/callback", "notes": "常用" }
+            },
+            "keyword": "passport GoogleStrategy oauth"
+          }
+        ],
+        "params": {
+          "StrategyType": { "type": "string", "required": true, "description": "Passport 策略类型", "example": "LocalStrategy", "notes": "常用" },
+          "options": { "type": "string", "required": true, "description": "策略配置选项", "example": "{ usernameField: 'email', passwordField: 'password' }", "notes": "常用" },
+          "verifyCallback": { "type": "string", "required": true, "description": "验证回调函数", "example": "async (email, password, done) => { ... }", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "express-rate-limit 配置限流",
+      "keyword": "rateLimit 限流 express-rate-limit 请求限流",
+      "description": "使用 express-rate-limit 配置 API 请求频率限制，防止滥用和暴力攻击",
+      "data": {
+        "cmd": "app.use(rateLimit({ windowMs: %{windowMs}%, max: %{maxRequests}%, message: '%{message}%' }))",
+        "extensions": [
+          {
+            "name": "登录接口限流（严格）",
+            "cmd": "app.use('/api/auth/login', rateLimit({ windowMs: 15 * 60 * 1000, max: 5, message: '登录尝试过于频繁，请 15 分钟后再试' }))",
+            "params": {},
+            "keyword": "rateLimit 登录限流"
+          },
+          {
+            "name": "全局 API 限流",
+            "cmd": "app.use('/api', rateLimit({ windowMs: 60 * 1000, max: %{requests}%, standardHeaders: true, legacyHeaders: false }))",
+            "params": {
+              "requests": { "type": "number", "required": true, "description": "每窗口最大请求数", "example": "100", "notes": "常用" }
+            },
+            "keyword": "rateLimit 全局限流"
+          },
+          {
+            "name": "滑动窗口限流",
+            "cmd": "const limiter = rateLimit({ windowMs: %{windowMs}%, max: %{max}%, message: '%{msg}%' }); app.use(limiter);",
+            "params": {
+              "windowMs": { "type": "number", "required": true, "description": "时间窗口（毫秒）", "example": "60000", "notes": "常用" },
+              "max": { "type": "number", "required": true, "description": "窗口内最大请求数", "example": "100", "notes": "常用" },
+              "msg": { "type": "string", "required": false, "description": "超限提示消息", "example": "请求过于频繁", "notes": "" }
+            },
+            "keyword": "rateLimit 滑动窗口"
+          }
+        ],
+        "params": {
+          "windowMs": { "type": "number", "required": true, "description": "时间窗口（毫秒）", "example": "60000", "notes": "常用" },
+          "maxRequests": { "type": "number", "required": true, "description": "每个窗口内允许的最大请求数", "example": "100", "notes": "常用" },
+          "message": { "type": "string", "required": false, "description": "超限时的返回消息", "example": "请求过于频繁，请稍后再试", "notes": "可选" }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "cors 配置跨域资源共享",
+      "keyword": "cors 跨域 cors配置 允许跨域",
+      "description": "配置 Express CORS 中间件，控制哪些来源可以跨域访问 API",
+      "data": {
+        "cmd": "app.use(cors({ origin: %{origin}%, methods: [%{methods}%], allowedHeaders: [%{allowedHeaders}%], credentials: %{credentials}% }))",
+        "extensions": [
+          {
+            "name": "仅允许指定域名",
+            "cmd": "app.use(cors({ origin: ['https://%{domain1}%', 'https://%{domain2}%'], credentials: true }))",
+            "params": {
+              "domain1": { "type": "string", "required": true, "description": "允许的第一个域名", "example": "myapp.com", "notes": "常用" },
+              "domain2": { "type": "string", "required": false, "description": "允许的第二个域名", "example": "www.myapp.com", "notes": "可选" }
+            },
+            "keyword": "cors 指定域名"
+          },
+          {
+            "name": "开发环境（允许所有）",
+            "cmd": "app.use(cors({ origin: true, credentials: true }))",
+            "params": {},
+            "keyword": "cors 开发环境"
+          },
+          {
+            "name": "生产环境（严格）",
+            "cmd": "app.use(cors({ origin: process.env.%{envVar}%, methods: ['GET', 'POST', 'PUT', 'DELETE'], allowedHeaders: ['Content-Type', 'Authorization'], exposedHeaders: ['X-Total-Count'], credentials: true, maxAge: 86400 }))",
+            "params": {
+              "envVar": { "type": "string", "required": true, "description": "允许域名环境变量名", "example": "ALLOWED_ORIGINS", "notes": "常用" }
+            },
+            "keyword": "cors 生产环境"
+          }
+        ],
+        "params": {
+          "origin": { "type": "string", "required": true, "description": "允许的来源（域名数组或 true）", "example": "['https://myapp.com']", "notes": "常用" },
+          "methods": { "type": "string", "required": false, "description": "允许的 HTTP 方法", "example": "'GET, POST, PUT, DELETE'", "notes": "可选" },
+          "allowedHeaders": { "type": "string", "required": false, "description": "允许的请求头", "example": "'Content-Type, Authorization'", "notes": "可选" },
+          "credentials": { "type": "boolean", "required": false, "description": "是否允许携带凭证（cookies）", "example": "true", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "helmet 配置安全响应头",
+      "keyword": "helmet helmet安全 安全头 helmet配置",
+      "description": "使用 Helmet.js 设置各类 HTTP 安全响应头（XSS 防护、CSP、X-Frame-Options 等）",
+      "data": {
+        "cmd": "const helmet = require('helmet'); app.use(helmet());",
+        "extensions": [
+          {
+            "name": "Helmet 全部安全头",
+            "cmd": "app.use(helmet({ contentSecurityPolicy: { directives: { defaultSrc: [\"'self'\"], scriptSrc: [\"'self'\"], styleSrc: [\"'self'\", 'https://fonts.googleapis.com'], imgSrc: [\"'self'\", 'data:', 'https:'] } }, hsts: { maxAge: 31536000, includeSubDomains: true } }));",
+            "params": {},
+            "keyword": "helmet 全部安全头"
+          },
+          {
+            "name": "HSTS 严格传输安全",
+            "cmd": "app.use(helmet.hsts({ maxAge: %{seconds}%, includeSubDomains: true, preload: true }))",
+            "params": {
+              "seconds": { "type": "number", "required": true, "description": "HSTS 有效期（秒）", "example": "31536000", "notes": "常用（1年）" }
+            },
+            "keyword": "helmet hsts"
+          },
+          {
+            "name": "X-Frame-Options 防止点击劫持",
+            "cmd": "app.use(helmet.frameguard({ action: 'deny' }))",
+            "params": {},
+            "keyword": "helmet frameguard"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "Joi 验证请求数据",
+      "keyword": "Joi validate 验证 joi校验 输入验证",
+      "description": "使用 Joi 库对 API 请求参数和请求体进行 schema 校验",
+      "data": {
+        "cmd": "const schema = Joi.object({ %{fieldName}%: Joi.%{type}%().%{rules}% }); const { error, value } = schema.validate(req.%{bodyOrQuery}%);",
+        "extensions": [
+          {
+            "name": "用户注册请求验证",
+            "cmd": "const schema = Joi.object({ email: Joi.string().email().required(), password: Joi.string().min(8).pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)/).required(), name: Joi.string().min(2).max(50).required() });",
+            "params": {},
+            "keyword": "Joi 用户注册"
+          },
+          {
+            "name": "ID 参数验证",
+            "cmd": "const schema = Joi.object({ id: Joi.number().integer().positive().required() }); const { error } = schema.validate(req.params);",
+            "params": {},
+            "keyword": "Joi id 参数"
+          },
+          {
+            "name": "分页参数验证",
+            "cmd": "const schema = Joi.object({ page: Joi.number().integer().min(1).default(1), limit: Joi.number().integer().min(1).max(100).default(20) });",
+            "params": {},
+            "keyword": "Joi 分页"
+          }
+        ],
+        "params": {
+          "fieldName": { "type": "string", "required": true, "description": "字段名", "example": "email", "notes": "常用" },
+          "type": { "type": "string", "required": true, "description": "字段类型", "example": "string", "notes": "常用" },
+          "rules": { "type": "string", "required": true, "description": "校验规则链", "example": "email().required()", "notes": "常用" },
+          "bodyOrQuery": { "type": "string", "required": true, "description": "验证来源（body/query/params）", "example": "body", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "Apollo Server 启动 GraphQL 服务",
+      "keyword": "Apollo Server graphql 启动 graphql服务器",
+      "description": "使用 Apollo Server 启动 GraphQL API 服务，配置 typeDefs 和 resolvers",
+      "data": {
+        "cmd": "const server = new ApolloServer({ typeDefs: gql`%{typeDefs}%`, resolvers }); server.listen().then(({ url }) => console.log(`Server at ${url}`));",
+        "extensions": [
+          {
+            "name": "基础 Apollo Server",
+            "cmd": "const { ApolloServer, gql } = require('apollo-server'); const typeDefs = gql`type Query { hello: String }`; const resolvers = { Query: { hello: () => 'Hello world' } }; const server = new ApolloServer({ typeDefs, resolvers }); server.listen().then(({ url }) => console.log(`GraphQL: ${url}`));",
+            "params": {},
+            "keyword": "Apollo Server 基础"
+          },
+          {
+            "name": "Apollo Server + Context（认证）",
+            "cmd": "const server = new ApolloServer({ typeDefs, resolvers, context: ({ req }) => { const token = req.headers.authorization?.replace('Bearer ', ''); const user = token ? jwt.verify(token, process.env.JWT_SECRET) : null; return { user }; } });",
+            "params": {},
+            "keyword": "Apollo Server context jwt"
+          },
+          {
+            "name": "Apollo Server + Playground",
+            "cmd": "const server = new ApolloServer({ typeDefs, resolvers, introspection: true, playground: { settings: { 'request.credentials': 'include' } } });",
+            "params": {},
+            "keyword": "Apollo Server playground"
+          }
+        ],
+        "params": {
+          "typeDefs": { "type": "string", "required": true, "description": "GraphQL 类型定义（schema）", "example": "gql`type Query { users: [User] }`", "notes": "常用" },
+          "resolvers": { "type": "string", "required": true, "description": "GraphQL 解析器对象", "example": "{ Query: { ... }, Mutation: { ... } }", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "graphql-yoga 启动 GraphQL 服务",
+      "keyword": "graphql-yoga graphql yoga 启动",
+      "description": "使用 graphql-yoga 创建高性能 GraphQL API 服务，支持 Express/Fastify 集成",
+      "data": {
+        "cmd": "const { createServer } = require('graphql-yoga'); const server = createServer({ schema: %{schema}%, port: %{port}% }); server.start();",
+        "extensions": [
+          {
+            "name": "基础 graphql-yoga",
+            "cmd": "const { createServer } = require('graphql-yoga'); const { schema } = require('./schema'); const server = createServer({ schema }); server.start();",
+            "params": {},
+            "keyword": "graphql-yoga 基础"
+          },
+          {
+            "name": "graphql-yoga + CORS + context",
+            "cmd": "const server = createServer({ schema, port: %{port}%, cors: { origin: '%{origin}%', credentials: true }, context: ({ request }) => { const token = request.headers.get('authorization')?.replace('Bearer ', ''); return { user: token ? jwt.verify(token, process.env.JWT_SECRET) : null }; } });",
+            "params": {
+              "port": { "type": "number", "required": false, "description": "监听端口", "example": "4000", "notes": "常用" },
+              "origin": { "type": "string", "required": false, "description": "允许的 CORS 来源", "example": "https://myapp.com", "notes": "" }
+            },
+            "keyword": "graphql-yoga cors context"
+          }
+        ],
+        "params": {
+          "schema": { "type": "string", "required": true, "description": "GraphQL schema 对象", "example": "makeExecutableSchema({ typeDefs, resolvers })", "notes": "常用" },
+          "port": { "type": "number", "required": false, "description": "服务端口", "example": "4000", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "crypto.randomBytes 生成 API Key",
+      "keyword": "crypto.randomBytes apikey api key 生成",
+      "description": "使用 Node.js 原生 crypto 模块生成加密安全的随机 API Key",
+      "data": {
+        "cmd": "const apiKey = crypto.randomBytes(%{bytes}%).toString('hex');",
+        "extensions": [
+          {
+            "name": "生成 32 字节 API Key",
+            "cmd": "const apiKey = crypto.randomBytes(32).toString('hex'); // 64 字符十六进制字符串",
+            "params": {},
+            "keyword": "randomBytes 32 api key"
+          },
+          {
+            "name": "生成带前缀的 API Key",
+            "cmd": "const apiKey = `%{prefix}%_${crypto.randomBytes(32).toString('hex')}`;",
+            "params": {
+              "prefix": { "type": "string", "required": true, "description": "API Key 前缀", "example": "sk", "notes": "常用" }
+            },
+            "keyword": "randomBytes 前缀 api key"
+          }
+        ],
+        "params": {
+          "bytes": { "type": "number", "required": false, "description": "随机字节数", "example": "32", "notes": "推荐 32（生成 64 字符 Key）" }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "https.createServer 创建 HTTPS 服务器",
+      "keyword": "https createServer ssl https服务器",
+      "description": "使用 Node.js 原生 https 模块和 SSL/TLS 证书创建安全的 HTTPS 服务器",
+      "data": {
+        "cmd": "const https = require('https'); const fs = require('fs'); const options = { key: fs.readFileSync('%{keyPath}%') , cert: fs.readFileSync('%{certPath}%') }; const server = https.createServer(options, app).listen(%{port}%);",
+        "extensions": [
+          {
+            "name": "标准 HTTPS 服务器",
+            "cmd": "const options = { key: fs.readFileSync('/etc/ssl/private/%{key}%') , cert: fs.readFileSync('/etc/ssl/certs/%{cert}%') , ca: fs.readFileSync('/etc/ssl/certs/ca_bundle.crt') }; https.createServer(options, app).listen(443);",
+            "params": {
+              "key": { "type": "string", "required": true, "description": "SSL 私钥文件路径", "example": "server.key", "notes": "常用" },
+              "cert": { "type": "string", "required": true, "description": "SSL 证书文件路径", "example": "server.crt", "notes": "常用" }
+            },
+            "keyword": "https createServer 标准"
+          },
+          {
+            "name": "HTTPS + TLS 1.2+ 强制",
+            "cmd": "const options = { key: fs.readFileSync('%{key}%') , cert: fs.readFileSync('%{cert}%') , minVersion: 'TLSv1.2' , ciphers: 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384' }; https.createServer(options, app).listen(443);",
+            "params": {
+              "key": { "type": "string", "required": true, "description": "私钥路径", "example": "/path/to/key.pem", "notes": "常用" },
+              "cert": { "type": "string", "required": true, "description": "证书路径", "example": "/path/to/cert.pem", "notes": "常用" }
+            },
+            "keyword": "https tls12"
+          },
+          {
+            "name": "HTTP 重定向到 HTTPS",
+            "cmd": "http.createServer((req, res) => { res.writeHead(301, { Location: `https://${req.headers.host}${req.url}` }); res.end(); }).listen(80);",
+            "params": {},
+            "keyword": "http 重定向 https"
+          }
+        ],
+        "params": {
+          "keyPath": { "type": "string", "required": true, "description": "SSL 私钥文件路径", "example": "/etc/ssl/private/server.key", "notes": "常用" },
+          "certPath": { "type": "string", "required": true, "description": "SSL 证书文件路径", "example": "/etc/ssl/certs/server.crt", "notes": "常用" },
+          "port": { "type": "number", "required": false, "description": "HTTPS 端口", "example": "443", "notes": "默认 443" }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "session 配置 Express Session",
+      "keyword": "express-session session 会话 redis session",
+      "description": "配置 Express 会话管理，支持内存存储和 Redis 分布式存储",
+      "data": {
+        "cmd": "const session = require('express-session'); app.use(session({ secret: process.env.%{secret}%, resave: false, saveUninitialized: false, cookie: { secure: %{secure}%, httpOnly: true, maxAge: %{maxAge}% } }));",
+        "extensions": [
+          {
+            "name": "Redis Session 存储",
+            "cmd": "const RedisStore = require('connect-redis'); const redisClient = require('redis').createClient(); app.use(session({ store: new RedisStore({ client: redisClient }), secret: process.env.%{secret}%, resave: false, saveUninitialized: false, cookie: { secure: true, httpOnly: true, sameSite: 'strict' } }));",
+            "params": {
+              "secret": { "type": "string", "required": true, "description": "Session 密钥环境变量名", "example": "SESSION_SECRET", "notes": "常用" }
+            },
+            "keyword": "session redis"
+          },
+          {
+            "name": "安全 Session 配置",
+            "cmd": "app.use(session({ secret: process.env.%{secret}%, cookie: { secure: process.env.NODE_ENV === 'production', httpOnly: true, maxAge: 24 * 60 * 60 * 1000, sameSite: 'strict' } }));",
+            "params": {
+              "secret": { "type": "string", "required": true, "description": "Session 密钥", "example": "SESSION_SECRET", "notes": "常用" }
+            },
+            "keyword": "session 安全配置"
+          }
+        ],
+        "params": {
+          "secret": { "type": "string", "required": true, "description": "Session 签名密钥环境变量名", "example": "SESSION_SECRET", "notes": "常用" },
+          "secure": { "type": "boolean", "required": false, "description": "是否仅通过 HTTPS 传输", "example": "true", "notes": "生产环境必须 true" },
+          "maxAge": { "type": "number", "required": false, "description": "Session 有效期（毫秒）", "example": "86400000", "notes": "默认 1 天" }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "pubsub.publish 发布 GraphQL 订阅事件",
+      "keyword": "pubsub publish graphql subscription 订阅发布",
+      "description": "在 GraphQL 订阅中发布事件，通知所有订阅者数据变更",
+      "data": {
+        "cmd": "pubsub.publish('%{eventName}%', { %{eventName}%: %{data}% });",
+        "extensions": [
+          {
+            "name": "发布用户创建事件",
+            "cmd": "pubsub.publish('USER_CREATED', { userCreated: { id: newUser.id, name: newUser.name, email: newUser.email } });",
+            "params": {},
+            "keyword": "pubsub USER_CREATED"
+          },
+          {
+            "name": "发布消息通知事件",
+            "cmd": "pubsub.publish(`MESSAGE_SENT_%{conversationId}%`, { messageSent: newMessage });",
+            "params": {
+              "conversationId": { "type": "string", "required": true, "description": "对话 ID", "example": "conv_123", "notes": "常用" }
+            },
+            "keyword": "pubsub MESSAGE_SENT"
+          },
+          {
+            "name": "asyncIterator 订阅配置",
+            "cmd": "Subscription: { %{eventName}%: { subscribe: (_, __, { pubsub }) => pubsub.asyncIterator('%{eventName}%') } }",
+            "params": {
+              "eventName": { "type": "string", "required": true, "description": "事件名称", "example": "USER_CREATED", "notes": "常用" }
+            },
+            "keyword": "asyncIterator subscription"
+          }
+        ],
+        "params": {
+          "eventName": { "type": "string", "required": true, "description": "事件名称（与订阅名称一致）", "example": "USER_CREATED", "notes": "常用" },
+          "data": { "type": "string", "required": true, "description": "发布的数据对象", "example": "newUser", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "OAuth2 授权码换取访问令牌",
+      "keyword": "OAuth2 token 授权码 access token oauth",
+      "description": "使用授权码向 OAuth2 授权服务器换取访问令牌（支持刷新令牌）",
+      "data": {
+        "cmd": "POST https://%{authHost}%/oauth/token\\nContent-Type: application/x-www-form-urlencoded\\n\\ngrant_type=authorization_code&code=%{code}%&redirect_uri=%{redirectUri}%&client_id=%{clientId}%&client_secret=%{clientSecret}%",
+        "extensions": [
+          {
+            "name": "客户端凭证模式",
+            "cmd": "POST https://%{authHost}%/oauth/token\\nContent-Type: application/x-www-form-urlencoded\\n\\ngrant_type=client_credentials&client_id=%{clientId}%&client_secret=%{clientSecret}%&scope=%{scope}%",
+            "params": {
+              "authHost": { "type": "string", "required": true, "description": "OAuth 授权服务器地址", "example": "auth.example.com", "notes": "常用" },
+              "clientId": { "type": "string", "required": true, "description": "客户端 ID", "example": "my_service_client", "notes": "常用" },
+              "clientSecret": { "type": "string", "required": true, "description": "客户端密钥", "example": "secret_xxx", "notes": "常用" },
+              "scope": { "type": "string", "required": false, "description": "权限范围", "example": "api:read api:write", "notes": "" }
+            },
+            "keyword": "OAuth2 client_credentials"
+          },
+          {
+            "name": "刷新令牌续期",
+            "cmd": "POST https://%{authHost}%/oauth/token\\nContent-Type: application/x-www-form-urlencoded\\n\\ngrant_type=refresh_token&refresh_token=%{refreshToken}%&client_id=%{clientId}%&client_secret=%{clientSecret}%",
+            "params": {
+              "authHost": { "type": "string", "required": true, "description": "OAuth 授权服务器地址", "example": "auth.example.com", "notes": "常用" },
+              "refreshToken": { "type": "string", "required": true, "description": "刷新令牌", "example": "dGhpcyBpcyB...", "notes": "常用" },
+              "clientId": { "type": "string", "required": true, "description": "客户端 ID", "example": "my_client_id", "notes": "常用" },
+              "clientSecret": { "type": "string", "required": true, "description": "客户端密钥", "example": "secret", "notes": "常用" }
+            },
+            "keyword": "OAuth2 refresh_token"
+          }
+        ],
+        "params": {
+          "authHost": { "type": "string", "required": true, "description": "OAuth 授权服务器域名", "example": "auth.example.com", "notes": "常用" },
+          "code": { "type": "string", "required": true, "description": "授权服务器返回的授权码", "example": "SplxlOBeZQQYbYS6WxSbIA", "notes": "常用（一次性）" },
+          "redirectUri": { "type": "string", "required": true, "description": "注册的重定向 URI", "example": "https://myapp.com/callback", "notes": "必须与注册时一致" },
+          "clientId": { "type": "string", "required": true, "description": "OAuth 客户端 ID", "example": "my_app_client_id", "notes": "常用" },
+          "clientSecret": { "type": "string", "required": true, "description": "OAuth 客户端密钥", "example": "client_secret_xxx", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "xss-clean 配置 XSS 防护",
+      "keyword": "xss-clean xss防护 xss-clean express 安全",
+      "description": "使用 xss-clean 中间件防止跨站脚本攻击（XSS），过滤请求体、查询参数中的恶意 HTML/JS",
+      "data": {
+        "cmd": "const xss = require('xss-clean'); app.use(xss());",
+        "extensions": [
+          {
+            "name": "XSS 防护（Express）",
+            "cmd": "const xssClean = require('xss-clean'); app.use(express.json()); app.use(xssClean());",
+            "params": {},
+            "keyword": "xss-clean express"
+          },
+          {
+            "name": "XSS + 输入验证组合",
+            "cmd": "app.use(xssClean()); app.use((req, res, next) => { const schema = Joi.object({ name: Joi.string().max(100).required() }).validate(req.body); if (schema.error) return res.status(400).json({ error: schema.error.message }); next(); });",
+            "params": {},
+            "keyword": "xss validation 组合"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "makeExecutableSchema 创建 GraphQL Schema",
+      "keyword": "makeExecutableSchema graphql schema schema构建",
+      "description": "使用 @graphql-tools/schema 的 makeExecutableSchema 从 typeDefs 和 resolvers 构建可执行 GraphQL schema",
+      "data": {
+        "cmd": "const { makeExecutableSchema } = require('@graphql-tools/schema'); const schema = makeExecutableSchema({ typeDefs: gql`%{typeDefs}%`, resolvers });",
+        "extensions": [
+          {
+            "name": "从文件构建 schema",
+            "cmd": "const fs = require('fs'); const { makeExecutableSchema } = require('@graphql-tools/schema'); const typeDefs = fs.readFileSync('./schema.graphql', 'utf8'); const schema = makeExecutableSchema({ typeDefs, resolvers });",
+            "params": {},
+            "keyword": "makeExecutableSchema 文件"
+          },
+          {
+            "name": "带 schemaDirectives",
+            "cmd": "const { makeExecutableSchema } = require('@graphql-tools/schema'); const schema = makeExecutableSchema({ typeDefs, resolvers, schemaDirectives: { auth: AuthDirective } });",
+            "params": {},
+            "keyword": "makeExecutableSchema directives"
+          }
+        ],
+        "params": {
+          "typeDefs": { "type": "string", "required": true, "description": "GraphQL 类型定义字符串", "example": "type Query { users: [User] }", "notes": "常用" },
+          "resolvers": { "type": "string", "required": true, "description": "GraphQL 解析器", "example": "{ Query: { users: () => [...] } }", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "express-mongo-sanitize NoSQL 注入防护",
+      "keyword": "mongo-sanitize nosql注入防护 安全 express",
+      "description": "使用 express-mongo-sanitize 防止 NoSQL 注入攻击，过滤请求中的 $ 字符和 . 字符",
+      "data": {
+        "cmd": "const mongoSanitize = require('express-mongo-sanitize'); app.use(mongoSanitize());",
+        "extensions": [
+          {
+            "name": "NoSQL 注入防护",
+            "cmd": "const mongoSanitize = require('express-mongo-sanitize'); app.use(mongoSanitize()); // 自动过滤 req.body req.query req.params 中的 $ 和 .",
+            "params": {},
+            "keyword": "mongo-sanitize nosql"
+          },
+          {
+            "name": "允许特定字段",
+            "cmd": "app.use(mongoSanitize({ allow: ['_id', 'email'] }));",
+            "params": {},
+            "keyword": "mongo-sanitize allow"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

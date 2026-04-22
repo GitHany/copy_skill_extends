@@ -1,0 +1,826 @@
+{
+  "module": "配置管理",
+  "version": "1.0",
+  "description": "配置管理与环境工具模块，涵盖环境变量、密钥管理、包管理器配置和构建工具命令",
+  "commands": [
+    {
+      "dirPath": "/配置管理/",
+      "name": "dotenv 运行Node应用",
+      "keyword": "dotenv env node",
+      "description": "使用.env文件加载环境变量运行Node.js应用",
+      "data": {
+        "cmd": "node -r dotenv/config server.js",
+        "extensions": [
+          {
+            "name": "指定.env路径",
+            "cmd": "DOTENV_CONFIG_PATH=/path/to/.env node server.js",
+            "params": {
+              "路径": { "type": "string", "required": true, "description": ".env文件路径", "example": "/data/prod.env" }
+            },
+            "keyword": "dotenv 指定路径"
+          },
+          {
+            "name": "加载多个.env文件",
+            "cmd": "dotenv -e .env.local -e .env.development -e .env config",
+            "params": {},
+            "keyword": "dotenv 多文件"
+          },
+          {
+            "name": "Node脚本手动加载",
+            "cmd": "node -e \"require('dotenv').config(); console.log(process.env.API_KEY)\"",
+            "params": {},
+            "keyword": "dotenv 手动加载"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/配置管理/",
+      "name": "python-dotenv 运行Python脚本",
+      "keyword": "python-dotenv dotenv python",
+      "description": "使用.env文件加载环境变量运行Python脚本",
+      "data": {
+        "cmd": "python -m dotenv.cli run server.py",
+        "extensions": [
+          {
+            "name": "使用dotenv命令行",
+            "cmd": "dotenv run python server.py",
+            "params": {},
+            "keyword": "dotenv run python"
+          },
+          {
+            "name": "设置变量并运行",
+            "cmd": "dotenv set KEY=value && dotenv run python app.py",
+            "params": {
+              "KEY": { "type": "string", "required": true, "description": "变量名", "example": "DEBUG" },
+              "value": { "type": "string", "required": true, "description": "变量值", "example": "true" }
+            },
+            "keyword": "dotenv set 运行"
+          },
+          {
+            "name": "手动加载",
+            "cmd": "python -c \"from dotenv import load_dotenv; load_dotenv(); import os; print(os.getenv('API_KEY'))\"",
+            "params": {},
+            "keyword": "python dotenv 手动"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/配置管理/",
+      "name": "direnv 环境自动加载",
+      "keyword": "direnv envrc allow deny",
+      "description": "direnv自动加载.envrc配置的环境变量",
+      "data": {
+        "cmd": "direnv allow",
+        "extensions": [
+          {
+            "name": "拒绝执行.envrc",
+            "cmd": "direnv deny",
+            "params": {},
+            "keyword": "direnv deny"
+          },
+          {
+            "name": "编辑.envrc",
+            "cmd": "direnv edit",
+            "params": {},
+            "keyword": "direnv edit"
+          },
+          {
+            "name": "导出当前环境变量",
+            "cmd": "direnv export bash",
+            "params": {},
+            "keyword": "direnv export"
+          },
+          {
+            "name": "查看状态",
+            "cmd": "direnv status",
+            "params": {},
+            "keyword": "direnv status"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/配置管理/",
+      "name": "envchain 密钥安全管理",
+      "keyword": "envchain namespace secret",
+      "description": "使用envchain安全存储和读取环境变量密钥",
+      "data": {
+        "cmd": "envchain --namespace myapp python script.py",
+        "extensions": [
+          {
+            "name": "读取存储的密钥",
+            "cmd": "envchain --namespace myapp --env printenv API_KEY",
+            "params": {
+              "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "myapp" },
+              "变量名": { "type": "string", "required": true, "description": "环境变量名", "example": "API_KEY" }
+            },
+            "keyword": "envchain 读取"
+          },
+          {
+            "name": "交互式设置密钥",
+            "cmd": "envchain --namespace myapp set SERVICE_API_KEY",
+            "params": {
+              "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "myapp" }
+            },
+            "keyword": "envchain 设置"
+          },
+          {
+            "name": "删除密钥",
+            "cmd": "envchain --namespace myapp unset SERVICE_API_KEY",
+            "params": {
+              "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "myapp" }
+            },
+            "keyword": "envchain 删除"
+          },
+          {
+            "name": "列出所有变量",
+            "cmd": "envchain --namespace myapp env",
+            "params": {
+              "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "myapp" }
+            },
+            "keyword": "envchain 列出"
+          }
+        ],
+        "params": {
+          "命名空间": { "type": "string", "required": true, "description": "envchain命名空间", "example": "myapp" }
+        }
+      }
+    },
+    {
+      "dirPath": "/配置管理/",
+      "name": "SOPS 加密配置文件",
+      "keyword": "sops encrypt encrypt yaml json",
+      "description": "使用SOPS加密敏感配置文件，支持KMS、GCP、age等方式",
+      "data": {
+        "cmd": "sops -e --inplace secrets.yaml",
+        "extensions": [
+          {
+            "name": "解密并输出",
+            "cmd": "sops -d secrets.yaml",
+            "params": {},
+            "keyword": "sops 解密"
+          },
+          {
+            "name": "更新指定字段",
+            "cmd": "sops set secrets.yaml api_key \"newvalue\"",
+            "params": {
+              "文件": { "type": "string", "required": true, "description": "加密文件路径", "example": "secrets.yaml" },
+              "字段": { "type": "string", "required": true, "description": "字段路径", "example": "api_key" },
+              "值": { "type": "string", "required": true, "description": "新值", "example": "newvalue" }
+            },
+            "keyword": "sops set 更新字段"
+          },
+          {
+            "name": "KMS加密",
+            "cmd": "sops -e --kms arn:aws:kms:us-east-1:123:key/xxx secrets.yaml",
+            "params": {
+              "KMS密钥": { "type": "string", "required": true, "description": "KMS密钥ARN", "example": "arn:aws:kms:us-east-1:123:key/xxx" }
+            },
+            "keyword": "sops kms"
+          },
+          {
+            "name": "GCP KMS加密",
+            "cmd": "sops -e --gcp-kms projects/p/locations/k/likeys secrets.yaml",
+            "params": {},
+            "keyword": "sops gcp"
+          },
+          {
+            "name": "age加密",
+            "cmd": "sops --age-key-file key.txt -e secrets.yaml",
+            "params": {},
+            "keyword": "sops age"
+          },
+          {
+            "name": "导出所有键",
+            "cmd": "consul kv export config/",
+            "params": {},
+            "keyword": "sops export"
+          }
+        ],
+        "params": {
+          "文件": { "type": "string", "required": true, "description": "要加密的文件路径", "example": "secrets.yaml" }
+        }
+      }
+    },
+    {
+      "dirPath": "/配置管理/",
+      "name": "age 文件加密",
+      "keyword": "age encrypt decrypt key",
+      "description": "使用age进行简单安全的文件加密",
+      "data": {
+        "cmd": "age-keygen -o key.txt",
+        "extensions": [
+          {
+            "name": "公钥加密",
+            "cmd": "age -r age1xxxxxxxxxxxxxxxxxxxxxxxx -p -o out.enc in.txt",
+            "params": {
+              "公钥": { "type": "string", "required": true, "description": "接收者age公钥", "example": "age1xxxxxxxx" },
+              "输入文件": { "type": "string", "required": true, "description": "原始文件", "example": "in.txt" },
+              "输出文件": { "type": "string", "required": true, "description": "加密输出文件", "example": "out.enc" }
+            },
+            "keyword": "age 加密"
+          },
+          {
+            "name": "密码加密",
+            "cmd": "age --passphrase -p -o out.enc in.txt",
+            "params": {},
+            "keyword": "age 密码加密"
+          },
+          {
+            "name": "解密文件",
+            "cmd": "age -d -i key.txt -o out.txt in.enc",
+            "params": {
+              "密钥文件": { "type": "string", "required": true, "description": "密钥文件路径", "example": "key.txt" }
+            },
+            "keyword": "age 解密"
+          },
+          {
+            "name": "管道加密",
+            "cmd": "echo \"secret\" | age -r age1xxx -p",
+            "params": {},
+            "keyword": "age 管道"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/配置管理/",
+      "name": "GPG 加密与密钥管理",
+      "keyword": "gpg gnupg pgp encrypt key",
+      "description": "GPG加密文件和密钥管理",
+      "data": {
+        "cmd": "gpg --gen-key",
+        "extensions": [
+          {
+            "name": "导出公钥",
+            "cmd": "gpg --export -a \"Name\" > pub.asc",
+            "params": {
+              "名称": { "type": "string", "required": true, "description": "密钥名称或邮箱", "example": "user@example.com" }
+            },
+            "keyword": "gpg 导出公钥"
+          },
+          {
+            "name": "导入公钥",
+            "cmd": "gpg --import pub.asc",
+            "params": {},
+            "keyword": "gpg 导入"
+          },
+          {
+            "name": "加密文件",
+            "cmd": "gpg -e -r \"Name\" secrets.txt",
+            "params": {
+              "接收者": { "type": "string", "required": true, "description": "接收者名称或邮箱", "example": "user@example.com" }
+            },
+            "keyword": "gpg 加密"
+          },
+          {
+            "name": "解密文件",
+            "cmd": "gpg -d secrets.txt.gpg > secrets.txt",
+            "params": {},
+            "keyword": "gpg 解密"
+          },
+          {
+            "name": "对称加密",
+            "cmd": "gpg --symmetric --cipher-algo AES256 file.txt",
+            "params": {},
+            "keyword": "gpg 对称加密"
+          },
+          {
+            "name": "编辑密钥",
+            "cmd": "gpg --edit-key \"Name\"",
+            "params": {},
+            "keyword": "gpg edit"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/配置管理/",
+      "name": "1Password CLI 密钥管理",
+      "keyword": "1password op signin secret",
+      "description": "1Password命令行工具管理密码和密钥",
+      "data": {
+        "cmd": "op signin --account my.1password.com",
+        "extensions": [
+          {
+            "name": "获取指定字段值",
+            "cmd": "op item get \"SSH Keys\" --fields label=private",
+            "params": {
+              "条目": { "type": "string", "required": true, "description": "条目名称", "example": "SSH Keys" }
+            },
+            "keyword": "op get field"
+          },
+          {
+            "name": "使用环境变量运行命令",
+            "cmd": "op run --env-file=ops_secrets.env -- node app.js",
+            "params": {
+              "环境文件": { "type": "string", "required": true, "description": "1Password导出的env文件", "example": "ops_secrets.env" }
+            },
+            "keyword": "op run"
+          },
+          {
+            "name": "获取密码值",
+            "cmd": "op item get \"API Key\" --field password",
+            "params": {},
+            "keyword": "op get password"
+          },
+          {
+            "name": "列出保险库",
+            "cmd": "op vault list",
+            "params": {},
+            "keyword": "op vault"
+          },
+          {
+            "name": "下载文档",
+            "cmd": "op document get \"backup.tar.gz\" --output ./backup.tar.gz",
+            "params": {},
+            "keyword": "op document"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/配置管理/",
+      "name": "Bitwarden CLI 密钥管理",
+      "keyword": "bitwarden bw cli secret",
+      "description": "Bitwarden命令行工具管理密码和密钥",
+      "data": {
+        "cmd": "bw login",
+        "extensions": [
+          {
+            "name": "解锁保险库",
+            "cmd": "bw unlock",
+            "params": {},
+            "keyword": "bw unlock"
+          },
+          {
+            "name": "搜索项目",
+            "cmd": "bw list items --search \"api\"",
+            "params": {
+              "关键词": { "type": "string", "required": true, "description": "搜索关键词", "example": "api" }
+            },
+            "keyword": "bw search"
+          },
+          {
+            "name": "获取完整条目",
+            "cmd": "bw get item \"API Key\"",
+            "params": {},
+            "keyword": "bw get item"
+          },
+          {
+            "name": "仅获取密码",
+            "cmd": "bw get password \"API Key\"",
+            "params": {},
+            "keyword": "bw get password"
+          },
+          {
+            "name": "生成密码",
+            "cmd": "bw generate",
+            "params": {},
+            "keyword": "bw generate"
+          },
+          {
+            "name": "同步保险库",
+            "cmd": "bw sync",
+            "params": {},
+            "keyword": "bw sync"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/配置管理/",
+      "name": "Consul KV 配置管理",
+      "keyword": "consul kv put get delete",
+      "description": "Consul键值存储配置管理",
+      "data": {
+        "cmd": "consul kv put config/app/database \"mysql://host:3306\"",
+        "extensions": [
+          {
+            "name": "读取键值",
+            "cmd": "consul kv get config/app/database",
+            "params": {},
+            "keyword": "consul kv get"
+          },
+          {
+            "name": "删除键值",
+            "cmd": "consul kv delete config/app/database",
+            "params": {},
+            "keyword": "consul kv delete"
+          },
+          {
+            "name": "导出配置",
+            "cmd": "consul kv export config/",
+            "params": {},
+            "keyword": "consul export"
+          },
+          {
+            "name": "导入配置",
+            "cmd": "consul kv import @backup.json",
+            "params": {},
+            "keyword": "consul import"
+          },
+          {
+            "name": "查看集群成员",
+            "cmd": "consul members",
+            "params": {},
+            "keyword": "consul members"
+          },
+          {
+            "name": "启动Agent开发模式",
+            "cmd": "consul agent -dev -ui",
+            "params": {},
+            "keyword": "consul agent dev"
+          }
+        ],
+        "params": {
+          "键": { "type": "string", "required": true, "description": "Consul KV键路径", "example": "config/app/database" },
+          "值": { "type": "string", "required": true, "description": "键值内容", "example": "mysql://host:3306" }
+        }
+      }
+    },
+    {
+      "dirPath": "/配置管理/",
+      "name": "etcdctl KV存储操作",
+      "keyword": "etcdctl put get delete watch",
+      "description": "etcd键值存储操作，包括读写、监控、快照",
+      "data": {
+        "cmd": "etcdctl put /config/app/version \"1.0.0\"",
+        "extensions": [
+          {
+            "name": "读取键值",
+            "cmd": "etcdctl get /config/app",
+            "params": {},
+            "keyword": "etcdctl get"
+          },
+          {
+            "name": "删除键",
+            "cmd": "etcdctl del /config/app",
+            "params": {},
+            "keyword": "etcdctl del"
+          },
+          {
+            "name": "前缀范围查询",
+            "cmd": "etcdctl get --prefix /config/",
+            "params": {},
+            "keyword": "etcdctl prefix"
+          },
+          {
+            "name": "监听键变化",
+            "cmd": "etcdctl watch /config/app",
+            "params": {},
+            "keyword": "etcdctl watch"
+          },
+          {
+            "name": "快照备份",
+            "cmd": "etcdctl snapshot save backup.db",
+            "params": {},
+            "keyword": "etcdctl snapshot save"
+          },
+          {
+            "name": "恢复快照",
+            "cmd": "etcdctl snapshot restore backup.db --data-dir=/var/lib/etcd",
+            "params": {},
+            "keyword": "etcdctl snapshot restore"
+          }
+        ],
+        "params": {
+          "键": { "type": "string", "required": true, "description": "etcd键路径", "example": "/config/app/version" },
+          "值": { "type": "string", "required": true, "description": "键值内容", "example": "1.0.0" }
+        }
+      }
+    },
+    {
+      "dirPath": "/配置管理/",
+      "name": "Vault 密钥管理",
+      "keyword": "vault kv put get delete secret",
+      "description": "HashiCorp Vault密钥管理和安全存储",
+      "data": {
+        "cmd": "vault kv put secret/myapp API_KEY=\"xxx\"",
+        "extensions": [
+          {
+            "name": "读取密钥",
+            "cmd": "vault kv get secret/myapp",
+            "params": {},
+            "keyword": "vault kv get"
+          },
+          {
+            "name": "读取特定字段",
+            "cmd": "vault kv get -field=API_KEY secret/myapp",
+            "params": {},
+            "keyword": "vault kv field"
+          },
+          {
+            "name": "删除密钥",
+            "cmd": "vault kv delete secret/myapp",
+            "params": {},
+            "keyword": "vault kv delete"
+          },
+          {
+            "name": "列出路径",
+            "cmd": "vault kv list secret/",
+            "params": {},
+            "keyword": "vault kv list"
+          },
+          {
+            "name": "创建Token",
+            "cmd": "vault token create -policy=default",
+            "params": {},
+            "keyword": "vault token create"
+          },
+          {
+            "name": "检查状态",
+            "cmd": "vault status",
+            "params": {},
+            "keyword": "vault status"
+          },
+          {
+            "name": "启动Agent",
+            "cmd": "vault agent -config=agent.hcl -log-level=info",
+            "params": {},
+            "keyword": "vault agent"
+          }
+        ],
+        "params": {
+          "路径": { "type": "string", "required": true, "description": "Vault路径", "example": "secret/myapp" }
+        }
+      }
+    },
+    {
+      "dirPath": "/配置管理/",
+      "name": "npm config 配置管理",
+      "keyword": "npm config set registry",
+      "description": "npm配置管理，包括镜像源、代理等",
+      "data": {
+        "cmd": "npm config set registry https://registry.npmmirror.com",
+        "extensions": [
+          {
+            "name": "查看registry",
+            "cmd": "npm config get registry",
+            "params": {},
+            "keyword": "npm config get"
+          },
+          {
+            "name": "列出所有配置",
+            "cmd": "npm config list --json",
+            "params": {},
+            "keyword": "npm config list"
+          },
+          {
+            "name": "删除配置项",
+            "cmd": "npm config delete registry",
+            "params": {},
+            "keyword": "npm config delete"
+          },
+          {
+            "name": "编辑配置",
+            "cmd": "npm config edit",
+            "params": {},
+            "keyword": "npm config edit"
+          },
+          {
+            "name": "设置精确版本",
+            "cmd": "npm config set save-exact true",
+            "params": {},
+            "keyword": "npm config save-exact"
+          }
+        ],
+        "params": {
+          "配置项": { "type": "string", "required": true, "description": "配置项名称", "example": "registry" },
+          "值": { "type": "string", "required": true, "description": "配置值", "example": "https://registry.npmmirror.com" }
+        }
+      }
+    },
+    {
+      "dirPath": "/配置管理/",
+      "name": "pip config 配置管理",
+      "keyword": "pip config set index mirror",
+      "description": "pip配置管理，包括镜像源、信任主机等",
+      "data": {
+        "cmd": "pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple",
+        "extensions": [
+          {
+            "name": "列出所有配置",
+            "cmd": "pip config list",
+            "params": {},
+            "keyword": "pip config list"
+          },
+          {
+            "name": "添加可信主机",
+            "cmd": "pip config set global.trusted-host pypi.tuna.tsinghua.edu.cn",
+            "params": {},
+            "keyword": "pip trusted-host"
+          },
+          {
+            "name": "调试配置",
+            "cmd": "pip config debug",
+            "params": {},
+            "keyword": "pip config debug"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/配置管理/",
+      "name": "brew 包管理",
+      "keyword": "brew install uninstall update",
+      "description": "Homebrew包管理器常用命令",
+      "data": {
+        "cmd": "brew install node@18",
+        "extensions": [
+          {
+            "name": "卸载指定版本",
+            "cmd": "brew uninstall node@18",
+            "params": {},
+            "keyword": "brew uninstall"
+          },
+          {
+            "name": "列出已安装",
+            "cmd": "brew list",
+            "params": {},
+            "keyword": "brew list"
+          },
+          {
+            "name": "搜索包",
+            "cmd": "brew search node",
+            "params": {},
+            "keyword": "brew search"
+          },
+          {
+            "name": "更新所有包",
+            "cmd": "brew update && brew upgrade",
+            "params": {},
+            "keyword": "brew update upgrade"
+          },
+          {
+            "name": "清理旧版本",
+            "cmd": "brew cleanup",
+            "params": {},
+            "keyword": "brew cleanup"
+          },
+          {
+            "name": "健康检查",
+            "cmd": "brew doctor",
+            "params": {},
+            "keyword": "brew doctor"
+          }
+        ],
+        "params": {
+          "包名": { "type": "string", "required": true, "description": "要安装的包名和版本", "example": "node@18" }
+        }
+      }
+    },
+    {
+      "dirPath": "/配置管理/",
+      "name": "webpack 构建配置",
+      "keyword": "webpack build bundle production",
+      "description": "webpack构建工具命令行使用",
+      "data": {
+        "cmd": "npx webpack --mode production",
+        "extensions": [
+          {
+            "name": "开发模式监听",
+            "cmd": "npx webpack --mode development --watch",
+            "params": {},
+            "keyword": "webpack watch"
+          },
+          {
+            "name": "指定配置文件",
+            "cmd": "npx webpack --config webpack.prod.js",
+            "params": {
+              "配置文件": { "type": "string", "required": true, "description": "配置文件名", "example": "webpack.prod.js" }
+            },
+            "keyword": "webpack config"
+          },
+          {
+            "name": "指定入口和输出",
+            "cmd": "npx webpack --entry ./src/index.js --output-path ./dist",
+            "params": {},
+            "keyword": "webpack entry"
+          },
+          {
+            "name": "显示构建进度",
+            "cmd": "npx webpack --progress",
+            "params": {},
+            "keyword": "webpack progress"
+          },
+          {
+            "name": "分析bundle",
+            "cmd": "npx webpack --analyze",
+            "params": {},
+            "keyword": "webpack analyze"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/配置管理/",
+      "name": "Vite 构建配置",
+      "keyword": "vite build preview dev",
+      "description": "Vite构建工具命令行使用",
+      "data": {
+        "cmd": "vite build",
+        "extensions": [
+          {
+            "name": "指定环境构建",
+            "cmd": "vite build --mode staging",
+            "params": {},
+            "keyword": "vite build mode"
+          },
+          {
+            "name": "指定输出目录",
+            "cmd": "vite build --outDir dist/static",
+            "params": {},
+            "keyword": "vite outdir"
+          },
+          {
+            "name": "预览生产构建",
+            "cmd": "vite preview",
+            "params": {},
+            "keyword": "vite preview"
+          },
+          {
+            "name": "指定端口",
+            "cmd": "vite --port 5173",
+            "params": {},
+            "keyword": "vite port"
+          },
+          {
+            "name": "启用HTTPS",
+            "cmd": "vite --https",
+            "params": {},
+            "keyword": "vite https"
+          },
+          {
+            "name": "审查配置",
+            "cmd": "vite inspect",
+            "params": {},
+            "keyword": "vite inspect"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/配置管理/",
+      "name": "esbuild 快速打包",
+      "keyword": "esbuild bundle minify",
+      "description": "esbuild极速打包工具",
+      "data": {
+        "cmd": "esbuild app.js --bundle --outfile=out.js",
+        "extensions": [
+          {
+            "name": "启用sourcemap",
+            "cmd": "esbuild app.js --bundle --outfile=out.js --sourcemap",
+            "params": {},
+            "keyword": "esbuild sourcemap"
+          },
+          {
+            "name": "压缩代码",
+            "cmd": "esbuild app.js --bundle --outfile=out.js --minify",
+            "params": {},
+            "keyword": "esbuild minify"
+          },
+          {
+            "name": "指定ES目标版本",
+            "cmd": "esbuild app.js --bundle --outfile=out.js --target=es2020",
+            "params": {},
+            "keyword": "esbuild target"
+          },
+          {
+            "name": "Node平台构建",
+            "cmd": "esbuild app.js --bundle --outfile=out.js --platform=node",
+            "params": {},
+            "keyword": "esbuild platform node"
+          },
+          {
+            "name": "监听模式",
+            "cmd": "esbuild app.js --bundle --outfile=out.js --watch",
+            "params": {},
+            "keyword": "esbuild watch"
+          },
+          {
+            "name": "全局替换",
+            "cmd": "esbuild app.js --bundle --outfile=out.js --define:process.env.NODE_ENV=\\\"production\\\"",
+            "params": {},
+            "keyword": "esbuild define"
+          }
+        ],
+        "params": {
+          "输入文件": { "type": "string", "required": true, "description": "输入文件路径", "example": "app.js" }
+        }
+      }
+    }
+  ]
+}

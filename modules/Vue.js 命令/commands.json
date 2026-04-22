@@ -1,0 +1,793 @@
+{
+  "module": "Vue.js 命令",
+  "version": "1.0",
+  "description": "Vue.js 3 命令模块，包含项目创建、组合式API、路由、状态管理等命令",
+  "commands": [
+    {
+      "dirPath": "/Vue.js 命令/",
+      "name": "npm create vue@latest 创建项目",
+      "keyword": "vue create 项目 init",
+      "description": "使用 create-vue 交互式脚手架创建 Vue 3 项目",
+      "data": {
+        "cmd": "npm create vue@latest %{项目名称}%",
+        "extensions": [
+          {
+            "name": "创建 TypeScript 项目",
+            "cmd": "npm create vue@latest %{项目名称}% --typescript",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-vue-app", "notes": "常用" }
+            },
+            "keyword": "vue create typescript"
+          },
+          {
+            "name": "创建包含 JSX 的项目",
+            "cmd": "npm create vue@latest %{项目名称}% --jsx",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-vue-app", "notes": "" }
+            },
+            "keyword": "vue create jsx"
+          },
+          {
+            "name": "创建包含路由的项目",
+            "cmd": "npm create vue@latest %{项目名称}% --vue-router",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-vue-app", "notes": "常用" }
+            },
+            "keyword": "vue create vue-router"
+          },
+          {
+            "name": "创建包含 Pinia 的项目",
+            "cmd": "npm create vue@latest %{项目名称}% --pinia",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-vue-app", "notes": "常用" }
+            },
+            "keyword": "vue create pinia"
+          },
+          {
+            "name": "完整功能项目",
+            "cmd": "npm create vue@latest %{项目名称}% --typescript --vue-router --pinia --vitest --playwright",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-vue-app", "notes": "" }
+            },
+            "keyword": "vue create 完整功能"
+          }
+        ],
+        "params": {
+          "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-vue-app", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Vue.js 命令/",
+      "name": "npm create vite@latest 创建 Vite+Vue 项目",
+      "keyword": "vite vue create",
+      "description": "使用 Vite 快速创建 Vue 3 项目（推荐方式）",
+      "data": {
+        "cmd": "npm create vite@latest %{项目名称}% -- --template vue",
+        "extensions": [
+          {
+            "name": "创建 Vue + TypeScript 项目",
+            "cmd": "npm create vite@latest %{项目名称}% -- --template vue-ts",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-vue-app", "notes": "常用" }
+            },
+            "keyword": "vite vue typescript"
+          },
+          {
+            "name": "创建 Vue + JSX 项目",
+            "cmd": "npm create vite@latest %{项目名称}% -- --template vue-tsc",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-vue-app", "notes": "" }
+            },
+            "keyword": "vite vue tsx"
+          },
+          {
+            "name": "CDN 引入式项目",
+            "cmd": "npm create vite@latest %{项目名称}% -- --template vue --cdn",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-vue-app", "notes": "" }
+            },
+            "keyword": "vite vue cdn"
+          }
+        ],
+        "params": {
+          "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-vue-app", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Vue.js 命令/",
+      "name": "npm run dev 启动开发服务器",
+      "keyword": "vue dev server serve",
+      "description": "启动 Vue / Vite 开发服务器",
+      "data": {
+        "cmd": "npm run dev",
+        "extensions": [
+          {
+            "name": "指定端口启动",
+            "cmd": "npm run dev -- --port %{端口}%",
+            "params": {
+              "端口": { "type": "number", "required": true, "description": "端口号", "example": "3000", "notes": "常用" }
+            },
+            "keyword": "vue dev 端口"
+          },
+          {
+            "name": "开启 HTTPS",
+            "cmd": "npm run dev -- --https",
+            "params": {},
+            "keyword": "vue dev https"
+          },
+          {
+            "name": "指定主机访问",
+            "cmd": "npm run dev -- --host %{主机}%",
+            "params": {
+              "主机": { "type": "string", "required": true, "description": "主机地址", "example": "0.0.0.0", "notes": "" }
+            },
+            "keyword": "vue dev 主机"
+          },
+          {
+            "name": "打开浏览器",
+            "cmd": "npm run dev -- --open",
+            "params": {},
+            "keyword": "vue dev open"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Vue.js 命令/",
+      "name": "npm run build 构建生产包",
+      "keyword": "vue build 打包 production",
+      "description": "构建生产环境优化的 Vue 应用",
+      "data": {
+        "cmd": "npm run build",
+        "extensions": [
+          {
+            "name": "构建并预览",
+            "cmd": "npm run build && npm run preview",
+            "params": {},
+            "keyword": "vue build 预览"
+          },
+          {
+            "name": "类型检查+构建",
+            "cmd": "npm run build -- --mode production",
+            "params": {},
+            "keyword": "vue build 类型检查"
+          },
+          {
+            "name": "生成报告",
+            "cmd": "npm run build -- --generateReport",
+            "params": {},
+            "keyword": "vue build 报告"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Vue.js 命令/",
+      "name": "npm run preview 预览构建结果",
+      "keyword": "vue preview 预览",
+      "description": "预览生产构建的产物",
+      "data": {
+        "cmd": "npm run preview",
+        "extensions": [
+          {
+            "name": "指定预览端口",
+            "cmd": "npm run preview -- --port %{端口}%",
+            "params": {
+              "端口": { "type": "number", "required": true, "description": "端口号", "example": "4173", "notes": "" }
+            },
+            "keyword": "vue preview 端口"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Vue.js 命令/",
+      "name": "Vue CLI 创建项目",
+      "keyword": "vue cli create",
+      "description": "使用 Vue CLI 创建 Vue 2/3 项目（已不推荐，仍可用）",
+      "data": {
+        "cmd": "npm install -g @vue/cli && vue create %{项目名称}%",
+        "extensions": [
+          {
+            "name": "指定 Vue 3",
+            "cmd": "vue create %{项目名称}% --preset default",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-vue-app", "notes": "常用" }
+            },
+            "keyword": "vue cli vue3"
+          },
+          {
+            "name": "交互式创建",
+            "cmd": "vue create %{项目名称}% --preset vue3",
+            "params": {
+              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-vue-app", "notes": "" }
+            },
+            "keyword": "vue cli 交互"
+          },
+          {
+            "name": "Vue CLI 启动",
+            "cmd": "vue serve",
+            "params": {},
+            "keyword": "vue serve"
+          },
+          {
+            "name": "Vue CLI 构建",
+            "cmd": "vue build",
+            "params": {},
+            "keyword": "vue build"
+          },
+          {
+            "name": "添加插件",
+            "cmd": "vue add %{插件名}%",
+            "params": {
+              "插件名": { "type": "string", "required": true, "description": "插件名", "example": "vue-router", "notes": "常用" }
+            },
+            "keyword": "vue add 插件"
+          }
+        ],
+        "params": {
+          "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-vue-app", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Vue.js 命令/",
+      "name": "npm install vue-router 安装路由",
+      "keyword": "vue router 安装",
+      "description": "为 Vue 3 项目安装并配置 Vue Router",
+      "data": {
+        "cmd": "npm install vue-router",
+        "extensions": [
+          {
+            "name": "安装 Vue Router 4",
+            "cmd": "npm install vue-router@4",
+            "params": {},
+            "keyword": "vue-router 4"
+          },
+          {
+            "name": "创建路由文件",
+            "cmd": "npm install vue-router && mkdir -p src/router && cat > src/router/index.js << 'EOF'\nimport { createRouter, createWebHistory } from 'vue-router'\nimport Home from '../views/Home.vue'\n\nconst routes = [\n  { path: '/', name: 'Home', component: Home }\n]\n\nexport default createRouter({\n  history: createWebHistory(import.meta.env.BASE_URL),\n  routes\n})\nEOF",
+            "params": {},
+            "keyword": "vue router 配置"
+          },
+          {
+            "name": "动态路由",
+            "cmd": "npm install vue-router && cat > src/router/index.js << 'EOF'\nconst routes = [\n  { path: '/user/:id', name: 'User', component: User }\n]\nEOF",
+            "params": {},
+            "keyword": "vue router 动态路由"
+          },
+          {
+            "name": "嵌套路由",
+            "cmd": "npm install vue-router && cat > src/router/index.js << 'EOF'\nconst routes = [\n  {\n    path: '/dashboard',\n    component: Dashboard,\n    children: [\n      { path: 'stats', component: Stats }\n    ]\n  }\n]\nEOF",
+            "params": {},
+            "keyword": "vue router 嵌套路由"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Vue.js 命令/",
+      "name": "npm install pinia 安装状态管理",
+      "keyword": "pinia 安装 store 状态",
+      "description": "为 Vue 3 项目安装并配置 Pinia 状态管理库",
+      "data": {
+        "cmd": "npm install pinia",
+        "extensions": [
+          {
+            "name": "创建 Pinia Store",
+            "cmd": "cat > src/stores/%{仓库名}%.js << 'EOF'\nimport { defineStore } from 'pinia'\n\nexport const use%{仓库名}% = defineStore('%{仓库名}%', {\n  state: () => ({ count: 0 }),\n  getters: {\n    double: (state) => state.count * 2\n  },\n  actions: {\n    increment() { this.count++ }\n  }\n})\nEOF",
+            "params": {
+              "仓库名": { "type": "string", "required": true, "description": "Store 名称", "example": "counter", "notes": "常用" }
+            },
+            "keyword": "pinia store"
+          },
+          {
+            "name": "组合式风格 Store",
+            "cmd": "cat > src/stores/%{仓库名}%.js << 'EOF'\nimport { defineStore } from 'pinia'\nimport { ref, computed } from 'vue'\n\nexport const use%{仓库名}% = defineStore('%{仓库名}%', () => {\n  const count = ref(0)\n  const double = computed(() => count.value * 2)\n  function increment() { count.value++ }\n  return { count, double, increment }\n})\nEOF",
+            "params": {
+              "仓库名": { "type": "string", "required": true, "description": "Store 名称", "example": "counter", "notes": "常用" }
+            },
+            "keyword": "pinia 组合式 store"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Vue.js 命令/",
+      "name": "ref 创建响应式引用",
+      "keyword": "ref reactive 响应式 组合式API",
+      "description": "使用 ref 创建基本类型的响应式引用",
+      "data": {
+        "cmd": "import { ref } from 'vue'\nconst %{变量名}% = ref(%{初始值}%)",
+        "extensions": [
+          {
+            "name": "ref 响应式数组",
+            "cmd": "import { ref } from 'vue'\nconst %{数组名}% = ref([])",
+            "params": {
+              "数组名": { "type": "string", "required": true, "description": "数组变量名", "example": "items", "notes": "常用" }
+            },
+            "keyword": "ref 数组"
+          },
+          {
+            "name": "ref 访问值",
+            "cmd": "// 读取值\nconsole.log(%{变量名}%.value)\n// 修改值\n%{变量名}%.value = %{新值}%",
+            "params": {
+              "变量名": { "type": "string", "required": true, "description": "ref 变量名", "example": "count", "notes": "常用" }
+            },
+            "keyword": "ref value"
+          },
+          {
+            "name": "reactive 对象响应式",
+            "cmd": "import { reactive } from 'vue'\nconst %{对象名}% = reactive({\n  %{属性}%: %{值}%\n})",
+            "params": {
+              "对象名": { "type": "string", "required": true, "description": "reactive 对象名", "example": "state", "notes": "常用" },
+              "属性": { "type": "string", "required": true, "description": "对象属性", "example": "name", "notes": "" },
+              "值": { "type": "string", "required": true, "description": "属性值", "example": "Alice", "notes": "" }
+            },
+            "keyword": "reactive 响应式对象"
+          },
+          {
+            "name": "reactive 数组响应式",
+            "cmd": "import { reactive } from 'vue'\nconst %{数组名}% = reactive([%{元素}%])",
+            "params": {
+              "数组名": { "type": "string", "required": true, "description": "reactive 数组名", "example": "list", "notes": "常用" },
+              "元素": { "type": "string", "required": true, "description": "数组元素", "example": "1, 2, 3", "notes": "" }
+            },
+            "keyword": "reactive 数组"
+          }
+        ],
+        "params": {
+          "变量名": { "type": "string", "required": true, "description": "ref 变量名", "example": "count", "notes": "常用" },
+          "初始值": { "type": "string", "required": true, "description": "初始值", "example": "0", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Vue.js 命令/",
+      "name": "computed 计算属性",
+      "keyword": "computed 计算属性",
+      "description": "使用 computed 创建计算属性",
+      "data": {
+        "cmd": "import { computed } from 'vue'\nconst %{计算属性}% = computed(() => %{表达式}%)",
+        "extensions": [
+          {
+            "name": "可写计算属性",
+            "cmd": "import { computed } from 'vue'\nconst %{计算属性}% = computed({\n  get: () => %{表达式}%,\n  set: (val) => { %{赋值逻辑}% }\n})",
+            "params": {
+              "计算属性": { "type": "string", "required": true, "description": "计算属性名", "example": "fullName", "notes": "常用" },
+              "表达式": { "type": "string", "required": true, "description": "get 表达式", "example": "firstName + ' ' + lastName", "notes": "" }
+            },
+            "keyword": "computed get set"
+          },
+          {
+            "name": "计算属性缓存",
+            "cmd": "import { computed } from 'vue'\n// 计算属性基于响应式依赖自动缓存\nconst %{计算属性}% = computed(() => %{依赖表达式}%)",
+            "params": {
+              "计算属性": { "type": "string", "required": true, "description": "计算属性名", "example": "totalPrice", "notes": "常用" },
+              "依赖表达式": { "type": "string", "required": true, "description": "计算表达式", "example": "items.reduce((a, b) => a + b.price, 0)", "notes": "" }
+            },
+            "keyword": "computed 缓存"
+          }
+        ],
+        "params": {
+          "计算属性": { "type": "string", "required": true, "description": "计算属性名", "example": "doubleCount", "notes": "常用" },
+          "表达式": { "type": "string", "required": true, "description": "计算表达式", "example": "count.value * 2", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Vue.js 命令/",
+      "name": "watch 监听响应式数据",
+      "keyword": "watch watchEffect 监听 副作用",
+      "description": "使用 watch 和 watchEffect 监听响应式数据变化",
+      "data": {
+        "cmd": "import { watch } from 'vue'\nwatch(%{数据源}%, (新值, 旧值) => {\n  %{处理逻辑}%\n})",
+        "extensions": [
+          {
+            "name": "watchEffect 立即执行",
+            "cmd": "import { watchEffect } from 'vue'\nwatchEffect(() => {\n  // 自动追踪回调中使用的所有响应式数据\n  console.log(%{变量名}%.value)\n})",
+            "params": {
+              "变量名": { "type": "string", "required": true, "description": "被追踪的变量", "example": "count", "notes": "常用" }
+            },
+            "keyword": "watchEffect"
+          },
+          {
+            "name": "深度监听",
+            "cmd": "import { watch } from 'vue'\nwatch(%{数据源}%, (新值, 旧值) => {\n  %{处理逻辑}%\n}, { deep: true })",
+            "params": {
+              "数据源": { "type": "string", "required": true, "description": "被监听的数据源", "example": "obj", "notes": "常用" },
+              "处理逻辑": { "type": "string", "required": true, "description": "变化时的处理逻辑", "example": "console.log('changed')", "notes": "" }
+            },
+            "keyword": "watch deep 深度"
+          },
+          {
+            "name": "监听多个数据源",
+            "cmd": "import { watch } from 'vue'\nwatch([%{源1}%, %{源2}%], ([新值1, 新值2], [旧值1, 旧值2]) => {\n  %{处理逻辑}%\n})",
+            "params": {
+              "源1": { "type": "string", "required": true, "description": "第一个数据源", "example": "ref1", "notes": "常用" },
+              "源2": { "type": "string", "required": true, "description": "第二个数据源", "example": "ref2", "notes": "" },
+              "处理逻辑": { "type": "string", "required": true, "description": "处理逻辑", "example": "console.log('changed')", "notes": "" }
+            },
+            "keyword": "watch 多个源"
+          },
+          {
+            "name": "立即监听",
+            "cmd": "import { watch } from 'vue'\nwatch(%{数据源}%, (新值, 旧值) => {\n  %{处理逻辑}%\n}, { immediate: true })",
+            "params": {
+              "数据源": { "type": "string", "required": true, "description": "被监听的数据源", "example": "route.params", "notes": "常用" }
+            },
+            "keyword": "watch immediate"
+          }
+        ],
+        "params": {
+          "数据源": { "type": "string", "required": true, "description": "被监听的数据源", "example": "count", "notes": "常用" },
+          "处理逻辑": { "type": "string", "required": true, "description": "变化时的处理逻辑", "example": "console.log('count changed:', newVal)", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Vue.js 命令/",
+      "name": "Teleport 传送组件",
+      "keyword": "Teleport 传送到 body",
+      "description": "使用 Teleport 将组件内容传送到 DOM 任意位置",
+      "data": {
+        "cmd": "<Teleport to=\"%{目标位置}%\">\n  %{组件内容}%\n</Teleport>",
+        "extensions": [
+          {
+            "name": "传送到 body",
+            "cmd": "<Teleport to=\"body\">\n  <div class=\"modal\">%{模态框内容}%</div>\n</Teleport>",
+            "params": {
+              "模态框内容": { "type": "string", "required": true, "description": "模态框内容", "example": "<h2>标题</h2><p>内容</p>", "notes": "常用" }
+            },
+            "keyword": "Teleport body"
+          },
+          {
+            "name": "条件传送（禁用）",
+            "cmd": "<Teleport to=\"body\" :disabled=\"%{条件}%\">\n  <div class=\"modal\">%{内容}%</div>\n</Teleport>",
+            "params": {
+              "条件": { "type": "string", "required": true, "description": "控制传送是否启用的条件", "example": "!isOpen", "notes": "常用" }
+            },
+            "keyword": "Teleport disabled"
+          },
+          {
+            "name": "传送到指定元素",
+            "cmd": "<Teleport to=\"#%{元素ID}%\">\n  %{内容}%\n</Teleport>",
+            "params": {
+              "元素ID": { "type": "string", "required": true, "description": "目标元素 ID", "example": "portal-target", "notes": "常用" }
+            },
+            "keyword": "Teleport 指定元素"
+          }
+        ],
+        "params": {
+          "目标位置": { "type": "string", "required": true, "description": "目标 DOM 位置", "example": "body", "notes": "常用" },
+          "组件内容": { "type": "string", "required": true, "description": "组件内容", "example": "<div>内容</div>", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Vue.js 命令/",
+      "name": "Suspense 异步组件",
+      "keyword": "Suspense 异步加载 加载状态",
+      "description": "使用 Suspense 处理异步组件的加载状态",
+      "data": {
+        "cmd": "<Suspense>\n  <template #default>\n    <%{异步组件}% />\n  </template>\n  <template #fallback>\n    %{加载中内容}%\n  </template>\n</Suspense>",
+        "extensions": [
+          {
+            "name": "Suspense + async setup",
+            "cmd": "// 在 setup 中使用 async\nexport default {\n  async setup() {\n    const data = await fetchData()\n    return { data }\n  }\n}",
+            "params": {},
+            "keyword": "Suspense async setup"
+          },
+          {
+            "name": "Suspense 多层嵌套",
+            "cmd": "<Suspense>\n  <template #default>\n    <ParentAsync />\n  </template>\n  <template #fallback>\n    <Loading />\n  </template>\n</Suspense>",
+            "params": {},
+            "keyword": "Suspense 嵌套"
+          },
+          {
+            "name": "Suspense 带错误处理",
+            "cmd": "<Suspense @fallback=\"%{回调}%\">\n  <template #default>\n    <AsyncComponent />\n  </template>\n  <template #fallback>\n    <div>加载中...</div>\n  </template>\n</Suspense>",
+            "params": {
+              "回调": { "type": "string", "required": true, "description": "回调函数", "example": "console.log('fallback mounted')", "notes": "" }
+            },
+            "keyword": "Suspense error"
+          }
+        ],
+        "params": {
+          "异步组件": { "type": "string", "required": true, "description": "异步组件名", "example": "AsyncUserProfile", "notes": "常用" },
+          "加载中内容": { "type": "string", "required": true, "description": "加载中显示的内容", "example": "<div>加载中...</div>", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Vue.js 命令/",
+      "name": "provide inject 依赖注入",
+      "keyword": "provide inject 依赖注入",
+      "description": "使用 provide / inject 在组件树中传递数据",
+      "data": {
+        "cmd": "// 父组件\nimport { provide } from 'vue'\nprovide('%{键名}%', %{值}%)\n\n// 子组件\nimport { inject } from 'vue'\nconst %{变量名}% = inject('%{键名}%')",
+        "extensions": [
+          {
+            "name": "provide 响应式数据",
+            "cmd": "import { provide, ref } from 'vue'\nconst %{变量}% = ref('%{初始值}%')\nprovide('%{键名}%', %{变量}%)",
+            "params": {
+              "变量": { "type": "string", "required": true, "description": "响应式变量", "example": "theme", "notes": "常用" }
+            },
+            "keyword": "provide 响应式"
+          },
+          {
+            "name": "provide 对象配置",
+            "cmd": "import { provide } from 'vue'\nprovide({\n  key: '%{键名}%',\n  // ...\n})",
+            "params": {},
+            "keyword": "provide 对象"
+          },
+          {
+            "name": "inject 带默认值",
+            "cmd": "import { inject } from 'vue'\nconst %{变量}% = inject('%{键名}%', %{默认值}%)",
+            "params": {
+              "变量": { "type": "string", "required": true, "description": "注入的变量名", "example": "theme", "notes": "常用" },
+              "键名": { "type": "string", "required": true, "description": "provide 的键名", "example": "theme", "notes": "" },
+              "默认值": { "type": "string", "required": true, "description": "默认值", "example": "'light'", "notes": "" }
+            },
+            "keyword": "inject 默认值"
+          }
+        ],
+        "params": {
+          "键名": { "type": "string", "required": true, "description": "provide/inject 的键名", "example": "theme", "notes": "常用" },
+          "值": { "type": "string", "required": true, "description": "提供的值", "example": "'dark'", "notes": "常用" },
+          "变量名": { "type": "string", "required": true, "description": "注入后的变量名", "example": "theme", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/Vue.js 命令/",
+      "name": "Vue I18n 国际化",
+      "keyword": "vue i18n 国际化 翻译",
+      "description": "为 Vue 3 项目安装并配置 Vue I18n 国际化插件",
+      "data": {
+        "cmd": "npm install vue-i18n",
+        "extensions": [
+          {
+            "name": "创建语言包",
+            "cmd": "mkdir -p src/locales && cat > src/locales/%{语言包名}%.json << 'EOF'\n{\n  \"message\": {\n    \"hello\": \"你好，世界\"\n  }\n}\nEOF",
+            "params": {
+              "语言包名": { "type": "string", "required": true, "description": "语言包文件名", "example": "zh-CN", "notes": "常用" }
+            },
+            "keyword": "vue i18n 语言包"
+          },
+          {
+            "name": "配置 I18n 实例",
+            "cmd": "import { createI18n } from 'vue-i18n'\nimport zhCN from './locales/zh-CN.json'\nimport en from './locales/en.json'\n\nconst i18n = createI18n({\n  legacy: false,\n  locale: '%{默认语言}%',\n  messages: {\n    'zh-CN': zhCN,\n    'en': en\n  }\n})\n\nexport default i18n",
+            "params": {
+              "默认语言": { "type": "string", "required": true, "description": "默认语言代码", "example": "'zh-CN'", "notes": "常用" }
+            },
+            "keyword": "vue i18n 配置"
+          },
+          {
+            "name": "模板中使用 t 函数",
+            "cmd": "<template>\n  <p>{{ $t('message.hello') }}</p>\n</template>",
+            "params": {},
+            "keyword": "vue i18n t 函数"
+          },
+          {
+            "name": "切换语言",
+            "cmd": "import { useI18n } from 'vue-i18n'\nconst { locale } = useI18n()\nlocale.value = '%{语言代码}%'",
+            "params": {
+              "语言代码": { "type": "string", "required": true, "description": "语言代码", "example": "'en'", "notes": "常用" }
+            },
+            "keyword": "vue i18n 切换语言"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Vue.js 命令/",
+      "name": "Vue Test Utils 测试",
+      "keyword": "vitest vue test 单元测试",
+      "description": "使用 Vue Test Utils 进行 Vue 组件单元测试",
+      "data": {
+        "cmd": "npm install -D @vue/test-utils vitest",
+        "extensions": [
+          {
+            "name": "基本测试示例",
+            "cmd": "import { describe, it, expect } from 'vitest'\nimport { mount } from '@vue/test-utils'\nimport %{组件名}% from './%{组件名}%.vue'\n\ndescribe('%{组件名}%', () => {\n  it('%{测试描述}%', () => {\n    const wrapper = mount(%{组件名}%, {\n      props: { %{属性}%: %{值}% }\n    })\n    expect(wrapper.text()).toContain('%{期望文本}%')\n  })\n})",
+            "params": {
+              "组件名": { "type": "string", "required": true, "description": "被测试的组件名", "example": "UserCard", "notes": "常用" },
+              "测试描述": { "type": "string", "required": true, "description": "测试描述", "example": "renders user name", "notes": "" },
+              "属性": { "type": "string", "required": true, "description": "组件属性", "example": "name", "notes": "" },
+              "值": { "type": "string", "required": true, "description": "属性值", "example": "'Alice'", "notes": "" },
+              "期望文本": { "type": "string", "required": true, "description": "期望包含的文本", "example": "Alice", "notes": "" }
+            },
+            "keyword": "vue test utils mount"
+          },
+          {
+            "name": "测试交互行为",
+            "cmd": "import { mount } from '@vue/test-utils'\nconst wrapper = mount(%{组件}%)\nawait wrapper.find('%{选择器}%').trigger('%{事件}%')",
+            "params": {
+              "组件": { "type": "string", "required": true, "description": "组件名", "example": "Counter", "notes": "常用" },
+              "选择器": { "type": "string", "required": true, "description": "CSS 选择器", "example": "button", "notes": "" },
+              "事件": { "type": "string", "required": true, "description": "触发的事件类型", "example": "click", "notes": "" }
+            },
+            "keyword": "vue test utils trigger"
+          },
+          {
+            "name": "运行测试",
+            "cmd": "npx vitest run",
+            "params": {},
+            "keyword": "vitest run"
+          },
+          {
+            "name": "监听模式运行测试",
+            "cmd": "npx vitest",
+            "params": {},
+            "keyword": "vitest watch"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Vue.js 命令/",
+      "name": "Vite 配置与定制",
+      "keyword": "vite.config 配置 插件",
+      "description": "Vite 配置文件常用配置项",
+      "data": {
+        "cmd": "cat > vite.config.js << 'EOF'\nimport { defineConfig } from 'vite'\nimport vue from '@vitejs/plugin-vue'\n\nexport default defineConfig({\n  plugins: [vue()]\n})\nEOF",
+        "extensions": [
+          {
+            "name": "配置路径别名",
+            "cmd": "cat > vite.config.js << 'EOF'\nimport path from 'path'\nimport vue from '@vitejs/plugin-vue'\n\nexport default defineConfig({\n  plugins: [vue()],\n  resolve: {\n    alias: {\n      '@': path.resolve(__dirname, 'src')\n    }\n  }\n})\nEOF",
+            "params": {},
+            "keyword": "vite alias 路径别名"
+          },
+          {
+            "name": "配置代理",
+            "cmd": "export default defineConfig({\n  server: {\n    proxy: {\n      '/api': {\n        target: '%{目标地址}%',\n        changeOrigin: true\n      }\n    }\n  }\n})",
+            "params": {
+              "目标地址": { "type": "string", "required": true, "description": "代理目标地址", "example": "'http://localhost:3000'", "notes": "常用" }
+            },
+            "keyword": "vite proxy 代理"
+          },
+          {
+            "name": "配置环境变量",
+            "cmd": "cat > .env.production << 'EOF'\nVITE_APP_TITLE=%{应用标题}%\nVITE_API_BASE=%{API地址}%\nEOF",
+            "params": {
+              "应用标题": { "type": "string", "required": true, "description": "应用标题", "example": "'My App'", "notes": "" },
+              "API地址": { "type": "string", "required": true, "description": "API 基础地址", "example": "'https://api.example.com'", "notes": "" }
+            },
+            "keyword": "vite env 环境变量"
+          },
+          {
+            "name": "配置 CSS 预处理器",
+            "cmd": "npm install -D sass && cat > vite.config.js << 'EOF'\nexport default defineConfig({\n  css: {\n    preprocessorOptions: {\n      scss: {\n        additionalData: `@import \"@/styles/variables.scss\";`\n      }\n    }\n  }\n})\nEOF",
+            "params": {},
+            "keyword": "vite scss"
+          },
+          {
+            "name": "构建优化配置",
+            "cmd": "export default defineConfig({\n  build: {\n    target: '%{目标}%',\n    minify: '%{压缩方式}%',\n    sourcemap: false,\n    rollupOptions: {\n      output: {\n        manualChunks: {\n          'vue-vendor': ['vue', 'vue-router', 'pinia']\n        }\n      }\n    }\n  }\n})",
+            "params": {
+              "目标": { "type": "string", "required": true, "description": "构建目标", "example": "'esnext'", "notes": "" },
+              "压缩方式": { "type": "string", "required": true, "description": "压缩方式", "example": "'terser'", "notes": "" }
+            },
+            "keyword": "vite build 优化"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Vue.js 命令/",
+      "name": "TypeScript with Vue",
+      "keyword": "vue typescript defineProps 类型",
+      "description": "Vue 3 + TypeScript 常用类型定义命令",
+      "data": {
+        "cmd": "npm install -D typescript vue-tsc",
+        "extensions": [
+          {
+            "name": "defineProps 类型定义",
+            "cmd": "<script setup lang=\"ts\">\ndefineProps<{\n  title: string\n  count?: number\n}>()\n</script>",
+            "params": {},
+            "keyword": "defineProps typescript"
+          },
+          {
+            "name": "defineEmits 类型定义",
+            "cmd": "<script setup lang=\"ts\">\nconst emit = defineEmits<{\n  (e: '%{事件名}%', value: %{类型}%): void\n}>()\n</script>",
+            "params": {
+              "事件名": { "type": "string", "required": true, "description": "事件名称", "example": "'update'", "notes": "常用" },
+              "类型": { "type": "string", "required": true, "description": "事件值类型", "example": "string", "notes": "" }
+            },
+            "keyword": "defineEmits typescript"
+          },
+          {
+            "name": "ref 类型定义",
+            "cmd": "import { ref, type Ref } from 'vue'\nconst %{变量}%: Ref<%{类型}%> = ref(%{初始值}%)",
+            "params": {
+              "变量": { "type": "string", "required": true, "description": "变量名", "example": "count", "notes": "常用" },
+              "类型": { "type": "string", "required": true, "description": "TypeScript 类型", "example": "number", "notes": "" },
+              "初始值": { "type": "string", "required": true, "description": "初始值", "example": "0", "notes": "" }
+            },
+            "keyword": "ref typescript 类型"
+          },
+          {
+            "name": "类型检查构建",
+            "cmd": "npx vue-tsc --noEmit",
+            "params": {},
+            "keyword": "vue-tsc 类型检查"
+          },
+          {
+            "name": "组合式函数泛型",
+            "cmd": "function use%{函数名}()<T>(%{参数}%: T): %{返回类型}% {\n  // ...\n}\nexport { use%{函数名}% }",
+            "params": {
+              "函数名": { "type": "string", "required": true, "description": "组合式函数名", "example": "List", "notes": "常用" },
+              "参数": { "type": "string", "required": true, "description": "参数及类型", "example": "initial: T[]", "notes": "" },
+              "返回类型": { "type": "string", "required": true, "description": "返回类型", "example": "{ items: Ref<T[]> }", "notes": "" }
+            },
+            "keyword": "composable typescript 泛型"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Vue.js 命令/",
+      "name": "生命周期钩子",
+      "keyword": "lifecycle hook onMounted onUpdated",
+      "description": "Vue 3 组合式 API 生命周期钩子命令",
+      "data": {
+        "cmd": "import { %{钩子名}% } from 'vue'\n%{钩子名}%(() => {\n  %{逻辑}%\n})",
+        "extensions": [
+          {
+            "name": "onMounted 挂载完成后",
+            "cmd": "import { onMounted } from 'vue'\nonMounted(() => {\n  console.log('%{组件}% 已挂载')\n})",
+            "params": {
+              "组件": { "type": "string", "required": true, "description": "组件名", "example": "Component", "notes": "常用" }
+            },
+            "keyword": "onMounted"
+          },
+          {
+            "name": "onUpdated 更新完成后",
+            "cmd": "import { onUpdated } from 'vue'\nonUpdated(() => {\n  console.log('%{组件}% 已更新')\n})",
+            "params": {
+              "组件": { "type": "string", "required": true, "description": "组件名", "example": "Component", "notes": "常用" }
+            },
+            "keyword": "onUpdated"
+          },
+          {
+            "name": "onUnmounted 卸载完成后",
+            "cmd": "import { onUnmounted } from 'vue'\nonUnmounted(() => {\n  console.log('%{组件}% 已卸载')\n  %{清理逻辑}%\n})",
+            "params": {
+              "组件": { "type": "string", "required": true, "description": "组件名", "example": "Component", "notes": "常用" },
+              "清理逻辑": { "type": "string", "required": true, "description": "清理逻辑", "example": "clearInterval(timer)", "notes": "" }
+            },
+            "keyword": "onUnmounted 清理"
+          },
+          {
+            "name": "onBeforeMount 等前置钩子",
+            "cmd": "import { onBeforeMount, onBeforeUpdate, onBeforeUnmount } from 'vue'\nonBeforeMount(() => { /* 挂载前 */ })\nonBeforeUpdate(() => { /* 更新前 */ })\nonBeforeUnmount(() => { /* 卸载前 */ })",
+            "params": {},
+            "keyword": "onBefore lifecycle"
+          },
+          {
+            "name": "生命周期速查对照",
+            "cmd": "// Options API          ->  Composition API\n// created            ->  setup() 中直接执行\n// mounted            ->  onMounted()\n// updated            ->  onUpdated()\n// unmounted          ->  onUnmounted()\n// beforeMount        ->  onBeforeMount()\n// beforeUpdate      ->  onBeforeUpdate()\n// beforeUnmount     ->  onBeforeUnmount()\n// errorCaptured     ->  onErrorCaptured()",
+            "params": {},
+            "keyword": "lifecycle 对照表"
+          }
+        ],
+        "params": {
+          "钩子名": { "type": "string", "required": true, "description": "生命周期钩子名称", "example": "onMounted", "notes": "常用" },
+          "逻辑": { "type": "string", "required": true, "description": "钩子中的逻辑", "example": "console.log('mounted')", "notes": "常用" }
+        }
+      }
+    }
+  ]
+}
