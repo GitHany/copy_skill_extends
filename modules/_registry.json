@@ -1,6 +1,18 @@
 {
   "modules": [
     {
+      "name": "API与认证",
+      "path": "modules/API与认证/commands.json",
+      "count": 22,
+      "has_docs": true
+    },
+    {
+      "name": "AI_ML工具",
+      "path": "modules/AI_ML工具/commands.json",
+      "count": 18,
+      "has_docs": true
+    },
+    {
       "name": "Elasticsearch",
       "path": "modules/Elasticsearch/commands.json",
       "count": 7,
@@ -55,6 +67,12 @@
       "has_docs": true
     },
     {
+      "name": "CI_CD 流水线",
+      "path": "modules/CI_CD 流水线/commands.json",
+      "count": 27,
+      "has_docs": true
+    },
+    {
       "name": "Claude Skills-ultrawork",
       "path": "modules/Claude Skills-ultrawork/commands.json",
       "count": 2,
@@ -73,6 +91,12 @@
       "has_docs": true
     },
     {
+      "name": "DockerCompose 高级模式",
+      "path": "modules/DockerCompose 高级模式/commands.json",
+      "count": 21,
+      "has_docs": true
+    },
+    {
       "name": "Git 命令",
       "path": "modules/Git 命令/commands.json",
       "count": 24,
@@ -88,6 +112,18 @@
       "name": "GitHubActions",
       "path": "modules/GitHubActions/commands.json",
       "count": 10,
+      "has_docs": true
+    },
+    {
+      "name": "GraphQL 命令",
+      "path": "modules/GraphQL 命令/commands.json",
+      "count": 25,
+      "has_docs": true
+    },
+    {
+      "name": "Java Spring Boot",
+      "path": "modules/Java Spring Boot/commands.json",
+      "count": 21,
       "has_docs": true
     },
     {
@@ -115,6 +151,24 @@
       "has_docs": true
     },
     {
+      "name": "Python Web框架",
+      "path": "modules/Python Web框架/commands.json",
+      "count": 25,
+      "has_docs": true
+    },
+    {
+      "name": "Python命令",
+      "path": "modules/Python命令/commands.json",
+      "count": 15,
+      "has_docs": true
+    },
+    {
+      "name": "React 命令",
+      "path": "modules/React 命令/commands.json",
+      "count": 27,
+      "has_docs": true
+    },
+    {
       "name": "Redis-基本操作",
       "path": "modules/Redis-基本操作/commands.json",
       "count": 17,
@@ -127,27 +181,15 @@
       "has_docs": true
     },
     {
-      "name": "Redis-列表操作",
-      "path": "modules/Redis-列表操作/commands.json",
-      "count": 13,
-      "has_docs": true
-    },
-    {
-      "name": "Redis-有序集合",
-      "path": "modules/Redis-有序集合/commands.json",
-      "count": 13,
-      "has_docs": true
-    },
-    {
-      "name": "Redis-服务器命令",
-      "path": "modules/Redis-服务器命令/commands.json",
-      "count": 14,
-      "has_docs": true
-    },
-    {
       "name": "Redis-键管理",
       "path": "modules/Redis-键管理/commands.json",
       "count": 15,
+      "has_docs": true
+    },
+    {
+      "name": "Redis-列表操作",
+      "path": "modules/Redis-列表操作/commands.json",
+      "count": 13,
       "has_docs": true
     },
     {
@@ -157,9 +199,57 @@
       "has_docs": true
     },
     {
+      "name": "Redis-服务器命令",
+      "path": "modules/Redis-服务器命令/commands.json",
+      "count": 14,
+      "has_docs": true
+    },
+    {
+      "name": "Redis-有序集合",
+      "path": "modules/Redis-有序集合/commands.json",
+      "count": 13,
+      "has_docs": true
+    },
+    {
+      "name": "安全加固",
+      "path": "modules/安全加固/commands.json",
+      "count": 25,
+      "has_docs": true
+    },
+    {
+      "name": "Shell脚本模板",
+      "path": "modules/Shell脚本模板/commands.json",
+      "count": 13,
+      "has_docs": true
+    },
+    {
       "name": "前端包管理器",
       "path": "modules/前端包管理器/commands.json",
       "count": 19,
+      "has_docs": true
+    },
+    {
+      "name": "Go 命令",
+      "path": "modules/Go 命令/commands.json",
+      "count": 21,
+      "has_docs": true
+    },
+    {
+      "name": "测试框架",
+      "path": "modules/测试框架/commands.json",
+      "count": 20,
+      "has_docs": true
+    },
+    {
+      "name": "Vue.js 命令",
+      "path": "modules/Vue.js 命令/commands.json",
+      "count": 22,
+      "has_docs": true
+    },
+    {
+      "name": "Web API工具",
+      "path": "modules/Web API工具/commands.json",
+      "count": 20,
       "has_docs": true
     },
     {
@@ -175,15 +265,33 @@
       "has_docs": true
     },
     {
-      "name": "Python命令",
-      "path": "modules/Python命令/commands.json",
-      "count": 15,
+      "name": "TypeScript 命令",
+      "path": "modules/TypeScript 命令/commands.json",
+      "count": 22,
       "has_docs": true
     },
     {
-      "name": "Shell脚本模板",
-      "path": "modules/Shell脚本模板/commands.json",
-      "count": 13,
+      "name": "AWS CLI命令",
+      "path": "modules/AWS CLI命令/commands.json",
+      "count": 30,
+      "has_docs": true
+    },
+    {
+      "name": "消息队列",
+      "path": "modules/消息队列/commands.json",
+      "count": 41,
+      "has_docs": true
+    },
+    {
+      "name": "包管理器",
+      "path": "modules/包管理器/commands.json",
+      "count": 35,
+      "has_docs": true
+    },
+    {
+      "name": "Git工作流",
+      "path": "modules/Git工作流/commands.json",
+      "count": 27,
       "has_docs": true
     }
   ]

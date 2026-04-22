@@ -1,0 +1,1136 @@
+{
+  "module": "消息队列",
+  "version": "1.0",
+  "description": "消息队列与事件驱动架构命令模块集合",
+  "commands": [
+    {
+      "dirPath": "/消息队列/",
+      "name": "RabbitMQ rabbitmqctl 基础管理",
+      "keyword": "rabbitmq rabbitmqctl",
+      "description": "RabbitMQ 节点管理和状态查看命令",
+      "data": {
+        "cmd": "rabbitmqctl %{子命令}%",
+        "extensions": [
+          {
+            "name": "查看 RabbitMQ 状态",
+            "cmd": "rabbitmqctl status",
+            "params": {},
+            "keyword": "rabbitmqctl status 状态"
+          },
+          {
+            "name": "启动应用",
+            "cmd": "rabbitmqctl start_app",
+            "params": {},
+            "keyword": "rabbitmqctl start_app 启动"
+          },
+          {
+            "name": "停止应用",
+            "cmd": "rabbitmqctl stop_app",
+            "params": {},
+            "keyword": "rabbitmqctl stop_app 停止"
+          },
+          {
+            "name": "重置 RabbitMQ",
+            "cmd": "rabbitmqctl reset",
+            "params": {},
+            "keyword": "rabbitmqctl reset 重置"
+          },
+          {
+            "name": "强制重置（危险）",
+            "cmd": "rabbitmqctl force_reset",
+            "params": {},
+            "keyword": "rabbitmqctl force_reset 强制"
+          },
+          {
+            "name": "关闭 RabbitMQ 节点",
+            "cmd": "rabbitmqctl shutdown",
+            "params": {},
+            "keyword": "rabbitmqctl shutdown 关闭"
+          },
+          {
+            "name": "查看所有队列",
+            "cmd": "rabbitmqctl list_queues",
+            "params": {},
+            "keyword": "rabbitmqctl list_queues 队列"
+          },
+          {
+            "name": "查看所有交换机",
+            "cmd": "rabbitmqctl list_exchanges",
+            "params": {},
+            "keyword": "rabbitmqctl list_exchanges 交换机"
+          },
+          {
+            "name": "查看所有绑定",
+            "cmd": "rabbitmqctl list_bindings",
+            "params": {},
+            "keyword": "rabbitmqctl list_bindings 绑定"
+          },
+          {
+            "name": "查看所有连接",
+            "cmd": "rabbitmqctl list_connections",
+            "params": {},
+            "keyword": "rabbitmqctl list_connections 连接"
+          },
+          {
+            "name": "查看所有通道",
+            "cmd": "rabbitmqctl list_channels",
+            "params": {},
+            "keyword": "rabbitmqctl list_channels 通道"
+          },
+          {
+            "name": "查看集群状态",
+            "cmd": "rabbitmqctl cluster_status",
+            "params": {},
+            "keyword": "rabbitmqctl cluster_status 集群"
+          },
+          {
+            "name": "添加用户",
+            "cmd": "rabbitmqctl add_user %{用户名}% %{密码}%",
+            "params": {
+              "用户名": { "type": "string", "required": true, "description": "用户名", "example": "admin", "notes": "" },
+              "密码": { "type": "string", "required": true, "description": "密码", "example": "password123", "notes": "" }
+            },
+            "keyword": "rabbitmqctl add_user 添加用户"
+          },
+          {
+            "name": "删除用户",
+            "cmd": "rabbitmqctl delete_user %{用户名}%",
+            "params": {
+              "用户名": { "type": "string", "required": true, "description": "用户名", "example": "admin", "notes": "" }
+            },
+            "keyword": "rabbitmqctl delete_user 删除用户"
+          },
+          {
+            "name": "设置用户标签",
+            "cmd": "rabbitmqctl set_user_tags %{用户名}% %{标签}%",
+            "params": {
+              "用户名": { "type": "string", "required": true, "description": "用户名", "example": "admin", "notes": "" },
+              "标签": { "type": "string", "required": true, "description": "标签", "example": "administrator", "notes": "administrator/monitoring/policymaker" }
+            },
+            "keyword": "rabbitmqctl set_user_tags 标签"
+          },
+          {
+            "name": "查看所有用户",
+            "cmd": "rabbitmqctl list_users",
+            "params": {},
+            "keyword": "rabbitmqctl list_users 用户"
+          },
+          {
+            "name": "创建虚拟主机",
+            "cmd": "rabbitmqctl add_vhost %{虚拟主机}%",
+            "params": {
+              "虚拟主机": { "type": "string", "required": true, "description": "虚拟主机名", "example": "myvhost", "notes": "" }
+            },
+            "keyword": "rabbitmqctl add_vhost 虚拟主机"
+          },
+          {
+            "name": "删除虚拟主机",
+            "cmd": "rabbitmqctl delete_vhost %{虚拟主机}%",
+            "params": {
+              "虚拟主机": { "type": "string", "required": true, "description": "虚拟主机名", "example": "myvhost", "notes": "" }
+            },
+            "keyword": "rabbitmqctl delete_vhost 删除虚拟主机"
+          },
+          {
+            "name": "授权虚拟主机权限",
+            "cmd": "rabbitmqctl set_permissions -p %{虚拟主机}% %{用户名}% \".*\" \".*\" \".*\"",
+            "params": {
+              "虚拟主机": { "type": "string", "required": true, "description": "虚拟主机名", "example": "/", "notes": "默认为 /" },
+              "用户名": { "type": "string", "required": true, "description": "用户名", "example": "admin", "notes": "" }
+            },
+            "keyword": "rabbitmqctl set_permissions 权限"
+          },
+          {
+            "name": "查看虚拟主机权限",
+            "cmd": "rabbitmqctl list_permissions -p %{虚拟主机}%",
+            "params": {
+              "虚拟主机": { "type": "string", "required": true, "description": "虚拟主机名", "example": "/", "notes": "默认为 /" }
+            },
+            "keyword": "rabbitmqctl list_permissions 查看权限"
+          },
+          {
+            "name": "声明队列",
+            "cmd": "rabbitmqctl declare_queue -p %{虚拟主机}% -d %{队列名}%",
+            "params": {
+              "虚拟主机": { "type": "string", "required": true, "description": "虚拟主机名", "example": "/", "notes": "默认为 /" },
+              "队列名": { "type": "string", "required": true, "description": "队列名称", "example": "my_queue", "notes": "" }
+            },
+            "keyword": "rabbitmqctl declare_queue 队列"
+          },
+          {
+            "name": "删除队列",
+            "cmd": "rabbitmqctl delete_queue %{队列名}%",
+            "params": {
+              "队列名": { "type": "string", "required": true, "description": "队列名称", "example": "my_queue", "notes": "" }
+            },
+            "keyword": "rabbitmqctl delete_queue 删除队列"
+          },
+          {
+            "name": "清空队列消息",
+            "cmd": "rabbitmqctl purge_queue %{队列名}%",
+            "params": {
+              "队列名": { "type": "string", "required": true, "description": "队列名称", "example": "my_queue", "notes": "" }
+            },
+            "keyword": "rabbitmqctl purge_queue 清空"
+          },
+          {
+            "name": "声明交换机",
+            "cmd": "rabbitmqctl declare_exchange -p %{虚拟主机}% %{交换机名}% %{类型}% %{ durable }%",
+            "params": {
+              "虚拟主机": { "type": "string", "required": true, "description": "虚拟主机名", "example": "/", "notes": "" },
+              "交换机名": { "type": "string", "required": true, "description": "交换机名称", "example": "my_exchange", "notes": "" },
+              "类型": { "type": "string", "required": true, "description": "交换机类型", "example": "direct", "notes": "direct/fanout/topic/headers" },
+              "durable": { "type": "string", "required": false, "description": "是否持久化", "example": "true", "notes": "true/false" }
+            },
+            "keyword": "rabbitmqctl declare_exchange 交换机"
+          },
+          {
+            "name": "声明绑定",
+            "cmd": "rabbitmqctl bind_queue -p %{虚拟主机}% -q %{队列名}% -e %{交换机名}% -r %{路由键}%",
+            "params": {
+              "虚拟主机": { "type": "string", "required": true, "description": "虚拟主机名", "example": "/", "notes": "" },
+              "队列名": { "type": "string", "required": true, "description": "队列名称", "example": "my_queue", "notes": "" },
+              "交换机名": { "type": "string", "required": true, "description": "交换机名称", "example": "my_exchange", "notes": "" },
+              "路由键": { "type": "string", "required": true, "description": "路由键", "example": "my.routing.key", "notes": "" }
+            },
+            "keyword": "rabbitmqctl bind_queue 绑定"
+          },
+          {
+            "name": "启用管理插件",
+            "cmd": "rabbitmq-plugins enable rabbitmq_management",
+            "params": {},
+            "keyword": "rabbitmq-plugins enable 管理插件"
+          },
+          {
+            "name": "禁用管理插件",
+            "cmd": "rabbitmq-plugins disable rabbitmq_management",
+            "params": {},
+            "keyword": "rabbitmq-plugins disable 禁用插件"
+          },
+          {
+            "name": "列出所有插件",
+            "cmd": "rabbitmq-plugins list",
+            "params": {},
+            "keyword": "rabbitmq-plugins list 插件列表"
+          },
+          {
+            "name": "启用指定插件",
+            "cmd": "rabbitmq-plugins enable %{插件名}%",
+            "params": {
+              "插件名": { "type": "string", "required": true, "description": "插件名称", "example": "rabbitmq_stomp", "notes": "" }
+            },
+            "keyword": "rabbitmq-plugins 启用"
+          },
+          {
+            "name": "启动 RabbitMQ 服务器",
+            "cmd": "rabbitmq-server -detached",
+            "params": {},
+            "keyword": "rabbitmq-server 启动"
+          }
+        ],
+        "params": {
+          "子命令": { "type": "string", "required": false, "description": "rabbitmqctl 子命令", "example": "status", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/消息队列/",
+      "name": "Docker 运行 RabbitMQ",
+      "keyword": "docker rabbitmq 容器",
+      "description": "使用 Docker 运行和管理 RabbitMQ 容器",
+      "data": {
+        "cmd": "docker run -d --name %{容器名}% -p %{主机端口}%:%{容器端口}% -e RABBITMQ_DEFAULT_USER=%{用户名}% -e RABBITMQ_DEFAULT_PASS=%{密码}% rabbitmq:%{标签}%",
+        "extensions": [
+          {
+            "name": "运行 RabbitMQ 容器（默认）",
+            "cmd": "docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:management",
+            "params": {},
+            "keyword": "docker run rabbitmq 启动"
+          },
+          {
+            "name": "带持久化的 RabbitMQ",
+            "cmd": "docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 -v rabbitmq_data:/var/lib/rabbitmq rabbitmq:management",
+            "params": {},
+            "keyword": "docker run rabbitmq 持久化"
+          },
+          {
+            "name": "查看 RabbitMQ 容器日志",
+            "cmd": "docker logs -f %{容器名}%",
+            "params": {
+              "容器名": { "type": "string", "required": true, "description": "容器名称", "example": "rabbitmq", "notes": "" }
+            },
+            "keyword": "docker logs rabbitmq 日志"
+          },
+          {
+            "name": "进入 RabbitMQ 容器",
+            "cmd": "docker exec -it %{容器名}% /bin/bash",
+            "params": {
+              "容器名": { "type": "string", "required": true, "description": "容器名称", "example": "rabbitmq", "notes": "" }
+            },
+            "keyword": "docker exec rabbitmq 进入"
+          }
+        ],
+        "params": {
+          "容器名": { "type": "string", "required": true, "description": "容器名称", "example": "rabbitmq", "notes": "" },
+          "主机端口": { "type": "string", "required": true, "description": "主机映射端口", "example": "5672", "notes": "AMQP: 5672, Management: 15672" },
+          "容器端口": { "type": "string", "required": true, "description": "容器端口", "example": "5672", "notes": "" },
+          "用户名": { "type": "string", "required": true, "description": "默认用户名", "example": "guest", "notes": "" },
+          "密码": { "type": "string", "required": true, "description": "默认密码", "example": "guest", "notes": "" },
+          "标签": { "type": "string", "required": false, "description": "RabbitMQ 版本标签", "example": "management", "notes": "建议使用 management 包含管理界面" }
+        }
+      }
+    },
+    {
+      "dirPath": "/消息队列/",
+      "name": "Kafka kafka-topics 主题管理",
+      "keyword": "kafka kafka-topics 主题",
+      "description": "Apache Kafka 主题的创建、查看、修改和删除",
+      "data": {
+        "cmd": "kafka-topics.sh --bootstrap-server %{服务器地址}% --topic %{主题名}% --%{操作}%",
+        "extensions": [
+          {
+            "name": "创建主题",
+            "cmd": "kafka-topics.sh --bootstrap-server localhost:9092 --create --topic %{主题名}% --partitions %{分区数}% --replication-factor %{副本数}%",
+            "params": {
+              "主题名": { "type": "string", "required": true, "description": "主题名称", "example": "my-topic", "notes": "" },
+              "分区数": { "type": "string", "required": true, "description": "分区数量", "example": "3", "notes": "" },
+              "副本数": { "type": "string", "required": true, "description": "副本因子", "example": "1", "notes": "测试环境为1" }
+            },
+            "keyword": "kafka-topics create 创建"
+          },
+          {
+            "name": "列出所有主题",
+            "cmd": "kafka-topics.sh --bootstrap-server localhost:9092 --list",
+            "params": {},
+            "keyword": "kafka-topics list 列表"
+          },
+          {
+            "name": "查看主题详情",
+            "cmd": "kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic %{主题名}%",
+            "params": {
+              "主题名": { "type": "string", "required": true, "description": "主题名称", "example": "my-topic", "notes": "" }
+            },
+            "keyword": "kafka-topics describe 详情"
+          },
+          {
+            "name": "删除主题",
+            "cmd": "kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic %{主题名}%",
+            "params": {
+              "主题名": { "type": "string", "required": true, "description": "主题名称", "example": "my-topic", "notes": "" }
+            },
+            "keyword": "kafka-topics delete 删除"
+          },
+          {
+            "name": "修改主题分区数",
+            "cmd": "kafka-topics.sh --bootstrap-server localhost:9092 --alter --topic %{主题名}% --partitions %{新分区数}%",
+            "params": {
+              "主题名": { "type": "string", "required": true, "description": "主题名称", "example": "my-topic", "notes": "" },
+              "新分区数": { "type": "string", "required": true, "description": "新的分区数量", "example": "6", "notes": "只能增加不能减少" }
+            },
+            "keyword": "kafka-topics alter 修改分区"
+          },
+          {
+            "name": "查看所有主题（含配置）",
+            "cmd": "kafka-topics.sh --bootstrap-server localhost:9092 --describe --exclude-internal",
+            "params": {},
+            "keyword": "kafka-topics describe 所有"
+          }
+        ],
+        "params": {
+          "服务器地址": { "type": "string", "required": true, "description": "Kafka 服务器地址", "example": "localhost:9092", "notes": "" },
+          "主题名": { "type": "string", "required": true, "description": "主题名称", "example": "my-topic", "notes": "" },
+          "操作": { "type": "string", "required": true, "description": "操作类型", "example": "create", "notes": "create/list/describe/delete/alter" }
+        }
+      }
+    },
+    {
+      "dirPath": "/消息队列/",
+      "name": "Kafka 生产者与消费者",
+      "keyword": "kafka producer consumer 生产 消费",
+      "description": "Kafka 命令行生产者和消费者工具",
+      "data": {
+        "cmd": "kafka-console-producer.sh --bootstrap-server %{服务器地址}% --topic %{主题名}%",
+        "extensions": [
+          {
+            "name": "启动控制台生产者",
+            "cmd": "kafka-console-producer.sh --bootstrap-server localhost:9092 --topic %{主题名}%",
+            "params": {
+              "主题名": { "type": "string", "required": true, "description": "主题名称", "example": "my-topic", "notes": "" }
+            },
+            "keyword": "kafka producer 启动"
+          },
+          {
+            "name": "带 key 的生产者",
+            "cmd": "kafka-console-producer.sh --bootstrap-server localhost:9092 --topic %{主题名}% --property parse.key=true --property key.separator=,",
+            "params": {
+              "主题名": { "type": "string", "required": true, "description": "主题名称", "example": "my-topic", "notes": "" }
+            },
+            "keyword": "kafka producer key 分隔符"
+          },
+          {
+            "name": "启动控制台消费者（从头消费）",
+            "cmd": "kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic %{主题名}% --from-beginning",
+            "params": {
+              "主题名": { "type": "string", "required": true, "description": "主题名称", "example": "my-topic", "notes": "" }
+            },
+            "keyword": "kafka consumer 启动"
+          },
+          {
+            "name": "启动消费者（最新消息）",
+            "cmd": "kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic %{主题名}%",
+            "params": {
+              "主题名": { "type": "string", "required": true, "description": "主题名称", "example": "my-topic", "notes": "" }
+            },
+            "keyword": "kafka consumer 最新"
+          },
+          {
+            "name": "消费者组消费",
+            "cmd": "kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic %{主题名}% --group %{消费组名}%",
+            "params": {
+              "主题名": { "type": "string", "required": true, "description": "主题名称", "example": "my-topic", "notes": "" },
+              "消费组名": { "type": "string", "required": true, "description": "消费组名称", "example": "my-group", "notes": "" }
+            },
+            "keyword": "kafka consumer group 消费组"
+          },
+          {
+            "name": "消费者显示 key 和 value",
+            "cmd": "kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic %{主题名}% --from-beginning --property print.key=true --property key.separator=,",
+            "params": {
+              "主题名": { "type": "string", "required": true, "description": "主题名称", "example": "my-topic", "notes": "" }
+            },
+            "keyword": "kafka consumer 显示key"
+          }
+        ],
+        "params": {
+          "服务器地址": { "type": "string", "required": true, "description": "Kafka 服务器地址", "example": "localhost:9092", "notes": "" },
+          "主题名": { "type": "string", "required": true, "description": "主题名称", "example": "my-topic", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/消息队列/",
+      "name": "Kafka 消费者组管理",
+      "keyword": "kafka-consumer-groups 消费组",
+      "description": "Kafka 消费者组的管理和查看",
+      "data": {
+        "cmd": "kafka-consumer-groups.sh --bootstrap-server %{服务器地址}% --group %{消费组名}% --%{操作}%",
+        "extensions": [
+          {
+            "name": "列出所有消费组",
+            "cmd": "kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list",
+            "params": {},
+            "keyword": "kafka-consumer-groups list 列表"
+          },
+          {
+            "name": "查看消费组详情",
+            "cmd": "kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group %{消费组名}%",
+            "params": {
+              "消费组名": { "type": "string", "required": true, "description": "消费组名称", "example": "my-group", "notes": "" }
+            },
+            "keyword": "kafka-consumer-groups describe 详情"
+          },
+          {
+            "name": "查看消费组偏移量",
+            "cmd": "kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group %{消费组名}% --offsets",
+            "params": {
+              "消费组名": { "type": "string", "required": true, "description": "消费组名称", "example": "my-group", "notes": "" }
+            },
+            "keyword": "kafka-consumer-groups offsets 偏移"
+          },
+          {
+            "name": "重置消费组偏移量（to-earliest）",
+            "cmd": "kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group %{消费组名}% --topic %{主题名}% --reset-offsets --to-earliest --execute",
+            "params": {
+              "消费组名": { "type": "string", "required": true, "description": "消费组名称", "example": "my-group", "notes": "" },
+              "主题名": { "type": "string", "required": true, "description": "主题名称", "example": "my-topic", "notes": "" }
+            },
+            "keyword": "kafka-consumer-groups reset earliest 重置"
+          },
+          {
+            "name": "删除消费组",
+            "cmd": "kafka-consumer-groups.sh --bootstrap-server localhost:9092 --delete --group %{消费组名}%",
+            "params": {
+              "消费组名": { "type": "string", "required": true, "description": "消费组名称", "example": "my-group", "notes": "" }
+            },
+            "keyword": "kafka-consumer-groups delete 删除"
+          }
+        ],
+        "params": {
+          "服务器地址": { "type": "string", "required": true, "description": "Kafka 服务器地址", "example": "localhost:9092", "notes": "" },
+          "消费组名": { "type": "string", "required": true, "description": "消费组名称", "example": "my-group", "notes": "" },
+          "操作": { "type": "string", "required": true, "description": "操作类型", "example": "describe", "notes": "list/describe/delete" }
+        }
+      }
+    },
+    {
+      "dirPath": "/消息队列/",
+      "name": "Kafka 服务器启停",
+      "keyword": "kafka-server-start kafka-server-stop",
+      "description": "Kafka 服务器的启动和停止脚本",
+      "data": {
+        "cmd": "$KAFKA_HOME/bin/kafka-server-start.sh %{服务器配置文件}%",
+        "extensions": [
+          {
+            "name": "前台启动 Kafka 服务器",
+            "cmd": "kafka-server-start.sh config/server.properties",
+            "params": {},
+            "keyword": "kafka-server-start 启动"
+          },
+          {
+            "name": "后台启动 Kafka",
+            "cmd": "nohup kafka-server-start.sh config/server.properties > /var/log/kafka.log 2>&1 &",
+            "params": {},
+            "keyword": "kafka 后台启动"
+          },
+          {
+            "name": "停止 Kafka 服务器",
+            "cmd": "kafka-server-stop.sh",
+            "params": {},
+            "keyword": "kafka-server-stop 停止"
+          },
+          {
+            "name": "强制停止 Kafka",
+            "cmd": "pkill -f kafka.Kafka",
+            "params": {},
+            "keyword": "kafka 强制停止"
+          },
+          {
+            "name": "Docker 运行单节点 Kafka",
+            "cmd": "docker run -d --name kafka -p 9092:9092 -e KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181 -e ALLOW_PLAINTEXT_HOST=yes confluentinc/cp-kafka:latest",
+            "params": {},
+            "keyword": "docker kafka 启动"
+          }
+        ],
+        "params": {
+          "服务器配置文件": { "type": "string", "required": true, "description": "server.properties 路径", "example": "config/server.properties", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/消息队列/",
+      "name": "Kafka 配置管理",
+      "keyword": "kafka-configs 配置",
+      "description": "Kafka 动态配置管理命令",
+      "data": {
+        "cmd": "kafka-configs.sh --bootstrap-server %{服务器地址}% --entity-type %{实体类型}% --entity-name %{实体名}% --%{操作}%",
+        "extensions": [
+          {
+            "name": "查看主题配置",
+            "cmd": "kafka-configs.sh --bootstrap-server localhost:9092 --describe --entity-type topics --entity-name %{主题名}%",
+            "params": {
+              "主题名": { "type": "string", "required": true, "description": "主题名称", "example": "my-topic", "notes": "" }
+            },
+            "keyword": "kafka-configs describe 主题配置"
+          },
+          {
+            "name": "修改主题配置（保留时间）",
+            "cmd": "kafka-configs.sh --bootstrap-server localhost:9092 --alter --entity-type topics --entity-name %{主题名}% --add-config retention.ms=%{保留毫秒}%",
+            "params": {
+              "主题名": { "type": "string", "required": true, "description": "主题名称", "example": "my-topic", "notes": "" },
+              "保留毫秒": { "type": "string", "required": true, "description": "消息保留时间（毫秒）", "example": "604800000", "notes": "7天=604800000ms" }
+            },
+            "keyword": "kafka-configs alter 保留时间"
+          },
+          {
+            "name": "删除主题配置",
+            "cmd": "kafka-configs.sh --bootstrap-server localhost:9092 --alter --entity-type topics --entity-name %{主题名}% --delete-config %{配置名}%",
+            "params": {
+              "主题名": { "type": "string", "required": true, "description": "主题名称", "example": "my-topic", "notes": "" },
+              "配置名": { "type": "string", "required": true, "description": "配置项名称", "example": "retention.ms", "notes": "" }
+            },
+            "keyword": "kafka-configs delete 配置"
+          }
+        ],
+        "params": {
+          "服务器地址": { "type": "string", "required": true, "description": "Kafka 服务器地址", "example": "localhost:9092", "notes": "" },
+          "实体类型": { "type": "string", "required": true, "description": "实体类型", "example": "topics", "notes": "topics/brokers/clients" },
+          "实体名": { "type": "string", "required": true, "description": "实体名称", "example": "my-topic", "notes": "" },
+          "操作": { "type": "string", "required": true, "description": "操作类型", "example": "describe", "notes": "describe/alter" }
+        }
+      }
+    },
+    {
+      "dirPath": "/消息队列/",
+      "name": "Redis Pub/Sub 发布订阅",
+      "keyword": "redis pubsub publish subscribe",
+      "description": "Redis 发布/订阅模式命令",
+      "data": {
+        "cmd": "redis-cli %{子命令}%",
+        "extensions": [
+          {
+            "name": "发布消息到频道",
+            "cmd": "redis-cli PUBLISH %{频道名}% %{消息内容}%",
+            "params": {
+              "频道名": { "type": "string", "required": true, "description": "频道名称", "example": "news", "notes": "" },
+              "消息内容": { "type": "string", "required": true, "description": "消息内容", "example": "Hello World", "notes": "" }
+            },
+            "keyword": "redis PUBLISH 发布"
+          },
+          {
+            "name": "订阅单个频道",
+            "cmd": "redis-cli SUBSCRIBE %{频道名1}% %{频道名2}%",
+            "params": {
+              "频道名1": { "type": "string", "required": true, "description": "频道名称", "example": "news", "notes": "" },
+              "频道名2": { "type": "string", "required": false, "description": "频道名称", "example": "sports", "notes": "可订阅多个" }
+            },
+            "keyword": "redis SUBSCRIBE 订阅"
+          },
+          {
+            "name": "按模式订阅频道",
+            "cmd": "redis-cli PSUBSCRIBE %{模式}%",
+            "params": {
+              "模式": { "type": "string", "required": true, "description": "匹配模式", "example": "news.*", "notes": "支持 glob 模式，如 news.* 或 *log" }
+            },
+            "keyword": "redis PSUBSCRIBE 模式订阅"
+          },
+          {
+            "name": "取消订阅频道",
+            "cmd": "redis-cli UNSUBSCRIBE %{频道名}%",
+            "params": {
+              "频道名": { "type": "string", "required": false, "description": "频道名称", "example": "news", "notes": "不指定则取消所有" }
+            },
+            "keyword": "redis UNSUBSCRIBE 取消订阅"
+          },
+          {
+            "name": "按模式取消订阅",
+            "cmd": "redis-cli PUNSUBSCRIBE %{模式}%",
+            "params": {
+              "模式": { "type": "string", "required": false, "description": "匹配模式", "example": "news.*", "notes": "不指定则取消所有模式订阅" }
+            },
+            "keyword": "redis PUNSUBSCRIBE 取消模式订阅"
+          },
+          {
+            "name": "PUBSUB 频道信息",
+            "cmd": "redis-cli PUBSUB CHANNELS %{模式}%",
+            "params": {
+              "模式": { "type": "string", "required": false, "description": "匹配模式", "example": "news*", "notes": "不指定返回所有" }
+            },
+            "keyword": "redis PUBSUB CHANNELS 频道"
+          },
+          {
+            "name": "PUBSUB 查看订阅数",
+            "cmd": "redis-cli PUBSUB NUMSUB %{频道名}%",
+            "params": {
+              "频道名": { "type": "string", "required": true, "description": "频道名称", "example": "news", "notes": "" }
+            },
+            "keyword": "redis PUBSUB NUMSUB 订阅数"
+          },
+          {
+            "name": "PUBSUB 查看模式订阅数",
+            "cmd": "redis-cli PUBSUB NUMPAT",
+            "params": {},
+            "keyword": "redis PUBSUB NUMPAT 模式订阅数"
+          }
+        ],
+        "params": {
+          "子命令": { "type": "string", "required": true, "description": "Redis Pub/Sub 子命令", "example": "PUBLISH", "notes": "PUBLISH/SUBSCRIBE/PSUBSCRIBE/UNSUBSCRIBE/PUNSUBSCRIBE/PUBSUB" }
+        }
+      }
+    },
+    {
+      "dirPath": "/消息队列/",
+      "name": "Docker Compose 消息队列编排",
+      "keyword": "docker-compose rabbitmq kafka",
+      "description": "使用 Docker Compose 编排消息队列服务",
+      "data": {
+        "cmd": "docker-compose -f %{文件名}% %{子命令}%",
+        "extensions": [
+          {
+            "name": "RabbitMQ + 应用服务编排",
+            "cmd": "docker-compose -f docker-compose.yml up -d",
+            "params": {},
+            "keyword": "docker-compose rabbitmq 启动"
+          },
+          {
+            "name": "启动 Kafka + Zookeeper",
+            "cmd": "docker-compose -f kafka.yml up -d",
+            "params": {},
+            "keyword": "docker-compose kafka 启动"
+          },
+          {
+            "name": "查看服务状态",
+            "cmd": "docker-compose -f %{文件名}% ps",
+            "params": {
+              "文件名": { "type": "string", "required": true, "description": "docker-compose 文件", "example": "docker-compose.yml", "notes": "" }
+            },
+            "keyword": "docker-compose ps 状态"
+          },
+          {
+            "name": "查看服务日志",
+            "cmd": "docker-compose -f %{文件名}% logs -f %{服务名}%",
+            "params": {
+              "文件名": { "type": "string", "required": true, "description": "docker-compose 文件", "example": "docker-compose.yml", "notes": "" },
+              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "rabbitmq", "notes": "" }
+            },
+            "keyword": "docker-compose logs 服务日志"
+          },
+          {
+            "name": "停止并移除服务",
+            "cmd": "docker-compose -f %{文件名}% down",
+            "params": {
+              "文件名": { "type": "string", "required": true, "description": "docker-compose 文件", "example": "docker-compose.yml", "notes": "" }
+            },
+            "keyword": "docker-compose down 停止"
+          },
+          {
+            "name": "重新构建并启动",
+            "cmd": "docker-compose -f %{文件名}% up -d --build %{服务名}%",
+            "params": {
+              "文件名": { "type": "string", "required": true, "description": "docker-compose 文件", "example": "docker-compose.yml", "notes": "" },
+              "服务名": { "type": "string", "required": false, "description": "服务名称", "example": "rabbitmq", "notes": "不指定则重建所有" }
+            },
+            "keyword": "docker-compose up 重建"
+          }
+        ],
+        "params": {
+          "文件名": { "type": "string", "required": true, "description": "docker-compose 文件名", "example": "docker-compose.yml", "notes": "" },
+          "子命令": { "type": "string", "required": true, "description": "docker-compose 子命令", "example": "up", "notes": "up/down/start/stop/restart/logs/ps" }
+        }
+      }
+    },
+    {
+      "dirPath": "/消息队列/",
+      "name": "BullMQ Node.js 任务队列",
+      "keyword": "bullmq nodejs queue",
+      "description": "BullMQ (Node.js) 任务队列常用命令和操作",
+      "data": {
+        "cmd": "node %{脚本文件}%",
+        "extensions": [
+          {
+            "name": "创建队列",
+            "cmd": "import { Queue } from 'bullmq'; const queue = new Queue('%{队列名}%', { connection: { host: 'localhost', port: 6379 } });",
+            "params": {
+              "队列名": { "type": "string", "required": true, "description": "队列名称", "example": "send-email", "notes": "" }
+            },
+            "keyword": "bullmq Queue 创建"
+          },
+          {
+            "name": "添加任务",
+            "cmd": "await queue.add('%{任务名}%', { data: %{数据}% }, { attempts: %{重试次数}%, backoff: { type: 'exponential', delay: %{延迟}% } });",
+            "params": {
+              "任务名": { "type": "string", "required": true, "description": "任务名称", "example": "send-email", "notes": "" },
+              "数据": { "type": "string", "required": true, "description": "任务数据", "example": "{ to: 'user@example.com' }", "notes": "" },
+              "重试次数": { "type": "string", "required": true, "description": "最大重试次数", "example": "3", "notes": "" },
+              "延迟": { "type": "string", "required": true, "description": "重试延迟（毫秒）", "example": "1000", "notes": "" }
+            },
+            "keyword": "bullmq add 添加任务"
+          },
+          {
+            "name": "创建 worker",
+            "cmd": "import { Worker } from 'bullmq'; const worker = new Worker('%{队列名}%', async job => { console.log('Processing job', job.data); }, { connection: { host: 'localhost', port: 6379 } });",
+            "params": {
+              "队列名": { "type": "string", "required": true, "description": "队列名称", "example": "send-email", "notes": "" }
+            },
+            "keyword": "bullmq Worker 创建"
+          },
+          {
+            "name": "查看队列任务数",
+            "cmd": "const counts = await queue.getJobCounts('wait', 'active', 'completed', 'failed'); console.log(counts);",
+            "params": {},
+            "keyword": "bullmq getJobCounts 任务数"
+          },
+          {
+            "name": "清空队列",
+            "cmd": "await queue.empty();",
+            "params": {},
+            "keyword": "bullmq empty 清空"
+          },
+          {
+            "name": "暂停队列",
+            "cmd": "await queue.pause();",
+            "params": {},
+            "keyword": "bullmq pause 暂停"
+          },
+          {
+            "name": "恢复队列",
+            "cmd": "await queue.resume();",
+            "params": {},
+            "keyword": "bullmq resume 恢复"
+          }
+        ],
+        "params": {
+          "脚本文件": { "type": "string", "required": false, "description": "Node.js 脚本文件", "example": "queue.js", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/消息队列/",
+      "name": "Celery Python 任务队列",
+      "keyword": "celery python 任务队列",
+      "description": "Celery (Python) 分布式任务队列常用命令",
+      "data": {
+        "cmd": "celery -A %{应用名}% %{子命令}%",
+        "extensions": [
+          {
+            "name": "启动 Celery Worker",
+            "cmd": "celery -A %{应用名}% worker --loglevel=info --concurrency=%{并发数}%",
+            "params": {
+              "应用名": { "type": "string", "required": true, "description": "Celery 应用名", "example": "tasks", "notes": "" },
+              "并发数": { "type": "string", "required": true, "description": "并发 worker 数量", "example": "4", "notes": "" }
+            },
+            "keyword": "celery worker 启动"
+          },
+          {
+            "name": "启动 Celery Beat（定时任务）",
+            "cmd": "celery -A %{应用名}% beat --loglevel=info",
+            "params": {
+              "应用名": { "type": "string", "required": true, "description": "Celery 应用名", "example": "tasks", "notes": "" }
+            },
+            "keyword": "celery beat 定时"
+          },
+          {
+            "name": "启动 Flower 监控",
+            "cmd": "celery -A %{应用名}% flower --port=%{端口}%",
+            "params": {
+              "应用名": { "type": "string", "required": true, "description": "Celery 应用名", "example": "tasks", "notes": "" },
+              "端口": { "type": "string", "required": true, "description": "Flower 端口", "example": "5555", "notes": "" }
+            },
+            "keyword": "celery flower 监控"
+          },
+          {
+            "name": "调用任务（直接）",
+            "cmd": "celery -A %{应用名}% call %{任务名}% --args='[%{参数}%]'",
+            "params": {
+              "应用名": { "type": "string", "required": true, "description": "Celery 应用名", "example": "tasks", "notes": "" },
+              "任务名": { "type": "string", "required": true, "description": "任务函数名", "example": "tasks.send_email", "notes": "" },
+              "参数": { "type": "string", "required": true, "description": "任务参数", "example": "'hello@example.com'", "notes": "" }
+            },
+            "keyword": "celery call 调用"
+          },
+          {
+            "name": "查看活跃任务",
+            "cmd": "celery -A %{应用名}% inspect active",
+            "params": {
+              "应用名": { "type": "string", "required": true, "description": "Celery 应用名", "example": "tasks", "notes": "" }
+            },
+            "keyword": "celery inspect 活跃任务"
+          },
+          {
+            "name": "查看已注册任务",
+            "cmd": "celery -A %{应用名}% inspect registered",
+            "params": {
+              "应用名": { "type": "string", "required": true, "description": "Celery 应用名", "example": "tasks", "notes": "" }
+            },
+            "keyword": "celery inspect 已注册"
+          },
+          {
+            "name": "查看任务结果",
+            "cmd": "celery -A %{应用名}% result %{任务ID}%",
+            "params": {
+              "应用名": { "type": "string", "required": true, "description": "Celery 应用名", "example": "tasks", "notes": "" },
+              "任务ID": { "type": "string", "required": true, "description": "任务 ID", "example": "abc-123", "notes": "" }
+            },
+            "keyword": "celery result 结果"
+          },
+          {
+            "name": "撤销任务",
+            "cmd": "celery -A %{应用名}% revoke %{任务ID}%",
+            "params": {
+              "应用名": { "type": "string", "required": true, "description": "Celery 应用名", "example": "tasks", "notes": "" },
+              "任务ID": { "type": "string", "required": true, "description": "任务 ID", "example": "abc-123", "notes": "" }
+            },
+            "keyword": "celery revoke 撤销"
+          },
+          {
+            "name": "Purge 清空所有任务",
+            "cmd": "celery -A %{应用名}% purge",
+            "params": {
+              "应用名": { "type": "string", "required": true, "description": "Celery 应用名", "example": "tasks", "notes": "" }
+            },
+            "keyword": "celery purge 清空"
+          }
+        ],
+        "params": {
+          "应用名": { "type": "string", "required": true, "description": "Celery 应用名", "example": "tasks", "notes": "" },
+          "子命令": { "type": "string", "required": true, "description": "Celery 子命令", "example": "worker", "notes": "worker/beat/inspect/call/result/revoke/purge" }
+        }
+      }
+    },
+    {
+      "dirPath": "/消息队列/",
+      "name": "AWS SQS CLI 队列服务",
+      "keyword": "aws sqs 队列",
+      "description": "AWS SQS (Simple Queue Service) 命令行操作",
+      "data": {
+        "cmd": "aws sqs %{子命令}%",
+        "extensions": [
+          {
+            "name": "创建标准队列",
+            "cmd": "aws sqs create-queue --queue-name %{队列名}% --attributes file://%{属性文件}%",
+            "params": {
+              "队列名": { "type": "string", "required": true, "description": "队列名称", "example": "my-queue", "notes": "" },
+              "属性文件": { "type": "string", "required": false, "description": "属性 JSON 文件路径", "example": "attributes.json", "notes": "可选，如 DelaySeconds/ReceiveMessageWaitTimeSeconds" }
+            },
+            "keyword": "aws sqs create-queue 创建"
+          },
+          {
+            "name": "创建 FIFO 队列",
+            "cmd": "aws sqs create-queue --queue-name %{队列名}%.fifo --attributes file://%{属性文件}%",
+            "params": {
+              "队列名": { "type": "string", "required": true, "description": "队列名称", "example": "my-queue", "notes": "必须以 .fifo 结尾" },
+              "属性文件": { "type": "string", "required": false, "description": "属性 JSON 文件路径", "example": "fifo-attributes.json", "notes": "" }
+            },
+            "keyword": "aws sqs create-queue FIFO"
+          },
+          {
+            "name": "列出所有队列",
+            "cmd": "aws sqs list-queues",
+            "params": {},
+            "keyword": "aws sqs list-queues 列表"
+          },
+          {
+            "name": "获取队列 URL",
+            "cmd": "aws sqs get-queue-url --queue-name %{队列名}%",
+            "params": {
+              "队列名": { "type": "string", "required": true, "description": "队列名称", "example": "my-queue", "notes": "" }
+            },
+            "keyword": "aws sqs get-queue-url URL"
+          },
+          {
+            "name": "发送消息",
+            "cmd": "aws sqs send-message --queue-url %{队列URL}% --message-body '%{消息内容}%'",
+            "params": {
+              "队列URL": { "type": "string", "required": true, "description": "队列 URL", "example": "https://sqs.us-east-1.amazonaws.com/123456789/my-queue", "notes": "" },
+              "消息内容": { "type": "string", "required": true, "description": "消息内容", "example": "Hello World", "notes": "" }
+            },
+            "keyword": "aws sqs send-message 发送"
+          },
+          {
+            "name": "发送 FIFO 消息（带 group id）",
+            "cmd": "aws sqs send-message --queue-url %{队列URL}% --message-body '%{消息内容}%' --message-group-id %{分组ID}%",
+            "params": {
+              "队列URL": { "type": "string", "required": true, "description": "队列 URL", "example": "https://sqs.us-east-1.amazonaws.com/123456789/my-queue.fifo", "notes": "" },
+              "消息内容": { "type": "string", "required": true, "description": "消息内容", "example": "Hello", "notes": "" },
+              "分组ID": { "type": "string", "required": true, "description": "消息组 ID", "example": "group-1", "notes": "FIFO 队列必须" }
+            },
+            "keyword": "aws sqs send-message FIFO"
+          },
+          {
+            "name": "接收消息",
+            "cmd": "aws sqs receive-message --queue-url %{队列URL}% --max-number-of-messages %{数量}% --wait-time-seconds %{等待秒}%",
+            "params": {
+              "队列URL": { "type": "string", "required": true, "description": "队列 URL", "example": "https://sqs.us-east-1.amazonaws.com/123456789/my-queue", "notes": "" },
+              "数量": { "type": "string", "required": true, "description": "最大接收消息数", "example": "10", "notes": "1-10" },
+              "等待秒": { "type": "string", "required": true, "description": "长轮询等待秒数", "example": "20", "notes": "0-20，启用长轮询" }
+            },
+            "keyword": "aws sqs receive-message 接收"
+          },
+          {
+            "name": "删除消息",
+            "cmd": "aws sqs delete-message --queue-url %{队列URL}% --receipt-handle %{收据句柄}%",
+            "params": {
+              "队列URL": { "type": "string", "required": true, "description": "队列 URL", "example": "https://sqs.us-east-1.amazonaws.com/123456789/my-queue", "notes": "" },
+              "收据句柄": { "type": "string", "required": true, "description": "消息收据句柄", "example": "xxxxx...", "notes": "接收消息时获得" }
+            },
+            "keyword": "aws sqs delete-message 删除"
+          },
+          {
+            "name": "批量发送消息",
+            "cmd": "aws sqs send-message-batch --queue-url %{队列URL}% --entries file://%{消息文件}%",
+            "params": {
+              "队列URL": { "type": "string", "required": true, "description": "队列 URL", "example": "https://sqs.us-east-1.amazonaws.com/123456789/my-queue", "notes": "" },
+              "消息文件": { "type": "string", "required": true, "description": "消息批次 JSON 文件", "example": "messages.json", "notes": "" }
+            },
+            "keyword": "aws sqs send-message-batch 批量"
+          },
+          {
+            "name": "删除队列",
+            "cmd": "aws sqs delete-queue --queue-url %{队列URL}%",
+            "params": {
+              "队列URL": { "type": "string", "required": true, "description": "队列 URL", "example": "https://sqs.us-east-1.amazonaws.com/123456789/my-queue", "notes": "" }
+            },
+            "keyword": "aws sqs delete-queue 删除"
+          },
+          {
+            "name": "查看队列属性",
+            "cmd": "aws sqs get-queue-attributes --queue-url %{队列URL}% --attribute-names All",
+            "params": {
+              "队列URL": { "type": "string", "required": true, "description": "队列 URL", "example": "https://sqs.us-east-1.amazonaws.com/123456789/my-queue", "notes": "" }
+            },
+            "keyword": "aws sqs get-queue-attributes 属性"
+          }
+        ],
+        "params": {
+          "子命令": { "type": "string", "required": true, "description": "SQS 子命令", "example": "create-queue", "notes": "create-queue/list-queues/send-message/receive-message/delete-message" }
+        }
+      }
+    },
+    {
+      "dirPath": "/消息队列/",
+      "name": "AWS SNS CLI 主题通知",
+      "keyword": "aws sns 主题",
+      "description": "AWS SNS (Simple Notification Service) 命令行操作",
+      "data": {
+        "cmd": "aws sns %{子命令}%",
+        "extensions": [
+          {
+            "name": "创建标准主题",
+            "cmd": "aws sns create-topic --name %{主题名}%",
+            "params": {
+              "主题名": { "type": "string", "required": true, "description": "主题名称", "example": "my-topic", "notes": "" }
+            },
+            "keyword": "aws sns create-topic 创建"
+          },
+          {
+            "name": "创建 FIFO 主题",
+            "cmd": "aws sns create-topic --name %{主题名}%.fifo --attributes file://%{属性文件}%",
+            "params": {
+              "主题名": { "type": "string", "required": true, "description": "主题名称", "example": "my-topic", "notes": "必须以 .fifo 结尾" },
+              "属性文件": { "type": "string", "required": false, "description": "属性文件", "example": "fifo.json", "notes": "{ \"FifoTopic\": \"true\", \"ContentBasedDeduplication\": \"true\" }" }
+            },
+            "keyword": "aws sns create-topic FIFO"
+          },
+          {
+            "name": "列出所有主题",
+            "cmd": "aws sns list-topics",
+            "params": {},
+            "keyword": "aws sns list-topics 列表"
+          },
+          {
+            "name": "发布消息到主题",
+            "cmd": "aws sns publish --topic-arn %{主题ARN}% --message '%{消息内容}%' --subject '%{主题}%'",
+            "params": {
+              "主题ARN": { "type": "string", "required": true, "description": "主题 ARN", "example": "arn:aws:sns:us-east-1:123456789:my-topic", "notes": "" },
+              "消息内容": { "type": "string", "required": true, "description": "消息内容", "example": "Hello World", "notes": "" },
+              "主题": { "type": "string", "required": false, "description": "邮件主题", "example": "Alert", "notes": "Email 订阅时需要" }
+            },
+            "keyword": "aws sns publish 发布"
+          },
+          {
+            "name": "发布 FIFO 消息",
+            "cmd": "aws sns publish --topic-arn %{主题ARN}% --message '%{消息内容}%' --message-group-id %{分组ID}%",
+            "params": {
+              "主题ARN": { "type": "string", "required": true, "description": "主题 ARN", "example": "arn:aws:sns:us-east-1:123456789:my-topic.fifo", "notes": "" },
+              "消息内容": { "type": "string", "required": true, "description": "消息内容", "example": "Hello", "notes": "" },
+              "分组ID": { "type": "string", "required": true, "description": "消息组 ID", "example": "group-1", "notes": "FIFO 主题必须" }
+            },
+            "keyword": "aws sns publish FIFO"
+          },
+          {
+            "name": "订阅 SQS 队列到主题",
+            "cmd": "aws sns subscribe --topic-arn %{主题ARN}% --protocol sqs --notification-endpoint %{队列ARN}%",
+            "params": {
+              "主题ARN": { "type": "string", "required": true, "description": "主题 ARN", "example": "arn:aws:sns:us-east-1:123456789:my-topic", "notes": "" },
+              "队列ARN": { "type": "string", "required": true, "description": "SQS 队列 ARN", "example": "arn:aws:sqs:us-east-1:123456789:my-queue", "notes": "" }
+            },
+            "keyword": "aws sns subscribe sqs"
+          },
+          {
+            "name": "订阅 Lambda 函数",
+            "cmd": "aws sns subscribe --topic-arn %{主题ARN}% --protocol lambda --notification-endpoint %{LambdaARN}%",
+            "params": {
+              "主题ARN": { "type": "string", "required": true, "description": "主题 ARN", "example": "arn:aws:sns:us-east-1:123456789:my-topic", "notes": "" },
+              "LambdaARN": { "type": "string", "required": true, "description": "Lambda 函数 ARN", "example": "arn:aws:lambda:us-east-1:123456789:function:my-function", "notes": "" }
+            },
+            "keyword": "aws sns subscribe lambda"
+          },
+          {
+            "name": "订阅 Email",
+            "cmd": "aws sns subscribe --topic-arn %{主题ARN}% --protocol email --notification-endpoint %{邮箱地址}%",
+            "params": {
+              "主题ARN": { "type": "string", "required": true, "description": "主题 ARN", "example": "arn:aws:sns:us-east-1:123456789:my-topic", "notes": "" },
+              "邮箱地址": { "type": "string", "required": true, "description": "邮箱地址", "example": "user@example.com", "notes": "" }
+            },
+            "keyword": "aws sns subscribe email"
+          },
+          {
+            "name": "列出所有订阅",
+            "cmd": "aws sns list-subscriptions",
+            "params": {},
+            "keyword": "aws sns list-subscriptions 列表"
+          },
+          {
+            "name": "删除主题",
+            "cmd": "aws sns delete-topic --topic-arn %{主题ARN}%",
+            "params": {
+              "主题ARN": { "type": "string", "required": true, "description": "主题 ARN", "example": "arn:aws:sns:us-east-1:123456789:my-topic", "notes": "" }
+            },
+            "keyword": "aws sns delete-topic 删除"
+          },
+          {
+            "name": "撤销订阅",
+            "cmd": "aws sns unsubscribe --subscription-arn %{订阅ARN}%",
+            "params": {
+              "订阅ARN": { "type": "string", "required": true, "description": "订阅 ARN", "example": "arn:aws:sns:us-east-1:123456789:my-topic:xxxxx", "notes": "" }
+            },
+            "keyword": "aws sns unsubscribe 撤销"
+          }
+        ],
+        "params": {
+          "子命令": { "type": "string", "required": true, "description": "SNS 子命令", "example": "create-topic", "notes": "create-topic/list-topics/publish/subscribe/list-subscriptions/delete-topic" }
+        }
+      }
+    },
+    {
+      "dirPath": "/消息队列/",
+      "name": "AWS EventBridge CLI",
+      "keyword": "aws eventbridge 事件",
+      "description": "AWS EventBridge 事件总线和事件规则管理",
+      "data": {
+        "cmd": "aws events %{子命令}%",
+        "extensions": [
+          {
+            "name": "创建默认事件总线",
+            "cmd": "aws events create-event-bus --name %{事件总线名}%",
+            "params": {
+              "事件总线名": { "type": "string", "required": true, "description": "事件总线名称", "example": "my-bus", "notes": "" }
+            },
+            "keyword": "aws events create-event-bus 创建"
+          },
+          {
+            "name": "列出事件总线",
+            "cmd": "aws events list-event-buses",
+            "params": {},
+            "keyword": "aws events list-event-buses 列表"
+          },
+          {
+            "name": "创建事件规则",
+            "cmd": "aws events put-rule --name %{规则名}% --event-pattern file://%{模式文件}% --event-bus-name %{总线名}%",
+            "params": {
+              "规则名": { "type": "string", "required": true, "description": "规则名称", "example": "my-rule", "notes": "" },
+              "模式文件": { "type": "string", "required": true, "description": "事件模式 JSON 文件", "example": "pattern.json", "notes": "" },
+              "总线名": { "type": "string", "required": true, "description": "事件总线名", "example": "default", "notes": "" }
+            },
+            "keyword": "aws events put-rule 规则"
+          },
+          {
+            "name": "添加 Lambda 目标到规则",
+            "cmd": "aws events put-targets --rule %{规则名}% --event-bus-name %{总线名}% --targets file://%{目标文件}%",
+            "params": {
+              "规则名": { "type": "string", "required": true, "description": "规则名称", "example": "my-rule", "notes": "" },
+              "总线名": { "type": "string", "required": true, "description": "事件总线名", "example": "default", "notes": "" },
+              "目标文件": { "type": "string", "required": true, "description": "目标配置 JSON", "example": "targets.json", "notes": "" }
+            },
+            "keyword": "aws events put-targets 目标"
+          },
+          {
+            "name": "列出所有规则",
+            "cmd": "aws events list-rules",
+            "params": {},
+            "keyword": "aws events list-rules 列表"
+          },
+          {
+            "name": "删除规则",
+            "cmd": "aws events delete-rule --name %{规则名}% --event-bus-name %{总线名}%",
+            "params": {
+              "规则名": { "type": "string", "required": true, "description": "规则名称", "example": "my-rule", "notes": "" },
+              "总线名": { "type": "string", "required": true, "description": "事件总线名", "example": "default", "notes": "" }
+            },
+            "keyword": "aws events delete-rule 删除"
+          },
+          {
+            "name": "发送事件",
+            "cmd": "aws events put-events --entries file://%{事件文件}%",
+            "params": {
+              "事件文件": { "type": "string", "required": true, "description": "事件条目 JSON 文件", "example": "events.json", "notes": "" }
+            },
+            "keyword": "aws events put-events 发送"
+          }
+        ],
+        "params": {
+          "子命令": { "type": "string", "required": true, "description": "EventBridge 子命令", "example": "create-event-bus", "notes": "create-event-bus/list-event-buses/put-rule/put-targets/put-events/delete-rule" }
+        }
+      }
+    }
+  ]
+}

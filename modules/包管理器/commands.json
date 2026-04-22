@@ -1,0 +1,2262 @@
+{
+  "module": "包管理器",
+  "version": "1.0",
+  "description": "非前端语言包管理器完整参考文档，涵盖 Rust/Cargo、Go Modules、PHP/Composer、Ruby/Bundler、Python/pip-tools、Unity/.NET 等主流生态",
+  "commands": [
+    {
+      "dirPath": "/包管理器/",
+      "name": "cargo new 创建新项目",
+      "keyword": "cargo new 创建项目",
+      "description": "创建新的 Rust 项目",
+      "data": {
+        "cmd": "cargo new %{项目名}%",
+        "extensions": [
+          {
+            "name": "创建二进制项目",
+            "cmd": "cargo new %{项目名}%",
+            "params": {},
+            "keyword": "cargo new 二进制"
+          },
+          {
+            "name": "创建库项目",
+            "cmd": "cargo new --lib %{项目名}%",
+            "params": {},
+            "keyword": "cargo new 库"
+          },
+          {
+            "name": "在当前目录创建",
+            "cmd": "cargo new .",
+            "params": {},
+            "keyword": "cargo new 当前目录"
+          },
+          {
+            "name": "指定路径创建",
+            "cmd": "cargo new %{路径}%/%{项目名}%",
+            "params": {},
+            "keyword": "cargo new 指定路径"
+          },
+          {
+            "name": "指定版本",
+            "cmd": "cargo new --edition %{版本}% %{项目名}%",
+            "params": {},
+            "keyword": "cargo new 指定版本"
+          }
+        ],
+        "params": {
+          "项目名": {
+            "type": "string",
+            "required": true,
+            "description": "项目名称",
+            "example": "myproject",
+            "notes": "常用"
+          },
+          "路径": {
+            "type": "string",
+            "required": false,
+            "description": "创建路径",
+            "example": "src",
+            "notes": "可选"
+          },
+          "版本": {
+            "type": "string",
+            "required": false,
+            "description": "Rust 版本",
+            "example": "2021",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "cargo build 编译项目",
+      "keyword": "cargo build 编译",
+      "description": "编译 Rust 项目",
+      "data": {
+        "cmd": "cargo build %{选项}%",
+        "extensions": [
+          {
+            "name": "调试编译",
+            "cmd": "cargo build",
+            "params": {},
+            "keyword": "cargo build 调试"
+          },
+          {
+            "name": "发布编译",
+            "cmd": "cargo build --release",
+            "params": {},
+            "keyword": "cargo build 发布"
+          },
+          {
+            "name": "编译指定包",
+            "cmd": "cargo build --package %{包名}%",
+            "params": {},
+            "keyword": "cargo build 指定包"
+          },
+          {
+            "name": "编译指定目标",
+            "cmd": "cargo build --target %{目标}%",
+            "params": {},
+            "keyword": "cargo build 指定目标"
+          },
+          {
+            "name": "并行编译",
+            "cmd": "cargo build -j %{数量}%",
+            "params": {},
+            "keyword": "cargo build 并行"
+          },
+          {
+            "name": "只检查不生成",
+            "cmd": "cargo check",
+            "params": {},
+            "keyword": "cargo check 检查"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "编译选项",
+            "example": "--release",
+            "notes": "可选"
+          },
+          "包名": {
+            "type": "string",
+            "required": false,
+            "description": "包名称",
+            "example": "mypackage",
+            "notes": "可选"
+          },
+          "目标": {
+            "type": "string",
+            "required": false,
+            "description": "目标平台",
+            "example": "x86_64-unknown-linux-gnu",
+            "notes": "可选"
+          },
+          "数量": {
+            "type": "string",
+            "required": false,
+            "description": "并行任务数",
+            "example": "4",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "cargo run 运行项目",
+      "keyword": "cargo run 运行",
+      "description": "编译并运行 Rust 项目",
+      "data": {
+        "cmd": "cargo run %{选项}%",
+        "extensions": [
+          {
+            "name": "运行项目",
+            "cmd": "cargo run",
+            "params": {},
+            "keyword": "cargo run 运行项目"
+          },
+          {
+            "name": "传递参数",
+            "cmd": "cargo run -- %{参数}%",
+            "params": {},
+            "keyword": "cargo run 传递参数"
+          },
+          {
+            "name": "发布模式运行",
+            "cmd": "cargo run --release",
+            "params": {},
+            "keyword": "cargo run 发布模式"
+          },
+          {
+            "name": "指定示例",
+            "cmd": "cargo run --example %{示例名}%",
+            "params": {},
+            "keyword": "cargo run 示例"
+          },
+          {
+            "name": "运行指定包",
+            "cmd": "cargo run --package %{包名}%",
+            "params": {},
+            "keyword": "cargo run 指定包"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "运行选项",
+            "example": "--release",
+            "notes": "可选"
+          },
+          "参数": {
+            "type": "string",
+            "required": false,
+            "description": "传递给程序的参数",
+            "example": "--help",
+            "notes": "可选"
+          },
+          "示例名": {
+            "type": "string",
+            "required": false,
+            "description": "示例名称",
+            "example": "hello",
+            "notes": "可选"
+          },
+          "包名": {
+            "type": "string",
+            "required": false,
+            "description": "包名称",
+            "example": "mypackage",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "cargo test 运行测试",
+      "keyword": "cargo test 测试",
+      "description": "运行 Rust 项目的测试",
+      "data": {
+        "cmd": "cargo test %{选项}%",
+        "extensions": [
+          {
+            "name": "运行所有测试",
+            "cmd": "cargo test",
+            "params": {},
+            "keyword": "cargo test 全部"
+          },
+          {
+            "name": "运行特定测试",
+            "cmd": "cargo test %{测试名}%",
+            "params": {},
+            "keyword": "cargo test 特定"
+          },
+          {
+            "name": "运行文档测试",
+            "cmd": "cargo test --doc",
+            "params": {},
+            "keyword": "cargo test 文档"
+          },
+          {
+            "name": "显示测试输出",
+            "cmd": "cargo test -- --nocapture",
+            "params": {},
+            "keyword": "cargo test 输出"
+          },
+          {
+            "name": "并行运行",
+            "cmd": "cargo test -- --test-threads=%{数量}%",
+            "params": {},
+            "keyword": "cargo test 并行"
+          },
+          {
+            "name": "运行被忽略测试",
+            "cmd": "cargo test -- --ignored",
+            "params": {},
+            "keyword": "cargo test 忽略"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "测试选项",
+            "example": "--doc",
+            "notes": "可选"
+          },
+          "测试名": {
+            "type": "string",
+            "required": false,
+            "description": "测试名称",
+            "example": "test_add",
+            "notes": "可选"
+          },
+          "数量": {
+            "type": "string",
+            "required": false,
+            "description": "并行线程数",
+            "example": "4",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "cargo bench 运行基准测试",
+      "keyword": "cargo bench 基准测试",
+      "description": "运行 Rust 项目的基准测试",
+      "data": {
+        "cmd": "cargo bench %{选项}%",
+        "extensions": [
+          {
+            "name": "运行所有基准测试",
+            "cmd": "cargo bench",
+            "params": {},
+            "keyword": "cargo bench 全部"
+          },
+          {
+            "name": "运行特定基准测试",
+            "cmd": "cargo bench %{基准测试名}%",
+            "params": {},
+            "keyword": "cargo bench 特定"
+          },
+          {
+            "name": "基准测试并比较",
+            "cmd": "cargo bench -- --compare %{基线}%",
+            "params": {},
+            "keyword": "cargo bench 比较"
+          },
+          {
+            "name": "导出基准数据",
+            "cmd": "cargo bench -- --save-baseline %{基线名}%",
+            "params": {},
+            "keyword": "cargo bench 导出"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "基准测试选项",
+            "example": "-- --nocapture",
+            "notes": "可选"
+          },
+          "基准测试名": {
+            "type": "string",
+            "required": false,
+            "description": "基准测试名称",
+            "example": "bench_sort",
+            "notes": "可选"
+          },
+          "基线": {
+            "type": "string",
+            "required": false,
+            "description": "基线名称",
+            "example": "baseline",
+            "notes": "可选"
+          },
+          "基线名": {
+            "type": "string",
+            "required": false,
+            "description": "保存的基线名称",
+            "example": "main",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "cargo add 添加依赖",
+      "keyword": "cargo add 添加依赖",
+      "description": "向 Cargo.toml 添加依赖",
+      "data": {
+        "cmd": "cargo add %{包名}%",
+        "extensions": [
+          {
+            "name": "添加依赖",
+            "cmd": "cargo add %{包名}%",
+            "params": {},
+            "keyword": "cargo add 添加"
+          },
+          {
+            "name": "添加开发依赖",
+            "cmd": "cargo add %{包名}% --dev",
+            "params": {},
+            "keyword": "cargo add 开发依赖"
+          },
+          {
+            "name": "添加构建依赖",
+            "cmd": "cargo add %{包名}% --build",
+            "params": {},
+            "keyword": "cargo add 构建依赖"
+          },
+          {
+            "name": "指定版本",
+            "cmd": "cargo add %{包名}%@%{版本}%",
+            "params": {},
+            "keyword": "cargo add 版本"
+          },
+          {
+            "name": "添加可选功能",
+            "cmd": "cargo add %{包名}% --features %{功能}%",
+            "params": {},
+            "keyword": "cargo add 功能"
+          },
+          {
+            "name": "添加 Git 依赖",
+            "cmd": "cargo add %{包名}% --git %{git地址}%",
+            "params": {},
+            "keyword": "cargo add Git"
+          },
+          {
+            "name": "添加路径依赖",
+            "cmd": "cargo add %{包名}% --path %{路径}%",
+            "params": {},
+            "keyword": "cargo add 路径"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "包名称",
+            "example": "serde",
+            "notes": "常用"
+          },
+          "版本": {
+            "type": "string",
+            "required": false,
+            "description": "版本号",
+            "example": "1.0",
+            "notes": "可选"
+          },
+          "功能": {
+            "type": "string",
+            "required": false,
+            "description": "功能名称",
+            "example": "derive",
+            "notes": "可选"
+          },
+          "git地址": {
+            "type": "string",
+            "required": false,
+            "description": "Git 仓库地址",
+            "example": "https://github.com/user/repo",
+            "notes": "可选"
+          },
+          "路径": {
+            "type": "string",
+            "required": false,
+            "description": "本地路径",
+            "example": "../mylib",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "cargo remove 移除依赖",
+      "keyword": "cargo remove 移除依赖",
+      "description": "从 Cargo.toml 移除依赖",
+      "data": {
+        "cmd": "cargo remove %{包名}%",
+        "extensions": [
+          {
+            "name": "移除依赖",
+            "cmd": "cargo remove %{包名}%",
+            "params": {},
+            "keyword": "cargo remove 移除"
+          },
+          {
+            "name": "移除开发依赖",
+            "cmd": "cargo remove %{包名}% --dev",
+            "params": {},
+            "keyword": "cargo remove 开发"
+          },
+          {
+            "name": "移除构建依赖",
+            "cmd": "cargo remove %{包名}% --build",
+            "params": {},
+            "keyword": "cargo remove 构建"
+          },
+          {
+            "name": "移除可选功能",
+            "cmd": "cargo remove %{包名}% --features %{功能}%",
+            "params": {},
+            "keyword": "cargo remove 功能"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "包名称",
+            "example": "serde",
+            "notes": "常用"
+          },
+          "功能": {
+            "type": "string",
+            "required": false,
+            "description": "功能名称",
+            "example": "derive",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "cargo clean 清理构建产物",
+      "keyword": "cargo clean 清理",
+      "description": "清理 Rust 项目的构建产物",
+      "data": {
+        "cmd": "cargo clean %{选项}%",
+        "extensions": [
+          {
+            "name": "清理所有构建产物",
+            "cmd": "cargo clean",
+            "params": {},
+            "keyword": "cargo clean 全部"
+          },
+          {
+            "name": "清理并重新构建",
+            "cmd": "cargo clean && cargo build",
+            "params": {},
+            "keyword": "cargo clean 重建"
+          },
+          {
+            "name": "清理指定配置",
+            "cmd": "cargo clean --release",
+            "params": {},
+            "keyword": "cargo clean 发布"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "清理选项",
+            "example": "--release",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "cargo doc 生成文档",
+      "keyword": "cargo doc 生成文档",
+      "description": "生成 Rust 项目的文档",
+      "data": {
+        "cmd": "cargo doc %{选项}%",
+        "extensions": [
+          {
+            "name": "生成项目文档",
+            "cmd": "cargo doc",
+            "params": {},
+            "keyword": "cargo doc 生成"
+          },
+          {
+            "name": "打开文档",
+            "cmd": "cargo doc --open",
+            "params": {},
+            "keyword": "cargo doc 打开"
+          },
+          {
+            "name": "生成依赖文档",
+            "cmd": "cargo doc --document-private-items",
+            "params": {},
+            "keyword": "cargo doc 私有"
+          },
+          {
+            "name": "只生成库文档",
+            "cmd": "cargo doc --lib",
+            "params": {},
+            "keyword": "cargo doc 库"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "文档选项",
+            "example": "--open",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "cargo update 更新依赖",
+      "keyword": "cargo update 更新",
+      "description": "按 semver 规则更新 Cargo.toml 中的依赖",
+      "data": {
+        "cmd": "cargo update %{选项}%",
+        "extensions": [
+          {
+            "name": "更新所有依赖",
+            "cmd": "cargo update",
+            "params": {},
+            "keyword": "cargo update 全部"
+          },
+          {
+            "name": "更新特定包",
+            "cmd": "cargo update %{包名}%",
+            "params": {},
+            "keyword": "cargo update 特定"
+          },
+          {
+            "name": "更新到最新补丁版",
+            "cmd": "cargo update -p %{包名}% --precise %{版本}%",
+            "params": {},
+            "keyword": "cargo update 精确"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "更新选项",
+            "example": "-p serde",
+            "notes": "可选"
+          },
+          "包名": {
+            "type": "string",
+            "required": false,
+            "description": "包名称",
+            "example": "serde",
+            "notes": "可选"
+          },
+          "版本": {
+            "type": "string",
+            "required": false,
+            "description": "版本号",
+            "example": "1.0.150",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "go mod init 初始化模块",
+      "keyword": "go mod init 初始化",
+      "description": "初始化一个新的 Go 模块，创建 go.mod 文件",
+      "data": {
+        "cmd": "go mod init %{模块名}%",
+        "extensions": [
+          {
+            "name": "初始化模块",
+            "cmd": "go mod init %{模块名}%",
+            "params": {},
+            "keyword": "go mod init 模块"
+          },
+          {
+            "name": "初始化带路径",
+            "cmd": "go mod init %{github.com/组织/项目}%",
+            "params": {},
+            "keyword": "go mod init 路径"
+          },
+          {
+            "name": "在已存在项目中初始化",
+            "cmd": "go mod init",
+            "params": {},
+            "keyword": "go mod init 已有"
+          }
+        ],
+        "params": {
+          "模块名": {
+            "type": "string",
+            "required": true,
+            "description": "模块名称",
+            "example": "mymodule",
+            "notes": "常用"
+          },
+          "github.com/组织/项目": {
+            "type": "string",
+            "required": false,
+            "description": "完整模块路径",
+            "example": "github.com/myorg/myproject",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "go mod tidy 整理依赖",
+      "keyword": "go mod tidy 整理",
+      "description": "整理 go.mod，添加缺失依赖，移除未使用依赖",
+      "data": {
+        "cmd": "go mod tidy",
+        "extensions": [
+          {
+            "name": "整理依赖",
+            "cmd": "go mod tidy",
+            "params": {},
+            "keyword": "go mod tidy 整理"
+          },
+          {
+            "name": "详细模式",
+            "cmd": "go mod tidy -v",
+            "params": {},
+            "keyword": "go mod tidy 详细"
+          },
+          {
+            "name": "调试模式",
+            "cmd": "go mod tidy -x",
+            "params": {},
+            "keyword": "go mod tidy 调试"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "go mod download 下载依赖",
+      "keyword": "go mod download 下载",
+      "description": "下载 go.mod 中的所有模块",
+      "data": {
+        "cmd": "go mod download %{模块}%",
+        "extensions": [
+          {
+            "name": "下载所有依赖",
+            "cmd": "go mod download",
+            "params": {},
+            "keyword": "go mod download 全部"
+          },
+          {
+            "name": "下载特定模块",
+            "cmd": "go mod download %{模块名}%",
+            "params": {},
+            "keyword": "go mod download 特定"
+          },
+          {
+            "name": "列出可更新",
+            "cmd": "go mod download -x",
+            "params": {},
+            "keyword": "go mod download 列表"
+          },
+          {
+            "name": "并行下载",
+            "cmd": "go mod download -json",
+            "params": {},
+            "keyword": "go mod download JSON"
+          }
+        ],
+        "params": {
+          "模块": {
+            "type": "string",
+            "required": false,
+            "description": "模块名称",
+            "example": "github.com/gin-gonic/gin",
+            "notes": "可选"
+          },
+          "模块名": {
+            "type": "string",
+            "required": false,
+            "description": "模块名称",
+            "example": "github.com/gin-gonic/gin",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "go get 获取或更新包",
+      "keyword": "go get 获取包",
+      "description": "下载并添加 Go 依赖",
+      "data": {
+        "cmd": "go get %{包}%",
+        "extensions": [
+          {
+            "name": "获取包",
+            "cmd": "go get %{包名}%",
+            "params": {},
+            "keyword": "go get 获取"
+          },
+          {
+            "name": "获取指定版本",
+            "cmd": "go get %{包名}%@%{版本}%",
+            "params": {},
+            "keyword": "go get 版本"
+          },
+          {
+            "name": "获取最新版",
+            "cmd": "go get %{包名}%@latest",
+            "params": {},
+            "keyword": "go get 最新"
+          },
+          {
+            "name": "获取主干",
+            "cmd": "go get %{包名}%@master",
+            "params": {},
+            "keyword": "go get 主干"
+          },
+          {
+            "name": "降级到上一个兼容版本",
+            "cmd": "go get %{包名}%@upgrade",
+            "params": {},
+            "keyword": "go get 升级"
+          },
+          {
+            "name": "获取特定提交",
+            "cmd": "go get %{包名}%@%{commit_hash}%",
+            "params": {},
+            "keyword": "go get 提交"
+          }
+        ],
+        "params": {
+          "包": {
+            "type": "string",
+            "required": true,
+            "description": "包路径",
+            "example": "github.com/gin-gonic/gin",
+            "notes": "常用"
+          },
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "包路径",
+            "example": "github.com/gin-gonic/gin",
+            "notes": "常用"
+          },
+          "版本": {
+            "type": "string",
+            "required": false,
+            "description": "版本标签",
+            "example": "v1.9.0",
+            "notes": "可选"
+          },
+          "commit_hash": {
+            "type": "string",
+            "required": false,
+            "description": "提交哈希",
+            "example": "a1b2c3d",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "go mod why 解释依赖",
+      "keyword": "go mod why 解释",
+      "description": "解释为何需要某 Go 模块",
+      "data": {
+        "cmd": "go mod why %{模块}%",
+        "extensions": [
+          {
+            "name": "解释依赖原因",
+            "cmd": "go mod why %{模块}%",
+            "params": {},
+            "keyword": "go mod why 原因"
+          },
+          {
+            "name": "显示依赖链",
+            "cmd": "go mod why -m %{模块}%",
+            "params": {},
+            "keyword": "go mod why 依赖链"
+          },
+          {
+            "name": "图形化依赖",
+            "cmd": "go mod graph",
+            "params": {},
+            "keyword": "go mod graph 图形"
+          }
+        ],
+        "params": {
+          "模块": {
+            "type": "string",
+            "required": true,
+            "description": "模块名称",
+            "example": "github.com/gin-gonic/gin",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "go mod vendor 管理 vendor",
+      "keyword": "go mod vendor 管理",
+      "description": "将 Go 依赖复制到 vendor 目录",
+      "data": {
+        "cmd": "go mod vendor",
+        "extensions": [
+          {
+            "name": "创建 vendor 目录",
+            "cmd": "go mod vendor",
+            "params": {},
+            "keyword": "go mod vendor 创建"
+          },
+          {
+            "name": "使用 vendor 构建",
+            "cmd": "go build -mod=vendor",
+            "params": {},
+            "keyword": "go mod vendor 构建"
+          },
+          {
+            "name": "清理 vendor",
+            "cmd": "go mod vendor -e",
+            "params": {},
+            "keyword": "go mod vendor 清理"
+          },
+          {
+            "name": "验证 vendor",
+            "cmd": "go mod verify",
+            "params": {},
+            "keyword": "go mod vendor 验证"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "go list 列出包",
+      "keyword": "go list 列出",
+      "description": "列出 Go 包信息",
+      "data": {
+        "cmd": "go list %{包}%",
+        "extensions": [
+          {
+            "name": "列出所有包",
+            "cmd": "go list ./...",
+            "params": {},
+            "keyword": "go list 全部"
+          },
+          {
+            "name": "列出依赖",
+            "cmd": "go list -m all",
+            "params": {},
+            "keyword": "go list 依赖"
+          },
+          {
+            "name": "显示模块信息",
+            "cmd": "go list -m %{模块名}%",
+            "params": {},
+            "keyword": "go list 模块"
+          },
+          {
+            "name": "列出可执行文件",
+            "cmd": "go list -f '{{.Target}}' ./...",
+            "params": {},
+            "keyword": "go list 可执行"
+          }
+        ],
+        "params": {
+          "包": {
+            "type": "string",
+            "required": false,
+            "description": "包路径",
+            "example": "./...",
+            "notes": "可选"
+          },
+          "模块名": {
+            "type": "string",
+            "required": false,
+            "description": "模块名称",
+            "example": "github.com/gin-gonic/gin",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "composer install 安装依赖",
+      "keyword": "composer install 安装",
+      "description": "根据 composer.lock 安装 PHP 依赖",
+      "data": {
+        "cmd": "composer install %{选项}%",
+        "extensions": [
+          {
+            "name": "安装依赖",
+            "cmd": "composer install",
+            "params": {},
+            "keyword": "composer install 依赖"
+          },
+          {
+            "name": "忽略平台要求",
+            "cmd": "composer install --ignore-platform-reqs",
+            "params": {},
+            "keyword": "composer install 忽略平台"
+          },
+          {
+            "name": "仅开发依赖",
+            "cmd": "composer install --dev",
+            "params": {},
+            "keyword": "composer install 开发"
+          },
+          {
+            "name": "无自动加载",
+            "cmd": "composer install --no-autoloader",
+            "params": {},
+            "keyword": "composer install 无加载"
+          },
+          {
+            "name": "无脚本",
+            "cmd": "composer install --no-scripts",
+            "params": {},
+            "keyword": "composer install 无脚本"
+          },
+          {
+            "name": "优化自动加载",
+            "cmd": "composer install --optimize-autoloader",
+            "params": {},
+            "keyword": "composer install 优化"
+          },
+          {
+            "name": "只更新 lock",
+            "cmd": "composer install --lock",
+            "params": {},
+            "keyword": "composer install 锁"
+          },
+          {
+            "name": "预览模式",
+            "cmd": "composer install --dry-run",
+            "params": {},
+            "keyword": "composer install 预览"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "安装选项",
+            "example": "--ignore-platform-reqs",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "composer require 添加依赖",
+      "keyword": "composer require 添加",
+      "description": "向 composer.json 添加 PHP 依赖",
+      "data": {
+        "cmd": "composer require %{包名}%",
+        "extensions": [
+          {
+            "name": "添加生产依赖",
+            "cmd": "composer require %{包名}%",
+            "params": {},
+            "keyword": "composer require 生产"
+          },
+          {
+            "name": "添加开发依赖",
+            "cmd": "composer require --dev %{包名}%",
+            "params": {},
+            "keyword": "composer require 开发"
+          },
+          {
+            "name": "指定版本",
+            "cmd": "composer require %{包名}%:%{版本}%",
+            "params": {},
+            "keyword": "composer require 版本"
+          },
+          {
+            "name": "全局添加",
+            "cmd": "composer global require %{包名}%",
+            "params": {},
+            "keyword": "composer require 全局"
+          },
+          {
+            "name": "更新现有包",
+            "cmd": "composer require %{包名}%:%{版本}% --update-with-dependencies",
+            "params": {},
+            "keyword": "composer require 更新"
+          },
+          {
+            "name": "无脚本",
+            "cmd": "composer require --no-scripts %{包名}%",
+            "params": {},
+            "keyword": "composer require 无脚本"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "包名称",
+            "example": "monolog/monolog",
+            "notes": "常用"
+          },
+          "版本": {
+            "type": "string",
+            "required": false,
+            "description": "版本约束",
+            "example": "^2.0",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "composer update 更新依赖",
+      "keyword": "composer update 更新",
+      "description": "按 semver 更新 PHP 依赖",
+      "data": {
+        "cmd": "composer update %{包名}%",
+        "extensions": [
+          {
+            "name": "更新所有依赖",
+            "cmd": "composer update",
+            "params": {},
+            "keyword": "composer update 全部"
+          },
+          {
+            "name": "更新特定包",
+            "cmd": "composer update %{包名}%",
+            "params": {},
+            "keyword": "composer update 特定"
+          },
+          {
+            "name": "更新到最新",
+            "cmd": "composer update --with-all-dependencies %{包名}%",
+            "params": {},
+            "keyword": "composer update 最新"
+          },
+          {
+            "name": "忽略平台要求",
+            "cmd": "composer update --ignore-platform-reqs",
+            "params": {},
+            "keyword": "composer update 忽略平台"
+          },
+          {
+            "name": "稳定版本",
+            "cmd": "composer update --prefer-stable",
+            "params": {},
+            "keyword": "composer update 稳定"
+          },
+          {
+            "name": "预览更新",
+            "cmd": "composer update --dry-run",
+            "params": {},
+            "keyword": "composer update 预览"
+          },
+          {
+            "name": "锁定到版本",
+            "cmd": "composer update %{包名}% --lock",
+            "params": {},
+            "keyword": "composer update 锁定"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": false,
+            "description": "包名称",
+            "example": "monolog/monolog",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "composer dump-autoload 重新生成自动加载",
+      "keyword": "composer dump-autoload 自动加载",
+      "description": "重新生成 PHP 自动加载文件",
+      "data": {
+        "cmd": "composer dump-autoload %{选项}%",
+        "extensions": [
+          {
+            "name": "重新生成自动加载",
+            "cmd": "composer dump-autoload",
+            "params": {},
+            "keyword": "composer dump-autoload 生成"
+          },
+          {
+            "name": "优化自动加载",
+            "cmd": "composer dump-autoload -o",
+            "params": {},
+            "keyword": "composer dump-autoload 优化"
+          },
+          {
+            "name": "忽略平台要求",
+            "cmd": "composer dump-autoload --ignore-platform-reqs",
+            "params": {},
+            "keyword": "composer dump-autoload 忽略"
+          },
+          {
+            "name": "仅 ClassMap",
+            "cmd": "composer dump-autoload --classmap-authoritative",
+            "params": {},
+            "keyword": "composer dump-autoload ClassMap"
+          },
+          {
+            "name": "优化并预热",
+            "cmd": "composer dump-autoload --optimize --apcu",
+            "params": {},
+            "keyword": "composer dump-autoload 预热"
+          },
+          {
+            "name": "显示自动加载映射",
+            "cmd": "composer dump-autoload --print",
+            "params": {},
+            "keyword": "composer dump-autoload 显示"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "自动加载选项",
+            "example": "-o",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "composer remove 移除依赖",
+      "keyword": "composer remove 移除",
+      "description": "从 composer.json 移除 PHP 依赖",
+      "data": {
+        "cmd": "composer remove %{包名}%",
+        "extensions": [
+          {
+            "name": "移除依赖",
+            "cmd": "composer remove %{包名}%",
+            "params": {},
+            "keyword": "composer remove 移除"
+          },
+          {
+            "name": "移除开发依赖",
+            "cmd": "composer remove --dev %{包名}%",
+            "params": {},
+            "keyword": "composer remove 开发"
+          },
+          {
+            "name": "移除多个",
+            "cmd": "composer remove %{包1}% %{包2}%",
+            "params": {},
+            "keyword": "composer remove 多个"
+          },
+          {
+            "name": "移除并更新",
+            "cmd": "composer remove --update-with-dependencies %{包名}%",
+            "params": {},
+            "keyword": "composer remove 更新"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "包名称",
+            "example": "monolog/monolog",
+            "notes": "常用"
+          },
+          "包1": {
+            "type": "string",
+            "required": false,
+            "description": "第一个包",
+            "example": "monolog/monolog",
+            "notes": "可选"
+          },
+          "包2": {
+            "type": "string",
+            "required": false,
+            "description": "第二个包",
+            "example": "symfony/console",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "composer show 查看包信息",
+      "keyword": "composer show 查看",
+      "description": "查看 PHP 包详细信息",
+      "data": {
+        "cmd": "composer show %{包名}%",
+        "extensions": [
+          {
+            "name": "查看包信息",
+            "cmd": "composer show %{包名}%",
+            "params": {},
+            "keyword": "composer show 信息"
+          },
+          {
+            "name": "列出所有包",
+            "cmd": "composer show --all",
+            "params": {},
+            "keyword": "composer show 全部"
+          },
+          {
+            "name": "查看可用版本",
+            "cmd": "composer show %{包名}% --available",
+            "params": {},
+            "keyword": "composer show 版本"
+          },
+          {
+            "name": "列出过期包",
+            "cmd": "composer show --outdated",
+            "params": {},
+            "keyword": "composer show 过期"
+          },
+          {
+            "name": "查看依赖树",
+            "cmd": "composer show --tree %{包名}%",
+            "params": {},
+            "keyword": "composer show 依赖树"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": false,
+            "description": "包名称",
+            "example": "monolog/monolog",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "bundle install 安装依赖",
+      "keyword": "bundle install 安装",
+      "description": "根据 Gemfile.lock 安装 Ruby 依赖",
+      "data": {
+        "cmd": "bundle install %{选项}%",
+        "extensions": [
+          {
+            "name": "安装依赖",
+            "cmd": "bundle install",
+            "params": {},
+            "keyword": "bundle install 依赖"
+          },
+          {
+            "name": "跳过 Gemfile 更新",
+            "cmd": "bundle install --deployment",
+            "params": {},
+            "keyword": "bundle install 部署"
+          },
+          {
+            "name": "忽略已安装",
+            "cmd": "bundle install --local",
+            "params": {},
+            "keyword": "bundle install 本地"
+          },
+          {
+            "name": "并行安装",
+            "cmd": "bundle install --jobs=%{数量}%",
+            "params": {},
+            "keyword": "bundle install 并行"
+          },
+          {
+            "name": "清理未使用",
+            "cmd": "bundle install --clean",
+            "params": {},
+            "keyword": "bundle install 清理"
+          },
+          {
+            "name": "跳过脚本",
+            "cmd": "bundle install --without %{组名}%",
+            "params": {},
+            "keyword": "bundle install 跳过"
+          },
+          {
+            "name": "详细输出",
+            "cmd": "bundle install --verbose",
+            "params": {},
+            "keyword": "bundle install 详细"
+          },
+          {
+            "name": "预渲染",
+            "cmd": "bundle install --retry %{次数}%",
+            "params": {},
+            "keyword": "bundle install 重试"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "安装选项",
+            "example": "--deployment",
+            "notes": "可选"
+          },
+          "数量": {
+            "type": "string",
+            "required": false,
+            "description": "并行任务数",
+            "example": "4",
+            "notes": "可选"
+          },
+          "组名": {
+            "type": "string",
+            "required": false,
+            "description": "Gem 组名",
+            "example": "development",
+            "notes": "可选"
+          },
+          "次数": {
+            "type": "string",
+            "required": false,
+            "description": "重试次数",
+            "example": "3",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "bundle exec 在 Bundle 环境中执行",
+      "keyword": "bundle exec 执行",
+      "description": "在正确的 gem 环境中运行命令",
+      "data": {
+        "cmd": "bundle exec %{命令}%",
+        "extensions": [
+          {
+            "name": "执行命令",
+            "cmd": "bundle exec %{命令}%",
+            "params": {},
+            "keyword": "bundle exec 命令"
+          },
+          {
+            "name": "执行 Ruby",
+            "cmd": "bundle exec ruby %{脚本}%",
+            "params": {},
+            "keyword": "bundle exec Ruby"
+          },
+          {
+            "name": "执行 Rake",
+            "cmd": "bundle exec rake %{任务}%",
+            "params": {},
+            "keyword": "bundle exec Rake"
+          },
+          {
+            "name": "执行 IRB",
+            "cmd": "bundle exec irb",
+            "params": {},
+            "keyword": "bundle exec IRB"
+          },
+          {
+            "name": "执行 RSpec",
+            "cmd": "bundle exec rspec",
+            "params": {},
+            "keyword": "bundle exec RSpec"
+          },
+          {
+            "name": "执行 Rails",
+            "cmd": "bundle exec rails %{命令}%",
+            "params": {},
+            "keyword": "bundle exec Rails"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "要执行的命令",
+            "example": "ruby script.rb",
+            "notes": "常用"
+          },
+          "脚本": {
+            "type": "string",
+            "required": false,
+            "description": "Ruby 脚本路径",
+            "example": "script.rb",
+            "notes": "可选"
+          },
+          "任务": {
+            "type": "string",
+            "required": false,
+            "description": "Rake 任务名",
+            "example": "db:migrate",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "bundle add 添加 Gem",
+      "keyword": "bundle add 添加",
+      "description": "向 Gemfile 添加 Ruby Gem",
+      "data": {
+        "cmd": "bundle add %{gem名}%",
+        "extensions": [
+          {
+            "name": "添加 Gem",
+            "cmd": "bundle add %{gem名}%",
+            "params": {},
+            "keyword": "bundle add Gem"
+          },
+          {
+            "name": "添加到组",
+            "cmd": "bundle add %{gem名}% --group=%{组名}%",
+            "params": {},
+            "keyword": "bundle add 组"
+          },
+          {
+            "name": "添加开发依赖",
+            "cmd": "bundle add %{gem名}% --group=test --skip-install",
+            "params": {},
+            "keyword": "bundle add 开发"
+          },
+          {
+            "name": "指定版本",
+            "cmd": "bundle add %{gem名}% --version=\"%{版本}\"",
+            "params": {},
+            "keyword": "bundle add 版本"
+          },
+          {
+            "name": "跳过安装",
+            "cmd": "bundle add %{gem名}% --skip-install",
+            "params": {},
+            "keyword": "bundle add 跳过"
+          },
+          {
+            "name": "源指定",
+            "cmd": "bundle add %{gem名}% --source=%{源}%",
+            "params": {},
+            "keyword": "bundle add 源"
+          }
+        ],
+        "params": {
+          "gem名": {
+            "type": "string",
+            "required": true,
+            "description": "Gem 名称",
+            "example": "rails",
+            "notes": "常用"
+          },
+          "组名": {
+            "type": "string",
+            "required": false,
+            "description": "Gem 组名",
+            "example": "development",
+            "notes": "可选"
+          },
+          "版本": {
+            "type": "string",
+            "required": false,
+            "description": "版本约束",
+            "example": "~> 7.0",
+            "notes": "可选"
+          },
+          "源": {
+            "type": "string",
+            "required": false,
+            "description": "Gem 源",
+            "example": "https://rubygems.org",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "bundle update 更新 Gem",
+      "keyword": "bundle update 更新",
+      "description": "更新 Ruby gems 到最新版本",
+      "data": {
+        "cmd": "bundle update %{gem名}%",
+        "extensions": [
+          {
+            "name": "更新所有",
+            "cmd": "bundle update",
+            "params": {},
+            "keyword": "bundle update 全部"
+          },
+          {
+            "name": "更新特定 gem",
+            "cmd": "bundle update %{gem名}%",
+            "params": {},
+            "keyword": "bundle update 特定"
+          },
+          {
+            "name": "更新并处理依赖",
+            "cmd": "bundle update %{gem名}% --conservative",
+            "params": {},
+            "keyword": "bundle update 保守"
+          },
+          {
+            "name": "更新所有指定组",
+            "cmd": "bundle update --group=%{组名}%",
+            "params": {},
+            "keyword": "bundle update 组"
+          },
+          {
+            "name": "完整更新",
+            "cmd": "bundle update --full-index",
+            "params": {},
+            "keyword": "bundle update 完整"
+          },
+          {
+            "name": "预渲染",
+            "cmd": "bundle update --dry-run",
+            "params": {},
+            "keyword": "bundle update 预览"
+          }
+        ],
+        "params": {
+          "gem名": {
+            "type": "string",
+            "required": false,
+            "description": "Gem 名称",
+            "example": "rails",
+            "notes": "可选"
+          },
+          "组名": {
+            "type": "string",
+            "required": false,
+            "description": "Gem 组名",
+            "example": "development",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "bundle list 列出已安装的 Gems",
+      "keyword": "bundle list 列出",
+      "description": "显示已安装的 Ruby gems 列表",
+      "data": {
+        "cmd": "bundle list %{选项}%",
+        "extensions": [
+          {
+            "name": "列出所有 gems",
+            "cmd": "bundle list",
+            "params": {},
+            "keyword": "bundle list 全部"
+          },
+          {
+            "name": "只列出名称",
+            "cmd": "bundle list --only-explicit",
+            "params": {},
+            "keyword": "bundle list 显式"
+          },
+          {
+            "name": "显示路径",
+            "cmd": "bundle list --paths",
+            "params": {},
+            "keyword": "bundle list 路径"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "列表选项",
+            "example": "--paths",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "pip install 安装包",
+      "keyword": "pip install 安装",
+      "description": "从 PyPI 安装 Python 包",
+      "data": {
+        "cmd": "pip install %{包名}%",
+        "extensions": [
+          {
+            "name": "安装包",
+            "cmd": "pip install %{包名}%",
+            "params": {},
+            "keyword": "pip install 包"
+          },
+          {
+            "name": "指定版本",
+            "cmd": "pip install %{包名}%==%{版本}%",
+            "params": {},
+            "keyword": "pip install 版本"
+          },
+          {
+            "name": "从 requirements",
+            "cmd": "pip install -r %{requirements文件}%",
+            "params": {},
+            "keyword": "pip install requirements"
+          },
+          {
+            "name": "升级包",
+            "cmd": "pip install --upgrade %{包名}%",
+            "params": {},
+            "keyword": "pip install 升级"
+          },
+          {
+            "name": "安装到用户目录",
+            "cmd": "pip install --user %{包名}%",
+            "params": {},
+            "keyword": "pip install 用户"
+          },
+          {
+            "name": "忽略已安装",
+            "cmd": "pip install --ignore-installed %{包名}%",
+            "params": {},
+            "keyword": "pip install 忽略"
+          },
+          {
+            "name": "模拟安装",
+            "cmd": "pip install --dry-run %{包名}%",
+            "params": {},
+            "keyword": "pip install 模拟"
+          },
+          {
+            "name": "从 URL 安装",
+            "cmd": "pip install %{git_url}%",
+            "params": {},
+            "keyword": "pip install URL"
+          },
+          {
+            "name": "卸载前先安装",
+            "cmd": "pip install --force-reinstall %{包名}%",
+            "params": {},
+            "keyword": "pip install 强制"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "包名称",
+            "example": "requests",
+            "notes": "常用"
+          },
+          "版本": {
+            "type": "string",
+            "required": false,
+            "description": "版本号",
+            "example": "2.28.0",
+            "notes": "可选"
+          },
+          "requirements文件": {
+            "type": "string",
+            "required": false,
+            "description": "requirements 文件路径",
+            "example": "requirements.txt",
+            "notes": "可选"
+          },
+          "git_url": {
+            "type": "string",
+            "required": false,
+            "description": "Git 仓库地址",
+            "example": "git+https://github.com/user/repo.git",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "pip freeze 导出依赖",
+      "keyword": "pip freeze 导出",
+      "description": "输出所有已安装的 Python 包及版本",
+      "data": {
+        "cmd": "pip freeze %{选项}%",
+        "extensions": [
+          {
+            "name": "导出所有依赖",
+            "cmd": "pip freeze",
+            "params": {},
+            "keyword": "pip freeze 全部"
+          },
+          {
+            "name": "导出到文件",
+            "cmd": "pip freeze > requirements.txt",
+            "params": {},
+            "keyword": "pip freeze 文件"
+          },
+          {
+            "name": "过滤本地包",
+            "cmd": "pip freeze | grep -v \"^#\"",
+            "params": {},
+            "keyword": "pip freeze 过滤"
+          },
+          {
+            "name": "按环境过滤",
+            "cmd": "pip freeze --all",
+            "params": {},
+            "keyword": "pip freeze 环境"
+          },
+          {
+            "name": "显示包信息",
+            "cmd": "pip freeze | grep %{包名}%",
+            "params": {},
+            "keyword": "pip freeze 信息"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "freeze 选项",
+            "example": "--all",
+            "notes": "可选"
+          },
+          "包名": {
+            "type": "string",
+            "required": false,
+            "description": "包名称",
+            "example": "requests",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "pip-compile 编译依赖",
+      "keyword": "pip-compile 编译",
+      "description": "从 requirements.in 生成锁定的 requirements.txt",
+      "data": {
+        "cmd": "pip-compile %{输入文件}%",
+        "extensions": [
+          {
+            "name": "编译依赖",
+            "cmd": "pip-compile requirements.in",
+            "params": {},
+            "keyword": "pip-compile 编译"
+          },
+          {
+            "name": "指定输出",
+            "cmd": "pip-compile requirements.in --output-file requirements.txt",
+            "params": {},
+            "keyword": "pip-compile 输出"
+          },
+          {
+            "name": "冻结版本",
+            "cmd": "pip-compile --generate-hashes requirements.in",
+            "params": {},
+            "keyword": "pip-compile 冻结"
+          },
+          {
+            "name": "使用源码包",
+            "cmd": "pip-compile --allow-unsafe requirements.in",
+            "params": {},
+            "keyword": "pip-compile 源码"
+          },
+          {
+            "name": "预渲染",
+            "cmd": "pip-compile --dry-run requirements.in",
+            "params": {},
+            "keyword": "pip-compile 预览"
+          },
+          {
+            "name": "指定 Python 版本",
+            "cmd": "pip-compile --python-version=%{版本}% requirements.in",
+            "params": {},
+            "keyword": "pip-compile Python版本"
+          },
+          {
+            "name": "合并多个输入",
+            "cmd": "pip-compile requirements.in dev-requirements.in",
+            "params": {},
+            "keyword": "pip-compile 合并"
+          },
+          {
+            "name": "添加注释",
+            "cmd": "pip-compile --annotate requirements.in",
+            "params": {},
+            "keyword": "pip-compile 注释"
+          },
+          {
+            "name": "禁止升级",
+            "cmd": "pip-compile --no-upgrade requirements.in",
+            "params": {},
+            "keyword": "pip-compile 禁止升级"
+          }
+        ],
+        "params": {
+          "输入文件": {
+            "type": "string",
+            "required": true,
+            "description": "输入文件路径",
+            "example": "requirements.in",
+            "notes": "常用"
+          },
+          "版本": {
+            "type": "string",
+            "required": false,
+            "description": "Python 版本",
+            "example": "3.10",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "pip-sync 同步环境",
+      "keyword": "pip-sync 同步",
+      "description": "确保 Python 环境与锁文件完全一致",
+      "data": {
+        "cmd": "pip-sync %{文件}%",
+        "extensions": [
+          {
+            "name": "同步环境",
+            "cmd": "pip-sync requirements.txt",
+            "params": {},
+            "keyword": "pip-sync 环境"
+          },
+          {
+            "name": "删除未使用",
+            "cmd": "pip-sync requirements.txt --pip-args=\"--some-flag\"",
+            "params": {},
+            "keyword": "pip-sync 删除"
+          },
+          {
+            "name": "详细模式",
+            "cmd": "pip-sync --verbose requirements.txt",
+            "params": {},
+            "keyword": "pip-sync 详细"
+          },
+          {
+            "name": "预览模式",
+            "cmd": "pip-sync --dry-run requirements.txt",
+            "params": {},
+            "keyword": "pip-sync 预览"
+          },
+          {
+            "name": "强制安装",
+            "cmd": "pip-sync requirements.txt --force",
+            "params": {},
+            "keyword": "pip-sync 强制"
+          },
+          {
+            "name": "同步多个文件",
+            "cmd": "pip-sync requirements.txt dev-requirements.txt",
+            "params": {},
+            "keyword": "pip-sync 多个"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "requirements 文件路径",
+            "example": "requirements.txt",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "dotnet add package 添加 NuGet 包",
+      "keyword": "dotnet add package 添加",
+      "description": "向 .NET 项目添加 NuGet 包",
+      "data": {
+        "cmd": "dotnet add package %{包名}%",
+        "extensions": [
+          {
+            "name": "添加包",
+            "cmd": "dotnet add package %{包名}%",
+            "params": {},
+            "keyword": "dotnet add 包"
+          },
+          {
+            "name": "指定版本",
+            "cmd": "dotnet add package %{包名}% --version %{版本}%",
+            "params": {},
+            "keyword": "dotnet add 版本"
+          },
+          {
+            "name": "添加到指定项目",
+            "cmd": "dotnet add %{项目路径}% package %{包名}%",
+            "params": {},
+            "keyword": "dotnet add 项目"
+          },
+          {
+            "name": "添加预览版",
+            "cmd": "dotnet add package %{包名}% --prerelease",
+            "params": {},
+            "keyword": "dotnet add 预览"
+          },
+          {
+            "name": "源指定",
+            "cmd": "dotnet add package %{包名}% --source %{源}%",
+            "params": {},
+            "keyword": "dotnet add 源"
+          },
+          {
+            "name": "添加框架特定",
+            "cmd": "dotnet add package %{包名}% -f %{框架}%",
+            "params": {},
+            "keyword": "dotnet add 框架"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "NuGet 包名称",
+            "example": "Newtonsoft.Json",
+            "notes": "常用"
+          },
+          "版本": {
+            "type": "string",
+            "required": false,
+            "description": "版本号",
+            "example": "13.0.1",
+            "notes": "可选"
+          },
+          "项目路径": {
+            "type": "string",
+            "required": false,
+            "description": "项目文件路径",
+            "example": "MyProject.csproj",
+            "notes": "可选"
+          },
+          "源": {
+            "type": "string",
+            "required": false,
+            "description": "NuGet 源",
+            "example": "https://api.nuget.org/v3/index.json",
+            "notes": "可选"
+          },
+          "框架": {
+            "type": "string",
+            "required": false,
+            "description": "目标框架",
+            "example": "net6.0",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "dotnet remove package 移除 NuGet 包",
+      "keyword": "dotnet remove package 移除",
+      "description": "从 .NET 项目移除 NuGet 包",
+      "data": {
+        "cmd": "dotnet remove package %{包名}%",
+        "extensions": [
+          {
+            "name": "移除包",
+            "cmd": "dotnet remove package %{包名}%",
+            "params": {},
+            "keyword": "dotnet remove 包"
+          },
+          {
+            "name": "移除指定项目",
+            "cmd": "dotnet remove %{项目路径}% package %{包名}%",
+            "params": {},
+            "keyword": "dotnet remove 项目"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "NuGet 包名称",
+            "example": "Newtonsoft.Json",
+            "notes": "常用"
+          },
+          "项目路径": {
+            "type": "string",
+            "required": false,
+            "description": "项目文件路径",
+            "example": "MyProject.csproj",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "nuget install 安装包",
+      "keyword": "nuget install 安装",
+      "description": "下载并解压 NuGet 包到当前目录",
+      "data": {
+        "cmd": "nuget install %{包名}%",
+        "extensions": [
+          {
+            "name": "安装包",
+            "cmd": "nuget install %{包名}%",
+            "params": {},
+            "keyword": "nuget install 包"
+          },
+          {
+            "name": "指定版本",
+            "cmd": "nuget install %{包名}% -Version %{版本}%",
+            "params": {},
+            "keyword": "nuget install 版本"
+          },
+          {
+            "name": "指定输出目录",
+            "cmd": "nuget install %{包名}% -OutputDirectory %{目录}%",
+            "params": {},
+            "keyword": "nuget install 目录"
+          },
+          {
+            "name": "排除依赖",
+            "cmd": "nuget install %{包名}% -ExcludeVersion",
+            "params": {},
+            "keyword": "nuget install 排除"
+          },
+          {
+            "name": "安装到工具",
+            "cmd": "nuget install %{工具名}% -Global",
+            "params": {},
+            "keyword": "nuget install 全局"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "NuGet 包名称",
+            "example": "Newtonsoft.Json",
+            "notes": "常用"
+          },
+          "版本": {
+            "type": "string",
+            "required": false,
+            "description": "版本号",
+            "example": "13.0.1",
+            "notes": "可选"
+          },
+          "目录": {
+            "type": "string",
+            "required": false,
+            "description": "输出目录",
+            "example": "packages",
+            "notes": "可选"
+          },
+          "工具名": {
+            "type": "string",
+            "required": false,
+            "description": "工具名称",
+            "example": "dotnet-ef",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "nuget restore 还原包",
+      "keyword": "nuget restore 还原",
+      "description": "还原 .NET 解决方案的所有项目依赖",
+      "data": {
+        "cmd": "nuget restore %{解决方案}%",
+        "extensions": [
+          {
+            "name": "还原解决方案",
+            "cmd": "nuget restore %{解决方案文件}%",
+            "params": {},
+            "keyword": "nuget restore 解决方案"
+          },
+          {
+            "name": "指定包源",
+            "cmd": "nuget restore -Source %{源}%",
+            "params": {},
+            "keyword": "nuget restore 源"
+          },
+          {
+            "name": "包含跳过失败",
+            "cmd": "nuget restore -PackagesDirectory %{目录}%",
+            "params": {},
+            "keyword": "nuget restore 目录"
+          },
+          {
+            "name": "禁用并行",
+            "cmd": "nuget restore -DisableParallelProcessing",
+            "params": {},
+            "keyword": "nuget restore 禁用并行"
+          },
+          {
+            "name": "强制还原",
+            "cmd": "nuget restore -Force",
+            "params": {},
+            "keyword": "nuget restore 强制"
+          },
+          {
+            "name": "详细输出",
+            "cmd": "nuget restore -Verbosity detailed",
+            "params": {},
+            "keyword": "nuget restore 详细"
+          }
+        ],
+        "params": {
+          "解决方案": {
+            "type": "string",
+            "required": true,
+            "description": "解决方案文件路径",
+            "example": "MySolution.sln",
+            "notes": "常用"
+          },
+          "解决方案文件": {
+            "type": "string",
+            "required": false,
+            "description": "解决方案文件路径",
+            "example": "MySolution.sln",
+            "notes": "可选"
+          },
+          "源": {
+            "type": "string",
+            "required": false,
+            "description": "NuGet 源",
+            "example": "https://api.nuget.org/v3/index.json",
+            "notes": "可选"
+          },
+          "目录": {
+            "type": "string",
+            "required": false,
+            "description": "包缓存目录",
+            "example": "packages",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/包管理器/",
+      "name": "nuget pack 打包",
+      "keyword": "nuget pack 打包",
+      "description": "从 nuspec 文件创建 NuGet 包",
+      "data": {
+        "cmd": "nuget pack %{nuspec文件}%",
+        "extensions": [
+          {
+            "name": "打包",
+            "cmd": "nuget pack %{nuspec文件}%",
+            "params": {},
+            "keyword": "nuget pack 打包"
+          },
+          {
+            "name": "包含依赖项目",
+            "cmd": "nuget pack -IncludeReferencedProjects",
+            "params": {},
+            "keyword": "nuget pack 依赖"
+          },
+          {
+            "name": "替换符号",
+            "cmd": "nuget pack -symbols",
+            "params": {},
+            "keyword": "nuget pack 符号"
+          },
+          {
+            "name": "指定版本",
+            "cmd": "nuget pack -Version %{版本}%",
+            "params": {},
+            "keyword": "nuget pack 版本"
+          }
+        ],
+        "params": {
+          "nuspec文件": {
+            "type": "string",
+            "required": true,
+            "description": "nuspec 文件路径",
+            "example": "MyPackage.nuspec",
+            "notes": "常用"
+          },
+          "版本": {
+            "type": "string",
+            "required": false,
+            "description": "版本号",
+            "example": "1.0.0",
+            "notes": "可选"
+          }
+        }
+      }
+    }
+  ]
+}

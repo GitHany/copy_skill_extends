@@ -1,0 +1,788 @@
+{
+  "module": "GraphQL 命令",
+  "version": "1.0",
+  "description": "GraphQL 命令 模块命令集合，覆盖 GraphQL 核心、服务器、客户端、代码生成和操作分析",
+  "commands": [
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "GraphQL Schema 定义 Query 类型",
+      "keyword": "graphql schema query",
+      "description": "定义 GraphQL Schema 中的 Query 类型（查询入口）",
+      "data": {
+        "cmd": "type %{类型名称}% { %{字段1}%: %{类型1}% %{字段2}%: %{类型2}% }",
+        "extensions": [
+          {
+            "name": "带参数的查询字段",
+            "cmd": "%{字段名}%(%{参数名}%: %{参数类型}%): %{返回类型}%",
+            "params": {
+              "字段名": { "type": "string", "required": true, "description": "查询字段名称", "example": "user", "notes": "常用" },
+              "参数名": { "type": "string", "required": true, "description": "参数名称", "example": "id", "notes": "常用" },
+              "参数类型": { "type": "string", "required": true, "description": "参数类型", "example": "ID", "notes": "常用" },
+              "返回类型": { "type": "string", "required": true, "description": "返回类型", "example": "User", "notes": "常用" }
+            },
+            "keyword": "graphql query 参数字段"
+          },
+          {
+            "name": "数组返回类型",
+            "cmd": "%{字段名}%: [%{元素类型}%!]!",
+            "params": {
+              "字段名": { "type": "string", "required": true, "description": "字段名称", "example": "users", "notes": "常用" },
+              "元素类型": { "type": "string", "required": true, "description": "数组元素类型", "example": "User", "notes": "常用" }
+            },
+            "keyword": "graphql query 数组类型"
+          }
+        ],
+        "params": {
+          "类型名称": { "type": "string", "required": true, "description": "类型名称", "example": "Query", "notes": "常用" },
+          "字段1": { "type": "string", "required": true, "description": "字段名称", "example": "id", "notes": "常用" },
+          "类型1": { "type": "string", "required": true, "description": "字段类型", "example": "ID", "notes": "常用" },
+          "字段2": { "type": "string", "required": false, "description": "字段名称", "example": "name", "notes": "" },
+          "类型2": { "type": "string", "required": false, "description": "字段类型", "example": "String", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "GraphQL Schema 定义 Mutation 类型",
+      "keyword": "graphql schema mutation",
+      "description": "定义 GraphQL Schema 中的 Mutation 类型（变更入口）",
+      "data": {
+        "cmd": "type Mutation { %{mutation名称}%(%{参数}%): %{返回类型}% }",
+        "extensions": [
+          {
+            "name": "创建数据 Mutation",
+            "cmd": "create%{实体名}%(%{输入字段}%): %{返回类型}%",
+            "params": {
+              "实体名": { "type": "string", "required": true, "description": "实体名称", "example": "User", "notes": "常用" },
+              "输入字段": { "type": "string", "required": true, "description": "输入字段", "example": "name: String!", "notes": "常用" },
+              "返回类型": { "type": "string", "required": true, "description": "返回类型", "example": "User", "notes": "常用" }
+            },
+            "keyword": "graphql mutation 创建"
+          },
+          {
+            "name": "更新数据 Mutation",
+            "cmd": "update%{实体名}%(%{id}%: ID! %{更新字段}%): %{返回类型}%",
+            "params": {
+              "实体名": { "type": "string", "required": true, "description": "实体名称", "example": "User", "notes": "常用" },
+              "id": { "type": "string", "required": true, "description": "主键字段", "example": "id", "notes": "常用" },
+              "更新字段": { "type": "string", "required": true, "description": "更新字段", "example": "name: String", "notes": "常用" },
+              "返回类型": { "type": "string", "required": true, "description": "返回类型", "example": "User", "notes": "常用" }
+            },
+            "keyword": "graphql mutation 更新"
+          },
+          {
+            "name": "删除数据 Mutation",
+            "cmd": "delete%{实体名}%(%{id}%: ID!): Boolean",
+            "params": {
+              "实体名": { "type": "string", "required": true, "description": "实体名称", "example": "User", "notes": "常用" },
+              "id": { "type": "string", "required": true, "description": "主键字段", "example": "id", "notes": "常用" }
+            },
+            "keyword": "graphql mutation 删除"
+          }
+        ],
+        "params": {
+          "mutation名称": { "type": "string", "required": true, "description": "Mutation 名称", "example": "createUser", "notes": "常用" },
+          "参数": { "type": "string", "required": true, "description": "参数列表", "example": "name: String!", "notes": "常用" },
+          "返回类型": { "type": "string", "required": true, "description": "返回类型", "example": "User", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "GraphQL Schema 定义 Subscription 类型",
+      "keyword": "graphql schema subscription",
+      "description": "定义 GraphQL Schema 中的 Subscription 类型（实时订阅入口）",
+      "data": {
+        "cmd": "type Subscription { %{subscription名称}%(%{参数}%): %{返回类型}% }",
+        "extensions": [
+          {
+            "name": "监听数据变化",
+            "cmd": "%{实体名}%Created: %{实体名}%",
+            "params": {
+              "实体名": { "type": "string", "required": true, "description": "实体名称", "example": "User", "notes": "常用" }
+            },
+            "keyword": "graphql subscription 创建事件"
+          },
+          {
+            "name": "监听更新事件",
+            "cmd": "%{实体名}%Updated: %{实体名}%",
+            "params": {
+              "实体名": { "type": "string", "required": true, "description": "实体名称", "example": "User", "notes": "常用" }
+            },
+            "keyword": "graphql subscription 更新事件"
+          }
+        ],
+        "params": {
+          "subscription名称": { "type": "string", "required": true, "description": "Subscription 名称", "example": "userAdded", "notes": "常用" },
+          "参数": { "type": "string", "required": false, "description": "订阅参数", "example": "roomId: ID", "notes": "" },
+          "返回类型": { "type": "string", "required": true, "description": "返回类型", "example": "User", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "GraphQL Input 类型定义",
+      "keyword": "graphql input 类型",
+      "description": "定义 GraphQL Input 类型（用于 Mutations 输入参数）",
+      "data": {
+        "cmd": "input %{input名称}% { %{字段1}%: %{类型1}% %{字段2}%: %{类型2}% }",
+        "extensions": [
+          {
+            "name": "嵌套 Input 类型",
+            "cmd": "input %{input名称}% { %{字段}%: %{嵌套input}%! }",
+            "params": {
+              "input名称": { "type": "string", "required": true, "description": "Input 类型名称", "example": "CreateUserInput", "notes": "常用" },
+              "字段": { "type": "string", "required": true, "description": "字段名称", "example": "profile", "notes": "" },
+              "嵌套input": { "type": "string", "required": true, "description": "嵌套的 Input 类型", "example": "ProfileInput", "notes": "" }
+            },
+            "keyword": "graphql input 嵌套"
+          }
+        ],
+        "params": {
+          "input名称": { "type": "string", "required": true, "description": "Input 类型名称", "example": "CreateUserInput", "notes": "常用" },
+          "字段1": { "type": "string", "required": true, "description": "字段名称", "example": "name", "notes": "常用" },
+          "类型1": { "type": "string", "required": true, "description": "字段类型", "example": "String!", "notes": "常用" },
+          "字段2": { "type": "string", "required": false, "description": "字段名称", "example": "email", "notes": "" },
+          "类型2": { "type": "string", "required": false, "description": "字段类型", "example": "String", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "GraphQL Enum 类型定义",
+      "keyword": "graphql enum 类型",
+      "description": "定义 GraphQL Enum 枚举类型",
+      "data": {
+        "cmd": "enum %{enum名称}% { %{值1}% %{值2}% %{值3}% }",
+        "extensions": [
+          {
+            "name": "Enum 用作字段类型",
+            "cmd": "%{字段名}%: %{enum名称}%",
+            "params": {
+              "字段名": { "type": "string", "required": true, "description": "字段名称", "example": "status", "notes": "常用" },
+              "enum名称": { "type": "string", "required": true, "description": "Enum 类型名称", "example": "UserStatus", "notes": "常用" }
+            },
+            "keyword": "graphql enum 字段类型"
+          }
+        ],
+        "params": {
+          "enum名称": { "type": "string", "required": true, "description": "Enum 类型名称", "example": "UserStatus", "notes": "常用" },
+          "值1": { "type": "string", "required": true, "description": "枚举值", "example": "ACTIVE", "notes": "常用" },
+          "值2": { "type": "string", "required": true, "description": "枚举值", "example": "INACTIVE", "notes": "常用" },
+          "值3": { "type": "string", "required": false, "description": "枚举值", "example": "PENDING", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "GraphQL Interface 定义",
+      "keyword": "graphql interface 接口",
+      "description": "定义 GraphQL Interface 接口类型",
+      "data": {
+        "cmd": "interface %{interface名称}% { %{字段1}%: %{类型1}% %{字段2}%: %{类型2}% }",
+        "extensions": [
+          {
+            "name": "类型实现接口",
+            "cmd": "type %{类型名}% implements %{interface名}% { %{字段列表}% }",
+            "params": {
+              "类型名": { "type": "string", "required": true, "description": "实现类型名称", "example": "User", "notes": "常用" },
+              "interface名": { "type": "string", "required": true, "description": "接口名称", "example": "Node", "notes": "常用" },
+              "字段列表": { "type": "string", "required": true, "description": "字段列表", "example": "id: ID!", "notes": "常用" }
+            },
+            "keyword": "graphql implements 接口"
+          },
+          {
+            "name": "Union 类型组合接口",
+            "cmd": "union %{union名}% = %{类型1}% | %{类型2}%",
+            "params": {
+              "union名": { "type": "string", "required": true, "description": "Union 类型名称", "example": "SearchResult", "notes": "常用" },
+              "类型1": { "type": "string", "required": true, "description": "第一个成员类型", "example": "User", "notes": "常用" },
+              "类型2": { "type": "string", "required": true, "description": "第二个成员类型", "example": "Post", "notes": "常用" }
+            },
+            "keyword": "graphql union 联合类型"
+          }
+        ],
+        "params": {
+          "interface名称": { "type": "string", "required": true, "description": "接口名称", "example": "Node", "notes": "常用" },
+          "字段1": { "type": "string", "required": true, "description": "字段名称", "example": "id", "notes": "常用" },
+          "类型1": { "type": "string", "required": true, "description": "字段类型", "example": "ID!", "notes": "常用" },
+          "字段2": { "type": "string", "required": false, "description": "字段名称", "example": "createdAt", "notes": "" },
+          "类型2": { "type": "string", "required": false, "description": "字段类型", "example": "String", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "Apollo Server 启动服务",
+      "keyword": "apollo-server 启动 graphql",
+      "description": "使用 Apollo Server 创建 GraphQL 服务端",
+      "data": {
+        "cmd": "npx apollo-server %{文件路径}%",
+        "extensions": [
+          {
+            "name": "指定端口启动",
+            "cmd": "PORT=%{端口}% npx apollo-server %{文件路径}%",
+            "params": {
+              "端口": { "type": "string", "required": true, "description": "端口号", "example": "4000", "notes": "常用" },
+              "文件路径": { "type": "string", "required": true, "description": "GraphQL 文件路径", "example": "src/index.ts", "notes": "常用" }
+            },
+            "keyword": "apollo-server 指定端口"
+          },
+          {
+            "name": "安装 Apollo Server",
+            "cmd": "npm install @apollo/server graphql",
+            "params": {},
+            "keyword": "apollo-server 安装"
+          }
+        ],
+        "params": {
+          "文件路径": { "type": "string", "required": true, "description": "GraphQL 文件路径", "example": "src/index.ts", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "graphql-yoga 创建服务",
+      "keyword": "graphql-yoga 服务器",
+      "description": "使用 graphql-yoga 创建轻量级 GraphQL 服务器",
+      "data": {
+        "cmd": "npx create-gateway",
+        "extensions": [
+          {
+            "name": "安装 graphql-yoga",
+            "cmd": "npm install graphql-yoga",
+            "params": {},
+            "keyword": "graphql-yoga 安装"
+          },
+          {
+            "name": "创建 Yoga 服务",
+            "cmd": "import { createServer } from 'node:http'; import { createYoga } from 'graphql-yoga'; const yoga = createYoga({ schema }); createServer(yoga).listen(%{端口}%, () => console.log('Server running'))",
+            "params": {
+              "端口": { "type": "string", "required": true, "description": "端口号", "example": "4000", "notes": "常用" }
+            },
+            "keyword": "graphql-yoga 创建服务"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "graphql-tools Schema 合并",
+      "keyword": "graphql-tools 合并 schema",
+      "description": "使用 graphql-tools 的 mergeSchemas 合并多个子 Schema",
+      "data": {
+        "cmd": "import { mergeSchemas } from '@graphql-tools/schema'; const schema = mergeSchemas({ schemas: [%{schema1}%, %{schema2}%] });",
+        "extensions": [
+          {
+            "name": "Schema 委托",
+            "cmd": "import { delegateToSchema } from '@graphql-tools/delegate'; delegateToSchema({ schema: %{targetSchema}%, operation: 'query', fieldName: '%{field}%', args: %{args}%, context: %{ctx}%, info: %{info}% });",
+            "params": {
+              "targetSchema": { "type": "string", "required": true, "description": "目标 Schema 名称", "example": "userSchema", "notes": "常用" },
+              "field": { "type": "string", "required": true, "description": "字段名称", "example": "user", "notes": "常用" },
+              "args": { "type": "string", "required": true, "description": "参数字对象", "example": "{ id: '1' }", "notes": "常用" },
+              "ctx": { "type": "string", "required": true, "description": "上下文对象变量名", "example": "ctx", "notes": "" },
+              "info": { "type": "string", "required": true, "description": "GraphQL 执行信息变量名", "example": "info", "notes": "" }
+            },
+            "keyword": "graphql-tools 委托 schema"
+          },
+          {
+            "name": "Schema 转换",
+            "cmd": "import { transformSchema } from '@graphql-tools/delegate'; import { RenameTypes } from '@graphql-tools/wrap'; const transformed = transformSchema(%{schema}%, [new RenameTypes(%{renamer}%)]);",
+            "params": {
+              "schema": { "type": "string", "required": true, "description": "源 Schema 变量名", "example": "schema", "notes": "常用" },
+              "renamer": { "type": "string", "required": true, "description": "类型重命名函数", "example": "(name) => `_${name}`", "notes": "" }
+            },
+            "keyword": "graphql-tools schema 转换"
+          }
+        ],
+        "params": {
+          "schema1": { "type": "string", "required": true, "description": "第一个 Schema 变量名", "example": "userSchema", "notes": "常用" },
+          "schema2": { "type": "string", "required": true, "description": "第二个 Schema 变量名", "example": "postSchema", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "Prisma GraphQL 初始化",
+      "keyword": "prisma graphql 初始化",
+      "description": "初始化 Prisma 并生成 GraphQL CRUD API",
+      "data": {
+        "cmd": "npx prisma init",
+        "extensions": [
+          {
+            "name": "生成 Prisma Client",
+            "cmd": "npx prisma generate",
+            "params": {},
+            "keyword": "prisma generate 生成"
+          },
+          {
+            "name": "创建 Prisma Schema",
+            "cmd": "npx prisma migrate dev --name %{migration名称}%",
+            "params": {
+              "migration名称": { "type": "string", "required": true, "description": "迁移名称", "example": "init_users", "notes": "常用" }
+            },
+            "keyword": "prisma migrate 创建"
+          },
+          {
+            "name": "应用数据库迁移",
+            "cmd": "npx prisma migrate deploy",
+            "params": {},
+            "keyword": "prisma migrate 部署"
+          },
+          {
+            "name": "Prisma Studio 可视化",
+            "cmd": "npx prisma studio",
+            "params": {},
+            "keyword": "prisma studio 可视化"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "Apollo Client 初始化",
+      "keyword": "apollo client 初始化",
+      "description": "在客户端项目中初始化 Apollo Client",
+      "data": {
+        "cmd": "npm install @apollo/client graphql",
+        "extensions": [
+          {
+            "name": "创建 Apollo Client 实例",
+            "cmd": "import { ApolloClient, InMemoryCache } from '@apollo/client'; const client = new ApolloClient({ uri: '%{graphql端点}%', cache: new InMemoryCache() });",
+            "params": {
+              "graphql端点": { "type": "string", "required": true, "description": "GraphQL 服务端点 URL", "example": "http://localhost:4000/graphql", "notes": "常用" }
+            },
+            "keyword": "apollo client 实例"
+          },
+          {
+            "name": "使用 useQuery Hook",
+            "cmd": "const { data, loading, error } = useQuery(gql`%{gql查询}%`);",
+            "params": {
+              "gql查询": { "type": "string", "required": true, "description": "GraphQL 查询字符串", "example": "{ users { id name } }", "notes": "常用" }
+            },
+            "keyword": "apollo useQuery 查询"
+          },
+          {
+            "name": "使用 useMutation Hook",
+            "cmd": "const [createUser] = useMutation(gql`mutation CreateUser($name: String!) { createUser(name: $name) { id name } }`);",
+            "params": {},
+            "keyword": "apollo useMutation 变更"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "urql 初始化",
+      "keyword": "urql graphql 客户端",
+      "description": "初始化轻量级 urql GraphQL 客户端",
+      "data": {
+        "cmd": "npm install urql graphql",
+        "extensions": [
+          {
+            "name": "创建 urql Client",
+            "cmd": "import { createClient } from 'urql'; const client = createClient({ url: '%{graphql端点}%' });",
+            "params": {
+              "graphql端点": { "type": "string", "required": true, "description": "GraphQL 服务端点 URL", "example": "http://localhost:4000/graphql", "notes": "常用" }
+            },
+            "keyword": "urql client 创建"
+          },
+          {
+            "name": "执行查询",
+            "cmd": "const [result] = await client.query(`query { %{query}% }`).toPromise();",
+            "params": {
+              "query": { "type": "string", "required": true, "description": "GraphQL 查询字段", "example": "users { id name }", "notes": "常用" }
+            },
+            "keyword": "urql query 查询"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "GraphQL 请求（Fetch）",
+      "keyword": "fetch graphql 请求",
+      "description": "使用原生 Fetch 发送 GraphQL 请求",
+      "data": {
+        "cmd": "fetch('%{endpoint}%', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query: `%{query}%`, variables: %{variables}% }) }).then(res => res.json()).then(data => console.log(data));",
+        "extensions": [
+          {
+            "name": "带 Authorization 头的请求",
+            "cmd": "fetch('%{endpoint}%', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer %{token}%' }, body: JSON.stringify({ query: `%{query}%` }) }).then(res => res.json());",
+            "params": {
+              "endpoint": { "type": "string", "required": true, "description": "GraphQL 端点", "example": "http://localhost:4000/graphql", "notes": "常用" },
+              "token": { "type": "string", "required": true, "description": "JWT Token", "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...", "notes": "常用" },
+              "query": { "type": "string", "required": true, "description": "GraphQL 查询", "example": "{ users { id name } }", "notes": "常用" }
+            },
+            "keyword": "fetch graphql 认证"
+          }
+        ],
+        "params": {
+          "endpoint": { "type": "string", "required": true, "description": "GraphQL 端点 URL", "example": "http://localhost:4000/graphql", "notes": "常用" },
+          "query": { "type": "string", "required": true, "description": "GraphQL 查询或变更语句", "example": "{ users { id name } }", "notes": "常用" },
+          "variables": { "type": "string", "required": false, "description": "变量对象 JSON 字符串", "example": "{ \"name\": \"Alice\" }", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "GraphQL 请求（Axios）",
+      "keyword": "axios graphql 请求",
+      "description": "使用 Axios 发送 GraphQL 请求",
+      "data": {
+        "cmd": "import axios from 'axios'; axios.post('%{endpoint}%', { query: `%{query}%`, variables: %{variables}% }).then(res => console.log(res.data));",
+        "extensions": [
+          {
+            "name": "带错误处理的 Axios 请求",
+            "cmd": "import axios from 'axios'; axios.post('%{endpoint}%', { query: `%{query}%` }).then(res => res.data).catch(err => console.error(err.response?.data || err.message));",
+            "params": {
+              "endpoint": { "type": "string", "required": true, "description": "GraphQL 端点", "example": "http://localhost:4000/graphql", "notes": "常用" },
+              "query": { "type": "string", "required": true, "description": "GraphQL 查询", "example": "query GetUser($id: ID!) { user(id: $id) { id name } }", "notes": "常用" }
+            },
+            "keyword": "axios graphql 错误处理"
+          }
+        ],
+        "params": {
+          "endpoint": { "type": "string", "required": true, "description": "GraphQL 端点 URL", "example": "http://localhost:4000/graphql", "notes": "常用" },
+          "query": { "type": "string", "required": true, "description": "GraphQL 查询或变更", "example": "{ users { id name } }", "notes": "常用" },
+          "variables": { "type": "string", "required": false, "description": "变量对象 JSON", "example": "{ \"name\": \"Alice\" }", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "graphql-codegen 初始化",
+      "keyword": "graphql-codegen 代码生成",
+      "description": "初始化 GraphQL Code Generator 并生成类型定义",
+      "data": {
+        "cmd": "npx graphql-codegen init",
+        "extensions": [
+          {
+            "name": "安装 GraphQL Code Generator",
+            "cmd": "npm install -D @graphql-codegen/cli @graphql-codegen/typescript @graphql-codegen/typescript-resolvers",
+            "params": {},
+            "keyword": "graphql-codegen 安装"
+          },
+          {
+            "name": "生成 TypeScript 类型",
+            "cmd": "npx graphql-codegen",
+            "params": {},
+            "keyword": "graphql-codegen 生成类型"
+          },
+          {
+            "name": "生成 Apollo Client Hooks",
+            "cmd": "npm install -D @graphql-codegen/typescript-apollo-hooks",
+            "params": {},
+            "keyword": "graphql-codegen apollo hooks"
+          },
+          {
+            "name": "生成 urql Hooks",
+            "cmd": "npm install -D @graphql-codegen/typescript-urql",
+            "params": {},
+            "keyword": "graphql-codegen urql"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "Apollo Kotlin Codegen",
+      "keyword": "apollo kotlin codegen",
+      "description": "在 Android/Kotlin 项目中使用 Apollo Kotlin 生成 GraphQL 类型",
+      "data": {
+        "cmd": "./gradlew Apollo:generate%sApollo%Files",
+        "extensions": [
+          {
+            "name": "添加 Apollo Kotlin 依赖",
+            "cmd": "plugins { id 'com.apollographql.apollo3' version '%{version}%' }",
+            "params": {
+              "version": { "type": "string", "required": true, "description": "Apollo Kotlin 版本", "example": "3.8.2", "notes": "常用" }
+            },
+            "keyword": "apollo kotlin 依赖"
+          },
+          {
+            "name": "配置 Apollo Kotlin Gradle",
+            "cmd": "apollo { service(\"%{service名}%\") { packageName.set(\"%{包名}%\") } }",
+            "params": {
+              "service名": { "type": "string", "required": true, "description": "服务名称", "example": "service", "notes": "常用" },
+              "包名": { "type": "string", "required": true, "description": "生成的包名", "example": "com.example.graphql", "notes": "常用" }
+            },
+            "keyword": "apollo kotlin gradle 配置"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "GraphQL Playground 启动",
+      "keyword": "graphql playground 启动",
+      "description": "启动 GraphQL Playground（Apollo Server 2.x 内置）",
+      "data": {
+        "cmd": "npx graphql-playground %{端口}%",
+        "extensions": [
+          {
+            "name": "指定端点启动",
+            "cmd": "npx graphql-playground -e %{endpoint}%",
+            "params": {
+              "endpoint": { "type": "string", "required": true, "description": "GraphQL 端点 URL", "example": "http://localhost:4000/graphql", "notes": "常用" }
+            },
+            "keyword": "graphql playground 端点"
+          },
+          {
+            "name": "安装 GraphQL Playground",
+            "cmd": "npm install -D graphql-playground-middleware-express",
+            "params": {},
+            "keyword": "graphql playground 安装"
+          }
+        ],
+        "params": {
+          "端口": { "type": "string", "required": true, "description": "服务端口", "example": "4000", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "GraphiQL 启动",
+      "keyword": "graphiql 启动 graphql",
+      "description": "启动 GraphiQL 浏览器内工具进行 GraphQL 查询",
+      "data": {
+        "cmd": "npx graphiql",
+        "extensions": [
+          {
+            "name": "指定端点",
+            "cmd": "npx graphiql -u %{endpoint}%",
+            "params": {
+              "endpoint": { "type": "string", "required": true, "description": "GraphQL 端点 URL", "example": "http://localhost:4000/graphql", "notes": "常用" }
+            },
+            "keyword": "graphiql 指定端点"
+          },
+          {
+            "name": "Express 中间件方式",
+            "cmd": "import graphiqlMiddleware from 'graphiql-middleware'; app.use('/graphiql', graphiqlMiddleware({ endpointURL: '%{endpoint}%' }));",
+            "params": {
+              "endpoint": { "type": "string", "required": true, "description": "GraphQL 端点", "example": "/graphql", "notes": "常用" }
+            },
+            "keyword": "graphiql express 中间件"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "Postman GraphQL 请求",
+      "keyword": "postman graphql 请求",
+      "description": "在 Postman 中发送 GraphQL 请求",
+      "data": {
+        "cmd": "POST %{endpoint}%\\nContent-Type: application/json\\n\\n{ \"query\": \"%{query}%\" }",
+        "extensions": [
+          {
+            "name": "Postman GraphQL Body 设置",
+            "cmd": "选择 Body 类型为 'GraphQL'，在 Query 编辑器中输入 GraphQL 查询，在 Variables 中输入变量",
+            "params": {},
+            "keyword": "postman graphql body"
+          }
+        ],
+        "params": {
+          "endpoint": { "type": "string", "required": true, "description": "GraphQL 请求端点 URL", "example": "http://localhost:4000/graphql", "notes": "常用" },
+          "query": { "type": "string", "required": true, "description": "GraphQL 查询语句", "example": "{ users { id name } }", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "GraphQL Introspection 查询",
+      "keyword": "graphql introspection 查询",
+      "description": "执行 GraphQL Introspection 查询获取 Schema 元数据",
+      "data": {
+        "cmd": "POST %{endpoint}%\\nContent-Type: application/json\\n\\n{ \"query\": \"{ __schema { types { name kind description fields { name type { name kind } } } } }\" }",
+        "extensions": [
+          {
+            "name": "查询所有类型",
+            "cmd": "{ \"query\": \"{ __schema { types { name kind } } }\" }",
+            "params": {},
+            "keyword": "graphql schema types 类型"
+          },
+          {
+            "name": "查询特定类型字段",
+            "cmd": "{ \"query\": \"{ __type(name: \\\"%{typeName}%\\\") { name fields { name type { name kind ofType { name } } } } }\" }",
+            "params": {
+              "typeName": { "type": "string", "required": true, "description": "类型名称", "example": "User", "notes": "常用" }
+            },
+            "keyword": "graphql introspection 字段"
+          },
+          {
+            "name": "禁用 Introspection（生产环境）",
+            "cmd": "apollo-server { introspection: false }",
+            "params": {},
+            "keyword": "graphql 禁用 introspection"
+          }
+        ],
+        "params": {
+          "endpoint": { "type": "string", "required": true, "description": "GraphQL 服务端点", "example": "http://localhost:4000/graphql", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "GraphQL 查询复杂度分析",
+      "keyword": "graphql 查询复杂度 cost analysis",
+      "description": "使用 graphql-query-complexity 分析查询成本",
+      "data": {
+        "cmd": "npm install graphql-query-complexity",
+        "extensions": [
+          {
+            "name": "配置最大复杂度",
+            "cmd": "import { createComplexityLimitRule } from 'graphql-query-complexity'; const rule = createComplexityLimitRule(%{limit}%, { formatErrorMessage: (ctx) => `复杂度 ${ctx.score} 超过限制 ${%{limit}%}` });",
+            "params": {
+              "limit": { "type": "string", "required": true, "description": "最大复杂度阈值", "example": "1000", "notes": "常用" }
+            },
+            "keyword": "graphql complexity 限制"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "GraphQL 速率限制",
+      "keyword": "graphql rate limiting 限流",
+      "description": "为 GraphQL 服务配置速率限制",
+      "data": {
+        "cmd": "import { createRateLimitRule } from 'graphql-rate-limit'; const rule = createRateLimitRule({ identifyContext: (ctx) => ctx.ip });",
+        "extensions": [
+          {
+            "name": "应用速率限制指令",
+            "cmd": "@rateLimit(limit: %{limit}% duration: %{duration}%)",
+            "params": {
+              "limit": { "type": "string", "required": true, "description": "限制次数", "example": "10", "notes": "常用" },
+              "duration": { "type": "string", "required": true, "description": "时间窗口（秒）", "example": "60", "notes": "常用" }
+            },
+            "keyword": "graphql rate limit 指令"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "GraphQL SDL Schema 文件验证",
+      "keyword": "graphql sdl schema 验证",
+      "description": "使用 graphql 库验证 SDL Schema 文件",
+      "data": {
+        "cmd": "node -e \"const { buildSchema } = require('graphql'); buildSchema(require('fs').readFileSync('%{schema文件}%', 'utf8')); console.log('Schema valid');\"",
+        "extensions": [
+          {
+            "name": "从 SDL 生成可执行 Schema",
+            "cmd": "node -e \"const { buildSchema, makeExecutableSchema } = require('@graphql-tools/schema'); const schema = makeExecutableSchema({ typeDefs: require('fs').readFileSync('%{file}%', 'utf8') });\"",
+            "params": {
+              "file": { "type": "string", "required": true, "description": "Schema SDL 文件路径", "example": "./schema.graphql", "notes": "常用" }
+            },
+            "keyword": "graphql makeExecutableSchema"
+          },
+          {
+            "name": "验证 Schema 类型一致性",
+            "cmd": "node -e \"const { validate } = require('graphql'); const schema = require('./generated/schema'); const errors = validate(schema, parse(require('fs').readFileSync('%{queryFile}%', 'utf8'))); if(errors.length) console.error(errors); else console.log('Valid');\"",
+            "params": {
+              "queryFile": { "type": "string", "required": true, "description": "查询文件路径", "example": "./query.graphql", "notes": "常用" }
+            },
+            "keyword": "graphql validate schema"
+          }
+        ],
+        "params": {
+          "schema文件": { "type": "string", "required": true, "description": "Schema SDL 文件路径", "example": "./schema.graphql", "notes": "常用" }
+        }
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "Insomnia GraphQL 请求",
+      "keyword": "insomnia graphql 请求",
+      "description": "在 Insomnia 中配置和发送 GraphQL 请求",
+      "data": {
+        "cmd": "POST %{endpoint}%\\nContent-Type: application/json\\n\\n{ \"query\": \"%{query}%\", \"variables\": %{variables}% }",
+        "extensions": [
+          {
+            "name": "Insomnia 中导入 Schema",
+            "cmd": "在 Insomnia 中: 新建 Request -> 选择 'GraphQL' 类型 -> 在 'Schema' 标签页粘贴 Schema SDL 或导入 .graphql 文件",
+            "params": {},
+            "keyword": "insomnia 导入 schema"
+          },
+          {
+            "name": "Insomnia 环境变量配置",
+            "cmd": "在 Insomnia Environment 中设置: { \"base_url\": \"http://localhost:4000\", \"graphql_endpoint\": \"{{ base_url }}/graphql\" }",
+            "params": {},
+            "keyword": "insomnia graphql 环境变量"
+          }
+        ],
+        "params": {
+          "endpoint": { "type": "string", "required": true, "description": "GraphQL 端点 URL", "example": "http://localhost:4000/graphql", "notes": "常用" },
+          "query": { "type": "string", "required": true, "description": "GraphQL 查询", "example": "{ users { id name } }", "notes": "常用" },
+          "variables": { "type": "string", "required": false, "description": "变量 JSON 对象", "example": "{}", "notes": "" }
+        }
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "Apollo Federation 配置",
+      "keyword": "apollo federation graph 联合",
+      "description": "使用 Apollo Federation 构建分布式 GraphQL 超图",
+      "data": {
+        "cmd": "npm install @apollo/subgraph",
+        "extensions": [
+          {
+            "name": "定义 Entity 扩展类型",
+            "cmd": "extend type %{typeName}% @key(fields: \"%{keyFields}%\") { %{keyFields}%: %{keyType}% @external }",
+            "params": {
+              "typeName": { "type": "string", "required": true, "description": "类型名称", "example": "User", "notes": "常用" },
+              "keyFields": { "type": "string", "required": true, "description": "主键字段", "example": "id", "notes": "常用" },
+              "keyType": { "type": "string", "required": true, "description": "主键字段类型", "example": "ID", "notes": "常用" }
+            },
+            "keyword": "apollo federation entity"
+          },
+          {
+            "name": "引用远程类型",
+            "cmd": "type %{Type}% @extends @key(fields: \"%{fields}%\") { %{fields}%: %{type}% @external }",
+            "params": {
+              "Type": { "type": "string", "required": true, "description": "类型名称", "example": "User", "notes": "常用" },
+              "fields": { "type": "string", "required": true, "description": "键字段", "example": "id", "notes": "常用" },
+              "type": { "type": "string", "required": true, "description": "字段类型", "example": "ID", "notes": "常用" }
+            },
+            "keyword": "apollo federation extends"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/GraphQL 命令/",
+      "name": "DataLoader 批量加载",
+      "keyword": "dataloader 批量加载 graphql",
+      "description": "使用 DataLoader 解决 GraphQL N+1 查询问题",
+      "data": {
+        "cmd": "npm install dataloader",
+        "extensions": [
+          {
+            "name": "创建 User Loader",
+            "cmd": "import DataLoader from 'dataloader'; const userLoader = new DataLoader(keys => batchGetUsers(keys)); async function batchGetUsers(keys) { const users = await db.users.findMany({ where: { id: { in: keys } } }); return keys.map(k => users.find(u => u.id === k)); }",
+            "params": {},
+            "keyword": "dataloader 用户加载"
+          },
+          {
+            "name": "在 Resolver 中使用 Loader",
+            "cmd": "const resolvers = { Post: { author: (post) => userLoader.load(post.authorId) }, User: { posts: (user) => postLoader.loadMany(user.postIds) } };",
+            "params": {},
+            "keyword": "dataloader resolver 使用"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}
