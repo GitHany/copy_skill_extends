@@ -109,7 +109,13 @@
           }
         ],
         "params": {
-          "命名空间名称": { "type": "string", "required": true, "description": "KV 命名空间名称", "example": "CACHE", "notes": "需在 wrangler.toml 中绑定" }
+          "命名空间名称": {
+            "type": "string",
+            "required": true,
+            "description": "KV 命名空间名称",
+            "example": "CACHE",
+            "notes": "需在 wrangler.toml 中绑定"
+          }
         }
       }
     },
@@ -141,7 +147,13 @@
           }
         ],
         "params": {
-          "构建目录": { "type": "string", "required": true, "description": "静态构建产物目录", "example": "./dist", "notes": "常用" }
+          "构建目录": {
+            "type": "string",
+            "required": true,
+            "description": "静态构建产物目录",
+            "example": "./dist",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -168,18 +180,47 @@
           {
             "name": "获取分发配置",
             "cmd": "aws cloudfront get-distribution-config --id %{分发ID}%",
-            "params": {},
+            "params": {
+              "分发ID": {
+                "type": "string",
+                "required": false,
+                "description": "CloudFront 分发 ID",
+                "example": "E1A2B3C4D5E6F7",
+                "notes": "CloudFront 分发唯一标识"
+              }
+            },
             "keyword": "aws cloudfront get-distribution"
           },
           {
             "name": "更新分发配置",
             "cmd": "aws cloudfront update-distribution --id %{分发ID}% --if-match %{ETag}% --distribution-config file://updated.json",
-            "params": {},
+            "params": {
+              "分发ID": {
+                "type": "string",
+                "required": false,
+                "description": "CloudFront 分发 ID",
+                "example": "E1A2B3C4D5E6F7",
+                "notes": "CloudFront 分发唯一标识"
+              },
+              "ETag": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "aws cloudfront update"
           }
         ],
         "params": {
-          "分发ID": { "type": "string", "required": true, "description": "CloudFront 分发 ID", "example": "E1A2B3C4D5E6F7", "notes": "CloudFront 分发唯一标识" }
+          "分发ID": {
+            "type": "string",
+            "required": true,
+            "description": "CloudFront 分发 ID",
+            "example": "E1A2B3C4D5E6F7",
+            "notes": "CloudFront 分发唯一标识"
+          }
         }
       }
     },
@@ -194,30 +235,75 @@
           {
             "name": "刷新整个 CDN 缓存",
             "cmd": "aws cloudfront create-invalidation --distribution-id %{分发ID}% --paths \"/*\"",
-            "params": {},
+            "params": {
+              "分发ID": {
+                "type": "string",
+                "required": false,
+                "description": "CloudFront 分发 ID",
+                "example": "E1A2B3C4D5E6F7",
+                "notes": "常用"
+              }
+            },
             "keyword": "aws cloudfront 全量刷新"
           },
           {
             "name": "刷新特定路径",
             "cmd": "aws cloudfront create-invalidation --distribution-id %{分发ID}% --paths \"/static/*\"",
-            "params": {},
+            "params": {
+              "分发ID": {
+                "type": "string",
+                "required": false,
+                "description": "CloudFront 分发 ID",
+                "example": "E1A2B3C4D5E6F7",
+                "notes": "常用"
+              }
+            },
             "keyword": "aws cloudfront 刷新路径"
           },
           {
             "name": "刷新多个路径",
             "cmd": "aws cloudfront create-invalidation --distribution-id %{分发ID}% --paths \"/css/*\" \"/js/*\" \"/images/*\"",
-            "params": {},
+            "params": {
+              "分发ID": {
+                "type": "string",
+                "required": false,
+                "description": "CloudFront 分发 ID",
+                "example": "E1A2B3C4D5E6F7",
+                "notes": "常用"
+              }
+            },
             "keyword": "aws cloudfront 批量刷新"
           },
           {
             "name": "查看失效状态",
             "cmd": "aws cloudfront get-invalidation --distribution-id %{分发ID}% --id %{失效ID}%",
-            "params": {},
+            "params": {
+              "分发ID": {
+                "type": "string",
+                "required": false,
+                "description": "CloudFront 分发 ID",
+                "example": "E1A2B3C4D5E6F7",
+                "notes": "常用"
+              },
+              "失效ID": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "aws cloudfront 失效状态"
           }
         ],
         "params": {
-          "分发ID": { "type": "string", "required": true, "description": "CloudFront 分发 ID", "example": "E1A2B3C4D5E6F7", "notes": "常用" }
+          "分发ID": {
+            "type": "string",
+            "required": true,
+            "description": "CloudFront 分发 ID",
+            "example": "E1A2B3C4D5E6F7",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -250,7 +336,15 @@
           {
             "name": "查询刷新任务状态",
             "cmd": "aliyun cdn DescribeRefreshTasks --TaskId %{任务ID}%",
-            "params": {},
+            "params": {
+              "任务ID": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "aliyun cdn 刷新状态"
           },
           {
@@ -261,8 +355,20 @@
           }
         ],
         "params": {
-          "域名": { "type": "string", "required": true, "description": "阿里云加速域名", "example": "example.com", "notes": "" },
-          "路径": { "type": "string", "required": true, "description": "缓存路径", "example": "static/app.js", "notes": "" }
+          "域名": {
+            "type": "string",
+            "required": true,
+            "description": "阿里云加速域名",
+            "example": "example.com",
+            "notes": ""
+          },
+          "路径": {
+            "type": "string",
+            "required": true,
+            "description": "缓存路径",
+            "example": "static/app.js",
+            "notes": ""
+          }
         }
       }
     },
@@ -474,8 +580,20 @@
           }
         ],
         "params": {
-          "key": { "type": "string", "required": true, "description": "缓存键名", "example": "cache:page:index", "notes": "常用" },
-          "value": { "type": "string", "required": true, "description": "缓存值", "example": "serialized_data", "notes": "" }
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "缓存键名",
+            "example": "cache:page:index",
+            "notes": "常用"
+          },
+          "value": {
+            "type": "string",
+            "required": true,
+            "description": "缓存值",
+            "example": "serialized_data",
+            "notes": ""
+          }
         }
       }
     },
@@ -507,7 +625,13 @@
           }
         ],
         "params": {
-          "key": { "type": "string", "required": true, "description": "缓存键名", "example": "cache:page:index", "notes": "常用" }
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "缓存键名",
+            "example": "cache:page:index",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -557,8 +681,20 @@
           }
         ],
         "params": {
-          "key": { "type": "string", "required": true, "description": "缓存键名", "example": "cache:page:index", "notes": "常用" },
-          "seconds": { "type": "integer", "required": true, "description": "过期时间（秒）", "example": "3600", "notes": "常用" }
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "缓存键名",
+            "example": "cache:page:index",
+            "notes": "常用"
+          },
+          "seconds": {
+            "type": "integer",
+            "required": true,
+            "description": "过期时间（秒）",
+            "example": "3600",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -656,8 +792,20 @@
           }
         ],
         "params": {
-          "域名": { "type": "string", "required": true, "description": "目标域名", "example": "example.com", "notes": "" },
-          "路径": { "type": "string", "required": true, "description": "请求路径", "example": "index.html", "notes": "" }
+          "域名": {
+            "type": "string",
+            "required": true,
+            "description": "目标域名",
+            "example": "example.com",
+            "notes": ""
+          },
+          "路径": {
+            "type": "string",
+            "required": true,
+            "description": "请求路径",
+            "example": "index.html",
+            "notes": ""
+          }
         }
       }
     },
@@ -701,7 +849,13 @@
           }
         ],
         "params": {
-          "URL": { "type": "string", "required": true, "description": "审计目标 URL", "example": "https://example.com", "notes": "常用" }
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "审计目标 URL",
+            "example": "https://example.com",
+            "notes": "常用"
+          }
         }
       }
     },

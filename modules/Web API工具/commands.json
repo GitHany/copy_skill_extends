@@ -14,43 +14,106 @@
           {
             "name": "基础 GET 请求",
             "cmd": "curl %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": ""
+              }
+            },
             "keyword": "curl GET 基础"
           },
           {
             "name": "跟随重定向",
             "cmd": "curl -L %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": ""
+              }
+            },
             "keyword": "curl 重定向"
           },
           {
             "name": "显示响应头",
             "cmd": "curl -i %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": ""
+              }
+            },
             "keyword": "curl 响应头"
           },
           {
             "name": "只显示头部",
             "cmd": "curl -I %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": ""
+              }
+            },
             "keyword": "curl 头部 HEAD"
           },
           {
             "name": "显示详细信息",
             "cmd": "curl -v %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": ""
+              }
+            },
             "keyword": "curl 详细 verbose"
           },
           {
             "name": "下载并保存文件",
             "cmd": "curl -o %{文件名}% %{URL}%",
-            "params": {},
+            "params": {
+              "文件名": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": ""
+              }
+            },
             "keyword": "curl 下载保存"
           },
           {
             "name": "跳过 SSL 证书验证",
             "cmd": "curl -k %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": ""
+              }
+            },
             "keyword": "curl SSL 证书"
           }
         ],
@@ -83,37 +146,148 @@
           {
             "name": "发送表单数据",
             "cmd": "curl -X POST -d \"name=%{name}%&email=%{email}%\" %{URL}%",
-            "params": {},
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "email": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": ""
+              }
+            },
             "keyword": "curl POST 表单"
           },
           {
             "name": "发送 JSON 数据",
             "cmd": "curl -X POST -H \"Content-Type: application/json\" -d '{\"name\":\"%{name}%\"}' %{URL}%",
-            "params": {},
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": ""
+              }
+            },
             "keyword": "curl POST JSON"
           },
           {
             "name": "带认证 Token",
             "cmd": "curl -X POST -H \"Authorization: Bearer %{token}%\" -d '%{数据}%' %{URL}%",
-            "params": {},
+            "params": {
+              "token": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "数据": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": ""
+              }
+            },
             "keyword": "curl POST 认证"
           },
           {
             "name": "发送文件上传",
             "cmd": "curl -X POST -F \"file=@%{文件路径}%\" %{URL}%",
-            "params": {},
+            "params": {
+              "文件路径": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": ""
+              }
+            },
             "keyword": "curl POST 文件上传"
           },
           {
             "name": "多行 JSON",
             "cmd": "curl -X POST -H \"Content-Type: application/json\" -d @%{json文件}% %{URL}%",
-            "params": {},
+            "params": {
+              "json文件": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": ""
+              }
+            },
             "keyword": "curl POST JSON 文件"
           },
           {
             "name": "自定义请求头",
             "cmd": "curl -X POST -H \"%{header}%\" -H \"%{header2}%\" %{URL}%",
-            "params": {},
+            "params": {
+              "header": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "header2": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": ""
+              }
+            },
             "keyword": "curl POST 请求头"
           }
         ],
@@ -146,31 +320,92 @@
           {
             "name": "PUT 更新资源",
             "cmd": "curl -X PUT -H \"Content-Type: application/json\" -d '{\"name\":\"%{name}%\"}' %{URL}%",
-            "params": {},
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users/1",
+                "notes": ""
+              }
+            },
             "keyword": "curl PUT 更新"
           },
           {
             "name": "DELETE 删除资源",
             "cmd": "curl -X DELETE %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users/1",
+                "notes": ""
+              }
+            },
             "keyword": "curl DELETE 删除"
           },
           {
             "name": "DELETE 带认证",
             "cmd": "curl -X DELETE -H \"Authorization: Bearer %{token}%\" %{URL}%",
-            "params": {},
+            "params": {
+              "token": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users/1",
+                "notes": ""
+              }
+            },
             "keyword": "curl DELETE 认证"
           },
           {
             "name": "PATCH 部分更新",
             "cmd": "curl -X PATCH -H \"Content-Type: application/json\" -d '{\"name\":\"%{name}%\"}' %{URL}%",
-            "params": {},
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users/1",
+                "notes": ""
+              }
+            },
             "keyword": "curl PATCH 部分"
           },
           {
             "name": "带期望状态码",
             "cmd": "curl -X DELETE -w \"\\nHTTP Status: %{http_code}\\n\" %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users/1",
+                "notes": ""
+              }
+            },
             "keyword": "curl 状态码"
           }
         ],
@@ -210,37 +445,106 @@
           {
             "name": "设置 Content-Type",
             "cmd": "curl -H \"Content-Type: application/json\" %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl content-type"
           },
           {
             "name": "设置 Authorization",
             "cmd": "curl -H \"Authorization: Bearer %{token}%\" %{URL}%",
-            "params": {},
+            "params": {
+              "token": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl authorization"
           },
           {
             "name": "设置多个请求头",
             "cmd": "curl -H \"Content-Type: application/json\" -H \"Authorization: Bearer %{token}%\" %{URL}%",
-            "params": {},
+            "params": {
+              "token": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl 多请求头"
           },
           {
             "name": "设置 User-Agent",
             "cmd": "curl -H \"User-Agent: Mozilla/5.0\" %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl user-agent"
           },
           {
             "name": "设置 Accept",
             "cmd": "curl -H \"Accept: application/json\" %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl accept"
           },
           {
             "name": "设置自定义头",
             "cmd": "curl -H \"X-Custom-Header: %{value}%\" %{URL}%",
-            "params": {},
+            "params": {
+              "value": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl 自定义头"
           }
         ],
@@ -280,31 +584,92 @@
           {
             "name": "基础 GET 请求",
             "cmd": "http %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": ""
+              }
+            },
             "keyword": "httpie GET 基础"
           },
           {
             "name": "显示请求和响应头",
             "cmd": "http --print=Hh %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": ""
+              }
+            },
             "keyword": "httpie 请求头响应头"
           },
           {
             "name": "只下载响应体",
             "cmd": "http --download %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": ""
+              }
+            },
             "keyword": "httpie 下载"
           },
           {
             "name": "设置请求头",
             "cmd": "http %{header}%:%{value}% %{URL}%",
-            "params": {},
+            "params": {
+              "header": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "value": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": ""
+              }
+            },
             "keyword": "httpie 请求头"
           },
           {
             "name": "GET 带认证",
             "cmd": "http -A bearer %{token}% %{URL}%",
-            "params": {},
+            "params": {
+              "token": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": ""
+              }
+            },
             "keyword": "httpie 认证"
           }
         ],
@@ -330,31 +695,127 @@
           {
             "name": "POST 表单数据",
             "cmd": "http POST %{URL}% name=%{name}% email=%{email}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": ""
+              },
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "email": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "httpie POST 表单"
           },
           {
             "name": "POST JSON 数据",
             "cmd": "http POST %{URL}% name=%{name}% age=%{age}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": ""
+              },
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "age": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "httpie POST JSON"
           },
           {
             "name": "POST 多行 JSON",
             "cmd": "http POST %{URL}% < %{json文件}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": ""
+              },
+              "json文件": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "httpie JSON 文件"
           },
           {
             "name": "POST 带文件",
             "cmd": "http --form POST %{URL}% file@%{文件路径}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": ""
+              },
+              "文件路径": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "httpie POST 文件"
           },
           {
             "name": "POST 带认证",
             "cmd": "http -A bearer %{token}% POST %{URL}% data=%{value}%",
-            "params": {},
+            "params": {
+              "token": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": ""
+              },
+              "value": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "httpie POST 认证"
           }
         ],
@@ -380,37 +841,99 @@
           {
             "name": "下载单个文件",
             "cmd": "wget %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "下载链接",
+                "example": "https://example.com/file.zip",
+                "notes": ""
+              }
+            },
             "keyword": "wget 基础下载"
           },
           {
             "name": "指定保存文件名",
             "cmd": "wget -O %{文件名}% %{URL}%",
-            "params": {},
+            "params": {
+              "文件名": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "下载链接",
+                "example": "https://example.com/file.zip",
+                "notes": ""
+              }
+            },
             "keyword": "wget 指定名称"
           },
           {
             "name": "断点续传",
             "cmd": "wget -c %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "下载链接",
+                "example": "https://example.com/file.zip",
+                "notes": ""
+              }
+            },
             "keyword": "wget 续传 常用"
           },
           {
             "name": "后台下载",
             "cmd": "wget -b %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "下载链接",
+                "example": "https://example.com/file.zip",
+                "notes": ""
+              }
+            },
             "keyword": "wget 后台"
           },
           {
             "name": "限制下载速度",
             "cmd": "wget --limit-rate=%{速度}% %{URL}%",
-            "params": {},
+            "params": {
+              "速度": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "下载链接",
+                "example": "https://example.com/file.zip",
+                "notes": ""
+              }
+            },
             "keyword": "wget 限速"
           },
           {
             "name": "从文件读取 URL",
             "cmd": "wget -i %{文件}%",
-            "params": {},
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "wget URL 列表"
           }
         ],
@@ -443,37 +966,106 @@
           {
             "name": "递归下载整个站点",
             "cmd": "wget -r %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "目标 URL",
+                "example": "https://example.com",
+                "notes": ""
+              }
+            },
             "keyword": "wget 递归站点"
           },
           {
             "name": "限制递归深度",
             "cmd": "wget -r -l %{层数}% %{URL}%",
-            "params": {},
+            "params": {
+              "层数": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "目标 URL",
+                "example": "https://example.com",
+                "notes": ""
+              }
+            },
             "keyword": "wget 递归深度"
           },
           {
             "name": "只下载匹配文件",
             "cmd": "wget -A \"*.pdf\" %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "目标 URL",
+                "example": "https://example.com",
+                "notes": ""
+              }
+            },
             "keyword": "wget 过滤下载"
           },
           {
             "name": "拒绝某些文件",
             "cmd": "wget -R \"*.css,*.js\" %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "目标 URL",
+                "example": "https://example.com",
+                "notes": ""
+              }
+            },
             "keyword": "wget 拒绝文件"
           },
           {
             "name": "带认证下载",
             "cmd": "wget --user=%{用户}% --password=%{密码}% %{URL}%",
-            "params": {},
+            "params": {
+              "用户": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "密码": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "目标 URL",
+                "example": "https://example.com",
+                "notes": ""
+              }
+            },
             "keyword": "wget 认证下载"
           },
           {
             "name": "静默模式",
             "cmd": "wget -q %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "目标 URL",
+                "example": "https://example.com",
+                "notes": ""
+              }
+            },
             "keyword": "wget 静默"
           }
         ],
@@ -506,37 +1098,113 @@
           {
             "name": "运行 Postman 集合",
             "cmd": "newman run %{collection_file}%",
-            "params": {},
+            "params": {
+              "collection_file": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "newman 运行集合"
           },
           {
             "name": "指定环境",
             "cmd": "newman run %{collection}% -e %{environment}%",
-            "params": {},
+            "params": {
+              "collection": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "environment": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "newman 环境"
           },
           {
             "name": "导出 HTML 报告",
             "cmd": "newman run %{collection}% --reporters html --reporter-html-export %{报告文件}%",
-            "params": {},
+            "params": {
+              "collection": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "报告文件": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "newman HTML 报告"
           },
           {
             "name": "导出 JSON 报告",
             "cmd": "newman run %{collection}% --reporters json --reporter-json-export %{报告文件}%",
-            "params": {},
+            "params": {
+              "collection": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "报告文件": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "newman JSON 报告"
           },
           {
             "name": "指定迭代次数",
             "cmd": "newman run %{collection}% -n %{次数}%",
-            "params": {},
+            "params": {
+              "collection": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "次数": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "newman 迭代"
           },
           {
             "name": "显示请求详细信息",
             "cmd": "newman run %{collection}% --verbose",
-            "params": {},
+            "params": {
+              "collection": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "newman verbose"
           }
         ],
@@ -562,25 +1230,64 @@
           {
             "name": "运行 Insomnia 请求",
             "cmd": "insomnia run --request %{request_id}%",
-            "params": {},
+            "params": {
+              "request_id": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "insomnia run 请求"
           },
           {
             "name": "导出 Insomnia 集合",
             "cmd": "insomnia export --output %{output_file}%",
-            "params": {},
+            "params": {
+              "output_file": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "insomnia 导出"
           },
           {
             "name": "运行测试套件",
             "cmd": "insomnia run --testsuite %{suite_id}%",
-            "params": {},
+            "params": {
+              "suite_id": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "insomnia 测试套件"
           },
           {
             "name": "指定环境",
             "cmd": "insomnia run --env %{environment_id}% %{request}%",
-            "params": {},
+            "params": {
+              "environment_id": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "request": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "insomnia 环境变量"
           }
         ],
@@ -613,25 +1320,64 @@
           {
             "name": "验证 OpenAPI 文档",
             "cmd": "swagger-cli validate %{openapi_file}%",
-            "params": {},
+            "params": {
+              "openapi_file": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "swagger-cli 验证"
           },
           {
             "name": "解析并打印文档",
             "cmd": "swagger-cli parse %{file}%",
-            "params": {},
+            "params": {
+              "file": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "swagger-cli 解析"
           },
           {
             "name": "bundle 打包文档",
             "cmd": "swagger-cli bundle %{file}% -o %{output}%",
-            "params": {},
+            "params": {
+              "file": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "output": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "swagger-cli bundle 打包"
           },
           {
             "name": "验证并打印错误",
             "cmd": "swagger-cli validate %{file}% --diagnose",
-            "params": {},
+            "params": {
+              "file": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "swagger-cli 诊断"
           },
           {
@@ -663,25 +1409,85 @@
           {
             "name": "本地启动文档服务",
             "cmd": "redoc-cli serve %{openapi_file}%",
-            "params": {},
+            "params": {
+              "openapi_file": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "redoc 本地服务"
           },
           {
             "name": "指定端口",
             "cmd": "redoc-cli serve %{file}% -p %{端口}%",
-            "params": {},
+            "params": {
+              "file": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "端口": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "redoc 端口"
           },
           {
             "name": "生成 HTML 文件",
             "cmd": "redoc-cli build %{file}% -o %{output_html}%",
-            "params": {},
+            "params": {
+              "file": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "output_html": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "redoc 生成 HTML"
           },
           {
             "name": "自定义标题",
             "cmd": "redoc-cli build %{file}% --options.title=\"%{title}%\" -o %{output}%",
-            "params": {},
+            "params": {
+              "file": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "title": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "output": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "redoc 自定义标题"
           },
           {
@@ -720,25 +1526,64 @@
           {
             "name": "基础 HTTP 统计",
             "cmd": "httpstat %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "httpstat 基础"
           },
           {
             "name": "显示原始 curl 命令",
             "cmd": "httpstat -u curl %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "httpstat curl 命令"
           },
           {
             "name": "POST 请求统计",
             "cmd": "httpstat -X POST -d '%{data}%' %{URL}%",
-            "params": {},
+            "params": {
+              "data": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "httpstat POST"
           },
           {
             "name": "显示请求头",
             "cmd": "httpstat -v %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "httpstat verbose"
           },
           {
@@ -770,31 +1615,85 @@
           {
             "name": "显示完整请求过程",
             "cmd": "curl -v %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl verbose 调试"
           },
           {
             "name": "显示更详细信息",
             "cmd": "curl --trace %{trace_file}% %{URL}%",
-            "params": {},
+            "params": {
+              "trace_file": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl trace 跟踪"
           },
           {
             "name": "十六进制跟踪",
             "cmd": "curl --trace-ascii %{file}% %{URL}%",
-            "params": {},
+            "params": {
+              "file": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl trace-ascii"
           },
           {
             "name": "显示请求时间",
             "cmd": "curl -w \"\\nTotal time: %{time_total}s\\n\" %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl 请求时间"
           },
           {
             "name": "显示下载进度",
             "cmd": "curl -# %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl 进度条"
           }
         ],
@@ -820,31 +1719,78 @@
           {
             "name": "只获取响应头",
             "cmd": "curl -I %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl HEAD 请求头"
           },
           {
             "name": "HEAD 跟随重定向",
             "cmd": "curl -IL %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl HEAD 重定向"
           },
           {
             "name": "HEAD 显示详细",
             "cmd": "curl -Iv %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl HEAD verbose"
           },
           {
             "name": "HEAD 跳过 SSL",
             "cmd": "curl -Ik %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl HEAD SSL"
           },
           {
             "name": "HEAD 设置超时",
             "cmd": "curl -I --max-time %{秒}% %{URL}%",
-            "params": {},
+            "params": {
+              "秒": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl HEAD 超时"
           }
         ],
@@ -870,31 +1816,113 @@
           {
             "name": "连接 WebSocket 服务器",
             "cmd": "wscat ws://%{host}%:%{port}%/%{path}%",
-            "params": {},
+            "params": {
+              "host": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "port": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "path": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "wscat 连接"
           },
           {
             "name": "连接 WSS",
             "cmd": "wscat -c wss://%{host}%/%{path}%",
-            "params": {},
+            "params": {
+              "host": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "path": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "wscat wss"
           },
           {
             "name": "发送消息",
             "cmd": "wscat -c %{ws_url}% -x %{message}%",
-            "params": {},
+            "params": {
+              "ws_url": {
+                "type": "string",
+                "required": false,
+                "description": "WebSocket URL",
+                "example": "ws://localhost:8080/ws",
+                "notes": ""
+              },
+              "message": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "wscat 发送消息"
           },
           {
             "name": "带认证",
             "cmd": "wscat -c %{ws_url}% --auth %{token}%",
-            "params": {},
+            "params": {
+              "ws_url": {
+                "type": "string",
+                "required": false,
+                "description": "WebSocket URL",
+                "example": "ws://localhost:8080/ws",
+                "notes": ""
+              },
+              "token": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "wscat 认证"
           },
           {
             "name": "单条消息模式",
             "cmd": "wscat -c %{ws_url}% -x '%{msg}%' -w",
-            "params": {},
+            "params": {
+              "ws_url": {
+                "type": "string",
+                "required": false,
+                "description": "WebSocket URL",
+                "example": "ws://localhost:8080/ws",
+                "notes": ""
+              },
+              "msg": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "wscat 单消息"
           },
           {
@@ -933,37 +1961,106 @@
           {
             "name": "基础 WebSocket 连接",
             "cmd": "websocat %{ws_url}%",
-            "params": {},
+            "params": {
+              "ws_url": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "websocat 基础"
           },
           {
             "name": "连接并发送消息",
             "cmd": "websocat %{ws_url}% -E \"%{msg}%\"",
-            "params": {},
+            "params": {
+              "ws_url": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "msg": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "websocat 发送消息"
           },
           {
             "name": "stdin 到 WebSocket",
             "cmd": "websocat %{ws_url}%",
-            "params": {},
+            "params": {
+              "ws_url": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "websocat stdin"
           },
           {
             "name": "WebSocket 到 stdout",
             "cmd": "websocat %{ws_url}%",
-            "params": {},
+            "params": {
+              "ws_url": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "websocat stdout"
           },
           {
             "name": "TCP 转发到 WebSocket",
             "cmd": "websocat -t tcp:localhost:%{port}% ws://%{host}%/%{path}%",
-            "params": {},
+            "params": {
+              "port": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "host": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "path": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "websocat TCP 转发"
           },
           {
             "name": "WebSocket 广播",
             "cmd": "websocat -b %{ws_url}%",
-            "params": {},
+            "params": {
+              "ws_url": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "websocat 广播"
           }
         ],
@@ -996,13 +2093,29 @@
           {
             "name": "创建 Apollo Client 实例",
             "cmd": "import { ApolloClient, InMemoryCache } from '@apollo/client'; const client = new ApolloClient({ uri: '%{graphql端点}%', cache: new InMemoryCache() });",
-            "params": {},
+            "params": {
+              "graphql端点": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "apollo client 实例"
           },
           {
             "name": "使用 useQuery Hook",
             "cmd": "const { data, loading, error } = useQuery(gql`%{gql查询}%`);",
-            "params": {},
+            "params": {
+              "gql查询": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "apollo useQuery 查询"
           },
           {
@@ -1014,7 +2127,29 @@
           {
             "name": "GraphQL 请求（Fetch）",
             "cmd": "fetch('%{endpoint}%', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query: `%{query}%`, variables: %{variables}% }) }).then(res => res.json());",
-            "params": {},
+            "params": {
+              "endpoint": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "query": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "variables": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "fetch graphql 请求"
           }
         ],
@@ -1032,25 +2167,64 @@
           {
             "name": "创建 urql Client",
             "cmd": "import { createClient } from 'urql'; const client = createClient({ url: '%{graphql端点}%' });",
-            "params": {},
+            "params": {
+              "graphql端点": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "urql client 创建"
           },
           {
             "name": "执行查询",
             "cmd": "const [result] = await client.query(`query { %{query}% }`).toPromise();",
-            "params": {},
+            "params": {
+              "query": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "urql query 查询"
           },
           {
             "name": "执行变更",
             "cmd": "const [result] = await client.mutation(`mutation %{mutation}%`).toPromise();",
-            "params": {},
+            "params": {
+              "mutation": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "urql mutation 变更"
           },
           {
             "name": "带认证头",
             "cmd": "const client = createClient({ url: '%{endpoint}%', fetchOptions: () => ({ headers: { authorization: 'Bearer %{token}%' } }) });",
-            "params": {},
+            "params": {
+              "endpoint": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "token": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "urql 认证"
           }
         ],
@@ -1068,31 +2242,99 @@
           {
             "name": "健康检查",
             "cmd": "curl -s -o /dev/null -w \"%{http_code}%\" %{health_url}%",
-            "params": {},
+            "params": {
+              "http_code": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "health_url": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "api 健康检查"
           },
           {
             "name": "链式 API 调用",
             "cmd": "TOKEN=$(curl -s -X POST -d '{\"username\":\"%{user}%\"}' %{login_url}% | jq -r '.token'); curl -H \"Authorization: Bearer $TOKEN\" %{api_url}%",
-            "params": {},
+            "params": {
+              "user": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "login_url": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "api_url": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "api 链式调用"
           },
           {
             "name": "批量测试",
             "cmd": "for endpoint in %{endpoints}%; do echo \"Testing $endpoint\"; curl -s -o /dev/null -w \"%{http_code}\\n\" $endpoint; done",
-            "params": {},
+            "params": {
+              "endpoints": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "api 批量测试"
           },
           {
             "name": "超时测试",
             "cmd": "curl --max-time %{seconds}% %{url}%",
-            "params": {},
+            "params": {
+              "seconds": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "url": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "curl 超时"
           },
           {
             "name": "输出格式美化",
             "cmd": "curl -s %{url}% | jq '.'",
-            "params": {},
+            "params": {
+              "url": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "curl jq 美化"
           }
         ],

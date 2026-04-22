@@ -14,31 +14,71 @@
           {
             "name": "指定次数",
             "cmd": "ping -c 4 %{主机}%",
-            "params": {},
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "ping 指定次数"
           },
           {
             "name": "持续 ping",
             "cmd": "ping %{主机}%",
-            "params": {},
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "ping 持续"
           },
           {
             "name": "设置间隔",
             "cmd": "ping -i 2 %{主机}%",
-            "params": {},
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "ping 间隔"
           },
           {
             "name": "设置数据包大小",
             "cmd": "ping -s 1000 %{主机}%",
-            "params": {},
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "ping 大数据包"
           },
           {
             "name": "详细输出",
             "cmd": "ping -v %{主机}%",
-            "params": {},
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "ping 详细"
           }
         ],
@@ -71,31 +111,71 @@
           {
             "name": "最大跳数",
             "cmd": "traceroute -m 30 %{主机}%",
-            "params": {},
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": false,
+                "description": "目标主机或 IP",
+                "example": "google.com",
+                "notes": ""
+              }
+            },
             "keyword": "traceroute 最大跳数"
           },
           {
             "name": "设置超时",
             "cmd": "traceroute -w 5 %{主机}%",
-            "params": {},
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": false,
+                "description": "目标主机或 IP",
+                "example": "google.com",
+                "notes": ""
+              }
+            },
             "keyword": "traceroute 超时"
           },
           {
             "name": "使用 ICMP",
             "cmd": "traceroute -I %{主机}%",
-            "params": {},
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": false,
+                "description": "目标主机或 IP",
+                "example": "google.com",
+                "notes": ""
+              }
+            },
             "keyword": "traceroute ICMP"
           },
           {
             "name": "Windows tracert",
             "cmd": "tracert %{主机}%",
-            "params": {},
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": false,
+                "description": "目标主机或 IP",
+                "example": "google.com",
+                "notes": ""
+              }
+            },
             "keyword": "tracert Windows"
           },
           {
             "name": "显示 IP 地址",
             "cmd": "traceroute -n %{主机}%",
-            "params": {},
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": false,
+                "description": "目标主机或 IP",
+                "example": "google.com",
+                "notes": ""
+              }
+            },
             "keyword": "traceroute IP"
           }
         ],
@@ -190,25 +270,57 @@
           {
             "name": "查询 A 记录",
             "cmd": "nslookup %{域名}%",
-            "params": {},
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "要查询的域名",
+                "example": "google.com",
+                "notes": ""
+              }
+            },
             "keyword": "nslookup A记录"
           },
           {
             "name": "指定 DNS 服务器",
             "cmd": "nslookup %{域名}% 8.8.8.8",
-            "params": {},
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "要查询的域名",
+                "example": "google.com",
+                "notes": ""
+              }
+            },
             "keyword": "nslookup 指定DNS"
           },
           {
             "name": "查询 MX 记录",
             "cmd": "nslookup -type=mx %{域名}%",
-            "params": {},
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "要查询的域名",
+                "example": "google.com",
+                "notes": ""
+              }
+            },
             "keyword": "nslookup MX"
           },
           {
             "name": "查询 TXT 记录",
             "cmd": "nslookup -type=txt %{域名}%",
-            "params": {},
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "要查询的域名",
+                "example": "google.com",
+                "notes": ""
+              }
+            },
             "keyword": "nslookup TXT"
           },
           {
@@ -247,43 +359,99 @@
           {
             "name": "查询 A 记录",
             "cmd": "dig %{域名}%",
-            "params": {},
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "要查询的域名",
+                "example": "google.com",
+                "notes": ""
+              }
+            },
             "keyword": "dig A记录"
           },
           {
             "name": "查询 MX 记录",
             "cmd": "dig %{域名}% mx",
-            "params": {},
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "要查询的域名",
+                "example": "google.com",
+                "notes": ""
+              }
+            },
             "keyword": "dig MX记录"
           },
           {
             "name": "指定 DNS 服务器",
             "cmd": "dig @8.8.8.8 %{域名}%",
-            "params": {},
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "要查询的域名",
+                "example": "google.com",
+                "notes": ""
+              }
+            },
             "keyword": "dig 指定DNS"
           },
           {
             "name": "简短输出",
             "cmd": "dig +short %{域名}%",
-            "params": {},
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "要查询的域名",
+                "example": "google.com",
+                "notes": ""
+              }
+            },
             "keyword": "dig 简短"
           },
           {
             "name": "追踪 DNS 解析",
             "cmd": "dig +trace %{域名}%",
-            "params": {},
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "要查询的域名",
+                "example": "google.com",
+                "notes": ""
+              }
+            },
             "keyword": "dig 追踪"
           },
           {
             "name": "查询 NS 记录",
             "cmd": "dig %{域名}% ns",
-            "params": {},
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "要查询的域名",
+                "example": "google.com",
+                "notes": ""
+              }
+            },
             "keyword": "dig NS记录"
           },
           {
             "name": "查询 TXT 记录",
             "cmd": "dig %{域名}% txt",
-            "params": {},
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "要查询的域名",
+                "example": "google.com",
+                "notes": ""
+              }
+            },
             "keyword": "dig TXT记录"
           }
         ],
@@ -316,55 +484,141 @@
           {
             "name": "下载文件",
             "cmd": "curl -O %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl 下载"
           },
           {
             "name": "保存到文件",
             "cmd": "curl -o %{文件名}% %{URL}%",
-            "params": {},
+            "params": {
+              "文件名": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl 保存文件"
           },
           {
             "name": "发送 POST 请求",
             "cmd": "curl -X POST -d \"%{数据}%\" %{URL}%",
-            "params": {},
+            "params": {
+              "数据": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl POST"
           },
           {
             "name": "设置请求头",
             "cmd": "curl -H \"Content-Type: application/json\" %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl 请求头"
           },
           {
             "name": "跟随重定向",
             "cmd": "curl -L %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl 重定向"
           },
           {
             "name": "显示响应头",
             "cmd": "curl -I %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl 响应头"
           },
           {
             "name": "显示详细信息",
             "cmd": "curl -v %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl 详细"
           },
           {
             "name": "跳过 SSL 验证",
             "cmd": "curl -k %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl 跳过SSL"
           },
           {
             "name": "发送 JSON",
             "cmd": "curl -X POST -H \"Content-Type: application/json\" -d '{\"key\":\"value\"}' %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": ""
+              }
+            },
             "keyword": "curl JSON"
           }
         ],
@@ -397,49 +651,134 @@
           {
             "name": "指定文件名",
             "cmd": "wget -O %{文件名}% %{URL}%",
-            "params": {},
+            "params": {
+              "文件名": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "下载链接",
+                "example": "https://example.com/file.zip",
+                "notes": ""
+              }
+            },
             "keyword": "wget 指定名称"
           },
           {
             "name": "断点续传",
             "cmd": "wget -c %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "下载链接",
+                "example": "https://example.com/file.zip",
+                "notes": ""
+              }
+            },
             "keyword": "wget 续传"
           },
           {
             "name": "后台下载",
             "cmd": "wget -b %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "下载链接",
+                "example": "https://example.com/file.zip",
+                "notes": ""
+              }
+            },
             "keyword": "wget 后台"
           },
           {
             "name": "限速下载",
             "cmd": "wget --limit-rate=200k %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "下载链接",
+                "example": "https://example.com/file.zip",
+                "notes": ""
+              }
+            },
             "keyword": "wget 限速"
           },
           {
             "name": "递归下载",
             "cmd": "wget -r %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "下载链接",
+                "example": "https://example.com/file.zip",
+                "notes": ""
+              }
+            },
             "keyword": "wget 递归"
           },
           {
             "name": "认证下载",
             "cmd": "wget --user=%{用户}% --password=%{密码}% %{URL}%",
-            "params": {},
+            "params": {
+              "用户": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "密码": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "下载链接",
+                "example": "https://example.com/file.zip",
+                "notes": ""
+              }
+            },
             "keyword": "wget 认证"
           },
           {
             "name": "从文件读取 URL",
             "cmd": "wget -i %{文件}%",
-            "params": {},
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "wget 文件列表"
           },
           {
             "name": "只下载匹配文件",
             "cmd": "wget -A \"*.pdf\" %{URL}%",
-            "params": {},
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "下载链接",
+                "example": "https://example.com/file.zip",
+                "notes": ""
+              }
+            },
             "keyword": "wget 匹配"
           }
         ],
@@ -472,37 +811,85 @@
           {
             "name": "测试 HTTP 端口",
             "cmd": "telnet %{主机}% 80",
-            "params": {},
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": false,
+                "description": "目标主机或 IP",
+                "example": "smtp.gmail.com",
+                "notes": ""
+              }
+            },
             "keyword": "telnet HTTP"
           },
           {
             "name": "测试 HTTPS 端口",
             "cmd": "telnet %{主机}% 443",
-            "params": {},
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": false,
+                "description": "目标主机或 IP",
+                "example": "smtp.gmail.com",
+                "notes": ""
+              }
+            },
             "keyword": "telnet HTTPS"
           },
           {
             "name": "测试 SMTP 端口",
             "cmd": "telnet %{主机}% 25",
-            "params": {},
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": false,
+                "description": "目标主机或 IP",
+                "example": "smtp.gmail.com",
+                "notes": ""
+              }
+            },
             "keyword": "telnet SMTP"
           },
           {
             "name": "测试 SSH 端口",
             "cmd": "telnet %{主机}% 22",
-            "params": {},
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": false,
+                "description": "目标主机或 IP",
+                "example": "smtp.gmail.com",
+                "notes": ""
+              }
+            },
             "keyword": "telnet SSH"
           },
           {
             "name": "测试 MySQL 端口",
             "cmd": "telnet %{主机}% 3306",
-            "params": {},
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": false,
+                "description": "目标主机或 IP",
+                "example": "smtp.gmail.com",
+                "notes": ""
+              }
+            },
             "keyword": "telnet MySQL"
           },
           {
             "name": "测试 Redis 端口",
             "cmd": "telnet %{主机}% 6379",
-            "params": {},
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": false,
+                "description": "目标主机或 IP",
+                "example": "smtp.gmail.com",
+                "notes": ""
+              }
+            },
             "keyword": "telnet Redis"
           }
         ],
@@ -535,55 +922,176 @@
           {
             "name": "端口扫描",
             "cmd": "nc -zv %{主机}% %{端口}%",
-            "params": {},
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": false,
+                "description": "目标主机或 IP",
+                "example": "example.com",
+                "notes": "监听模式可省略"
+              },
+              "端口": {
+                "type": "string",
+                "required": false,
+                "description": "端口号",
+                "example": "80",
+                "notes": ""
+              }
+            },
             "keyword": "nc 端口扫描"
           },
           {
             "name": "端口范围扫描",
             "cmd": "nc -zv %{主机}% 20-30",
-            "params": {},
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": false,
+                "description": "目标主机或 IP",
+                "example": "example.com",
+                "notes": "监听模式可省略"
+              }
+            },
             "keyword": "nc 范围扫描"
           },
           {
             "name": "传输文件",
             "cmd": "nc -l %{端口}% > %{文件名}%",
-            "params": {},
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": false,
+                "description": "端口号",
+                "example": "80",
+                "notes": ""
+              },
+              "文件名": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "nc 接收文件"
           },
           {
             "name": "发送文件",
             "cmd": "nc %{主机}% %{端口}% < %{文件}%",
-            "params": {},
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": false,
+                "description": "目标主机或 IP",
+                "example": "example.com",
+                "notes": "监听模式可省略"
+              },
+              "端口": {
+                "type": "string",
+                "required": false,
+                "description": "端口号",
+                "example": "80",
+                "notes": ""
+              },
+              "文件": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "nc 发送文件"
           },
           {
             "name": "简单聊天服务器",
             "cmd": "nc -l %{端口}%",
-            "params": {},
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": false,
+                "description": "端口号",
+                "example": "80",
+                "notes": ""
+              }
+            },
             "keyword": "nc 聊天"
           },
           {
             "name": "连接聊天",
             "cmd": "nc %{主机}% %{端口}%",
-            "params": {},
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": false,
+                "description": "目标主机或 IP",
+                "example": "example.com",
+                "notes": "监听模式可省略"
+              },
+              "端口": {
+                "type": "string",
+                "required": false,
+                "description": "端口号",
+                "example": "80",
+                "notes": ""
+              }
+            },
             "keyword": "nc 连接"
           },
           {
             "name": "执行远程命令",
             "cmd": "nc -e /bin/bash %{主机}% %{端口}%",
-            "params": {},
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": false,
+                "description": "目标主机或 IP",
+                "example": "example.com",
+                "notes": "监听模式可省略"
+              },
+              "端口": {
+                "type": "string",
+                "required": false,
+                "description": "端口号",
+                "example": "80",
+                "notes": ""
+              }
+            },
             "keyword": "nc 远程命令"
           },
           {
             "name": "HTTP 请求",
             "cmd": "echo -e \"GET / HTTP/1.0\\r\\n\\r\\n\" | nc %{主机}% 80",
-            "params": {},
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": false,
+                "description": "目标主机或 IP",
+                "example": "example.com",
+                "notes": "监听模式可省略"
+              }
+            },
             "keyword": "nc HTTP"
           },
           {
             "name": "设置超时",
             "cmd": "nc -w 3 %{主机}% %{端口}%",
-            "params": {},
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": false,
+                "description": "目标主机或 IP",
+                "example": "example.com",
+                "notes": "监听模式可省略"
+              },
+              "端口": {
+                "type": "string",
+                "required": false,
+                "description": "端口号",
+                "example": "80",
+                "notes": ""
+              }
+            },
             "keyword": "nc 超时"
           }
         ],

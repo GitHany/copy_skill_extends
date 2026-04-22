@@ -68,13 +68,43 @@
           {
             "name": "指定配置文件",
             "cmd": "npx tailwindcss -o %{输出文件}% -c %{配置文件}%",
-            "params": {},
+            "params": {
+              "输出文件": {
+                "type": "string",
+                "required": false,
+                "description": "输出 CSS 文件路径",
+                "example": "dist/output.css",
+                "notes": "常用"
+              },
+              "配置文件": {
+                "type": "string",
+                "required": false,
+                "description": "tailwind.config.js 路径",
+                "example": "tailwind.config.js",
+                "notes": "可选"
+              }
+            },
             "keyword": "tailwind 指定配置"
           },
           {
             "name": "指定输入输出",
             "cmd": "npx tailwindcss -i %{输入文件}% -o %{输出文件}%",
-            "params": {},
+            "params": {
+              "输入文件": {
+                "type": "string",
+                "required": false,
+                "description": "输入 CSS 文件路径",
+                "example": "src/input.css",
+                "notes": "可选"
+              },
+              "输出文件": {
+                "type": "string",
+                "required": false,
+                "description": "输出 CSS 文件路径",
+                "example": "dist/output.css",
+                "notes": "常用"
+              }
+            },
             "keyword": "tailwind 输入输出"
           }
         ],
@@ -228,25 +258,57 @@
           {
             "name": "外边距",
             "cmd": "m-%{数值}%",
-            "params": {},
+            "params": {
+              "数值": {
+                "type": "string",
+                "required": false,
+                "description": "间距数值（0-96，对应 0rem-24rem）",
+                "example": "4",
+                "notes": "可选"
+              }
+            },
             "keyword": "margin 外边距"
           },
           {
             "name": "内边距",
             "cmd": "p-%{数值}%",
-            "params": {},
+            "params": {
+              "数值": {
+                "type": "string",
+                "required": false,
+                "description": "间距数值（0-96，对应 0rem-24rem）",
+                "example": "4",
+                "notes": "可选"
+              }
+            },
             "keyword": "padding 内边距"
           },
           {
             "name": "水平外边距",
             "cmd": "mx-%{数值}%",
-            "params": {},
+            "params": {
+              "数值": {
+                "type": "string",
+                "required": false,
+                "description": "间距数值（0-96，对应 0rem-24rem）",
+                "example": "4",
+                "notes": "可选"
+              }
+            },
             "keyword": "mx 水平外边距"
           },
           {
             "name": "垂直外边距",
             "cmd": "my-%{数值}%",
-            "params": {},
+            "params": {
+              "数值": {
+                "type": "string",
+                "required": false,
+                "description": "间距数值（0-96，对应 0rem-24rem）",
+                "example": "4",
+                "notes": "可选"
+              }
+            },
             "keyword": "my 垂直外边距"
           },
           {
@@ -258,7 +320,15 @@
           {
             "name": "水平间距",
             "cmd": "space-x-%{数值}%",
-            "params": {},
+            "params": {
+              "数值": {
+                "type": "string",
+                "required": false,
+                "description": "间距数值（0-96，对应 0rem-24rem）",
+                "example": "4",
+                "notes": "可选"
+              }
+            },
             "keyword": "space-x 水平间距"
           }
         ],
@@ -284,7 +354,15 @@
           {
             "name": "固定宽度",
             "cmd": "w-%{数值}%",
-            "params": {},
+            "params": {
+              "数值": {
+                "type": "string",
+                "required": false,
+                "description": "尺寸数值（0.5-96）",
+                "example": "64",
+                "notes": "可选"
+              }
+            },
             "keyword": "width 宽度"
           },
           {
@@ -302,7 +380,15 @@
           {
             "name": "固定高度",
             "cmd": "h-%{数值}%",
-            "params": {},
+            "params": {
+              "数值": {
+                "type": "string",
+                "required": false,
+                "description": "尺寸数值（0.5-96）",
+                "example": "64",
+                "notes": "可选"
+              }
+            },
             "keyword": "height 高度"
           },
           {
@@ -314,7 +400,15 @@
           {
             "name": "最大宽度",
             "cmd": "max-w-%{值}%",
-            "params": {},
+            "params": {
+              "值": {
+                "type": "string",
+                "required": false,
+                "description": "最大宽度值",
+                "example": "screen-xl",
+                "notes": "可选"
+              }
+            },
             "keyword": "max-w 最大宽度"
           },
           {
@@ -353,37 +447,85 @@
           {
             "name": "文本颜色",
             "cmd": "text-%{颜色代号}%",
-            "params": {},
+            "params": {
+              "颜色代号": {
+                "type": "string",
+                "required": false,
+                "description": "Tailwind 颜色代号",
+                "example": "blue-500",
+                "notes": "常用"
+              }
+            },
             "keyword": "text 文本颜色"
           },
           {
             "name": "背景颜色",
             "cmd": "bg-%{颜色代号}%",
-            "params": {},
+            "params": {
+              "颜色代号": {
+                "type": "string",
+                "required": false,
+                "description": "Tailwind 颜色代号",
+                "example": "blue-500",
+                "notes": "常用"
+              }
+            },
             "keyword": "bg 背景颜色"
           },
           {
             "name": "边框颜色",
             "cmd": "border-%{颜色代号}%",
-            "params": {},
+            "params": {
+              "颜色代号": {
+                "type": "string",
+                "required": false,
+                "description": "Tailwind 颜色代号",
+                "example": "blue-500",
+                "notes": "常用"
+              }
+            },
             "keyword": "border 边框颜色"
           },
           {
             "name": "圆环颜色",
             "cmd": "ring-%{颜色代号}%",
-            "params": {},
+            "params": {
+              "颜色代号": {
+                "type": "string",
+                "required": false,
+                "description": "Tailwind 颜色代号",
+                "example": "blue-500",
+                "notes": "常用"
+              }
+            },
             "keyword": "ring 圆环颜色"
           },
           {
             "name": "透明度颜色",
             "cmd": "text-%{颜色代号}-%{透明度}%",
-            "params": {},
+            "params": {
+              "透明度": {
+                "type": "string",
+                "required": false,
+                "description": "透明度（0-100）",
+                "example": "50",
+                "notes": "可选"
+              }
+            },
             "keyword": "透明度 透明"
           },
           {
             "name": "渐变背景",
             "cmd": "bg-gradient-to-r from-%{颜色}% to-%{颜色}%",
-            "params": {},
+            "params": {
+              "颜色": {
+                "type": "string",
+                "required": false,
+                "description": "Tailwind 颜色值",
+                "example": "blue-500",
+                "notes": ""
+              }
+            },
             "keyword": "gradient 渐变"
           }
         ],
@@ -503,37 +645,85 @@
           {
             "name": "定义列数",
             "cmd": "grid-cols-%{列数}%",
-            "params": {},
+            "params": {
+              "列数": {
+                "type": "string",
+                "required": false,
+                "description": "列数（1-12）",
+                "example": "3",
+                "notes": "常用"
+              }
+            },
             "keyword": "grid-cols 列数"
           },
           {
             "name": "行列间隙",
             "cmd": "gap-%{数值}%",
-            "params": {},
+            "params": {
+              "数值": {
+                "type": "string",
+                "required": false,
+                "description": "间隙数值",
+                "example": "4",
+                "notes": "可选"
+              }
+            },
             "keyword": "gap 间隙"
           },
           {
             "name": "列跨度",
             "cmd": "col-span-%{数值}%",
-            "params": {},
+            "params": {
+              "数值": {
+                "type": "string",
+                "required": false,
+                "description": "间隙数值",
+                "example": "4",
+                "notes": "可选"
+              }
+            },
             "keyword": "col-span 列跨度"
           },
           {
             "name": "行跨度",
             "cmd": "row-span-%{数值}%",
-            "params": {},
+            "params": {
+              "数值": {
+                "type": "string",
+                "required": false,
+                "description": "间隙数值",
+                "example": "4",
+                "notes": "可选"
+              }
+            },
             "keyword": "row-span 行跨度"
           },
           {
             "name": "水平间隙",
             "cmd": "gap-x-%{数值}%",
-            "params": {},
+            "params": {
+              "数值": {
+                "type": "string",
+                "required": false,
+                "description": "间隙数值",
+                "example": "4",
+                "notes": "可选"
+              }
+            },
             "keyword": "gap-x 水平间隙"
           },
           {
             "name": "垂直间隙",
             "cmd": "gap-y-%{数值}%",
-            "params": {},
+            "params": {
+              "数值": {
+                "type": "string",
+                "required": false,
+                "description": "间隙数值",
+                "example": "4",
+                "notes": "可选"
+              }
+            },
             "keyword": "gap-y 垂直间隙"
           }
         ],
@@ -566,25 +756,57 @@
           {
             "name": "字体大小",
             "cmd": "text-%{尺寸}%",
-            "params": {},
+            "params": {
+              "尺寸": {
+                "type": "string",
+                "required": false,
+                "description": "字体尺寸（xs/sm/base/lg/xl/2xl...）",
+                "example": "lg",
+                "notes": "常用"
+              }
+            },
             "keyword": "text 字体大小"
           },
           {
             "name": "字体粗细",
             "cmd": "font-%{粗细}%",
-            "params": {},
+            "params": {
+              "粗细": {
+                "type": "string",
+                "required": false,
+                "description": "字体粗细（thin/light/normal/medium/semibold/bold/black）",
+                "example": "bold",
+                "notes": "常用"
+              }
+            },
             "keyword": "font 字体粗细"
           },
           {
             "name": "行高",
             "cmd": "leading-%{行高}%",
-            "params": {},
+            "params": {
+              "行高": {
+                "type": "string",
+                "required": false,
+                "description": "行高数值",
+                "example": "relaxed",
+                "notes": "可选"
+              }
+            },
             "keyword": "leading 行高"
           },
           {
             "name": "字间距",
             "cmd": "tracking-%{间距}%",
-            "params": {},
+            "params": {
+              "间距": {
+                "type": "string",
+                "required": false,
+                "description": "字间距",
+                "example": "wide",
+                "notes": "可选"
+              }
+            },
             "keyword": "tracking 字间距"
           },
           {
@@ -679,13 +901,29 @@
           {
             "name": "透明度",
             "cmd": "opacity-%{数值}%",
-            "params": {},
+            "params": {
+              "数值": {
+                "type": "string",
+                "required": false,
+                "description": "透明度（0-100）",
+                "example": "50",
+                "notes": "可选"
+              }
+            },
             "keyword": "opacity 透明度"
           },
           {
             "name": "混合模式",
             "cmd": "mix-blend-%{模式}%",
-            "params": {},
+            "params": {
+              "模式": {
+                "type": "string",
+                "required": false,
+                "description": "混合模式",
+                "example": "multiply",
+                "notes": "可选"
+              }
+            },
             "keyword": "mix-blend 混合"
           },
           {
@@ -697,7 +935,15 @@
           {
             "name": "模糊效果",
             "cmd": "blur-%{程度}%",
-            "params": {},
+            "params": {
+              "程度": {
+                "type": "string",
+                "required": false,
+                "description": "模糊程度",
+                "example": "sm",
+                "notes": "可选"
+              }
+            },
             "keyword": "blur 模糊"
           }
         ],
@@ -750,13 +996,29 @@
           {
             "name": "过渡时间",
             "cmd": "duration-%{毫秒}%",
-            "params": {},
+            "params": {
+              "毫秒": {
+                "type": "string",
+                "required": false,
+                "description": "过渡时间（75/100/150/200/300/500/700/1000）",
+                "example": "300",
+                "notes": "常用"
+              }
+            },
             "keyword": "duration 时间"
           },
           {
             "name": "缓动函数",
             "cmd": "ease-%{函数}%",
-            "params": {},
+            "params": {
+              "函数": {
+                "type": "string",
+                "required": false,
+                "description": "缓动函数",
+                "example": "in-out",
+                "notes": "可选"
+              }
+            },
             "keyword": "ease 缓动"
           },
           {
@@ -780,25 +1042,57 @@
           {
             "name": "悬停效果",
             "cmd": "hover:%{类名}%",
-            "params": {},
+            "params": {
+              "类名": {
+                "type": "string",
+                "required": false,
+                "description": "悬停状态类名",
+                "example": "bg-blue-600",
+                "notes": "可选"
+              }
+            },
             "keyword": "hover 悬停"
           },
           {
             "name": "缩放效果",
             "cmd": "scale-%{比例}%",
-            "params": {},
+            "params": {
+              "比例": {
+                "type": "string",
+                "required": false,
+                "description": "缩放比例",
+                "example": "105",
+                "notes": "可选"
+              }
+            },
             "keyword": "scale 缩放"
           },
           {
             "name": "平移效果",
             "cmd": "translate-x-%{值}%",
-            "params": {},
+            "params": {
+              "值": {
+                "type": "string",
+                "required": false,
+                "description": "平移值",
+                "example": "4",
+                "notes": "可选"
+              }
+            },
             "keyword": "translate 平移"
           },
           {
             "name": "旋转角度",
             "cmd": "rotate-%{角度}%",
-            "params": {},
+            "params": {
+              "角度": {
+                "type": "string",
+                "required": false,
+                "description": "旋转角度",
+                "example": "45",
+                "notes": "可选"
+              }
+            },
             "keyword": "rotate 旋转"
           }
         ],
@@ -1265,25 +1559,57 @@
           {
             "name": "小屏幕 sm",
             "cmd": "sm:%{类名}%",
-            "params": {},
+            "params": {
+              "类名": {
+                "type": "string",
+                "required": false,
+                "description": "Tailwind 类名",
+                "example": "flex-row",
+                "notes": "可选"
+              }
+            },
             "keyword": "sm 响应式"
           },
           {
             "name": "中等屏幕 md",
             "cmd": "md:%{类名}%",
-            "params": {},
+            "params": {
+              "类名": {
+                "type": "string",
+                "required": false,
+                "description": "Tailwind 类名",
+                "example": "flex-row",
+                "notes": "可选"
+              }
+            },
             "keyword": "md 响应式"
           },
           {
             "name": "大屏幕 lg",
             "cmd": "lg:%{类名}%",
-            "params": {},
+            "params": {
+              "类名": {
+                "type": "string",
+                "required": false,
+                "description": "Tailwind 类名",
+                "example": "flex-row",
+                "notes": "可选"
+              }
+            },
             "keyword": "lg 响应式"
           },
           {
             "name": "超大屏幕 xl",
             "cmd": "xl:%{类名}%",
-            "params": {},
+            "params": {
+              "类名": {
+                "type": "string",
+                "required": false,
+                "description": "Tailwind 类名",
+                "example": "flex-row",
+                "notes": "可选"
+              }
+            },
             "keyword": "xl 响应式"
           },
           {
@@ -1334,19 +1660,43 @@
           {
             "name": "悬停效果",
             "cmd": "hover:%{类名}%",
-            "params": {},
+            "params": {
+              "类名": {
+                "type": "string",
+                "required": false,
+                "description": "Tailwind 类名",
+                "example": "bg-blue-600",
+                "notes": "可选"
+              }
+            },
             "keyword": "hover 悬停"
           },
           {
             "name": "聚焦效果",
             "cmd": "focus:%{类名}%",
-            "params": {},
+            "params": {
+              "类名": {
+                "type": "string",
+                "required": false,
+                "description": "Tailwind 类名",
+                "example": "bg-blue-600",
+                "notes": "可选"
+              }
+            },
             "keyword": "focus 聚焦"
           },
           {
             "name": "激活效果",
             "cmd": "active:%{类名}%",
-            "params": {},
+            "params": {
+              "类名": {
+                "type": "string",
+                "required": false,
+                "description": "Tailwind 类名",
+                "example": "bg-blue-600",
+                "notes": "可选"
+              }
+            },
             "keyword": "active 激活"
           },
           {
@@ -1358,13 +1708,29 @@
           {
             "name": "组悬停",
             "cmd": "group-hover:%{类名}%",
-            "params": {},
+            "params": {
+              "类名": {
+                "type": "string",
+                "required": false,
+                "description": "Tailwind 类名",
+                "example": "bg-blue-600",
+                "notes": "可选"
+              }
+            },
             "keyword": "group-hover 组悬停"
           },
           {
             "name": "禁用状态",
             "cmd": "disabled:%{类名}%",
-            "params": {},
+            "params": {
+              "类名": {
+                "type": "string",
+                "required": false,
+                "description": "Tailwind 类名",
+                "example": "bg-blue-600",
+                "notes": "可选"
+              }
+            },
             "keyword": "disabled 禁用"
           }
         ],
@@ -1390,13 +1756,29 @@
           {
             "name": "边框宽度",
             "cmd": "border-%{宽度}%",
-            "params": {},
+            "params": {
+              "宽度": {
+                "type": "string",
+                "required": false,
+                "description": "边框宽度（0/2/4/8）",
+                "example": "2",
+                "notes": "可选"
+              }
+            },
             "keyword": "border 边框宽度"
           },
           {
             "name": "圆角大小",
             "cmd": "rounded-%{大小}%",
-            "params": {},
+            "params": {
+              "大小": {
+                "type": "string",
+                "required": false,
+                "description": "圆角大小（none/sm/base/md/lg/xl/full）",
+                "example": "lg",
+                "notes": "可选"
+              }
+            },
             "keyword": "rounded 圆角"
           },
           {
@@ -1420,7 +1802,22 @@
           {
             "name": "边框方向",
             "cmd": "border-t-%{宽度}% rounded-t-%{大小}%",
-            "params": {},
+            "params": {
+              "宽度": {
+                "type": "string",
+                "required": false,
+                "description": "边框宽度（0/2/4/8）",
+                "example": "2",
+                "notes": "可选"
+              },
+              "大小": {
+                "type": "string",
+                "required": false,
+                "description": "圆角大小（none/sm/base/md/lg/xl/full）",
+                "example": "lg",
+                "notes": "可选"
+              }
+            },
             "keyword": "边框方向 顶部"
           }
         ],

@@ -44,7 +44,15 @@
           {
             "name": "删除规则",
             "cmd": "iptables -D INPUT %{规则号}%",
-            "params": {},
+            "params": {
+              "规则号": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "iptables 删除规则"
           },
           {
@@ -94,13 +102,29 @@
           {
             "name": "允许端口",
             "cmd": "ufw allow %{端口}%/tcp",
-            "params": {},
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": false,
+                "description": "端口号",
+                "example": "8080",
+                "notes": ""
+              }
+            },
             "keyword": "ufw 允许端口"
           },
           {
             "name": "拒绝端口",
             "cmd": "ufw deny %{端口}%/tcp",
-            "params": {},
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": false,
+                "description": "端口号",
+                "example": "8080",
+                "notes": ""
+              }
+            },
             "keyword": "ufw 拒绝端口"
           },
           {
@@ -112,7 +136,15 @@
           {
             "name": "允许 IP",
             "cmd": "ufw allow from %{IP}%",
-            "params": {},
+            "params": {
+              "IP": {
+                "type": "string",
+                "required": false,
+                "description": "IP 地址",
+                "example": "192.168.1.100",
+                "notes": ""
+              }
+            },
             "keyword": "ufw 允许IP"
           },
           {
@@ -170,19 +202,57 @@
           {
             "name": "查看监狱状态",
             "cmd": "fail2ban-client status %{监狱名}%",
-            "params": {},
+            "params": {
+              "监狱名": {
+                "type": "string",
+                "required": false,
+                "description": "监狱名称",
+                "example": "sshd",
+                "notes": "默认监狱包括 sshd, apache-auth 等"
+              }
+            },
             "keyword": "fail2ban 监狱"
           },
           {
             "name": "手动封禁 IP",
             "cmd": "fail2ban-client set %{监狱名}% banip %{IP}%",
-            "params": {},
+            "params": {
+              "监狱名": {
+                "type": "string",
+                "required": false,
+                "description": "监狱名称",
+                "example": "sshd",
+                "notes": "默认监狱包括 sshd, apache-auth 等"
+              },
+              "IP": {
+                "type": "string",
+                "required": false,
+                "description": "IP 地址",
+                "example": "192.168.1.100",
+                "notes": ""
+              }
+            },
             "keyword": "fail2ban 封禁IP"
           },
           {
             "name": "解除封禁",
             "cmd": "fail2ban-client set %{监狱名}% unbanip %{IP}%",
-            "params": {},
+            "params": {
+              "监狱名": {
+                "type": "string",
+                "required": false,
+                "description": "监狱名称",
+                "example": "sshd",
+                "notes": "默认监狱包括 sshd, apache-auth 等"
+              },
+              "IP": {
+                "type": "string",
+                "required": false,
+                "description": "IP 地址",
+                "example": "192.168.1.100",
+                "notes": ""
+              }
+            },
             "keyword": "fail2ban 解封"
           },
           {
@@ -228,37 +298,85 @@
           {
             "name": "扫描常用端口",
             "cmd": "nmap %{目标}%",
-            "params": {},
+            "params": {
+              "目标": {
+                "type": "string",
+                "required": false,
+                "description": "目标 IP 或主机名",
+                "example": "192.168.1.1",
+                "notes": ""
+              }
+            },
             "keyword": "nmap 快速扫描"
           },
           {
             "name": "详细扫描",
             "cmd": "nmap -A %{目标}%",
-            "params": {},
+            "params": {
+              "目标": {
+                "type": "string",
+                "required": false,
+                "description": "目标 IP 或主机名",
+                "example": "192.168.1.1",
+                "notes": ""
+              }
+            },
             "keyword": "nmap 详细扫描"
           },
           {
             "name": "指定端口",
             "cmd": "nmap -p 22,80,443 %{目标}%",
-            "params": {},
+            "params": {
+              "目标": {
+                "type": "string",
+                "required": false,
+                "description": "目标 IP 或主机名",
+                "example": "192.168.1.1",
+                "notes": ""
+              }
+            },
             "keyword": "nmap 指定端口"
           },
           {
             "name": "版本检测",
             "cmd": "nmap -sV %{目标}%",
-            "params": {},
+            "params": {
+              "目标": {
+                "type": "string",
+                "required": false,
+                "description": "目标 IP 或主机名",
+                "example": "192.168.1.1",
+                "notes": ""
+              }
+            },
             "keyword": "nmap 版本检测"
           },
           {
             "name": "操作系统检测",
             "cmd": "nmap -O %{目标}%",
-            "params": {},
+            "params": {
+              "目标": {
+                "type": "string",
+                "required": false,
+                "description": "目标 IP 或主机名",
+                "example": "192.168.1.1",
+                "notes": ""
+              }
+            },
             "keyword": "nmap 系统检测"
           },
           {
             "name": "漏洞扫描",
             "cmd": "nmap --script vuln %{目标}%",
-            "params": {},
+            "params": {
+              "目标": {
+                "type": "string",
+                "required": false,
+                "description": "目标 IP 或主机名",
+                "example": "192.168.1.1",
+                "notes": ""
+              }
+            },
             "keyword": "nmap 漏洞"
           }
         ],
@@ -291,43 +409,120 @@
           {
             "name": "生成 RSA 私钥",
             "cmd": "openssl genrsa -out %{文件名}% 2048",
-            "params": {},
+            "params": {
+              "文件名": {
+                "type": "string",
+                "required": false,
+                "description": "文件路径",
+                "example": "key.pem",
+                "notes": ""
+              }
+            },
             "keyword": "openssl genrsa 私钥"
           },
           {
             "name": "生成 CSR",
             "cmd": "openssl req -new -key %{私钥文件}% -out %{CSR文件}%",
-            "params": {},
+            "params": {
+              "私钥文件": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "CSR文件": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "openssl req CSR"
           },
           {
             "name": "生成自签名证书",
             "cmd": "openssl req -x509 -newkey rsa:2048 -keyout %{私钥文件}% -out %{证书文件}% -days 365",
-            "params": {},
+            "params": {
+              "私钥文件": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "证书文件": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "openssl 自签名"
           },
           {
             "name": "查看证书信息",
             "cmd": "openssl x509 -in %{证书文件}% -text -noout",
-            "params": {},
+            "params": {
+              "证书文件": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "openssl 查看证书"
           },
           {
             "name": "验证证书",
             "cmd": "openssl verify %{证书文件}%",
-            "params": {},
+            "params": {
+              "证书文件": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "openssl 验证"
           },
           {
             "name": "加密文件",
             "cmd": "openssl enc -aes-256-cbc -salt -in %{输入文件}% -out %{输出文件}%",
-            "params": {},
+            "params": {
+              "输入文件": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "输出文件": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "openssl 加密"
           },
           {
             "name": "计算哈希",
             "cmd": "openssl dgst -sha256 %{文件名}%",
-            "params": {},
+            "params": {
+              "文件名": {
+                "type": "string",
+                "required": false,
+                "description": "文件路径",
+                "example": "key.pem",
+                "notes": ""
+              }
+            },
             "keyword": "openssl 哈希"
           }
         ],
@@ -360,19 +555,50 @@
           {
             "name": "申请证书 (nginx)",
             "cmd": "sudo certbot --nginx -d %{域名}%",
-            "params": {},
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "域名",
+                "example": "example.com",
+                "notes": "多个域名用 -d 连接"
+              }
+            },
             "keyword": "certbot nginx"
           },
           {
             "name": "申请证书 (apache)",
             "cmd": "sudo certbot --apache -d %{域名}%",
-            "params": {},
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "域名",
+                "example": "example.com",
+                "notes": "多个域名用 -d 连接"
+              }
+            },
             "keyword": "certbot apache"
           },
           {
             "name": "仅获取证书",
             "cmd": "sudo certbot certonly --webroot -w %{网站根目录}% -d %{域名}%",
-            "params": {},
+            "params": {
+              "网站根目录": {
+                "type": "string",
+                "required": false,
+                "description": "网站根目录",
+                "example": "/var/www/html",
+                "notes": ""
+              },
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "域名",
+                "example": "example.com",
+                "notes": "多个域名用 -d 连接"
+              }
+            },
             "keyword": "certbot 仅证书"
           },
           {
@@ -390,7 +616,15 @@
           {
             "name": "删除证书",
             "cmd": "sudo certbot delete --cert-name %{域名}%",
-            "params": {},
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "域名",
+                "example": "example.com",
+                "notes": "多个域名用 -d 连接"
+              }
+            },
             "keyword": "certbot 删除"
           }
         ],
@@ -486,7 +720,15 @@
           {
             "name": "指定阈值",
             "cmd": "yarn audit --level %{级别}%",
-            "params": {},
+            "params": {
+              "级别": {
+                "type": "string",
+                "required": false,
+                "description": "漏洞级别阈值",
+                "example": "high",
+                "notes": ""
+              }
+            },
             "keyword": "yarn audit 阈值"
           },
           {
@@ -537,7 +779,15 @@
           {
             "name": "测试容器镜像",
             "cmd": "snyk container test %{镜像名}%",
-            "params": {},
+            "params": {
+              "镜像名": {
+                "type": "string",
+                "required": false,
+                "description": "Docker 镜像名",
+                "example": "nginx:latest",
+                "notes": ""
+              }
+            },
             "keyword": "snyk container"
           },
           {
@@ -630,31 +880,71 @@
           {
             "name": "写入密文",
             "cmd": "vault kv put secret/%{路径}% key=value",
-            "params": {},
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": false,
+                "description": "密文路径",
+                "example": "myapp/config",
+                "notes": ""
+              }
+            },
             "keyword": "vault put 写入"
           },
           {
             "name": "读取密文",
             "cmd": "vault kv get secret/%{路径}%",
-            "params": {},
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": false,
+                "description": "密文路径",
+                "example": "myapp/config",
+                "notes": ""
+              }
+            },
             "keyword": "vault get 读取"
           },
           {
             "name": "列出路径",
             "cmd": "vault kv list secret/%{路径}%",
-            "params": {},
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": false,
+                "description": "密文路径",
+                "example": "myapp/config",
+                "notes": ""
+              }
+            },
             "keyword": "vault list 列表"
           },
           {
             "name": "删除密文",
             "cmd": "vault kv delete secret/%{路径}%",
-            "params": {},
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": false,
+                "description": "密文路径",
+                "example": "myapp/config",
+                "notes": ""
+              }
+            },
             "keyword": "vault delete 删除"
           },
           {
             "name": "登录认证",
             "cmd": "vault login -method=userpass username=%{用户}%",
-            "params": {},
+            "params": {
+              "用户": {
+                "type": "string",
+                "required": false,
+                "description": "用户名",
+                "example": "admin",
+                "notes": ""
+              }
+            },
             "keyword": "vault login 登录"
           },
           {
@@ -700,13 +990,29 @@
           {
             "name": "创建密文",
             "cmd": "aws secretsmanager create-secret --name %{名称}% --secret-string '{\"key\":\"value\"}'",
-            "params": {},
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": false,
+                "description": "密文名称",
+                "example": "myapp/db-creds",
+                "notes": ""
+              }
+            },
             "keyword": "aws secrets create"
           },
           {
             "name": "获取密文",
             "cmd": "aws secretsmanager get-secret-value --secret-id %{名称}%",
-            "params": {},
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": false,
+                "description": "密文名称",
+                "example": "myapp/db-creds",
+                "notes": ""
+              }
+            },
             "keyword": "aws secrets get"
           },
           {
@@ -718,13 +1024,29 @@
           {
             "name": "删除密文",
             "cmd": "aws secretsmanager delete-secret --secret-id %{名称}%",
-            "params": {},
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": false,
+                "description": "密文名称",
+                "example": "myapp/db-creds",
+                "notes": ""
+              }
+            },
             "keyword": "aws secrets delete"
           },
           {
             "name": "轮转密文",
             "cmd": "aws secretsmanager rotate-secret --secret-id %{名称}%",
-            "params": {},
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": false,
+                "description": "密文名称",
+                "example": "myapp/db-creds",
+                "notes": ""
+              }
+            },
             "keyword": "aws secrets rotate"
           }
         ],
@@ -763,7 +1085,15 @@
           {
             "name": "添加禁止模式",
             "cmd": "git secrets --add --global --literal '%{模式}%'",
-            "params": {},
+            "params": {
+              "模式": {
+                "type": "string",
+                "required": false,
+                "description": "正则模式",
+                "example": "password\\s*=",
+                "notes": ""
+              }
+            },
             "keyword": "git secrets add"
           },
           {
@@ -775,13 +1105,29 @@
           {
             "name": "扫描文件",
             "cmd": "git secrets --scan %{文件}%",
-            "params": {},
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": false,
+                "description": "文件路径",
+                "example": "app.js",
+                "notes": ""
+              }
+            },
             "keyword": "git secrets scan"
           },
           {
             "name": "扫描目录",
             "cmd": "git secrets --scan -r %{目录}%",
-            "params": {},
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": false,
+                "description": "目录路径",
+                "example": "src/",
+                "notes": ""
+              }
+            },
             "keyword": "git secrets 递归扫描"
           },
           {
@@ -834,25 +1180,78 @@
           {
             "name": "设置变量",
             "cmd": "envchain %{命名空间}% %{变量名}=%{值}%",
-            "params": {},
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "myapp",
+                "notes": "用于分组管理环境变量"
+              },
+              "值": {
+                "type": "string",
+                "required": false,
+                "description": "变量值",
+                "example": "xxxx",
+                "notes": ""
+              }
+            },
             "keyword": "envchain set"
           },
           {
             "name": "运行命令",
             "cmd": "envchain %{命名空间}% %{命令}%",
-            "params": {},
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "myapp",
+                "notes": "用于分组管理环境变量"
+              },
+              "命令": {
+                "type": "string",
+                "required": false,
+                "description": "要执行的命令",
+                "example": "node app.js",
+                "notes": ""
+              }
+            },
             "keyword": "envchain run"
           },
           {
             "name": "列出变量",
             "cmd": "envchain %{命名空间}% env",
-            "params": {},
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "myapp",
+                "notes": "用于分组管理环境变量"
+              }
+            },
             "keyword": "envchain list"
           },
           {
             "name": "交互式设置",
             "cmd": "envchain --set %{命名空间}% %{变量名}%",
-            "params": {},
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "myapp",
+                "notes": "用于分组管理环境变量"
+              },
+              "变量名": {
+                "type": "string",
+                "required": false,
+                "description": "变量名",
+                "example": "AWS_SECRET_KEY",
+                "notes": ""
+              }
+            },
             "keyword": "envchain interactive"
           }
         ],
@@ -899,19 +1298,43 @@
           {
             "name": "扫描镜像",
             "cmd": "docker scan %{镜像名}%",
-            "params": {},
+            "params": {
+              "镜像名": {
+                "type": "string",
+                "required": false,
+                "description": "Docker 镜像名",
+                "example": "nginx:latest",
+                "notes": "格式: 镜像名:标签 或 镜像ID"
+              }
+            },
             "keyword": "docker scan"
           },
           {
             "name": "详细输出",
             "cmd": "docker scan --json %{镜像名}%",
-            "params": {},
+            "params": {
+              "镜像名": {
+                "type": "string",
+                "required": false,
+                "description": "Docker 镜像名",
+                "example": "nginx:latest",
+                "notes": "格式: 镜像名:标签 或 镜像ID"
+              }
+            },
             "keyword": "docker scan json"
           },
           {
             "name": "包含基础镜像",
             "cmd": "docker scan --exclude-base %{镜像名}%",
-            "params": {},
+            "params": {
+              "镜像名": {
+                "type": "string",
+                "required": false,
+                "description": "Docker 镜像名",
+                "example": "nginx:latest",
+                "notes": "格式: 镜像名:标签 或 镜像ID"
+              }
+            },
             "keyword": "docker scan exclude"
           }
         ],
@@ -937,31 +1360,78 @@
           {
             "name": "扫描镜像",
             "cmd": "trivy image %{镜像名}%",
-            "params": {},
+            "params": {
+              "镜像名": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "trivy image"
           },
           {
             "name": "扫描目录",
             "cmd": "trivy fs %{目录}%",
-            "params": {},
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "trivy fs"
           },
           {
             "name": "输出 JSON",
             "cmd": "trivy image --format json --output %{输出文件}% %{镜像名}%",
-            "params": {},
+            "params": {
+              "输出文件": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "镜像名": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "trivy json"
           },
           {
             "name": "扫描严重漏洞",
             "cmd": "trivy image --severity HIGH,CRITICAL %{镜像名}%",
-            "params": {},
+            "params": {
+              "镜像名": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "trivy severity"
           },
           {
             "name": "忽略已修复",
             "cmd": "trivy image --ignore-unfixed %{镜像名}%",
-            "params": {},
+            "params": {
+              "镜像名": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            },
             "keyword": "trivy ignore"
           },
           {
@@ -1006,13 +1476,29 @@
           {
             "name": "特定测试",
             "cmd": "docker run -it --net host --cap-add audit_control -v /var/lib/docker:/var/lib/docker aquasec/docker-bench-security -c %{测试项}%",
-            "params": {},
+            "params": {
+              "测试项": {
+                "type": "string",
+                "required": false,
+                "description": "测试项目 ID",
+                "example": "1",
+                "notes": "如 1=主机配置, 2=Docker 守护进程配置"
+              }
+            },
             "keyword": "docker bench 特定"
           },
           {
             "name": "输出 JSON",
             "cmd": "docker run -it --net host --cap-add audit_control -v /var/lib/docker:/var/lib/docker aquasec/docker-bench-security -f json -o %{输出文件}%",
-            "params": {},
+            "params": {
+              "输出文件": {
+                "type": "string",
+                "required": false,
+                "description": "输出文件路径",
+                "example": "results.json",
+                "notes": ""
+              }
+            },
             "keyword": "docker bench json"
           }
         ],
@@ -1095,7 +1581,15 @@
           {
             "name": "生成证书",
             "cmd": "mkcert %{域名}%",
-            "params": {},
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "域名",
+                "example": "localhost",
+                "notes": "多个用空格分隔"
+              }
+            },
             "keyword": "mkcert generate"
           },
           {
@@ -1107,13 +1601,43 @@
           {
             "name": "指定输出",
             "cmd": "mkcert -cert-file %{证书}% -key-file %{密钥}% %{域名}%",
-            "params": {},
+            "params": {
+              "证书": {
+                "type": "string",
+                "required": false,
+                "description": "证书文件路径",
+                "example": "cert.pem",
+                "notes": ""
+              },
+              "密钥": {
+                "type": "string",
+                "required": false,
+                "description": "密钥文件路径",
+                "example": "key.pem",
+                "notes": ""
+              },
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "域名",
+                "example": "localhost",
+                "notes": "多个用空格分隔"
+              }
+            },
             "keyword": "mkcert output"
           },
           {
             "name": "PFX 格式",
             "cmd": "mkcert -pkcs12 %{域名}%",
-            "params": {},
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "域名",
+                "example": "localhost",
+                "notes": "多个用空格分隔"
+              }
+            },
             "keyword": "mkcert pfx"
           }
         ],
@@ -1160,19 +1684,43 @@
           {
             "name": "测试网站 SSL",
             "cmd": "curl -s 'https://www.ssllabs.com/ssltest/analyze.html?d=%{域名}%&hideResults=on'",
-            "params": {},
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "要测试的域名",
+                "example": "example.com",
+                "notes": ""
+              }
+            },
             "keyword": "SSL labs analyze"
           },
           {
             "name": "端口测试",
             "cmd": "curl -s 'https://www.ssllabs.com/ssltest/analyze.html?d=%{域名}%:8443'",
-            "params": {},
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "要测试的域名",
+                "example": "example.com",
+                "notes": ""
+              }
+            },
             "keyword": "SSL labs port"
           },
           {
             "name": "深度测试",
             "cmd": "curl -s 'https://www.ssllabs.com/ssltest/analyze.html?d=%{域名}%&all=on'",
-            "params": {},
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "要测试的域名",
+                "example": "example.com",
+                "notes": ""
+              }
+            },
             "keyword": "SSL labs deep"
           }
         ],
@@ -1234,37 +1782,85 @@
           {
             "name": "锁定配置文件",
             "cmd": "chmod 600 %{文件}%",
-            "params": {},
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": false,
+                "description": "文件路径",
+                "example": ".env",
+                "notes": ""
+              }
+            },
             "keyword": "chmod 600"
           },
           {
             "name": "可执行文件",
             "cmd": "chmod 700 %{脚本}%",
-            "params": {},
+            "params": {
+              "脚本": {
+                "type": "string",
+                "required": false,
+                "description": "脚本文件",
+                "example": "backup.sh",
+                "notes": ""
+              }
+            },
             "keyword": "chmod 700"
           },
           {
             "name": "目录权限",
             "cmd": "chmod 755 %{目录}%",
-            "params": {},
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": false,
+                "description": "目录路径",
+                "example": "config/",
+                "notes": ""
+              }
+            },
             "keyword": "chmod 755"
           },
           {
             "name": "移除所有权限",
             "cmd": "chmod 000 %{文件}%",
-            "params": {},
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": false,
+                "description": "文件路径",
+                "example": ".env",
+                "notes": ""
+              }
+            },
             "keyword": "chmod 000"
           },
           {
             "name": "递归设置",
             "cmd": "chmod -R 600 %{目录}%",
-            "params": {},
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": false,
+                "description": "目录路径",
+                "example": "config/",
+                "notes": ""
+              }
+            },
             "keyword": "chmod recursive"
           },
           {
             "name": "只读文件",
             "cmd": "chmod 444 %{文件}%",
-            "params": {},
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": false,
+                "description": "文件路径",
+                "example": ".env",
+                "notes": ""
+              }
+            },
             "keyword": "chmod 444"
           }
         ],
@@ -1311,19 +1907,78 @@
           {
             "name": "设置所有者",
             "cmd": "chown %{用户}%:%{组}% %{文件}%",
-            "params": {},
+            "params": {
+              "用户": {
+                "type": "string",
+                "required": false,
+                "description": "用户名",
+                "example": "www-data",
+                "notes": ""
+              },
+              "组": {
+                "type": "string",
+                "required": false,
+                "description": "组名",
+                "example": "www-data",
+                "notes": "默认为用户同名组"
+              },
+              "文件": {
+                "type": "string",
+                "required": false,
+                "description": "文件路径",
+                "example": "config.json",
+                "notes": ""
+              }
+            },
             "keyword": "chown 设置"
           },
           {
             "name": "递归设置",
             "cmd": "chown -R %{用户}%:%{组}% %{目录}%",
-            "params": {},
+            "params": {
+              "用户": {
+                "type": "string",
+                "required": false,
+                "description": "用户名",
+                "example": "www-data",
+                "notes": ""
+              },
+              "组": {
+                "type": "string",
+                "required": false,
+                "description": "组名",
+                "example": "www-data",
+                "notes": "默认为用户同名组"
+              },
+              "目录": {
+                "type": "string",
+                "required": false,
+                "description": "目录路径",
+                "example": "var/",
+                "notes": ""
+              }
+            },
             "keyword": "chown recursive"
           },
           {
             "name": "仅设置用户",
             "cmd": "chown %{用户}% %{文件}%",
-            "params": {},
+            "params": {
+              "用户": {
+                "type": "string",
+                "required": false,
+                "description": "用户名",
+                "example": "www-data",
+                "notes": ""
+              },
+              "文件": {
+                "type": "string",
+                "required": false,
+                "description": "文件路径",
+                "example": "config.json",
+                "notes": ""
+              }
+            },
             "keyword": "chown user"
           },
           {
@@ -1382,13 +2037,36 @@
           {
             "name": "监控文件",
             "cmd": "auditctl -w %{文件}% -p rwxa",
-            "params": {},
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": false,
+                "description": "文件路径",
+                "example": "/etc/passwd",
+                "notes": ""
+              }
+            },
             "keyword": "auditd watch file"
           },
           {
             "name": "监控目录",
             "cmd": "auditctl -w %{目录}% -p rwxa -k %{名称}%",
-            "params": {},
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": false,
+                "description": "目录路径",
+                "example": "/etc/",
+                "notes": ""
+              },
+              "名称": {
+                "type": "string",
+                "required": false,
+                "description": "审计规则名称",
+                "example": "config_change",
+                "notes": ""
+              }
+            },
             "keyword": "auditd watch dir"
           },
           {
@@ -1400,7 +2078,15 @@
           {
             "name": "查看日志",
             "cmd": "ausearch -k %{名称}%",
-            "params": {},
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": false,
+                "description": "审计规则名称",
+                "example": "config_change",
+                "notes": ""
+              }
+            },
             "keyword": "auditd search"
           },
           {
@@ -1459,13 +2145,29 @@
           {
             "name": "搜索模块",
             "cmd": "search %{关键词}%",
-            "params": {},
+            "params": {
+              "关键词": {
+                "type": "string",
+                "required": false,
+                "description": "搜索关键词",
+                "example": "mysql",
+                "notes": "搜索漏洞模块名称或 CVE 编号"
+              }
+            },
             "keyword": "msfconsole search"
           },
           {
             "name": "使用模块",
             "cmd": "use %{模块路径}%",
-            "params": {},
+            "params": {
+              "模块路径": {
+                "type": "string",
+                "required": false,
+                "description": "模块路径",
+                "example": "exploit/linux/samba/usermap_script",
+                "notes": "完整模块路径"
+              }
+            },
             "keyword": "msfconsole use"
           },
           {
@@ -1477,13 +2179,29 @@
           {
             "name": "设置目标",
             "cmd": "set RHOSTS %{目标IP}%",
-            "params": {},
+            "params": {
+              "目标IP": {
+                "type": "string",
+                "required": false,
+                "description": "目标 IP 地址",
+                "example": "192.168.1.100",
+                "notes": ""
+              }
+            },
             "keyword": "msfconsole set rhosts"
           },
           {
             "name": "设置端口",
             "cmd": "set RPORT %{端口}%",
-            "params": {},
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": false,
+                "description": "目标端口",
+                "example": "445",
+                "notes": ""
+              }
+            },
             "keyword": "msfconsole set rport"
           },
           {

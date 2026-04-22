@@ -14,7 +14,22 @@
           {
             "name": "克隆到指定目录",
             "cmd": "gh repo clone %{owner}/%{repo}% %{directory}%",
-            "params": {},
+            "params": {
+              "repo": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "hello-world",
+                "notes": ""
+              },
+              "directory": {
+                "type": "string",
+                "required": false,
+                "description": "目标目录路径",
+                "example": "~/projects/myrepo",
+                "notes": "可选，克隆到指定本地目录"
+              }
+            },
             "keyword": "gh repo clone 目录"
           }
         ],
@@ -54,25 +69,57 @@
           {
             "name": "创建私有仓库",
             "cmd": "gh repo create %{name}% --private",
-            "params": {},
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "my-new-repo",
+                "notes": "常用"
+              }
+            },
             "keyword": "gh repo create 私有"
           },
           {
             "name": "创建公开仓库",
             "cmd": "gh repo create %{name}% --public",
-            "params": {},
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "my-new-repo",
+                "notes": "常用"
+              }
+            },
             "keyword": "gh repo create 公开"
           },
           {
             "name": "创建并推送本地代码",
             "cmd": "gh repo create %{name}% --push --source=.",
-            "params": {},
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "my-new-repo",
+                "notes": "常用"
+              }
+            },
             "keyword": "gh repo create 推送"
           },
           {
             "name": "创建并克隆",
             "cmd": "gh repo create %{name}% --clone",
-            "params": {},
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "my-new-repo",
+                "notes": "常用"
+              }
+            },
             "keyword": "gh repo create 克隆"
           }
         ],
@@ -98,13 +145,36 @@
           {
             "name": "派生并克隆到本地",
             "cmd": "gh repo fork %{owner}/%{repo}% --clone",
-            "params": {},
+            "params": {
+              "repo": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "hello-world",
+                "notes": ""
+              }
+            },
             "keyword": "gh repo fork 克隆"
           },
           {
             "name": "派生到指定组织",
             "cmd": "gh repo fork %{owner}/%{repo}% --org %{org}%",
-            "params": {},
+            "params": {
+              "repo": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "hello-world",
+                "notes": ""
+              },
+              "org": {
+                "type": "string",
+                "required": false,
+                "description": "目标组织名称",
+                "example": "my-org",
+                "notes": "可选，派生到指定组织而非个人账户"
+              }
+            },
             "keyword": "gh repo fork 组织"
           }
         ],
@@ -144,7 +214,15 @@
           {
             "name": "查看指定仓库",
             "cmd": "gh repo view %{owner}/%{repo}%",
-            "params": {},
+            "params": {
+              "repo": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "hello-world",
+                "notes": "可选，不指定则查看当前仓库"
+              }
+            },
             "keyword": "gh repo view 仓库"
           },
           {
@@ -189,19 +267,50 @@
           {
             "name": "限制数量",
             "cmd": "gh repo list %{username}% --limit %{number}%",
-            "params": {},
+            "params": {
+              "username": {
+                "type": "string",
+                "required": false,
+                "description": "GitHub 用户名",
+                "example": "octocat",
+                "notes": ""
+              },
+              "number": {
+                "type": "number",
+                "required": false,
+                "description": "返回仓库数量上限",
+                "example": "10",
+                "notes": "可选，默认为 30"
+              }
+            },
             "keyword": "gh repo list 数量"
           },
           {
             "name": "列出组织仓库",
             "cmd": "gh repo list --org %{org}%",
-            "params": {},
+            "params": {
+              "org": {
+                "type": "string",
+                "required": false,
+                "description": "组织名称",
+                "example": "github",
+                "notes": "可选，列出组织下的仓库"
+              }
+            },
             "keyword": "gh repo list 组织"
           },
           {
             "name": "按类型筛选",
             "cmd": "gh repo list %{username}% --source",
-            "params": {},
+            "params": {
+              "username": {
+                "type": "string",
+                "required": false,
+                "description": "GitHub 用户名",
+                "example": "octocat",
+                "notes": ""
+              }
+            },
             "keyword": "gh repo list 来源"
           }
         ],
@@ -241,43 +350,99 @@
           {
             "name": "查看指定仓库",
             "cmd": "gh issue list --repo %{owner}/%{repo}%",
-            "params": {},
+            "params": {
+              "repo": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "hello-world",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh issue list 仓库"
           },
           {
             "name": "按状态筛选",
             "cmd": "gh issue list --state %{state}%",
-            "params": {},
+            "params": {
+              "state": {
+                "type": "string",
+                "required": false,
+                "description": "Issue 状态",
+                "example": "open",
+                "notes": "可选: open/closed/all"
+              }
+            },
             "keyword": "gh issue list 状态"
           },
           {
             "name": "按标签筛选",
             "cmd": "gh issue list --label %{label}%",
-            "params": {},
+            "params": {
+              "label": {
+                "type": "string",
+                "required": false,
+                "description": "标签名称",
+                "example": "bug",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh issue list 标签"
           },
           {
             "name": "限制数量",
             "cmd": "gh issue list --limit %{number}%",
-            "params": {},
+            "params": {
+              "number": {
+                "type": "number",
+                "required": false,
+                "description": "返回数量上限",
+                "example": "20",
+                "notes": "常用，可选"
+              }
+            },
             "keyword": "gh issue list 数量"
           },
           {
             "name": "搜索 Issue",
             "cmd": "gh issue list --search \"%{query}%\"",
-            "params": {},
+            "params": {
+              "query": {
+                "type": "string",
+                "required": false,
+                "description": "搜索关键词",
+                "example": "error in login",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh issue list 搜索"
           },
           {
             "name": "按作者筛选",
             "cmd": "gh issue list --author %{author}%",
-            "params": {},
+            "params": {
+              "author": {
+                "type": "string",
+                "required": false,
+                "description": "作者用户名",
+                "example": "octocat",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh issue list 作者"
           },
           {
             "name": "按受理人筛选",
             "cmd": "gh issue list --assignee %{assignee}%",
-            "params": {},
+            "params": {
+              "assignee": {
+                "type": "string",
+                "required": false,
+                "description": "受理人用户名",
+                "example": "octocat",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh issue list 受理人"
           }
         ],
@@ -352,19 +517,50 @@
           {
             "name": "查看远程仓库 Issue",
             "cmd": "gh issue view %{issue_number}% --repo %{owner}/%{repo}%",
-            "params": {},
+            "params": {
+              "issue_number": {
+                "type": "number",
+                "required": false,
+                "description": "Issue 编号",
+                "example": "123",
+                "notes": "常用"
+              },
+              "repo": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "hello-world",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh issue view 仓库"
           },
           {
             "name": "显示评论",
             "cmd": "gh issue view %{issue_number}% --comments",
-            "params": {},
+            "params": {
+              "issue_number": {
+                "type": "number",
+                "required": false,
+                "description": "Issue 编号",
+                "example": "123",
+                "notes": "常用"
+              }
+            },
             "keyword": "gh issue view 评论"
           },
           {
             "name": "在浏览器打开",
             "cmd": "gh issue view %{issue_number}% --web",
-            "params": {},
+            "params": {
+              "issue_number": {
+                "type": "number",
+                "required": false,
+                "description": "Issue 编号",
+                "example": "123",
+                "notes": "常用"
+              }
+            },
             "keyword": "gh issue view 浏览器"
           }
         ],
@@ -404,19 +600,85 @@
           {
             "name": "创建并指定标签",
             "cmd": "gh issue create --title \"%{title}%\" --body \"%{body}%\" --label %{label}%",
-            "params": {},
+            "params": {
+              "title": {
+                "type": "string",
+                "required": false,
+                "description": "Issue 标题",
+                "example": "登录功能报错",
+                "notes": "常用"
+              },
+              "body": {
+                "type": "string",
+                "required": false,
+                "description": "Issue 描述正文",
+                "example": "复现步骤：1. 打开页面 2. 点击登录",
+                "notes": "可选"
+              },
+              "label": {
+                "type": "string",
+                "required": false,
+                "description": "标签名称",
+                "example": "bug",
+                "notes": "可选，多个用逗号分隔"
+              }
+            },
             "keyword": "gh issue create 标签"
           },
           {
             "name": "创建并指定受理人",
             "cmd": "gh issue create --title \"%{title}%\" --body \"%{body}%\" --assignee %{assignee}%",
-            "params": {},
+            "params": {
+              "title": {
+                "type": "string",
+                "required": false,
+                "description": "Issue 标题",
+                "example": "登录功能报错",
+                "notes": "常用"
+              },
+              "body": {
+                "type": "string",
+                "required": false,
+                "description": "Issue 描述正文",
+                "example": "复现步骤：1. 打开页面 2. 点击登录",
+                "notes": "可选"
+              },
+              "assignee": {
+                "type": "string",
+                "required": false,
+                "description": "受理人用户名",
+                "example": "octocat",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh issue create 受理人"
           },
           {
             "name": "创建里程碑",
             "cmd": "gh issue create --title \"%{title}%\" --body \"%{body}%\" --milestone \"%{milestone}%\"",
-            "params": {},
+            "params": {
+              "title": {
+                "type": "string",
+                "required": false,
+                "description": "Issue 标题",
+                "example": "登录功能报错",
+                "notes": "常用"
+              },
+              "body": {
+                "type": "string",
+                "required": false,
+                "description": "Issue 描述正文",
+                "example": "复现步骤：1. 打开页面 2. 点击登录",
+                "notes": "可选"
+              },
+              "milestone": {
+                "type": "string",
+                "required": false,
+                "description": "里程碑标题",
+                "example": "v1.0",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh issue create 里程碑"
           },
           {
@@ -428,7 +690,29 @@
           {
             "name": "创建到指定仓库",
             "cmd": "gh issue create --repo %{owner}/%{repo}% --title \"%{title}%\" --body \"%{body}%\"",
-            "params": {},
+            "params": {
+              "repo": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "hello-world",
+                "notes": "可选"
+              },
+              "title": {
+                "type": "string",
+                "required": false,
+                "description": "Issue 标题",
+                "example": "登录功能报错",
+                "notes": "常用"
+              },
+              "body": {
+                "type": "string",
+                "required": false,
+                "description": "Issue 描述正文",
+                "example": "复现步骤：1. 打开页面 2. 点击登录",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh issue create 仓库"
           }
         ],
@@ -496,13 +780,43 @@
           {
             "name": "关闭并添加说明",
             "cmd": "gh issue close %{issue_number}% --reason %{reason}%",
-            "params": {},
+            "params": {
+              "issue_number": {
+                "type": "number",
+                "required": false,
+                "description": "Issue 编号",
+                "example": "123",
+                "notes": ""
+              },
+              "reason": {
+                "type": "string",
+                "required": false,
+                "description": "关闭原因",
+                "example": "completed",
+                "notes": "可选: completed/not-planned"
+              }
+            },
             "keyword": "gh issue close 原因"
           },
           {
             "name": "关闭指定仓库 Issue",
             "cmd": "gh issue close %{issue_number}% --repo %{owner}/%{repo}%",
-            "params": {},
+            "params": {
+              "issue_number": {
+                "type": "number",
+                "required": false,
+                "description": "Issue 编号",
+                "example": "123",
+                "notes": ""
+              },
+              "repo": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "hello-world",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh issue close 仓库"
           }
         ],
@@ -549,7 +863,22 @@
           {
             "name": "重新打开指定仓库 Issue",
             "cmd": "gh issue reopen %{issue_number}% --repo %{owner}/%{repo}%",
-            "params": {},
+            "params": {
+              "issue_number": {
+                "type": "number",
+                "required": false,
+                "description": "Issue 编号",
+                "example": "123",
+                "notes": ""
+              },
+              "repo": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "hello-world",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh issue reopen 仓库"
           }
         ],
@@ -589,31 +918,113 @@
           {
             "name": "修改标题和描述",
             "cmd": "gh issue edit %{issue_number}% --title \"%{title}%\" --body \"%{body}%\"",
-            "params": {},
+            "params": {
+              "issue_number": {
+                "type": "number",
+                "required": false,
+                "description": "Issue 编号",
+                "example": "123",
+                "notes": ""
+              },
+              "title": {
+                "type": "string",
+                "required": false,
+                "description": "新标题",
+                "example": "新标题内容",
+                "notes": "可选"
+              },
+              "body": {
+                "type": "string",
+                "required": false,
+                "description": "新描述",
+                "example": "新的描述内容",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh issue edit 标题"
           },
           {
             "name": "修改标签",
             "cmd": "gh issue edit %{issue_number}% --label %{label}%",
-            "params": {},
+            "params": {
+              "issue_number": {
+                "type": "number",
+                "required": false,
+                "description": "Issue 编号",
+                "example": "123",
+                "notes": ""
+              },
+              "label": {
+                "type": "string",
+                "required": false,
+                "description": "标签",
+                "example": "bug,enhancement",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh issue edit 标签"
           },
           {
             "name": "添加受理人",
             "cmd": "gh issue edit %{issue_number}% --add-assignee %{assignee}%",
-            "params": {},
+            "params": {
+              "issue_number": {
+                "type": "number",
+                "required": false,
+                "description": "Issue 编号",
+                "example": "123",
+                "notes": ""
+              },
+              "assignee": {
+                "type": "string",
+                "required": false,
+                "description": "受理人",
+                "example": "octocat",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh issue edit 受理人"
           },
           {
             "name": "修改里程碑",
             "cmd": "gh issue edit %{issue_number}% --milestone \"%{milestone}%\"",
-            "params": {},
+            "params": {
+              "issue_number": {
+                "type": "number",
+                "required": false,
+                "description": "Issue 编号",
+                "example": "123",
+                "notes": ""
+              },
+              "milestone": {
+                "type": "string",
+                "required": false,
+                "description": "里程碑",
+                "example": "v1.0",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh issue edit 里程碑"
           },
           {
             "name": "编辑指定仓库 Issue",
             "cmd": "gh issue edit %{issue_number}% --repo %{owner}/%{repo}%",
-            "params": {},
+            "params": {
+              "issue_number": {
+                "type": "number",
+                "required": false,
+                "description": "Issue 编号",
+                "example": "123",
+                "notes": ""
+              },
+              "repo": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "hello-world",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh issue edit 仓库"
           }
         ],
@@ -688,19 +1099,64 @@
           {
             "name": "编辑最近评论",
             "cmd": "gh issue comment edit %{issue_number}% --body \"%{body}%\"",
-            "params": {},
+            "params": {
+              "issue_number": {
+                "type": "number",
+                "required": false,
+                "description": "Issue 编号",
+                "example": "123",
+                "notes": ""
+              },
+              "body": {
+                "type": "string",
+                "required": false,
+                "description": "评论内容",
+                "example": "感谢报告，已确认此问题",
+                "notes": ""
+              }
+            },
             "keyword": "gh issue comment 编辑"
           },
           {
             "name": "删除最近评论",
             "cmd": "gh issue comment delete %{issue_number}%",
-            "params": {},
+            "params": {
+              "issue_number": {
+                "type": "number",
+                "required": false,
+                "description": "Issue 编号",
+                "example": "123",
+                "notes": ""
+              }
+            },
             "keyword": "gh issue comment 删除"
           },
           {
             "name": "评论指定仓库 Issue",
             "cmd": "gh issue comment %{issue_number}% --repo %{owner}/%{repo}% --body \"%{body}%\"",
-            "params": {},
+            "params": {
+              "issue_number": {
+                "type": "number",
+                "required": false,
+                "description": "Issue 编号",
+                "example": "123",
+                "notes": ""
+              },
+              "repo": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "hello-world",
+                "notes": "可选"
+              },
+              "body": {
+                "type": "string",
+                "required": false,
+                "description": "评论内容",
+                "example": "感谢报告，已确认此问题",
+                "notes": ""
+              }
+            },
             "keyword": "gh issue comment 仓库"
           }
         ],
@@ -747,13 +1203,29 @@
           {
             "name": "查看指定仓库标签",
             "cmd": "gh label list --repo %{owner}/%{repo}%",
-            "params": {},
+            "params": {
+              "repo": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "hello-world",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh label list 仓库"
           },
           {
             "name": "限制数量",
             "cmd": "gh label list --limit %{number}%",
-            "params": {},
+            "params": {
+              "number": {
+                "type": "number",
+                "required": false,
+                "description": "返回数量上限",
+                "example": "50",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh label list 数量"
           }
         ],
@@ -793,49 +1265,211 @@
           {
             "name": "创建 PR 并指定审查者",
             "cmd": "gh pr create --title \"%{title}%\" --body \"%{body}%\" --reviewer %{reviewer}%",
-            "params": {},
+            "params": {
+              "title": {
+                "type": "string",
+                "required": false,
+                "description": "PR 标题",
+                "example": "feat: 添加用户登录功能",
+                "notes": "常用"
+              },
+              "body": {
+                "type": "string",
+                "required": false,
+                "description": "PR 描述正文",
+                "example": "实现了用户注册和登录功能",
+                "notes": "可选"
+              },
+              "reviewer": {
+                "type": "string",
+                "required": false,
+                "description": "审查者用户名",
+                "example": "octocat,hubot",
+                "notes": "可选，多个用逗号分隔"
+              }
+            },
             "keyword": "gh pr create 审查者"
           },
           {
             "name": "创建 PR 并指定标签",
             "cmd": "gh pr create --title \"%{title}%\" --body \"%{body}%\" --label %{label}%",
-            "params": {},
+            "params": {
+              "title": {
+                "type": "string",
+                "required": false,
+                "description": "PR 标题",
+                "example": "feat: 添加用户登录功能",
+                "notes": "常用"
+              },
+              "body": {
+                "type": "string",
+                "required": false,
+                "description": "PR 描述正文",
+                "example": "实现了用户注册和登录功能",
+                "notes": "可选"
+              },
+              "label": {
+                "type": "string",
+                "required": false,
+                "description": "标签",
+                "example": "feature,bugfix",
+                "notes": "可选，多个用逗号分隔"
+              }
+            },
             "keyword": "gh pr create 标签"
           },
           {
             "name": "创建 PR 并指定受理人",
             "cmd": "gh pr create --title \"%{title}%\" --body \"%{body}%\" --assignee %{assignee}%",
-            "params": {},
+            "params": {
+              "title": {
+                "type": "string",
+                "required": false,
+                "description": "PR 标题",
+                "example": "feat: 添加用户登录功能",
+                "notes": "常用"
+              },
+              "body": {
+                "type": "string",
+                "required": false,
+                "description": "PR 描述正文",
+                "example": "实现了用户注册和登录功能",
+                "notes": "可选"
+              },
+              "assignee": {
+                "type": "string",
+                "required": false,
+                "description": "受理人",
+                "example": "octocat",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr create 受理人"
           },
           {
             "name": "创建 PR 指定目标分支",
             "cmd": "gh pr create --title \"%{title}%\" --body \"%{body}%\" --base %{base_branch}%",
-            "params": {},
+            "params": {
+              "title": {
+                "type": "string",
+                "required": false,
+                "description": "PR 标题",
+                "example": "feat: 添加用户登录功能",
+                "notes": "常用"
+              },
+              "body": {
+                "type": "string",
+                "required": false,
+                "description": "PR 描述正文",
+                "example": "实现了用户注册和登录功能",
+                "notes": "可选"
+              },
+              "base_branch": {
+                "type": "string",
+                "required": false,
+                "description": "目标分支",
+                "example": "main",
+                "notes": "可选，默认为仓库默认分支"
+              }
+            },
             "keyword": "gh pr create 目标分支"
           },
           {
             "name": "创建 PR 指定源分支",
             "cmd": "gh pr create --title \"%{title}%\" --body \"%{body}%\" --head %{head_branch}%",
-            "params": {},
+            "params": {
+              "title": {
+                "type": "string",
+                "required": false,
+                "description": "PR 标题",
+                "example": "feat: 添加用户登录功能",
+                "notes": "常用"
+              },
+              "body": {
+                "type": "string",
+                "required": false,
+                "description": "PR 描述正文",
+                "example": "实现了用户注册和登录功能",
+                "notes": "可选"
+              },
+              "head_branch": {
+                "type": "string",
+                "required": false,
+                "description": "源分支",
+                "example": "feature/login",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr create 源分支"
           },
           {
             "name": "创建 PR 草稿",
             "cmd": "gh pr create --title \"%{title}%\" --body \"%{body}%\" --draft",
-            "params": {},
+            "params": {
+              "title": {
+                "type": "string",
+                "required": false,
+                "description": "PR 标题",
+                "example": "feat: 添加用户登录功能",
+                "notes": "常用"
+              },
+              "body": {
+                "type": "string",
+                "required": false,
+                "description": "PR 描述正文",
+                "example": "实现了用户注册和登录功能",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr create 草稿"
           },
           {
             "name": "创建并推送到远程",
             "cmd": "gh pr create --title \"%{title}%\" --body \"%{body}%\" --push",
-            "params": {},
+            "params": {
+              "title": {
+                "type": "string",
+                "required": false,
+                "description": "PR 标题",
+                "example": "feat: 添加用户登录功能",
+                "notes": "常用"
+              },
+              "body": {
+                "type": "string",
+                "required": false,
+                "description": "PR 描述正文",
+                "example": "实现了用户注册和登录功能",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr create 推送"
           },
           {
             "name": "创建到指定仓库",
             "cmd": "gh pr create --repo %{owner}/%{repo}% --title \"%{title}%\" --body \"%{body}%\"",
-            "params": {},
+            "params": {
+              "repo": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "hello-world",
+                "notes": "可选"
+              },
+              "title": {
+                "type": "string",
+                "required": false,
+                "description": "PR 标题",
+                "example": "feat: 添加用户登录功能",
+                "notes": "常用"
+              },
+              "body": {
+                "type": "string",
+                "required": false,
+                "description": "PR 描述正文",
+                "example": "实现了用户注册和登录功能",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr create 仓库"
           }
         ],
@@ -917,37 +1551,85 @@
           {
             "name": "查看指定仓库 PR",
             "cmd": "gh pr list --repo %{owner}/%{repo}%",
-            "params": {},
+            "params": {
+              "repo": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "hello-world",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr list 仓库"
           },
           {
             "name": "按状态筛选",
             "cmd": "gh pr list --state %{state}%",
-            "params": {},
+            "params": {
+              "state": {
+                "type": "string",
+                "required": false,
+                "description": "PR 状态",
+                "example": "open",
+                "notes": "可选: open/closed/merged/all"
+              }
+            },
             "keyword": "gh pr list 状态"
           },
           {
             "name": "按标签筛选",
             "cmd": "gh pr list --label %{label}%",
-            "params": {},
+            "params": {
+              "label": {
+                "type": "string",
+                "required": false,
+                "description": "标签名称",
+                "example": "bug",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr list 标签"
           },
           {
             "name": "按作者筛选",
             "cmd": "gh pr list --author %{author}%",
-            "params": {},
+            "params": {
+              "author": {
+                "type": "string",
+                "required": false,
+                "description": "作者用户名",
+                "example": "octocat",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr list 作者"
           },
           {
             "name": "搜索 PR",
             "cmd": "gh pr list --search \"%{query}%\"",
-            "params": {},
+            "params": {
+              "query": {
+                "type": "string",
+                "required": false,
+                "description": "搜索关键词",
+                "example": "login feature",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr list 搜索"
           },
           {
             "name": "限制数量",
             "cmd": "gh pr list --limit %{number}%",
-            "params": {},
+            "params": {
+              "number": {
+                "type": "number",
+                "required": false,
+                "description": "返回数量上限",
+                "example": "20",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr list 数量"
           }
         ],
@@ -1015,19 +1697,43 @@
           {
             "name": "在浏览器打开",
             "cmd": "gh pr view %{pr_number}% --web",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": ""
+              }
+            },
             "keyword": "gh pr view 浏览器"
           },
           {
             "name": "显示评论",
             "cmd": "gh pr view %{pr_number}% --comments",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": ""
+              }
+            },
             "keyword": "gh pr view 评论"
           },
           {
             "name": "显示变更文件",
             "cmd": "gh pr view %{pr_number}% --files",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": ""
+              }
+            },
             "keyword": "gh pr view 文件"
           }
         ],
@@ -1053,7 +1759,15 @@
           {
             "name": "检出并拉取",
             "cmd": "gh pr checkout %{pr_number}% --fetch",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": "常用"
+              }
+            },
             "keyword": "gh pr checkout 拉取"
           }
         ],
@@ -1079,37 +1793,99 @@
           {
             "name": "Squash 合并",
             "cmd": "gh pr merge %{pr_number}% --squash --message \"%{message}%\"",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": "常用"
+              },
+              "message": {
+                "type": "string",
+                "required": false,
+                "description": "Squash 合并提交信息",
+                "example": "feat: 合并登录功能",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr merge squash"
           },
           {
             "name": "Rebase 合并",
             "cmd": "gh pr merge %{pr_number}% --rebase",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": "常用"
+              }
+            },
             "keyword": "gh pr merge rebase"
           },
           {
             "name": "合并并删除分支",
             "cmd": "gh pr merge %{pr_number}% --delete-branch",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": "常用"
+              }
+            },
             "keyword": "gh pr merge 删除分支"
           },
           {
             "name": "自动合并",
             "cmd": "gh pr merge %{pr_number}% --auto",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": "常用"
+              }
+            },
             "keyword": "gh pr merge 自动"
           },
           {
             "name": "合并并添加说明",
             "cmd": "gh pr merge %{pr_number}% --body \"%{body}%\"",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": "常用"
+              },
+              "body": {
+                "type": "string",
+                "required": false,
+                "description": "PR 正文/说明",
+                "example": "合并说明",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr merge 说明"
           },
           {
             "name": "允许合并冲突",
             "cmd": "gh pr merge %{pr_number}% --admin --merge",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": "常用"
+              }
+            },
             "keyword": "gh pr merge 冲突"
           }
         ],
@@ -1149,7 +1925,15 @@
           {
             "name": "关闭并删除分支",
             "cmd": "gh pr close %{pr_number}% --delete-branch",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": ""
+              }
+            },
             "keyword": "gh pr close 删除分支"
           }
         ],
@@ -1175,7 +1959,22 @@
           {
             "name": "重新打开并添加评论",
             "cmd": "gh pr reopen %{pr_number}% --comment \"%{comment}%\"",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": ""
+              },
+              "comment": {
+                "type": "string",
+                "required": false,
+                "description": "评论内容",
+                "example": "重新打开此 PR",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr reopen 评论"
           }
         ],
@@ -1208,37 +2007,134 @@
           {
             "name": "修改标题和描述",
             "cmd": "gh pr edit %{pr_number}% --title \"%{title}%\" --body \"%{body}%\"",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": ""
+              },
+              "title": {
+                "type": "string",
+                "required": false,
+                "description": "新标题",
+                "example": "feat: 更新登录功能",
+                "notes": "可选"
+              },
+              "body": {
+                "type": "string",
+                "required": false,
+                "description": "新描述",
+                "example": "更新了描述内容",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr edit 标题"
           },
           {
             "name": "修改目标分支",
             "cmd": "gh pr edit %{pr_number}% --base %{base}%",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": ""
+              },
+              "base": {
+                "type": "string",
+                "required": false,
+                "description": "目标分支",
+                "example": "develop",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr edit 目标分支"
           },
           {
             "name": "添加标签",
             "cmd": "gh pr edit %{pr_number}% --add-label %{label}%",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": ""
+              },
+              "label": {
+                "type": "string",
+                "required": false,
+                "description": "标签名称",
+                "example": "feature",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr edit 添加标签"
           },
           {
             "name": "移除标签",
             "cmd": "gh pr edit %{pr_number}% --remove-label %{label}%",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": ""
+              },
+              "label": {
+                "type": "string",
+                "required": false,
+                "description": "标签名称",
+                "example": "feature",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr edit 移除标签"
           },
           {
             "name": "添加受理人",
             "cmd": "gh pr edit %{pr_number}% --add-assignee %{assignee}%",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": ""
+              },
+              "assignee": {
+                "type": "string",
+                "required": false,
+                "description": "受理人",
+                "example": "octocat",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr edit 受理人"
           },
           {
             "name": "移除受理人",
             "cmd": "gh pr edit %{pr_number}% --remove-assignee %{assignee}%",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": ""
+              },
+              "assignee": {
+                "type": "string",
+                "required": false,
+                "description": "受理人",
+                "example": "octocat",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr edit 移除受理人"
           }
         ],
@@ -1299,7 +2195,29 @@
           {
             "name": "添加多个受理人",
             "cmd": "gh pr add-assignee %{pr_number}% %{assignee1}% %{assignee2}%",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": ""
+              },
+              "assignee1": {
+                "type": "string",
+                "required": false,
+                "description": "受理人1",
+                "example": "octocat",
+                "notes": "可选"
+              },
+              "assignee2": {
+                "type": "string",
+                "required": false,
+                "description": "受理人2",
+                "example": "hubot",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr add-assignee 多个"
           }
         ],
@@ -1346,7 +2264,29 @@
           {
             "name": "添加多个标签",
             "cmd": "gh pr add-label %{pr_number}% %{label1}% %{label2}%",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": ""
+              },
+              "label1": {
+                "type": "string",
+                "required": false,
+                "description": "标签1",
+                "example": "bug",
+                "notes": "可选"
+              },
+              "label2": {
+                "type": "string",
+                "required": false,
+                "description": "标签2",
+                "example": "urgent",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr add-label 多个"
           }
         ],
@@ -1393,25 +2333,78 @@
           {
             "name": "批准 PR",
             "cmd": "gh pr review %{pr_number}% --approve",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": "常用"
+              }
+            },
             "keyword": "gh pr review approve"
           },
           {
             "name": "请求修改",
             "cmd": "gh pr review %{pr_number}% --request-changes --body \"%{body}%\"",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": "常用"
+              },
+              "body": {
+                "type": "string",
+                "required": false,
+                "description": "审查意见",
+                "example": "LGTM!",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr review request-changes"
           },
           {
             "name": "仅评论",
             "cmd": "gh pr review %{pr_number}% --comment --body \"%{body}%\"",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": "常用"
+              },
+              "body": {
+                "type": "string",
+                "required": false,
+                "description": "审查意见",
+                "example": "LGTM!",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr review comment"
           },
           {
             "name": "批准并添加说明",
             "cmd": "gh pr review %{pr_number}% --approve --body \"%{body}%\"",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": "常用"
+              },
+              "body": {
+                "type": "string",
+                "required": false,
+                "description": "审查意见",
+                "example": "LGTM!",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh pr review 说明"
           }
         ],
@@ -1444,13 +2437,29 @@
           {
             "name": "等待检查完成",
             "cmd": "gh pr checks %{pr_number}% --watch",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": ""
+              }
+            },
             "keyword": "gh pr checks 等待"
           },
           {
             "name": "显示详细状态",
             "cmd": "gh pr checks %{pr_number}% --verbose",
-            "params": {},
+            "params": {
+              "pr_number": {
+                "type": "number",
+                "required": false,
+                "description": "PR 编号",
+                "example": "123",
+                "notes": ""
+              }
+            },
             "keyword": "gh pr checks 详细"
           }
         ],
@@ -1476,31 +2485,71 @@
           {
             "name": "限制数量",
             "cmd": "gh run list --limit %{number}%",
-            "params": {},
+            "params": {
+              "number": {
+                "type": "number",
+                "required": false,
+                "description": "返回数量上限",
+                "example": "20",
+                "notes": "常用，可选"
+              }
+            },
             "keyword": "gh run list 数量"
           },
           {
             "name": "按状态筛选",
             "cmd": "gh run list --status %{status}%",
-            "params": {},
+            "params": {
+              "status": {
+                "type": "string",
+                "required": false,
+                "description": "运行状态",
+                "example": "success",
+                "notes": "可选: queued/in_progress/success/failure/cancelled"
+              }
+            },
             "keyword": "gh run list 状态"
           },
           {
             "name": "按分支筛选",
             "cmd": "gh run list --branch %{branch}%",
-            "params": {},
+            "params": {
+              "branch": {
+                "type": "string",
+                "required": false,
+                "description": "分支名称",
+                "example": "main",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh run list 分支"
           },
           {
             "name": "按 workflow 筛选",
             "cmd": "gh run list --workflow %{workflow}%",
-            "params": {},
+            "params": {
+              "workflow": {
+                "type": "string",
+                "required": false,
+                "description": "工作流名称或 ID",
+                "example": "CI",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh run list workflow"
           },
           {
             "name": "查看指定仓库",
             "cmd": "gh run list --repo %{owner}/%{repo}%",
-            "params": {},
+            "params": {
+              "repo": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "hello-world",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh run list 仓库"
           }
         ],
@@ -1561,25 +2610,64 @@
           {
             "name": "显示日志",
             "cmd": "gh run view %{run_id}% --log",
-            "params": {},
+            "params": {
+              "run_id": {
+                "type": "number",
+                "required": false,
+                "description": "运行 ID",
+                "example": "123456789",
+                "notes": "常用"
+              }
+            },
             "keyword": "gh run view 日志"
           },
           {
             "name": "显示作业",
             "cmd": "gh run view %{run_id}% --job",
-            "params": {},
+            "params": {
+              "run_id": {
+                "type": "number",
+                "required": false,
+                "description": "运行 ID",
+                "example": "123456789",
+                "notes": "常用"
+              }
+            },
             "keyword": "gh run view 作业"
           },
           {
             "name": "在浏览器打开",
             "cmd": "gh run view %{run_id}% --web",
-            "params": {},
+            "params": {
+              "run_id": {
+                "type": "number",
+                "required": false,
+                "description": "运行 ID",
+                "example": "123456789",
+                "notes": "常用"
+              }
+            },
             "keyword": "gh run view 浏览器"
           },
           {
             "name": "查看指定仓库",
             "cmd": "gh run view %{run_id}% --repo %{owner}/%{repo}%",
-            "params": {},
+            "params": {
+              "run_id": {
+                "type": "number",
+                "required": false,
+                "description": "运行 ID",
+                "example": "123456789",
+                "notes": "常用"
+              },
+              "repo": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "hello-world",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh run view 仓库"
           }
         ],
@@ -1619,13 +2707,36 @@
           {
             "name": "重新运行指定仓库",
             "cmd": "gh run rerun %{run_id}% --repo %{owner}/%{repo}%",
-            "params": {},
+            "params": {
+              "run_id": {
+                "type": "number",
+                "required": false,
+                "description": "运行 ID",
+                "example": "123456789",
+                "notes": "常用"
+              },
+              "repo": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "hello-world",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh run rerun 仓库"
           },
           {
             "name": "重新运行失败作业",
             "cmd": "gh run rerun %{run_id}% --failed",
-            "params": {},
+            "params": {
+              "run_id": {
+                "type": "number",
+                "required": false,
+                "description": "运行 ID",
+                "example": "123456789",
+                "notes": "常用"
+              }
+            },
             "keyword": "gh run rerun 失败"
           }
         ],
@@ -1665,7 +2776,22 @@
           {
             "name": "取消指定仓库",
             "cmd": "gh run cancel %{run_id}% --repo %{owner}/%{repo}%",
-            "params": {},
+            "params": {
+              "run_id": {
+                "type": "number",
+                "required": false,
+                "description": "运行 ID",
+                "example": "123456789",
+                "notes": ""
+              },
+              "repo": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "hello-world",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh run cancel 仓库"
           }
         ],
@@ -1711,7 +2837,15 @@
           {
             "name": "查看指定仓库",
             "cmd": "gh workflow list --repo %{owner}/%{repo}%",
-            "params": {},
+            "params": {
+              "repo": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "hello-world",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh workflow list 仓库"
           }
         ],
@@ -1744,13 +2878,36 @@
           {
             "name": "在浏览器打开",
             "cmd": "gh workflow view %{workflow_id}% --web",
-            "params": {},
+            "params": {
+              "workflow_id": {
+                "type": "string",
+                "required": false,
+                "description": "工作流名称或 ID",
+                "example": "CI",
+                "notes": ""
+              }
+            },
             "keyword": "gh workflow view 浏览器"
           },
           {
             "name": "查看指定仓库",
             "cmd": "gh workflow view %{workflow_id}% --repo %{owner}/%{repo}%",
-            "params": {},
+            "params": {
+              "workflow_id": {
+                "type": "string",
+                "required": false,
+                "description": "工作流名称或 ID",
+                "example": "CI",
+                "notes": ""
+              },
+              "repo": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "hello-world",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh workflow view 仓库"
           }
         ],
@@ -1790,19 +2947,71 @@
           {
             "name": "传递输入参数",
             "cmd": "gh workflow run %{workflow_name}% --field %{key}%=%{value}%",
-            "params": {},
+            "params": {
+              "workflow_name": {
+                "type": "string",
+                "required": false,
+                "description": "工作流名称",
+                "example": "CI",
+                "notes": "常用"
+              },
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "输入参数名",
+                "example": "environment",
+                "notes": "可选"
+              },
+              "value": {
+                "type": "string",
+                "required": false,
+                "description": "输入参数值",
+                "example": "production",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh workflow run 参数"
           },
           {
             "name": "指定分支",
             "cmd": "gh workflow run %{workflow_name}% --ref %{branch}%",
-            "params": {},
+            "params": {
+              "workflow_name": {
+                "type": "string",
+                "required": false,
+                "description": "工作流名称",
+                "example": "CI",
+                "notes": "常用"
+              },
+              "branch": {
+                "type": "string",
+                "required": false,
+                "description": "分支名称",
+                "example": "main",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh workflow run 分支"
           },
           {
             "name": "运行指定仓库",
             "cmd": "gh workflow run %{workflow_name}% --repo %{owner}/%{repo}%",
-            "params": {},
+            "params": {
+              "workflow_name": {
+                "type": "string",
+                "required": false,
+                "description": "工作流名称",
+                "example": "CI",
+                "notes": "常用"
+              },
+              "repo": {
+                "type": "string",
+                "required": false,
+                "description": "仓库名称",
+                "example": "hello-world",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh workflow run 仓库"
           }
         ],
@@ -1863,7 +3072,22 @@
           {
             "name": "POST 请求创建资源",
             "cmd": "gh api repos/{owner}/{repo}/issues -X POST -f title=\"%{title}%\" -f body=\"%{body}%\"",
-            "params": {},
+            "params": {
+              "title": {
+                "type": "string",
+                "required": false,
+                "description": "标题",
+                "example": "Bug Report",
+                "notes": "可选"
+              },
+              "body": {
+                "type": "string",
+                "required": false,
+                "description": "正文",
+                "example": "详细描述",
+                "notes": "可选"
+              }
+            },
             "keyword": "gh api POST"
           },
           {

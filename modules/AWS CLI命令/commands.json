@@ -14,25 +14,57 @@
           {
             "name": "配置 Access Key",
             "cmd": "aws configure set aws_access_key_id %{access_key}%",
-            "params": {},
+            "params": {
+              "access_key": {
+                "type": "string",
+                "required": false,
+                "description": "AWS Access Key ID",
+                "example": "AKIAIOSFODNN7EXAMPLE",
+                "notes": "在 IAM 控制台创建"
+              }
+            },
             "keyword": "aws configure set access_key"
           },
           {
             "name": "配置默认区域",
             "cmd": "aws configure set region %{region}%",
-            "params": {},
+            "params": {
+              "region": {
+                "type": "string",
+                "required": false,
+                "description": "AWS 区域",
+                "example": "us-east-1",
+                "notes": "可选: us-east-1, cn-north-1 等"
+              }
+            },
             "keyword": "aws configure set region"
           },
           {
             "name": "配置输出格式",
             "cmd": "aws configure set output %{format}%",
-            "params": {},
+            "params": {
+              "format": {
+                "type": "string",
+                "required": false,
+                "description": "输出格式",
+                "example": "json",
+                "notes": "可选: json, text, table"
+              }
+            },
             "keyword": "aws configure set output"
           },
           {
             "name": "配置 AWS Profile",
             "cmd": "aws configure --profile %{profile}%",
-            "params": {},
+            "params": {
+              "profile": {
+                "type": "string",
+                "required": false,
+                "description": "Profile 名称",
+                "example": "my-profile",
+                "notes": "用于多账号场景"
+              }
+            },
             "keyword": "aws configure profile"
           },
           {
@@ -91,13 +123,29 @@
           {
             "name": "使用指定 Profile",
             "cmd": "aws sts get-caller-identity --profile %{profile}%",
-            "params": {},
+            "params": {
+              "profile": {
+                "type": "string",
+                "required": false,
+                "description": "Profile 名称",
+                "example": "prod",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws sts profile"
           },
           {
             "name": "使用指定 Region",
             "cmd": "aws sts get-caller-identity --region %{region}%",
-            "params": {},
+            "params": {
+              "region": {
+                "type": "string",
+                "required": false,
+                "description": "区域",
+                "example": "us-east-1",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws sts region"
           }
         ],
@@ -136,13 +184,36 @@
           {
             "name": "查看服务帮助",
             "cmd": "aws %{service}% help",
-            "params": {},
+            "params": {
+              "service": {
+                "type": "string",
+                "required": false,
+                "description": "AWS 服务名称",
+                "example": "ec2",
+                "notes": "可选: ec2, s3, lambda, rds 等"
+              }
+            },
             "keyword": "aws ec2 help"
           },
           {
             "name": "查看命令帮助",
             "cmd": "aws %{service}% %{command}% help",
-            "params": {},
+            "params": {
+              "service": {
+                "type": "string",
+                "required": false,
+                "description": "AWS 服务名称",
+                "example": "ec2",
+                "notes": "可选: ec2, s3, lambda, rds 等"
+              },
+              "command": {
+                "type": "string",
+                "required": false,
+                "description": "服务命令",
+                "example": "describe-instances",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws ec2 describe-instances help"
           }
         ],
@@ -175,25 +246,57 @@
           {
             "name": "按状态筛选",
             "cmd": "aws ec2 describe-instances --filters \"Name=instance-state-name,Values=%{state}%\"",
-            "params": {},
+            "params": {
+              "state": {
+                "type": "string",
+                "required": false,
+                "description": "实例状态",
+                "example": "running",
+                "notes": "可选: pending, running, stopped, terminated"
+              }
+            },
             "keyword": "aws ec2 describe-instances 状态"
           },
           {
             "name": "按标签筛选",
             "cmd": "aws ec2 describe-instances --filters \"Name=tag:Name,Values=%{tag_value}%\"",
-            "params": {},
+            "params": {
+              "tag_value": {
+                "type": "string",
+                "required": false,
+                "description": "标签值",
+                "example": "web-server",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws ec2 describe-instances 标签"
           },
           {
             "name": "查看指定实例",
             "cmd": "aws ec2 describe-instances --instance-ids %{instance_id}%",
-            "params": {},
+            "params": {
+              "instance_id": {
+                "type": "string",
+                "required": false,
+                "description": "实例 ID",
+                "example": "i-0abcd1234efgh5678",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws ec2 describe-instances id"
           },
           {
             "name": "指定区域",
             "cmd": "aws ec2 describe-instances --region %{region}%",
-            "params": {},
+            "params": {
+              "region": {
+                "type": "string",
+                "required": false,
+                "description": "区域",
+                "example": "us-east-1",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws ec2 describe-instances region"
           },
           {
@@ -246,31 +349,141 @@
           {
             "name": "带密钥对启动",
             "cmd": "aws ec2 run-instances --image-id %{ami_id}% --instance-type %{instance_type}% --key-name %{key_name}%",
-            "params": {},
+            "params": {
+              "ami_id": {
+                "type": "string",
+                "required": false,
+                "description": "AMI ID",
+                "example": "ami-0c55b159cbfafe1f0",
+                "notes": "常用，必填"
+              },
+              "instance_type": {
+                "type": "string",
+                "required": false,
+                "description": "实例类型",
+                "example": "t2.micro",
+                "notes": "常用，必填"
+              },
+              "key_name": {
+                "type": "string",
+                "required": false,
+                "description": "密钥对名称",
+                "example": "my-key-pair",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws ec2 run-instances key"
           },
           {
             "name": "带安全组启动",
             "cmd": "aws ec2 run-instances --image-id %{ami_id}% --instance-type %{instance_type}% --security-group-ids %{sg_id}%",
-            "params": {},
+            "params": {
+              "ami_id": {
+                "type": "string",
+                "required": false,
+                "description": "AMI ID",
+                "example": "ami-0c55b159cbfafe1f0",
+                "notes": "常用，必填"
+              },
+              "instance_type": {
+                "type": "string",
+                "required": false,
+                "description": "实例类型",
+                "example": "t2.micro",
+                "notes": "常用，必填"
+              },
+              "sg_id": {
+                "type": "string",
+                "required": false,
+                "description": "安全组 ID",
+                "example": "sg-0abcd1234efgh5678",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws ec2 run-instances 安全组"
           },
           {
             "name": "带子网启动",
             "cmd": "aws ec2 run-instances --image-id %{ami_id}% --instance-type %{instance_type}% --subnet-id %{subnet_id}%",
-            "params": {},
+            "params": {
+              "ami_id": {
+                "type": "string",
+                "required": false,
+                "description": "AMI ID",
+                "example": "ami-0c55b159cbfafe1f0",
+                "notes": "常用，必填"
+              },
+              "instance_type": {
+                "type": "string",
+                "required": false,
+                "description": "实例类型",
+                "example": "t2.micro",
+                "notes": "常用，必填"
+              },
+              "subnet_id": {
+                "type": "string",
+                "required": false,
+                "description": "子网 ID",
+                "example": "subnet-0abcd1234efgh5678",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws ec2 run-instances 子网"
           },
           {
             "name": "带用户数据启动",
             "cmd": "aws ec2 run-instances --image-id %{ami_id}% --instance-type %{instance_type}% --user-data file://%{script}%",
-            "params": {},
+            "params": {
+              "ami_id": {
+                "type": "string",
+                "required": false,
+                "description": "AMI ID",
+                "example": "ami-0c55b159cbfafe1f0",
+                "notes": "常用，必填"
+              },
+              "instance_type": {
+                "type": "string",
+                "required": false,
+                "description": "实例类型",
+                "example": "t2.micro",
+                "notes": "常用，必填"
+              },
+              "script": {
+                "type": "string",
+                "required": false,
+                "description": "用户数据脚本路径",
+                "example": "userdata.sh",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws ec2 run-instances userdata"
           },
           {
             "name": "带标签启动",
             "cmd": "aws ec2 run-instances --image-id %{ami_id}% --instance-type %{instance_type}% --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=%{name}%}]'",
-            "params": {},
+            "params": {
+              "ami_id": {
+                "type": "string",
+                "required": false,
+                "description": "AMI ID",
+                "example": "ami-0c55b159cbfafe1f0",
+                "notes": "常用，必填"
+              },
+              "instance_type": {
+                "type": "string",
+                "required": false,
+                "description": "实例类型",
+                "example": "t2.micro",
+                "notes": "常用，必填"
+              },
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "实例名称标签",
+                "example": "web-server",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws ec2 run-instances tag"
           }
         ],
@@ -345,19 +558,85 @@
           {
             "name": "在指定 VPC 创建",
             "cmd": "aws ec2 create-security-group --group-name %{group_name}% --description \"%{description}%\" --vpc-id %{vpc_id}%",
-            "params": {},
+            "params": {
+              "group_name": {
+                "type": "string",
+                "required": false,
+                "description": "安全组名称",
+                "example": "my-security-group",
+                "notes": "常用，必填"
+              },
+              "description": {
+                "type": "string",
+                "required": false,
+                "description": "安全组描述",
+                "example": "My security group for web servers",
+                "notes": "常用，必填"
+              },
+              "vpc_id": {
+                "type": "string",
+                "required": false,
+                "description": "VPC ID",
+                "example": "vpc-0abcd1234efgh5678",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws ec2 create-security-group vpc"
           },
           {
             "name": "带标签创建",
             "cmd": "aws ec2 create-security-group --group-name %{group_name}% --description \"%{description}%\" --tag-specifications 'ResourceType=security-group,Tags=[{Key=Name,Value=%{name}%}]'",
-            "params": {},
+            "params": {
+              "group_name": {
+                "type": "string",
+                "required": false,
+                "description": "安全组名称",
+                "example": "my-security-group",
+                "notes": "常用，必填"
+              },
+              "description": {
+                "type": "string",
+                "required": false,
+                "description": "安全组描述",
+                "example": "My security group for web servers",
+                "notes": "常用，必填"
+              },
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "标签名称",
+                "example": "web-sg",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws ec2 create-security-group tag"
           },
           {
             "name": "在指定区域创建",
             "cmd": "aws ec2 create-security-group --group-name %{group_name}% --description \"%{description}%\" --region %{region}%",
-            "params": {},
+            "params": {
+              "group_name": {
+                "type": "string",
+                "required": false,
+                "description": "安全组名称",
+                "example": "my-security-group",
+                "notes": "常用，必填"
+              },
+              "description": {
+                "type": "string",
+                "required": false,
+                "description": "安全组描述",
+                "example": "My security group for web servers",
+                "notes": "常用，必填"
+              },
+              "region": {
+                "type": "string",
+                "required": false,
+                "description": "区域",
+                "example": "us-east-1",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws ec2 create-security-group region"
           }
         ],
@@ -411,37 +690,134 @@
           {
             "name": "开放 SSH 访问",
             "cmd": "aws ec2 authorize-security-group-ingress --group-id %{group_id}% --protocol tcp --port 22 --cidr %{cidr}%",
-            "params": {},
+            "params": {
+              "group_id": {
+                "type": "string",
+                "required": false,
+                "description": "安全组 ID",
+                "example": "sg-0abcd1234efgh5678",
+                "notes": "常用，必填"
+              },
+              "cidr": {
+                "type": "string",
+                "required": false,
+                "description": "来源 CIDR",
+                "example": "0.0.0.0/0",
+                "notes": "常用: 0.0.0.0/0 表示任意来源"
+              }
+            },
             "keyword": "aws ec2 authorize SSH"
           },
           {
             "name": "开放 HTTP 访问",
             "cmd": "aws ec2 authorize-security-group-ingress --group-id %{group_id}% --protocol tcp --port 80 --cidr 0.0.0.0/0",
-            "params": {},
+            "params": {
+              "group_id": {
+                "type": "string",
+                "required": false,
+                "description": "安全组 ID",
+                "example": "sg-0abcd1234efgh5678",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws ec2 authorize HTTP"
           },
           {
             "name": "开放 HTTPS 访问",
             "cmd": "aws ec2 authorize-security-group-ingress --group-id %{group_id}% --protocol tcp --port 443 --cidr 0.0.0.0/0",
-            "params": {},
+            "params": {
+              "group_id": {
+                "type": "string",
+                "required": false,
+                "description": "安全组 ID",
+                "example": "sg-0abcd1234efgh5678",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws ec2 authorize HTTPS"
           },
           {
             "name": "开放 MySQL 端口",
             "cmd": "aws ec2 authorize-security-group-ingress --group-id %{group_id}% --protocol tcp --port 3306 --cidr %{cidr}%",
-            "params": {},
+            "params": {
+              "group_id": {
+                "type": "string",
+                "required": false,
+                "description": "安全组 ID",
+                "example": "sg-0abcd1234efgh5678",
+                "notes": "常用，必填"
+              },
+              "cidr": {
+                "type": "string",
+                "required": false,
+                "description": "来源 CIDR",
+                "example": "0.0.0.0/0",
+                "notes": "常用: 0.0.0.0/0 表示任意来源"
+              }
+            },
             "keyword": "aws ec2 authorize MySQL"
           },
           {
             "name": "开放端口范围",
             "cmd": "aws ec2 authorize-security-group-ingress --group-id %{group_id}% --protocol tcp --port %{start_port}%-%{end_port}% --cidr 0.0.0.0/0",
-            "params": {},
+            "params": {
+              "group_id": {
+                "type": "string",
+                "required": false,
+                "description": "安全组 ID",
+                "example": "sg-0abcd1234efgh5678",
+                "notes": "常用，必填"
+              },
+              "start_port": {
+                "type": "number",
+                "required": false,
+                "description": "起始端口",
+                "example": "8000",
+                "notes": "可选"
+              },
+              "end_port": {
+                "type": "number",
+                "required": false,
+                "description": "结束端口",
+                "example": "9000",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws ec2 authorize 范围"
           },
           {
             "name": "引用其他安全组",
             "cmd": "aws ec2 authorize-security-group-ingress --group-id %{group_id}% --protocol %{protocol}% --port %{port}% --source-group %{source_sg}%",
-            "params": {},
+            "params": {
+              "group_id": {
+                "type": "string",
+                "required": false,
+                "description": "安全组 ID",
+                "example": "sg-0abcd1234efgh5678",
+                "notes": "常用，必填"
+              },
+              "protocol": {
+                "type": "string",
+                "required": false,
+                "description": "协议类型",
+                "example": "tcp",
+                "notes": "可选: tcp, udp, icmp, all"
+              },
+              "port": {
+                "type": "string",
+                "required": false,
+                "description": "端口号",
+                "example": "22",
+                "notes": "常用"
+              },
+              "source_sg": {
+                "type": "string",
+                "required": false,
+                "description": "源安全组 ID",
+                "example": "sg-0abcd1234efgh5678",
+                "notes": "可选，替代 cidr"
+              }
+            },
             "keyword": "aws ec2 authorize source-group"
           }
         ],
@@ -521,7 +897,15 @@
           {
             "name": "指定区域分配",
             "cmd": "aws ec2 allocate-address --region %{region}%",
-            "params": {},
+            "params": {
+              "region": {
+                "type": "string",
+                "required": false,
+                "description": "区域",
+                "example": "us-east-1",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws ec2 allocate-address region"
           }
         ],
@@ -547,25 +931,99 @@
           {
             "name": "关联并保留原有 IP",
             "cmd": "aws ec2 associate-address --instance-id %{instance_id}% --allocation-id %{allocation_id}% --allow-reassociation",
-            "params": {},
+            "params": {
+              "instance_id": {
+                "type": "string",
+                "required": false,
+                "description": "实例 ID",
+                "example": "i-0abcd1234efgh5678",
+                "notes": "常用，必填"
+              },
+              "allocation_id": {
+                "type": "string",
+                "required": false,
+                "description": "弹性 IP 的分配 ID",
+                "example": "eipalloc-0abcd1234efgh5678",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws ec2 associate-address 重新关联"
           },
           {
             "name": "关联到网络接口",
             "cmd": "aws ec2 associate-address --network-interface-id %{eni_id}% --allocation-id %{allocation_id}%",
-            "params": {},
+            "params": {
+              "eni_id": {
+                "type": "string",
+                "required": false,
+                "description": "网络接口 ID",
+                "example": "eni-0abcd1234efgh5678",
+                "notes": "可选"
+              },
+              "allocation_id": {
+                "type": "string",
+                "required": false,
+                "description": "弹性 IP 的分配 ID",
+                "example": "eipalloc-0abcd1234efgh5678",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws ec2 associate-address eni"
           },
           {
             "name": "关联到指定私有 IP",
             "cmd": "aws ec2 associate-address --instance-id %{instance_id}% --allocation-id %{allocation_id}% --private-ip-address %{private_ip}%",
-            "params": {},
+            "params": {
+              "instance_id": {
+                "type": "string",
+                "required": false,
+                "description": "实例 ID",
+                "example": "i-0abcd1234efgh5678",
+                "notes": "常用，必填"
+              },
+              "allocation_id": {
+                "type": "string",
+                "required": false,
+                "description": "弹性 IP 的分配 ID",
+                "example": "eipalloc-0abcd1234efgh5678",
+                "notes": "常用，必填"
+              },
+              "private_ip": {
+                "type": "string",
+                "required": false,
+                "description": "私有 IP 地址",
+                "example": "10.0.1.100",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws ec2 associate-address private-ip"
           },
           {
             "name": "在指定区域操作",
             "cmd": "aws ec2 associate-address --instance-id %{instance_id}% --allocation-id %{allocation_id}% --region %{region}%",
-            "params": {},
+            "params": {
+              "instance_id": {
+                "type": "string",
+                "required": false,
+                "description": "实例 ID",
+                "example": "i-0abcd1234efgh5678",
+                "notes": "常用，必填"
+              },
+              "allocation_id": {
+                "type": "string",
+                "required": false,
+                "description": "弹性 IP 的分配 ID",
+                "example": "eipalloc-0abcd1234efgh5678",
+                "notes": "常用，必填"
+              },
+              "region": {
+                "type": "string",
+                "required": false,
+                "description": "区域",
+                "example": "us-east-1",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws ec2 associate-address region"
           }
         ],
@@ -619,31 +1077,127 @@
           {
             "name": "同步调用并获取日志",
             "cmd": "aws lambda invoke --function-name %{function_name}% --payload '%{payload}%' --log-type Tail %{output_file}%",
-            "params": {},
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "payload": {
+                "type": "string",
+                "required": false,
+                "description": "JSON 格式负载",
+                "example": "{\"key\": \"value\"}",
+                "notes": "可选"
+              },
+              "output_file": {
+                "type": "string",
+                "required": false,
+                "description": "输出文件路径",
+                "example": "output.json",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws lambda invoke 日志"
           },
           {
             "name": "异步调用",
             "cmd": "aws lambda invoke --function-name %{function_name}% --invocation-type Event %{output_file}%",
-            "params": {},
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "output_file": {
+                "type": "string",
+                "required": false,
+                "description": "输出文件路径",
+                "example": "output.json",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws lambda invoke async"
           },
           {
             "name": "指定Qualifier调用",
             "cmd": "aws lambda invoke --function-name %{function_name}% --qualifier %{qualifier}% %{output_file}%",
-            "params": {},
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "qualifier": {
+                "type": "string",
+                "required": false,
+                "description": "版本或别名",
+                "example": "prod",
+                "notes": "可选: $LATEST 或版本号"
+              },
+              "output_file": {
+                "type": "string",
+                "required": false,
+                "description": "输出文件路径",
+                "example": "output.json",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws lambda invoke qualifier"
           },
           {
             "name": "从文件读取Payload",
             "cmd": "aws lambda invoke --function-name %{function_name}% --payload file://%{payload_file}% %{output_file}%",
-            "params": {},
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "payload_file": {
+                "type": "string",
+                "required": false,
+                "description": "负载文件路径",
+                "example": "input.json",
+                "notes": "可选"
+              },
+              "output_file": {
+                "type": "string",
+                "required": false,
+                "description": "输出文件路径",
+                "example": "output.json",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws lambda invoke payload文件"
           },
           {
             "name": "Dry Run 模式",
             "cmd": "aws lambda invoke --function-name %{function_name}% --invocation-type DryRun %{output_file}%",
-            "params": {},
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "output_file": {
+                "type": "string",
+                "required": false,
+                "description": "输出文件路径",
+                "example": "output.json",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws lambda invoke dryrun"
           }
         ],
@@ -697,31 +1251,85 @@
           {
             "name": "列出指定桶内容",
             "cmd": "aws s3 ls s3://%{bucket_name}%/",
-            "params": {},
+            "params": {
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws s3 ls bucket"
           },
           {
             "name": "递归列出所有对象",
             "cmd": "aws s3 ls s3://%{bucket_name}% --recursive",
-            "params": {},
+            "params": {
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws s3 ls recursive"
           },
           {
             "name": "按前缀筛选",
             "cmd": "aws s3 ls s3://%{bucket_name}%/%{prefix}%",
-            "params": {},
+            "params": {
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "可选"
+              },
+              "prefix": {
+                "type": "string",
+                "required": false,
+                "description": "对象键前缀",
+                "example": "images/",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws s3 ls prefix"
           },
           {
             "name": "显示详细信息",
             "cmd": "aws s3 ls s3://%{bucket_name}% --recursive --summarize",
-            "params": {},
+            "params": {
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws s3 ls summarize"
           },
           {
             "name": "带页码分页",
             "cmd": "aws s3api list-objects-v2 --bucket %{bucket_name}% --max-items %{max_items}%",
-            "params": {},
+            "params": {
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "可选"
+              },
+              "max_items": {
+                "type": "number",
+                "required": false,
+                "description": "最大返回数量",
+                "example": "100",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws s3 ls paginate"
           }
         ],
@@ -761,19 +1369,64 @@
           {
             "name": "在指定区域创建",
             "cmd": "aws s3 mb s3://%{bucket_name}% --region %{region}%",
-            "params": {},
+            "params": {
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "存储桶名称（全局唯一）",
+                "example": "my-unique-bucket-name",
+                "notes": "常用，必填，全局唯一"
+              },
+              "region": {
+                "type": "string",
+                "required": false,
+                "description": "区域",
+                "example": "us-east-1",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws s3 mb region"
           },
           {
             "name": "创建并设置 ACL",
             "cmd": "aws s3 mb s3://%{bucket_name}% --acl %{acl}%",
-            "params": {},
+            "params": {
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "存储桶名称（全局唯一）",
+                "example": "my-unique-bucket-name",
+                "notes": "常用，必填，全局唯一"
+              },
+              "acl": {
+                "type": "string",
+                "required": false,
+                "description": "访问控制列表",
+                "example": "private",
+                "notes": "可选: private, public-read"
+              }
+            },
             "keyword": "aws s3 mb acl"
           },
           {
             "name": "创建带标签",
             "cmd": "aws s3api create-bucket --bucket %{bucket_name}% --tagging 'TagSet=[{Key=Environment,Value=%{env}%}]'",
-            "params": {},
+            "params": {
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "存储桶名称（全局唯一）",
+                "example": "my-unique-bucket-name",
+                "notes": "常用，必填，全局唯一"
+              },
+              "env": {
+                "type": "string",
+                "required": false,
+                "description": "环境标签值",
+                "example": "production",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws s3 mb tag"
           }
         ],
@@ -820,37 +1473,190 @@
           {
             "name": "下载文件",
             "cmd": "aws s3 cp s3://%{bucket_name}%/%{key}% %{local_path}%",
-            "params": {},
+            "params": {
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "目标存储桶名称",
+                "example": "my-bucket",
+                "notes": "常用，必填"
+              },
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "对象键（路径）",
+                "example": "uploads/file.txt",
+                "notes": "常用，必填"
+              },
+              "local_path": {
+                "type": "string",
+                "required": false,
+                "description": "本地文件路径",
+                "example": "./downloads/file.txt",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws s3 cp 下载"
           },
           {
             "name": "复制并设置权限",
             "cmd": "aws s3 cp %{source}% s3://%{bucket_name}%/%{key}% --acl %{acl}%",
-            "params": {},
+            "params": {
+              "source": {
+                "type": "string",
+                "required": false,
+                "description": "源路径（本地或 S3）",
+                "example": "./file.txt",
+                "notes": "常用，必填"
+              },
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "目标存储桶名称",
+                "example": "my-bucket",
+                "notes": "常用，必填"
+              },
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "对象键（路径）",
+                "example": "uploads/file.txt",
+                "notes": "常用，必填"
+              },
+              "acl": {
+                "type": "string",
+                "required": false,
+                "description": "访问权限",
+                "example": "public-read",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws s3 cp acl"
           },
           {
             "name": "设置存储类型",
             "cmd": "aws s3 cp %{source}% s3://%{bucket_name}%/%{key}% --storage-class %{storage_class}%",
-            "params": {},
+            "params": {
+              "source": {
+                "type": "string",
+                "required": false,
+                "description": "源路径（本地或 S3）",
+                "example": "./file.txt",
+                "notes": "常用，必填"
+              },
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "目标存储桶名称",
+                "example": "my-bucket",
+                "notes": "常用，必填"
+              },
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "对象键（路径）",
+                "example": "uploads/file.txt",
+                "notes": "常用，必填"
+              },
+              "storage_class": {
+                "type": "string",
+                "required": false,
+                "description": "存储类型",
+                "example": "STANDARD_IA",
+                "notes": "可选: STANDARD, STANDARD_IA, GLACIER"
+              }
+            },
             "keyword": "aws s3 cp storage-class"
           },
           {
             "name": "递归复制目录",
             "cmd": "aws s3 cp %{dir_path}% s3://%{bucket_name}%/%{prefix}% --recursive",
-            "params": {},
+            "params": {
+              "dir_path": {
+                "type": "string",
+                "required": false,
+                "description": "目录路径",
+                "example": "./uploads/",
+                "notes": "可选"
+              },
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "目标存储桶名称",
+                "example": "my-bucket",
+                "notes": "常用，必填"
+              },
+              "prefix": {
+                "type": "string",
+                "required": false,
+                "description": "目标前缀",
+                "example": "backup/",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws s3 cp recursive"
           },
           {
             "name": "只复制新文件",
             "cmd": "aws s3 cp %{source}% s3://%{bucket_name}%/%{key}% --size-only",
-            "params": {},
+            "params": {
+              "source": {
+                "type": "string",
+                "required": false,
+                "description": "源路径（本地或 S3）",
+                "example": "./file.txt",
+                "notes": "常用，必填"
+              },
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "目标存储桶名称",
+                "example": "my-bucket",
+                "notes": "常用，必填"
+              },
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "对象键（路径）",
+                "example": "uploads/file.txt",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws s3 cp size-only"
           },
           {
             "name": "排除指定文件",
             "cmd": "aws s3 cp %{source}% s3://%{bucket_name}%/%{key}% --exclude \"%{pattern}%\" --recursive",
-            "params": {},
+            "params": {
+              "source": {
+                "type": "string",
+                "required": false,
+                "description": "源路径（本地或 S3）",
+                "example": "./file.txt",
+                "notes": "常用，必填"
+              },
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "目标存储桶名称",
+                "example": "my-bucket",
+                "notes": "常用，必填"
+              },
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "对象键（路径）",
+                "example": "uploads/file.txt",
+                "notes": "常用，必填"
+              },
+              "pattern": {
+                "type": "string",
+                "required": false,
+                "description": "排除模式",
+                "example": "*.tmp",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws s3 cp exclude"
           }
         ],
@@ -932,31 +1738,148 @@
           {
             "name": "下载同步",
             "cmd": "aws s3 sync s3://%{bucket_name}%/%{prefix}% %{local_dir}%",
-            "params": {},
+            "params": {
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "常用，必填"
+              },
+              "prefix": {
+                "type": "string",
+                "required": false,
+                "description": "目标前缀",
+                "example": "assets/",
+                "notes": "常用，必填"
+              },
+              "local_dir": {
+                "type": "string",
+                "required": false,
+                "description": "本地目录",
+                "example": "./downloads/",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws s3 sync 下载"
           },
           {
             "name": "同步并删除目标多余文件",
             "cmd": "aws s3 sync %{source}% s3://%{bucket_name}%/%{prefix}% --delete",
-            "params": {},
+            "params": {
+              "source": {
+                "type": "string",
+                "required": false,
+                "description": "源路径",
+                "example": "./dist/",
+                "notes": "常用，必填"
+              },
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "常用，必填"
+              },
+              "prefix": {
+                "type": "string",
+                "required": false,
+                "description": "目标前缀",
+                "example": "assets/",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws s3 sync delete"
           },
           {
             "name": "同步并排除文件",
             "cmd": "aws s3 sync %{source}% s3://%{bucket_name}%/%{prefix}% --exclude \"%{pattern}%\"",
-            "params": {},
+            "params": {
+              "source": {
+                "type": "string",
+                "required": false,
+                "description": "源路径",
+                "example": "./dist/",
+                "notes": "常用，必填"
+              },
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "常用，必填"
+              },
+              "prefix": {
+                "type": "string",
+                "required": false,
+                "description": "目标前缀",
+                "example": "assets/",
+                "notes": "常用，必填"
+              },
+              "pattern": {
+                "type": "string",
+                "required": false,
+                "description": "排除模式",
+                "example": "*.git/*",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws s3 sync exclude"
           },
           {
             "name": "只同步新增文件",
             "cmd": "aws s3 sync %{source}% s3://%{bucket_name}%/%{prefix}% --size-only",
-            "params": {},
+            "params": {
+              "source": {
+                "type": "string",
+                "required": false,
+                "description": "源路径",
+                "example": "./dist/",
+                "notes": "常用，必填"
+              },
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "常用，必填"
+              },
+              "prefix": {
+                "type": "string",
+                "required": false,
+                "description": "目标前缀",
+                "example": "assets/",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws s3 sync size-only"
           },
           {
             "name": "同步并显示进度",
             "cmd": "aws s3 sync %{source}% s3://%{bucket_name}%/%{prefix}% --progress",
-            "params": {},
+            "params": {
+              "source": {
+                "type": "string",
+                "required": false,
+                "description": "源路径",
+                "example": "./dist/",
+                "notes": "常用，必填"
+              },
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "常用，必填"
+              },
+              "prefix": {
+                "type": "string",
+                "required": false,
+                "description": "目标前缀",
+                "example": "assets/",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws s3 sync progress"
           }
         ],
@@ -1010,25 +1933,78 @@
           {
             "name": "递归删除",
             "cmd": "aws s3 rm s3://%{bucket_name}%/%{prefix}% --recursive",
-            "params": {},
+            "params": {
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "常用，必填"
+              },
+              "prefix": {
+                "type": "string",
+                "required": false,
+                "description": "前缀",
+                "example": "temp/",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws s3 rm recursive"
           },
           {
             "name": "删除空桶",
             "cmd": "aws s3 rb s3://%{bucket_name}%",
-            "params": {},
+            "params": {
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws s3 rm bucket"
           },
           {
             "name": "强制删除非空桶",
             "cmd": "aws s3 rb s3://%{bucket_name}% --force",
-            "params": {},
+            "params": {
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws s3 rm bucket force"
           },
           {
             "name": "按大小过滤删除",
             "cmd": "aws s3 rm s3://%{bucket_name}%/%{prefix}% --recursive --size %{size}%",
-            "params": {},
+            "params": {
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "常用，必填"
+              },
+              "prefix": {
+                "type": "string",
+                "required": false,
+                "description": "前缀",
+                "example": "temp/",
+                "notes": "可选"
+              },
+              "size": {
+                "type": "string",
+                "required": false,
+                "description": "文件大小过滤",
+                "example": "10MB",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws s3 rm size"
           }
         ],
@@ -1075,25 +2051,127 @@
           {
             "name": "设置对象内容类型",
             "cmd": "aws s3api put-object --bucket %{bucket_name}% --key %{key}% --body %{file_path}% --content-type %{content_type}%",
-            "params": {},
+            "params": {
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "常用，必填"
+              },
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "对象键",
+                "example": "images/photo.jpg",
+                "notes": "常用，必填"
+              },
+              "file_path": {
+                "type": "string",
+                "required": false,
+                "description": "本地文件路径",
+                "example": "./photo.jpg",
+                "notes": "常用，必填"
+              },
+              "content_type": {
+                "type": "string",
+                "required": false,
+                "description": "内容类型",
+                "example": "image/jpeg",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws s3api put-object content-type"
           },
           {
             "name": "设置缓存控制",
             "cmd": "aws s3api put-object --bucket %{bucket_name}% --key %{key}% --body %{file_path}% --cache-control \"max-age=3600\"",
-            "params": {},
+            "params": {
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "常用，必填"
+              },
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "对象键",
+                "example": "images/photo.jpg",
+                "notes": "常用，必填"
+              },
+              "file_path": {
+                "type": "string",
+                "required": false,
+                "description": "本地文件路径",
+                "example": "./photo.jpg",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws s3api put-object cache"
           },
           {
             "name": "设置元数据",
             "cmd": "aws s3api put-object --bucket %{bucket_name}% --key %{key}% --body %{file_path}% --metadata '%{metadata}%'",
-            "params": {},
+            "params": {
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "常用，必填"
+              },
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "对象键",
+                "example": "images/photo.jpg",
+                "notes": "常用，必填"
+              },
+              "file_path": {
+                "type": "string",
+                "required": false,
+                "description": "本地文件路径",
+                "example": "./photo.jpg",
+                "notes": "常用，必填"
+              },
+              "metadata": {
+                "type": "string",
+                "required": false,
+                "description": "元数据",
+                "example": "{\"Author\": \"John\"}",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws s3api put-object metadata"
           },
           {
             "name": "设置服务器加密",
             "cmd": "aws s3api put-object --bucket %{bucket_name}% --key %{key}% --body %{file_path}% --server-side-encryption AES256",
-            "params": {},
+            "params": {
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "常用，必填"
+              },
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "对象键",
+                "example": "images/photo.jpg",
+                "notes": "常用，必填"
+              },
+              "file_path": {
+                "type": "string",
+                "required": false,
+                "description": "本地文件路径",
+                "example": "./photo.jpg",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws s3api put-object encryption"
           }
         ],
@@ -1147,13 +2225,64 @@
           {
             "name": "下载并设置 ETAG",
             "cmd": "aws s3api get-object --bucket %{bucket_name}% --key %{key}% --version-id %{version_id}% %{file_path}%",
-            "params": {},
+            "params": {
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "常用，必填"
+              },
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "对象键",
+                "example": "images/photo.jpg",
+                "notes": "常用，必填"
+              },
+              "version_id": {
+                "type": "string",
+                "required": false,
+                "description": "对象版本 ID",
+                "example": "abc123",
+                "notes": "可选"
+              },
+              "file_path": {
+                "type": "string",
+                "required": false,
+                "description": "本地保存路径",
+                "example": "./download.jpg",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws s3api get-object version"
           },
           {
             "name": "指定保存文件名",
             "cmd": "aws s3api get-object --bucket %{bucket_name}% --key %{key}% %{file_path}%",
-            "params": {},
+            "params": {
+              "bucket_name": {
+                "type": "string",
+                "required": false,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "常用，必填"
+              },
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "对象键",
+                "example": "images/photo.jpg",
+                "notes": "常用，必填"
+              },
+              "file_path": {
+                "type": "string",
+                "required": false,
+                "description": "本地保存路径",
+                "example": "./download.jpg",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws s3api get-object file"
           }
         ],
@@ -1200,19 +2329,43 @@
           {
             "name": "查看指定实例",
             "cmd": "aws rds describe-db-instances --db-instance-identifier %{db_instance_id}%",
-            "params": {},
+            "params": {
+              "db_instance_id": {
+                "type": "string",
+                "required": false,
+                "description": "数据库实例标识符",
+                "example": "my-db-instance",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws rds describe-db-instances id"
           },
           {
             "name": "按标签筛选",
             "cmd": "aws rds describe-db-instances --filters \"Name=tag:Name,Values=%{tag_value}%\"",
-            "params": {},
+            "params": {
+              "tag_value": {
+                "type": "string",
+                "required": false,
+                "description": "标签值",
+                "example": "production",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws rds describe-db-instances tag"
           },
           {
             "name": "指定区域查看",
             "cmd": "aws rds describe-db-instances --region %{region}%",
-            "params": {},
+            "params": {
+              "region": {
+                "type": "string",
+                "required": false,
+                "description": "区域",
+                "example": "us-east-1",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws rds describe-db-instances region"
           },
           {
@@ -1258,31 +2411,113 @@
           {
             "name": "创建 MySQL 实例",
             "cmd": "aws rds create-db-instance --db-instance-identifier %{db_instance_id}% --db-instance-class db.t3.micro --engine mysql --allocated-storage 20 --master-username admin --master-user-password %{password}%",
-            "params": {},
+            "params": {
+              "db_instance_id": {
+                "type": "string",
+                "required": false,
+                "description": "数据库实例标识符",
+                "example": "my-database",
+                "notes": "常用，必填"
+              },
+              "password": {
+                "type": "string",
+                "required": false,
+                "description": "密码",
+                "example": "MyPassword123",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws rds create-db-instance mysql"
           },
           {
             "name": "创建 PostgreSQL 实例",
             "cmd": "aws rds create-db-instance --db-instance-identifier %{db_instance_id}% --db-instance-class db.t3.micro --engine postgres --allocated-storage 20 --master-username postgres --master-user-password %{password}%",
-            "params": {},
+            "params": {
+              "db_instance_id": {
+                "type": "string",
+                "required": false,
+                "description": "数据库实例标识符",
+                "example": "my-database",
+                "notes": "常用，必填"
+              },
+              "password": {
+                "type": "string",
+                "required": false,
+                "description": "密码",
+                "example": "MyPassword123",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws rds create-db-instance postgres"
           },
           {
             "name": "创建带备份策略",
             "cmd": "aws rds create-db-instance --db-instance-identifier %{db_instance_id}% --db-instance-class db.t3.micro --engine mysql --allocated-storage 20 --master-username admin --master-user-password %{password}% --backup-retention-period 7 --preferred-backup-window \"03:00-04:00\"",
-            "params": {},
+            "params": {
+              "db_instance_id": {
+                "type": "string",
+                "required": false,
+                "description": "数据库实例标识符",
+                "example": "my-database",
+                "notes": "常用，必填"
+              },
+              "password": {
+                "type": "string",
+                "required": false,
+                "description": "密码",
+                "example": "MyPassword123",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws rds create-db-instance backup"
           },
           {
             "name": "创建多可用区实例",
             "cmd": "aws rds create-db-instance --db-instance-identifier %{db_instance_id}% --db-instance-class db.t3.micro --engine mysql --allocated-storage 20 --master-username admin --master-user-password %{password}% --multi-az",
-            "params": {},
+            "params": {
+              "db_instance_id": {
+                "type": "string",
+                "required": false,
+                "description": "数据库实例标识符",
+                "example": "my-database",
+                "notes": "常用，必填"
+              },
+              "password": {
+                "type": "string",
+                "required": false,
+                "description": "密码",
+                "example": "MyPassword123",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws rds create-db-instance multi-az"
           },
           {
             "name": "在指定子网组创建",
             "cmd": "aws rds create-db-instance --db-instance-identifier %{db_instance_id}% --db-instance-class db.t3.micro --engine mysql --allocated-storage 20 --master-username admin --master-user-password %{password}% --db-subnet-group-name %{subnet_group}%",
-            "params": {},
+            "params": {
+              "db_instance_id": {
+                "type": "string",
+                "required": false,
+                "description": "数据库实例标识符",
+                "example": "my-database",
+                "notes": "常用，必填"
+              },
+              "password": {
+                "type": "string",
+                "required": false,
+                "description": "密码",
+                "example": "MyPassword123",
+                "notes": "可选"
+              },
+              "subnet_group": {
+                "type": "string",
+                "required": false,
+                "description": "子网组名称",
+                "example": "my-db-subnet-group",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws rds create-db-instance subnet"
           }
         ],
@@ -1357,19 +2592,43 @@
           {
             "name": "限制返回数量",
             "cmd": "aws dynamodb list-tables --max-items %{max_items}%",
-            "params": {},
+            "params": {
+              "max_items": {
+                "type": "number",
+                "required": false,
+                "description": "最大返回数量",
+                "example": "10",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws dynamodb list-tables max"
           },
           {
             "name": "分页查询",
             "cmd": "aws dynamodb list-tables --starting-token %{token}%",
-            "params": {},
+            "params": {
+              "token": {
+                "type": "string",
+                "required": false,
+                "description": "下一页 Token",
+                "example": "abc123",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws dynamodb list-tables token"
           },
           {
             "name": "指定区域",
             "cmd": "aws dynamodb list-tables --region %{region}%",
-            "params": {},
+            "params": {
+              "region": {
+                "type": "string",
+                "required": false,
+                "description": "区域",
+                "example": "us-east-1",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws dynamodb list-tables region"
           }
         ],
@@ -1409,31 +2668,113 @@
           {
             "name": "只返回部分属性",
             "cmd": "aws dynamodb scan --table-name %{table_name}% --projection-expression \"%{attrs}%\"",
-            "params": {},
+            "params": {
+              "table_name": {
+                "type": "string",
+                "required": false,
+                "description": "表名称",
+                "example": "Users",
+                "notes": "常用，必填"
+              },
+              "attrs": {
+                "type": "string",
+                "required": false,
+                "description": "属性名（逗号分隔）",
+                "example": "user_id, name, email",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws dynamodb scan projection"
           },
           {
             "name": "按条件过滤",
             "cmd": "aws dynamodb scan --table-name %{table_name}% --filter-expression \"%{filter}%\"",
-            "params": {},
+            "params": {
+              "table_name": {
+                "type": "string",
+                "required": false,
+                "description": "表名称",
+                "example": "Users",
+                "notes": "常用，必填"
+              },
+              "filter": {
+                "type": "string",
+                "required": false,
+                "description": "过滤表达式",
+                "example": "age > :age",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws dynamodb scan filter"
           },
           {
             "name": "限制返回项目数",
             "cmd": "aws dynamodb scan --table-name %{table_name}% --max-items %{max_items}%",
-            "params": {},
+            "params": {
+              "table_name": {
+                "type": "string",
+                "required": false,
+                "description": "表名称",
+                "example": "Users",
+                "notes": "常用，必填"
+              },
+              "max_items": {
+                "type": "number",
+                "required": false,
+                "description": "最大返回数量",
+                "example": "100",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws dynamodb scan limit"
           },
           {
             "name": "分页获取",
             "cmd": "aws dynamodb scan --table-name %{table_name}% --starting-token %{token}%",
-            "params": {},
+            "params": {
+              "table_name": {
+                "type": "string",
+                "required": false,
+                "description": "表名称",
+                "example": "Users",
+                "notes": "常用，必填"
+              },
+              "token": {
+                "type": "string",
+                "required": false,
+                "description": "分页 Token",
+                "example": "abc",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws dynamodb scan page"
           },
           {
             "name": "查询 TotalSegments",
             "cmd": "aws dynamodb scan --table-name %{table_name}% --segment %{segment}% --total-segments %{total_segments}%",
-            "params": {},
+            "params": {
+              "table_name": {
+                "type": "string",
+                "required": false,
+                "description": "表名称",
+                "example": "Users",
+                "notes": "常用，必填"
+              },
+              "segment": {
+                "type": "number",
+                "required": false,
+                "description": "段编号",
+                "example": "0",
+                "notes": "可选，用于并行扫描"
+              },
+              "total_segments": {
+                "type": "number",
+                "required": false,
+                "description": "总段数",
+                "example": "4",
+                "notes": "可选，用于并行扫描"
+              }
+            },
             "keyword": "aws dynamodb scan segment"
           }
         ],
@@ -1501,25 +2842,113 @@
           {
             "name": "带参数值查询",
             "cmd": "aws dynamodb query --table-name %{table_name}% --key-condition-expression \"%{key_expr}%\" --expression-attribute-values '%{values}%'",
-            "params": {},
+            "params": {
+              "table_name": {
+                "type": "string",
+                "required": false,
+                "description": "表名称",
+                "example": "Users",
+                "notes": "常用，必填"
+              },
+              "key_expr": {
+                "type": "string",
+                "required": false,
+                "description": "主键条件表达式",
+                "example": "user_id = :uid",
+                "notes": "常用，必填"
+              },
+              "values": {
+                "type": "string",
+                "required": false,
+                "description": "表达式属性值",
+                "example": "{\":uid\": {\"S\": \"user123\"}}",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws dynamodb query values"
           },
           {
             "name": "带过滤条件",
             "cmd": "aws dynamodb query --table-name %{table_name}% --key-condition-expression \"%{key_expr}%\" --filter-expression \"%{filter}%\" --expression-attribute-values '%{values}%'",
-            "params": {},
+            "params": {
+              "table_name": {
+                "type": "string",
+                "required": false,
+                "description": "表名称",
+                "example": "Users",
+                "notes": "常用，必填"
+              },
+              "key_expr": {
+                "type": "string",
+                "required": false,
+                "description": "主键条件表达式",
+                "example": "user_id = :uid",
+                "notes": "常用，必填"
+              },
+              "filter": {
+                "type": "string",
+                "required": false,
+                "description": "过滤表达式",
+                "example": "#age > :min_age",
+                "notes": "可选"
+              },
+              "values": {
+                "type": "string",
+                "required": false,
+                "description": "表达式属性值",
+                "example": "{\":uid\": {\"S\": \"user123\"}}",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws dynamodb query filter"
           },
           {
             "name": "只返回特定属性",
             "cmd": "aws dynamodb query --table-name %{table_name}% --key-condition-expression \"%{key_expr}%\" --projection-expression \"%{attrs}%\"",
-            "params": {},
+            "params": {
+              "table_name": {
+                "type": "string",
+                "required": false,
+                "description": "表名称",
+                "example": "Users",
+                "notes": "常用，必填"
+              },
+              "key_expr": {
+                "type": "string",
+                "required": false,
+                "description": "主键条件表达式",
+                "example": "user_id = :uid",
+                "notes": "常用，必填"
+              },
+              "attrs": {
+                "type": "string",
+                "required": false,
+                "description": "返回属性列表",
+                "example": "user_id, name",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws dynamodb query projection"
           },
           {
             "name": "降序排列",
             "cmd": "aws dynamodb query --table-name %{table_name}% --key-condition-expression \"%{key_expr}%\" --scan-index-forward false",
-            "params": {},
+            "params": {
+              "table_name": {
+                "type": "string",
+                "required": false,
+                "description": "表名称",
+                "example": "Users",
+                "notes": "常用，必填"
+              },
+              "key_expr": {
+                "type": "string",
+                "required": false,
+                "description": "主键条件表达式",
+                "example": "user_id = :uid",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws dynamodb query desc"
           }
         ],
@@ -1573,25 +3002,57 @@
           {
             "name": "查看指定负载均衡器",
             "cmd": "aws elbv2 describe-load-balancers --load-balancer-arns %{arn}%",
-            "params": {},
+            "params": {
+              "arn": {
+                "type": "string",
+                "required": false,
+                "description": "负载均衡器 ARN",
+                "example": "arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/app/my-alb/abc123",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws elbv2 describe-load-balancers arn"
           },
           {
             "name": "按名称筛选",
             "cmd": "aws elbv2 describe-load-balancers --names %{name}%",
-            "params": {},
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "负载均衡器名称",
+                "example": "my-alb",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws elbv2 describe-load-balancers name"
           },
           {
             "name": "查询目标组信息",
             "cmd": "aws elbv2 describe-load-balancers --load-balancer-arns %{arn}% --query 'LoadBalancers[*].{Name:LoadBalancerName,DNS:DNSName,Type:Type}' --output table",
-            "params": {},
+            "params": {
+              "arn": {
+                "type": "string",
+                "required": false,
+                "description": "负载均衡器 ARN",
+                "example": "arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/app/my-alb/abc123",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws elbv2 describe-load-balancers dns"
           },
           {
             "name": "查看目标组",
             "cmd": "aws elbv2 describe-target-groups --load-balancer-arn %{arn}%",
-            "params": {},
+            "params": {
+              "arn": {
+                "type": "string",
+                "required": false,
+                "description": "负载均衡器 ARN",
+                "example": "arn:aws:elasticloadbalancing:us-east-1:123456789012:loadbalancer/app/my-alb/abc123",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws elbv2 describe-load-balancers target-groups"
           }
         ],
@@ -1624,13 +3085,29 @@
           {
             "name": "限制返回数量",
             "cmd": "aws route53 list-hosted-zones --max-items %{max_items}%",
-            "params": {},
+            "params": {
+              "max_items": {
+                "type": "number",
+                "required": false,
+                "description": "最大返回数量",
+                "example": "10",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws route53 list-hosted-zones max"
           },
           {
             "name": "分页查询",
             "cmd": "aws route53 list-hosted-zones --marker %{marker}%",
-            "params": {},
+            "params": {
+              "marker": {
+                "type": "string",
+                "required": false,
+                "description": "分页标记",
+                "example": "abc",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws route53 list-hosted-zones marker"
           },
           {
@@ -1642,7 +3119,15 @@
           {
             "name": "列出 DNS 记录",
             "cmd": "aws route53 list-resource-record-sets --hosted-zone-id %{zone_id}%",
-            "params": {},
+            "params": {
+              "zone_id": {
+                "type": "string",
+                "required": false,
+                "description": "托管区域 ID",
+                "example": "Z1234567890ABC",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws route53 list-hosted-zones records"
           }
         ],
@@ -1682,25 +3167,85 @@
           {
             "name": "创建带缓存策略",
             "cmd": "aws cloudfront create-distribution --origin-domain-name %{origin_domain}% --origin-protocol-policy %{protocol}%",
-            "params": {},
+            "params": {
+              "origin_domain": {
+                "type": "string",
+                "required": false,
+                "description": "源站域名",
+                "example": "my-bucket.s3.amazonaws.com",
+                "notes": "常用，必填"
+              },
+              "protocol": {
+                "type": "string",
+                "required": false,
+                "description": "源站协议策略",
+                "example": "https-only",
+                "notes": "可选: http-only, https-only, match-viewer"
+              }
+            },
             "keyword": "aws cloudfront create-distribution cache"
           },
           {
             "name": "创建带 Viewer 证书",
             "cmd": "aws cloudfront create-distribution --origin-domain-name %{origin_domain}% --viewer-certificate %{cert}%",
-            "params": {},
+            "params": {
+              "origin_domain": {
+                "type": "string",
+                "required": false,
+                "description": "源站域名",
+                "example": "my-bucket.s3.amazonaws.com",
+                "notes": "常用，必填"
+              },
+              "cert": {
+                "type": "string",
+                "required": false,
+                "description": "证书配置",
+                "example": "ACMCertificateArn=arn:aws:acm:us-east-1:123:certificate/abc",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws cloudfront create-distribution certificate"
           },
           {
             "name": "创建带价格分级",
             "cmd": "aws cloudfront create-distribution --origin-domain-name %{origin_domain}% --price-class %{price_class}%",
-            "params": {},
+            "params": {
+              "origin_domain": {
+                "type": "string",
+                "required": false,
+                "description": "源站域名",
+                "example": "my-bucket.s3.amazonaws.com",
+                "notes": "常用，必填"
+              },
+              "price_class": {
+                "type": "string",
+                "required": false,
+                "description": "价格分级",
+                "example": "PriceClass_All",
+                "notes": "可选: PriceClass_All, PriceClass_200, PriceClass_100"
+              }
+            },
             "keyword": "aws cloudfront create-distribution price-class"
           },
           {
             "name": "创建带备用域名",
             "cmd": "aws cloudfront create-distribution --origin-domain-name %{origin_domain}% --aliases %{aliases}%",
-            "params": {},
+            "params": {
+              "origin_domain": {
+                "type": "string",
+                "required": false,
+                "description": "源站域名",
+                "example": "my-bucket.s3.amazonaws.com",
+                "notes": "常用，必填"
+              },
+              "aliases": {
+                "type": "string",
+                "required": false,
+                "description": "备用域名（逗号分隔）",
+                "example": "example.com,www.example.com",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws cloudfront create-distribution aliases"
           },
           {
@@ -1767,25 +3312,113 @@
           {
             "name": "指定子网和安全组",
             "cmd": "aws ecs run-task --cluster %{cluster}% --task-definition %{task_definition}% --network-configuration 'awsvpcConfiguration={subnets=[%{subnet}%],securityGroups=[%{sg_id}%]}'",
-            "params": {},
+            "params": {
+              "cluster": {
+                "type": "string",
+                "required": false,
+                "description": "集群名称",
+                "example": "my-cluster",
+                "notes": "常用，必填"
+              },
+              "task_definition": {
+                "type": "string",
+                "required": false,
+                "description": "任务定义名称:版本",
+                "example": "my-task:1",
+                "notes": "常用，必填"
+              },
+              "subnet": {
+                "type": "string",
+                "required": false,
+                "description": "子网 ID",
+                "example": "subnet-0abcd1234efgh5678",
+                "notes": "可选，Fargate 必填"
+              },
+              "sg_id": {
+                "type": "string",
+                "required": false,
+                "description": "安全组 ID",
+                "example": "sg-0abcd1234efgh5678",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws ecs run-task network"
           },
           {
             "name": "覆盖任务定义",
             "cmd": "aws ecs run-task --cluster %{cluster}% --task-definition %{task_definition}% --overrides '%{overrides}%'",
-            "params": {},
+            "params": {
+              "cluster": {
+                "type": "string",
+                "required": false,
+                "description": "集群名称",
+                "example": "my-cluster",
+                "notes": "常用，必填"
+              },
+              "task_definition": {
+                "type": "string",
+                "required": false,
+                "description": "任务定义名称:版本",
+                "example": "my-task:1",
+                "notes": "常用，必填"
+              },
+              "overrides": {
+                "type": "string",
+                "required": false,
+                "description": "任务覆盖 JSON",
+                "example": "{\"containerOverrides\":[]}",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws ecs run-task overrides"
           },
           {
             "name": "指定容器名称",
             "cmd": "aws ecs run-task --cluster %{cluster}% --task-definition %{task_definition}% --overrides '{\"containerOverrides\":[{\"name\":\"%{container_name}%\",\"command\":[\"%{cmd}%\"]}]}'",
-            "params": {},
+            "params": {
+              "cluster": {
+                "type": "string",
+                "required": false,
+                "description": "集群名称",
+                "example": "my-cluster",
+                "notes": "常用，必填"
+              },
+              "task_definition": {
+                "type": "string",
+                "required": false,
+                "description": "任务定义名称:版本",
+                "example": "my-task:1",
+                "notes": "常用，必填"
+              },
+              "container_name": {
+                "type": "string",
+                "required": false,
+                "description": "容器名称",
+                "example": "web",
+                "notes": "可选"
+              },
+              "cmd": {
+                "type": "string",
+                "required": false,
+                "description": "容器启动命令",
+                "example": "python app.py",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws ecs run-task container"
           },
           {
             "name": "查看集群任务列表",
             "cmd": "aws ecs list-tasks --cluster %{cluster}%",
-            "params": {},
+            "params": {
+              "cluster": {
+                "type": "string",
+                "required": false,
+                "description": "集群名称",
+                "example": "my-cluster",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws ecs run-task list-tasks"
           }
         ],
@@ -1860,25 +3493,85 @@
           {
             "name": "查看多个服务",
             "cmd": "aws ecs describe-services --cluster %{cluster}% --services %{service1}% %{service2}%",
-            "params": {},
+            "params": {
+              "cluster": {
+                "type": "string",
+                "required": false,
+                "description": "集群名称",
+                "example": "my-cluster",
+                "notes": "常用，必填"
+              },
+              "service1": {
+                "type": "string",
+                "required": false,
+                "description": "服务名称1",
+                "example": "my-service-1",
+                "notes": "可选"
+              },
+              "service2": {
+                "type": "string",
+                "required": false,
+                "description": "服务名称2",
+                "example": "my-service-2",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws ecs describe-services multiple"
           },
           {
             "name": "查询运行任务",
             "cmd": "aws ecs describe-services --cluster %{cluster}% --services %{service}% --query 'services[*].{Name:serviceName,Running:sRunningTaskCount,Desired:sDesiredCount}' --output table",
-            "params": {},
+            "params": {
+              "cluster": {
+                "type": "string",
+                "required": false,
+                "description": "集群名称",
+                "example": "my-cluster",
+                "notes": "常用，必填"
+              },
+              "service": {
+                "type": "string",
+                "required": false,
+                "description": "服务名称",
+                "example": "my-service",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws ecs describe-services tasks"
           },
           {
             "name": "查看任务定义",
             "cmd": "aws ecs describe-services --cluster %{cluster}% --services %{service}% --include TASK_DEFINITION",
-            "params": {},
+            "params": {
+              "cluster": {
+                "type": "string",
+                "required": false,
+                "description": "集群名称",
+                "example": "my-cluster",
+                "notes": "常用，必填"
+              },
+              "service": {
+                "type": "string",
+                "required": false,
+                "description": "服务名称",
+                "example": "my-service",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws ecs describe-services task-definition"
           },
           {
             "name": "查看所有服务",
             "cmd": "aws ecs list-services --cluster %{cluster}%",
-            "params": {},
+            "params": {
+              "cluster": {
+                "type": "string",
+                "required": false,
+                "description": "集群名称",
+                "example": "my-cluster",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws ecs describe-services list"
           }
         ],
@@ -1925,13 +3618,36 @@
           {
             "name": "带标签创建",
             "cmd": "aws iam create-user --user-name %{user_name}% --tags '[{\"Key\": \"Department\", \"Value\": \"%{dept}%\"}]'",
-            "params": {},
+            "params": {
+              "user_name": {
+                "type": "string",
+                "required": false,
+                "description": "用户名",
+                "example": "my-user",
+                "notes": "常用，必填"
+              },
+              "dept": {
+                "type": "string",
+                "required": false,
+                "description": "部门标签值",
+                "example": "Engineering",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws iam create-user tag"
           },
           {
             "name": "创建访问密钥",
             "cmd": "aws iam create-access-key --user-name %{user_name}%",
-            "params": {},
+            "params": {
+              "user_name": {
+                "type": "string",
+                "required": false,
+                "description": "用户名",
+                "example": "my-user",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws iam create-user access-key"
           },
           {
@@ -1943,7 +3659,22 @@
           {
             "name": "创建并附加策略",
             "cmd": "aws iam attach-user-policy --user-name %{user_name}% --policy-arn %{policy_arn}%",
-            "params": {},
+            "params": {
+              "user_name": {
+                "type": "string",
+                "required": false,
+                "description": "用户名",
+                "example": "my-user",
+                "notes": "常用，必填"
+              },
+              "policy_arn": {
+                "type": "string",
+                "required": false,
+                "description": "策略 ARN",
+                "example": "arn:aws:iam::aws:policy/ReadOnlyAccess",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws iam create-user attach-policy"
           }
         ],
@@ -1983,31 +3714,78 @@
           {
             "name": "按前缀筛选",
             "cmd": "aws logs describe-log-groups --log-group-name-prefix %{prefix}%",
-            "params": {},
+            "params": {
+              "prefix": {
+                "type": "string",
+                "required": false,
+                "description": "日志组名前缀",
+                "example": "/aws/lambda/",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws logs describe-log-groups prefix"
           },
           {
             "name": "查询日志流",
             "cmd": "aws logs describe-log-streams --log-group-name %{log_group}%",
-            "params": {},
+            "params": {
+              "log_group": {
+                "type": "string",
+                "required": false,
+                "description": "日志组名称",
+                "example": "/aws/lambda/my-function",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws logs describe-log-groups streams"
           },
           {
             "name": "查看日志事件",
             "cmd": "aws logs filter-log-events --log-group-name %{log_group}%",
-            "params": {},
+            "params": {
+              "log_group": {
+                "type": "string",
+                "required": false,
+                "description": "日志组名称",
+                "example": "/aws/lambda/my-function",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws logs describe-log-groups events"
           },
           {
             "name": "创建日志组",
             "cmd": "aws logs create-log-group --log-group-name %{log_group}%",
-            "params": {},
+            "params": {
+              "log_group": {
+                "type": "string",
+                "required": false,
+                "description": "日志组名称",
+                "example": "/aws/lambda/my-function",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws logs describe-log-groups create"
           },
           {
             "name": "设置日志保留期",
             "cmd": "aws logs put-retention-policy --log-group-name %{log_group}% --retention-in-days %{days}%",
-            "params": {},
+            "params": {
+              "log_group": {
+                "type": "string",
+                "required": false,
+                "description": "日志组名称",
+                "example": "/aws/lambda/my-function",
+                "notes": "可选"
+              },
+              "days": {
+                "type": "number",
+                "required": false,
+                "description": "保留天数",
+                "example": "30",
+                "notes": "可选: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, 3653"
+              }
+            },
             "keyword": "aws logs describe-log-groups retention"
           }
         ],
@@ -2047,25 +3825,64 @@
           {
             "name": "查看指定文件系统",
             "cmd": "aws efs describe-file-systems --file-system-id %{fs_id}%",
-            "params": {},
+            "params": {
+              "fs_id": {
+                "type": "string",
+                "required": false,
+                "description": "文件系统 ID",
+                "example": "fs-0abcd1234efgh5678",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws efs describe-file-systems id"
           },
           {
             "name": "查询挂载目标",
             "cmd": "aws efs describe-mount-targets --file-system-id %{fs_id}%",
-            "params": {},
+            "params": {
+              "fs_id": {
+                "type": "string",
+                "required": false,
+                "description": "文件系统 ID",
+                "example": "fs-0abcd1234efgh5678",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws efs describe-file-systems mount"
           },
           {
             "name": "创建文件系统",
             "cmd": "aws efs create-file-system --creation-token %{token}%",
-            "params": {},
+            "params": {
+              "token": {
+                "type": "string",
+                "required": false,
+                "description": "创建令牌",
+                "example": "my-unique-token",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws efs describe-file-systems create"
           },
           {
             "name": "挂载到 EC2",
             "cmd": "sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 %{efs_dns}%:/ %{mount_point}%",
-            "params": {},
+            "params": {
+              "efs_dns": {
+                "type": "string",
+                "required": false,
+                "description": "EFS DNS 名称",
+                "example": "fs-0abcd1234efgh5678.efs.us-east-1.amazonaws.com",
+                "notes": "可选"
+              },
+              "mount_point": {
+                "type": "string",
+                "required": false,
+                "description": "挂载点",
+                "example": "/mnt/efs",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws efs describe-file-systems mount ec2"
           }
         ],
@@ -2112,25 +3929,71 @@
           {
             "name": "查看指定集群",
             "cmd": "aws elasticache describe-cache-clusters --cache-cluster-id %{cluster_id}%",
-            "params": {},
+            "params": {
+              "cluster_id": {
+                "type": "string",
+                "required": false,
+                "description": "缓存集群 ID",
+                "example": "my-redis-cluster",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws elasticache describe cache-cluster-id"
           },
           {
             "name": "查看 Redis 集群",
             "cmd": "aws elasticache describe-cache-clusters --cache-cluster-id %{cluster_id}% --show-cache-node-info",
-            "params": {},
+            "params": {
+              "cluster_id": {
+                "type": "string",
+                "required": false,
+                "description": "缓存集群 ID",
+                "example": "my-redis-cluster",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws elasticache describe redis"
           },
           {
             "name": "查看复制组",
             "cmd": "aws elasticache describe-replication-groups --replication-group-id %{rg_id}%",
-            "params": {},
+            "params": {
+              "rg_id": {
+                "type": "string",
+                "required": false,
+                "description": "复制组 ID",
+                "example": "my-replication-group",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws elasticache describe replication-group"
           },
           {
             "name": "创建 Redis 集群",
             "cmd": "aws elasticache create-cache-cluster --cache-cluster-id %{cluster_id}% --engine redis --cache-node-type %{node_type}% --num-cache-nodes %{num_nodes}%",
-            "params": {},
+            "params": {
+              "cluster_id": {
+                "type": "string",
+                "required": false,
+                "description": "缓存集群 ID",
+                "example": "my-redis-cluster",
+                "notes": "可选"
+              },
+              "node_type": {
+                "type": "string",
+                "required": false,
+                "description": "节点类型",
+                "example": "cache.t3.micro",
+                "notes": "可选"
+              },
+              "num_nodes": {
+                "type": "number",
+                "required": false,
+                "description": "节点数量",
+                "example": "2",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws elasticache describe create"
           }
         ],
@@ -2177,25 +4040,162 @@
           {
             "name": "带单位上报",
             "cmd": "aws cloudwatch put-metric-data --namespace %{namespace}% --metric-name %{metric_name}% --value %{value}% --unit %{unit}%",
-            "params": {},
+            "params": {
+              "namespace": {
+                "type": "string",
+                "required": false,
+                "description": "指标命名空间",
+                "example": "MyApplication",
+                "notes": "常用，必填"
+              },
+              "metric_name": {
+                "type": "string",
+                "required": false,
+                "description": "指标名称",
+                "example": "RequestCount",
+                "notes": "常用，必填"
+              },
+              "value": {
+                "type": "number",
+                "required": false,
+                "description": "指标值",
+                "example": "100",
+                "notes": "常用，必填"
+              },
+              "unit": {
+                "type": "string",
+                "required": false,
+                "description": "指标单位",
+                "example": "Count",
+                "notes": "可选: Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, etc."
+              }
+            },
             "keyword": "aws cloudwatch put-metric-data unit"
           },
           {
             "name": "带维度上报",
             "cmd": "aws cloudwatch put-metric-data --namespace %{namespace}% --metric-name %{metric_name}% --value %{value}% --dimensions %{dim_name}%=%{dim_value}%",
-            "params": {},
+            "params": {
+              "namespace": {
+                "type": "string",
+                "required": false,
+                "description": "指标命名空间",
+                "example": "MyApplication",
+                "notes": "常用，必填"
+              },
+              "metric_name": {
+                "type": "string",
+                "required": false,
+                "description": "指标名称",
+                "example": "RequestCount",
+                "notes": "常用，必填"
+              },
+              "value": {
+                "type": "number",
+                "required": false,
+                "description": "指标值",
+                "example": "100",
+                "notes": "常用，必填"
+              },
+              "dim_name": {
+                "type": "string",
+                "required": false,
+                "description": "维度名称",
+                "example": "InstanceId",
+                "notes": "可选"
+              },
+              "dim_value": {
+                "type": "string",
+                "required": false,
+                "description": "维度值",
+                "example": "i-0abcd1234efgh5678",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws cloudwatch put-metric-data dimensions"
           },
           {
             "name": "多条指标批量上报",
             "cmd": "aws cloudwatch put-metric-data --namespace %{namespace}% --metric-data '[{\"MetricName\":\"%{m1}%\",\"Value\":%{v1}%},{\"MetricName\":\"%{m2}%\",\"Value\":%{v2}%}]'",
-            "params": {},
+            "params": {
+              "namespace": {
+                "type": "string",
+                "required": false,
+                "description": "指标命名空间",
+                "example": "MyApplication",
+                "notes": "常用，必填"
+              },
+              "m1": {
+                "type": "string",
+                "required": false,
+                "description": "指标1名称",
+                "example": "CPU",
+                "notes": "可选"
+              },
+              "v1": {
+                "type": "number",
+                "required": false,
+                "description": "指标1值",
+                "example": "75",
+                "notes": "可选"
+              },
+              "m2": {
+                "type": "string",
+                "required": false,
+                "description": "指标2名称",
+                "example": "Memory",
+                "notes": "可选"
+              },
+              "v2": {
+                "type": "number",
+                "required": false,
+                "description": "指标2值",
+                "example": "60",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws cloudwatch put-metric-data batch"
           },
           {
             "name": "查看指标统计",
             "cmd": "aws cloudwatch get-metric-statistics --namespace %{namespace}% --metric-name %{metric_name}% --start-time %{start}% --end-time %{end}% --period %{period}% --statistics Average",
-            "params": {},
+            "params": {
+              "namespace": {
+                "type": "string",
+                "required": false,
+                "description": "指标命名空间",
+                "example": "MyApplication",
+                "notes": "常用，必填"
+              },
+              "metric_name": {
+                "type": "string",
+                "required": false,
+                "description": "指标名称",
+                "example": "RequestCount",
+                "notes": "常用，必填"
+              },
+              "start": {
+                "type": "string",
+                "required": false,
+                "description": "开始时间（ISO8601）",
+                "example": "2024-01-01T00:00:00Z",
+                "notes": "可选"
+              },
+              "end": {
+                "type": "string",
+                "required": false,
+                "description": "结束时间（ISO8601）",
+                "example": "2024-01-02T00:00:00Z",
+                "notes": "可选"
+              },
+              "period": {
+                "type": "number",
+                "required": false,
+                "description": "统计周期（秒）",
+                "example": "60",
+                "notes": "可选"
+              }
+            },
             "keyword": "aws cloudwatch put-metric-data statistics"
           }
         ],
@@ -2305,25 +4305,99 @@
           {
             "name": "跨账号角色扮演",
             "cmd": "aws sts assume-role --role-arn %{role_arn}% --role-session-name %{session_name}% --duration-seconds %{duration}%",
-            "params": {},
+            "params": {
+              "role_arn": {
+                "type": "string",
+                "required": false,
+                "description": "角色 ARN",
+                "example": "arn:aws:iam::123456789012:role/MyRole",
+                "notes": "常用，必填"
+              },
+              "session_name": {
+                "type": "string",
+                "required": false,
+                "description": "会话名称",
+                "example": "my-session",
+                "notes": "常用，必填"
+              },
+              "duration": {
+                "type": "number",
+                "required": false,
+                "description": "会话持续时间（秒）",
+                "example": "3600",
+                "notes": "可选: 900-43200"
+              }
+            },
             "keyword": "aws sts assume-role 跨账号"
           },
           {
             "name": "带外部 ID 角色扮演",
             "cmd": "aws sts assume-role --role-arn %{role_arn}% --role-session-name %{session_name}% --external-id %{external_id}%",
-            "params": {},
+            "params": {
+              "role_arn": {
+                "type": "string",
+                "required": false,
+                "description": "角色 ARN",
+                "example": "arn:aws:iam::123456789012:role/MyRole",
+                "notes": "常用，必填"
+              },
+              "session_name": {
+                "type": "string",
+                "required": false,
+                "description": "会话名称",
+                "example": "my-session",
+                "notes": "常用，必填"
+              },
+              "external_id": {
+                "type": "string",
+                "required": false,
+                "description": "外部 ID",
+                "example": "my-external-id",
+                "notes": "可选，用于第三方访问"
+              }
+            },
             "keyword": "aws sts assume-role external-id"
           },
           {
             "name": "使用扮演的凭证",
             "cmd": "export AWS_ACCESS_KEY_ID=$(aws sts assume-role --role-arn %{role_arn}% --role-session-name %{session_name}% --query 'Credentials.AccessKeyId' --output text) && export AWS_SECRET_ACCESS_KEY=$(aws sts assume-role --role-arn %{role_arn}% --role-session-name %{session_name}% --query 'Credentials.SecretAccessKey' --output text) && export AWS_SESSION_TOKEN=$(aws sts assume-role --role-arn %{role_arn}% --role-session-name %{session_name}% --query 'Credentials.SessionToken' --output text)",
-            "params": {},
+            "params": {
+              "role_arn": {
+                "type": "string",
+                "required": false,
+                "description": "角色 ARN",
+                "example": "arn:aws:iam::123456789012:role/MyRole",
+                "notes": "常用，必填"
+              },
+              "session_name": {
+                "type": "string",
+                "required": false,
+                "description": "会话名称",
+                "example": "my-session",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws sts assume-role 环境变量"
           },
           {
             "name": "配置 Profile 使用角色",
             "cmd": "aws configure set source_profile default --profile %{profile}% && aws configure set role_arn %{role_arn}% --profile %{profile}%",
-            "params": {},
+            "params": {
+              "profile": {
+                "type": "string",
+                "required": false,
+                "description": "Profile 名称",
+                "example": "prod-role",
+                "notes": "可选"
+              },
+              "role_arn": {
+                "type": "string",
+                "required": false,
+                "description": "角色 ARN",
+                "example": "arn:aws:iam::123456789012:role/MyRole",
+                "notes": "常用，必填"
+              }
+            },
             "keyword": "aws sts assume-role profile"
           }
         ],

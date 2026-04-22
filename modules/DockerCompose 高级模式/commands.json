@@ -11,14 +11,94 @@
       "data": {
         "cmd": "docker-compose -f %{file1}% -f %{file2}% up -d",
         "params": [
-          { "name": "file1", "type": "string", "default": "docker-compose.yml", "description": "基础配置文件路径", "example": "docker-compose.yml" },
-          { "name": "file2", "type": "string", "default": "docker-compose.prod.yml", "description": "覆盖配置文件路径", "example": "docker-compose.prod.yml" }
+          {
+            "name": "file1",
+            "type": "string",
+            "default": "docker-compose.yml",
+            "description": "基础配置文件路径",
+            "example": "docker-compose.yml"
+          },
+          {
+            "name": "file2",
+            "type": "string",
+            "default": "docker-compose.prod.yml",
+            "description": "覆盖配置文件路径",
+            "example": "docker-compose.prod.yml"
+          }
         ],
         "extensions": [
-          { "name": "三文件合并", "keyword": "docker-compose -f base -f app -f override", "description": "三个配置文件按顺序合并，后者覆盖前者", "cmd": "docker-compose -f %{file1}% -f %{file2}% -f %{file3}% up -d" },
-          { "name": "跨目录引用", "keyword": "docker-compose -f ../common/base.yml", "description": "引用上级目录的配置文件", "cmd": "docker-compose -f ../common/base.yml -f prod.yml up -d" },
-          { "name": "指定 env 文件", "keyword": "docker-compose --env-file", "description": "指定环境变量文件路径", "cmd": "docker-compose --env-file %{env_file}% up -d" },
-          { "name": "查看合并配置", "keyword": "docker-compose config", "description": "验证并输出合并后的配置", "cmd": "docker-compose -f %{file1}% -f %{file2}% config" }
+          {
+            "name": "三文件合并",
+            "keyword": "docker-compose -f base -f app -f override",
+            "description": "三个配置文件按顺序合并，后者覆盖前者",
+            "cmd": "docker-compose -f %{file1}% -f %{file2}% -f %{file3}% up -d",
+            "params": {
+              "file1": {
+                "type": "string",
+                "required": false,
+                "description": "基础配置文件路径",
+                "example": "docker-compose.yml",
+                "notes": ""
+              },
+              "file2": {
+                "type": "string",
+                "required": false,
+                "description": "覆盖配置文件路径",
+                "example": "docker-compose.prod.yml",
+                "notes": ""
+              },
+              "file3": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "跨目录引用",
+            "keyword": "docker-compose -f ../common/base.yml",
+            "description": "引用上级目录的配置文件",
+            "cmd": "docker-compose -f ../common/base.yml -f prod.yml up -d"
+          },
+          {
+            "name": "指定 env 文件",
+            "keyword": "docker-compose --env-file",
+            "description": "指定环境变量文件路径",
+            "cmd": "docker-compose --env-file %{env_file}% up -d",
+            "params": {
+              "env_file": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "查看合并配置",
+            "keyword": "docker-compose config",
+            "description": "验证并输出合并后的配置",
+            "cmd": "docker-compose -f %{file1}% -f %{file2}% config",
+            "params": {
+              "file1": {
+                "type": "string",
+                "required": false,
+                "description": "基础配置文件路径",
+                "example": "docker-compose.yml",
+                "notes": ""
+              },
+              "file2": {
+                "type": "string",
+                "required": false,
+                "description": "覆盖配置文件路径",
+                "example": "docker-compose.prod.yml",
+                "notes": ""
+              }
+            }
+          }
         ]
       }
     },
@@ -29,14 +109,74 @@
       "data": {
         "cmd": "docker-compose build%{no_cache}% %{service}% && docker-compose up%{detached}% %{service}%",
         "params": [
-          { "name": "no_cache", "type": "flag", "default": "", "description": "--no-cache 禁用构建缓存", "example": "--no-cache" },
-          { "name": "detached", "type": "flag", "default": "", "description": "-d 后台运行", "example": "-d" },
-          { "name": "service", "type": "string", "default": "", "description": "指定服务名称（留空构建全部）", "example": "web" }
+          {
+            "name": "no_cache",
+            "type": "flag",
+            "default": "",
+            "description": "--no-cache 禁用构建缓存",
+            "example": "--no-cache"
+          },
+          {
+            "name": "detached",
+            "type": "flag",
+            "default": "",
+            "description": "-d 后台运行",
+            "example": "-d"
+          },
+          {
+            "name": "service",
+            "type": "string",
+            "default": "",
+            "description": "指定服务名称（留空构建全部）",
+            "example": "web"
+          }
         ],
         "extensions": [
-          { "name": "强制重建启动", "keyword": "docker-compose up --build", "description": "强制重新构建并启动", "cmd": "docker-compose up --build%{detached}%" },
-          { "name": "并行构建", "keyword": "docker-compose build --parallel", "description": "并行构建多个服务镜像", "cmd": "docker-compose build --parallel%{service}%" },
-          { "name": "构建时拉取最新", "keyword": "docker-compose build --pull", "description": "每次构建前拉取最新基础镜像", "cmd": "docker-compose build --pull%{service}%" }
+          {
+            "name": "强制重建启动",
+            "keyword": "docker-compose up --build",
+            "description": "强制重新构建并启动",
+            "cmd": "docker-compose up --build%{detached}%",
+            "params": {
+              "detached": {
+                "type": "flag",
+                "required": false,
+                "description": "-d 后台运行",
+                "example": "-d",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "并行构建",
+            "keyword": "docker-compose build --parallel",
+            "description": "并行构建多个服务镜像",
+            "cmd": "docker-compose build --parallel%{service}%",
+            "params": {
+              "service": {
+                "type": "string",
+                "required": false,
+                "description": "指定服务名称（留空构建全部）",
+                "example": "web",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "构建时拉取最新",
+            "keyword": "docker-compose build --pull",
+            "description": "每次构建前拉取最新基础镜像",
+            "cmd": "docker-compose build --pull%{service}%",
+            "params": {
+              "service": {
+                "type": "string",
+                "required": false,
+                "description": "指定服务名称（留空构建全部）",
+                "example": "web",
+                "notes": ""
+              }
+            }
+          }
         ]
       }
     },
@@ -47,14 +187,82 @@
       "data": {
         "cmd": "docker-compose %{action}% %{service}%",
         "params": [
-          { "name": "action", "type": "string", "default": "restart", "description": "操作类型：restart/stop/start", "example": "restart" },
-          { "name": "service", "type": "string", "default": "", "description": "服务名称（留空则对所有服务操作）", "example": "web" }
+          {
+            "name": "action",
+            "type": "string",
+            "default": "restart",
+            "description": "操作类型：restart/stop/start",
+            "example": "restart"
+          },
+          {
+            "name": "service",
+            "type": "string",
+            "default": "",
+            "description": "服务名称（留空则对所有服务操作）",
+            "example": "web"
+          }
         ],
         "extensions": [
-          { "name": "优雅停止", "keyword": "docker-compose stop", "description": "发送 SIGTERM 优雅停止容器", "cmd": "docker-compose stop%{service}%" },
-          { "name": "强制终止", "keyword": "docker-compose kill", "description": "发送 SIGKILL 强制终止容器", "cmd": "docker-compose kill%{service}%" },
-          { "name": "暂停服务", "keyword": "docker-compose pause", "description": "挂起服务进程", "cmd": "docker-compose pause %{service}%" },
-          { "name": "恢复服务", "keyword": "docker-compose unpause", "description": "恢复已暂停的服务", "cmd": "docker-compose unpause %{service}%" }
+          {
+            "name": "优雅停止",
+            "keyword": "docker-compose stop",
+            "description": "发送 SIGTERM 优雅停止容器",
+            "cmd": "docker-compose stop%{service}%",
+            "params": {
+              "service": {
+                "type": "string",
+                "required": false,
+                "description": "服务名称（留空则对所有服务操作）",
+                "example": "web",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "强制终止",
+            "keyword": "docker-compose kill",
+            "description": "发送 SIGKILL 强制终止容器",
+            "cmd": "docker-compose kill%{service}%",
+            "params": {
+              "service": {
+                "type": "string",
+                "required": false,
+                "description": "服务名称（留空则对所有服务操作）",
+                "example": "web",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "暂停服务",
+            "keyword": "docker-compose pause",
+            "description": "挂起服务进程",
+            "cmd": "docker-compose pause %{service}%",
+            "params": {
+              "service": {
+                "type": "string",
+                "required": false,
+                "description": "服务名称（留空则对所有服务操作）",
+                "example": "web",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "恢复服务",
+            "keyword": "docker-compose unpause",
+            "description": "恢复已暂停的服务",
+            "cmd": "docker-compose unpause %{service}%",
+            "params": {
+              "service": {
+                "type": "string",
+                "required": false,
+                "description": "服务名称（留空则对所有服务操作）",
+                "example": "web",
+                "notes": ""
+              }
+            }
+          }
         ]
       }
     },
@@ -65,14 +273,45 @@
       "data": {
         "cmd": "docker-compose %{action}%",
         "params": [
-          { "name": "action", "type": "string", "default": "rm", "description": "操作：rm/down", "example": "rm" }
+          {
+            "name": "action",
+            "type": "string",
+            "default": "rm",
+            "description": "操作：rm/down",
+            "example": "rm"
+          }
         ],
         "extensions": [
-          { "name": "删除已停止容器", "keyword": "docker-compose rm", "description": "删除已停止的容器", "cmd": "docker-compose rm" },
-          { "name": "强制删除", "keyword": "docker-compose rm -f", "description": "强制删除（无需确认）", "cmd": "docker-compose rm -f" },
-          { "name": "停止并删除", "keyword": "docker-compose down", "description": "停止服务并移除容器", "cmd": "docker-compose down" },
-          { "name": "删除容器和卷", "keyword": "docker-compose down -v", "description": "停止服务并删除数据卷", "cmd": "docker-compose down -v" },
-          { "name": "完全清理", "keyword": "docker-compose down -v --rmi all", "description": "停止服务、删除容器、卷、镜像", "cmd": "docker-compose down -v --rmi all" }
+          {
+            "name": "删除已停止容器",
+            "keyword": "docker-compose rm",
+            "description": "删除已停止的容器",
+            "cmd": "docker-compose rm"
+          },
+          {
+            "name": "强制删除",
+            "keyword": "docker-compose rm -f",
+            "description": "强制删除（无需确认）",
+            "cmd": "docker-compose rm -f"
+          },
+          {
+            "name": "停止并删除",
+            "keyword": "docker-compose down",
+            "description": "停止服务并移除容器",
+            "cmd": "docker-compose down"
+          },
+          {
+            "name": "删除容器和卷",
+            "keyword": "docker-compose down -v",
+            "description": "停止服务并删除数据卷",
+            "cmd": "docker-compose down -v"
+          },
+          {
+            "name": "完全清理",
+            "keyword": "docker-compose down -v --rmi all",
+            "description": "停止服务、删除容器、卷、镜像",
+            "cmd": "docker-compose down -v --rmi all"
+          }
         ]
       }
     },
@@ -83,12 +322,80 @@
       "data": {
         "cmd": "docker-compose up -d --scale %{service}%=%{num}%",
         "params": [
-          { "name": "service", "type": "string", "default": "web", "description": "服务名称", "example": "web" },
-          { "name": "num", "type": "number", "default": "3", "description": "副本数量", "example": "3" }
+          {
+            "name": "service",
+            "type": "string",
+            "default": "web",
+            "description": "服务名称",
+            "example": "web"
+          },
+          {
+            "name": "num",
+            "type": "number",
+            "default": "3",
+            "description": "副本数量",
+            "example": "3"
+          }
         ],
         "extensions": [
-          { "name": "多服务扩缩", "keyword": "docker-compose up --scale multi", "description": "同时调整多个服务副本数", "cmd": "docker-compose up -d --scale %{service1}%=%{num1}% --scale %{service2}%=%{num2}%" },
-          { "name": "设置副本范围", "keyword": "docker-compose up --scale range", "description": "设置服务副本数范围", "cmd": "docker-compose up -d --scale %{service}%=%{min}-%{max}%" }
+          {
+            "name": "多服务扩缩",
+            "keyword": "docker-compose up --scale multi",
+            "description": "同时调整多个服务副本数",
+            "cmd": "docker-compose up -d --scale %{service1}%=%{num1}% --scale %{service2}%=%{num2}%",
+            "params": {
+              "service1": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "num1": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "service2": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "num2": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "设置副本范围",
+            "keyword": "docker-compose up --scale range",
+            "description": "设置服务副本数范围",
+            "cmd": "docker-compose up -d --scale %{service}%=%{min}-%{max}%",
+            "params": {
+              "service": {
+                "type": "string",
+                "required": false,
+                "description": "服务名称",
+                "example": "web",
+                "notes": ""
+              },
+              "max": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            }
+          }
         ]
       }
     },
@@ -99,16 +406,133 @@
       "data": {
         "cmd": "docker network %{action}% %{network}%",
         "params": [
-          { "name": "action", "type": "string", "default": "create", "description": "操作：create/connect/disconnect/rm/inspect", "example": "create" },
-          { "name": "network", "type": "string", "default": "mynet", "description": "网络名称", "example": "mynet" }
+          {
+            "name": "action",
+            "type": "string",
+            "default": "create",
+            "description": "操作：create/connect/disconnect/rm/inspect",
+            "example": "create"
+          },
+          {
+            "name": "network",
+            "type": "string",
+            "default": "mynet",
+            "description": "网络名称",
+            "example": "mynet"
+          }
         ],
         "extensions": [
-          { "name": "创建桥接网络", "keyword": "docker network create --driver bridge", "description": "创建桥接网络", "cmd": "docker network create --driver bridge %{network}%" },
-          { "name": "创建 Overlay 网络", "keyword": "docker network create --driver overlay", "description": "创建 Swarm Overlay 网络", "cmd": "docker network create --driver overlay %{network}%" },
-          { "name": "指定子网", "keyword": "docker network create --subnet", "description": "创建带指定子网的网络", "cmd": "docker network create --driver bridge --subnet %{subnet}% %{network}%" },
-          { "name": "连接容器", "keyword": "docker network connect", "description": "将容器连接到网络", "cmd": "docker network connect %{network}% %{container}%" },
-          { "name": "断开容器", "keyword": "docker network disconnect", "description": "从网络断开容器", "cmd": "docker network disconnect %{network}% %{container}%" },
-          { "name": "查看网络详情", "keyword": "docker network inspect", "description": "查看网络详细配置", "cmd": "docker network inspect %{network}%" }
+          {
+            "name": "创建桥接网络",
+            "keyword": "docker network create --driver bridge",
+            "description": "创建桥接网络",
+            "cmd": "docker network create --driver bridge %{network}%",
+            "params": {
+              "network": {
+                "type": "string",
+                "required": false,
+                "description": "网络名称",
+                "example": "mynet",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "创建 Overlay 网络",
+            "keyword": "docker network create --driver overlay",
+            "description": "创建 Swarm Overlay 网络",
+            "cmd": "docker network create --driver overlay %{network}%",
+            "params": {
+              "network": {
+                "type": "string",
+                "required": false,
+                "description": "网络名称",
+                "example": "mynet",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "指定子网",
+            "keyword": "docker network create --subnet",
+            "description": "创建带指定子网的网络",
+            "cmd": "docker network create --driver bridge --subnet %{subnet}% %{network}%",
+            "params": {
+              "subnet": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "network": {
+                "type": "string",
+                "required": false,
+                "description": "网络名称",
+                "example": "mynet",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "连接容器",
+            "keyword": "docker network connect",
+            "description": "将容器连接到网络",
+            "cmd": "docker network connect %{network}% %{container}%",
+            "params": {
+              "network": {
+                "type": "string",
+                "required": false,
+                "description": "网络名称",
+                "example": "mynet",
+                "notes": ""
+              },
+              "container": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "断开容器",
+            "keyword": "docker network disconnect",
+            "description": "从网络断开容器",
+            "cmd": "docker network disconnect %{network}% %{container}%",
+            "params": {
+              "network": {
+                "type": "string",
+                "required": false,
+                "description": "网络名称",
+                "example": "mynet",
+                "notes": ""
+              },
+              "container": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "查看网络详情",
+            "keyword": "docker network inspect",
+            "description": "查看网络详细配置",
+            "cmd": "docker network inspect %{network}%",
+            "params": {
+              "network": {
+                "type": "string",
+                "required": false,
+                "description": "网络名称",
+                "example": "mynet",
+                "notes": ""
+              }
+            }
+          }
         ]
       }
     },
@@ -119,14 +543,81 @@
       "data": {
         "cmd": "docker-compose exec -it %{from_service}% ping -c %{count}% %{to_service}%",
         "params": [
-          { "name": "from_service", "type": "string", "default": "web", "description": "源服务名称", "example": "web" },
-          { "name": "to_service", "type": "string", "default": "db", "description": "目标服务名称（DNS 名称）", "example": "db" },
-          { "name": "count", "type": "number", "default": "3", "description": " ping 次数", "example": "3" }
+          {
+            "name": "from_service",
+            "type": "string",
+            "default": "web",
+            "description": "源服务名称",
+            "example": "web"
+          },
+          {
+            "name": "to_service",
+            "type": "string",
+            "default": "db",
+            "description": "目标服务名称（DNS 名称）",
+            "example": "db"
+          },
+          {
+            "name": "count",
+            "type": "number",
+            "default": "3",
+            "description": " ping 次数",
+            "example": "3"
+          }
         ],
         "extensions": [
-          { "name": "查看 hosts 文件", "keyword": "cat /etc/hosts", "description": "查看容器内部 hosts 文件", "cmd": "docker-compose exec %{service}% cat /etc/hosts" },
-          { "name": "查看 DNS 配置", "keyword": "cat /etc/resolv.conf", "description": "查看容器 DNS 配置", "cmd": "docker-compose exec %{service}% cat /etc/resolv.conf" },
-          { "name": "测试 DNS 解析", "keyword": "getent hosts service", "description": "使用系统命令测试 DNS 解析", "cmd": "docker-compose exec %{service}% getent hosts %{target}%" }
+          {
+            "name": "查看 hosts 文件",
+            "keyword": "cat /etc/hosts",
+            "description": "查看容器内部 hosts 文件",
+            "cmd": "docker-compose exec %{service}% cat /etc/hosts",
+            "params": {
+              "service": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "查看 DNS 配置",
+            "keyword": "cat /etc/resolv.conf",
+            "description": "查看容器 DNS 配置",
+            "cmd": "docker-compose exec %{service}% cat /etc/resolv.conf",
+            "params": {
+              "service": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "测试 DNS 解析",
+            "keyword": "getent hosts service",
+            "description": "使用系统命令测试 DNS 解析",
+            "cmd": "docker-compose exec %{service}% getent hosts %{target}%",
+            "params": {
+              "service": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "target": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            }
+          }
         ]
       }
     },
@@ -137,14 +628,97 @@
       "data": {
         "cmd": "docker volume %{action}%",
         "params": [
-          { "name": "action", "type": "string", "default": "create", "description": "操作：create/inspect/rm/ls", "example": "create" }
+          {
+            "name": "action",
+            "type": "string",
+            "default": "create",
+            "description": "操作：create/inspect/rm/ls",
+            "example": "create"
+          }
         ],
         "extensions": [
-          { "name": "创建命名卷", "keyword": "docker volume create", "description": "创建命名数据卷", "cmd": "docker volume create %{volume}%" },
-          { "name": "查看卷详情", "keyword": "docker volume inspect", "description": "查看卷详细信息", "cmd": "docker volume inspect %{volume}%" },
-          { "name": "备份卷", "keyword": "docker volume backup", "description": "备份卷数据到 tar 文件", "cmd": "docker run --rm -v %{volume}%:/data -v $(pwd):/backup alpine tar cvf /backup/volume_backup.tar -C /data ." },
-          { "name": "恢复卷", "keyword": "docker volume restore", "description": "从备份恢复卷数据", "cmd": "docker run --rm -v %{volume}%:/data -v $(pwd):/backup alpine tar xvf /backup/volume_backup.tar -C /data" },
-          { "name": "卷间复制", "keyword": "docker volume copy", "description": "在卷之间复制数据", "cmd": "docker run --rm -v %{src}%:/src -v %{dest}%:/dest alpine cp -r /src/. /dest/" }
+          {
+            "name": "创建命名卷",
+            "keyword": "docker volume create",
+            "description": "创建命名数据卷",
+            "cmd": "docker volume create %{volume}%",
+            "params": {
+              "volume": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "查看卷详情",
+            "keyword": "docker volume inspect",
+            "description": "查看卷详细信息",
+            "cmd": "docker volume inspect %{volume}%",
+            "params": {
+              "volume": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "备份卷",
+            "keyword": "docker volume backup",
+            "description": "备份卷数据到 tar 文件",
+            "cmd": "docker run --rm -v %{volume}%:/data -v $(pwd):/backup alpine tar cvf /backup/volume_backup.tar -C /data .",
+            "params": {
+              "volume": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "恢复卷",
+            "keyword": "docker volume restore",
+            "description": "从备份恢复卷数据",
+            "cmd": "docker run --rm -v %{volume}%:/data -v $(pwd):/backup alpine tar xvf /backup/volume_backup.tar -C /data",
+            "params": {
+              "volume": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "卷间复制",
+            "keyword": "docker volume copy",
+            "description": "在卷之间复制数据",
+            "cmd": "docker run --rm -v %{src}%:/src -v %{dest}%:/dest alpine cp -r /src/. /dest/",
+            "params": {
+              "src": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "dest": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            }
+          }
         ]
       }
     },
@@ -155,13 +729,48 @@
       "data": {
         "cmd": "docker volume %{action}%",
         "params": [
-          { "name": "action", "type": "string", "default": "ls", "description": "操作：ls/prune/rm", "example": "ls" }
+          {
+            "name": "action",
+            "type": "string",
+            "default": "ls",
+            "description": "操作：ls/prune/rm",
+            "example": "ls"
+          }
         ],
         "extensions": [
-          { "name": "列出所有卷", "keyword": "docker volume ls", "description": "列出所有数据卷", "cmd": "docker volume ls" },
-          { "name": "列出悬空卷", "keyword": "docker volume ls -f dangling", "description": "列出未使用的卷", "cmd": "docker volume ls -f dangling=true" },
-          { "name": "清理悬空卷", "keyword": "docker volume prune", "description": "删除所有未使用的卷", "cmd": "docker volume prune" },
-          { "name": "删除指定卷", "keyword": "docker volume rm", "description": "删除指定数据卷", "cmd": "docker volume rm %{volume}%" }
+          {
+            "name": "列出所有卷",
+            "keyword": "docker volume ls",
+            "description": "列出所有数据卷",
+            "cmd": "docker volume ls"
+          },
+          {
+            "name": "列出悬空卷",
+            "keyword": "docker volume ls -f dangling",
+            "description": "列出未使用的卷",
+            "cmd": "docker volume ls -f dangling=true"
+          },
+          {
+            "name": "清理悬空卷",
+            "keyword": "docker volume prune",
+            "description": "删除所有未使用的卷",
+            "cmd": "docker volume prune"
+          },
+          {
+            "name": "删除指定卷",
+            "keyword": "docker volume rm",
+            "description": "删除指定数据卷",
+            "cmd": "docker volume rm %{volume}%",
+            "params": {
+              "volume": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            }
+          }
         ]
       }
     },
@@ -172,15 +781,78 @@
       "data": {
         "cmd": "docker-compose -f %{file1}% -f %{file2}% up -d%{profile}%",
         "params": [
-          { "name": "file1", "type": "string", "default": "docker-compose.yml", "description": "基础配置文件", "example": "docker-compose.yml" },
-          { "name": "file2", "type": "string", "default": "docker-compose.prod.yml", "description": "环境覆盖配置", "example": "docker-compose.prod.yml" },
-          { "name": "profile", "type": "string", "default": "", "description": "启用 profile（如 --profile frontend）", "example": "--profile frontend" }
+          {
+            "name": "file1",
+            "type": "string",
+            "default": "docker-compose.yml",
+            "description": "基础配置文件",
+            "example": "docker-compose.yml"
+          },
+          {
+            "name": "file2",
+            "type": "string",
+            "default": "docker-compose.prod.yml",
+            "description": "环境覆盖配置",
+            "example": "docker-compose.prod.yml"
+          },
+          {
+            "name": "profile",
+            "type": "string",
+            "default": "",
+            "description": "启用 profile（如 --profile frontend）",
+            "example": "--profile frontend"
+          }
         ],
         "extensions": [
-          { "name": "生产环境", "keyword": "docker-compose -f prod", "description": "使用生产环境配置", "cmd": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d" },
-          { "name": "开发环境", "keyword": "docker-compose -f dev", "description": "使用开发环境配置", "cmd": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d" },
-          { "name": "启用 profile", "keyword": "docker-compose --profile", "description": "启用指定 profile 的服务", "cmd": "docker-compose up -d --profile %{name}%" },
-          { "name": "多个 profile", "keyword": "docker-compose --profile multiple", "description": "同时启用多个 profile", "cmd": "docker-compose up -d --profile %{p1}% --profile %{p2}%" }
+          {
+            "name": "生产环境",
+            "keyword": "docker-compose -f prod",
+            "description": "使用生产环境配置",
+            "cmd": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d"
+          },
+          {
+            "name": "开发环境",
+            "keyword": "docker-compose -f dev",
+            "description": "使用开发环境配置",
+            "cmd": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d"
+          },
+          {
+            "name": "启用 profile",
+            "keyword": "docker-compose --profile",
+            "description": "启用指定 profile 的服务",
+            "cmd": "docker-compose up -d --profile %{name}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "多个 profile",
+            "keyword": "docker-compose --profile multiple",
+            "description": "同时启用多个 profile",
+            "cmd": "docker-compose up -d --profile %{p1}% --profile %{p2}%",
+            "params": {
+              "p1": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "p2": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            }
+          }
         ]
       }
     },
@@ -191,13 +863,40 @@
       "data": {
         "cmd": "docker-compose --env-file %{env_file}% %{action}%",
         "params": [
-          { "name": "env_file", "type": "string", "default": ".env", "description": "环境变量文件路径", "example": ".env" },
-          { "name": "action", "type": "string", "default": "config", "description": "操作：config/up/ps", "example": "config" }
+          {
+            "name": "env_file",
+            "type": "string",
+            "default": ".env",
+            "description": "环境变量文件路径",
+            "example": ".env"
+          },
+          {
+            "name": "action",
+            "type": "string",
+            "default": "config",
+            "description": "操作：config/up/ps",
+            "example": "config"
+          }
         ],
         "extensions": [
-          { "name": "显示合并配置", "keyword": "docker-compose config", "description": "输出合并后的完整配置", "cmd": "docker-compose config" },
-          { "name": "检查环境变量", "keyword": "docker-compose config | grep", "description": "检查当前加载的环境变量", "cmd": "docker-compose config | grep -E \"image|environment|SECRET\"" },
-          { "name": "使用默认 env", "keyword": "docker-compose up", "description": "使用默认 .env 文件", "cmd": "docker-compose up -d" }
+          {
+            "name": "显示合并配置",
+            "keyword": "docker-compose config",
+            "description": "输出合并后的完整配置",
+            "cmd": "docker-compose config"
+          },
+          {
+            "name": "检查环境变量",
+            "keyword": "docker-compose config | grep",
+            "description": "检查当前加载的环境变量",
+            "cmd": "docker-compose config | grep -E \"image|environment|SECRET\""
+          },
+          {
+            "name": "使用默认 env",
+            "keyword": "docker-compose up",
+            "description": "使用默认 .env 文件",
+            "cmd": "docker-compose up -d"
+          }
         ]
       }
     },
@@ -208,16 +907,61 @@
       "data": {
         "cmd": "healthcheck:\n  test: [\"CMD\", \"%{command}%\"]\n  interval: %{interval}%\n  timeout: %{timeout}%\n  retries: %{retries}%\n  start_period: %{start_period}%",
         "params": [
-          { "name": "command", "type": "string", "default": "wget --spider -q http://localhost:3000/health", "description": "健康检查命令", "example": "curl -f http://localhost/health" },
-          { "name": "interval", "type": "string", "default": "30s", "description": "检查间隔", "example": "30s" },
-          { "name": "timeout", "type": "string", "default": "10s", "description": "超时时间", "example": "10s" },
-          { "name": "retries", "type": "number", "default": "3", "description": "重试次数", "example": "3" },
-          { "name": "start_period", "type": "string", "default": "40s", "description": "启动宽限期", "example": "40s" }
+          {
+            "name": "command",
+            "type": "string",
+            "default": "wget --spider -q http://localhost:3000/health",
+            "description": "健康检查命令",
+            "example": "curl -f http://localhost/health"
+          },
+          {
+            "name": "interval",
+            "type": "string",
+            "default": "30s",
+            "description": "检查间隔",
+            "example": "30s"
+          },
+          {
+            "name": "timeout",
+            "type": "string",
+            "default": "10s",
+            "description": "超时时间",
+            "example": "10s"
+          },
+          {
+            "name": "retries",
+            "type": "number",
+            "default": "3",
+            "description": "重试次数",
+            "example": "3"
+          },
+          {
+            "name": "start_period",
+            "type": "string",
+            "default": "40s",
+            "description": "启动宽限期",
+            "example": "40s"
+          }
         ],
         "extensions": [
-          { "name": "HTTP 健康检查", "keyword": "healthcheck http", "description": "HTTP 端点健康检查", "cmd": "test: [\"CMD\", \"wget\", \"--spider\", \"-q\", \"http://localhost:3000/health\"]" },
-          { "name": "Shell 健康检查", "keyword": "healthcheck cmd-shell", "description": "使用 CMD-SHELL 执行健康检查", "cmd": "test: [\"CMD-SHELL\", \"pg_isready -U postgres\"]" },
-          { "name": "TCP 端口检查", "keyword": "healthcheck tcp", "description": "检查 TCP 端口是否可达", "cmd": "test: [\"CMD\", \"nc\", \"-z\", \"localhost\", \"5432\"]" }
+          {
+            "name": "HTTP 健康检查",
+            "keyword": "healthcheck http",
+            "description": "HTTP 端点健康检查",
+            "cmd": "test: [\"CMD\", \"wget\", \"--spider\", \"-q\", \"http://localhost:3000/health\"]"
+          },
+          {
+            "name": "Shell 健康检查",
+            "keyword": "healthcheck cmd-shell",
+            "description": "使用 CMD-SHELL 执行健康检查",
+            "cmd": "test: [\"CMD-SHELL\", \"pg_isready -U postgres\"]"
+          },
+          {
+            "name": "TCP 端口检查",
+            "keyword": "healthcheck tcp",
+            "description": "检查 TCP 端口是否可达",
+            "cmd": "test: [\"CMD\", \"nc\", \"-z\", \"localhost\", \"5432\"]"
+          }
         ]
       }
     },
@@ -228,12 +972,67 @@
       "data": {
         "cmd": "docker inspect --format='{{.State.Health.Status}}' $(docker-compose ps -q %{service}%)",
         "params": [
-          { "name": "service", "type": "string", "default": "web", "description": "服务名称", "example": "web" }
+          {
+            "name": "service",
+            "type": "string",
+            "default": "web",
+            "description": "服务名称",
+            "example": "web"
+          }
         ],
         "extensions": [
-          { "name": "查看健康日志", "keyword": "docker inspect health log", "description": "查看健康检查失败日志", "cmd": "docker inspect --format='{{json .State.Health.Log}}' %{container}% | jq" },
-          { "name": "查看健康配置", "keyword": "docker inspect healthcheck config", "description": "查看健康检查详细配置", "cmd": "docker inspect %{container}% | jq '.[].Config.Healthcheck'" },
-          { "name": "手动触发检查", "keyword": "docker exec health check", "description": "手动测试健康端点", "cmd": "docker exec %{container}% wget --spider http://localhost:%{port}%/health" }
+          {
+            "name": "查看健康日志",
+            "keyword": "docker inspect health log",
+            "description": "查看健康检查失败日志",
+            "cmd": "docker inspect --format='{{json .State.Health.Log}}' %{container}% | jq",
+            "params": {
+              "container": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "查看健康配置",
+            "keyword": "docker inspect healthcheck config",
+            "description": "查看健康检查详细配置",
+            "cmd": "docker inspect %{container}% | jq '.[].Config.Healthcheck'",
+            "params": {
+              "container": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "手动触发检查",
+            "keyword": "docker exec health check",
+            "description": "手动测试健康端点",
+            "cmd": "docker exec %{container}% wget --spider http://localhost:%{port}%/health",
+            "params": {
+              "container": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "port": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            }
+          }
         ]
       }
     },
@@ -244,14 +1043,81 @@
       "data": {
         "cmd": "docker-compose logs%{follow}% --tail=%{lines}% --timestamps %{service}%",
         "params": [
-          { "name": "follow", "type": "flag", "default": "", "description": "-f 实时跟踪", "example": "-f" },
-          { "name": "lines", "type": "number", "default": "100", "description": "显示行数", "example": "200" },
-          { "name": "service", "type": "string", "default": "", "description": "服务名称（留空则所有服务）", "example": "web" }
+          {
+            "name": "follow",
+            "type": "flag",
+            "default": "",
+            "description": "-f 实时跟踪",
+            "example": "-f"
+          },
+          {
+            "name": "lines",
+            "type": "number",
+            "default": "100",
+            "description": "显示行数",
+            "example": "200"
+          },
+          {
+            "name": "service",
+            "type": "string",
+            "default": "",
+            "description": "服务名称（留空则所有服务）",
+            "example": "web"
+          }
         ],
         "extensions": [
-          { "name": "实时跟踪日志", "keyword": "docker-compose logs -f", "description": "实时跟踪所有日志", "cmd": "docker-compose logs -f %{service}%" },
-          { "name": "最近时间日志", "keyword": "docker-compose logs --since", "description": "显示指定时间内的日志", "cmd": "docker-compose logs --since %{time}% %{service}%" },
-          { "name": "查看容器进程", "keyword": "docker-compose top", "description": "查看容器内运行的进程", "cmd": "docker-compose top %{service}%" }
+          {
+            "name": "实时跟踪日志",
+            "keyword": "docker-compose logs -f",
+            "description": "实时跟踪所有日志",
+            "cmd": "docker-compose logs -f %{service}%",
+            "params": {
+              "service": {
+                "type": "string",
+                "required": false,
+                "description": "服务名称（留空则所有服务）",
+                "example": "web",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "最近时间日志",
+            "keyword": "docker-compose logs --since",
+            "description": "显示指定时间内的日志",
+            "cmd": "docker-compose logs --since %{time}% %{service}%",
+            "params": {
+              "time": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "service": {
+                "type": "string",
+                "required": false,
+                "description": "服务名称（留空则所有服务）",
+                "example": "web",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "查看容器进程",
+            "keyword": "docker-compose top",
+            "description": "查看容器内运行的进程",
+            "cmd": "docker-compose top %{service}%",
+            "params": {
+              "service": {
+                "type": "string",
+                "required": false,
+                "description": "服务名称（留空则所有服务）",
+                "example": "web",
+                "notes": ""
+              }
+            }
+          }
         ]
       }
     },
@@ -262,14 +1128,88 @@
       "data": {
         "cmd": "docker-compose exec%{it}% %{service}% %{shell}%",
         "params": [
-          { "name": "it", "type": "flag", "default": "", "description": "-it 交互式终端", "example": "-it" },
-          { "name": "service", "type": "string", "default": "web", "description": "服务名称", "example": "web" },
-          { "name": "shell", "type": "string", "default": "/bin/sh", "description": "Shell 类型", "example": "/bin/bash" }
+          {
+            "name": "it",
+            "type": "flag",
+            "default": "",
+            "description": "-it 交互式终端",
+            "example": "-it"
+          },
+          {
+            "name": "service",
+            "type": "string",
+            "default": "web",
+            "description": "服务名称",
+            "example": "web"
+          },
+          {
+            "name": "shell",
+            "type": "string",
+            "default": "/bin/sh",
+            "description": "Shell 类型",
+            "example": "/bin/bash"
+          }
         ],
         "extensions": [
-          { "name": "交互式 bash", "keyword": "docker-compose exec bash", "description": "进入 bash 交互终端", "cmd": "docker-compose exec -it %{service}% /bin/bash" },
-          { "name": "指定用户", "keyword": "docker-compose exec -u", "description": "以指定用户身份进入", "cmd": "docker-compose exec -u %{user}% -it %{service}% /bin/sh" },
-          { "name": "执行单个命令", "keyword": "docker-compose exec command", "description": "执行单条命令后退出", "cmd": "docker-compose exec %{service}% %{command}%" }
+          {
+            "name": "交互式 bash",
+            "keyword": "docker-compose exec bash",
+            "description": "进入 bash 交互终端",
+            "cmd": "docker-compose exec -it %{service}% /bin/bash",
+            "params": {
+              "service": {
+                "type": "string",
+                "required": false,
+                "description": "服务名称",
+                "example": "web",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "指定用户",
+            "keyword": "docker-compose exec -u",
+            "description": "以指定用户身份进入",
+            "cmd": "docker-compose exec -u %{user}% -it %{service}% /bin/sh",
+            "params": {
+              "user": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "service": {
+                "type": "string",
+                "required": false,
+                "description": "服务名称",
+                "example": "web",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "执行单个命令",
+            "keyword": "docker-compose exec command",
+            "description": "执行单条命令后退出",
+            "cmd": "docker-compose exec %{service}% %{command}%",
+            "params": {
+              "service": {
+                "type": "string",
+                "required": false,
+                "description": "服务名称",
+                "example": "web",
+                "notes": ""
+              },
+              "command": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            }
+          }
         ]
       }
     },
@@ -280,15 +1220,61 @@
       "data": {
         "cmd": "docker-compose %{action}% %{service}%",
         "params": [
-          { "name": "action", "type": "string", "default": "pull", "description": "操作：pull/push", "example": "pull" },
-          { "name": "service", "type": "string", "default": "", "description": "服务名称（留空则所有服务）", "example": "web" }
+          {
+            "name": "action",
+            "type": "string",
+            "default": "pull",
+            "description": "操作：pull/push",
+            "example": "pull"
+          },
+          {
+            "name": "service",
+            "type": "string",
+            "default": "",
+            "description": "服务名称（留空则所有服务）",
+            "example": "web"
+          }
         ],
         "extensions": [
-          { "name": "拉取所有镜像", "keyword": "docker-compose pull", "description": "拉取配置中的所有镜像", "cmd": "docker-compose pull" },
-          { "name": "拉取指定服务", "keyword": "docker-compose pull service", "description": "只拉取指定服务镜像", "cmd": "docker-compose pull %{service}%" },
-          { "name": "并行拉取", "keyword": "docker-compose pull --parallel", "description": "并行拉取多个镜像", "cmd": "docker-compose pull --parallel" },
-          { "name": "忽略拉取失败", "keyword": "docker-compose pull --ignore-pull-failures", "description": "忽略单个镜像拉取失败", "cmd": "docker-compose pull --ignore-pull-failures" },
-          { "name": "推送所有镜像", "keyword": "docker-compose push", "description": "推送所有服务镜像到仓库", "cmd": "docker-compose push" }
+          {
+            "name": "拉取所有镜像",
+            "keyword": "docker-compose pull",
+            "description": "拉取配置中的所有镜像",
+            "cmd": "docker-compose pull"
+          },
+          {
+            "name": "拉取指定服务",
+            "keyword": "docker-compose pull service",
+            "description": "只拉取指定服务镜像",
+            "cmd": "docker-compose pull %{service}%",
+            "params": {
+              "service": {
+                "type": "string",
+                "required": false,
+                "description": "服务名称（留空则所有服务）",
+                "example": "web",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "并行拉取",
+            "keyword": "docker-compose pull --parallel",
+            "description": "并行拉取多个镜像",
+            "cmd": "docker-compose pull --parallel"
+          },
+          {
+            "name": "忽略拉取失败",
+            "keyword": "docker-compose pull --ignore-pull-failures",
+            "description": "忽略单个镜像拉取失败",
+            "cmd": "docker-compose pull --ignore-pull-failures"
+          },
+          {
+            "name": "推送所有镜像",
+            "keyword": "docker-compose push",
+            "description": "推送所有服务镜像到仓库",
+            "cmd": "docker-compose push"
+          }
         ]
       }
     },
@@ -299,14 +1285,55 @@
       "data": {
         "cmd": "docker-compose -f %{file1}% -f %{file2}% config",
         "params": [
-          { "name": "file1", "type": "string", "default": "docker-compose.yml", "description": "配置文件路径", "example": "docker-compose.yml" },
-          { "name": "file2", "type": "string", "default": "docker-compose.prod.yml", "description": "覆盖配置文件", "example": "docker-compose.prod.yml" }
+          {
+            "name": "file1",
+            "type": "string",
+            "default": "docker-compose.yml",
+            "description": "配置文件路径",
+            "example": "docker-compose.yml"
+          },
+          {
+            "name": "file2",
+            "type": "string",
+            "default": "docker-compose.prod.yml",
+            "description": "覆盖配置文件",
+            "example": "docker-compose.prod.yml"
+          }
         ],
         "extensions": [
-          { "name": "静默验证", "keyword": "docker-compose config -q", "description": "只返回验证结果（0 或 1）", "cmd": "docker-compose config -q" },
-          { "name": "列出服务", "keyword": "docker-compose config --services", "description": "列出配置中的所有服务", "cmd": "docker-compose config --services" },
-          { "name": "列出卷", "keyword": "docker-compose config --volumes", "description": "列出配置中的所有卷", "cmd": "docker-compose config --volumes" },
-          { "name": "转换为 JSON", "keyword": "docker-compose convert", "description": "将配置转换为规范格式", "cmd": "docker-compose -f %{file}% convert" }
+          {
+            "name": "静默验证",
+            "keyword": "docker-compose config -q",
+            "description": "只返回验证结果（0 或 1）",
+            "cmd": "docker-compose config -q"
+          },
+          {
+            "name": "列出服务",
+            "keyword": "docker-compose config --services",
+            "description": "列出配置中的所有服务",
+            "cmd": "docker-compose config --services"
+          },
+          {
+            "name": "列出卷",
+            "keyword": "docker-compose config --volumes",
+            "description": "列出配置中的所有卷",
+            "cmd": "docker-compose config --volumes"
+          },
+          {
+            "name": "转换为 JSON",
+            "keyword": "docker-compose convert",
+            "description": "将配置转换为规范格式",
+            "cmd": "docker-compose -f %{file}% convert",
+            "params": {
+              "file": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              }
+            }
+          }
         ]
       }
     },
@@ -317,14 +1344,80 @@
       "data": {
         "cmd": "docker-compose exec -T %{db_service}% pg_dump -U %{user}% -d %{database}% > backup_%{date}%.sql",
         "params": [
-          { "name": "db_service", "type": "string", "default": "db", "description": "数据库服务名称", "example": "db" },
-          { "name": "user", "type": "string", "default": "postgres", "description": "数据库用户名", "example": "postgres" },
-          { "name": "database", "type": "string", "default": "mydb", "description": "数据库名称", "example": "mydb" },
-          { "name": "date", "type": "string", "default": "$(date +%Y%m%d)", "description": "备份日期", "example": "$(date +%Y%m%d_%H%M%S)" }
+          {
+            "name": "db_service",
+            "type": "string",
+            "default": "db",
+            "description": "数据库服务名称",
+            "example": "db"
+          },
+          {
+            "name": "user",
+            "type": "string",
+            "default": "postgres",
+            "description": "数据库用户名",
+            "example": "postgres"
+          },
+          {
+            "name": "database",
+            "type": "string",
+            "default": "mydb",
+            "description": "数据库名称",
+            "example": "mydb"
+          },
+          {
+            "name": "date",
+            "type": "string",
+            "default": "$(date +%Y%m%d)",
+            "description": "备份日期",
+            "example": "$(date +%Y%m%d_%H%M%S)"
+          }
         ],
         "extensions": [
-          { "name": "MySQL 备份", "keyword": "mysqldump backup", "description": "MySQL 数据库备份", "cmd": "docker-compose exec -T mysql mysqldump -u%{user}% -p%{pass}% %{database}% > backup.sql" },
-          { "name": "MongoDB 备份", "keyword": "mongodump backup", "description": "MongoDB 数据库备份", "cmd": "docker-compose exec -T mongo mongodump --archive=/backup/mongo_%{date}%.archive --gzip" }
+          {
+            "name": "MySQL 备份",
+            "keyword": "mysqldump backup",
+            "description": "MySQL 数据库备份",
+            "cmd": "docker-compose exec -T mysql mysqldump -u%{user}% -p%{pass}% %{database}% > backup.sql",
+            "params": {
+              "user": {
+                "type": "string",
+                "required": false,
+                "description": "数据库用户名",
+                "example": "postgres",
+                "notes": ""
+              },
+              "pass": {
+                "type": "string",
+                "required": false,
+                "description": "",
+                "example": "",
+                "notes": ""
+              },
+              "database": {
+                "type": "string",
+                "required": false,
+                "description": "数据库名称",
+                "example": "mydb",
+                "notes": ""
+              }
+            }
+          },
+          {
+            "name": "MongoDB 备份",
+            "keyword": "mongodump backup",
+            "description": "MongoDB 数据库备份",
+            "cmd": "docker-compose exec -T mongo mongodump --archive=/backup/mongo_%{date}%.archive --gzip",
+            "params": {
+              "date": {
+                "type": "string",
+                "required": false,
+                "description": "备份日期",
+                "example": "$(date +%Y%m%d_%H%M%S)",
+                "notes": ""
+              }
+            }
+          }
         ]
       }
     },
@@ -335,14 +1428,45 @@
       "data": {
         "cmd": "docker %{action}%",
         "params": [
-          { "name": "action", "type": "string", "default": "system prune -a", "description": "清理操作", "example": "system prune -a --volumes" }
+          {
+            "name": "action",
+            "type": "string",
+            "default": "system prune -a",
+            "description": "清理操作",
+            "example": "system prune -a --volumes"
+          }
         ],
         "extensions": [
-          { "name": "清理未使用卷", "keyword": "docker volume prune", "description": "删除未使用的卷", "cmd": "docker volume prune" },
-          { "name": "清理未使用网络", "keyword": "docker network prune", "description": "删除未使用的网络", "cmd": "docker network prune" },
-          { "name": "清理悬空镜像", "keyword": "docker image prune -a", "description": "删除所有未使用的镜像", "cmd": "docker image prune -a" },
-          { "name": "完整系统清理", "keyword": "docker system prune -a --volumes", "description": "清理所有未使用的容器、镜像、网络、卷", "cmd": "docker system prune -a --volumes" },
-          { "name": "查看资源占用", "keyword": "docker stats", "description": "查看所有容器资源使用情况", "cmd": "docker stats" }
+          {
+            "name": "清理未使用卷",
+            "keyword": "docker volume prune",
+            "description": "删除未使用的卷",
+            "cmd": "docker volume prune"
+          },
+          {
+            "name": "清理未使用网络",
+            "keyword": "docker network prune",
+            "description": "删除未使用的网络",
+            "cmd": "docker network prune"
+          },
+          {
+            "name": "清理悬空镜像",
+            "keyword": "docker image prune -a",
+            "description": "删除所有未使用的镜像",
+            "cmd": "docker image prune -a"
+          },
+          {
+            "name": "完整系统清理",
+            "keyword": "docker system prune -a --volumes",
+            "description": "清理所有未使用的容器、镜像、网络、卷",
+            "cmd": "docker system prune -a --volumes"
+          },
+          {
+            "name": "查看资源占用",
+            "keyword": "docker stats",
+            "description": "查看所有容器资源使用情况",
+            "cmd": "docker stats"
+          }
         ]
       }
     },
@@ -353,12 +1477,33 @@
       "data": {
         "cmd": "docker-compose down -v && docker-compose build --no-cache && docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d%{scale}%",
         "params": [
-          { "name": "scale", "type": "string", "default": "", "description": "扩缩容配置（如 --scale web=3）", "example": "--scale web=3 --scale worker=2" }
+          {
+            "name": "scale",
+            "type": "string",
+            "default": "",
+            "description": "扩缩容配置（如 --scale web=3）",
+            "example": "--scale web=3 --scale worker=2"
+          }
         ],
         "extensions": [
-          { "name": "干净重建", "keyword": "docker-compose down -v build up", "description": "删除卷后重新构建部署", "cmd": "docker-compose down -v && docker-compose build --no-cache && docker-compose up -d" },
-          { "name": "拉取更新部署", "keyword": "docker-compose pull up", "description": "拉取最新镜像并重启服务", "cmd": "docker-compose pull && docker-compose up -d" },
-          { "name": "生产环境部署", "keyword": "docker-compose prod deploy", "description": "生产配置完整部署", "cmd": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --scale web=3" }
+          {
+            "name": "干净重建",
+            "keyword": "docker-compose down -v build up",
+            "description": "删除卷后重新构建部署",
+            "cmd": "docker-compose down -v && docker-compose build --no-cache && docker-compose up -d"
+          },
+          {
+            "name": "拉取更新部署",
+            "keyword": "docker-compose pull up",
+            "description": "拉取最新镜像并重启服务",
+            "cmd": "docker-compose pull && docker-compose up -d"
+          },
+          {
+            "name": "生产环境部署",
+            "keyword": "docker-compose prod deploy",
+            "description": "生产配置完整部署",
+            "cmd": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --scale web=3"
+          }
         ]
       }
     }

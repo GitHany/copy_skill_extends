@@ -14,19 +14,43 @@
           {
             "name": "安装并保存到 dependencies",
             "cmd": "npm install %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": "可选，不填则安装所有依赖"
+              }
+            },
             "keyword": "npm install 保存"
           },
           {
             "name": "安装到 devDependencies",
             "cmd": "npm install -D %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": "可选，不填则安装所有依赖"
+              }
+            },
             "keyword": "npm install dev"
           },
           {
             "name": "全局安装",
             "cmd": "npm install -g %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": "可选，不填则安装所有依赖"
+              }
+            },
             "keyword": "npm 全局安装"
           },
           {
@@ -38,7 +62,22 @@
           {
             "name": "安装指定版本",
             "cmd": "npm install %{包名}%@%{版本}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": "可选，不填则安装所有依赖"
+              },
+              "版本": {
+                "type": "string",
+                "required": false,
+                "description": "包版本号",
+                "example": "4.17.21",
+                "notes": "可选，指定版本"
+              }
+            },
             "keyword": "npm install 版本"
           }
         ],
@@ -71,19 +110,43 @@
           {
             "name": "卸载并从 package.json 移除",
             "cmd": "npm uninstall %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "要卸载的包名称",
+                "example": "lodash",
+                "notes": ""
+              }
+            },
             "keyword": "npm uninstall 移除"
           },
           {
             "name": "卸载 devDependencies",
             "cmd": "npm uninstall -D %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "要卸载的包名称",
+                "example": "lodash",
+                "notes": ""
+              }
+            },
             "keyword": "npm uninstall dev"
           },
           {
             "name": "卸载全局包",
             "cmd": "npm uninstall -g %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "要卸载的包名称",
+                "example": "lodash",
+                "notes": ""
+              }
+            },
             "keyword": "npm 卸载全局"
           }
         ],
@@ -115,7 +178,22 @@
           {
             "name": "带参数运行脚本",
             "cmd": "npm run %{脚本名}% -- --%{参数}%",
-            "params": {},
+            "params": {
+              "脚本名": {
+                "type": "string",
+                "required": false,
+                "description": "脚本名称",
+                "example": "build",
+                "notes": ""
+              },
+              "参数": {
+                "type": "string",
+                "required": false,
+                "description": "传递给脚本的参数",
+                "example": "mode=production",
+                "notes": "可选"
+              }
+            },
             "keyword": "npm run 参数"
           }
         ],
@@ -154,7 +232,15 @@
           {
             "name": "带参数启动",
             "cmd": "npm run dev -- --port %{端口}%",
-            "params": {},
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": false,
+                "description": "开发服务器端口",
+                "example": "3000",
+                "notes": "可选"
+              }
+            },
             "keyword": "npm dev 端口"
           }
         ],
@@ -210,7 +296,15 @@
           {
             "name": "列出特定包",
             "cmd": "npm list %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": "可选"
+              }
+            },
             "keyword": "npm list 指定包"
           },
           {
@@ -222,7 +316,15 @@
           {
             "name": "深度显示",
             "cmd": "npm list --depth=%{深度}%",
-            "params": {},
+            "params": {
+              "深度": {
+                "type": "string",
+                "required": false,
+                "description": "依赖树深度",
+                "example": "2",
+                "notes": "可选"
+              }
+            },
             "keyword": "npm list 深度"
           }
         ],
@@ -268,7 +370,15 @@
           {
             "name": "检查特定包",
             "cmd": "npm outdated %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": "可选"
+              }
+            },
             "keyword": "npm outdated 指定"
           },
           {
@@ -306,13 +416,29 @@
           {
             "name": "更新特定包",
             "cmd": "npm update %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": "可选，不填则更新所有"
+              }
+            },
             "keyword": "npm update 指定"
           },
           {
             "name": "更新全局包",
             "cmd": "npm update -g %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": "可选，不填则更新所有"
+              }
+            },
             "keyword": "npm update 全局"
           }
         ],
@@ -350,7 +476,15 @@
           {
             "name": "指定作用域初始化",
             "cmd": "npm init -y --scope=%{作用域}%",
-            "params": {},
+            "params": {
+              "作用域": {
+                "type": "string",
+                "required": false,
+                "description": "npm 作用域",
+                "example": "@myorg",
+                "notes": "可选"
+              }
+            },
             "keyword": "npm init 作用域"
           }
         ],
@@ -383,31 +517,78 @@
           {
             "name": "添加依赖",
             "cmd": "yarn add %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": ""
+              }
+            },
             "keyword": "yarn add 添加"
           },
           {
             "name": "添加为 devDependencies",
             "cmd": "yarn add -D %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": ""
+              }
+            },
             "keyword": "yarn add dev"
           },
           {
             "name": "添加为 optionalDependencies",
             "cmd": "yarn add -O %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": ""
+              }
+            },
             "keyword": "yarn add optional"
           },
           {
             "name": "全局添加",
             "cmd": "yarn global add %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": ""
+              }
+            },
             "keyword": "yarn 全局添加"
           },
           {
             "name": "添加指定版本",
             "cmd": "yarn add %{包名}%@%{版本}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": ""
+              },
+              "版本": {
+                "type": "string",
+                "required": false,
+                "description": "包版本号",
+                "example": "4.17.21",
+                "notes": "可选"
+              }
+            },
             "keyword": "yarn add 版本"
           }
         ],
@@ -440,13 +621,29 @@
           {
             "name": "移除依赖",
             "cmd": "yarn remove %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "要移除的包名称",
+                "example": "lodash",
+                "notes": ""
+              }
+            },
             "keyword": "yarn remove 移除"
           },
           {
             "name": "移除全局包",
             "cmd": "yarn global remove %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "要移除的包名称",
+                "example": "lodash",
+                "notes": ""
+              }
+            },
             "keyword": "yarn 全局移除"
           }
         ],
@@ -478,7 +675,15 @@
           {
             "name": "带参数启动",
             "cmd": "yarn dev -- --port %{端口}%",
-            "params": {},
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": false,
+                "description": "开发服务器端口",
+                "example": "3000",
+                "notes": "可选"
+              }
+            },
             "keyword": "yarn dev 端口"
           }
         ],
@@ -534,7 +739,15 @@
           {
             "name": "过滤显示",
             "cmd": "yarn list --pattern %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": "可选"
+              }
+            },
             "keyword": "yarn list 过滤"
           }
         ],
@@ -573,13 +786,29 @@
           {
             "name": "升级特定包",
             "cmd": "yarn upgrade %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": "可选"
+              }
+            },
             "keyword": "yarn upgrade 指定"
           },
           {
             "name": "升级到最新版本",
             "cmd": "yarn upgrade --latest %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": "可选"
+              }
+            },
             "keyword": "yarn upgrade 最新"
           },
           {
@@ -611,37 +840,99 @@
           {
             "name": "添加依赖",
             "cmd": "pnpm add %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": ""
+              }
+            },
             "keyword": "pnpm add 添加"
           },
           {
             "name": "添加为 devDependencies",
             "cmd": "pnpm add -D %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": ""
+              }
+            },
             "keyword": "pnpm add dev"
           },
           {
             "name": "添加为 optionalDependencies",
             "cmd": "pnpm add -O %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": ""
+              }
+            },
             "keyword": "pnpm add optional"
           },
           {
             "name": "全局添加",
             "cmd": "pnpm add -g %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": ""
+              }
+            },
             "keyword": "pnpm 全局添加"
           },
           {
             "name": "添加指定版本",
             "cmd": "pnpm add %{包名}%@%{版本}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": ""
+              },
+              "版本": {
+                "type": "string",
+                "required": false,
+                "description": "包版本号",
+                "example": "4.17.21",
+                "notes": "可选"
+              }
+            },
             "keyword": "pnpm add 版本"
           },
           {
             "name": "从 workspace 添加",
             "cmd": "pnpm add %{包名}% --filter %{workspace}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": ""
+              },
+              "workspace": {
+                "type": "string",
+                "required": false,
+                "description": "workspace 名称",
+                "example": "@myorg/app",
+                "notes": "可选"
+              }
+            },
             "keyword": "pnpm add workspace"
           }
         ],
@@ -681,19 +972,50 @@
           {
             "name": "移除依赖",
             "cmd": "pnpm remove %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "要移除的包名称",
+                "example": "lodash",
+                "notes": ""
+              }
+            },
             "keyword": "pnpm remove 移除"
           },
           {
             "name": "移除全局包",
             "cmd": "pnpm remove -g %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "要移除的包名称",
+                "example": "lodash",
+                "notes": ""
+              }
+            },
             "keyword": "pnpm 全局移除"
           },
           {
             "name": "从 workspace 移除",
             "cmd": "pnpm remove %{包名}% --filter %{workspace}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "要移除的包名称",
+                "example": "lodash",
+                "notes": ""
+              },
+              "workspace": {
+                "type": "string",
+                "required": false,
+                "description": "workspace 名称",
+                "example": "@myorg/app",
+                "notes": "可选"
+              }
+            },
             "keyword": "pnpm remove workspace"
           }
         ],
@@ -732,7 +1054,15 @@
           {
             "name": "带参数启动",
             "cmd": "pnpm dev -- --port %{端口}%",
-            "params": {},
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": false,
+                "description": "开发服务器端口",
+                "example": "3000",
+                "notes": "可选"
+              }
+            },
             "keyword": "pnpm dev 端口"
           }
         ],
@@ -788,7 +1118,15 @@
           {
             "name": "列出特定包",
             "cmd": "pnpm list %{包名}%",
-            "params": {},
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": false,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": "可选"
+              }
+            },
             "keyword": "pnpm list 指定"
           },
           {

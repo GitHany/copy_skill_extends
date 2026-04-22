@@ -15,8 +15,20 @@
             "name": "初始化 Operator 项目",
             "cmd": "operator-sdk init --domain %{域名}% --repo %{仓库}%",
             "params": {
-              "域名": { "type": "string", "required": true, "description": "域名", "example": "my.domain", "notes": "必填" },
-              "仓库": { "type": "string", "required": true, "description": "仓库路径", "example": "github.com/myorg/project", "notes": "必填" }
+              "域名": {
+                "type": "string",
+                "required": true,
+                "description": "域名",
+                "example": "my.domain",
+                "notes": "必填"
+              },
+              "仓库": {
+                "type": "string",
+                "required": true,
+                "description": "仓库路径",
+                "example": "github.com/myorg/project",
+                "notes": "必填"
+              }
             },
             "keyword": "operator-sdk init"
           },
@@ -24,9 +36,27 @@
             "name": "创建 Webhook",
             "cmd": "operator-sdk create webhook --group %{组名}% --version %{版本}% --kind %{类型}%",
             "params": {
-              "组名": { "type": "string", "required": true, "description": "API 组名", "example": "apps", "notes": "" },
-              "版本": { "type": "string", "required": true, "description": "API 版本", "example": "v1", "notes": "" },
-              "类型": { "type": "string", "required": true, "description": "CRD 类型名", "example": "MyOperator", "notes": "" }
+              "组名": {
+                "type": "string",
+                "required": true,
+                "description": "API 组名",
+                "example": "apps",
+                "notes": ""
+              },
+              "版本": {
+                "type": "string",
+                "required": true,
+                "description": "API 版本",
+                "example": "v1",
+                "notes": ""
+              },
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "CRD 类型名",
+                "example": "MyOperator",
+                "notes": ""
+              }
             },
             "keyword": "operator-sdk create webhook"
           },
@@ -34,7 +64,13 @@
             "name": "本地运行 Operator",
             "cmd": "operator-sdk run --local --namespace=%{命名空间}%",
             "params": {
-              "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "default", "notes": "" }
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间",
+                "example": "default",
+                "notes": ""
+              }
             },
             "keyword": "operator-sdk run local"
           },
@@ -48,19 +84,67 @@
             "name": "构建 Operator 镜像",
             "cmd": "operator-sdk build %{镜像}%",
             "params": {
-              "镜像": { "type": "string", "required": true, "description": "镜像名称", "example": "myorg/my-operator:v1.0.0", "notes": "" }
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名称",
+                "example": "myorg/my-operator:v1.0.0",
+                "notes": ""
+              }
             },
             "keyword": "operator-sdk build"
           }
         ],
         "params": {
-          "组名": { "type": "string", "required": true, "description": "API 组名", "example": "apps", "notes": "" },
-          "版本": { "type": "string", "required": true, "description": "API 版本", "example": "v1", "notes": "" },
-          "类型": { "type": "string", "required": true, "description": "CRD 类型名", "example": "MyOperator", "notes": "" },
-          "域名": { "type": "string", "required": false, "description": "域名", "example": "my.domain", "notes": "" },
-          "仓库": { "type": "string", "required": false, "description": "仓库路径", "example": "github.com/myorg/project", "notes": "" },
-          "命名空间": { "type": "string", "required": false, "description": "命名空间", "example": "default", "notes": "" },
-          "镜像": { "type": "string", "required": false, "description": "镜像名称", "example": "myorg/my-operator:v1.0.0", "notes": "" }
+          "组名": {
+            "type": "string",
+            "required": true,
+            "description": "API 组名",
+            "example": "apps",
+            "notes": ""
+          },
+          "版本": {
+            "type": "string",
+            "required": true,
+            "description": "API 版本",
+            "example": "v1",
+            "notes": ""
+          },
+          "类型": {
+            "type": "string",
+            "required": true,
+            "description": "CRD 类型名",
+            "example": "MyOperator",
+            "notes": ""
+          },
+          "域名": {
+            "type": "string",
+            "required": false,
+            "description": "域名",
+            "example": "my.domain",
+            "notes": ""
+          },
+          "仓库": {
+            "type": "string",
+            "required": false,
+            "description": "仓库路径",
+            "example": "github.com/myorg/project",
+            "notes": ""
+          },
+          "命名空间": {
+            "type": "string",
+            "required": false,
+            "description": "命名空间",
+            "example": "default",
+            "notes": ""
+          },
+          "镜像": {
+            "type": "string",
+            "required": false,
+            "description": "镜像名称",
+            "example": "myorg/my-operator:v1.0.0",
+            "notes": ""
+          }
         }
       }
     },
@@ -76,8 +160,20 @@
             "name": "初始化 kubebuilder 项目",
             "cmd": "kubebuilder init --domain %{域名}% --repo %{仓库}%",
             "params": {
-              "域名": { "type": "string", "required": true, "description": "域名", "example": "my.domain", "notes": "" },
-              "仓库": { "type": "string", "required": true, "description": "仓库路径", "example": "github.com/myorg/project", "notes": "" }
+              "域名": {
+                "type": "string",
+                "required": true,
+                "description": "域名",
+                "example": "my.domain",
+                "notes": ""
+              },
+              "仓库": {
+                "type": "string",
+                "required": true,
+                "description": "仓库路径",
+                "example": "github.com/myorg/project",
+                "notes": ""
+              }
             },
             "keyword": "kubebuilder init"
           },
@@ -85,9 +181,27 @@
             "name": "创建 Webhook",
             "cmd": "kubebuilder create webhook --group %{组名}% --version %{版本}% --kind %{类型}%",
             "params": {
-              "组名": { "type": "string", "required": true, "description": "API 组名", "example": "apps", "notes": "" },
-              "版本": { "type": "string", "required": true, "description": "API 版本", "example": "v1", "notes": "" },
-              "类型": { "type": "string", "required": true, "description": "CRD 类型名", "example": "MyOperator", "notes": "" }
+              "组名": {
+                "type": "string",
+                "required": true,
+                "description": "API 组名",
+                "example": "apps",
+                "notes": ""
+              },
+              "版本": {
+                "type": "string",
+                "required": true,
+                "description": "API 版本",
+                "example": "v1",
+                "notes": ""
+              },
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "CRD 类型名",
+                "example": "MyOperator",
+                "notes": ""
+              }
             },
             "keyword": "kubebuilder create webhook"
           },
@@ -95,20 +209,74 @@
             "name": "创建多版本 API",
             "cmd": "kubebuilder create api --group %{组名}% --version %{版本1}% --version %{版本2}% --kind %{类型}%",
             "params": {
-              "版本1": { "type": "string", "required": true, "description": "初始版本", "example": "v1", "notes": "" },
-              "版本2": { "type": "string", "required": true, "description": "新增版本", "example": "v2", "notes": "" }
+              "版本1": {
+                "type": "string",
+                "required": true,
+                "description": "初始版本",
+                "example": "v1",
+                "notes": ""
+              },
+              "版本2": {
+                "type": "string",
+                "required": true,
+                "description": "新增版本",
+                "example": "v2",
+                "notes": ""
+              }
             },
             "keyword": "kubebuilder 多版本 API"
           }
         ],
         "params": {
-          "组名": { "type": "string", "required": true, "description": "API 组名", "example": "apps", "notes": "" },
-          "版本": { "type": "string", "required": true, "description": "API 版本", "example": "v1", "notes": "" },
-          "类型": { "type": "string", "required": true, "description": "CRD 类型名", "example": "MyOperator", "notes": "" },
-          "域名": { "type": "string", "required": false, "description": "域名", "example": "my.domain", "notes": "" },
-          "仓库": { "type": "string", "required": false, "description": "仓库路径", "example": "github.com/myorg/project", "notes": "" },
-          "版本1": { "type": "string", "required": false, "description": "初始版本", "example": "v1", "notes": "" },
-          "版本2": { "type": "string", "required": false, "description": "新增版本", "example": "v2", "notes": "" }
+          "组名": {
+            "type": "string",
+            "required": true,
+            "description": "API 组名",
+            "example": "apps",
+            "notes": ""
+          },
+          "版本": {
+            "type": "string",
+            "required": true,
+            "description": "API 版本",
+            "example": "v1",
+            "notes": ""
+          },
+          "类型": {
+            "type": "string",
+            "required": true,
+            "description": "CRD 类型名",
+            "example": "MyOperator",
+            "notes": ""
+          },
+          "域名": {
+            "type": "string",
+            "required": false,
+            "description": "域名",
+            "example": "my.domain",
+            "notes": ""
+          },
+          "仓库": {
+            "type": "string",
+            "required": false,
+            "description": "仓库路径",
+            "example": "github.com/myorg/project",
+            "notes": ""
+          },
+          "版本1": {
+            "type": "string",
+            "required": false,
+            "description": "初始版本",
+            "example": "v1",
+            "notes": ""
+          },
+          "版本2": {
+            "type": "string",
+            "required": false,
+            "description": "新增版本",
+            "example": "v2",
+            "notes": ""
+          }
         }
       }
     },
@@ -124,8 +292,20 @@
             "name": "创建 ClusterRole",
             "cmd": "kubectl create clusterrole %{角色名称}% --verb=%{动作}% --resource=%{资源}%",
             "params": {
-              "动作": { "type": "string", "required": true, "description": "操作动词", "example": "get,list", "notes": "" },
-              "资源": { "type": "string", "required": true, "description": "资源类型", "example": "pods", "notes": "" }
+              "动作": {
+                "type": "string",
+                "required": true,
+                "description": "操作动词",
+                "example": "get,list",
+                "notes": ""
+              },
+              "资源": {
+                "type": "string",
+                "required": true,
+                "description": "资源类型",
+                "example": "pods",
+                "notes": ""
+              }
             },
             "keyword": "kubectl create clusterrole"
           },
@@ -133,8 +313,20 @@
             "name": "创建 RoleBinding",
             "cmd": "kubectl create rolebinding %{绑定名称}% --role=%{角色名称}% --user=%{用户名}% -n %{命名空间}%",
             "params": {
-              "角色名称": { "type": "string", "required": true, "description": "Role 名称", "example": "pod-reader", "notes": "" },
-              "用户名": { "type": "string", "required": true, "description": "用户名", "example": "user1", "notes": "" }
+              "角色名称": {
+                "type": "string",
+                "required": true,
+                "description": "Role 名称",
+                "example": "pod-reader",
+                "notes": ""
+              },
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "user1",
+                "notes": ""
+              }
             },
             "keyword": "kubectl create rolebinding"
           },
@@ -142,15 +334,35 @@
             "name": "创建 ClusterRoleBinding",
             "cmd": "kubectl create clusterrolebinding %{绑定名称}% --clusterrole=%{ClusterRole名称}% --user=%{用户名}%",
             "params": {
-              "ClusterRole名称": { "type": "string", "required": true, "description": "ClusterRole 名称", "example": "cluster-reader", "notes": "" },
-              "用户名": { "type": "string", "required": true, "description": "用户名", "example": "user1", "notes": "" }
+              "ClusterRole名称": {
+                "type": "string",
+                "required": true,
+                "description": "ClusterRole 名称",
+                "example": "cluster-reader",
+                "notes": ""
+              },
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "user1",
+                "notes": ""
+              }
             },
             "keyword": "kubectl create clusterrolebinding"
           },
           {
             "name": "查看 Roles",
             "cmd": "kubectl get roles -n %{命名空间}%",
-            "params": {},
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "default",
+                "notes": ""
+              }
+            },
             "keyword": "kubectl get roles"
           },
           {
@@ -161,13 +373,55 @@
           }
         ],
         "params": {
-          "角色名称": { "type": "string", "required": true, "description": "Role 名称", "example": "pod-reader", "notes": "" },
-          "动作": { "type": "string", "required": true, "description": "操作动词", "example": "get,list", "notes": "" },
-          "资源": { "type": "string", "required": true, "description": "资源类型", "example": "pods", "notes": "" },
-          "命名空间": { "type": "string", "required": false, "description": "命名空间", "example": "default", "notes": "" },
-          "绑定名称": { "type": "string", "required": false, "description": "绑定名称", "example": "pod-reader-binding", "notes": "" },
-          "用户名": { "type": "string", "required": false, "description": "用户名", "example": "user1", "notes": "" },
-          "ClusterRole名称": { "type": "string", "required": false, "description": "ClusterRole 名称", "example": "cluster-reader", "notes": "" }
+          "角色名称": {
+            "type": "string",
+            "required": true,
+            "description": "Role 名称",
+            "example": "pod-reader",
+            "notes": ""
+          },
+          "动作": {
+            "type": "string",
+            "required": true,
+            "description": "操作动词",
+            "example": "get,list",
+            "notes": ""
+          },
+          "资源": {
+            "type": "string",
+            "required": true,
+            "description": "资源类型",
+            "example": "pods",
+            "notes": ""
+          },
+          "命名空间": {
+            "type": "string",
+            "required": false,
+            "description": "命名空间",
+            "example": "default",
+            "notes": ""
+          },
+          "绑定名称": {
+            "type": "string",
+            "required": false,
+            "description": "绑定名称",
+            "example": "pod-reader-binding",
+            "notes": ""
+          },
+          "用户名": {
+            "type": "string",
+            "required": false,
+            "description": "用户名",
+            "example": "user1",
+            "notes": ""
+          },
+          "ClusterRole名称": {
+            "type": "string",
+            "required": false,
+            "description": "ClusterRole 名称",
+            "example": "cluster-reader",
+            "notes": ""
+          }
         }
       }
     },
@@ -182,14 +436,42 @@
           {
             "name": "检查命名空间权限",
             "cmd": "kubectl auth can-i %{动作}% %{资源}% -n %{命名空间}%",
-            "params": {},
+            "params": {
+              "动作": {
+                "type": "string",
+                "required": false,
+                "description": "操作动词",
+                "example": "get",
+                "notes": ""
+              },
+              "资源": {
+                "type": "string",
+                "required": false,
+                "description": "资源类型",
+                "example": "pods",
+                "notes": ""
+              },
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "default",
+                "notes": ""
+              }
+            },
             "keyword": "kubectl auth can-i 命名空间"
           },
           {
             "name": "以其他用户身份检查",
             "cmd": "kubectl auth can-i %{动作}% %{资源}% --as=%{用户}%",
             "params": {
-              "用户": { "type": "string", "required": true, "description": "用户名", "example": "user1", "notes": "" }
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "user1",
+                "notes": ""
+              }
             },
             "keyword": "kubectl auth can-i as"
           },
@@ -197,17 +479,53 @@
             "name": "检查子资源权限",
             "cmd": "kubectl auth can-i %{动作}% %{资源}%/%{子资源}% --as=%{用户}%",
             "params": {
-              "子资源": { "type": "string", "required": true, "description": "子资源", "example": "status", "notes": "" }
+              "子资源": {
+                "type": "string",
+                "required": true,
+                "description": "子资源",
+                "example": "status",
+                "notes": ""
+              }
             },
             "keyword": "kubectl auth can-i 子资源"
           }
         ],
         "params": {
-          "动作": { "type": "string", "required": true, "description": "操作动词", "example": "get", "notes": "" },
-          "资源": { "type": "string", "required": true, "description": "资源类型", "example": "pods", "notes": "" },
-          "命名空间": { "type": "string", "required": false, "description": "命名空间", "example": "default", "notes": "" },
-          "用户": { "type": "string", "required": false, "description": "用户名", "example": "user1", "notes": "" },
-          "子资源": { "type": "string", "required": false, "description": "子资源", "example": "status", "notes": "" }
+          "动作": {
+            "type": "string",
+            "required": true,
+            "description": "操作动词",
+            "example": "get",
+            "notes": ""
+          },
+          "资源": {
+            "type": "string",
+            "required": true,
+            "description": "资源类型",
+            "example": "pods",
+            "notes": ""
+          },
+          "命名空间": {
+            "type": "string",
+            "required": false,
+            "description": "命名空间",
+            "example": "default",
+            "notes": ""
+          },
+          "用户": {
+            "type": "string",
+            "required": false,
+            "description": "用户名",
+            "example": "user1",
+            "notes": ""
+          },
+          "子资源": {
+            "type": "string",
+            "required": false,
+            "description": "子资源",
+            "example": "status",
+            "notes": ""
+          }
         }
       }
     },
@@ -223,14 +541,35 @@
             "name": "查看网络策略详情",
             "cmd": "kubectl describe networkpolicy %{策略名称}% -n %{命名空间}%",
             "params": {
-              "策略名称": { "type": "string", "required": true, "description": "网络策略名称", "example": "allow-nginx", "notes": "" }
+              "策略名称": {
+                "type": "string",
+                "required": true,
+                "description": "网络策略名称",
+                "example": "allow-nginx",
+                "notes": ""
+              }
             },
             "keyword": "kubectl describe networkpolicy"
           },
           {
             "name": "删除网络策略",
             "cmd": "kubectl delete networkpolicy %{策略名称}% -n %{命名空间}%",
-            "params": {},
+            "params": {
+              "策略名称": {
+                "type": "string",
+                "required": false,
+                "description": "网络策略名称",
+                "example": "allow-nginx",
+                "notes": ""
+              },
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "default",
+                "notes": "默认 default"
+              }
+            },
             "keyword": "kubectl delete networkpolicy"
           },
           {
@@ -241,8 +580,20 @@
           }
         ],
         "params": {
-          "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "default", "notes": "默认 default" },
-          "策略名称": { "type": "string", "required": false, "description": "网络策略名称", "example": "allow-nginx", "notes": "" }
+          "命名空间": {
+            "type": "string",
+            "required": true,
+            "description": "命名空间",
+            "example": "default",
+            "notes": "默认 default"
+          },
+          "策略名称": {
+            "type": "string",
+            "required": false,
+            "description": "网络策略名称",
+            "example": "allow-nginx",
+            "notes": ""
+          }
         }
       }
     },
@@ -257,25 +608,61 @@
           {
             "name": "应用基线策略",
             "cmd": "kubectl label namespace %{命名空间}% pod-security.kubernetes.io/enforce=baseline",
-            "params": {},
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "my-namespace",
+                "notes": ""
+              }
+            },
             "keyword": "PSS 基线策略"
           },
           {
             "name": "应用受限策略",
             "cmd": "kubectl label namespace %{命名空间}% pod-security.kubernetes.io/enforce=restricted",
-            "params": {},
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "my-namespace",
+                "notes": ""
+              }
+            },
             "keyword": "PSS 受限策略"
           },
           {
             "name": "查看命名空间 PSS 标签",
             "cmd": "kubectl describe namespace %{命名空间}%",
-            "params": {},
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "my-namespace",
+                "notes": ""
+              }
+            },
             "keyword": "kubectl describe namespace"
           }
         ],
         "params": {
-          "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "my-namespace", "notes": "" },
-          "级别": { "type": "string", "required": false, "description": "策略级别", "example": "baseline", "notes": "baseline/restricted" }
+          "命名空间": {
+            "type": "string",
+            "required": true,
+            "description": "命名空间",
+            "example": "my-namespace",
+            "notes": ""
+          },
+          "级别": {
+            "type": "string",
+            "required": false,
+            "description": "策略级别",
+            "example": "baseline",
+            "notes": "baseline/restricted"
+          }
         }
       }
     },
@@ -291,8 +678,20 @@
             "name": "创建 TLS Secret",
             "cmd": "kubectl create secret tls %{密钥名称}% --cert=%{证书文件}% --key=%{密钥文件}%",
             "params": {
-              "证书文件": { "type": "string", "required": true, "description": "证书文件路径", "example": "./tls.crt", "notes": "" },
-              "密钥文件": { "type": "string", "required": true, "description": "密钥文件路径", "example": "./tls.key", "notes": "" }
+              "证书文件": {
+                "type": "string",
+                "required": true,
+                "description": "证书文件路径",
+                "example": "./tls.crt",
+                "notes": ""
+              },
+              "密钥文件": {
+                "type": "string",
+                "required": true,
+                "description": "密钥文件路径",
+                "example": "./tls.key",
+                "notes": ""
+              }
             },
             "keyword": "kubectl create secret tls"
           },
@@ -300,24 +699,74 @@
             "name": "从文件创建",
             "cmd": "kubectl create secret generic %{密钥名称}% --from-file=%{文件路径}%",
             "params": {
-              "文件路径": { "type": "string", "required": true, "description": "文件路径", "example": "./config.txt", "notes": "" }
+              "文件路径": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径",
+                "example": "./config.txt",
+                "notes": ""
+              }
             },
             "keyword": "kubectl create secret from-file"
           },
           {
             "name": "查看 Secret 列表",
             "cmd": "kubectl get secrets -n %{命名空间}%",
-            "params": {},
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "default",
+                "notes": ""
+              }
+            },
             "keyword": "kubectl get secrets"
           }
         ],
         "params": {
-          "密钥名称": { "type": "string", "required": true, "description": "密钥名称", "example": "my-secret", "notes": "" },
-          "值": { "type": "string", "required": true, "description": "密钥值", "example": "password123", "notes": "" },
-          "命名空间": { "type": "string", "required": false, "description": "命名空间", "example": "default", "notes": "" },
-          "证书文件": { "type": "string", "required": false, "description": "证书文件路径", "example": "./tls.crt", "notes": "" },
-          "密钥文件": { "type": "string", "required": false, "description": "密钥文件路径", "example": "./tls.key", "notes": "" },
-          "文件路径": { "type": "string", "required": false, "description": "文件路径", "example": "./config.txt", "notes": "" }
+          "密钥名称": {
+            "type": "string",
+            "required": true,
+            "description": "密钥名称",
+            "example": "my-secret",
+            "notes": ""
+          },
+          "值": {
+            "type": "string",
+            "required": true,
+            "description": "密钥值",
+            "example": "password123",
+            "notes": ""
+          },
+          "命名空间": {
+            "type": "string",
+            "required": false,
+            "description": "命名空间",
+            "example": "default",
+            "notes": ""
+          },
+          "证书文件": {
+            "type": "string",
+            "required": false,
+            "description": "证书文件路径",
+            "example": "./tls.crt",
+            "notes": ""
+          },
+          "密钥文件": {
+            "type": "string",
+            "required": false,
+            "description": "密钥文件路径",
+            "example": "./tls.key",
+            "notes": ""
+          },
+          "文件路径": {
+            "type": "string",
+            "required": false,
+            "description": "文件路径",
+            "example": "./config.txt",
+            "notes": ""
+          }
         }
       }
     },
@@ -339,7 +788,13 @@
             "name": "查看 PVC 详情",
             "cmd": "kubectl describe pvc %{PVC名称}% -n %{命名空间}%",
             "params": {
-              "PVC名称": { "type": "string", "required": true, "description": "PVC 名称", "example": "my-pvc", "notes": "" }
+              "PVC名称": {
+                "type": "string",
+                "required": true,
+                "description": "PVC 名称",
+                "example": "my-pvc",
+                "notes": ""
+              }
             },
             "keyword": "kubectl describe pvc"
           },
@@ -347,7 +802,13 @@
             "name": "删除 PV",
             "cmd": "kubectl delete pv %{PV名称}%",
             "params": {
-              "PV名称": { "type": "string", "required": true, "description": "PV 名称", "example": "my-pv", "notes": "" }
+              "PV名称": {
+                "type": "string",
+                "required": true,
+                "description": "PV 名称",
+                "example": "my-pv",
+                "notes": ""
+              }
             },
             "keyword": "kubectl delete pv"
           },
@@ -355,16 +816,46 @@
             "name": "扩展 PVC 大小",
             "cmd": "kubectl patch pvc %{PVC名称}% -p '{\"spec\":{\"resources\":{\"requests\":{\"storage\":\"%{新大小}%\"}}}}' -n %{命名空间}%",
             "params": {
-              "新大小": { "type": "string", "required": true, "description": "新大小", "example": "20Gi", "notes": "" }
+              "新大小": {
+                "type": "string",
+                "required": true,
+                "description": "新大小",
+                "example": "20Gi",
+                "notes": ""
+              }
             },
             "keyword": "kubectl patch pvc"
           }
         ],
         "params": {
-          "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "default", "notes": "默认 default" },
-          "PVC名称": { "type": "string", "required": false, "description": "PVC 名称", "example": "my-pvc", "notes": "" },
-          "PV名称": { "type": "string", "required": false, "description": "PV 名称", "example": "my-pv", "notes": "" },
-          "新大小": { "type": "string", "required": false, "description": "新大小", "example": "20Gi", "notes": "" }
+          "命名空间": {
+            "type": "string",
+            "required": true,
+            "description": "命名空间",
+            "example": "default",
+            "notes": "默认 default"
+          },
+          "PVC名称": {
+            "type": "string",
+            "required": false,
+            "description": "PVC 名称",
+            "example": "my-pvc",
+            "notes": ""
+          },
+          "PV名称": {
+            "type": "string",
+            "required": false,
+            "description": "PV 名称",
+            "example": "my-pv",
+            "notes": ""
+          },
+          "新大小": {
+            "type": "string",
+            "required": false,
+            "description": "新大小",
+            "example": "20Gi",
+            "notes": ""
+          }
         }
       }
     },
@@ -380,25 +871,53 @@
             "name": "设置默认存储类",
             "cmd": "kubectl patch storageclass %{存储类名称}% -p '{\"metadata\":{\"annotations\":{\"storageclass.kubernetes.io/is-default-class\":\"true\"}}}'",
             "params": {
-              "存储类名称": { "type": "string", "required": true, "description": "存储类名称", "example": "standard", "notes": "" }
+              "存储类名称": {
+                "type": "string",
+                "required": true,
+                "description": "存储类名称",
+                "example": "standard",
+                "notes": ""
+              }
             },
             "keyword": "kubectl patch storageclass default"
           },
           {
             "name": "查看存储类详情",
             "cmd": "kubectl get storageclass %{存储类名称}% -o yaml",
-            "params": {},
+            "params": {
+              "存储类名称": {
+                "type": "string",
+                "required": false,
+                "description": "存储类名称",
+                "example": "standard",
+                "notes": ""
+              }
+            },
             "keyword": "kubectl get storageclass yaml"
           },
           {
             "name": "删除存储类",
             "cmd": "kubectl delete storageclass %{存储类名称}%",
-            "params": {},
+            "params": {
+              "存储类名称": {
+                "type": "string",
+                "required": false,
+                "description": "存储类名称",
+                "example": "standard",
+                "notes": ""
+              }
+            },
             "keyword": "kubectl delete storageclass"
           }
         ],
         "params": {
-          "存储类名称": { "type": "string", "required": false, "description": "存储类名称", "example": "standard", "notes": "" }
+          "存储类名称": {
+            "type": "string",
+            "required": false,
+            "description": "存储类名称",
+            "example": "standard",
+            "notes": ""
+          }
         }
       }
     },
@@ -426,13 +945,25 @@
             "name": "查看 CSI 驱动详情",
             "cmd": "kubectl describe csidriver %{驱动名称}%",
             "params": {
-              "驱动名称": { "type": "string", "required": true, "description": "CSI 驱动名称", "example": "ebs.csi.aws.com", "notes": "" }
+              "驱动名称": {
+                "type": "string",
+                "required": true,
+                "description": "CSI 驱动名称",
+                "example": "ebs.csi.aws.com",
+                "notes": ""
+              }
             },
             "keyword": "kubectl describe csidriver"
           }
         ],
         "params": {
-          "驱动名称": { "type": "string", "required": false, "description": "CSI 驱动名称", "example": "ebs.csi.aws.com", "notes": "" }
+          "驱动名称": {
+            "type": "string",
+            "required": false,
+            "description": "CSI 驱动名称",
+            "example": "ebs.csi.aws.com",
+            "notes": ""
+          }
         }
       }
     },
@@ -454,21 +985,60 @@
             "name": "设置默认 IngressClass",
             "cmd": "kubectl annotate ingressclass %{类名}% ingressclass.kubernetes.io/is-default-class=\"true\"",
             "params": {
-              "类名": { "type": "string", "required": true, "description": "IngressClass 名称", "example": "nginx", "notes": "" }
+              "类名": {
+                "type": "string",
+                "required": true,
+                "description": "IngressClass 名称",
+                "example": "nginx",
+                "notes": ""
+              }
             },
             "keyword": "kubectl annotate ingressclass"
           },
           {
             "name": "查看 Ingress 详情",
             "cmd": "kubectl describe ingress %{Ingress名称}% -n %{命名空间}%",
-            "params": {},
+            "params": {
+              "Ingress名称": {
+                "type": "string",
+                "required": false,
+                "description": "Ingress 名称",
+                "example": "my-ingress",
+                "notes": ""
+              },
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "default",
+                "notes": "默认 default"
+              }
+            },
             "keyword": "kubectl describe ingress"
           }
         ],
         "params": {
-          "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "default", "notes": "默认 default" },
-          "类名": { "type": "string", "required": false, "description": "IngressClass 名称", "example": "nginx", "notes": "" },
-          "Ingress名称": { "type": "string", "required": false, "description": "Ingress 名称", "example": "my-ingress", "notes": "" }
+          "命名空间": {
+            "type": "string",
+            "required": true,
+            "description": "命名空间",
+            "example": "default",
+            "notes": "默认 default"
+          },
+          "类名": {
+            "type": "string",
+            "required": false,
+            "description": "IngressClass 名称",
+            "example": "nginx",
+            "notes": ""
+          },
+          "Ingress名称": {
+            "type": "string",
+            "required": false,
+            "description": "Ingress 名称",
+            "example": "my-ingress",
+            "notes": ""
+          }
         }
       }
     },
@@ -483,24 +1053,54 @@
           {
             "name": "查看目标规则",
             "cmd": "kubectl get destinationrule -n %{命名空间}%",
-            "params": {},
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "istio-system",
+                "notes": ""
+              }
+            },
             "keyword": "kubectl get destinationrule"
           },
           {
             "name": "查看 Sidecar",
             "cmd": "kubectl get sidecar -n %{命名空间}%",
-            "params": {},
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "istio-system",
+                "notes": ""
+              }
+            },
             "keyword": "kubectl get sidecar"
           },
           {
             "name": "查看 Gateway",
             "cmd": "kubectl get gateway -n %{命名空间}%",
-            "params": {},
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "istio-system",
+                "notes": ""
+              }
+            },
             "keyword": "kubectl get gateway"
           }
         ],
         "params": {
-          "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "istio-system", "notes": "" }
+          "命名空间": {
+            "type": "string",
+            "required": true,
+            "description": "命名空间",
+            "example": "istio-system",
+            "notes": ""
+          }
         }
       }
     },
@@ -515,25 +1115,75 @@
           {
             "name": "查看路由配置",
             "cmd": "istioctl proxy-config route %{Pod名称}% -n %{命名空间}%",
-            "params": {},
+            "params": {
+              "Pod名称": {
+                "type": "string",
+                "required": false,
+                "description": "Pod 名称",
+                "example": "myapp-pod",
+                "notes": ""
+              },
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "default",
+                "notes": ""
+              }
+            },
             "keyword": "istioctl proxy-config route"
           },
           {
             "name": "查看监听器配置",
             "cmd": "istioctl proxy-config listener %{Pod名称}% -n %{命名空间}%",
-            "params": {},
+            "params": {
+              "Pod名称": {
+                "type": "string",
+                "required": false,
+                "description": "Pod 名称",
+                "example": "myapp-pod",
+                "notes": ""
+              },
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "default",
+                "notes": ""
+              }
+            },
             "keyword": "istioctl proxy-config listener"
           },
           {
             "name": "分析配置问题",
             "cmd": "istioctl analyze -n %{命名空间}%",
-            "params": {},
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "default",
+                "notes": ""
+              }
+            },
             "keyword": "istioctl analyze"
           }
         ],
         "params": {
-          "Pod名称": { "type": "string", "required": true, "description": "Pod 名称", "example": "myapp-pod", "notes": "" },
-          "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "default", "notes": "" }
+          "Pod名称": {
+            "type": "string",
+            "required": true,
+            "description": "Pod 名称",
+            "example": "myapp-pod",
+            "notes": ""
+          },
+          "命名空间": {
+            "type": "string",
+            "required": true,
+            "description": "命名空间",
+            "example": "default",
+            "notes": ""
+          }
         }
       }
     },
@@ -554,22 +1204,50 @@
           {
             "name": "查看命名空间 Pod 资源",
             "cmd": "kubectl top pods -n %{命名空间}%",
-            "params": {},
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "default",
+                "notes": ""
+              }
+            },
             "keyword": "kubectl top pods 命名空间"
           },
           {
             "name": "按标签筛选 Pod",
             "cmd": "kubectl top pods -n %{命名空间}% -l %{标签键}=%{标签值}%",
             "params": {
-              "标签键": { "type": "string", "required": true, "description": "标签键", "example": "app", "notes": "" },
-              "标签值": { "type": "string", "required": true, "description": "标签值", "example": "nginx", "notes": "" }
+              "标签键": {
+                "type": "string",
+                "required": true,
+                "description": "标签键",
+                "example": "app",
+                "notes": ""
+              },
+              "标签值": {
+                "type": "string",
+                "required": true,
+                "description": "标签值",
+                "example": "nginx",
+                "notes": ""
+              }
             },
             "keyword": "kubectl top pods 标签"
           },
           {
             "name": "显示容器详情",
             "cmd": "kubectl top pods -n %{命名空间}% --containers",
-            "params": {},
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "default",
+                "notes": ""
+              }
+            },
             "keyword": "kubectl top pods containers"
           },
           {
@@ -580,10 +1258,34 @@
           }
         ],
         "params": {
-          "资源类型": { "type": "string", "required": true, "description": "资源类型", "example": "nodes", "notes": "nodes/pods" },
-          "命名空间": { "type": "string", "required": false, "description": "命名空间", "example": "default", "notes": "" },
-          "标签键": { "type": "string", "required": false, "description": "标签键", "example": "app", "notes": "" },
-          "标签值": { "type": "string", "required": false, "description": "标签值", "example": "nginx", "notes": "" }
+          "资源类型": {
+            "type": "string",
+            "required": true,
+            "description": "资源类型",
+            "example": "nodes",
+            "notes": "nodes/pods"
+          },
+          "命名空间": {
+            "type": "string",
+            "required": false,
+            "description": "命名空间",
+            "example": "default",
+            "notes": ""
+          },
+          "标签键": {
+            "type": "string",
+            "required": false,
+            "description": "标签键",
+            "example": "app",
+            "notes": ""
+          },
+          "标签值": {
+            "type": "string",
+            "required": false,
+            "description": "标签值",
+            "example": "nginx",
+            "notes": ""
+          }
         }
       }
     },
@@ -605,7 +1307,13 @@
             "name": "限制输出条数",
             "cmd": "kubectl get events -n %{命名空间}% --limit=%{数量}%",
             "params": {
-              "数量": { "type": "string", "required": true, "description": "限制数量", "example": "50", "notes": "" }
+              "数量": {
+                "type": "string",
+                "required": true,
+                "description": "限制数量",
+                "example": "50",
+                "notes": ""
+              }
             },
             "keyword": "kubectl get events limit"
           },
@@ -613,15 +1321,39 @@
             "name": "查看特定资源事件",
             "cmd": "kubectl get events --field-selector involvedObject.name=%{资源名称}% -n %{命名空间}%",
             "params": {
-              "资源名称": { "type": "string", "required": true, "description": "资源名称", "example": "myapp-pod", "notes": "" }
+              "资源名称": {
+                "type": "string",
+                "required": true,
+                "description": "资源名称",
+                "example": "myapp-pod",
+                "notes": ""
+              }
             },
             "keyword": "kubectl get events field-selector"
           }
         ],
         "params": {
-          "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "default", "notes": "默认 default" },
-          "数量": { "type": "string", "required": false, "description": "限制数量", "example": "50", "notes": "" },
-          "资源名称": { "type": "string", "required": false, "description": "资源名称", "example": "myapp-pod", "notes": "" }
+          "命名空间": {
+            "type": "string",
+            "required": true,
+            "description": "命名空间",
+            "example": "default",
+            "notes": "默认 default"
+          },
+          "数量": {
+            "type": "string",
+            "required": false,
+            "description": "限制数量",
+            "example": "50",
+            "notes": ""
+          },
+          "资源名称": {
+            "type": "string",
+            "required": false,
+            "description": "资源名称",
+            "example": "myapp-pod",
+            "notes": ""
+          }
         }
       }
     },
@@ -637,7 +1369,13 @@
             "name": "查看 Node 详情",
             "cmd": "kubectl describe node %{节点名称}%",
             "params": {
-              "节点名称": { "type": "string", "required": true, "description": "节点名称", "example": "node-1", "notes": "" }
+              "节点名称": {
+                "type": "string",
+                "required": true,
+                "description": "节点名称",
+                "example": "node-1",
+                "notes": ""
+              }
             },
             "keyword": "kubectl describe node"
           },
@@ -645,24 +1383,81 @@
             "name": "查看 Service 详情",
             "cmd": "kubectl describe svc %{Service名称}% -n %{命名空间}%",
             "params": {
-              "Service名称": { "type": "string", "required": true, "description": "Service 名称", "example": "my-service", "notes": "" }
+              "Service名称": {
+                "type": "string",
+                "required": true,
+                "description": "Service 名称",
+                "example": "my-service",
+                "notes": ""
+              }
             },
             "keyword": "kubectl describe svc"
           },
           {
             "name": "查看 Deployment 详情",
             "cmd": "kubectl describe deployment %{Deployment名称}% -n %{命名空间}%",
-            "params": {},
+            "params": {
+              "Deployment名称": {
+                "type": "string",
+                "required": false,
+                "description": "Deployment 名称",
+                "example": "nginx-deployment",
+                "notes": ""
+              },
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "default",
+                "notes": ""
+              }
+            },
             "keyword": "kubectl describe deployment"
           }
         ],
         "params": {
-          "资源类型": { "type": "string", "required": true, "description": "资源类型", "example": "pod", "notes": "" },
-          "资源名称": { "type": "string", "required": true, "description": "资源名称", "example": "myapp-pod", "notes": "" },
-          "命名空间": { "type": "string", "required": false, "description": "命名空间", "example": "default", "notes": "" },
-          "节点名称": { "type": "string", "required": false, "description": "节点名称", "example": "node-1", "notes": "" },
-          "Service名称": { "type": "string", "required": false, "description": "Service 名称", "example": "my-service", "notes": "" },
-          "Deployment名称": { "type": "string", "required": false, "description": "Deployment 名称", "example": "nginx-deployment", "notes": "" }
+          "资源类型": {
+            "type": "string",
+            "required": true,
+            "description": "资源类型",
+            "example": "pod",
+            "notes": ""
+          },
+          "资源名称": {
+            "type": "string",
+            "required": true,
+            "description": "资源名称",
+            "example": "myapp-pod",
+            "notes": ""
+          },
+          "命名空间": {
+            "type": "string",
+            "required": false,
+            "description": "命名空间",
+            "example": "default",
+            "notes": ""
+          },
+          "节点名称": {
+            "type": "string",
+            "required": false,
+            "description": "节点名称",
+            "example": "node-1",
+            "notes": ""
+          },
+          "Service名称": {
+            "type": "string",
+            "required": false,
+            "description": "Service 名称",
+            "example": "my-service",
+            "notes": ""
+          },
+          "Deployment名称": {
+            "type": "string",
+            "required": false,
+            "description": "Deployment 名称",
+            "example": "nginx-deployment",
+            "notes": ""
+          }
         }
       }
     },
@@ -678,22 +1473,74 @@
             "name": "复制 Pod 调试",
             "cmd": "kubectl debug %{Pod名称}% -it --copy-to=%{调试Pod名称}% -n %{命名空间}%",
             "params": {
-              "调试Pod名称": { "type": "string", "required": true, "description": "调试 Pod 名称", "example": "myapp-debug", "notes": "" }
+              "调试Pod名称": {
+                "type": "string",
+                "required": true,
+                "description": "调试 Pod 名称",
+                "example": "myapp-debug",
+                "notes": ""
+              }
             },
             "keyword": "kubectl debug copy-to"
           },
           {
             "name": "使用共享命名空间调试",
             "cmd": "kubectl debug %{Pod名称}% -it --share-processes --copy-to=%{调试Pod名称}% -n %{命名空间}%",
-            "params": {},
+            "params": {
+              "Pod名称": {
+                "type": "string",
+                "required": false,
+                "description": "Pod 名称",
+                "example": "myapp-pod",
+                "notes": ""
+              },
+              "调试Pod名称": {
+                "type": "string",
+                "required": false,
+                "description": "调试 Pod 名称",
+                "example": "myapp-debug",
+                "notes": ""
+              },
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "default",
+                "notes": ""
+              }
+            },
             "keyword": "kubectl debug share-processes"
           }
         ],
         "params": {
-          "Pod名称": { "type": "string", "required": true, "description": "Pod 名称", "example": "myapp-pod", "notes": "" },
-          "镜像": { "type": "string", "required": true, "description": "调试镜像", "example": "busybox", "notes": "" },
-          "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "default", "notes": "" },
-          "调试Pod名称": { "type": "string", "required": false, "description": "调试 Pod 名称", "example": "myapp-debug", "notes": "" }
+          "Pod名称": {
+            "type": "string",
+            "required": true,
+            "description": "Pod 名称",
+            "example": "myapp-pod",
+            "notes": ""
+          },
+          "镜像": {
+            "type": "string",
+            "required": true,
+            "description": "调试镜像",
+            "example": "busybox",
+            "notes": ""
+          },
+          "命名空间": {
+            "type": "string",
+            "required": true,
+            "description": "命名空间",
+            "example": "default",
+            "notes": ""
+          },
+          "调试Pod名称": {
+            "type": "string",
+            "required": false,
+            "description": "调试 Pod 名称",
+            "example": "myapp-debug",
+            "notes": ""
+          }
         }
       }
     },
@@ -709,15 +1556,39 @@
             "name": "指定容器",
             "cmd": "kubectl attach %{Pod名称}% -c %{容器名称}% -i -t -n %{命名空间}%",
             "params": {
-              "容器名称": { "type": "string", "required": true, "description": "容器名称", "example": "main", "notes": "" }
+              "容器名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称",
+                "example": "main",
+                "notes": ""
+              }
             },
             "keyword": "kubectl attach 指定容器"
           }
         ],
         "params": {
-          "Pod名称": { "type": "string", "required": true, "description": "Pod 名称", "example": "myapp-pod", "notes": "" },
-          "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "default", "notes": "" },
-          "容器名称": { "type": "string", "required": false, "description": "容器名称", "example": "main", "notes": "" }
+          "Pod名称": {
+            "type": "string",
+            "required": true,
+            "description": "Pod 名称",
+            "example": "myapp-pod",
+            "notes": ""
+          },
+          "命名空间": {
+            "type": "string",
+            "required": true,
+            "description": "命名空间",
+            "example": "default",
+            "notes": ""
+          },
+          "容器名称": {
+            "type": "string",
+            "required": false,
+            "description": "容器名称",
+            "example": "main",
+            "notes": ""
+          }
         }
       }
     },
@@ -732,29 +1603,89 @@
           {
             "name": "交互式进入 sh",
             "cmd": "kubectl exec -it %{Pod名称}% -n %{命名空间}% -- /bin/sh",
-            "params": {},
+            "params": {
+              "Pod名称": {
+                "type": "string",
+                "required": false,
+                "description": "Pod 名称",
+                "example": "myapp-pod",
+                "notes": ""
+              },
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "default",
+                "notes": ""
+              }
+            },
             "keyword": "kubectl exec sh"
           },
           {
             "name": "交互式进入 bash",
             "cmd": "kubectl exec -it %{Pod名称}% -n %{命名空间}% -- /bin/bash",
-            "params": {},
+            "params": {
+              "Pod名称": {
+                "type": "string",
+                "required": false,
+                "description": "Pod 名称",
+                "example": "myapp-pod",
+                "notes": ""
+              },
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "default",
+                "notes": ""
+              }
+            },
             "keyword": "kubectl exec bash"
           },
           {
             "name": "指定容器",
             "cmd": "kubectl exec %{Pod名称}% -c %{容器名称}% -n %{命名空间}% -- %{命令}%",
             "params": {
-              "容器名称": { "type": "string", "required": true, "description": "容器名称", "example": "main", "notes": "" }
+              "容器名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称",
+                "example": "main",
+                "notes": ""
+              }
             },
             "keyword": "kubectl exec 指定容器"
           }
         ],
         "params": {
-          "Pod名称": { "type": "string", "required": true, "description": "Pod 名称", "example": "myapp-pod", "notes": "" },
-          "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "default", "notes": "" },
-          "命令": { "type": "string", "required": true, "description": "要执行的命令", "example": "ls -la", "notes": "" },
-          "容器名称": { "type": "string", "required": false, "description": "容器名称", "example": "main", "notes": "" }
+          "Pod名称": {
+            "type": "string",
+            "required": true,
+            "description": "Pod 名称",
+            "example": "myapp-pod",
+            "notes": ""
+          },
+          "命名空间": {
+            "type": "string",
+            "required": true,
+            "description": "命名空间",
+            "example": "default",
+            "notes": ""
+          },
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "要执行的命令",
+            "example": "ls -la",
+            "notes": ""
+          },
+          "容器名称": {
+            "type": "string",
+            "required": false,
+            "description": "容器名称",
+            "example": "main",
+            "notes": ""
+          }
         }
       }
     },
@@ -770,46 +1701,200 @@
             "name": "转发 Service 端口",
             "cmd": "kubectl port-forward svc/%{Service名称}% %{本地端口}%:%{Service端口}% -n %{命名空间}%",
             "params": {
-              "Service名称": { "type": "string", "required": true, "description": "Service 名称", "example": "my-service", "notes": "" },
-              "Service端口": { "type": "string", "required": true, "description": "Service 端口", "example": "80", "notes": "" }
+              "Service名称": {
+                "type": "string",
+                "required": true,
+                "description": "Service 名称",
+                "example": "my-service",
+                "notes": ""
+              },
+              "Service端口": {
+                "type": "string",
+                "required": true,
+                "description": "Service 端口",
+                "example": "80",
+                "notes": ""
+              }
             },
             "keyword": "kubectl port-forward service"
           },
           {
             "name": "转发到所有地址",
             "cmd": "kubectl port-forward %{Pod名称}% %{本地端口}%:%{Pod端口}% --address=0.0.0.0 -n %{命名空间}%",
-            "params": {},
+            "params": {
+              "Pod名称": {
+                "type": "string",
+                "required": false,
+                "description": "Pod 名称",
+                "example": "myapp-pod",
+                "notes": ""
+              },
+              "本地端口": {
+                "type": "string",
+                "required": false,
+                "description": "本地端口",
+                "example": "8080",
+                "notes": ""
+              },
+              "Pod端口": {
+                "type": "string",
+                "required": false,
+                "description": "Pod 端口",
+                "example": "80",
+                "notes": ""
+              },
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "default",
+                "notes": ""
+              }
+            },
             "keyword": "kubectl port-forward address"
           },
           {
             "name": "后台运行端口转发",
             "cmd": "kubectl port-forward %{Pod名称}% %{本地端口}%:%{Pod端口}% -n %{命名空间}% &",
-            "params": {},
+            "params": {
+              "Pod名称": {
+                "type": "string",
+                "required": false,
+                "description": "Pod 名称",
+                "example": "myapp-pod",
+                "notes": ""
+              },
+              "本地端口": {
+                "type": "string",
+                "required": false,
+                "description": "本地端口",
+                "example": "8080",
+                "notes": ""
+              },
+              "Pod端口": {
+                "type": "string",
+                "required": false,
+                "description": "Pod 端口",
+                "example": "80",
+                "notes": ""
+              },
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "default",
+                "notes": ""
+              }
+            },
             "keyword": "kubectl port-forward 后台"
           },
           {
             "name": "转发多个端口",
             "cmd": "kubectl port-forward %{Pod名称}% %{本地端口1}%:%{Pod端口1}% %{本地端口2}%:%{Pod端口2}% -n %{命名空间}%",
             "params": {
-              "本地端口1": { "type": "string", "required": true, "description": "本地端口1", "example": "8080", "notes": "" },
-              "Pod端口1": { "type": "string", "required": true, "description": "Pod 端口1", "example": "8080", "notes": "" },
-              "本地端口2": { "type": "string", "required": true, "description": "本地端口2", "example": "9090", "notes": "" },
-              "Pod端口2": { "type": "string", "required": true, "description": "Pod 端口2", "example": "9090", "notes": "" }
+              "本地端口1": {
+                "type": "string",
+                "required": true,
+                "description": "本地端口1",
+                "example": "8080",
+                "notes": ""
+              },
+              "Pod端口1": {
+                "type": "string",
+                "required": true,
+                "description": "Pod 端口1",
+                "example": "8080",
+                "notes": ""
+              },
+              "本地端口2": {
+                "type": "string",
+                "required": true,
+                "description": "本地端口2",
+                "example": "9090",
+                "notes": ""
+              },
+              "Pod端口2": {
+                "type": "string",
+                "required": true,
+                "description": "Pod 端口2",
+                "example": "9090",
+                "notes": ""
+              }
             },
             "keyword": "kubectl port-forward 多端口"
           }
         ],
         "params": {
-          "Pod名称": { "type": "string", "required": true, "description": "Pod 名称", "example": "myapp-pod", "notes": "" },
-          "本地端口": { "type": "string", "required": true, "description": "本地端口", "example": "8080", "notes": "" },
-          "Pod端口": { "type": "string", "required": true, "description": "Pod 端口", "example": "80", "notes": "" },
-          "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "default", "notes": "" },
-          "Service名称": { "type": "string", "required": false, "description": "Service 名称", "example": "my-service", "notes": "" },
-          "Service端口": { "type": "string", "required": false, "description": "Service 端口", "example": "80", "notes": "" },
-          "本地端口1": { "type": "string", "required": false, "description": "本地端口1", "example": "8080", "notes": "" },
-          "Pod端口1": { "type": "string", "required": false, "description": "Pod 端口1", "example": "8080", "notes": "" },
-          "本地端口2": { "type": "string", "required": false, "description": "本地端口2", "example": "9090", "notes": "" },
-          "Pod端口2": { "type": "string", "required": false, "description": "Pod 端口2", "example": "9090", "notes": "" }
+          "Pod名称": {
+            "type": "string",
+            "required": true,
+            "description": "Pod 名称",
+            "example": "myapp-pod",
+            "notes": ""
+          },
+          "本地端口": {
+            "type": "string",
+            "required": true,
+            "description": "本地端口",
+            "example": "8080",
+            "notes": ""
+          },
+          "Pod端口": {
+            "type": "string",
+            "required": true,
+            "description": "Pod 端口",
+            "example": "80",
+            "notes": ""
+          },
+          "命名空间": {
+            "type": "string",
+            "required": true,
+            "description": "命名空间",
+            "example": "default",
+            "notes": ""
+          },
+          "Service名称": {
+            "type": "string",
+            "required": false,
+            "description": "Service 名称",
+            "example": "my-service",
+            "notes": ""
+          },
+          "Service端口": {
+            "type": "string",
+            "required": false,
+            "description": "Service 端口",
+            "example": "80",
+            "notes": ""
+          },
+          "本地端口1": {
+            "type": "string",
+            "required": false,
+            "description": "本地端口1",
+            "example": "8080",
+            "notes": ""
+          },
+          "Pod端口1": {
+            "type": "string",
+            "required": false,
+            "description": "Pod 端口1",
+            "example": "8080",
+            "notes": ""
+          },
+          "本地端口2": {
+            "type": "string",
+            "required": false,
+            "description": "本地端口2",
+            "example": "9090",
+            "notes": ""
+          },
+          "Pod端口2": {
+            "type": "string",
+            "required": false,
+            "description": "Pod 端口2",
+            "example": "9090",
+            "notes": ""
+          }
         }
       }
     },
@@ -824,33 +1909,75 @@
           {
             "name": "恢复节点可调度",
             "cmd": "kubectl uncordon %{节点名称}%",
-            "params": {},
+            "params": {
+              "节点名称": {
+                "type": "string",
+                "required": false,
+                "description": "节点名称",
+                "example": "node-1",
+                "notes": ""
+              }
+            },
             "keyword": "kubectl uncordon"
           },
           {
             "name": "驱逐节点 Pod",
             "cmd": "kubectl drain %{节点名称}% --ignore-daemonsets --delete-emptydir-data",
-            "params": {},
+            "params": {
+              "节点名称": {
+                "type": "string",
+                "required": false,
+                "description": "节点名称",
+                "example": "node-1",
+                "notes": ""
+              }
+            },
             "keyword": "kubectl drain"
           },
           {
             "name": "带超时的驱逐",
             "cmd": "kubectl drain %{节点名称}% --ignore-daemonsets --delete-emptydir-data --grace-period=%{秒数}%",
             "params": {
-              "秒数": { "type": "string", "required": true, "description": "优雅终止秒数", "example": "300", "notes": "" }
+              "秒数": {
+                "type": "string",
+                "required": true,
+                "description": "优雅终止秒数",
+                "example": "300",
+                "notes": ""
+              }
             },
             "keyword": "kubectl drain grace-period"
           },
           {
             "name": "强制驱逐",
             "cmd": "kubectl drain %{节点名称}% --force",
-            "params": {},
+            "params": {
+              "节点名称": {
+                "type": "string",
+                "required": false,
+                "description": "节点名称",
+                "example": "node-1",
+                "notes": ""
+              }
+            },
             "keyword": "kubectl drain force"
           }
         ],
         "params": {
-          "节点名称": { "type": "string", "required": true, "description": "节点名称", "example": "node-1", "notes": "" },
-          "秒数": { "type": "string", "required": false, "description": "优雅终止秒数", "example": "300", "notes": "" }
+          "节点名称": {
+            "type": "string",
+            "required": true,
+            "description": "节点名称",
+            "example": "node-1",
+            "notes": ""
+          },
+          "秒数": {
+            "type": "string",
+            "required": false,
+            "description": "优雅终止秒数",
+            "example": "300",
+            "notes": ""
+          }
         }
       }
     },
@@ -866,7 +1993,13 @@
             "name": "查看快照详情",
             "cmd": "kubectl describe volumesnapshot %{快照名称}% -n %{命名空间}%",
             "params": {
-              "快照名称": { "type": "string", "required": true, "description": "快照名称", "example": "my-snapshot", "notes": "" }
+              "快照名称": {
+                "type": "string",
+                "required": true,
+                "description": "快照名称",
+                "example": "my-snapshot",
+                "notes": ""
+              }
             },
             "keyword": "kubectl describe volumesnapshot"
           },
@@ -878,8 +2011,20 @@
           }
         ],
         "params": {
-          "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "default", "notes": "默认 default" },
-          "快照名称": { "type": "string", "required": false, "description": "快照名称", "example": "my-snapshot", "notes": "" }
+          "命名空间": {
+            "type": "string",
+            "required": true,
+            "description": "命名空间",
+            "example": "default",
+            "notes": "默认 default"
+          },
+          "快照名称": {
+            "type": "string",
+            "required": false,
+            "description": "快照名称",
+            "example": "my-snapshot",
+            "notes": ""
+          }
         }
       }
     }
