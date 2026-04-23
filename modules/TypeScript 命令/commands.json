@@ -7,7 +7,7 @@
       "dirPath": "/TypeScript 命令/",
       "name": "tsc --init 生成 tsconfig",
       "keyword": "tsc init tsconfig 生成",
-      "description": "在当前目录生成默认的 tsconfig.json 配置文件",
+      "description": "在当前目录生成默认的 tsconfig.json 配置文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "tsc --init",
         "extensions": [
@@ -25,7 +25,7 @@
       "dirPath": "/TypeScript 命令/",
       "name": "tsc --version 查看版本",
       "keyword": "tsc version 版本",
-      "description": "输出当前安装的 TypeScript 编译器版本号",
+      "description": "输出当前安装的 TypeScript 编译器版本号。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "tsc --version",
         "extensions": [
@@ -63,7 +63,13 @@
             "name": "编译为 ES2015",
             "cmd": "tsc --target ES2015 --module commonjs %{文件}%",
             "params": {
-              "文件": { "type": "string", "required": true, "description": "要编译的 TypeScript 文件", "example": "src/index.ts", "notes": "" }
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "要编译的 TypeScript 文件",
+                "example": "src/index.ts",
+                "notes": "可选"
+              }
             },
             "keyword": "tsc ES2015 编译"
           },
@@ -71,7 +77,13 @@
             "name": "生成声明文件",
             "cmd": "tsc --declaration %{文件}%",
             "params": {
-              "文件": { "type": "string", "required": true, "description": "要编译的 TypeScript 文件", "example": "src/index.ts", "notes": "" }
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "要编译的 TypeScript 文件",
+                "example": "src/index.ts",
+                "notes": "可选"
+              }
             },
             "keyword": "tsc declaration d.ts"
           },
@@ -79,13 +91,25 @@
             "name": "严格模式编译",
             "cmd": "tsc --strict %{文件}%",
             "params": {
-              "文件": { "type": "string", "required": true, "description": "要编译的 TypeScript 文件", "example": "src/index.ts", "notes": "" }
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "要编译的 TypeScript 文件",
+                "example": "src/index.ts",
+                "notes": "可选"
+              }
             },
             "keyword": "tsc strict 严格"
           }
         ],
         "params": {
-          "文件名": { "type": "string", "required": true, "description": "TypeScript 文件路径", "example": "src/index.ts", "notes": "" }
+          "文件名": {
+            "type": "string",
+            "required": true,
+            "description": "TypeScript 文件路径",
+            "example": "src/index.ts",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -123,7 +147,7 @@
       "dirPath": "/TypeScript 命令/",
       "name": "tsc 严格模式选项",
       "keyword": "strict 严格模式",
-      "description": "TypeScript 严格模式相关编译选项",
+      "description": "TypeScript 严格模式相关编译选项。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "tsc --strict",
         "extensions": [
@@ -165,7 +189,7 @@
       "dirPath": "/TypeScript 命令/",
       "name": "泛型 generic 类型",
       "keyword": "generic 泛型",
-      "description": "TypeScript 泛型命令和示例",
+      "description": "TypeScript 泛型命令和示例。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "function identity<T>(arg: T): T { return arg; }",
         "extensions": [
@@ -201,7 +225,7 @@
       "dirPath": "/TypeScript 命令/",
       "name": "实用类型 Utility Types",
       "keyword": "Partial Required Pick Omit Record",
-      "description": "TypeScript 内置实用类型命令",
+      "description": "TypeScript 内置实用类型命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "type UserUpdate = Partial<User>;",
         "extensions": [
@@ -249,7 +273,7 @@
       "dirPath": "/TypeScript 命令/",
       "name": "类型守卫 Type Guards",
       "keyword": "type guard 类型守卫",
-      "description": "TypeScript 类型守卫的编写和使用",
+      "description": "TypeScript 类型守卫的编写和使用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "function isString(value: unknown): value is string { return typeof value === 'string'; }",
         "extensions": [
@@ -285,7 +309,7 @@
       "dirPath": "/TypeScript 命令/",
       "name": "条件类型 Conditional Types",
       "keyword": "conditional 条件类型 infer",
-      "description": "TypeScript 条件类型和 infer 推断",
+      "description": "TypeScript 条件类型和 infer 推断。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "type ExtractPromise<T> = T extends Promise<infer U> ? U : T;",
         "extensions": [
@@ -321,7 +345,7 @@
       "dirPath": "/TypeScript 命令/",
       "name": "映射类型 Mapped Types",
       "keyword": "mapped 映射类型 keyof",
-      "description": "TypeScript 映射类型的各种用法",
+      "description": "TypeScript 映射类型的各种用法。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "type Readonly<T> = { readonly [P in keyof T]: T[P]; };",
         "extensions": [
@@ -357,7 +381,7 @@
       "dirPath": "/TypeScript 命令/",
       "name": "ts-node 执行 TypeScript",
       "keyword": "ts-node 执行",
-      "description": "使用 ts-node 直接执行 TypeScript 文件",
+      "description": "使用 ts-node 直接执行 TypeScript 文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npx ts-node %{文件}%",
         "extensions": [
@@ -371,7 +395,13 @@
             "name": "跳过类型检查快速执行",
             "cmd": "npx ts-node --transpile-only %{文件}%",
             "params": {
-              "文件": { "type": "string", "required": true, "description": "要执行的 TypeScript 文件", "example": "src/index.ts", "notes": "" }
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "要执行的 TypeScript 文件",
+                "example": "src/index.ts",
+                "notes": "可选"
+              }
             },
             "keyword": "ts-node transpile"
           },
@@ -379,7 +409,13 @@
             "name": "使用 SWC 转译器",
             "cmd": "npx ts-node --transpiler swc %{文件}%",
             "params": {
-              "文件": { "type": "string", "required": true, "description": "要执行的 TypeScript 文件", "example": "src/index.ts", "notes": "" }
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "要执行的 TypeScript 文件",
+                "example": "src/index.ts",
+                "notes": "可选"
+              }
             },
             "keyword": "ts-node swc"
           },
@@ -387,13 +423,25 @@
             "name": "指定 tsconfig",
             "cmd": "npx ts-node --project tsconfig.json %{文件}%",
             "params": {
-              "文件": { "type": "string", "required": true, "description": "要执行的 TypeScript 文件", "example": "src/index.ts", "notes": "" }
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "要执行的 TypeScript 文件",
+                "example": "src/index.ts",
+                "notes": "可选"
+              }
             },
             "keyword": "ts-node tsconfig"
           }
         ],
         "params": {
-          "文件": { "type": "string", "required": true, "description": "TypeScript 文件路径", "example": "src/index.ts", "notes": "" }
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "TypeScript 文件路径",
+            "example": "src/index.ts",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -409,7 +457,13 @@
             "name": "监视模式",
             "cmd": "npx tsx watch %{文件}%",
             "params": {
-              "文件": { "type": "string", "required": true, "description": "要执行的 TypeScript 文件", "example": "src/index.ts", "notes": "" }
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "要执行的 TypeScript 文件",
+                "example": "src/index.ts",
+                "notes": "可选"
+              }
             },
             "keyword": "tsx watch 监视"
           },
@@ -429,13 +483,25 @@
             "name": "类型检查模式",
             "cmd": "npx tsx --tsconfig tsconfig.json %{文件}%",
             "params": {
-              "文件": { "type": "string", "required": true, "description": "要执行的 TypeScript 文件", "example": "src/index.ts", "notes": "" }
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "要执行的 TypeScript 文件",
+                "example": "src/index.ts",
+                "notes": "可选"
+              }
             },
             "keyword": "tsx tsconfig 类型"
           }
         ],
         "params": {
-          "文件": { "type": "string", "required": true, "description": "TypeScript 文件路径", "example": "src/index.ts", "notes": "" }
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "TypeScript 文件路径",
+            "example": "src/index.ts",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -443,7 +509,7 @@
       "dirPath": "/TypeScript 命令/",
       "name": "SWC 高速编译 swc-node",
       "keyword": "swc swc-node 编译 快速",
-      "description": "使用 SWC 进行高速 TypeScript 编译",
+      "description": "使用 SWC 进行高速 TypeScript 编译。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npx swc src -d dist",
         "extensions": [
@@ -479,7 +545,7 @@
       "dirPath": "/TypeScript 命令/",
       "name": "Tsc 编译选项详解",
       "keyword": "tsc compilerOptions 编译选项",
-      "description": "TypeScript 编译器常用命令行选项详解",
+      "description": "TypeScript 编译器常用命令行选项详解。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "tsc --help --all",
         "extensions": [
@@ -515,7 +581,7 @@
       "dirPath": "/TypeScript 命令/",
       "name": "type-fest 实用类型库",
       "keyword": "type-fest 实用类型",
-      "description": "type-fest 库的常用类型命令",
+      "description": "type-fest 库的常用类型命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install type-fest",
         "extensions": [
@@ -605,7 +671,7 @@
       "dirPath": "/TypeScript 命令/",
       "name": "TypeScript + React tsx",
       "keyword": "TypeScript React tsx",
-      "description": "TypeScript 与 React 集成的常用命令",
+      "description": "TypeScript 与 React 集成的常用命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npx tsx src/App.tsx",
         "extensions": [
@@ -665,7 +731,7 @@
       "dirPath": "/TypeScript 命令/",
       "name": ".d.ts 声明文件",
       "keyword": "d.ts declaration 声明文件",
-      "description": "编写和使用 TypeScript .d.ts 声明文件",
+      "description": "编写和使用 TypeScript .d.ts 声明文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "cat > src/types/modules.d.ts << 'EOF'\ndeclare module 'my-module' {\n  export function doSomething(input: string): void;\n  export const VERSION: string;\n}\nEOF",
         "extensions": [

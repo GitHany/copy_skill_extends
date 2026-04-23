@@ -1,0 +1,351 @@
+{
+  "module": "Git config",
+  "version": "2.0",
+  "description": "Git config - Customize Git's behavior and appearance. Settings are stored in three levels: local (repo), global (user), and system (machine). Global settings apply to all your projects.",
+  "commands": [
+    {
+      "dirPath": "/Git config/",
+      "name": "git config set global",
+      "keyword": "git config global",
+      "description": "Set a global config for your user - applies to all repositories on this machine",
+      "data": {
+        "cmd": "git config --global %{key}% \"%{value}%\"",
+        "extensions": [
+          {
+            "name": "git config set local",
+            "description": "Set a config for the current repository only - useful for repo-specific settings",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": true,
+                "description": "Config key",
+                "example": "user.email",
+                "notes": "Key specific to this repository"
+              },
+              "value": {
+                "type": "string",
+                "required": true,
+                "description": "Config value",
+                "example": "work@company.com",
+                "notes": "Value only for this repo"
+              }
+            },
+            "cmd": ""
+          },
+          {
+            "name": "git config set system",
+            "description": "Set a system-wide config - applies to all users on this machine (requires admin)",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": true,
+                "description": "Config key",
+                "example": "core.autocrlf",
+                "notes": "System-wide setting"
+              },
+              "value": {
+                "type": "string",
+                "required": true,
+                "description": "Config value",
+                "example": "true",
+                "notes": "System-wide value"
+              }
+            },
+            "cmd": ""
+          }
+        ],
+        "params": {
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "Config key",
+            "example": "user.name",
+            "notes": "Common: user.name, user.email, alias.*, core.editor"
+          },
+          "value": {
+            "type": "string",
+            "required": true,
+            "description": "Config value",
+            "example": "John Doe",
+            "notes": "The value to set"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Git config/",
+      "name": "git config get value",
+      "keyword": "git config get",
+      "description": "Read a config value - useful to check what a setting is currently set to",
+      "data": {
+        "cmd": "git config --get %{key}%",
+        "extensions": [
+          {
+            "name": "git config get all levels",
+            "description": "Show config from all levels (local, global, system) with sources marked",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": true,
+                "description": "Config key to read",
+                "example": "user.name",
+                "notes": "Shows where each value comes from"
+              }
+            },
+            "cmd": ""
+          },
+          {
+            "name": "git config list all",
+            "description": "List all config settings - shows every configured option",
+            "params": {},
+            "cmd": ""
+          }
+        ],
+        "params": {
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "Config key to read",
+            "example": "user.name",
+            "notes": "Returns the configured value or exits with error if not set"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Git config/",
+      "name": "git config list",
+      "keyword": "git config list",
+      "description": "List all config settings - shows every configured option with its origin",
+      "data": {
+        "cmd": "git config --list",
+        "extensions": [
+          {
+            "name": "git config list local only",
+            "description": "Show only local (repo) config - settings specific to current repository",
+            "params": {},
+            "cmd": ""
+          },
+          {
+            "name": "git config list global only",
+            "description": "Show only global config - your personal settings across all repos",
+            "params": {},
+            "cmd": ""
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Git config/",
+      "name": "git config set editor",
+      "keyword": "git config editor",
+      "description": "Set your preferred text editor for Git - used when Git needs to open a text file",
+      "data": {
+        "cmd": "git config --global core.editor \"%{editor}%\"",
+        "extensions": [
+          {
+            "name": "git config set vscode as editor",
+            "description": "Configure VS Code as Git's editor - popular choice for Windows and macOS",
+            "params": {
+              "editor": {
+                "type": "string",
+                "required": true,
+                "description": "Editor command",
+                "example": "code --wait",
+                "notes": "VS Code with wait flag for synchronous operation"
+              }
+            },
+            "cmd": ""
+          },
+          {
+            "name": "git config set vim as editor",
+            "description": "Configure Vim as Git's editor - powerful but steep learning curve",
+            "params": {
+              "editor": {
+                "type": "string",
+                "required": true,
+                "description": "Editor command",
+                "example": "vim",
+                "notes": "Classic terminal editor"
+              }
+            },
+            "cmd": ""
+          }
+        ],
+        "params": {
+          "editor": {
+            "type": "string",
+            "required": true,
+            "description": "Editor command",
+            "example": "code --wait",
+            "notes": "Examples: code --wait, vim, nano, emacs"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Git config/",
+      "name": "git config alias",
+      "keyword": "git config alias shortcut",
+      "description": "Create a shortcut command - makes long commands shorter and more memorable",
+      "data": {
+        "cmd": "git config --global alias.%{alias}% \"%{command}%\"",
+        "extensions": [
+          {
+            "name": "git config alias remove",
+            "description": "Remove a previously created alias - delete a shortcut",
+            "params": {
+              "alias": {
+                "type": "string",
+                "required": true,
+                "description": "Alias to remove",
+                "example": "co",
+                "notes": "Removes the alias definition"
+              }
+            },
+            "cmd": ""
+          },
+          {
+            "name": "git config alias examples",
+            "description": "Set common useful aliases - popular shortcuts many developers use",
+            "params": {
+              "alias_name": {
+                "type": "string",
+                "required": true,
+                "description": "Alias name",
+                "example": "lg",
+                "notes": "Shortcut to create"
+              },
+              "command": {
+                "type": "string",
+                "required": true,
+                "description": "The git command to alias",
+                "example": "log --oneline --graph --decorate --all",
+                "notes": "Full command without git prefix"
+              }
+            },
+            "cmd": ""
+          }
+        ],
+        "params": {
+          "alias": {
+            "type": "string",
+            "required": true,
+            "description": "Shortcut name",
+            "example": "co",
+            "notes": "Without git prefix. Example: co for checkout."
+          },
+          "command": {
+            "type": "string",
+            "required": true,
+            "description": "Full command to alias",
+            "example": "checkout",
+            "notes": "The actual git command this alias runs"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Git config/",
+      "name": "git config remove config",
+      "keyword": "git config remove unset",
+      "description": "Remove a config setting - deletes the key from the config file",
+      "data": {
+        "cmd": "git config --global --unset %{key}%",
+        "extensions": [
+          {
+            "name": "git config unset local",
+            "description": "Remove a local (repo) config setting - only affects current repository",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": true,
+                "description": "Config key to remove",
+                "example": "user.email",
+                "notes": "Removes from repo config only"
+              }
+            },
+            "cmd": ""
+          }
+        ],
+        "params": {
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "Config key to remove",
+            "example": "alias.co",
+            "notes": "Removes the key entirely. Use --local for repo-level."
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Git config/",
+      "name": "git config default branch",
+      "keyword": "git config init default branch",
+      "description": "Set the default branch name for new repositories - applies to git init",
+      "data": {
+        "cmd": "git config --global init.defaultBranchName %{branch_name}%",
+        "extensions": [],
+        "params": {
+          "branch_name": {
+            "type": "string",
+            "required": true,
+            "description": "Default branch name",
+            "example": "main",
+            "notes": "Recommended: main (instead of legacy master)"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Git config/",
+      "name": "git config autofile",
+      "keyword": "git config autocrlf line endings",
+      "description": "Configure automatic line ending conversion - important for cross-platform projects",
+      "data": {
+        "cmd": "git config --global core.autocrlf %{setting}%",
+        "extensions": [
+          {
+            "name": "git config autocrlf for windows",
+            "description": "Configure for Windows - converts LF to CRLF on checkout, CRLF to LF on commit",
+            "params": {
+              "setting": {
+                "type": "string",
+                "required": true,
+                "description": "autocrlf setting",
+                "example": "true",
+                "notes": "Use true on Windows"
+              }
+            },
+            "cmd": ""
+          },
+          {
+            "name": "git config autocrlf for mac/linux",
+            "description": "Configure for macOS/Linux - converts CRLF to LF on commit only",
+            "params": {
+              "setting": {
+                "type": "string",
+                "required": true,
+                "description": "autocrlf setting",
+                "example": "input",
+                "notes": "Use input on Mac/Linux"
+              }
+            },
+            "cmd": ""
+          }
+        ],
+        "params": {
+          "setting": {
+            "type": "string",
+            "required": true,
+            "description": "autocrlf setting",
+            "example": "true",
+            "notes": "true = Windows, input = Mac/Linux, false = no conversion"
+          }
+        }
+      }
+    }
+  ]
+}

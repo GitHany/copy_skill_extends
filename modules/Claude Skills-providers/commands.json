@@ -2,7 +2,7 @@
   "dirPath": "/Claude Skills/providers/",
   "name": "providers 供应商",
   "keyword": "/providers",
-  "description": "AI 供应商管理",
+  "description": "AI 供应商管理，涵盖Claude Skills-providers的常用操作和最佳实践",
   "data": {
     "cmd": "/providers status",
     "extensions": [
@@ -16,11 +16,20 @@
         "name": "使用供应商",
         "cmd": "/providers use %{供应商名}%",
         "params": {
-          "供应商名": { "type": "string", "required": true, "description": "供应商名称", "example": "claude", "notes": "" }
+          "供应商名": {
+            "type": "string",
+            "required": true,
+            "description": "供应商名称",
+            "example": "claude",
+            "notes": ""
+          }
         },
         "keyword": "providers use"
       }
     ],
     "params": {}
-  }
+  },
+  "module": "Claude Skills-providers",
+  "version": "2.0",
+  "commands": []
 }

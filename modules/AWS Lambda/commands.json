@@ -1,0 +1,130 @@
+{
+  "module": "AWS Lambda",
+  "version": "2.0",
+  "description": "AWS Lambda 函数管理，涵盖AWS Lambda的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/AWS Lambda/",
+      "name": "aws lambda list-functions 列出函数",
+      "keyword": "aws lambda 函数",
+      "description": "列出 Lambda 函数。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws lambda list-functions",
+        "extensions": [
+          {
+            "name": "list with runtime",
+            "cmd": "aws lambda list-functions --runtime %{runtime}%",
+            "params": {
+              "runtime": {
+                "type": "string",
+                "required": true,
+                "description": "运行时环境",
+                "example": "nodejs18.x",
+                "notes": "必填"
+              }
+            },
+            "keyword": "list runtime"
+          },
+          {
+            "name": "list with marker",
+            "cmd": "aws lambda list-functions --marker %{marker}%",
+            "params": {
+              "marker": {
+                "type": "string",
+                "required": true,
+                "description": "分页标记",
+                "example": " PAGE_TOKEN",
+                "notes": "用于分页"
+              }
+            },
+            "keyword": "list page"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/AWS Lambda/",
+      "name": "aws lambda invoke 调用函数",
+      "keyword": "aws lambda 调用",
+      "description": "调用 Lambda 函数。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws lambda invoke --function-name %{函数名}% %{输出}%",
+        "extensions": [
+          {
+            "name": "同步调用",
+            "cmd": "aws lambda invoke --function-name %{函数名}% --invocation-type RequestResponse %{输出}%",
+            "params": {
+              "函数名": {
+                "type": "string",
+                "required": true,
+                "description": "函数名",
+                "example": "my-function",
+                "notes": "必填"
+              },
+              "输出": {
+                "type": "string",
+                "required": true,
+                "description": "输出文件",
+                "example": "result.json",
+                "notes": "必填"
+              }
+            },
+            "keyword": "sync invoke"
+          },
+          {
+            "name": "异步调用",
+            "cmd": "aws lambda invoke --function-name %{函数名}% --invocation-type Event %{输出}%",
+            "params": {
+              "函数名": {
+                "type": "string",
+                "required": true,
+                "description": "函数名",
+                "example": "my-function",
+                "notes": "必填"
+              },
+              "输出": {
+                "type": "string",
+                "required": true,
+                "description": "输出文件",
+                "example": "result.json",
+                "notes": "必填"
+              }
+            },
+            "keyword": "async invoke"
+          },
+          {
+            "name": "Dry Run",
+            "cmd": "aws lambda invoke --function-name %{函数名}% --dry-run",
+            "params": {
+              "函数名": {
+                "type": "string",
+                "required": true,
+                "description": "函数名",
+                "example": "my-function",
+                "notes": "必填"
+              }
+            },
+            "keyword": "dry run"
+          }
+        ],
+        "params": {
+          "函数名": {
+            "type": "string",
+            "required": true,
+            "description": "函数名",
+            "example": "my-function",
+            "notes": "必填"
+          },
+          "输出": {
+            "type": "string",
+            "required": true,
+            "description": "输出文件",
+            "example": "result.json",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

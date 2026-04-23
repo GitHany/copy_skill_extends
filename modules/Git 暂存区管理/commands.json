@@ -1,0 +1,59 @@
+{
+  "module": "Git 暂存区管理",
+  "version": "2.0",
+  "description": "Git 暂存区管理命令集合，涵盖Git 暂存区管理的常用操作和最佳实践",
+  "commands": [
+    {
+      "name": "添加所有修改",
+      "cmd": "git add -u",
+      "params": {},
+      "keyword": "git add update",
+      "dirPath": "/Git 暂存区管理/",
+      "description": "添加所有修改的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "name": "添加所有文件",
+      "cmd": "git add .",
+      "params": {},
+      "keyword": "git add dot",
+      "dirPath": "/Git 暂存区管理/",
+      "description": "添加所有文件的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "name": "交互式添加",
+      "cmd": "git add -i",
+      "params": {},
+      "keyword": "git add interactive",
+      "dirPath": "/Git 暂存区管理/",
+      "description": "交互式添加的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "name": "显示分支",
+      "cmd": "git status -sb",
+      "params": {},
+      "keyword": "git status branch",
+      "dirPath": "/Git 暂存区管理/",
+      "description": "显示分支的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

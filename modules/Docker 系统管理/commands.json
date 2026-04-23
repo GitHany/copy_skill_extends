@@ -1,0 +1,28 @@
+{
+  "module": "Docker 系统管理",
+  "version": "2.0",
+  "description": "Docker 系统管理命令集合，涵盖Docker 系统管理的常用操作和最佳实践",
+  "commands": [
+    {
+      "cmd": "docker system df",
+      "extensions": [
+        {
+          "name": "详细视图",
+          "cmd": "docker system df -v",
+          "params": {},
+          "keyword": "docker system df verbose"
+        }
+      ],
+      "params": {},
+      "dirPath": "/Docker 系统管理/",
+      "name": "Docker 系统管理 命令",
+      "keyword": "Docker 系统管理 命令",
+      "description": "Docker 系统管理 命令的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

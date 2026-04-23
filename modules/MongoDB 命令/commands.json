@@ -1,13 +1,13 @@
 {
   "module": "MongoDB 命令",
   "version": "1.0",
-  "description": "MongoDB 数据库完整命令模块",
+  "description": "MongoDB 数据库完整命令模块，涵盖MongoDB 命令的常用操作和最佳实践",
   "commands": [
     {
       "dirPath": "/MongoDB 命令/",
       "name": "mongod 启动服务",
       "keyword": "mongod 启动",
-      "description": "启动 MongoDB 服务进程",
+      "description": "启动 MongoDB 服务进程。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "mongod --dbpath %{数据目录}% --port %{端口}%",
         "extensions": [
@@ -49,8 +49,20 @@
           }
         ],
         "params": {
-          "数据目录": { "type": "string", "required": true, "description": "数据存储目录", "example": "/data/db", "notes": "需要提前创建并赋予权限" },
-          "端口": { "type": "string", "required": false, "description": "服务端口", "example": "27017", "notes": "默认 27017" }
+          "数据目录": {
+            "type": "string",
+            "required": true,
+            "description": "数据存储目录",
+            "example": "/data/db",
+            "notes": "需要提前创建并赋予权限"
+          },
+          "端口": {
+            "type": "string",
+            "required": false,
+            "description": "服务端口",
+            "example": "27017",
+            "notes": "默认 27017"
+          }
         }
       }
     },
@@ -58,7 +70,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "mongosh 连接数据库",
       "keyword": "mongosh 连接",
-      "description": "连接 MongoDB 数据库 shell",
+      "description": "连接 MongoDB 数据库 shell。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "mongosh \"mongodb://%{主机}%:%{端口}%/%{数据库}%\"",
         "extensions": [
@@ -94,9 +106,27 @@
           }
         ],
         "params": {
-          "主机": { "type": "string", "required": false, "description": "主机地址", "example": "localhost", "notes": "默认 localhost" },
-          "端口": { "type": "string", "required": false, "description": "端口", "example": "27017", "notes": "默认 27017" },
-          "数据库": { "type": "string", "required": false, "description": "数据库名", "example": "mydb", "notes": "可选" }
+          "主机": {
+            "type": "string",
+            "required": false,
+            "description": "主机地址",
+            "example": "localhost",
+            "notes": "默认 localhost"
+          },
+          "端口": {
+            "type": "string",
+            "required": false,
+            "description": "端口",
+            "example": "27017",
+            "notes": "默认 27017"
+          },
+          "数据库": {
+            "type": "string",
+            "required": false,
+            "description": "数据库名",
+            "example": "mydb",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -104,7 +134,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "use 切换数据库",
       "keyword": "use 数据库",
-      "description": "切换到指定数据库",
+      "description": "切换到指定数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "use %{数据库名}%",
         "extensions": [
@@ -140,7 +170,13 @@
           }
         ],
         "params": {
-          "数据库名": { "type": "string", "required": true, "description": "数据库名称", "example": "mydb", "notes": "不存在则创建" }
+          "数据库名": {
+            "type": "string",
+            "required": true,
+            "description": "数据库名称",
+            "example": "mydb",
+            "notes": "不存在则创建"
+          }
         }
       }
     },
@@ -148,7 +184,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "createCollection 集合操作",
       "keyword": "createCollection 集合",
-      "description": "创建和管理 MongoDB 集合",
+      "description": "创建和管理 MongoDB 集合。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "db.createCollection('%{集合名}%')",
         "extensions": [
@@ -184,7 +220,13 @@
           }
         ],
         "params": {
-          "集合名": { "type": "string", "required": true, "description": "集合名称", "example": "users", "notes": "" }
+          "集合名": {
+            "type": "string",
+            "required": true,
+            "description": "集合名称",
+            "example": "users",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -192,7 +234,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "insertOne insertMany 插入",
       "keyword": "insert 插入数据",
-      "description": "向集合插入文档",
+      "description": "向集合插入文档。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "db.%{集合}%.insertOne(%{文档}%)",
         "extensions": [
@@ -222,8 +264,20 @@
           }
         ],
         "params": {
-          "集合": { "type": "string", "required": true, "description": "集合名", "example": "users", "notes": "" },
-          "文档": { "type": "string", "required": true, "description": "要插入的文档", "example": "{name: '张三', age: 25}", "notes": "" }
+          "集合": {
+            "type": "string",
+            "required": true,
+            "description": "集合名",
+            "example": "users",
+            "notes": "必填"
+          },
+          "文档": {
+            "type": "string",
+            "required": true,
+            "description": "要插入的文档",
+            "example": "{name: '张三', age: 25}",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -231,7 +285,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "find 查询",
       "keyword": "find 查询",
-      "description": "查询集合中的文档",
+      "description": "查询集合中的文档。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "db.%{集合}%.find(%{条件}%, %{投影}%)",
         "extensions": [
@@ -297,9 +351,27 @@
           }
         ],
         "params": {
-          "集合": { "type": "string", "required": true, "description": "集合名", "example": "users", "notes": "" },
-          "条件": { "type": "string", "required": false, "description": "查询条件", "example": "{age: {$gte: 18}}", "notes": "可选，空对象表示全部" },
-          "投影": { "type": "string", "required": false, "description": "字段投影", "example": "{name: 1}", "notes": "可选，控制返回字段" }
+          "集合": {
+            "type": "string",
+            "required": true,
+            "description": "集合名",
+            "example": "users",
+            "notes": "必填"
+          },
+          "条件": {
+            "type": "string",
+            "required": false,
+            "description": "查询条件",
+            "example": "{age: {$gte: 18}}",
+            "notes": "可选，空对象表示全部"
+          },
+          "投影": {
+            "type": "string",
+            "required": false,
+            "description": "字段投影",
+            "example": "{name: 1}",
+            "notes": "可选，控制返回字段"
+          }
         }
       }
     },
@@ -307,7 +379,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "updateOne updateMany 更新",
       "keyword": "update 更新",
-      "description": "更新集合中的文档",
+      "description": "更新集合中的文档。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "db.%{集合}%.updateOne(%{条件}%, {$set: %{更新}%})",
         "extensions": [
@@ -349,9 +421,27 @@
           }
         ],
         "params": {
-          "集合": { "type": "string", "required": true, "description": "集合名", "example": "users", "notes": "" },
-          "条件": { "type": "string", "required": true, "description": "查询条件", "example": "{name: '张三'}", "notes": "" },
-          "更新": { "type": "string", "required": true, "description": "更新内容", "example": "{age: 30}", "notes": "" }
+          "集合": {
+            "type": "string",
+            "required": true,
+            "description": "集合名",
+            "example": "users",
+            "notes": "必填"
+          },
+          "条件": {
+            "type": "string",
+            "required": true,
+            "description": "查询条件",
+            "example": "{name: '张三'}",
+            "notes": "必填"
+          },
+          "更新": {
+            "type": "string",
+            "required": true,
+            "description": "更新内容",
+            "example": "{age: 30}",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -359,7 +449,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "deleteOne deleteMany 删除",
       "keyword": "delete 删除",
-      "description": "删除集合中的文档",
+      "description": "删除集合中的文档。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "db.%{集合}%.deleteOne(%{条件}%)",
         "extensions": [
@@ -389,8 +479,20 @@
           }
         ],
         "params": {
-          "集合": { "type": "string", "required": true, "description": "集合名", "example": "users", "notes": "" },
-          "条件": { "type": "string", "required": true, "description": "删除条件", "example": "{name: '张三'}", "notes": "" }
+          "集合": {
+            "type": "string",
+            "required": true,
+            "description": "集合名",
+            "example": "users",
+            "notes": "必填"
+          },
+          "条件": {
+            "type": "string",
+            "required": true,
+            "description": "删除条件",
+            "example": "{name: '张三'}",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -398,7 +500,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "aggregate 聚合管道",
       "keyword": "aggregate 聚合",
-      "description": "MongoDB 聚合管道操作",
+      "description": "MongoDB 聚合管道操作。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "db.%{集合}%.aggregate([%{管道操作}%])",
         "extensions": [
@@ -446,8 +548,20 @@
           }
         ],
         "params": {
-          "集合": { "type": "string", "required": true, "description": "集合名", "example": "users", "notes": "" },
-          "管道操作": { "type": "string", "required": true, "description": "聚合管道阶段", "example": "{$match: {status: 'active'}}", "notes": "" }
+          "集合": {
+            "type": "string",
+            "required": true,
+            "description": "集合名",
+            "example": "users",
+            "notes": "必填"
+          },
+          "管道操作": {
+            "type": "string",
+            "required": true,
+            "description": "聚合管道阶段",
+            "example": "{$match: {status: 'active'}}",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -455,7 +569,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "createIndex 索引管理",
       "keyword": "createIndex 索引",
-      "description": "创建和管理 MongoDB 索引",
+      "description": "创建和管理 MongoDB 索引。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "db.%{集合}%.createIndex(%{字段}%, %{选项}%)",
         "extensions": [
@@ -509,9 +623,27 @@
           }
         ],
         "params": {
-          "集合": { "type": "string", "required": true, "description": "集合名", "example": "users", "notes": "" },
-          "字段": { "type": "string", "required": true, "description": "索引字段", "example": "{name: 1}", "notes": "1 升序, -1 降序" },
-          "选项": { "type": "string", "required": false, "description": "索引选项", "example": "{unique: true}", "notes": "可选" }
+          "集合": {
+            "type": "string",
+            "required": true,
+            "description": "集合名",
+            "example": "users",
+            "notes": "必填"
+          },
+          "字段": {
+            "type": "string",
+            "required": true,
+            "description": "索引字段",
+            "example": "{name: 1}",
+            "notes": "1 升序, -1 降序"
+          },
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "索引选项",
+            "example": "{unique: true}",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -519,7 +651,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "createUser 用户管理",
       "keyword": "createUser 用户",
-      "description": "创建和管理 MongoDB 用户",
+      "description": "创建和管理 MongoDB 用户。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "db.createUser({user: '%{用户名}%', pwd: '%{密码}%', roles: [%{角色}%]})",
         "extensions": [
@@ -567,9 +699,27 @@
           }
         ],
         "params": {
-          "用户名": { "type": "string", "required": true, "description": "用户名", "example": "appuser", "notes": "" },
-          "密码": { "type": "string", "required": true, "description": "密码", "example": "password", "notes": "" },
-          "角色": { "type": "string", "required": true, "description": "角色数组", "example": "{role: 'readWrite', db: 'mydb'}", "notes": "" }
+          "用户名": {
+            "type": "string",
+            "required": true,
+            "description": "用户名",
+            "example": "appuser",
+            "notes": "必填"
+          },
+          "密码": {
+            "type": "string",
+            "required": true,
+            "description": "密码",
+            "example": "password",
+            "notes": "必填"
+          },
+          "角色": {
+            "type": "string",
+            "required": true,
+            "description": "角色数组",
+            "example": "{role: 'readWrite', db: 'mydb'}",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -577,7 +727,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "mongodump 备份",
       "keyword": "mongodump 备份",
-      "description": "备份 MongoDB 数据库",
+      "description": "备份 MongoDB 数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "mongodump --db=%{数据库}% --out=%{输出目录}%",
         "extensions": [
@@ -613,8 +763,20 @@
           }
         ],
         "params": {
-          "数据库": { "type": "string", "required": true, "description": "数据库名", "example": "mydb", "notes": "" },
-          "输出目录": { "type": "string", "required": true, "description": "输出目录", "example": "/backup", "notes": "" }
+          "数据库": {
+            "type": "string",
+            "required": true,
+            "description": "数据库名",
+            "example": "mydb",
+            "notes": "必填"
+          },
+          "输出目录": {
+            "type": "string",
+            "required": true,
+            "description": "输出目录",
+            "example": "/backup",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -622,7 +784,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "mongorestore 恢复",
       "keyword": "mongorestore 恢复",
-      "description": "从备份恢复 MongoDB 数据库",
+      "description": "从备份恢复 MongoDB 数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "mongorestore --db=%{数据库}% %{备份路径}%",
         "extensions": [
@@ -658,8 +820,20 @@
           }
         ],
         "params": {
-          "数据库": { "type": "string", "required": true, "description": "数据库名", "example": "mydb", "notes": "" },
-          "备份路径": { "type": "string", "required": true, "description": "备份路径", "example": "/backup/mydb", "notes": "" }
+          "数据库": {
+            "type": "string",
+            "required": true,
+            "description": "数据库名",
+            "example": "mydb",
+            "notes": "必填"
+          },
+          "备份路径": {
+            "type": "string",
+            "required": true,
+            "description": "备份路径",
+            "example": "/backup/mydb",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -667,7 +841,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "mongoexport 导出",
       "keyword": "mongoexport 导出",
-      "description": "导出 MongoDB 数据为 JSON 或 CSV",
+      "description": "导出 MongoDB 数据为 JSON 或 CSV。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "mongoexport --db=%{数据库}% --collection=%{集合}% --out=%{输出文件}%",
         "extensions": [
@@ -697,9 +871,27 @@
           }
         ],
         "params": {
-          "数据库": { "type": "string", "required": true, "description": "数据库名", "example": "mydb", "notes": "" },
-          "集合": { "type": "string", "required": true, "description": "集合名", "example": "users", "notes": "" },
-          "输出文件": { "type": "string", "required": true, "description": "输出文件路径", "example": "users.json", "notes": "" }
+          "数据库": {
+            "type": "string",
+            "required": true,
+            "description": "数据库名",
+            "example": "mydb",
+            "notes": "必填"
+          },
+          "集合": {
+            "type": "string",
+            "required": true,
+            "description": "集合名",
+            "example": "users",
+            "notes": "必填"
+          },
+          "输出文件": {
+            "type": "string",
+            "required": true,
+            "description": "输出文件路径",
+            "example": "users.json",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -707,7 +899,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "mongoimport 导入",
       "keyword": "mongoimport 导入",
-      "description": "从 JSON 或 CSV 导入数据到 MongoDB",
+      "description": "从 JSON 或 CSV 导入数据到 MongoDB。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "mongoimport --db=%{数据库}% --collection=%{集合}% --file=%{输入文件}%",
         "extensions": [
@@ -743,9 +935,27 @@
           }
         ],
         "params": {
-          "数据库": { "type": "string", "required": true, "description": "数据库名", "example": "mydb", "notes": "" },
-          "集合": { "type": "string", "required": true, "description": "集合名", "example": "users", "notes": "" },
-          "输入文件": { "type": "string", "required": true, "description": "输入文件路径", "example": "users.json", "notes": "" }
+          "数据库": {
+            "type": "string",
+            "required": true,
+            "description": "数据库名",
+            "example": "mydb",
+            "notes": "必填"
+          },
+          "集合": {
+            "type": "string",
+            "required": true,
+            "description": "集合名",
+            "example": "users",
+            "notes": "必填"
+          },
+          "输入文件": {
+            "type": "string",
+            "required": true,
+            "description": "输入文件路径",
+            "example": "users.json",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -753,7 +963,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "mongostat 状态监控",
       "keyword": "mongostat 监控",
-      "description": "查看 MongoDB 运行状态",
+      "description": "查看 MongoDB 运行状态。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "mongostat --uri=\"mongodb://%{主机}%:%{端口}%\"",
         "extensions": [
@@ -783,8 +993,20 @@
           }
         ],
         "params": {
-          "主机": { "type": "string", "required": false, "description": "主机地址", "example": "localhost", "notes": "默认 localhost" },
-          "端口": { "type": "string", "required": false, "description": "端口", "example": "27017", "notes": "默认 27017" }
+          "主机": {
+            "type": "string",
+            "required": false,
+            "description": "主机地址",
+            "example": "localhost",
+            "notes": "默认 localhost"
+          },
+          "端口": {
+            "type": "string",
+            "required": false,
+            "description": "端口",
+            "example": "27017",
+            "notes": "默认 27017"
+          }
         }
       }
     },
@@ -792,7 +1014,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "mongotop 读写统计",
       "keyword": "mongotop 统计",
-      "description": "查看集合读写时间统计",
+      "description": "查看集合读写时间统计。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "mongotop --uri=\"mongodb://%{主机}%:%{端口}%\" %{间隔}%",
         "extensions": [
@@ -822,9 +1044,27 @@
           }
         ],
         "params": {
-          "主机": { "type": "string", "required": false, "description": "主机地址", "example": "localhost", "notes": "默认 localhost" },
-          "端口": { "type": "string", "required": false, "description": "端口", "example": "27017", "notes": "默认 27017" },
-          "间隔": { "type": "string", "required": false, "description": "间隔秒数", "example": "5", "notes": "默认 1 秒" }
+          "主机": {
+            "type": "string",
+            "required": false,
+            "description": "主机地址",
+            "example": "localhost",
+            "notes": "默认 localhost"
+          },
+          "端口": {
+            "type": "string",
+            "required": false,
+            "description": "端口",
+            "example": "27017",
+            "notes": "默认 27017"
+          },
+          "间隔": {
+            "type": "string",
+            "required": false,
+            "description": "间隔秒数",
+            "example": "5",
+            "notes": "默认 1 秒"
+          }
         }
       }
     },
@@ -832,7 +1072,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "mongoose.connect 连接",
       "keyword": "mongoose 连接",
-      "description": "Mongoose 连接 MongoDB",
+      "description": "Mongoose 连接 MongoDB。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "mongoose.connect('mongodb://%{主机}%:%{端口}%/%{数据库}%')",
         "extensions": [
@@ -862,9 +1102,27 @@
           }
         ],
         "params": {
-          "主机": { "type": "string", "required": false, "description": "主机地址", "example": "localhost", "notes": "默认 localhost" },
-          "端口": { "type": "string", "required": false, "description": "端口", "example": "27017", "notes": "默认 27017" },
-          "数据库": { "type": "string", "required": true, "description": "数据库名", "example": "mydb", "notes": "" }
+          "主机": {
+            "type": "string",
+            "required": false,
+            "description": "主机地址",
+            "example": "localhost",
+            "notes": "默认 localhost"
+          },
+          "端口": {
+            "type": "string",
+            "required": false,
+            "description": "端口",
+            "example": "27017",
+            "notes": "默认 27017"
+          },
+          "数据库": {
+            "type": "string",
+            "required": true,
+            "description": "数据库名",
+            "example": "mydb",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -872,7 +1130,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "mongoose Schema 定义",
       "keyword": "mongoose Schema",
-      "description": "定义 Mongoose 数据模型",
+      "description": "定义 Mongoose 数据模型。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "const %{模型名}Schema = new mongoose.Schema({%{字段定义}%})",
         "extensions": [
@@ -914,8 +1172,20 @@
           }
         ],
         "params": {
-          "模型名": { "type": "string", "required": true, "description": "模型名称", "example": "User", "notes": "" },
-          "字段定义": { "type": "string", "required": true, "description": "字段定义对象", "example": "{name: String, age: Number}", "notes": "" }
+          "模型名": {
+            "type": "string",
+            "required": true,
+            "description": "模型名称",
+            "example": "User",
+            "notes": "必填"
+          },
+          "字段定义": {
+            "type": "string",
+            "required": true,
+            "description": "字段定义对象",
+            "example": "{name: String, age: Number}",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -923,7 +1193,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "mongoose Model 模型方法",
       "keyword": "mongoose Model",
-      "description": "Mongoose Model 查询和操作方法",
+      "description": "Mongoose Model 查询和操作方法。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "const %{模型} = mongoose.model('%{名称}%', %{schema}%)",
         "extensions": [
@@ -977,9 +1247,27 @@
           }
         ],
         "params": {
-          "模型": { "type": "string", "required": true, "description": "模型变量名", "example": "User", "notes": "" },
-          "名称": { "type": "string", "required": true, "description": "模型名称", "example": "User", "notes": "" },
-          "schema": { "type": "string", "required": true, "description": "Schema 实例", "example": "userSchema", "notes": "" }
+          "模型": {
+            "type": "string",
+            "required": true,
+            "description": "模型变量名",
+            "example": "User",
+            "notes": "必填"
+          },
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "模型名称",
+            "example": "User",
+            "notes": "必填"
+          },
+          "schema": {
+            "type": "string",
+            "required": true,
+            "description": "Schema 实例",
+            "example": "userSchema",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -987,7 +1275,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "mongoose Middleware 中间件",
       "keyword": "mongoose Middleware",
-      "description": "Mongoose 钩子和中间件",
+      "description": "Mongoose 钩子和中间件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "schema.pre('%{操作}%', function(next) {})",
         "extensions": [
@@ -1029,7 +1317,13 @@
           }
         ],
         "params": {
-          "操作": { "type": "string", "required": true, "description": "操作名称", "example": "save", "notes": "save, updateOne, remove, find 等" }
+          "操作": {
+            "type": "string",
+            "required": true,
+            "description": "操作名称",
+            "example": "save",
+            "notes": "save, updateOne, remove, find 等"
+          }
         }
       }
     },
@@ -1037,7 +1331,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "mongoose Population 关联",
       "keyword": "mongoose Population",
-      "description": "Mongoose 关联查询和填充",
+      "description": "Mongoose 关联查询和填充。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "%{模型}%.find().populate('%{字段}%')",
         "extensions": [
@@ -1073,8 +1367,20 @@
           }
         ],
         "params": {
-          "模型": { "type": "string", "required": true, "description": "模型名", "example": "Order", "notes": "" },
-          "字段": { "type": "string", "required": true, "description": "关联字段", "example": "user", "notes": "" }
+          "模型": {
+            "type": "string",
+            "required": true,
+            "description": "模型名",
+            "example": "Order",
+            "notes": "必填"
+          },
+          "字段": {
+            "type": "string",
+            "required": true,
+            "description": "关联字段",
+            "example": "user",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -1082,7 +1388,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "mongoose Virtuals 虚拟属性",
       "keyword": "mongoose Virtuals",
-      "description": "Mongoose 虚拟属性定义",
+      "description": "Mongoose 虚拟属性定义。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "schema.virtual('%{属性名}%').get(function() {})",
         "extensions": [
@@ -1106,7 +1412,13 @@
           }
         ],
         "params": {
-          "属性名": { "type": "string", "required": true, "description": "虚拟属性名", "example": "fullName", "notes": "" }
+          "属性名": {
+            "type": "string",
+            "required": true,
+            "description": "虚拟属性名",
+            "example": "fullName",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -1114,7 +1426,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "rs.initiate 副本集",
       "keyword": "rs 副本集",
-      "description": "MongoDB 副本集管理命令",
+      "description": "MongoDB 副本集管理命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "rs.initiate(%{配置}%)",
         "extensions": [
@@ -1162,7 +1474,13 @@
           }
         ],
         "params": {
-          "配置": { "type": "string", "required": false, "description": "副本集配置对象", "example": "{_id: 'rs0', members: [{_id: 0, host: 'localhost:27017'}]}", "notes": "可选" }
+          "配置": {
+            "type": "string",
+            "required": false,
+            "description": "副本集配置对象",
+            "example": "{_id: 'rs0', members: [{_id: 0, host: 'localhost:27017'}]}",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -1170,7 +1488,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "sh.enableSharding 分片",
       "keyword": "sh 分片",
-      "description": "MongoDB 分片集群管理命令",
+      "description": "MongoDB 分片集群管理命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "sh.enableSharding('%{数据库}%')",
         "extensions": [
@@ -1224,7 +1542,13 @@
           }
         ],
         "params": {
-          "数据库": { "type": "string", "required": true, "description": "数据库名", "example": "mydb", "notes": "" }
+          "数据库": {
+            "type": "string",
+            "required": true,
+            "description": "数据库名",
+            "example": "mydb",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -1232,7 +1556,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "watch 变更流",
       "keyword": "watch 变更流",
-      "description": "MongoDB Change Streams 变更流监听",
+      "description": "MongoDB Change Streams 变更流监听。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "db.%{集合}%.watch([%{管道}%])",
         "extensions": [
@@ -1274,8 +1598,20 @@
           }
         ],
         "params": {
-          "集合": { "type": "string", "required": true, "description": "集合名", "example": "users", "notes": "" },
-          "管道": { "type": "string", "required": false, "description": "过滤管道", "example": "{$match: {operationType: 'insert'}}", "notes": "可选" }
+          "集合": {
+            "type": "string",
+            "required": true,
+            "description": "集合名",
+            "example": "users",
+            "notes": "必填"
+          },
+          "管道": {
+            "type": "string",
+            "required": false,
+            "description": "过滤管道",
+            "example": "{$match: {operationType: 'insert'}}",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -1283,7 +1619,7 @@
       "dirPath": "/MongoDB 命令/",
       "name": "findAndModify 查找修改",
       "keyword": "findAndModify 查找修改",
-      "description": "MongoDB 查找并修改文档原子操作",
+      "description": "MongoDB 查找并修改文档原子操作。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "db.%{集合}%.findOneAnd%{操作}%(%{条件}%, %{更新}%)",
         "extensions": [
@@ -1319,10 +1655,34 @@
           }
         ],
         "params": {
-          "集合": { "type": "string", "required": true, "description": "集合名", "example": "users", "notes": "" },
-          "操作": { "type": "string", "required": true, "description": "操作类型", "example": "Update", "notes": "Update, Delete, Replace" },
-          "条件": { "type": "string", "required": true, "description": "查询条件", "example": "{name: '张三'}", "notes": "" },
-          "更新": { "type": "string", "required": true, "description": "更新内容", "example": "{$set: {age: 30}}", "notes": "" }
+          "集合": {
+            "type": "string",
+            "required": true,
+            "description": "集合名",
+            "example": "users",
+            "notes": "必填"
+          },
+          "操作": {
+            "type": "string",
+            "required": true,
+            "description": "操作类型",
+            "example": "Update",
+            "notes": "Update, Delete, Replace"
+          },
+          "条件": {
+            "type": "string",
+            "required": true,
+            "description": "查询条件",
+            "example": "{name: '张三'}",
+            "notes": "必填"
+          },
+          "更新": {
+            "type": "string",
+            "required": true,
+            "description": "更新内容",
+            "example": "{$set: {age: 30}}",
+            "notes": "必填"
+          }
         }
       }
     }

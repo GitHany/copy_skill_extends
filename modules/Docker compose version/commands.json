@@ -1,0 +1,138 @@
+{
+  "module": "Docker compose version",
+  "version": "2.0",
+  "description": "Docker compose version命令集合",
+  "commands": [
+    {
+      "cmd": "docker compose version",
+      "extensions": [
+        {
+          "name": "docker compose version --format 格式化输出",
+          "description": "使用 Go 模板格式化输出版本信息",
+          "params": {
+            "格式模板": {
+              "type": "string",
+              "required": false,
+              "description": "Go模板格式字符串",
+              "example": "{{.Version}}",
+              "notes": "可选，可提取 Version、ComposeVersion、GoVersion 等字段"
+            }
+          },
+          "keyword": "docker compose version format"
+        },
+        {
+          "name": "docker compose version --short 简短版本",
+          "description": "仅显示版本号，简短输出",
+          "params": {},
+          "keyword": "docker compose version short"
+        },
+        {
+          "name": "docker compose version --json JSON格式",
+          "description": "以 JSON 格式输出版本信息，便于程序解析和 CI/CD 集成",
+          "params": {},
+          "keyword": "docker compose version json"
+        },
+        {
+          "name": "docker compose up -d 启动服务",
+          "description": "根据 docker-compose.yml 启动所有服务（后台运行）",
+          "params": {
+            "服务名": {
+              "type": "string",
+              "required": false,
+              "description": "指定启动的服务名",
+              "example": "web",
+              "notes": "可选，不指定则启动所有服务"
+            },
+            "重新构建": {
+              "type": "boolean",
+              "required": false,
+              "description": "启动前重新构建镜像",
+              "example": "--build",
+              "notes": "可选，当 Dockerfile 更改时使用"
+            }
+          },
+          "keyword": "docker compose up"
+        },
+        {
+          "name": "docker compose down 停止服务",
+          "description": "停止并移除 docker-compose 创建的容器、网络等资源",
+          "params": {
+            "删除数据卷": {
+              "type": "boolean",
+              "required": false,
+              "description": "同时删除命名数据卷",
+              "example": "-v",
+              "notes": "谨慎使用，会删除数据"
+            },
+            "删除镜像": {
+              "type": "boolean",
+              "required": false,
+              "description": "同时删除服务创建的镜像",
+              "example": "--rmi local",
+              "notes": "可选：local（仅删除无名镜像）或 all"
+            }
+          },
+          "keyword": "docker compose down"
+        },
+        {
+          "name": "docker compose ps 查看服务状态",
+          "description": "列出 docker-compose 管理下的所有容器及其状态",
+          "params": {},
+          "keyword": "docker compose ps"
+        },
+        {
+          "name": "docker compose logs -f 查看日志",
+          "description": "查看服务日志，支持跟踪实时日志",
+          "params": {
+            "服务名": {
+              "type": "string",
+              "required": false,
+              "description": "服务名称",
+              "example": "web",
+              "notes": "可选，不指定则查看所有服务日志"
+            },
+            "尾行数": {
+              "type": "string",
+              "required": false,
+              "description": "显示最后 N 行",
+              "example": "--tail 100",
+              "notes": "可选，用于查看历史日志"
+            }
+          },
+          "keyword": "docker compose logs"
+        },
+        {
+          "name": "docker compose build 重新构建",
+          "description": "重新构建服务镜像，当 Dockerfile 更改后使用",
+          "params": {
+            "服务名": {
+              "type": "string",
+              "required": false,
+              "description": "指定构建的服务",
+              "example": "api",
+              "notes": "可选，不指定则构建所有服务"
+            },
+            "无缓存": {
+              "type": "boolean",
+              "required": false,
+              "description": "不使用缓存强制重新构建",
+              "example": "--no-cache",
+              "notes": "可选，用于确保完全重新构建"
+            }
+          },
+          "keyword": "docker compose build"
+        }
+      ],
+      "params": {},
+      "dirPath": "/Docker compose version/",
+      "name": "Docker compose version 命令",
+      "keyword": "Docker compose version 命令",
+      "description": "Docker compose version 命令的详细说明",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

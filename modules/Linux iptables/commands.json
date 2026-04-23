@@ -1,0 +1,91 @@
+{
+  "module": "Linux iptables",
+  "version": "2.0",
+  "description": "Linux iptables 防火墙规则管理命令。配置Linux内核防火墙规则，控制进出的网络流量。是服务器安全的基础工具，用于开放/关闭端口、限制IP访问、防止攻击。注意：错误的规则可能导致服务器无法访问。",
+  "commands": [
+    {
+      "dirPath": "/Linux iptables/",
+      "name": "iptables 防火墙",
+      "keyword": "iptables 防火墙",
+      "description": "Linux 防火墙规则。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "iptables -L -n",
+        "extensions": [
+          {
+            "name": "查看所有规则",
+            "description": "列出所有防火墙规则，以数字形式显示",
+            "params": {},
+            "cmd": "iptables -L -n"
+          },
+          {
+            "name": "查看INPUT链规则",
+            "description": "只看输入流量的过滤规则",
+            "params": {},
+            "cmd": "iptables -L INPUT -n"
+          },
+          {
+            "name": "允许特定端口",
+            "description": "开放TCP端口，如80端口",
+            "params": {
+              "端口": {
+                "example": "80",
+                "notes": "端口号"
+              },
+              "协议": {
+                "example": "tcp",
+                "notes": "协议类型"
+              }
+            },
+            "cmd": "iptables -A INPUT -p %{协议}% --dport %{端口}% -j ACCEPT"
+          },
+          {
+            "name": "阻止特定IP",
+            "description": "禁止某个IP地址访问服务器",
+            "params": {
+              "IP地址": {
+                "example": "192.168.1.100",
+                "notes": "要阻止的IP"
+              }
+            },
+            "cmd": "iptables -A INPUT -s %{IP地址}% -j DROP"
+          },
+          {
+            "name": "允许已建立连接",
+            "description": "允许已有连接的返回数据包",
+            "params": {},
+            "cmd": "iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT"
+          },
+          {
+            "name": "删除所有规则",
+            "description": "清除所有防火墙规则，谨慎使用",
+            "params": {},
+            "cmd": "iptables -F"
+          },
+          {
+            "name": "保存规则",
+            "description": "将当前规则保存到文件",
+            "params": {
+              "文件": {
+                "example": "/etc/iptables/rules.v4",
+                "notes": "保存路径"
+              }
+            },
+            "cmd": "iptables-save > %{文件}%"
+          },
+          {
+            "name": "恢复规则",
+            "description": "从文件恢复防火墙规则",
+            "params": {
+              "文件": {
+                "example": "/etc/iptables/rules.v4",
+                "notes": "规则文件"
+              }
+            },
+            "cmd": "iptables-restore < %{文件}%"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

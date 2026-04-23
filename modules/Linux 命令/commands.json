@@ -1,13 +1,13 @@
 {
   "module": "Linux 命令",
   "version": "1.0",
-  "description": "Linux 命令 模块命令集合",
+  "description": "Linux 命令 模块命令集合，涵盖Linux 命令的常用操作和最佳实践",
   "commands": [
     {
       "dirPath": "/Linux 命令/",
       "name": "ls 列出目录内容",
       "keyword": "ls 列表",
-      "description": "列出目录内容",
+      "description": "列出目录内容。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "ls %{选项}% %{目录}%",
         "extensions": [
@@ -70,7 +70,7 @@
       "dirPath": "/Linux 命令/",
       "name": "cd 切换目录",
       "keyword": "cd 进入",
-      "description": "切换当前工作目录",
+      "description": "切换当前工作目录。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "cd %{目录}%",
         "extensions": [
@@ -105,7 +105,7 @@
             "required": true,
             "description": "目录路径",
             "example": "/var/log",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -114,7 +114,7 @@
       "dirPath": "/Linux 命令/",
       "name": "pwd 显示当前目录",
       "keyword": "pwd 当前路径",
-      "description": "显示当前工作目录的完整路径",
+      "description": "显示当前工作目录的完整路径。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "pwd",
         "extensions": [],
@@ -125,7 +125,7 @@
       "dirPath": "/Linux 命令/",
       "name": "mkdir 创建目录",
       "keyword": "mkdir 新建目录",
-      "description": "创建新目录",
+      "description": "创建新目录。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "mkdir %{选项}% %{目录路径}%",
         "extensions": [
@@ -149,7 +149,7 @@
             "required": true,
             "description": "要创建的目录路径",
             "example": "/home/user/projects",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -158,7 +158,7 @@
       "dirPath": "/Linux 命令/",
       "name": "rm 删除文件",
       "keyword": "rm 删除",
-      "description": "删除文件或目录",
+      "description": "删除文件或目录。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "rm %{选项}% %{文件路径}%",
         "extensions": [
@@ -188,7 +188,7 @@
             "required": true,
             "description": "要删除的文件或目录路径",
             "example": "/home/user/file.txt",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -197,7 +197,7 @@
       "dirPath": "/Linux 命令/",
       "name": "cp 复制文件",
       "keyword": "cp 复制",
-      "description": "复制文件或目录",
+      "description": "复制文件或目录。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "cp %{选项}% %{源}% %{目标}%",
         "extensions": [
@@ -233,14 +233,14 @@
             "required": true,
             "description": "源文件或目录路径",
             "example": "/home/user/file.txt",
-            "notes": ""
+            "notes": "必填"
           },
           "目标": {
             "type": "string",
             "required": true,
             "description": "目标路径",
             "example": "/backup/file.txt",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -249,7 +249,7 @@
       "dirPath": "/Linux 命令/",
       "name": "mv 移动/重命名文件",
       "keyword": "mv 移动 重命名",
-      "description": "移动或重命名文件",
+      "description": "移动或重命名文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "mv %{选项}% %{源}% %{目标}%",
         "extensions": [
@@ -285,14 +285,14 @@
             "required": true,
             "description": "源文件或目录路径",
             "example": "/home/user/file.txt",
-            "notes": ""
+            "notes": "必填"
           },
           "目标": {
             "type": "string",
             "required": true,
             "description": "目标路径",
             "example": "/backup/file.txt",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -301,7 +301,7 @@
       "dirPath": "/Linux 命令/",
       "name": "touch 创建文件",
       "keyword": "touch 新建文件",
-      "description": "创建空文件或更新文件时间戳",
+      "description": "创建空文件或更新文件时间戳。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "touch %{文件路径}%",
         "extensions": [
@@ -318,7 +318,7 @@
             "required": true,
             "description": "要创建的文件路径",
             "example": "/home/user/project/test.txt",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -327,7 +327,7 @@
       "dirPath": "/Linux 命令/",
       "name": "cat 查看文件内容",
       "keyword": "cat 查看",
-      "description": "连接并显示文件内容",
+      "description": "连接并显示文件内容。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "cat %{文件路径}%",
         "extensions": [
@@ -350,7 +350,7 @@
             "required": true,
             "description": "要查看的文件路径",
             "example": "/home/user/log.txt",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -359,7 +359,7 @@
       "dirPath": "/Linux 命令/",
       "name": "head 查看文件开头",
       "keyword": "head 开头",
-      "description": "显示文件开头部分内容",
+      "description": "显示文件开头部分内容。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "head %{选项}% -n %{行数}% %{文件路径}%",
         "extensions": [
@@ -383,14 +383,14 @@
             "required": true,
             "description": "显示的行数",
             "example": "20",
-            "notes": ""
+            "notes": "必填"
           },
           "文件路径": {
             "type": "string",
             "required": true,
             "description": "要查看的文件路径",
             "example": "/var/log/syslog",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -399,7 +399,7 @@
       "dirPath": "/Linux 命令/",
       "name": "tail 查看文件末尾",
       "keyword": "tail 末尾",
-      "description": "显示文件末尾部分内容",
+      "description": "显示文件末尾部分内容。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "tail %{选项}% -n %{行数}% %{文件路径}%",
         "extensions": [
@@ -429,14 +429,14 @@
             "required": true,
             "description": "显示的行数",
             "example": "20",
-            "notes": ""
+            "notes": "必填"
           },
           "文件路径": {
             "type": "string",
             "required": true,
             "description": "要查看的文件路径",
             "example": "/var/log/syslog",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -445,7 +445,7 @@
       "dirPath": "/Linux 命令/",
       "name": "grep 搜索文件内容",
       "keyword": "grep 搜索 查找",
-      "description": "在文件中搜索匹配的模式",
+      "description": "在文件中搜索匹配的模式。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "grep %{选项}% \"%{模式}%\" %{文件路径}%",
         "extensions": [
@@ -493,14 +493,14 @@
             "required": true,
             "description": "要搜索的模式或正则表达式",
             "example": "error",
-            "notes": ""
+            "notes": "必填"
           },
           "文件路径": {
             "type": "string",
             "required": true,
             "description": "要搜索的文件路径",
             "example": "/var/log/syslog",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -509,7 +509,7 @@
       "dirPath": "/Linux 命令/",
       "name": "find 查找文件",
       "keyword": "find 查找文件",
-      "description": "在目录树中搜索文件",
+      "description": "在目录树中搜索文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "find %{路径}% %{选项}% -name \"%{文件名}%\"",
         "extensions": [
@@ -550,7 +550,7 @@
             "required": true,
             "description": "搜索的起始路径",
             "example": "/home/user",
-            "notes": ""
+            "notes": "必填"
           },
           "选项": {
             "type": "string",
@@ -564,7 +564,7 @@
             "required": true,
             "description": "要查找的文件名模式",
             "example": "*.log",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -573,7 +573,7 @@
       "dirPath": "/Linux 命令/",
       "name": "chmod 修改权限",
       "keyword": "chmod 权限",
-      "description": "更改文件或目录的访问权限",
+      "description": "更改文件或目录的访问权限。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "chmod %{权限}% %{文件路径}%",
         "extensions": [
@@ -602,14 +602,14 @@
             "required": true,
             "description": "权限模式",
             "example": "755",
-            "notes": ""
+            "notes": "必填"
           },
           "文件路径": {
             "type": "string",
             "required": true,
             "description": "文件或目录路径",
             "example": "/home/user/script.sh",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -618,7 +618,7 @@
       "dirPath": "/Linux 命令/",
       "name": "chown 修改所有者",
       "keyword": "chown 所有者",
-      "description": "更改文件或目录的所有者",
+      "description": "更改文件或目录的所有者。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "chown %{用户}:%{组}% %{文件路径}%",
         "extensions": [
@@ -647,21 +647,21 @@
             "required": true,
             "description": "新所有者用户名",
             "example": "www-data",
-            "notes": ""
+            "notes": "必填"
           },
           "组": {
             "type": "string",
             "required": true,
             "description": "新组名",
             "example": "www-data",
-            "notes": ""
+            "notes": "必填"
           },
           "文件路径": {
             "type": "string",
             "required": true,
             "description": "文件或目录路径",
             "example": "/var/www/html",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -670,7 +670,7 @@
       "dirPath": "/Linux 命令/",
       "name": "tar 打包压缩",
       "keyword": "tar 打包 压缩",
-      "description": "打包和压缩文件",
+      "description": "打包和压缩文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "tar %{动作}% %{压缩包}% %{路径}%",
         "extensions": [
@@ -712,14 +712,14 @@
             "required": true,
             "description": "压缩包名称",
             "example": "backup.tar.gz",
-            "notes": ""
+            "notes": "必填"
           },
           "路径": {
             "type": "string",
             "required": true,
             "description": "要打包的目录或文件路径",
             "example": "/home/user/data",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -728,7 +728,7 @@
       "dirPath": "/Linux 命令/",
       "name": "zip/unzip 压缩解压",
       "keyword": "zip unzip 压缩",
-      "description": "压缩和解压 zip 格式文件",
+      "description": "压缩和解压 zip 格式文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "zip %{选项}% %{压缩包名称}% %{文件路径}%",
         "extensions": [
@@ -770,14 +770,14 @@
             "required": true,
             "description": "压缩包名称",
             "example": "backup.zip",
-            "notes": ""
+            "notes": "必填"
           },
           "文件路径": {
             "type": "string",
             "required": true,
             "description": "要压缩的文件或目录路径",
             "example": "/home/user/data",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -786,7 +786,7 @@
       "dirPath": "/Linux 命令/",
       "name": "gzip/gunzip gzip 压缩",
       "keyword": "gzip gunzip 压缩",
-      "description": "gzip 压缩和解压",
+      "description": "gzip 压缩和解压。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gzip %{选项}% %{文件路径}%",
         "extensions": [
@@ -828,7 +828,7 @@
             "required": true,
             "description": "要压缩或解压的文件路径",
             "example": "/home/user/data.txt",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -837,7 +837,7 @@
       "dirPath": "/Linux 命令/",
       "name": "ps 查看进程",
       "keyword": "ps 进程",
-      "description": "显示当前进程状态",
+      "description": "显示当前进程状态。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "ps %{选项}%",
         "extensions": [
@@ -881,7 +881,7 @@
       "dirPath": "/Linux 命令/",
       "name": "kill 终止进程",
       "keyword": "kill 终止",
-      "description": "终止或发送信号给进程",
+      "description": "终止或发送信号给进程。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kill %{信号}% %{PID}%",
         "extensions": [
@@ -917,7 +917,7 @@
             "required": true,
             "description": "进程 ID",
             "example": "1234",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -926,7 +926,7 @@
       "dirPath": "/Linux 命令/",
       "name": "top/htop 进程监控",
       "keyword": "top htop 监控",
-      "description": "实时监控系统进程",
+      "description": "实时监控系统进程。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "top %{选项}%",
         "extensions": [
@@ -964,7 +964,7 @@
       "dirPath": "/Linux 命令/",
       "name": "free 内存使用",
       "keyword": "free 内存",
-      "description": "显示系统内存使用情况",
+      "description": "显示系统内存使用情况。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "free %{选项}%",
         "extensions": [
@@ -1002,7 +1002,7 @@
       "dirPath": "/Linux 命令/",
       "name": "df 磁盘空间使用情况",
       "keyword": "df 磁盘",
-      "description": "显示文件系统磁盘空间使用情况",
+      "description": "显示文件系统磁盘空间使用情况。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "df %{选项}%",
         "extensions": [
@@ -1040,7 +1040,7 @@
       "dirPath": "/Linux 命令/",
       "name": "du 目录大小",
       "keyword": "du 目录大小",
-      "description": "估算文件或目录的磁盘使用空间",
+      "description": "估算文件或目录的磁盘使用空间。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "du %{选项}% %{路径}%",
         "extensions": [
@@ -1076,7 +1076,7 @@
             "required": true,
             "description": "目录或文件路径",
             "example": "/home/user",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1085,7 +1085,7 @@
       "dirPath": "/Linux 命令/",
       "name": "ssh 远程连接",
       "keyword": "ssh 远程连接",
-      "description": "安全远程连接主机",
+      "description": "安全远程连接主机。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "ssh %{用户}@%{主机}% %{端口参数}%",
         "extensions": [
@@ -1143,7 +1143,7 @@
       "dirPath": "/Linux 命令/",
       "name": "scp 远程复制",
       "keyword": "scp 远程复制",
-      "description": "安全复制文件到远程主机",
+      "description": "安全复制文件到远程主机。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "scp %{选项}% %{源文件}% %{用户}@%{主机}%:%{远程路径}%",
         "extensions": [
@@ -1192,21 +1192,21 @@
             "required": true,
             "description": "远程用户名",
             "example": "root",
-            "notes": ""
+            "notes": "必填"
           },
           "主机": {
             "type": "string",
             "required": true,
             "description": "远程主机地址",
             "example": "192.168.1.100",
-            "notes": ""
+            "notes": "必填"
           },
           "远程路径": {
             "type": "string",
             "required": true,
             "description": "远程目标路径",
             "example": "/backup/",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1215,7 +1215,7 @@
       "dirPath": "/Linux 命令/",
       "name": "wget 下载文件",
       "keyword": "wget 下载",
-      "description": "从网络下载文件",
+      "description": "从网络下载文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "wget %{选项}% %{URL}%",
         "extensions": [
@@ -1257,7 +1257,7 @@
             "required": true,
             "description": "下载链接",
             "example": "https://example.com/file.zip",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1266,7 +1266,7 @@
       "dirPath": "/Linux 命令/",
       "name": "curl HTTP 请求",
       "keyword": "curl HTTP",
-      "description": "执行 HTTP 请求",
+      "description": "执行 HTTP 请求。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "curl %{选项}% %{URL}%",
         "extensions": [
@@ -1314,7 +1314,7 @@
             "required": true,
             "description": "请求 URL",
             "example": "https://api.example.com/endpoint",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1323,7 +1323,7 @@
       "dirPath": "/Linux 命令/",
       "name": "ping 测试网络连通性",
       "keyword": "ping 网络",
-      "description": "测试主机网络连通性",
+      "description": "测试主机网络连通性。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "ping %{选项}% %{主机或IP}%",
         "extensions": [
@@ -1359,7 +1359,7 @@
             "required": true,
             "description": "目标主机名或 IP 地址",
             "example": "google.com",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1368,7 +1368,7 @@
       "dirPath": "/Linux 命令/",
       "name": "nohup 后台运行",
       "keyword": "nohup 后台",
-      "description": "在后台运行命令，忽略挂起信号",
+      "description": "在后台运行命令，忽略挂起信号。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "nohup %{命令}% > %{输出文件}% 2>&1 &",
         "extensions": [
@@ -1391,7 +1391,7 @@
             "required": true,
             "description": "要执行的命令",
             "example": "/home/user/script.sh",
-            "notes": ""
+            "notes": "必填"
           },
           "输出文件": {
             "type": "string",
@@ -1407,7 +1407,7 @@
       "dirPath": "/Linux 命令/",
       "name": "screen 终端会话管理",
       "keyword": "screen 会话",
-      "description": "终端会话管理器",
+      "description": "终端会话管理器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "screen %{选项}% %{会话名}%",
         "extensions": [
@@ -1464,7 +1464,7 @@
       "dirPath": "/Linux 命令/",
       "name": "tmux 终端复用器",
       "keyword": "tmux 会话",
-      "description": "终端多路复用器",
+      "description": "终端多路复用器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "tmux %{选项}%",
         "extensions": [
@@ -1520,7 +1520,7 @@
       "dirPath": "/Linux 命令/",
       "name": "sort 排序",
       "keyword": "sort 排序",
-      "description": "对文本行进行排序",
+      "description": "对文本行进行排序。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "sort %{选项}% %{文件路径}%",
         "extensions": [
@@ -1562,7 +1562,7 @@
             "required": true,
             "description": "要排序的文件路径",
             "example": "/home/user/data.txt",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1571,7 +1571,7 @@
       "dirPath": "/Linux 命令/",
       "name": "uniq 去重",
       "keyword": "uniq 去重",
-      "description": "显示或忽略重复的行",
+      "description": "显示或忽略重复的行。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "uniq %{选项}% %{文件路径}%",
         "extensions": [
@@ -1607,7 +1607,7 @@
             "required": true,
             "description": "要处理的文件路径",
             "example": "/home/user/data.txt",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1616,7 +1616,7 @@
       "dirPath": "/Linux 命令/",
       "name": "wc 统计行数",
       "keyword": "wc 统计",
-      "description": "统计文件的行数、词数和字节数",
+      "description": "统计文件的行数、词数和字节数。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "wc %{选项}% %{文件路径}%",
         "extensions": [
@@ -1652,7 +1652,7 @@
             "required": true,
             "description": "要统计的文件路径",
             "example": "/home/user/log.txt",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1661,7 +1661,7 @@
       "dirPath": "/Linux 命令/",
       "name": "useradd 创建用户",
       "keyword": "useradd 添加用户",
-      "description": "创建新的用户账户",
+      "description": "创建新的用户账户。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "useradd %{选项}% %{用户名}%",
         "extensions": [
@@ -1697,7 +1697,7 @@
             "required": true,
             "description": "新用户名",
             "example": "newuser",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1706,7 +1706,7 @@
       "dirPath": "/Linux 命令/",
       "name": "sudo 以 root 权限执行",
       "keyword": "sudo 管理员",
-      "description": "以超级用户权限执行命令",
+      "description": "以超级用户权限执行命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "sudo %{命令}%",
         "extensions": [
@@ -1735,7 +1735,7 @@
             "required": true,
             "description": "要执行的命令",
             "example": "apt update",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1744,7 +1744,7 @@
       "dirPath": "/Linux 命令/",
       "name": "ifconfig/ip 网络接口",
       "keyword": "ifconfig ip 网络",
-      "description": "配置或显示网络接口参数",
+      "description": "配置或显示网络接口参数。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "ifconfig %{接口}%",
         "extensions": [
@@ -1800,7 +1800,7 @@
       "dirPath": "/Linux 命令/",
       "name": "hostname 主机名",
       "keyword": "hostname 主机名",
-      "description": "显示或设置主机名",
+      "description": "显示或设置主机名。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "hostname %{选项}%",
         "extensions": [
@@ -1838,7 +1838,7 @@
       "dirPath": "/Linux 命令/",
       "name": "uptime 运行时间",
       "keyword": "uptime 运行时间",
-      "description": "显示系统运行时间和负载",
+      "description": "显示系统运行时间和负载。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "uptime",
         "extensions": [
@@ -1856,7 +1856,7 @@
       "dirPath": "/Linux 命令/",
       "name": "uname 系统信息",
       "keyword": "uname 系统",
-      "description": "显示系统信息",
+      "description": "显示系统信息。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "uname %{选项}%",
         "extensions": [
@@ -1894,7 +1894,7 @@
       "dirPath": "/Linux 命令/",
       "name": "id 查看用户信息",
       "keyword": "id 用户信息",
-      "description": "显示用户和组 ID",
+      "description": "显示用户和组 ID。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "id %{用户名}%",
         "extensions": [
@@ -1926,7 +1926,7 @@
       "dirPath": "/Linux 命令/",
       "name": "pip Python 包管理",
       "keyword": "pip Python",
-      "description": "Python 包管理器",
+      "description": "Python 包管理器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "pip %{命令}% %{包名}%",
         "extensions": [
@@ -1973,7 +1973,7 @@
             "required": true,
             "description": "pip 命令",
             "example": "install",
-            "notes": ""
+            "notes": "必填"
           },
           "包名": {
             "type": "string",

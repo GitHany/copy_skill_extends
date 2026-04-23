@@ -1,13 +1,13 @@
 {
   "module": "安全加固",
   "version": "1.0",
-  "description": "安全加固 命令模块集合",
+  "description": "安全加固 命令模块集合，涵盖安全加固的常用操作和最佳实践",
   "commands": [
     {
       "dirPath": "/安全加固/",
       "name": "iptables 防火墙规则",
       "keyword": "iptables 防火墙 规则",
-      "description": "Linux 内核防火墙规则管理",
+      "description": "Linux 内核防火墙规则管理。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "iptables %{选项}%",
         "extensions": [
@@ -50,7 +50,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "iptables 删除规则"
@@ -77,7 +77,7 @@
       "dirPath": "/安全加固/",
       "name": "ufw 防火墙管理",
       "keyword": "ufw 防火墙 Ubuntu",
-      "description": "Ubuntu/Debian 简化的防火墙管理工具",
+      "description": "Ubuntu/Debian 简化的防火墙管理工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "ufw %{动作}%",
         "extensions": [
@@ -108,7 +108,7 @@
                 "required": false,
                 "description": "端口号",
                 "example": "8080",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "ufw 允许端口"
@@ -122,7 +122,7 @@
                 "required": false,
                 "description": "端口号",
                 "example": "8080",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "ufw 拒绝端口"
@@ -142,7 +142,7 @@
                 "required": false,
                 "description": "IP 地址",
                 "example": "192.168.1.100",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "ufw 允许IP"
@@ -167,14 +167,14 @@
             "required": false,
             "description": "端口号",
             "example": "8080",
-            "notes": ""
+            "notes": "可选"
           },
           "IP": {
             "type": "string",
             "required": false,
             "description": "IP 地址",
             "example": "192.168.1.100",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -183,7 +183,7 @@
       "dirPath": "/安全加固/",
       "name": "fail2ban 入侵防御",
       "keyword": "fail2ban 入侵 防御 暴力破解",
-      "description": "入侵防御系统，自动封禁恶意 IP",
+      "description": "入侵防御系统，自动封禁恶意 IP。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "fail2ban-client %{动作}%",
         "extensions": [
@@ -229,7 +229,7 @@
                 "required": false,
                 "description": "IP 地址",
                 "example": "192.168.1.100",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "fail2ban 封禁IP"
@@ -250,7 +250,7 @@
                 "required": false,
                 "description": "IP 地址",
                 "example": "192.168.1.100",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "fail2ban 解封"
@@ -282,7 +282,7 @@
             "required": false,
             "description": "IP 地址",
             "example": "192.168.1.100",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -291,7 +291,7 @@
       "dirPath": "/安全加固/",
       "name": "nmap 端口扫描",
       "keyword": "nmap 端口 扫描 安全",
-      "description": "网络发现和安全审计工具",
+      "description": "网络发现和安全审计工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "nmap %{选项}% %{目标}%",
         "extensions": [
@@ -304,7 +304,7 @@
                 "required": false,
                 "description": "目标 IP 或主机名",
                 "example": "192.168.1.1",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "nmap 快速扫描"
@@ -318,7 +318,7 @@
                 "required": false,
                 "description": "目标 IP 或主机名",
                 "example": "192.168.1.1",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "nmap 详细扫描"
@@ -332,7 +332,7 @@
                 "required": false,
                 "description": "目标 IP 或主机名",
                 "example": "192.168.1.1",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "nmap 指定端口"
@@ -346,7 +346,7 @@
                 "required": false,
                 "description": "目标 IP 或主机名",
                 "example": "192.168.1.1",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "nmap 版本检测"
@@ -360,7 +360,7 @@
                 "required": false,
                 "description": "目标 IP 或主机名",
                 "example": "192.168.1.1",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "nmap 系统检测"
@@ -374,7 +374,7 @@
                 "required": false,
                 "description": "目标 IP 或主机名",
                 "example": "192.168.1.1",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "nmap 漏洞"
@@ -393,7 +393,7 @@
             "required": true,
             "description": "目标 IP 或主机名",
             "example": "192.168.1.1",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -402,7 +402,7 @@
       "dirPath": "/安全加固/",
       "name": "openssl 生成证书",
       "keyword": "openssl 证书 SSL 生成",
-      "description": "SSL/TLS 证书工具，用于生成密钥和证书",
+      "description": "SSL/TLS 证书工具，用于生成密钥和证书。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "openssl %{命令}%",
         "extensions": [
@@ -415,7 +415,7 @@
                 "required": false,
                 "description": "文件路径",
                 "example": "key.pem",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "openssl genrsa 私钥"
@@ -429,14 +429,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "CSR文件": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "openssl req CSR"
@@ -450,14 +450,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "证书文件": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "openssl 自签名"
@@ -471,7 +471,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "openssl 查看证书"
@@ -485,7 +485,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "openssl 验证"
@@ -499,14 +499,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "输出文件": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "openssl 加密"
@@ -520,7 +520,7 @@
                 "required": false,
                 "description": "文件路径",
                 "example": "key.pem",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "openssl 哈希"
@@ -539,7 +539,7 @@
             "required": false,
             "description": "文件路径",
             "example": "key.pem",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -548,7 +548,7 @@
       "dirPath": "/安全加固/",
       "name": "certbot Let's Encrypt",
       "keyword": "certbot SSL HTTPS Let's Encrypt",
-      "description": "Let's Encrypt 官方证书申请工具",
+      "description": "Let's Encrypt 官方证书申请工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "certbot %{动作}%",
         "extensions": [
@@ -589,7 +589,7 @@
                 "required": false,
                 "description": "网站根目录",
                 "example": "/var/www/html",
-                "notes": ""
+                "notes": "可选"
               },
               "域名": {
                 "type": "string",
@@ -648,7 +648,7 @@
             "required": false,
             "description": "网站根目录",
             "example": "/var/www/html",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -657,7 +657,7 @@
       "dirPath": "/安全加固/",
       "name": "npm audit 安全审计",
       "keyword": "npm audit 安全 漏洞",
-      "description": "Node.js 项目依赖漏洞扫描",
+      "description": "Node.js 项目依赖漏洞扫描。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm audit %{选项}%",
         "extensions": [
@@ -707,7 +707,7 @@
       "dirPath": "/安全加固/",
       "name": "yarn audit 安全审计",
       "keyword": "yarn audit 安全 漏洞",
-      "description": "Yarn 包管理器的依赖安全审计",
+      "description": "Yarn 包管理器的依赖安全审计。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "yarn audit %{选项}%",
         "extensions": [
@@ -726,7 +726,7 @@
                 "required": false,
                 "description": "漏洞级别阈值",
                 "example": "high",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "yarn audit 阈值"
@@ -751,7 +751,7 @@
             "required": false,
             "description": "漏洞级别阈值",
             "example": "high",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -760,7 +760,7 @@
       "dirPath": "/安全加固/",
       "name": "snyk 安全测试",
       "keyword": "snyk 安全 漏洞 测试",
-      "description": "Snyk 漏洞扫描和依赖监控工具",
+      "description": "Snyk 漏洞扫描和依赖监控工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "snyk %{命令}%",
         "extensions": [
@@ -785,7 +785,7 @@
                 "required": false,
                 "description": "Docker 镜像名",
                 "example": "nginx:latest",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "snyk container"
@@ -816,7 +816,7 @@
             "required": false,
             "description": "Docker 镜像名",
             "example": "nginx:latest",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -825,7 +825,7 @@
       "dirPath": "/安全加固/",
       "name": "helmet.js 安全头",
       "keyword": "helmet 安全头 HTTP",
-      "description": "Node.js Express 安全头中间件",
+      "description": "Node.js Express 安全头中间件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install helmet",
         "extensions": [
@@ -873,7 +873,7 @@
       "dirPath": "/安全加固/",
       "name": "hashicorp vault",
       "keyword": "vault hashicorp 密钥 密文",
-      "description": "HashiCorp Vault 密钥管理",
+      "description": "HashiCorp Vault 密钥管理。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "vault %{命令}%",
         "extensions": [
@@ -886,7 +886,7 @@
                 "required": false,
                 "description": "密文路径",
                 "example": "myapp/config",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "vault put 写入"
@@ -900,7 +900,7 @@
                 "required": false,
                 "description": "密文路径",
                 "example": "myapp/config",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "vault get 读取"
@@ -914,7 +914,7 @@
                 "required": false,
                 "description": "密文路径",
                 "example": "myapp/config",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "vault list 列表"
@@ -928,7 +928,7 @@
                 "required": false,
                 "description": "密文路径",
                 "example": "myapp/config",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "vault delete 删除"
@@ -942,7 +942,7 @@
                 "required": false,
                 "description": "用户名",
                 "example": "admin",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "vault login 登录"
@@ -967,14 +967,14 @@
             "required": false,
             "description": "密文路径",
             "example": "myapp/config",
-            "notes": ""
+            "notes": "可选"
           },
           "用户": {
             "type": "string",
             "required": false,
             "description": "用户名",
             "example": "admin",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -983,7 +983,7 @@
       "dirPath": "/安全加固/",
       "name": "AWS Secrets Manager",
       "keyword": "aws secrets manager 密钥",
-      "description": "AWS Secrets Manager 命令行管理",
+      "description": "AWS Secrets Manager 命令行管理。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws secretsmanager %{命令}%",
         "extensions": [
@@ -996,7 +996,7 @@
                 "required": false,
                 "description": "密文名称",
                 "example": "myapp/db-creds",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "aws secrets create"
@@ -1010,7 +1010,7 @@
                 "required": false,
                 "description": "密文名称",
                 "example": "myapp/db-creds",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "aws secrets get"
@@ -1030,7 +1030,7 @@
                 "required": false,
                 "description": "密文名称",
                 "example": "myapp/db-creds",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "aws secrets delete"
@@ -1044,7 +1044,7 @@
                 "required": false,
                 "description": "密文名称",
                 "example": "myapp/db-creds",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "aws secrets rotate"
@@ -1063,7 +1063,7 @@
             "required": false,
             "description": "密文名称",
             "example": "myapp/db-creds",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1072,7 +1072,7 @@
       "dirPath": "/安全加固/",
       "name": "git-secrets 防止密钥提交",
       "keyword": "git-secrets 密钥 扫描",
-      "description": "Git 钩子防止密钥提交到代码库",
+      "description": "Git 钩子防止密钥提交到代码库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "git secrets --%{动作}%",
         "extensions": [
@@ -1091,7 +1091,7 @@
                 "required": false,
                 "description": "正则模式",
                 "example": "password\\s*=",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "git secrets add"
@@ -1111,7 +1111,7 @@
                 "required": false,
                 "description": "文件路径",
                 "example": "app.js",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "git secrets scan"
@@ -1125,7 +1125,7 @@
                 "required": false,
                 "description": "目录路径",
                 "example": "src/",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "git secrets 递归扫描"
@@ -1150,21 +1150,21 @@
             "required": false,
             "description": "正则模式",
             "example": "password\\s*=",
-            "notes": ""
+            "notes": "可选"
           },
           "文件": {
             "type": "string",
             "required": false,
             "description": "文件路径",
             "example": "app.js",
-            "notes": ""
+            "notes": "可选"
           },
           "目录": {
             "type": "string",
             "required": false,
             "description": "目录路径",
             "example": "src/",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1173,7 +1173,7 @@
       "dirPath": "/安全加固/",
       "name": "envchain 环境变量加密",
       "keyword": "envchain 环境变量 安全",
-      "description": "加密存储环境变量，支持多种云服务密钥",
+      "description": "加密存储环境变量，支持多种云服务密钥。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "envchain %{命名空间}% %{命令}%",
         "extensions": [
@@ -1193,7 +1193,7 @@
                 "required": false,
                 "description": "变量值",
                 "example": "xxxx",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "envchain set"
@@ -1214,7 +1214,7 @@
                 "required": false,
                 "description": "要执行的命令",
                 "example": "node app.js",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "envchain run"
@@ -1249,7 +1249,7 @@
                 "required": false,
                 "description": "变量名",
                 "example": "AWS_SECRET_KEY",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "envchain interactive"
@@ -1268,21 +1268,21 @@
             "required": false,
             "description": "变量名",
             "example": "AWS_SECRET_KEY",
-            "notes": ""
+            "notes": "可选"
           },
           "值": {
             "type": "string",
             "required": false,
             "description": "变量值",
             "example": "xxxx",
-            "notes": ""
+            "notes": "可选"
           },
           "命令": {
             "type": "string",
             "required": false,
             "description": "要执行的命令",
             "example": "node app.js",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1291,7 +1291,7 @@
       "dirPath": "/安全加固/",
       "name": "docker scan 镜像扫描",
       "keyword": "docker scan 镜像 安全 Snyk",
-      "description": "使用 Snyk 扫描 Docker 镜像漏洞",
+      "description": "使用 Snyk 扫描 Docker 镜像漏洞。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker scan %{镜像名}%",
         "extensions": [
@@ -1353,7 +1353,7 @@
       "dirPath": "/安全加固/",
       "name": "trivy 容器漏洞扫描",
       "keyword": "trivy 容器 漏洞 扫描",
-      "description": "容器镜像综合漏洞扫描工具",
+      "description": "容器镜像综合漏洞扫描工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "trivy %{命令}% %{目标}%",
         "extensions": [
@@ -1366,7 +1366,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "trivy image"
@@ -1380,7 +1380,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "trivy fs"
@@ -1394,14 +1394,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "镜像名": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "trivy json"
@@ -1415,7 +1415,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "trivy severity"
@@ -1429,7 +1429,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "trivy ignore"
@@ -1454,7 +1454,7 @@
             "required": true,
             "description": "扫描目标",
             "example": "nginx:latest",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1496,7 +1496,7 @@
                 "required": false,
                 "description": "输出文件路径",
                 "example": "results.json",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "docker bench json"
@@ -1515,7 +1515,7 @@
             "required": false,
             "description": "输出文件路径",
             "example": "results.json",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1524,7 +1524,7 @@
       "dirPath": "/安全加固/",
       "name": "Rootless Docker 无 root 运行",
       "keyword": "rootless docker 安全",
-      "description": "以非 root 用户运行 Docker 容器",
+      "description": "以非 root 用户运行 Docker 容器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker run --rm --privileged usr/%{镜像}%",
         "extensions": [
@@ -1559,7 +1559,7 @@
             "required": false,
             "description": "容器镜像",
             "example": "alpine:latest",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1568,7 +1568,7 @@
       "dirPath": "/安全加固/",
       "name": "mkcert 本地 HTTPS",
       "keyword": "mkcert 本地 SSL HTTPS 开发",
-      "description": "本地开发环境 SSL 证书工具",
+      "description": "本地开发环境 SSL 证书工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "mkcert %{命令}%",
         "extensions": [
@@ -1607,14 +1607,14 @@
                 "required": false,
                 "description": "证书文件路径",
                 "example": "cert.pem",
-                "notes": ""
+                "notes": "可选"
               },
               "密钥": {
                 "type": "string",
                 "required": false,
                 "description": "密钥文件路径",
                 "example": "key.pem",
-                "notes": ""
+                "notes": "可选"
               },
               "域名": {
                 "type": "string",
@@ -1661,14 +1661,14 @@
             "required": false,
             "description": "证书文件路径",
             "example": "cert.pem",
-            "notes": ""
+            "notes": "可选"
           },
           "密钥": {
             "type": "string",
             "required": false,
             "description": "密钥文件路径",
             "example": "key.pem",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1677,7 +1677,7 @@
       "dirPath": "/安全加固/",
       "name": "SSL Labs 测试",
       "keyword": "SSL labs 测试 SSL 评级",
-      "description": "使用 SSL Labs 在线工具测试 SSL 配置",
+      "description": "使用 SSL Labs 在线工具测试 SSL 配置。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "curl -s 'https://www.ssllabs.com/ssltest/analyze.html?d=%{域名}%&hideResults=on&latest=on'",
         "extensions": [
@@ -1690,7 +1690,7 @@
                 "required": false,
                 "description": "要测试的域名",
                 "example": "example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "SSL labs analyze"
@@ -1704,7 +1704,7 @@
                 "required": false,
                 "description": "要测试的域名",
                 "example": "example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "SSL labs port"
@@ -1718,7 +1718,7 @@
                 "required": false,
                 "description": "要测试的域名",
                 "example": "example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "SSL labs deep"
@@ -1730,7 +1730,7 @@
             "required": true,
             "description": "要测试的域名",
             "example": "example.com",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1739,7 +1739,7 @@
       "dirPath": "/安全加固/",
       "name": "dependabot 配置",
       "keyword": "dependabot 自动更新 安全",
-      "description": "GitHub Dependabot 依赖安全更新配置",
+      "description": "GitHub Dependabot 依赖安全更新配置。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "mkdir -p .github/dependabot.yml",
         "extensions": [
@@ -1775,7 +1775,7 @@
       "dirPath": "/安全加固/",
       "name": "chmod 文件权限加固",
       "keyword": "chmod 权限 安全",
-      "description": "文件权限安全加固命令",
+      "description": "文件权限安全加固命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "chmod %{权限}% %{文件}%",
         "extensions": [
@@ -1788,7 +1788,7 @@
                 "required": false,
                 "description": "文件路径",
                 "example": ".env",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "chmod 600"
@@ -1802,7 +1802,7 @@
                 "required": false,
                 "description": "脚本文件",
                 "example": "backup.sh",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "chmod 700"
@@ -1816,7 +1816,7 @@
                 "required": false,
                 "description": "目录路径",
                 "example": "config/",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "chmod 755"
@@ -1830,7 +1830,7 @@
                 "required": false,
                 "description": "文件路径",
                 "example": ".env",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "chmod 000"
@@ -1844,7 +1844,7 @@
                 "required": false,
                 "description": "目录路径",
                 "example": "config/",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "chmod recursive"
@@ -1858,7 +1858,7 @@
                 "required": false,
                 "description": "文件路径",
                 "example": ".env",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "chmod 444"
@@ -1877,21 +1877,21 @@
             "required": false,
             "description": "文件路径",
             "example": ".env",
-            "notes": ""
+            "notes": "可选"
           },
           "目录": {
             "type": "string",
             "required": false,
             "description": "目录路径",
             "example": "config/",
-            "notes": ""
+            "notes": "可选"
           },
           "脚本": {
             "type": "string",
             "required": false,
             "description": "脚本文件",
             "example": "backup.sh",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1900,7 +1900,7 @@
       "dirPath": "/安全加固/",
       "name": "chown 文件所有者",
       "keyword": "chown 所有者 安全",
-      "description": "修改文件所有者以加固安全",
+      "description": "修改文件所有者以加固安全。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "chown %{用户}%:%{组}% %{文件}%",
         "extensions": [
@@ -1913,7 +1913,7 @@
                 "required": false,
                 "description": "用户名",
                 "example": "www-data",
-                "notes": ""
+                "notes": "可选"
               },
               "组": {
                 "type": "string",
@@ -1927,7 +1927,7 @@
                 "required": false,
                 "description": "文件路径",
                 "example": "config.json",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "chown 设置"
@@ -1941,7 +1941,7 @@
                 "required": false,
                 "description": "用户名",
                 "example": "www-data",
-                "notes": ""
+                "notes": "可选"
               },
               "组": {
                 "type": "string",
@@ -1955,7 +1955,7 @@
                 "required": false,
                 "description": "目录路径",
                 "example": "var/",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "chown recursive"
@@ -1969,14 +1969,14 @@
                 "required": false,
                 "description": "用户名",
                 "example": "www-data",
-                "notes": ""
+                "notes": "可选"
               },
               "文件": {
                 "type": "string",
                 "required": false,
                 "description": "文件路径",
                 "example": "config.json",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "chown user"
@@ -1994,7 +1994,7 @@
             "required": true,
             "description": "用户名",
             "example": "www-data",
-            "notes": ""
+            "notes": "必填"
           },
           "组": {
             "type": "string",
@@ -2008,14 +2008,14 @@
             "required": false,
             "description": "文件路径",
             "example": "config.json",
-            "notes": ""
+            "notes": "可选"
           },
           "目录": {
             "type": "string",
             "required": false,
             "description": "目录路径",
             "example": "var/",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -2024,7 +2024,7 @@
       "dirPath": "/安全加固/",
       "name": "auditd Linux 安全审计",
       "keyword": "auditd 审计 安全 日志",
-      "description": "Linux 审计守护进程，监控安全相关事件",
+      "description": "Linux 审计守护进程，监控安全相关事件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "auditctl %{选项}%",
         "extensions": [
@@ -2043,7 +2043,7 @@
                 "required": false,
                 "description": "文件路径",
                 "example": "/etc/passwd",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "auditd watch file"
@@ -2057,14 +2057,14 @@
                 "required": false,
                 "description": "目录路径",
                 "example": "/etc/",
-                "notes": ""
+                "notes": "可选"
               },
               "名称": {
                 "type": "string",
                 "required": false,
                 "description": "审计规则名称",
                 "example": "config_change",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "auditd watch dir"
@@ -2084,7 +2084,7 @@
                 "required": false,
                 "description": "审计规则名称",
                 "example": "config_change",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "auditd search"
@@ -2109,21 +2109,21 @@
             "required": false,
             "description": "文件路径",
             "example": "/etc/passwd",
-            "notes": ""
+            "notes": "可选"
           },
           "目录": {
             "type": "string",
             "required": false,
             "description": "目录路径",
             "example": "/etc/",
-            "notes": ""
+            "notes": "可选"
           },
           "名称": {
             "type": "string",
             "required": false,
             "description": "审计规则名称",
             "example": "config_change",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -2185,7 +2185,7 @@
                 "required": false,
                 "description": "目标 IP 地址",
                 "example": "192.168.1.100",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "msfconsole set rhosts"
@@ -2199,7 +2199,7 @@
                 "required": false,
                 "description": "目标端口",
                 "example": "445",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "msfconsole set rport"
@@ -2244,14 +2244,14 @@
             "required": false,
             "description": "目标 IP 地址",
             "example": "192.168.1.100",
-            "notes": ""
+            "notes": "可选"
           },
           "端口": {
             "type": "string",
             "required": false,
             "description": "目标端口",
             "example": "445",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }

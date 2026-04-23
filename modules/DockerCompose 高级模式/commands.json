@@ -7,25 +7,10 @@
     {
       "name": "多文件编排",
       "keyword": "docker-compose -f",
-      "description": "合并多个 Docker Compose 配置文件进行编排",
+      "description": "合并多个 Docker Compose 配置文件进行编排。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker-compose -f %{file1}% -f %{file2}% up -d",
-        "params": [
-          {
-            "name": "file1",
-            "type": "string",
-            "default": "docker-compose.yml",
-            "description": "基础配置文件路径",
-            "example": "docker-compose.yml"
-          },
-          {
-            "name": "file2",
-            "type": "string",
-            "default": "docker-compose.prod.yml",
-            "description": "覆盖配置文件路径",
-            "example": "docker-compose.prod.yml"
-          }
-        ],
+        "params": {},
         "extensions": [
           {
             "name": "三文件合并",
@@ -38,21 +23,21 @@
                 "required": false,
                 "description": "基础配置文件路径",
                 "example": "docker-compose.yml",
-                "notes": ""
+                "notes": "可选"
               },
               "file2": {
                 "type": "string",
                 "required": false,
                 "description": "覆盖配置文件路径",
                 "example": "docker-compose.prod.yml",
-                "notes": ""
+                "notes": "可选"
               },
               "file3": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -60,7 +45,8 @@
             "name": "跨目录引用",
             "keyword": "docker-compose -f ../common/base.yml",
             "description": "引用上级目录的配置文件",
-            "cmd": "docker-compose -f ../common/base.yml -f prod.yml up -d"
+            "cmd": "docker-compose -f ../common/base.yml -f prod.yml up -d",
+            "params": {}
           },
           {
             "name": "指定 env 文件",
@@ -73,7 +59,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -88,49 +74,28 @@
                 "required": false,
                 "description": "基础配置文件路径",
                 "example": "docker-compose.yml",
-                "notes": ""
+                "notes": "可选"
               },
               "file2": {
                 "type": "string",
                 "required": false,
                 "description": "覆盖配置文件路径",
                 "example": "docker-compose.prod.yml",
-                "notes": ""
+                "notes": "可选"
               }
             }
           }
         ]
-      }
+      },
+      "dirPath": "/DockerCompose 高级模式/"
     },
     {
       "name": "构建与部署",
       "keyword": "docker-compose build up",
-      "description": "构建镜像并启动服务",
+      "description": "构建镜像并启动服务。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker-compose build%{no_cache}% %{service}% && docker-compose up%{detached}% %{service}%",
-        "params": [
-          {
-            "name": "no_cache",
-            "type": "flag",
-            "default": "",
-            "description": "--no-cache 禁用构建缓存",
-            "example": "--no-cache"
-          },
-          {
-            "name": "detached",
-            "type": "flag",
-            "default": "",
-            "description": "-d 后台运行",
-            "example": "-d"
-          },
-          {
-            "name": "service",
-            "type": "string",
-            "default": "",
-            "description": "指定服务名称（留空构建全部）",
-            "example": "web"
-          }
-        ],
+        "params": {},
         "extensions": [
           {
             "name": "强制重建启动",
@@ -143,7 +108,7 @@
                 "required": false,
                 "description": "-d 后台运行",
                 "example": "-d",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -158,7 +123,7 @@
                 "required": false,
                 "description": "指定服务名称（留空构建全部）",
                 "example": "web",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -173,35 +138,21 @@
                 "required": false,
                 "description": "指定服务名称（留空构建全部）",
                 "example": "web",
-                "notes": ""
+                "notes": "可选"
               }
             }
           }
         ]
-      }
+      },
+      "dirPath": "/DockerCompose 高级模式/"
     },
     {
       "name": "服务启停控制",
       "keyword": "docker-compose stop restart",
-      "description": "管理服务生命周期",
+      "description": "管理服务生命周期。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker-compose %{action}% %{service}%",
-        "params": [
-          {
-            "name": "action",
-            "type": "string",
-            "default": "restart",
-            "description": "操作类型：restart/stop/start",
-            "example": "restart"
-          },
-          {
-            "name": "service",
-            "type": "string",
-            "default": "",
-            "description": "服务名称（留空则对所有服务操作）",
-            "example": "web"
-          }
-        ],
+        "params": {},
         "extensions": [
           {
             "name": "优雅停止",
@@ -214,7 +165,7 @@
                 "required": false,
                 "description": "服务名称（留空则对所有服务操作）",
                 "example": "web",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -229,7 +180,7 @@
                 "required": false,
                 "description": "服务名称（留空则对所有服务操作）",
                 "example": "web",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -244,7 +195,7 @@
                 "required": false,
                 "description": "服务名称（留空则对所有服务操作）",
                 "example": "web",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -259,84 +210,68 @@
                 "required": false,
                 "description": "服务名称（留空则对所有服务操作）",
                 "example": "web",
-                "notes": ""
+                "notes": "可选"
               }
             }
           }
         ]
-      }
+      },
+      "dirPath": "/DockerCompose 高级模式/"
     },
     {
       "name": "容器删除与清理",
       "keyword": "docker-compose rm down",
-      "description": "删除已停止容器或完整清理环境",
+      "description": "删除已停止容器或完整清理环境。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker-compose %{action}%",
-        "params": [
-          {
-            "name": "action",
-            "type": "string",
-            "default": "rm",
-            "description": "操作：rm/down",
-            "example": "rm"
-          }
-        ],
+        "params": {},
         "extensions": [
           {
             "name": "删除已停止容器",
             "keyword": "docker-compose rm",
             "description": "删除已停止的容器",
-            "cmd": "docker-compose rm"
+            "cmd": "docker-compose rm",
+            "params": {}
           },
           {
             "name": "强制删除",
             "keyword": "docker-compose rm -f",
             "description": "强制删除（无需确认）",
-            "cmd": "docker-compose rm -f"
+            "cmd": "docker-compose rm -f",
+            "params": {}
           },
           {
             "name": "停止并删除",
             "keyword": "docker-compose down",
             "description": "停止服务并移除容器",
-            "cmd": "docker-compose down"
+            "cmd": "docker-compose down",
+            "params": {}
           },
           {
             "name": "删除容器和卷",
             "keyword": "docker-compose down -v",
             "description": "停止服务并删除数据卷",
-            "cmd": "docker-compose down -v"
+            "cmd": "docker-compose down -v",
+            "params": {}
           },
           {
             "name": "完全清理",
             "keyword": "docker-compose down -v --rmi all",
             "description": "停止服务、删除容器、卷、镜像",
-            "cmd": "docker-compose down -v --rmi all"
+            "cmd": "docker-compose down -v --rmi all",
+            "params": {}
           }
         ]
-      }
+      },
+      "dirPath": "/DockerCompose 高级模式/"
     },
     {
       "name": "服务扩缩容",
       "keyword": "docker-compose scale --scale",
-      "description": "调整服务实例数量",
+      "description": "调整服务实例数量。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker-compose up -d --scale %{service}%=%{num}%",
-        "params": [
-          {
-            "name": "service",
-            "type": "string",
-            "default": "web",
-            "description": "服务名称",
-            "example": "web"
-          },
-          {
-            "name": "num",
-            "type": "number",
-            "default": "3",
-            "description": "副本数量",
-            "example": "3"
-          }
-        ],
+        "params": {},
         "extensions": [
           {
             "name": "多服务扩缩",
@@ -349,28 +284,28 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "num1": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "service2": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "num2": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -385,42 +320,28 @@
                 "required": false,
                 "description": "服务名称",
                 "example": "web",
-                "notes": ""
+                "notes": "可选"
               },
               "max": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             }
           }
         ]
-      }
+      },
+      "dirPath": "/DockerCompose 高级模式/"
     },
     {
       "name": "网络创建与配置",
       "keyword": "docker network create",
-      "description": "创建和管理 Docker 网络",
+      "description": "创建和管理 Docker 网络。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker network %{action}% %{network}%",
-        "params": [
-          {
-            "name": "action",
-            "type": "string",
-            "default": "create",
-            "description": "操作：create/connect/disconnect/rm/inspect",
-            "example": "create"
-          },
-          {
-            "name": "network",
-            "type": "string",
-            "default": "mynet",
-            "description": "网络名称",
-            "example": "mynet"
-          }
-        ],
+        "params": {},
         "extensions": [
           {
             "name": "创建桥接网络",
@@ -433,7 +354,7 @@
                 "required": false,
                 "description": "网络名称",
                 "example": "mynet",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -448,7 +369,7 @@
                 "required": false,
                 "description": "网络名称",
                 "example": "mynet",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -463,14 +384,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "network": {
                 "type": "string",
                 "required": false,
                 "description": "网络名称",
                 "example": "mynet",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -485,14 +406,14 @@
                 "required": false,
                 "description": "网络名称",
                 "example": "mynet",
-                "notes": ""
+                "notes": "可选"
               },
               "container": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -507,14 +428,14 @@
                 "required": false,
                 "description": "网络名称",
                 "example": "mynet",
-                "notes": ""
+                "notes": "可选"
               },
               "container": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -529,42 +450,21 @@
                 "required": false,
                 "description": "网络名称",
                 "example": "mynet",
-                "notes": ""
+                "notes": "可选"
               }
             }
           }
         ]
-      }
+      },
+      "dirPath": "/DockerCompose 高级模式/"
     },
     {
       "name": "网络连通性测试",
       "keyword": "ping dns service discovery",
-      "description": "测试服务间网络连通性和 DNS 解析",
+      "description": "测试服务间网络连通性和 DNS 解析。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker-compose exec -it %{from_service}% ping -c %{count}% %{to_service}%",
-        "params": [
-          {
-            "name": "from_service",
-            "type": "string",
-            "default": "web",
-            "description": "源服务名称",
-            "example": "web"
-          },
-          {
-            "name": "to_service",
-            "type": "string",
-            "default": "db",
-            "description": "目标服务名称（DNS 名称）",
-            "example": "db"
-          },
-          {
-            "name": "count",
-            "type": "number",
-            "default": "3",
-            "description": " ping 次数",
-            "example": "3"
-          }
-        ],
+        "params": {},
         "extensions": [
           {
             "name": "查看 hosts 文件",
@@ -577,7 +477,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -592,7 +492,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -607,35 +507,28 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "target": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             }
           }
         ]
-      }
+      },
+      "dirPath": "/DockerCompose 高级模式/"
     },
     {
       "name": "卷创建与备份",
       "keyword": "docker volume create backup",
-      "description": "创建和管理 Docker 卷及备份恢复",
+      "description": "创建和管理 Docker 卷及备份恢复。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker volume %{action}%",
-        "params": [
-          {
-            "name": "action",
-            "type": "string",
-            "default": "create",
-            "description": "操作：create/inspect/rm/ls",
-            "example": "create"
-          }
-        ],
+        "params": {},
         "extensions": [
           {
             "name": "创建命名卷",
@@ -648,7 +541,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -663,7 +556,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -678,7 +571,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -693,7 +586,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -708,53 +601,49 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "dest": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             }
           }
         ]
-      }
+      },
+      "dirPath": "/DockerCompose 高级模式/"
     },
     {
       "name": "卷清理维护",
       "keyword": "docker volume prune ls",
-      "description": "查看和清理未使用的 Docker 卷",
+      "description": "查看和清理未使用的 Docker 卷。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker volume %{action}%",
-        "params": [
-          {
-            "name": "action",
-            "type": "string",
-            "default": "ls",
-            "description": "操作：ls/prune/rm",
-            "example": "ls"
-          }
-        ],
+        "params": {},
         "extensions": [
           {
             "name": "列出所有卷",
             "keyword": "docker volume ls",
             "description": "列出所有数据卷",
-            "cmd": "docker volume ls"
+            "cmd": "docker volume ls",
+            "params": {}
           },
           {
             "name": "列出悬空卷",
             "keyword": "docker volume ls -f dangling",
             "description": "列出未使用的卷",
-            "cmd": "docker volume ls -f dangling=true"
+            "cmd": "docker volume ls -f dangling=true",
+            "params": {}
           },
           {
             "name": "清理悬空卷",
             "keyword": "docker volume prune",
             "description": "删除所有未使用的卷",
-            "cmd": "docker volume prune"
+            "cmd": "docker volume prune",
+            "params": {}
           },
           {
             "name": "删除指定卷",
@@ -767,54 +656,35 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             }
           }
         ]
-      }
+      },
+      "dirPath": "/DockerCompose 高级模式/"
     },
     {
       "name": "多环境部署",
       "keyword": "docker-compose override prod dev profile",
-      "description": "多环境配置切换与 profile 机制",
+      "description": "多环境配置切换与 profile 机制。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker-compose -f %{file1}% -f %{file2}% up -d%{profile}%",
-        "params": [
-          {
-            "name": "file1",
-            "type": "string",
-            "default": "docker-compose.yml",
-            "description": "基础配置文件",
-            "example": "docker-compose.yml"
-          },
-          {
-            "name": "file2",
-            "type": "string",
-            "default": "docker-compose.prod.yml",
-            "description": "环境覆盖配置",
-            "example": "docker-compose.prod.yml"
-          },
-          {
-            "name": "profile",
-            "type": "string",
-            "default": "",
-            "description": "启用 profile（如 --profile frontend）",
-            "example": "--profile frontend"
-          }
-        ],
+        "params": {},
         "extensions": [
           {
             "name": "生产环境",
             "keyword": "docker-compose -f prod",
             "description": "使用生产环境配置",
-            "cmd": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d"
+            "cmd": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d",
+            "params": {}
           },
           {
             "name": "开发环境",
             "keyword": "docker-compose -f dev",
             "description": "使用开发环境配置",
-            "cmd": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d"
+            "cmd": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d",
+            "params": {}
           },
           {
             "name": "启用 profile",
@@ -827,7 +697,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -842,144 +712,94 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "p2": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             }
           }
         ]
-      }
+      },
+      "dirPath": "/DockerCompose 高级模式/"
     },
     {
       "name": "环境变量与配置",
       "keyword": "docker-compose env-file .env",
-      "description": "管理 Docker Compose 环境变量",
+      "description": "管理 Docker Compose 环境变量。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker-compose --env-file %{env_file}% %{action}%",
-        "params": [
-          {
-            "name": "env_file",
-            "type": "string",
-            "default": ".env",
-            "description": "环境变量文件路径",
-            "example": ".env"
-          },
-          {
-            "name": "action",
-            "type": "string",
-            "default": "config",
-            "description": "操作：config/up/ps",
-            "example": "config"
-          }
-        ],
+        "params": {},
         "extensions": [
           {
             "name": "显示合并配置",
             "keyword": "docker-compose config",
             "description": "输出合并后的完整配置",
-            "cmd": "docker-compose config"
+            "cmd": "docker-compose config",
+            "params": {}
           },
           {
             "name": "检查环境变量",
             "keyword": "docker-compose config | grep",
             "description": "检查当前加载的环境变量",
-            "cmd": "docker-compose config | grep -E \"image|environment|SECRET\""
+            "cmd": "docker-compose config | grep -E \"image|environment|SECRET\"",
+            "params": {}
           },
           {
             "name": "使用默认 env",
             "keyword": "docker-compose up",
             "description": "使用默认 .env 文件",
-            "cmd": "docker-compose up -d"
+            "cmd": "docker-compose up -d",
+            "params": {}
           }
         ]
-      }
+      },
+      "dirPath": "/DockerCompose 高级模式/"
     },
     {
       "name": "健康检查配置",
       "keyword": "healthcheck HEALTHCHECK",
-      "description": "在 docker-compose.yml 中配置健康检查",
+      "description": "在 docker-compose.yml 中配置健康检查。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "healthcheck:\n  test: [\"CMD\", \"%{command}%\"]\n  interval: %{interval}%\n  timeout: %{timeout}%\n  retries: %{retries}%\n  start_period: %{start_period}%",
-        "params": [
-          {
-            "name": "command",
-            "type": "string",
-            "default": "wget --spider -q http://localhost:3000/health",
-            "description": "健康检查命令",
-            "example": "curl -f http://localhost/health"
-          },
-          {
-            "name": "interval",
-            "type": "string",
-            "default": "30s",
-            "description": "检查间隔",
-            "example": "30s"
-          },
-          {
-            "name": "timeout",
-            "type": "string",
-            "default": "10s",
-            "description": "超时时间",
-            "example": "10s"
-          },
-          {
-            "name": "retries",
-            "type": "number",
-            "default": "3",
-            "description": "重试次数",
-            "example": "3"
-          },
-          {
-            "name": "start_period",
-            "type": "string",
-            "default": "40s",
-            "description": "启动宽限期",
-            "example": "40s"
-          }
-        ],
+        "params": {},
         "extensions": [
           {
             "name": "HTTP 健康检查",
             "keyword": "healthcheck http",
             "description": "HTTP 端点健康检查",
-            "cmd": "test: [\"CMD\", \"wget\", \"--spider\", \"-q\", \"http://localhost:3000/health\"]"
+            "cmd": "test: [\"CMD\", \"wget\", \"--spider\", \"-q\", \"http://localhost:3000/health\"]",
+            "params": {}
           },
           {
             "name": "Shell 健康检查",
             "keyword": "healthcheck cmd-shell",
             "description": "使用 CMD-SHELL 执行健康检查",
-            "cmd": "test: [\"CMD-SHELL\", \"pg_isready -U postgres\"]"
+            "cmd": "test: [\"CMD-SHELL\", \"pg_isready -U postgres\"]",
+            "params": {}
           },
           {
             "name": "TCP 端口检查",
             "keyword": "healthcheck tcp",
             "description": "检查 TCP 端口是否可达",
-            "cmd": "test: [\"CMD\", \"nc\", \"-z\", \"localhost\", \"5432\"]"
+            "cmd": "test: [\"CMD\", \"nc\", \"-z\", \"localhost\", \"5432\"]",
+            "params": {}
           }
         ]
-      }
+      },
+      "dirPath": "/DockerCompose 高级模式/"
     },
     {
       "name": "健康状态查看",
       "keyword": "docker inspect health ps",
-      "description": "查看服务健康状态和健康检查日志",
+      "description": "查看服务健康状态和健康检查日志。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker inspect --format='{{.State.Health.Status}}' $(docker-compose ps -q %{service}%)",
-        "params": [
-          {
-            "name": "service",
-            "type": "string",
-            "default": "web",
-            "description": "服务名称",
-            "example": "web"
-          }
-        ],
+        "params": {},
         "extensions": [
           {
             "name": "查看健康日志",
@@ -992,7 +812,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -1007,7 +827,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -1022,49 +842,28 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "port": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             }
           }
         ]
-      }
+      },
+      "dirPath": "/DockerCompose 高级模式/"
     },
     {
       "name": "日志与调试",
       "keyword": "docker-compose logs debug",
-      "description": "查看和分析服务日志",
+      "description": "查看和分析服务日志。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker-compose logs%{follow}% --tail=%{lines}% --timestamps %{service}%",
-        "params": [
-          {
-            "name": "follow",
-            "type": "flag",
-            "default": "",
-            "description": "-f 实时跟踪",
-            "example": "-f"
-          },
-          {
-            "name": "lines",
-            "type": "number",
-            "default": "100",
-            "description": "显示行数",
-            "example": "200"
-          },
-          {
-            "name": "service",
-            "type": "string",
-            "default": "",
-            "description": "服务名称（留空则所有服务）",
-            "example": "web"
-          }
-        ],
+        "params": {},
         "extensions": [
           {
             "name": "实时跟踪日志",
@@ -1077,7 +876,7 @@
                 "required": false,
                 "description": "服务名称（留空则所有服务）",
                 "example": "web",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -1092,14 +891,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "service": {
                 "type": "string",
                 "required": false,
                 "description": "服务名称（留空则所有服务）",
                 "example": "web",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -1114,42 +913,21 @@
                 "required": false,
                 "description": "服务名称（留空则所有服务）",
                 "example": "web",
-                "notes": ""
+                "notes": "可选"
               }
             }
           }
         ]
-      }
+      },
+      "dirPath": "/DockerCompose 高级模式/"
     },
     {
       "name": "进入容器调试",
       "keyword": "docker-compose exec sh bash",
-      "description": "进入容器执行交互式命令",
+      "description": "进入容器执行交互式命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker-compose exec%{it}% %{service}% %{shell}%",
-        "params": [
-          {
-            "name": "it",
-            "type": "flag",
-            "default": "",
-            "description": "-it 交互式终端",
-            "example": "-it"
-          },
-          {
-            "name": "service",
-            "type": "string",
-            "default": "web",
-            "description": "服务名称",
-            "example": "web"
-          },
-          {
-            "name": "shell",
-            "type": "string",
-            "default": "/bin/sh",
-            "description": "Shell 类型",
-            "example": "/bin/bash"
-          }
-        ],
+        "params": {},
         "extensions": [
           {
             "name": "交互式 bash",
@@ -1162,7 +940,7 @@
                 "required": false,
                 "description": "服务名称",
                 "example": "web",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -1177,14 +955,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "service": {
                 "type": "string",
                 "required": false,
                 "description": "服务名称",
                 "example": "web",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -1199,48 +977,35 @@
                 "required": false,
                 "description": "服务名称",
                 "example": "web",
-                "notes": ""
+                "notes": "可选"
               },
               "command": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             }
           }
         ]
-      }
+      },
+      "dirPath": "/DockerCompose 高级模式/"
     },
     {
       "name": "镜像拉取与推送",
       "keyword": "docker-compose pull push",
-      "description": "拉取和推送服务镜像",
+      "description": "拉取和推送服务镜像。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker-compose %{action}% %{service}%",
-        "params": [
-          {
-            "name": "action",
-            "type": "string",
-            "default": "pull",
-            "description": "操作：pull/push",
-            "example": "pull"
-          },
-          {
-            "name": "service",
-            "type": "string",
-            "default": "",
-            "description": "服务名称（留空则所有服务）",
-            "example": "web"
-          }
-        ],
+        "params": {},
         "extensions": [
           {
             "name": "拉取所有镜像",
             "keyword": "docker-compose pull",
             "description": "拉取配置中的所有镜像",
-            "cmd": "docker-compose pull"
+            "cmd": "docker-compose pull",
+            "params": {}
           },
           {
             "name": "拉取指定服务",
@@ -1253,7 +1018,7 @@
                 "required": false,
                 "description": "服务名称（留空则所有服务）",
                 "example": "web",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -1261,63 +1026,55 @@
             "name": "并行拉取",
             "keyword": "docker-compose pull --parallel",
             "description": "并行拉取多个镜像",
-            "cmd": "docker-compose pull --parallel"
+            "cmd": "docker-compose pull --parallel",
+            "params": {}
           },
           {
             "name": "忽略拉取失败",
             "keyword": "docker-compose pull --ignore-pull-failures",
             "description": "忽略单个镜像拉取失败",
-            "cmd": "docker-compose pull --ignore-pull-failures"
+            "cmd": "docker-compose pull --ignore-pull-failures",
+            "params": {}
           },
           {
             "name": "推送所有镜像",
             "keyword": "docker-compose push",
             "description": "推送所有服务镜像到仓库",
-            "cmd": "docker-compose push"
+            "cmd": "docker-compose push",
+            "params": {}
           }
         ]
-      }
+      },
+      "dirPath": "/DockerCompose 高级模式/"
     },
     {
       "name": "配置验证与转换",
       "keyword": "docker-compose config validate",
-      "description": "验证配置并查看合并结果",
+      "description": "验证配置并查看合并结果。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker-compose -f %{file1}% -f %{file2}% config",
-        "params": [
-          {
-            "name": "file1",
-            "type": "string",
-            "default": "docker-compose.yml",
-            "description": "配置文件路径",
-            "example": "docker-compose.yml"
-          },
-          {
-            "name": "file2",
-            "type": "string",
-            "default": "docker-compose.prod.yml",
-            "description": "覆盖配置文件",
-            "example": "docker-compose.prod.yml"
-          }
-        ],
+        "params": {},
         "extensions": [
           {
             "name": "静默验证",
             "keyword": "docker-compose config -q",
             "description": "只返回验证结果（0 或 1）",
-            "cmd": "docker-compose config -q"
+            "cmd": "docker-compose config -q",
+            "params": {}
           },
           {
             "name": "列出服务",
             "keyword": "docker-compose config --services",
             "description": "列出配置中的所有服务",
-            "cmd": "docker-compose config --services"
+            "cmd": "docker-compose config --services",
+            "params": {}
           },
           {
             "name": "列出卷",
             "keyword": "docker-compose config --volumes",
             "description": "列出配置中的所有卷",
-            "cmd": "docker-compose config --volumes"
+            "cmd": "docker-compose config --volumes",
+            "params": {}
           },
           {
             "name": "转换为 JSON",
@@ -1330,49 +1087,21 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             }
           }
         ]
-      }
+      },
+      "dirPath": "/DockerCompose 高级模式/"
     },
     {
       "name": "数据库备份",
       "keyword": "docker-compose exec backup db pg_dump",
-      "description": "在容器中执行数据库备份",
+      "description": "在容器中执行数据库备份。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker-compose exec -T %{db_service}% pg_dump -U %{user}% -d %{database}% > backup_%{date}%.sql",
-        "params": [
-          {
-            "name": "db_service",
-            "type": "string",
-            "default": "db",
-            "description": "数据库服务名称",
-            "example": "db"
-          },
-          {
-            "name": "user",
-            "type": "string",
-            "default": "postgres",
-            "description": "数据库用户名",
-            "example": "postgres"
-          },
-          {
-            "name": "database",
-            "type": "string",
-            "default": "mydb",
-            "description": "数据库名称",
-            "example": "mydb"
-          },
-          {
-            "name": "date",
-            "type": "string",
-            "default": "$(date +%Y%m%d)",
-            "description": "备份日期",
-            "example": "$(date +%Y%m%d_%H%M%S)"
-          }
-        ],
+        "params": {},
         "extensions": [
           {
             "name": "MySQL 备份",
@@ -1385,21 +1114,21 @@
                 "required": false,
                 "description": "数据库用户名",
                 "example": "postgres",
-                "notes": ""
+                "notes": "可选"
               },
               "pass": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "database": {
                 "type": "string",
                 "required": false,
                 "description": "数据库名称",
                 "example": "mydb",
-                "notes": ""
+                "notes": "可选"
               }
             }
           },
@@ -1414,98 +1143,95 @@
                 "required": false,
                 "description": "备份日期",
                 "example": "$(date +%Y%m%d_%H%M%S)",
-                "notes": ""
+                "notes": "可选"
               }
             }
           }
         ]
-      }
+      },
+      "dirPath": "/DockerCompose 高级模式/"
     },
     {
       "name": "资源清理维护",
       "keyword": "docker system prune cleanup",
-      "description": "清理未使用的 Docker 资源",
+      "description": "清理未使用的 Docker 资源。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker %{action}%",
-        "params": [
-          {
-            "name": "action",
-            "type": "string",
-            "default": "system prune -a",
-            "description": "清理操作",
-            "example": "system prune -a --volumes"
-          }
-        ],
+        "params": {},
         "extensions": [
           {
             "name": "清理未使用卷",
             "keyword": "docker volume prune",
             "description": "删除未使用的卷",
-            "cmd": "docker volume prune"
+            "cmd": "docker volume prune",
+            "params": {}
           },
           {
             "name": "清理未使用网络",
             "keyword": "docker network prune",
             "description": "删除未使用的网络",
-            "cmd": "docker network prune"
+            "cmd": "docker network prune",
+            "params": {}
           },
           {
             "name": "清理悬空镜像",
             "keyword": "docker image prune -a",
             "description": "删除所有未使用的镜像",
-            "cmd": "docker image prune -a"
+            "cmd": "docker image prune -a",
+            "params": {}
           },
           {
             "name": "完整系统清理",
             "keyword": "docker system prune -a --volumes",
             "description": "清理所有未使用的容器、镜像、网络、卷",
-            "cmd": "docker system prune -a --volumes"
+            "cmd": "docker system prune -a --volumes",
+            "params": {}
           },
           {
             "name": "查看资源占用",
             "keyword": "docker stats",
             "description": "查看所有容器资源使用情况",
-            "cmd": "docker stats"
+            "cmd": "docker stats",
+            "params": {}
           }
         ]
-      }
+      },
+      "dirPath": "/DockerCompose 高级模式/"
     },
     {
       "name": "完整部署流程",
       "keyword": "down build up deploy",
-      "description": "执行完整的清理-构建-部署流程",
+      "description": "执行完整的清理-构建-部署流程。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker-compose down -v && docker-compose build --no-cache && docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d%{scale}%",
-        "params": [
-          {
-            "name": "scale",
-            "type": "string",
-            "default": "",
-            "description": "扩缩容配置（如 --scale web=3）",
-            "example": "--scale web=3 --scale worker=2"
-          }
-        ],
+        "params": {},
         "extensions": [
           {
             "name": "干净重建",
             "keyword": "docker-compose down -v build up",
             "description": "删除卷后重新构建部署",
-            "cmd": "docker-compose down -v && docker-compose build --no-cache && docker-compose up -d"
+            "cmd": "docker-compose down -v && docker-compose build --no-cache && docker-compose up -d",
+            "params": {}
           },
           {
             "name": "拉取更新部署",
             "keyword": "docker-compose pull up",
             "description": "拉取最新镜像并重启服务",
-            "cmd": "docker-compose pull && docker-compose up -d"
+            "cmd": "docker-compose pull && docker-compose up -d",
+            "params": {}
           },
           {
             "name": "生产环境部署",
             "keyword": "docker-compose prod deploy",
             "description": "生产配置完整部署",
-            "cmd": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --scale web=3"
+            "cmd": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --scale web=3",
+            "params": {}
           }
         ]
-      }
+      },
+      "dirPath": "/DockerCompose 高级模式/"
     }
-  ]
+  ],
+  "module": "DockerCompose 高级模式",
+  "version": "2.0"
 }

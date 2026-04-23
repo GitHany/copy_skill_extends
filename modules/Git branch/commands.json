@@ -1,0 +1,247 @@
+{
+  "module": "Git branch",
+  "version": "2.0",
+  "description": "Git branch management - List, create, rename, and delete branches. Branches let you develop features, fix bugs, or experiment safely in isolation without affecting the main codebase.",
+  "commands": [
+    {
+      "dirPath": "/Git branch/",
+      "name": "git branch list",
+      "keyword": "git branch list",
+      "description": "List all local branches - shows your current branch with an asterisk (*)",
+      "data": {
+        "cmd": "git branch",
+        "extensions": [
+          {
+            "name": "git branch -a list all",
+            "description": "List all local and remote branches",
+            "params": {},
+            "cmd": ""
+          },
+          {
+            "name": "git branch -v verbose",
+            "description": "List branches with last commit info",
+            "params": {},
+            "cmd": ""
+          },
+          {
+            "name": "git branch -vv detailed",
+            "description": "List with upstream tracking info",
+            "params": {},
+            "cmd": ""
+          },
+          {
+            "name": "git branch -r remote only",
+            "description": "List only remote tracking branches",
+            "params": {},
+            "cmd": ""
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Git branch/",
+      "name": "git branch create",
+      "keyword": "git branch create new",
+      "description": "Create a new local branch - does not switch to it, just creates the branch pointing to current commit",
+      "data": {
+        "cmd": "git branch %{branch_name}%",
+        "extensions": [
+          {
+            "name": "git branch create from commit",
+            "description": "Create branch from a specific commit",
+            "params": {
+              "commit": {
+                "type": "string",
+                "required": true,
+                "description": "Starting commit hash",
+                "example": "a1b2c3d",
+                "notes": "Can use full or short hash"
+              }
+            },
+            "cmd": ""
+          },
+          {
+            "name": "git branch create tracking",
+            "description": "Create and set up tracking to a remote branch",
+            "params": {
+              "branch_name": {
+                "type": "string",
+                "required": true,
+                "description": "New branch name",
+                "example": "feature/login",
+                "notes": "Will track remote branch"
+              },
+              "remote_branch": {
+                "type": "string",
+                "required": true,
+                "description": "Remote branch to track",
+                "example": "origin/feature/login",
+                "notes": "Full remote branch path"
+              }
+            },
+            "cmd": ""
+          }
+        ],
+        "params": {
+          "branch_name": {
+            "type": "string",
+            "required": true,
+            "description": "New branch name",
+            "example": "feature/login",
+            "notes": "Use slashes for grouping like feature/ or bugfix/"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Git branch/",
+      "name": "git branch delete",
+      "keyword": "git branch delete safe",
+      "description": "Safely delete a merged branch - Git prevents deletion if branch is not merged to prevent data loss",
+      "data": {
+        "cmd": "git branch -d %{branch_name}%",
+        "extensions": [
+          {
+            "name": "git branch delete force",
+            "description": "Force delete an unmerged branch",
+            "params": {
+              "branch_name": {
+                "type": "string",
+                "required": true,
+                "description": "Branch to force delete",
+                "example": "experiment/broken",
+                "notes": "WARNING: all commits will be lost"
+              }
+            },
+            "cmd": ""
+          },
+          {
+            "name": "git branch delete multiple",
+            "description": "Delete several branches at once",
+            "params": {
+              "branch_names": {
+                "type": "string",
+                "required": true,
+                "description": "Space-separated branch names",
+                "example": "feature-a feature-b feature-c",
+                "notes": "All must be already merged"
+              }
+            },
+            "cmd": ""
+          }
+        ],
+        "params": {
+          "branch_name": {
+            "type": "string",
+            "required": true,
+            "description": "Branch to delete",
+            "example": "feature/login",
+            "notes": "Only deletes if merged. Use -D to force."
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Git branch/",
+      "name": "git branch rename",
+      "keyword": "git branch rename current",
+      "description": "Rename the current branch - useful when branch name doesn't match its purpose anymore",
+      "data": {
+        "cmd": "git branch -m %{new_name}%",
+        "extensions": [
+          {
+            "name": "git branch rename another",
+            "description": "Rename a different branch (not current)",
+            "params": {
+              "old_name": {
+                "type": "string",
+                "required": true,
+                "description": "Branch to rename",
+                "example": "feature-old",
+                "notes": "Must exist"
+              },
+              "new_name": {
+                "type": "string",
+                "required": true,
+                "description": "New name",
+                "example": "feature-renamed",
+                "notes": "Must not exist"
+              }
+            },
+            "cmd": ""
+          }
+        ],
+        "params": {
+          "new_name": {
+            "type": "string",
+            "required": true,
+            "description": "New branch name",
+            "example": "feature/user-auth",
+            "notes": "Only renames current branch"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Git branch/",
+      "name": "git branch set upstream",
+      "keyword": "git branch track remote",
+      "description": "Set up a local branch to track a remote branch - enables git pull/push without specifying remote",
+      "data": {
+        "cmd": "git branch -u %{remote_branch}%",
+        "extensions": [
+          {
+            "name": "git branch unset upstream",
+            "description": "Remove upstream tracking from a branch",
+            "params": {
+              "branch_name": {
+                "type": "string",
+                "required": true,
+                "description": "Branch to untrack",
+                "example": "feature/login",
+                "notes": "Only removes tracking info"
+              }
+            },
+            "cmd": ""
+          }
+        ],
+        "params": {
+          "remote_branch": {
+            "type": "string",
+            "required": true,
+            "description": "Remote branch (e.g., origin/main)",
+            "example": "origin/main",
+            "notes": "Format: remote-name/branch-name"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Git branch/",
+      "name": "git branch copy",
+      "keyword": "git branch copy exact",
+      "description": "Create a new branch that points to the same commit as another branch - exact copy",
+      "data": {
+        "cmd": "git branch %{new_branch}% %{reference_branch}%",
+        "extensions": [],
+        "params": {
+          "new_branch": {
+            "type": "string",
+            "required": true,
+            "description": "Name for new branch",
+            "example": "backup-v1",
+            "notes": "Will point to same commit as reference"
+          },
+          "reference_branch": {
+            "type": "string",
+            "required": true,
+            "description": "Branch to copy from",
+            "example": "main",
+            "notes": "Existing branch to reference"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "module": "Docker save",
+  "version": "2.0",
+  "description": "Docker 镜像保存加载，涵盖Docker save的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Docker save/",
+      "name": "docker save 保存镜像",
+      "keyword": "docker save 保存",
+      "description": "将镜像保存为 tar 文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker save -o %{文件}% %{镜像}%",
+        "extensions": [],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "文件",
+            "example": "image.tar",
+            "notes": "必填"
+          },
+          "镜像": {
+            "type": "string",
+            "required": true,
+            "description": "镜像",
+            "example": "nginx:latest",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Docker save/",
+      "name": "docker load 加载镜像",
+      "keyword": "docker load 加载",
+      "description": "从 tar 文件加载镜像。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker load -i %{文件}%",
+        "extensions": [],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "文件",
+            "example": "image.tar",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "module": "Linux netstat",
+  "version": "2.0",
+  "description": "Linux netstat 网络统计命令。显示网络连接、路由表、接口统计等网络信息。是网络故障排查和监控的常用工具，可以查看哪些端口正在监听、当前有哪些连接、协议统计等。现在推荐使用ss命令，但netstat仍广泛使用。",
+  "commands": [
+    {
+      "dirPath": "/Linux netstat/",
+      "name": "netstat 网络统计",
+      "keyword": "netstat 网络",
+      "description": "显示网络连接统计。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "netstat -tuln",
+        "extensions": [
+          {
+            "name": "显示监听端口",
+            "description": "显示所有正在监听的TCP和UDP端口",
+            "params": {},
+            "cmd": "netstat -tuln"
+          },
+          {
+            "name": "显示所有连接",
+            "description": "显示所有网络连接包括已建立和等待",
+            "params": {},
+            "cmd": "netstat -an"
+          },
+          {
+            "name": "显示路由表",
+            "description": "显示内核路由表信息",
+            "params": {},
+            "cmd": "netstat -r"
+          },
+          {
+            "name": "显示接口统计",
+            "description": "显示所有网络接口的统计信息",
+            "params": {},
+            "cmd": "netstat -i"
+          },
+          {
+            "name": "显示TCP连接",
+            "description": "只显示TCP连接",
+            "params": {},
+            "cmd": "netstat -t"
+          },
+          {
+            "name": "显示UDP连接",
+            "description": "只显示UDP连接",
+            "params": {},
+            "cmd": "netstat -u"
+          },
+          {
+            "name": "显示进程信息",
+            "description": "显示连接对应的进程ID和程序名",
+            "params": {},
+            "cmd": "netstat -tulnp"
+          },
+          {
+            "name": "显示广播统计",
+            "description": "显示网络广播统计信息",
+            "params": {},
+            "cmd": "netstat --statistics --broadcast"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

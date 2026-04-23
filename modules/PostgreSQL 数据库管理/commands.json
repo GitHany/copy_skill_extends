@@ -1,0 +1,270 @@
+{
+  "module": "PostgreSQL 数据库管理",
+  "version": "2.0",
+  "description": "PostgreSQL 数据库管理命令集合",
+  "commands": [
+    {
+      "dirPath": "/PostgreSQL 数据库管理/",
+      "name": "psql 执行 SQL",
+      "keyword": "psql SQL",
+      "description": "执行 SQL 语句或文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "psql -h %{主机}% -U %{用户}% -d %{数据库}% -c \"%{SQL}%\"",
+        "extensions": [
+          {
+            "name": "执行 SQL 文件",
+            "cmd": "psql -h %{主机}% -U %{用户}% -d %{数据库}% -f %{文件}%",
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机",
+                "example": "localhost",
+                "notes": "必填"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户",
+                "example": "postgres",
+                "notes": "必填"
+              },
+              "数据库": {
+                "type": "string",
+                "required": true,
+                "description": "数据库",
+                "example": "mydb",
+                "notes": "必填"
+              },
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "SQL 文件",
+                "example": "script.sql",
+                "notes": "必填"
+              }
+            },
+            "keyword": "psql file"
+          }
+        ],
+        "params": {
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "PostgreSQL 主机",
+            "example": "localhost",
+            "notes": "必填"
+          },
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "用户名",
+            "example": "postgres",
+            "notes": "必填"
+          },
+          "数据库": {
+            "type": "string",
+            "required": true,
+            "description": "数据库名",
+            "example": "mydb",
+            "notes": "必填"
+          },
+          "SQL": {
+            "type": "string",
+            "required": true,
+            "description": "SQL 语句",
+            "example": "SELECT * FROM users",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/PostgreSQL 数据库管理/",
+      "name": "pg_dump 备份数据库",
+      "keyword": "pg_dump 备份",
+      "description": "导出 PostgreSQL 数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "pg_dump -h %{主机}% -U %{用户}% %{数据库}% > %{文件}%",
+        "extensions": [
+          {
+            "name": "压缩备份",
+            "cmd": "pg_dump -h %{主机}% -U %{用户}% %{数据库}% | gzip > %{文件}%.gz",
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机",
+                "example": "localhost",
+                "notes": "必填"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户",
+                "example": "postgres",
+                "notes": "必填"
+              },
+              "数据库": {
+                "type": "string",
+                "required": true,
+                "description": "数据库",
+                "example": "mydb",
+                "notes": "必填"
+              },
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "备份文件",
+                "example": "backup",
+                "notes": "必填"
+              }
+            },
+            "keyword": "pg_dump gzip"
+          },
+          {
+            "name": "仅结构",
+            "cmd": "pg_dump -h %{主机}% -U %{用户}% --schema-only %{数据库}% > %{文件}%",
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机",
+                "example": "localhost",
+                "notes": "必填"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户",
+                "example": "postgres",
+                "notes": "必填"
+              },
+              "数据库": {
+                "type": "string",
+                "required": true,
+                "description": "数据库",
+                "example": "mydb",
+                "notes": "必填"
+              },
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件",
+                "example": "schema.sql",
+                "notes": "必填"
+              }
+            },
+            "keyword": "pg_dump schema"
+          }
+        ],
+        "params": {
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "PostgreSQL 主机",
+            "example": "localhost",
+            "notes": "必填"
+          },
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "用户名",
+            "example": "postgres",
+            "notes": "必填"
+          },
+          "数据库": {
+            "type": "string",
+            "required": true,
+            "description": "数据库名",
+            "example": "mydb",
+            "notes": "必填"
+          },
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "输出文件",
+            "example": "backup.sql",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/PostgreSQL 数据库管理/",
+      "name": "pg_restore 恢复数据",
+      "keyword": "pg_restore 恢复",
+      "description": "从备份恢复 PostgreSQL。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "pg_restore -h %{主机}% -U %{用户}% -d %{数据库}% %{文件}%",
+        "extensions": [
+          {
+            "name": "清空后恢复",
+            "cmd": "pg_restore -h %{主机}% -U %{用户}% -d %{数据库}% --clean %{文件}%",
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机",
+                "example": "localhost",
+                "notes": "必填"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户",
+                "example": "postgres",
+                "notes": "必填"
+              },
+              "数据库": {
+                "type": "string",
+                "required": true,
+                "description": "数据库",
+                "example": "mydb",
+                "notes": "必填"
+              },
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "备份文件",
+                "example": "backup.dump",
+                "notes": "必填"
+              }
+            },
+            "keyword": "pg_restore clean"
+          }
+        ],
+        "params": {
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "PostgreSQL 主机",
+            "example": "localhost",
+            "notes": "必填"
+          },
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "用户名",
+            "example": "postgres",
+            "notes": "必填"
+          },
+          "数据库": {
+            "type": "string",
+            "required": true,
+            "description": "数据库名",
+            "example": "mydb",
+            "notes": "必填"
+          },
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "备份文件",
+            "example": "backup.dump",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

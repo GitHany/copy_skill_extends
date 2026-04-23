@@ -1,0 +1,66 @@
+{
+  "module": "kubectl 资源编辑",
+  "version": "2.0",
+  "description": "kubectl 资源编辑命令集合，涵盖kubectl 资源编辑的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/kubectl 资源编辑/",
+      "name": "kubectl edit 编辑资源",
+      "keyword": "kubectl edit 编辑",
+      "description": "编辑资源配置。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl edit %{资源类型}% %{名称}%",
+        "extensions": [],
+        "params": {
+          "资源类型": {
+            "type": "string",
+            "required": true,
+            "description": "资源类型",
+            "example": "deployment",
+            "notes": "必填"
+          },
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "资源名",
+            "example": "myapp",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/kubectl 资源编辑/",
+      "name": "kubectl patch 修补资源",
+      "keyword": "kubectl patch 修补",
+      "description": "修补资源配置。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl patch %{资源类型}% %{名称}% -p '%{补丁}%'",
+        "extensions": [],
+        "params": {
+          "资源类型": {
+            "type": "string",
+            "required": true,
+            "description": "类型",
+            "example": "deployment",
+            "notes": "必填"
+          },
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "名",
+            "example": "myapp",
+            "notes": "必填"
+          },
+          "补丁": {
+            "type": "string",
+            "required": true,
+            "description": "补丁 JSON",
+            "example": "{\"spec\":{\"replicas\":3}}",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

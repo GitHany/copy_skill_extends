@@ -1,0 +1,122 @@
+{
+  "module": "curl 命令",
+  "version": "2.0",
+  "description": "curl 命令命令集合，涵盖curl 命令的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/curl 命令/",
+      "name": "curl GET 请求",
+      "keyword": "curl GET 请求",
+      "description": "发送 GET 请求。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "curl %{URL}%",
+        "extensions": [
+          {
+            "name": "显示响应头",
+            "cmd": "curl -i %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "目标 URL",
+                "example": "https://api.example.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "curl headers"
+          },
+          {
+            "name": "跟随重定向",
+            "cmd": "curl -L %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "目标 URL",
+                "example": "https://example.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "curl redirect"
+          }
+        ],
+        "params": {
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "目标 URL",
+            "example": "https://api.example.com/users",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/curl 命令/",
+      "name": "curl POST 请求",
+      "keyword": "curl POST 请求",
+      "description": "发送 POST 请求。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "curl -X POST %{URL}% -d '%{数据}%' -H 'Content-Type: application/json'",
+        "extensions": [],
+        "params": {
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "目标 URL",
+            "example": "https://api.example.com/users",
+            "notes": "必填"
+          },
+          "数据": {
+            "type": "string",
+            "required": true,
+            "description": "请求体 JSON",
+            "example": "{\"name\":\"John\"}",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/curl 命令/",
+      "name": "curl 下载文件",
+      "keyword": "curl 下载",
+      "description": "下载文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "curl -o %{文件名}% %{URL}%",
+        "extensions": [
+          {
+            "name": "显示进度下载",
+            "cmd": "curl -# -O %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "文件 URL",
+                "example": "https://example.com/file.zip",
+                "notes": "必填"
+              }
+            },
+            "keyword": "curl download progress"
+          }
+        ],
+        "params": {
+          "文件名": {
+            "type": "string",
+            "required": true,
+            "description": "保存文件名",
+            "example": "output.zip",
+            "notes": "必填"
+          },
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "文件 URL",
+            "example": "https://example.com/file.zip",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

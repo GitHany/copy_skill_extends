@@ -1,0 +1,119 @@
+{
+  "module": "AWS ec2 describe",
+  "version": "2.0",
+  "description": "AWS EC2 describe 查询命令。查询 AWS EC2 实例的详细信息，包括实例状态、类型、公私网IP、标签、安全组等。用于日常运维监控、批量管理、资源统计。了解当前有多少台机器在运行、什么配置、位于哪个可用区。",
+  "commands": [
+    {
+      "dirPath": "/AWS ec2 describe/",
+      "name": "aws ec2 describe 查询",
+      "keyword": "aws ec2 describe 查询",
+      "description": "查询 EC2 资源。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws ec2 describe-instances --instance-ids %{ID}%",
+        "extensions": [
+          {
+            "name": "查询单个实例",
+            "description": "查询指定EC2实例的详细信息",
+            "params": {
+              "ID": {
+                "example": "i-12345678",
+                "notes": "实例ID"
+              }
+            },
+            "cmd": "aws ec2 describe-instances --instance-ids %{ID}%"
+          },
+          {
+            "name": "查询所有运行中的实例",
+            "description": "只显示当前running状态的实例，便于快速统计",
+            "params": {
+              "状态": {
+                "example": "running",
+                "notes": "实例状态"
+              }
+            },
+            "cmd": "aws ec2 describe-instances --filters \"Name=instance-state-name,Values=running\""
+          },
+          {
+            "name": "按标签查询实例",
+            "description": "查找具有特定标签的所有实例，如按项目或环境筛选",
+            "params": {
+              "标签名": {
+                "example": "Environment",
+                "notes": "标签键"
+              },
+              "标签值": {
+                "example": "Production",
+                "notes": "标签值"
+              }
+            },
+            "cmd": "aws ec2 describe-instances --filters \"Name=tag:Environment,Values=Production\""
+          },
+          {
+            "name": "查询实例类型",
+            "description": "查看实例的规格信息，如t3.medium, m5.large",
+            "params": {
+              "ID": {
+                "example": "i-12345678",
+                "notes": "实例ID"
+              }
+            },
+            "cmd": "aws ec2 describe-instances --instance-ids %{ID}% --query \"Reservations[0].Instances[0].InstanceType\""
+          },
+          {
+            "name": "查询公网IP",
+            "description": "获取实例的公有IP地址",
+            "params": {
+              "ID": {
+                "example": "i-12345678",
+                "notes": "实例ID"
+              }
+            },
+            "cmd": "aws ec2 describe-instances --instance-ids %{ID}% --query \"Reservations[0].Instances[0].PublicIpAddress\""
+          },
+          {
+            "name": "查询私有IP",
+            "description": "获取实例的私有IP地址",
+            "params": {
+              "ID": {
+                "example": "i-12345678",
+                "notes": "实例ID"
+              }
+            },
+            "cmd": "aws ec2 describe-instances --instance-ids %{ID}% --query \"Reservations[0].Instances[0].PrivateIpAddress\""
+          },
+          {
+            "name": "查询可用区",
+            "description": "查看实例所在的AZ",
+            "params": {
+              "ID": {
+                "example": "i-12345678",
+                "notes": "实例ID"
+              }
+            },
+            "cmd": "aws ec2 describe-instances --instance-ids %{ID}% --query \"Reservations[0].Instances[0].Placement.AvailabilityZone\""
+          },
+          {
+            "name": "批量查询多个实例",
+            "description": "一次查询多个实例的信息",
+            "params": {
+              "ID列表": {
+                "example": "i-12345678 i-87654321 i-11223344",
+                "notes": "空格分隔的实例ID列表"
+              }
+            },
+            "cmd": "aws ec2 describe-instances --instance-ids %{ID列表}%"
+          }
+        ],
+        "params": {
+          "ID": {
+            "type": "string",
+            "required": true,
+            "description": "实例ID",
+            "example": "i-12345678",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "module": "kubectl explain",
+  "version": "2.0",
+  "description": "kubectl API 文档查看，涵盖kubectl explain的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/kubectl explain/",
+      "name": "kubectl explain 查看文档",
+      "keyword": "kubectl explain 文档",
+      "description": "查看资源类型文档。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl explain %{类型}%",
+        "extensions": [
+          {
+            "name": "递归显示",
+            "cmd": "kubectl explain %{类型}% --recursive",
+            "params": {
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "类型",
+                "example": "pod.spec",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl explain recursive"
+          }
+        ],
+        "params": {
+          "类型": {
+            "type": "string",
+            "required": true,
+            "description": "资源类型",
+            "example": "deployment",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

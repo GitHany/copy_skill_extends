@@ -7,7 +7,7 @@
       "dirPath": "/包管理器/",
       "name": "cargo new 创建新项目",
       "keyword": "cargo new 创建项目",
-      "description": "创建新的 Rust 项目",
+      "description": "创建新的 Rust 项目。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "cargo new %{项目名}%",
         "extensions": [
@@ -117,7 +117,7 @@
       "dirPath": "/包管理器/",
       "name": "cargo build 编译项目",
       "keyword": "cargo build 编译",
-      "description": "编译 Rust 项目",
+      "description": "编译 Rust 项目。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "cargo build %{选项}%",
         "extensions": [
@@ -218,7 +218,7 @@
       "dirPath": "/包管理器/",
       "name": "cargo run 运行项目",
       "keyword": "cargo run 运行",
-      "description": "编译并运行 Rust 项目",
+      "description": "编译并运行 Rust 项目。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "cargo run %{选项}%",
         "extensions": [
@@ -313,7 +313,7 @@
       "dirPath": "/包管理器/",
       "name": "cargo test 运行测试",
       "keyword": "cargo test 测试",
-      "description": "运行 Rust 项目的测试",
+      "description": "运行 Rust 项目的测试。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "cargo test %{选项}%",
         "extensions": [
@@ -399,7 +399,7 @@
       "dirPath": "/包管理器/",
       "name": "cargo bench 运行基准测试",
       "keyword": "cargo bench 基准测试",
-      "description": "运行 Rust 项目的基准测试",
+      "description": "运行 Rust 项目的基准测试。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "cargo bench %{选项}%",
         "extensions": [
@@ -488,7 +488,7 @@
       "dirPath": "/包管理器/",
       "name": "cargo add 添加依赖",
       "keyword": "cargo add 添加依赖",
-      "description": "向 Cargo.toml 添加依赖",
+      "description": "向 Cargo.toml 添加依赖。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "cargo add %{包名}%",
         "extensions": [
@@ -662,7 +662,7 @@
       "dirPath": "/包管理器/",
       "name": "cargo remove 移除依赖",
       "keyword": "cargo remove 移除依赖",
-      "description": "从 Cargo.toml 移除依赖",
+      "description": "从 Cargo.toml 移除依赖。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "cargo remove %{包名}%",
         "extensions": [
@@ -752,7 +752,7 @@
       "dirPath": "/包管理器/",
       "name": "cargo clean 清理构建产物",
       "keyword": "cargo clean 清理",
-      "description": "清理 Rust 项目的构建产物",
+      "description": "清理 Rust 项目的构建产物。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "cargo clean %{选项}%",
         "extensions": [
@@ -790,7 +790,7 @@
       "dirPath": "/包管理器/",
       "name": "cargo doc 生成文档",
       "keyword": "cargo doc 生成文档",
-      "description": "生成 Rust 项目的文档",
+      "description": "生成 Rust 项目的文档。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "cargo doc %{选项}%",
         "extensions": [
@@ -834,7 +834,7 @@
       "dirPath": "/包管理器/",
       "name": "cargo update 更新依赖",
       "keyword": "cargo update 更新",
-      "description": "按 semver 规则更新 Cargo.toml 中的依赖",
+      "description": "按 semver 规则更新 Cargo.toml 中的依赖。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "cargo update %{选项}%",
         "extensions": [
@@ -909,7 +909,7 @@
       "dirPath": "/包管理器/",
       "name": "go mod init 初始化模块",
       "keyword": "go mod init 初始化",
-      "description": "初始化一个新的 Go 模块，创建 go.mod 文件",
+      "description": "初始化一个新的 Go 模块，创建 go.mod 文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "go mod init %{模块名}%",
         "extensions": [
@@ -970,7 +970,7 @@
       "dirPath": "/包管理器/",
       "name": "go mod tidy 整理依赖",
       "keyword": "go mod tidy 整理",
-      "description": "整理 go.mod，添加缺失依赖，移除未使用依赖",
+      "description": "整理 go.mod，添加缺失依赖，移除未使用依赖。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "go mod tidy",
         "extensions": [
@@ -1000,7 +1000,7 @@
       "dirPath": "/包管理器/",
       "name": "go mod download 下载依赖",
       "keyword": "go mod download 下载",
-      "description": "下载 go.mod 中的所有模块",
+      "description": "下载 go.mod 中的所有模块。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "go mod download %{模块}%",
         "extensions": [
@@ -1059,7 +1059,7 @@
       "dirPath": "/包管理器/",
       "name": "go get 获取或更新包",
       "keyword": "go get 获取包",
-      "description": "下载并添加 Go 依赖",
+      "description": "下载并添加 Go 依赖。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "go get %{包}%",
         "extensions": [
@@ -1198,7 +1198,7 @@
       "dirPath": "/包管理器/",
       "name": "go mod why 解释依赖",
       "keyword": "go mod why 解释",
-      "description": "解释为何需要某 Go 模块",
+      "description": "解释为何需要某 Go 模块。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "go mod why %{模块}%",
         "extensions": [
@@ -1252,7 +1252,7 @@
       "dirPath": "/包管理器/",
       "name": "go mod vendor 管理 vendor",
       "keyword": "go mod vendor 管理",
-      "description": "将 Go 依赖复制到 vendor 目录",
+      "description": "将 Go 依赖复制到 vendor 目录。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "go mod vendor",
         "extensions": [
@@ -1288,7 +1288,7 @@
       "dirPath": "/包管理器/",
       "name": "go list 列出包",
       "keyword": "go list 列出",
-      "description": "列出 Go 包信息",
+      "description": "列出 Go 包信息。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "go list %{包}%",
         "extensions": [
@@ -1347,7 +1347,7 @@
       "dirPath": "/包管理器/",
       "name": "composer install 安装依赖",
       "keyword": "composer install 安装",
-      "description": "根据 composer.lock 安装 PHP 依赖",
+      "description": "根据 composer.lock 安装 PHP 依赖。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "composer install %{选项}%",
         "extensions": [
@@ -1415,7 +1415,7 @@
       "dirPath": "/包管理器/",
       "name": "composer require 添加依赖",
       "keyword": "composer require 添加",
-      "description": "向 composer.json 添加 PHP 依赖",
+      "description": "向 composer.json 添加 PHP 依赖。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "composer require %{包名}%",
         "extensions": [
@@ -1540,7 +1540,7 @@
       "dirPath": "/包管理器/",
       "name": "composer update 更新依赖",
       "keyword": "composer update 更新",
-      "description": "按 semver 更新 PHP 依赖",
+      "description": "按 semver 更新 PHP 依赖。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "composer update %{包名}%",
         "extensions": [
@@ -1626,7 +1626,7 @@
       "dirPath": "/包管理器/",
       "name": "composer dump-autoload 重新生成自动加载",
       "keyword": "composer dump-autoload 自动加载",
-      "description": "重新生成 PHP 自动加载文件",
+      "description": "重新生成 PHP 自动加载文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "composer dump-autoload %{选项}%",
         "extensions": [
@@ -1682,7 +1682,7 @@
       "dirPath": "/包管理器/",
       "name": "composer remove 移除依赖",
       "keyword": "composer remove 移除",
-      "description": "从 composer.json 移除 PHP 依赖",
+      "description": "从 composer.json 移除 PHP 依赖。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "composer remove %{包名}%",
         "extensions": [
@@ -1779,7 +1779,7 @@
       "dirPath": "/包管理器/",
       "name": "composer show 查看包信息",
       "keyword": "composer show 查看",
-      "description": "查看 PHP 包详细信息",
+      "description": "查看 PHP 包详细信息。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "composer show %{包名}%",
         "extensions": [
@@ -1853,7 +1853,7 @@
       "dirPath": "/包管理器/",
       "name": "bundle install 安装依赖",
       "keyword": "bundle install 安装",
-      "description": "根据 Gemfile.lock 安装 Ruby 依赖",
+      "description": "根据 Gemfile.lock 安装 Ruby 依赖。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "bundle install %{选项}%",
         "extensions": [
@@ -1966,7 +1966,7 @@
       "dirPath": "/包管理器/",
       "name": "bundle exec 在 Bundle 环境中执行",
       "keyword": "bundle exec 执行",
-      "description": "在正确的 gem 环境中运行命令",
+      "description": "在正确的 gem 环境中运行命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "bundle exec %{命令}%",
         "extensions": [
@@ -2068,7 +2068,7 @@
       "dirPath": "/包管理器/",
       "name": "bundle add 添加 Gem",
       "keyword": "bundle add 添加",
-      "description": "向 Gemfile 添加 Ruby Gem",
+      "description": "向 Gemfile 添加 Ruby Gem。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "bundle add %{gem名}%",
         "extensions": [
@@ -2207,7 +2207,7 @@
       "dirPath": "/包管理器/",
       "name": "bundle update 更新 Gem",
       "keyword": "bundle update 更新",
-      "description": "更新 Ruby gems 到最新版本",
+      "description": "更新 Ruby gems 到最新版本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "bundle update %{gem名}%",
         "extensions": [
@@ -2294,7 +2294,7 @@
       "dirPath": "/包管理器/",
       "name": "bundle list 列出已安装的 Gems",
       "keyword": "bundle list 列出",
-      "description": "显示已安装的 Ruby gems 列表",
+      "description": "显示已安装的 Ruby gems 列表。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "bundle list %{选项}%",
         "extensions": [
@@ -2332,7 +2332,7 @@
       "dirPath": "/包管理器/",
       "name": "pip install 安装包",
       "keyword": "pip install 安装",
-      "description": "从 PyPI 安装 Python 包",
+      "description": "从 PyPI 安装 Python 包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "pip install %{包名}%",
         "extensions": [
@@ -2506,7 +2506,7 @@
       "dirPath": "/包管理器/",
       "name": "pip freeze 导出依赖",
       "keyword": "pip freeze 导出",
-      "description": "输出所有已安装的 Python 包及版本",
+      "description": "输出所有已安装的 Python 包及版本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "pip freeze %{选项}%",
         "extensions": [
@@ -2660,7 +2660,7 @@
       "dirPath": "/包管理器/",
       "name": "pip-sync 同步环境",
       "keyword": "pip-sync 同步",
-      "description": "确保 Python 环境与锁文件完全一致",
+      "description": "确保 Python 环境与锁文件完全一致。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "pip-sync %{文件}%",
         "extensions": [
@@ -2716,7 +2716,7 @@
       "dirPath": "/包管理器/",
       "name": "dotnet add package 添加 NuGet 包",
       "keyword": "dotnet add package 添加",
-      "description": "向 .NET 项目添加 NuGet 包",
+      "description": "向 .NET 项目添加 NuGet 包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "dotnet add package %{包名}%",
         "extensions": [
@@ -2876,7 +2876,7 @@
       "dirPath": "/包管理器/",
       "name": "dotnet remove package 移除 NuGet 包",
       "keyword": "dotnet remove package 移除",
-      "description": "从 .NET 项目移除 NuGet 包",
+      "description": "从 .NET 项目移除 NuGet 包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "dotnet remove package %{包名}%",
         "extensions": [
@@ -2938,7 +2938,7 @@
       "dirPath": "/包管理器/",
       "name": "nuget install 安装包",
       "keyword": "nuget install 安装",
-      "description": "下载并解压 NuGet 包到当前目录",
+      "description": "下载并解压 NuGet 包到当前目录。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "nuget install %{包名}%",
         "extensions": [
@@ -3063,7 +3063,7 @@
       "dirPath": "/包管理器/",
       "name": "nuget restore 还原包",
       "keyword": "nuget restore 还原",
-      "description": "还原 .NET 解决方案的所有项目依赖",
+      "description": "还原 .NET 解决方案的所有项目依赖。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "nuget restore %{解决方案}%",
         "extensions": [
@@ -3164,7 +3164,7 @@
       "dirPath": "/包管理器/",
       "name": "nuget pack 打包",
       "keyword": "nuget pack 打包",
-      "description": "从 nuspec 文件创建 NuGet 包",
+      "description": "从 nuspec 文件创建 NuGet 包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "nuget pack %{nuspec文件}%",
         "extensions": [

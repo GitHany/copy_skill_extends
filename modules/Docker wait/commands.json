@@ -1,0 +1,26 @@
+{
+  "module": "Docker wait",
+  "version": "2.0",
+  "description": "Docker wait命令集合，涵盖Docker wait的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Docker wait/",
+      "name": "docker wait 等待停止",
+      "keyword": "docker wait 等待",
+      "description": "阻塞直到容器停止并打印退出码。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker wait %{容器}%",
+        "extensions": [],
+        "params": {
+          "容器": {
+            "type": "string",
+            "required": true,
+            "description": "容器",
+            "example": "myapp",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "module": "kubectl proxy",
+  "version": "2.0",
+  "description": "kubectl API 代理，涵盖kubectl proxy的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/kubectl proxy/",
+      "name": "kubectl proxy 启动代理",
+      "keyword": "kubectl proxy 代理",
+      "description": "启动 Kubernetes API 代理。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl proxy --port=%{端口}%",
+        "extensions": [],
+        "params": {
+          "端口": {
+            "type": "string",
+            "required": false,
+            "description": "端口",
+            "example": "8001",
+            "notes": "可选"
+          }
+        }
+      }
+    }
+  ]
+}

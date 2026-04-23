@@ -1,0 +1,130 @@
+{
+  "module": "Git show",
+  "version": "2.0",
+  "description": "Git 显示提交详情 - 查看提交对象的完整信息，包括作者、日期、提交信息和文件变更。非常适合查看历史提交、检查变更、恢复旧版本或调试问题。不带参数时显示最近一次提交。",
+  "commands": [
+    {
+      "dirPath": "/Git show/",
+      "name": "git show 显示提交",
+      "keyword": "git show 显示",
+      "description": "显示提交详细信息。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git show %{提交}%",
+        "extensions": [
+          {
+            "name": "显示最新提交",
+            "cmd": "git show",
+            "params": {}
+          },
+          {
+            "name": "显示指定提交",
+            "cmd": "git show %{提交}%",
+            "params": {
+              "提交": {
+                "type": "string",
+                "required": false,
+                "description": "提交哈希或引用",
+                "example": "9a1b2c3",
+                "notes": "支持完整或短哈希"
+              }
+            }
+          },
+          {
+            "name": "显示提交的文件变更",
+            "cmd": "git show --stat %{提交}%",
+            "params": {
+              "提交": {
+                "type": "string",
+                "required": false,
+                "description": "提交哈希或引用",
+                "example": "HEAD",
+                "notes": "只显示统计信息"
+              }
+            }
+          },
+          {
+            "name": "显示标签详情",
+            "cmd": "git show %{标签}%",
+            "params": {
+              "标签": {
+                "type": "string",
+                "required": false,
+                "description": "标签名称",
+                "example": "v1.0.0",
+                "notes": "查看标签对应的提交"
+              }
+            }
+          },
+          {
+            "name": "显示文件在提交时的内容",
+            "cmd": "git show %{提交}:%{文件}%",
+            "params": {
+              "提交": {
+                "type": "string",
+                "required": true,
+                "description": "提交哈希或引用",
+                "example": "HEAD~1",
+                "notes": "必填"
+              },
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径",
+                "example": "app.js",
+                "notes": "查看历史版本的某个文件"
+              }
+            }
+          },
+          {
+            "name": "显示提交的所有分支",
+            "cmd": "git show --format=fuller %{提交}%",
+            "params": {
+              "提交": {
+                "type": "string",
+                "required": false,
+                "description": "提交哈希或引用",
+                "example": "HEAD",
+                "notes": "显示完整作者和提交者信息"
+              }
+            }
+          },
+          {
+            "name": "显示提交的文件名",
+            "cmd": "git show --name-only %{提交}%",
+            "params": {
+              "提交": {
+                "type": "string",
+                "required": false,
+                "description": "提交哈希或引用",
+                "example": "HEAD",
+                "notes": "只显示变更的文件列表"
+              }
+            }
+          },
+          {
+            "name": "显示提交的简短信息",
+            "cmd": "git show --oneline %{提交}%",
+            "params": {
+              "提交": {
+                "type": "string",
+                "required": false,
+                "description": "提交哈希或引用",
+                "example": "HEAD",
+                "notes": "一行显示提交信息"
+              }
+            }
+          }
+        ],
+        "params": {
+          "提交": {
+            "type": "string",
+            "required": false,
+            "description": "提交哈希或引用",
+            "example": "HEAD",
+            "notes": "可选，默认为 HEAD"
+          }
+        }
+      }
+    }
+  ]
+}

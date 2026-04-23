@@ -1,0 +1,77 @@
+{
+  "module": "Linux hostname",
+  "version": "2.0",
+  "description": "Linux hostname 主机名管理命令。显示或设置系统的主机名，主机名是机器在网络中的标识。用于多服务器环境区分不同机器、配置hosts文件、设置邮件服务器标识。注意：永久修改需要root权限并编辑配置文件。",
+  "commands": [
+    {
+      "dirPath": "/Linux hostname/",
+      "name": "hostname 查看主机名",
+      "keyword": "hostname 主机名",
+      "description": "查看或设置主机名。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "hostname",
+        "extensions": [
+          {
+            "name": "显示主机名",
+            "description": "显示当前系统的主机名",
+            "params": {},
+            "cmd": "hostname"
+          },
+          {
+            "name": "显示完全限定域名",
+            "description": "显示完整的域名包括父域",
+            "params": {},
+            "cmd": "hostname -f"
+          },
+          {
+            "name": "显示IP地址",
+            "description": "显示主机名对应的IP地址",
+            "params": {},
+            "cmd": "hostname -i"
+          },
+          {
+            "name": "显示短主机名",
+            "description": "只显示主机名的第一部分",
+            "params": {},
+            "cmd": "hostname -s"
+          },
+          {
+            "name": "临时设置主机名",
+            "description": "临时修改主机名，重启后失效",
+            "params": {
+              "新主机名": {
+                "example": "web-server-01",
+                "notes": "新主机名"
+              }
+            },
+            "cmd": "sudo hostname %{新主机名}%"
+          },
+          {
+            "name": "显示主机别名",
+            "description": "显示主机的别名记录",
+            "params": {},
+            "cmd": "hostname -a"
+          },
+          {
+            "name": "永久修改主机名",
+            "description": "在配置文件中永久保存主机名",
+            "params": {
+              "主机名": {
+                "example": "prod-server",
+                "notes": "主机名"
+              }
+            },
+            "cmd": "hostnamectl set-hostname %{主机名}%"
+          },
+          {
+            "name": "显示主机信息",
+            "description": "获取主机所有相关信息",
+            "params": {},
+            "cmd": "hostnamectl status"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

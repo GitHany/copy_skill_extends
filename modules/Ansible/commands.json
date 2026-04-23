@@ -1,0 +1,220 @@
+{
+  "module": "Ansible",
+  "version": "2.0",
+  "description": "Ansible命令集合，涵盖Ansible的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Ansible/",
+      "name": "ansible 执行命令",
+      "keyword": "ansible 执行",
+      "description": "在远程主机执行临时命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "ansible %{主机组}% -m %{模块}% -a \"%{参数}%\"",
+        "extensions": [
+          {
+            "name": "使用 shell 模块",
+            "cmd": "ansible %{主机组}% -m shell -a \"%{命令}%\"",
+            "params": {
+              "主机组": {
+                "type": "string",
+                "required": true,
+                "description": "主机组",
+                "example": "webservers",
+                "notes": "必填"
+              },
+              "命令": {
+                "type": "string",
+                "required": true,
+                "description": "Shell 命令",
+                "example": "uptime",
+                "notes": "必填"
+              }
+            },
+            "keyword": "ansible shell"
+          }
+        ],
+        "params": {
+          "主机组": {
+            "type": "string",
+            "required": true,
+            "description": "Inventory 中的主机组",
+            "example": "all",
+            "notes": "必填"
+          },
+          "模块": {
+            "type": "string",
+            "required": true,
+            "description": "Ansible 模块名",
+            "example": "ping",
+            "notes": "必填"
+          },
+          "参数": {
+            "type": "string",
+            "required": false,
+            "description": "模块参数",
+            "example": "",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Ansible/",
+      "name": "ansible-playbook 执行剧本",
+      "keyword": "ansible-playbook 剧本",
+      "description": "执行 Ansible Playbook。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "ansible-playbook %{剧本文件}%",
+        "extensions": [
+          {
+            "name": "检查模式",
+            "cmd": "ansible-playbook %{剧本}% --check",
+            "params": {
+              "剧本": {
+                "type": "string",
+                "required": true,
+                "description": "Playbook 文件",
+                "example": "site.yml",
+                "notes": "必填"
+              }
+            },
+            "keyword": "ansible-playbook check"
+          },
+          {
+            "name": "指定标签",
+            "cmd": "ansible-playbook %{剧本}% --tags %{标签}%",
+            "params": {
+              "剧本": {
+                "type": "string",
+                "required": true,
+                "description": "Playbook 文件",
+                "example": "site.yml",
+                "notes": "必填"
+              },
+              "标签": {
+                "type": "string",
+                "required": true,
+                "description": "标签名称",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "ansible-playbook tags"
+          }
+        ],
+        "params": {
+          "剧本文件": {
+            "type": "string",
+            "required": true,
+            "description": "Playbook YAML 文件路径",
+            "example": "site.yml",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Ansible/",
+      "name": "ansible-vault 加密管理",
+      "keyword": "ansible-vault 加密",
+      "description": "加密敏感数据文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "ansible-vault encrypt %{文件}%",
+        "extensions": [
+          {
+            "name": "解密文件",
+            "cmd": "ansible-vault decrypt %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径",
+                "example": "vars/secrets.yml",
+                "notes": "必填"
+              }
+            },
+            "keyword": "ansible-vault decrypt"
+          },
+          {
+            "name": "查看加密文件",
+            "cmd": "ansible-vault view %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径",
+                "example": "vars/secrets.yml",
+                "notes": "必填"
+              }
+            },
+            "keyword": "ansible-vault view"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "要加密的文件路径",
+            "example": "vars/secrets.yml",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Ansible/",
+      "name": "ansible-galaxy 角色管理",
+      "keyword": "ansible-galaxy 角色",
+      "description": "管理 Ansible Galaxy 角色。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "ansible-galaxy install %{角色名}%",
+        "extensions": [
+          {
+            "name": "安装到指定目录",
+            "cmd": "ansible-galaxy install %{角色名}% -p %{路径}%",
+            "params": {
+              "角色名": {
+                "type": "string",
+                "required": true,
+                "description": "角色名称",
+                "example": "geerlingguy.nginx",
+                "notes": "必填"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "安装路径",
+                "example": "./roles",
+                "notes": "必填"
+              }
+            },
+            "keyword": "ansible-galaxy install path"
+          },
+          {
+            "name": "创建角色",
+            "cmd": "ansible-galaxy init %{角色名}%",
+            "params": {
+              "角色名": {
+                "type": "string",
+                "required": true,
+                "description": "角色名称",
+                "example": "myrole",
+                "notes": "必填"
+              }
+            },
+            "keyword": "ansible-galaxy init"
+          }
+        ],
+        "params": {
+          "角色名": {
+            "type": "string",
+            "required": true,
+            "description": "Ansible Galaxy 角色名称",
+            "example": "geerlingguy.redis",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

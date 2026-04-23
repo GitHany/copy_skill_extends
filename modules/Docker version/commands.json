@@ -1,0 +1,63 @@
+{
+  "module": "Docker version",
+  "version": "2.0",
+  "description": "Docker version命令集合，涵盖Docker version的常用操作和最佳实践",
+  "commands": [
+    {
+      "name": "docker version --client 仅客户端",
+      "description": "仅显示 Docker 客户端版本信息，不连接服务端。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "params": {},
+      "keyword": "docker version client",
+      "dirPath": "/Docker version/",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "name": "docker info 查看 Docker 信息",
+      "description": "显示 Docker 守护进程的详细配置信息，包括镜像仓库、存储驱动、日志驱动等",
+      "params": {
+        "过滤关键字": {
+          "type": "string",
+          "required": false,
+          "description": "过滤输出中的关键字",
+          "example": "Registry",
+          "notes": "可选，用于快速查找特定配置"
+        }
+      },
+      "keyword": "docker info",
+      "dirPath": "/Docker version/",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "name": "docker version --format json JSON格式",
+      "description": "以 JSON 格式输出版本信息，便于程序解析。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "params": {},
+      "keyword": "docker version json",
+      "dirPath": "/Docker version/",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "name": "docker --version 查看 CLI 版本",
+      "description": "仅显示 Docker CLI 客户端版本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "params": {},
+      "keyword": "docker --version",
+      "dirPath": "/Docker version/",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

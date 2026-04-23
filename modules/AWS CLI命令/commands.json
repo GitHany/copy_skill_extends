@@ -1,13 +1,13 @@
 {
   "module": "AWS CLI命令",
   "version": "1.0",
-  "description": "AWS CLI 命令模块",
+  "description": "AWS CLI 命令模块，涵盖AWS CLI命令的常用操作和最佳实践",
   "commands": [
     {
       "dirPath": "/AWS CLI命令/",
       "name": "aws configure 配置凭证",
       "keyword": "aws configure",
-      "description": "配置 AWS 凭证和默认区域",
+      "description": "配置 AWS 凭证和默认区域。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws configure",
         "extensions": [
@@ -110,7 +110,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws sts get-caller-identity 查看身份",
       "keyword": "aws sts get-caller-identity",
-      "description": "获取当前凭证对应的 IAM 身份信息",
+      "description": "获取当前凭证对应的 IAM 身份信息。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws sts get-caller-identity",
         "extensions": [
@@ -171,7 +171,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws help 查看帮助",
       "keyword": "aws help",
-      "description": "查看 AWS CLI 帮助信息和可用服务",
+      "description": "查看 AWS CLI 帮助信息和可用服务。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws help",
         "extensions": [
@@ -239,7 +239,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws ec2 describe-instances 查看实例",
       "keyword": "aws ec2 describe-instances",
-      "description": "查看 EC2 实例列表和状态",
+      "description": "查看 EC2 实例列表和状态。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws ec2 describe-instances",
         "extensions": [
@@ -342,7 +342,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws ec2 run-instances 启动实例",
       "keyword": "aws ec2 run-instances",
-      "description": "启动新的 EC2 实例",
+      "description": "启动新的 EC2 实例。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws ec2 run-instances --image-id %{ami_id}% --instance-type %{instance_type}% --count %{count}%",
         "extensions": [
@@ -551,7 +551,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws ec2 create-security-group 创建安全组",
       "keyword": "aws ec2 create-security-group",
-      "description": "创建新的 EC2 安全组",
+      "description": "创建新的 EC2 安全组。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws ec2 create-security-group --group-name %{group_name}% --description \"%{description}%\"",
         "extensions": [
@@ -683,7 +683,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws ec2 authorize-security-group-ingress 添加入站规则",
       "keyword": "aws ec2 authorize-security-group-ingress",
-      "description": "为安全组添加入站访问规则",
+      "description": "为安全组添加入站访问规则。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws ec2 authorize-security-group-ingress --group-id %{group_id}% --protocol %{protocol}% --port %{port}% --cidr %{cidr}%",
         "extensions": [
@@ -878,7 +878,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws ec2 allocate-address 分配弹性IP",
       "keyword": "aws ec2 allocate-address",
-      "description": "分配新的弹性公网 IP 地址",
+      "description": "分配新的弹性公网 IP 地址。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws ec2 allocate-address",
         "extensions": [
@@ -924,7 +924,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws ec2 associate-address 关联弹性IP",
       "keyword": "aws ec2 associate-address",
-      "description": "将弹性 IP 关联到 EC2 实例",
+      "description": "将弹性 IP 关联到 EC2 实例。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws ec2 associate-address --instance-id %{instance_id}% --allocation-id %{allocation_id}%",
         "extensions": [
@@ -1070,7 +1070,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws lambda invoke 调用函数",
       "keyword": "aws lambda invoke",
-      "description": "调用 Lambda 函数",
+      "description": "调用 Lambda 函数。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws lambda invoke --function-name %{function_name}% %{output_file}%",
         "extensions": [
@@ -1244,7 +1244,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws s3 ls 列出存储桶",
       "keyword": "aws s3 ls",
-      "description": "列出 S3 存储桶或对象",
+      "description": "列出 S3 存储桶或对象。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws s3 ls",
         "extensions": [
@@ -1362,7 +1362,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws s3 mb 创建存储桶",
       "keyword": "aws s3 mb",
-      "description": "创建新的 S3 存储桶",
+      "description": "创建新的 S3 存储桶。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws s3 mb s3://%{bucket_name}%",
         "extensions": [
@@ -1466,7 +1466,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws s3 cp 复制对象",
       "keyword": "aws s3 cp",
-      "description": "复制本地文件到 S3 或 S3 之间复制",
+      "description": "复制本地文件到 S3 或 S3 之间复制。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws s3 cp %{source}% s3://%{bucket_name}%/%{key}%",
         "extensions": [
@@ -1731,7 +1731,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws s3 sync 同步目录",
       "keyword": "aws s3 sync",
-      "description": "同步本地目录与 S3 存储桶内容",
+      "description": "同步本地目录与 S3 存储桶内容。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws s3 sync %{source}% s3://%{bucket_name}%/%{prefix}%",
         "extensions": [
@@ -1926,7 +1926,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws s3 rm 删除对象",
       "keyword": "aws s3 rm",
-      "description": "删除 S3 中的对象",
+      "description": "删除 S3 中的对象。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws s3 rm s3://%{bucket_name}%/%{key}%",
         "extensions": [
@@ -2044,7 +2044,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws s3api put-object 上传对象",
       "keyword": "aws s3api put-object",
-      "description": "使用 S3 API 上传单个对象",
+      "description": "使用 S3 API 上传单个对象。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws s3api put-object --bucket %{bucket_name}% --key %{key}% --body %{file_path}%",
         "extensions": [
@@ -2218,7 +2218,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws s3api get-object 下载对象",
       "keyword": "aws s3api get-object",
-      "description": "下载 S3 对象到本地",
+      "description": "下载 S3 对象到本地。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws s3api get-object --bucket %{bucket_name}% --key %{key}% %{file_path}%",
         "extensions": [
@@ -2322,7 +2322,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws rds describe-db-instances 查看 RDS 实例",
       "keyword": "aws rds describe-db-instances",
-      "description": "查看 RDS 数据库实例列表和状态",
+      "description": "查看 RDS 数据库实例列表和状态。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws rds describe-db-instances",
         "extensions": [
@@ -2404,7 +2404,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws rds create-db-instance 创建 RDS 实例",
       "keyword": "aws rds create-db-instance",
-      "description": "创建新的 RDS 数据库实例",
+      "description": "创建新的 RDS 数据库实例。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws rds create-db-instance --db-instance-identifier %{db_instance_id}% --db-instance-class %{db_instance_class}% --engine %{engine}% --allocated-storage %{allocated_storage}% --master-username %{master_username}% --master-user-password %{master_user_password}%",
         "extensions": [
@@ -2585,7 +2585,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws dynamodb list-tables 列出表",
       "keyword": "aws dynamodb list-tables",
-      "description": "列出 DynamoDB 表",
+      "description": "列出 DynamoDB 表。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws dynamodb list-tables",
         "extensions": [
@@ -2661,7 +2661,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws dynamodb scan 全表扫描",
       "keyword": "aws dynamodb scan",
-      "description": "扫描 DynamoDB 表中的所有项目",
+      "description": "扫描 DynamoDB 表中的所有项目。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws dynamodb scan --table-name %{table_name}%",
         "extensions": [
@@ -2835,7 +2835,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws dynamodb query 查询项目",
       "keyword": "aws dynamodb query",
-      "description": "按主键查询 DynamoDB 表中的项目",
+      "description": "按主键查询 DynamoDB 表中的项目。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws dynamodb query --table-name %{table_name}% --key-condition-expression \"%{key_expr}%\"",
         "extensions": [
@@ -3078,7 +3078,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws route53 list-hosted-zones 查看托管区域",
       "keyword": "aws route53 list-hosted-zones",
-      "description": "列出 Route 53 托管区域",
+      "description": "列出 Route 53 托管区域。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws route53 list-hosted-zones",
         "extensions": [
@@ -3160,7 +3160,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws cloudfront create-distribution 创建分发",
       "keyword": "aws cloudfront create-distribution",
-      "description": "创建 CloudFront CDN 分发",
+      "description": "创建 CloudFront CDN 分发。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws cloudfront create-distribution --origin-domain-name %{origin_domain}% --default-root-object %{root_object}%",
         "extensions": [
@@ -3305,7 +3305,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws ecs run-task 运行任务",
       "keyword": "aws ecs run-task",
-      "description": "在 ECS 集群中运行任务",
+      "description": "在 ECS 集群中运行任务。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws ecs run-task --cluster %{cluster}% --task-definition %{task_definition}% --launch-type %{launch_type}%",
         "extensions": [
@@ -3486,7 +3486,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws ecs describe-services 查看服务",
       "keyword": "aws ecs describe-services",
-      "description": "查看 ECS 服务详情",
+      "description": "查看 ECS 服务详情。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws ecs describe-services --cluster %{cluster}% --services %{service}%",
         "extensions": [
@@ -3611,7 +3611,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws iam create-user 创建 IAM 用户",
       "keyword": "aws iam create-user",
-      "description": "创建新的 IAM 用户",
+      "description": "创建新的 IAM 用户。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws iam create-user --user-name %{user_name}%",
         "extensions": [
@@ -3707,7 +3707,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws logs describe-log-groups 查看日志组",
       "keyword": "aws logs describe-log-groups",
-      "description": "查看 CloudWatch Logs 日志组",
+      "description": "查看 CloudWatch Logs 日志组。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws logs describe-log-groups",
         "extensions": [
@@ -3818,7 +3818,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws efs describe-file-systems 查看 EFS",
       "keyword": "aws efs describe-file-systems",
-      "description": "查看 Amazon EFS 文件系统",
+      "description": "查看 Amazon EFS 文件系统。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws efs describe-file-systems",
         "extensions": [
@@ -3922,7 +3922,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws elasticache describe 缓存集群",
       "keyword": "aws elasticache describe-cache-clusters",
-      "description": "查看 ElastiCache 缓存集群",
+      "description": "查看 ElastiCache 缓存集群。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws elasticache describe-cache-clusters",
         "extensions": [
@@ -4033,7 +4033,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws cloudwatch put-metric-data 上报指标",
       "keyword": "aws cloudwatch put-metric-data",
-      "description": "向 CloudWatch 上报自定义指标数据",
+      "description": "向 CloudWatch 上报自定义指标数据。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws cloudwatch put-metric-data --namespace %{namespace}% --metric-name %{metric_name}% --value %{value}%",
         "extensions": [
@@ -4298,7 +4298,7 @@
       "dirPath": "/AWS CLI命令/",
       "name": "aws sts assume-role 角色扮演",
       "keyword": "aws sts assume-role",
-      "description": "通过 STS 扮演 IAM 角色获取临时凭证",
+      "description": "通过 STS 扮演 IAM 角色获取临时凭证。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws sts assume-role --role-arn %{role_arn}% --role-session-name %{session_name}%",
         "extensions": [

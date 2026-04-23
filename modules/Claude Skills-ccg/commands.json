@@ -10,13 +10,28 @@
         "name": "快速模式",
         "cmd": "/ccg %{任务}% --fast",
         "params": {
-          "任务": { "type": "string", "required": true, "description": "任务描述", "example": "生成 REST API 代码", "notes": "" }
+          "任务": {
+            "type": "string",
+            "required": true,
+            "description": "任务描述",
+            "example": "生成 REST API 代码",
+            "notes": ""
+          }
         },
         "keyword": "ccg fast"
       }
     ],
     "params": {
-      "任务描述": { "type": "string", "required": true, "description": "任务描述", "example": "生成用户管理 REST API", "notes": "" }
+      "任务描述": {
+        "type": "string",
+        "required": true,
+        "description": "任务描述",
+        "example": "生成用户管理 REST API",
+        "notes": ""
+      }
     }
-  }
+  },
+  "module": "Claude Skills-ccg",
+  "version": "2.0",
+  "commands": []
 }

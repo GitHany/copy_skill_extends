@@ -1,0 +1,146 @@
+{
+  "module": "kubectl drain",
+  "version": "2.0",
+  "description": "将节点上的 Pod 安全驱逐到其他节点，为节点维护、升级或故障处理做准备。与 cordon 配合使用，先驱逐 Pod 再标记不可调度。",
+  "commands": [
+    {
+      "dirPath": "/kubectl drain/",
+      "name": "kubectl drain 节点维护",
+      "keyword": "kubectl drain 驱逐 维护 清空",
+      "description": "安全驱逐节点上的所有 Pod（除 DaemonSet 和不可驱逐的 Pod），使节点可以安全维护",
+      "data": {
+        "cmd": "kubectl drain %{节点}% --ignore-daemonsets",
+        "extensions": [
+          {
+            "name": "标准驱逐（忽略 DaemonSet + 删除 emptyDir）",
+            "cmd": "kubectl drain %{节点}% --ignore-daemonsets --delete-emptydir-data",
+            "params": {
+              "节点": {
+                "type": "string",
+                "required": true,
+                "description": "目标节点名称",
+                "example": "node1",
+                "notes": "必填，执行前确认已备份重要数据"
+              }
+            },
+            "keyword": "kubectl drain 标准驱逐",
+            "description": "完整驱逐流程：忽略 DaemonSet Pod，删除 emptyDir 卷的 Pod，确保数据安全后清空节点"
+          },
+          {
+            "name": "强制清空（包括本地有状态 Pod）",
+            "cmd": "kubectl drain %{节点}% --ignore-daemonsets --force",
+            "params": {
+              "节点": {
+                "type": "string",
+                "required": true,
+                "description": "目标节点名称",
+                "example": "node1",
+                "notes": "危险操作，仅在确认数据已备份时使用"
+              }
+            },
+            "keyword": "kubectl drain 强制清空",
+            "description": "强制删除所有 Pod（包括有状态 Pod），适用于已确认数据安全的维护场景"
+          },
+          {
+            "name": "驱逐时设置宽限期",
+            "cmd": "kubectl drain %{节点}% --ignore-daemonsets --grace-period=%{秒数}%",
+            "params": {
+              "节点": {
+                "type": "string",
+                "required": true,
+                "description": "目标节点名称",
+                "example": "node1",
+                "notes": "必填"
+              },
+              "秒数": {
+                "type": "string",
+                "required": false,
+                "description": "优雅终止宽限期（秒）",
+                "example": "30",
+                "notes": "默认使用 Pod 的 terminationGracePeriodSeconds，不填则使用默认值"
+              }
+            },
+            "keyword": "kubectl drain 宽限期",
+            "description": "为 Pod 设置自定义的优雅终止时间，适用于需要更长时间完成清理的应用（如长连接处理）"
+          },
+          {
+            "name": "并行驱逐多个节点",
+            "cmd": "kubectl drain %{节点1}% %{节点2}% --ignore-daemonsets --delete-emptydir-data",
+            "params": {
+              "节点1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个目标节点",
+                "example": "node1",
+                "notes": "必填"
+              },
+              "节点2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个目标节点",
+                "example": "node2",
+                "notes": "必填，常用于批量维护"
+              }
+            },
+            "keyword": "kubectl drain 批量驱逐",
+            "description": "同时驱逐多个节点的 Pod，适用于集群升级或大规模维护场景"
+          },
+          {
+            "name": "驱逐前检查节点状态",
+            "cmd": "kubectl describe node %{节点}% | grep -E 'Conditions|Taints'",
+            "params": {
+              "节点": {
+                "type": "string",
+                "required": true,
+                "description": "目标节点名称",
+                "example": "node1",
+                "notes": "查看节点是否有未就绪条件或特殊污点"
+              }
+            },
+            "keyword": "kubectl drain 检查节点",
+            "description": "在驱逐前检查节点的详细状态，确认是否可以安全驱逐 Pod"
+          },
+          {
+            "name": "驱逐后查看 Pod 重新调度情况",
+            "cmd": "kubectl get pods -o wide | grep %{节点}% | grep -v Running",
+            "params": {
+              "节点": {
+                "type": "string",
+                "required": true,
+                "description": "原目标节点名称",
+                "example": "node1",
+                "notes": "查看该节点上是否有 Pod 未正常调度"
+              }
+            },
+            "keyword": "kubectl drain 查看调度",
+            "description": "检查被驱逐的 Pod 是否已成功重新调度到其他节点，排查调度问题"
+          },
+          {
+            "name": "跳过驱逐直接标记不可调度",
+            "cmd": "kubectl cordon %{节点}%",
+            "params": {
+              "节点": {
+                "type": "string",
+                "required": true,
+                "description": "目标节点名称",
+                "example": "node1",
+                "notes": "不驱逐现有 Pod，只阻止新 Pod 调度到该节点"
+              }
+            },
+            "keyword": "kubectl cordon 直接标记",
+            "description": "如果不需要清空节点（例如只想阻止新调度），直接使用 cordon 而非 drain"
+          }
+        ],
+        "params": {
+          "节点": {
+            "type": "string",
+            "required": true,
+            "description": "目标节点名称",
+            "example": "node1",
+            "notes": "必填，建议先检查节点上运行的 Pod 类型"
+          }
+        }
+      }
+    }
+  ]
+}

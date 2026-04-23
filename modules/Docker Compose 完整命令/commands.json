@@ -1,0 +1,63 @@
+{
+  "module": "Docker Compose 完整命令",
+  "version": "2.0",
+  "description": "Docker Compose 完整命令命令集合",
+  "commands": [
+    {
+      "cmd": "docker compose up -d",
+      "extensions": [
+        {
+          "name": "重新构建",
+          "cmd": "docker compose up -d --build",
+          "params": {},
+          "keyword": "docker compose build"
+        },
+        {
+          "name": "指定文件",
+          "cmd": "docker compose -f %{文件}% up -d",
+          "params": {
+            "文件": {
+              "type": "string",
+              "required": true,
+              "description": "Compose 文件",
+              "example": "docker-compose.prod.yml",
+              "notes": "必填"
+            }
+          },
+          "keyword": "docker compose file"
+        },
+        {
+          "name": "扩展服务",
+          "cmd": "docker compose up -d --scale %{服务}%=%{数量}%",
+          "params": {
+            "服务": {
+              "type": "string",
+              "required": true,
+              "description": "服务名",
+              "example": "web",
+              "notes": "必填"
+            },
+            "数量": {
+              "type": "string",
+              "required": true,
+              "description": "实例数",
+              "example": "3",
+              "notes": "必填"
+            }
+          },
+          "keyword": "docker compose scale"
+        }
+      ],
+      "params": {},
+      "dirPath": "/Docker Compose 完整命令/",
+      "name": "Docker Compose 完整命令 命令",
+      "keyword": "Docker Compose 完整命令 命令",
+      "description": "Docker Compose 完整命令 命令的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "module": "Git 工作区",
+  "version": "2.0",
+  "description": "Git 工作区管理和文件操作，涵盖Git 工作区的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Git 工作区/",
+      "name": "git status 查看状态",
+      "keyword": "git status 状态",
+      "description": "查看工作区状态。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git status",
+        "extensions": [
+          {
+            "name": "简短格式",
+            "cmd": "git status -s",
+            "params": {},
+            "keyword": "git status short"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Git 工作区/",
+      "name": "git diff 工作区差异",
+      "keyword": "git diff 差异",
+      "description": "查看工作区与暂存区差异。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git diff",
+        "extensions": [
+          {
+            "name": "暂存区差异",
+            "cmd": "git diff --staged",
+            "params": {},
+            "keyword": "git diff staged"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Git 工作区/",
+      "name": "git clean 清理工作区",
+      "keyword": "git clean 清理",
+      "description": "清理未跟踪的文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git clean -fd",
+        "extensions": [
+          {
+            "name": "预览清理",
+            "cmd": "git clean -n",
+            "params": {},
+            "keyword": "git clean dry-run"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

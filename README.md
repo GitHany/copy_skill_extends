@@ -4,24 +4,27 @@
 
 ## 功能特性
 
-- **443+ 命令覆盖**：Linux、Docker、Git、GitHub CLI、Kubernetes、MySQL、Redis、PostgreSQL、Python、前端包管理器等
+- **64+ 模块覆盖**：Linux、Docker、Git、GitHub CLI、Kubernetes、MySQL、Redis、PostgreSQL、Python、前端包管理器、Claude Skills 等
 - **参数完整**：每个命令包含 type/required/description/example/notes
 - **双模式支持**：
   - **直接复制**：`params: {}` + 硬编码命令，一键复制
   - **参数化输入**：需要填入的命令展示输入表单
-- **高频标记**：常用命令标注【常用】
+- **扩展用法**：每个命令提供多个常用扩展场景
 
-## 目录结构
+## 项目结构
 
 ```
 copy_skill_extends/
-├── modules/                    # 各模块独立目录 (31个模块)
+├── modules/                          # 模块目录 (64个模块)
+│   ├── _registry.json                # 模块注册表，记录所有模块信息
 │   ├── Docker 命令/
-│   ├── DockerCompose/
+│   │   ├── commands.json             # 模块命令数据
+│   │   └── README.md                 # 模块说明文档
 │   ├── Git 命令/
 │   ├── GitHub CLI 命令/
 │   ├── GitHubActions/
 │   ├── Kubernetes 命令/
+│   ├── Kubernetes 高级操作/
 │   ├── Linux 命令/
 │   ├── MySQL 命令/
 │   ├── PostgreSQL 命令/
@@ -30,27 +33,127 @@ copy_skill_extends/
 │   ├── Redis-哈希操作/
 │   ├── Redis-列表操作/
 │   ├── Redis-有序集合/
-│   ├── Redis-服务器命令/
-│   ├── Redis-键管理/
 │   ├── Redis-集合操作/
+│   ├── Redis-键管理/
+│   ├── Redis-服务器命令/
 │   ├── SSH远程操作/
 │   ├── Shell脚本模板/
 │   ├── Nginx命令/
-│   ├── 前端包管理器/
-│   ├── 系统监控/
-│   ├── 网络诊断/
 │   ├── Elasticsearch/
-│   └── Claude Skills-*/
-├── scripts/
-│   └── merge_commands.py     # 合并脚本
+│   ├── MongoDB 命令/
+│   ├── AI_ML工具/
+│   ├── API与认证/
+│   ├── CDN与缓存/
+│   ├── CI_CD 流水线/
+│   ├── Claude Skills-ccg/
+│   ├── Claude Skills-ecc/
+│   ├── Claude Skills-oh-my-claude/
+│   ├── Claude Skills-openspec/
+│   ├── Claude Skills-providers/
+│   ├── Claude Skills-regex/
+│   ├── Claude Skills-superpowers/
+│   ├── Claude Skills-ultrawork/
+│   ├── DockerCompose/
+│   ├── DockerCompose 高级模式/
+│   ├── Go 命令/
+│   ├── GraphQL 命令/
+│   ├── Java Spring Boot/
+│   ├── Node.js 后端命令/
+│   ├── ORM框架/
+│   ├── Python Web框架/
+│   ├── React 命令/
+│   ├── Tailwind CSS/
+│   ├── TypeScript 命令/
+│   ├── Vue.js 命令/
+│   ├── Web API工具/
+│   ├── 前端包管理器/
+│   ├── 包管理器/
+│   ├── 安全加固/
+│   ├── 容器安全/
+│   ├── 微服务架构/
+│   ├── 搜索引擎/
+│   ├── 测试框架/
+│   ├── 消息队列/
+│   ├── 监控与可观测性/
+│   ├── 移动开发/
+│   ├── 系统监控/
+│   ├── 编辑器命令/
+│   ├── 网络诊断/
+│   ├── 配置管理/
+│   └── Serverless与边缘计算/
+├── scripts/                          # 工具脚本目录
+│   ├── merge_commands.py             # 合并所有模块为最终 commands.json
+│   ├── enhance_all.py                # 批量增强命令描述和参数
+│   ├── fix_list_files.py            # 修复列表格式文件
+│   ├── fix_unknown_format.py        # 修复非标准格式文件
+│   ├── validate_all.py              # 验证 JSON 格式正确性
+│   ├── check_params.py              # 检查参数完整性
+│   ├── enhance_commands.py          # 命令增强脚本
+│   ├── fix_params.py                # 参数修复脚本
+│   └── split_commands.py           # 命令拆分脚本
 ├── docs/
 │   └── public/
-│       └── commands.json     # 聚合后的最终文件
-├── modules/_registry.json    # 模块注册表
+│       └── commands.json            # 聚合后的最终文件（由 merge_commands.py 生成）
+├── commands_standard.json            # 命令数据标准规范参考文件
+├── commands_standard_ref.json        # 精简版标准参考（仅 Schema）
+├── .gitignore
 └── README.md
 ```
 
-## 获取最终的 commands.json
+## 文件说明
+
+### 根目录文件
+
+| 文件 | 说明 |
+|------|------|
+| `commands_standard.json` | 完整的命令数据标准规范，包含 Schema 和参数知识库 |
+| `commands_standard_ref.json` | 精简版标准参考，仅包含 JSON Schema 定义 |
+| `.gitignore` | Git 忽略规则 |
+| `README.md` | 项目说明文档 |
+
+### scripts/ 目录
+
+| 脚本 | 功能 |
+|------|------|
+| `merge_commands.py` | 合并所有模块的 commands.json 为最终的 docs/public/commands.json |
+| `enhance_all.py` | 批量增强所有命令的描述深度、参数注释和示例完整性 |
+| `fix_list_files.py` | 修复列表格式的 commands.json 文件（转换为标准格式） |
+| `fix_unknown_format.py` | 修复非标准格式的 commands.json 文件（转换为标准格式） |
+| `validate_all.py` | 验证所有 commands.json 文件的 JSON 格式正确性 |
+| `check_params.py` | 检查命令参数的完整性和正确性 |
+| `enhance_commands.py` | 命令增强脚本（增强描述和参数） |
+| `fix_params.py` | 参数修复脚本 |
+| `split_commands.py` | 命令拆分脚本 |
+
+### modules/ 目录
+
+每个模块包含：
+- `commands.json` - 模块的命令数据
+- `README.md` - 模块说明文档
+
+模块分类：
+- **容器编排**：Docker 命令、DockerCompose、DockerCompose 高级模式
+- **版本控制**：Git 命令、Git 工作流、GitHub CLI 命令、GitHubActions
+- **数据库**：MySQL 命令、PostgreSQL 命令、MongoDB 命令、Redis 系列（7个）、Elasticsearch
+- **容器管理**：Kubernetes 命令、Kubernetes 高级操作
+- **编程语言**：Python 命令、Python Web框架、Go 命令、Java Spring Boot、Node.js 后端命令
+- **前端**：React 命令、Vue.js 命令、TypeScript 命令、Tailwind CSS、前端包管理器
+- **服务器**：Nginx命令、SSH远程操作
+- **监控**：系统监控、网络诊断、监控与可观测性
+- **DevOps**：CI_CD 流水线、安全加固、容器安全、微服务架构
+- **AI/ML**：AI_ML工具、Serverless与边缘计算
+- **工具**：包管理器、Web API工具、API与认证、GraphQL 命令、编辑器命令、配置管理、测试框架
+- **Claude Skills**：11个子模块
+
+### docs/ 目录
+
+| 文件 | 说明 |
+|------|------|
+| `docs/public/commands.json` | 最终合并的命令数据，由 `merge_commands.py` 生成 |
+
+## 使用方法
+
+### 合并所有模块
 
 ```bash
 python scripts/merge_commands.py
@@ -58,42 +161,61 @@ python scripts/merge_commands.py
 
 输出：`docs/public/commands.json`
 
-## commands.json 结构
+### 增强命令内容
+
+```bash
+python scripts/enhance_all.py
+```
+
+自动增强所有模块的命令描述和参数注释。
+
+### 验证 JSON 格式
+
+```bash
+python scripts/validate_all.py
+```
+
+检查所有 commands.json 文件的格式正确性。
+
+## commands.json 标准格式
 
 ```json
 {
-  "data": [
+  "module": "模块名称",
+  "version": "1.0",
+  "description": "模块详细描述（20字以上）",
+  "commands": [
     {
-      "dirPath": "/Docker 命令/",
-      "name": "docker run 运行容器",
-      "keyword": "docker run 启动",
-      "description": "创建并启动一个新容器",
+      "dirPath": "/分类路径/",
+      "name": "命令名称",
+      "keyword": "搜索关键词",
+      "description": "命令详细描述（30字以上）",
       "data": {
-        "cmd": "docker run -d --name %{容器名称}% -p %{主机端口}%:%{容器端口}% %{镜像名称}%",
+        "cmd": "基础命令模板，使用 %{参数名}% 占位",
         "extensions": [
           {
-            "name": "查看所有容器",
-            "cmd": "docker ps -a",
-            "params": {},
-            "keyword": "docker ps 所有容器"
-          },
-          {
-            "name": "挂载卷",
-            "cmd": "docker run -d --name %{容器名称}% -v %{主机路径}%:%{容器路径}% %{镜像}%",
+            "name": "扩展用法名称",
+            "cmd": "具体命令",
             "params": {
-              "容器名称": { "type": "string", "required": true, "description": "容器名称", "example": "myapp", "notes": "常用" },
-              "主机路径": { "type": "string", "required": true, "description": "宿主机目录", "example": "/data/logs", "notes": "" },
-              "容器路径": { "type": "string", "required": true, "description": "容器内目录", "example": "/app/logs", "notes": "" },
-              "镜像": { "type": "string", "required": true, "description": "镜像名称", "example": "nginx", "notes": "" }
+              "参数名": {
+                "type": "string|integer|boolean|array|object",
+                "required": "boolean",
+                "description": "参数含义说明（15字以上）",
+                "example": "真实可用的示例值",
+                "notes": "必填说明/默认值/注意事项"
+              }
             },
-            "keyword": "docker run 挂载卷"
+            "keyword": "扩展用法的搜索关键词"
           }
         ],
         "params": {
-          "容器名称": { "type": "string", "required": true, "description": "容器名称", "example": "myapp", "notes": "" },
-          "主机端口": { "type": "string", "required": true, "description": "宿主机端口", "example": "8080", "notes": "" },
-          "容器端口": { "type": "string", "required": true, "description": "容器端口", "example": "80", "notes": "" },
-          "镜像名称": { "type": "string", "required": true, "description": "镜像名称", "example": "nginx", "notes": "常用" }
+          "参数名": {
+            "type": "string|integer|boolean|array|object",
+            "required": "boolean",
+            "description": "参数含义说明（15字以上）",
+            "example": "真实可用的示例值",
+            "notes": "必填说明/默认值/注意事项"
+          }
         }
       }
     }
@@ -101,77 +223,19 @@ python scripts/merge_commands.py
 }
 ```
 
-### 字段说明
+## 参数规范
 
-| 字段 | 含义 |
-|------|------|
-| `dirPath` | 分类路径，UI 左侧树形菜单节点 |
-| `name` | 命令显示名称 |
-| `keyword` | 搜索关键词，空格分隔多个词 |
-| `description` | 一句话描述 |
-| `cmd` | 带 `%{param}%` 占位符的基础命令 |
-| `extensions` | 扩展变体数组 |
-| `params` | 参数定义 |
+| 字段 | 要求 | 说明 |
+|------|------|------|
+| `type` | 必填 | 数据类型：string、integer、boolean、array、object |
+| `required` | 必填 | 是否必填：true、false |
+| `description` | 必填 | 参数含义说明，需 15 字以上，包含参数作用和对命令行为的影响 |
+| `example` | 必填 | 真实可用的示例值 |
+| `notes` | 必填 | 必填说明/默认值/取值范围/注意事项，禁止为空字符串 |
 
-### params 参数定义
+## 命名规范
 
-| 子字段 | 含义 |
-|--------|------|
-| `type` | 类型：`string` / `number` / `boolean` |
-| `required` | 是否必填：`true` / `false` |
-| `description` | 参数中文说明 |
-| `example` | 示例值，用于输入框 placeholder |
-| `notes` | 使用提示，标注"常用"表示高频命令 |
-
-### extension 渲染规则
-
-| params | cmd | 渲染方式 |
-|--------|-----|----------|
-| `{}` 空 | 无占位符 | **直接复制**按钮 |
-| `{}` 空 | 有占位符 | 展示输入表单 |
-| 有内容 | 任意 | 展示输入表单 |
-
-## 模块列表
-
-| 模块 | 命令数 |
-|------|--------|
-| Linux 命令 | 43 |
-| Docker 命令 | 21 |
-| DockerCompose | 10 |
-| Git 命令 | 24 |
-| GitHub CLI 命令 | 33 |
-| GitHubActions | 11 |
-| Kubernetes 命令 | 29 |
-| MySQL 命令 | 19 |
-| PostgreSQL 命令 | 25 |
-| Python命令 | 15 |
-| Redis-基本操作 | 18 |
-| Redis-哈希操作 | 12 |
-| Redis-列表操作 | 13 |
-| Redis-有序集合 | 13 |
-| Redis-服务器命令 | 15 |
-| Redis-键管理 | 16 |
-| Redis-集合操作 | 15 |
-| SSH远程操作 | 5 |
-| Shell脚本模板 | 13 |
-| Nginx命令 | 5 |
-| 前端包管理器 | 20 |
-| 系统监控 | 8 |
-| 网络诊断 | 9 |
-| Elasticsearch | 7 |
-| Claude Skills | 50+ |
-| **总计** | **443+** |
-
-## 与 copy_skill 配合使用
-
-1. 在 `copy_skill_extends` 目录运行合并脚本：
-   ```bash
-   python scripts/merge_commands.py
-   ```
-
-2. 将生成的 `docs/public/commands.json` 复制到 `copy_skill/docs/public/`：
-   ```bash
-   cp docs/public/commands.json /path/to/copy_skill/docs/public/commands.json
-   ```
-
-3. 重启 `copy_skill` Web App
+- 命令名称：使用 `工具 动作 对象` 格式，如 `docker run 运行容器`
+- 参数名称：使用中文名词，如 `容器名称`、`镜像名称`、`主机端口`
+- 搜索关键词：用空格分隔，包含同义词和常用组合
+- 禁止数字前缀：如 `1-` `2.` 等前缀必须移除

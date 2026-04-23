@@ -1,0 +1,36 @@
+{
+  "module": "kubectl api-resources",
+  "version": "2.0",
+  "description": "kubectl API 资源列表，涵盖kubectl api-resources的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/kubectl api-resources/",
+      "name": "kubectl api-resources 查看资源",
+      "keyword": "kubectl api-resources 资源",
+      "description": "列出所有 API 资源类型。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl api-resources",
+        "extensions": [
+          {
+            "name": "显示动词",
+            "cmd": "kubectl api-resources -o wide",
+            "params": {},
+            "keyword": "kubectl api-resources wide"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/kubectl api-resources/",
+      "name": "kubectl api-versions API 版本",
+      "keyword": "kubectl api-versions 版本",
+      "description": "列出所有 API 版本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl api-versions",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

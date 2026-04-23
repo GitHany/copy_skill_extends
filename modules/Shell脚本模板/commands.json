@@ -1,13 +1,13 @@
 {
   "module": "Shell脚本模板",
   "version": "1.0",
-  "description": "Shell脚本模板 模块命令集合",
+  "description": "Shell脚本模板 模块命令集合，涵盖Shell脚本模板的常用操作和最佳实践",
   "commands": [
     {
       "dirPath": "/Shell脚本模板/",
       "name": "find 文件查找",
       "keyword": "find 查找文件 搜索",
-      "description": "在目录树中搜索文件",
+      "description": "在目录树中搜索文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "find %{路径}% %{选项}% -name \"%{文件名}%\"",
         "extensions": [
@@ -54,7 +54,7 @@
             "required": true,
             "description": "搜索的起始路径",
             "example": "/home/user",
-            "notes": ""
+            "notes": "必填"
           },
           "选项": {
             "type": "string",
@@ -68,7 +68,7 @@
             "required": true,
             "description": "要查找的文件名模式",
             "example": "*.log",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -77,7 +77,7 @@
       "dirPath": "/Shell脚本模板/",
       "name": "grep 文本搜索",
       "keyword": "grep 搜索 查找 内容",
-      "description": "在文件中搜索匹配的模式",
+      "description": "在文件中搜索匹配的模式。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "grep %{选项}% \"%{模式}%\" %{文件路径}%",
         "extensions": [
@@ -131,14 +131,14 @@
             "required": true,
             "description": "要搜索的模式或正则表达式",
             "example": "error",
-            "notes": ""
+            "notes": "必填"
           },
           "文件路径": {
             "type": "string",
             "required": true,
             "description": "要搜索的文件路径",
             "example": "/var/log/syslog",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -147,7 +147,7 @@
       "dirPath": "/Shell脚本模板/",
       "name": "awk 数据处理",
       "keyword": "awk 数据处理 文本",
-      "description": "强大的文本分析和报告生成工具",
+      "description": "强大的文本分析和报告生成工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "awk '%{模式}%' %{文件路径}%",
         "extensions": [
@@ -194,14 +194,14 @@
             "required": true,
             "description": "awk 模式和动作",
             "example": "'{print $1}'",
-            "notes": ""
+            "notes": "必填"
           },
           "文件路径": {
             "type": "string",
             "required": true,
             "description": "要处理的文件路径",
             "example": "/home/user/data.txt",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -210,7 +210,7 @@
       "dirPath": "/Shell脚本模板/",
       "name": "sed 流编辑",
       "keyword": "sed 流编辑 替换",
-      "description": "流编辑器，用于文本替换和转换",
+      "description": "流编辑器，用于文本替换和转换。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "sed %{选项}% 's/%{原字符串}%/%{新字符串}%/%{标志}%' %{文件路径}%",
         "extensions": [
@@ -264,14 +264,14 @@
             "required": true,
             "description": "要替换的原字符串",
             "example": "old",
-            "notes": ""
+            "notes": "必填"
           },
           "新字符串": {
             "type": "string",
             "required": true,
             "description": "替换后的新字符串",
             "example": "new",
-            "notes": ""
+            "notes": "必填"
           },
           "标志": {
             "type": "string",
@@ -285,7 +285,7 @@
             "required": true,
             "description": "要处理的文件路径",
             "example": "/home/user/data.txt",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -294,7 +294,7 @@
       "dirPath": "/Shell脚本模板/",
       "name": "xargs 参数传递",
       "keyword": "xargs 参数",
-      "description": "将标准输入转换为命令行参数",
+      "description": "将标准输入转换为命令行参数。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "xargs %{选项}% %{命令}%",
         "extensions": [
@@ -342,7 +342,7 @@
             "required": true,
             "description": "要执行的命令",
             "example": "rm",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -351,7 +351,7 @@
       "dirPath": "/Shell脚本模板/",
       "name": "tar 压缩解压",
       "keyword": "tar 打包 压缩",
-      "description": "打包和压缩文件",
+      "description": "打包和压缩文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "tar %{动作}% %{压缩包}% %{路径}%",
         "extensions": [
@@ -405,14 +405,14 @@
             "required": true,
             "description": "压缩包名称",
             "example": "backup.tar.gz",
-            "notes": ""
+            "notes": "必填"
           },
           "路径": {
             "type": "string",
             "required": true,
             "description": "要打包的目录或文件路径",
             "example": "/home/user/data",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -421,7 +421,7 @@
       "dirPath": "/Shell脚本模板/",
       "name": "zip/unzip 打包",
       "keyword": "zip unzip 压缩 打包",
-      "description": "压缩和解压 zip 格式文件",
+      "description": "压缩和解压 zip 格式文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "zip %{选项}% %{压缩包名称}% %{文件路径}%",
         "extensions": [
@@ -475,14 +475,14 @@
             "required": true,
             "description": "压缩包名称",
             "example": "backup.zip",
-            "notes": ""
+            "notes": "必填"
           },
           "文件路径": {
             "type": "string",
             "required": true,
             "description": "要压缩的文件或目录路径",
             "example": "/home/user/data",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -491,7 +491,7 @@
       "dirPath": "/Shell脚本模板/",
       "name": "cut 文本切割",
       "keyword": "cut 切割 字段",
-      "description": "从每行中提取指定字段",
+      "description": "从每行中提取指定字段。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "cut %{选项}% %{文件路径}%",
         "extensions": [
@@ -532,14 +532,14 @@
             "required": true,
             "description": "cut 选项",
             "example": "-d',' -f1",
-            "notes": ""
+            "notes": "必填"
           },
           "文件路径": {
             "type": "string",
             "required": true,
             "description": "要处理的文件路径",
             "example": "/home/user/data.csv",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -548,7 +548,7 @@
       "dirPath": "/Shell脚本模板/",
       "name": "sort 排序",
       "keyword": "sort 排序",
-      "description": "对文本行进行排序",
+      "description": "对文本行进行排序。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "sort %{选项}% %{文件路径}%",
         "extensions": [
@@ -602,7 +602,7 @@
             "required": true,
             "description": "要排序的文件路径",
             "example": "/home/user/data.txt",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -611,7 +611,7 @@
       "dirPath": "/Shell脚本模板/",
       "name": "uniq 去重",
       "keyword": "uniq 去重",
-      "description": "显示或忽略重复的行",
+      "description": "显示或忽略重复的行。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "uniq %{选项}% %{文件路径}%",
         "extensions": [
@@ -665,7 +665,7 @@
             "required": true,
             "description": "要处理的文件路径",
             "example": "/home/user/data.txt",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -674,7 +674,7 @@
       "dirPath": "/Shell脚本模板/",
       "name": "wc 统计",
       "keyword": "wc 统计 行数",
-      "description": "统计文件的行数、词数和字节数",
+      "description": "统计文件的行数、词数和字节数。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "wc %{选项}% %{文件路径}%",
         "extensions": [
@@ -728,7 +728,7 @@
             "required": true,
             "description": "要统计的文件路径",
             "example": "/home/user/log.txt",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -737,7 +737,7 @@
       "dirPath": "/Shell脚本模板/",
       "name": "head 文件头",
       "keyword": "head 开头 头部",
-      "description": "显示文件开头部分内容",
+      "description": "显示文件开头部分内容。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "head %{选项}% -n %{行数}% %{文件路径}%",
         "extensions": [
@@ -779,14 +779,14 @@
             "required": true,
             "description": "显示的行数",
             "example": "20",
-            "notes": ""
+            "notes": "必填"
           },
           "文件路径": {
             "type": "string",
             "required": true,
             "description": "要查看的文件路径",
             "example": "/var/log/syslog",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -795,7 +795,7 @@
       "dirPath": "/Shell脚本模板/",
       "name": "tail 文件尾",
       "keyword": "tail 末尾 尾部",
-      "description": "显示文件末尾部分内容",
+      "description": "显示文件末尾部分内容。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "tail %{选项}% -n %{行数}% %{文件路径}%",
         "extensions": [
@@ -843,14 +843,14 @@
             "required": true,
             "description": "显示的行数",
             "example": "20",
-            "notes": ""
+            "notes": "必填"
           },
           "文件路径": {
             "type": "string",
             "required": true,
             "description": "要查看的文件路径",
             "example": "/var/log/syslog",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }

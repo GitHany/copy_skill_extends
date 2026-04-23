@@ -1,13 +1,13 @@
 {
   "module": "测试框架",
   "version": "1.0",
-  "description": "测试框架命令 模块命令集合",
+  "description": "测试框架命令 模块命令集合，涵盖测试框架的常用操作和最佳实践",
   "commands": [
     {
       "dirPath": "/测试框架/",
       "name": "jest 运行测试",
       "keyword": "jest 测试",
-      "description": "运行 Jest 测试框架",
+      "description": "运行 Jest 测试框架。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "jest",
         "extensions": [
@@ -29,7 +29,13 @@
             "name": "指定测试文件",
             "cmd": "jest %{测试文件路径}%",
             "params": {
-              "测试文件路径": { "type": "string", "required": true, "description": "测试文件路径", "example": "src/__tests__/math.test.ts", "notes": "常用" }
+              "测试文件路径": {
+                "type": "string",
+                "required": true,
+                "description": "测试文件路径",
+                "example": "src/__tests__/math.test.ts",
+                "notes": "常用"
+              }
             },
             "keyword": "jest 指定文件"
           },
@@ -37,7 +43,13 @@
             "name": "匹配测试名",
             "cmd": "jest -t %{测试名称模式}%",
             "params": {
-              "测试名称模式": { "type": "string", "required": true, "description": "测试名称模式", "example": "toBe", "notes": "" }
+              "测试名称模式": {
+                "type": "string",
+                "required": true,
+                "description": "测试名称模式",
+                "example": "toBe",
+                "notes": "可选"
+              }
             },
             "keyword": "jest 匹配名称"
           },
@@ -68,7 +80,7 @@
       "dirPath": "/测试框架/",
       "name": "vitest 运行测试",
       "keyword": "vitest 测试",
-      "description": "运行 Vitest 测试框架",
+      "description": "运行 Vitest 测试框架。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "vitest",
         "extensions": [
@@ -122,7 +134,7 @@
       "dirPath": "/测试框架/",
       "name": "pytest 运行测试",
       "keyword": "pytest 测试",
-      "description": "运行 Python pytest 测试框架",
+      "description": "运行 Python pytest 测试框架。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "pytest",
         "extensions": [
@@ -137,7 +149,13 @@
             "name": "生成覆盖率",
             "cmd": "pytest --cov=%{源码路径}%",
             "params": {
-              "源码路径": { "type": "string", "required": true, "description": "源码路径", "example": "src", "notes": "常用" }
+              "源码路径": {
+                "type": "string",
+                "required": true,
+                "description": "源码路径",
+                "example": "src",
+                "notes": "常用"
+              }
             },
             "keyword": "pytest coverage 覆盖",
             "notes": "常用"
@@ -146,7 +164,13 @@
             "name": "标记过滤",
             "cmd": "pytest -m %{标记名}%",
             "params": {
-              "标记名": { "type": "string", "required": true, "description": "测试标记名", "example": "slow", "notes": "常用" }
+              "标记名": {
+                "type": "string",
+                "required": true,
+                "description": "测试标记名",
+                "example": "slow",
+                "notes": "常用"
+              }
             },
             "keyword": "pytest mark 标记"
           },
@@ -178,7 +202,7 @@
       "dirPath": "/测试框架/",
       "name": "mvn test Maven测试",
       "keyword": "maven test 测试",
-      "description": "运行 Maven 测试",
+      "description": "运行 Maven 测试。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "mvn test",
         "extensions": [
@@ -186,7 +210,13 @@
             "name": "指定测试类",
             "cmd": "mvn test -Dtest=%{测试类名}%",
             "params": {
-              "测试类名": { "type": "string", "required": true, "description": "测试类名", "example": "AppTest", "notes": "常用" }
+              "测试类名": {
+                "type": "string",
+                "required": true,
+                "description": "测试类名",
+                "example": "AppTest",
+                "notes": "常用"
+              }
             },
             "keyword": "mvn test 指定类"
           },
@@ -210,7 +240,7 @@
       "dirPath": "/测试框架/",
       "name": "gradlew test Gradle测试",
       "keyword": "gradle test 测试",
-      "description": "运行 Gradle 测试",
+      "description": "运行 Gradle 测试。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "./gradlew test",
         "extensions": [
@@ -218,7 +248,13 @@
             "name": "指定测试",
             "cmd": "./gradlew test --tests %{测试类名}%",
             "params": {
-              "测试类名": { "type": "string", "required": true, "description": "测试类全名", "example": "com.example.AppTest", "notes": "常用" }
+              "测试类名": {
+                "type": "string",
+                "required": true,
+                "description": "测试类全名",
+                "example": "com.example.AppTest",
+                "notes": "常用"
+              }
             },
             "keyword": "gradle tests 测试"
           },
@@ -243,7 +279,7 @@
       "dirPath": "/测试框架/",
       "name": "playwright test Playwright测试",
       "keyword": "playwright e2e 测试",
-      "description": "运行 Playwright 端到端测试",
+      "description": "运行 Playwright 端到端测试。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "playwright test",
         "extensions": [
@@ -251,7 +287,13 @@
             "name": "指定文件",
             "cmd": "playwright test %{测试文件}%",
             "params": {
-              "测试文件": { "type": "string", "required": true, "description": "测试文件路径", "example": "tests/login.spec.ts", "notes": "常用" }
+              "测试文件": {
+                "type": "string",
+                "required": true,
+                "description": "测试文件路径",
+                "example": "tests/login.spec.ts",
+                "notes": "常用"
+              }
             },
             "keyword": "playwright 文件"
           },
@@ -266,7 +308,13 @@
             "name": "代码生成",
             "cmd": "playwright codegen %{URL}%",
             "params": {
-              "URL": { "type": "string", "required": true, "description": "目标 URL", "example": "https://example.com", "notes": "常用" }
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "目标 URL",
+                "example": "https://example.com",
+                "notes": "常用"
+              }
             },
             "keyword": "playwright codegen 录制",
             "notes": "常用"
@@ -282,7 +330,13 @@
             "name": "安装浏览器",
             "cmd": "playwright install %{浏览器名}%",
             "params": {
-              "浏览器名": { "type": "string", "required": true, "description": "浏览器名称", "example": "chromium", "notes": "常用" }
+              "浏览器名": {
+                "type": "string",
+                "required": true,
+                "description": "浏览器名称",
+                "example": "chromium",
+                "notes": "常用"
+              }
             },
             "keyword": "playwright install 安装"
           },
@@ -290,7 +344,13 @@
             "name": "并行执行",
             "cmd": "playwright test --workers=%{数量}%",
             "params": {
-              "数量": { "type": "string", "required": true, "description": "并行数量", "example": "4", "notes": "常用" }
+              "数量": {
+                "type": "string",
+                "required": true,
+                "description": "并行数量",
+                "example": "4",
+                "notes": "常用"
+              }
             },
             "keyword": "playwright workers 并行",
             "notes": "常用"
@@ -303,7 +363,7 @@
       "dirPath": "/测试框架/",
       "name": "cypress run Cypress测试",
       "keyword": "cypress e2e 测试",
-      "description": "运行 Cypress E2E 测试",
+      "description": "运行 Cypress E2E 测试。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "cypress run",
         "extensions": [
@@ -318,7 +378,13 @@
             "name": "指定规格",
             "cmd": "cypress run --spec %{测试文件}%",
             "params": {
-              "测试文件": { "type": "string", "required": true, "description": "测试文件路径", "example": "cypress/e2e/login.cy.js", "notes": "常用" }
+              "测试文件": {
+                "type": "string",
+                "required": true,
+                "description": "测试文件路径",
+                "example": "cypress/e2e/login.cy.js",
+                "notes": "常用"
+              }
             },
             "keyword": "cypress spec 规格"
           },
@@ -326,7 +392,13 @@
             "name": "指定浏览器",
             "cmd": "cypress run --browser %{浏览器名}%",
             "params": {
-              "浏览器名": { "type": "string", "required": true, "description": "浏览器名称", "example": "chrome", "notes": "" }
+              "浏览器名": {
+                "type": "string",
+                "required": true,
+                "description": "浏览器名称",
+                "example": "chrome",
+                "notes": "可选"
+              }
             },
             "keyword": "cypress browser 浏览器"
           },
@@ -358,7 +430,7 @@
       "dirPath": "/测试框架/",
       "name": "newman run Postman测试",
       "keyword": "newman postman api",
-      "description": "使用 Newman 运行 Postman 集合",
+      "description": "使用 Newman 运行 Postman 集合。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "newman run %{集合文件}%",
         "extensions": [
@@ -366,8 +438,20 @@
             "name": "指定环境",
             "cmd": "newman run %{集合文件}% -e %{环境文件}%",
             "params": {
-              "集合文件": { "type": "string", "required": true, "description": "Postman 集合文件", "example": "collection.json", "notes": "常用" },
-              "环境文件": { "type": "string", "required": true, "description": "环境配置文件", "example": "env.json", "notes": "常用" }
+              "集合文件": {
+                "type": "string",
+                "required": true,
+                "description": "Postman 集合文件",
+                "example": "collection.json",
+                "notes": "常用"
+              },
+              "环境文件": {
+                "type": "string",
+                "required": true,
+                "description": "环境配置文件",
+                "example": "env.json",
+                "notes": "常用"
+              }
             },
             "keyword": "newman env 环境"
           },
@@ -375,7 +459,13 @@
             "name": "生成多格式报告",
             "cmd": "newman run %{集合文件}% --reporters cli,junit",
             "params": {
-              "集合文件": { "type": "string", "required": true, "description": "Postman 集合文件", "example": "collection.json", "notes": "常用" }
+              "集合文件": {
+                "type": "string",
+                "required": true,
+                "description": "Postman 集合文件",
+                "example": "collection.json",
+                "notes": "常用"
+              }
             },
             "keyword": "newman reporters 报告",
             "notes": "常用"
@@ -384,7 +474,13 @@
             "name": "忽略SSL错误",
             "cmd": "newman run %{集合文件}% --insecure",
             "params": {
-              "集合文件": { "type": "string", "required": true, "description": "Postman 集合文件", "example": "collection.json", "notes": "常用" }
+              "集合文件": {
+                "type": "string",
+                "required": true,
+                "description": "Postman 集合文件",
+                "example": "collection.json",
+                "notes": "常用"
+              }
             },
             "keyword": "newman insecure ssl",
             "notes": "常用"
@@ -393,8 +489,20 @@
             "name": "数据驱动",
             "cmd": "newman run %{集合文件}% -d %{数据文件}%",
             "params": {
-              "集合文件": { "type": "string", "required": true, "description": "Postman 集合文件", "example": "collection.json", "notes": "常用" },
-              "数据文件": { "type": "string", "required": true, "description": "CSV 数据文件", "example": "data.csv", "notes": "常用" }
+              "集合文件": {
+                "type": "string",
+                "required": true,
+                "description": "Postman 集合文件",
+                "example": "collection.json",
+                "notes": "常用"
+              },
+              "数据文件": {
+                "type": "string",
+                "required": true,
+                "description": "CSV 数据文件",
+                "example": "data.csv",
+                "notes": "常用"
+              }
             },
             "keyword": "newman data 数据",
             "notes": "常用"
@@ -403,14 +511,32 @@
             "name": "超时设置",
             "cmd": "newman run %{集合文件}% --timeout %{毫秒}%",
             "params": {
-              "集合文件": { "type": "string", "required": true, "description": "Postman 集合文件", "example": "collection.json", "notes": "常用" },
-              "毫秒": { "type": "string", "required": true, "description": "超时时间(毫秒)", "example": "30000", "notes": "" }
+              "集合文件": {
+                "type": "string",
+                "required": true,
+                "description": "Postman 集合文件",
+                "example": "collection.json",
+                "notes": "常用"
+              },
+              "毫秒": {
+                "type": "string",
+                "required": true,
+                "description": "超时时间(毫秒)",
+                "example": "30000",
+                "notes": "可选"
+              }
             },
             "keyword": "newman timeout 超时"
           }
         ],
         "params": {
-          "集合文件": { "type": "string", "required": true, "description": "Postman 集合文件路径", "example": "collection.json", "notes": "常用" }
+          "集合文件": {
+            "type": "string",
+            "required": true,
+            "description": "Postman 集合文件路径",
+            "example": "collection.json",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -418,7 +544,7 @@
       "dirPath": "/测试框架/",
       "name": "curl HTTP请求",
       "keyword": "curl api http",
-      "description": "使用 curl 进行 API 测试",
+      "description": "使用 curl 进行 API 测试。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "curl %{URL}%",
         "extensions": [
@@ -426,8 +552,20 @@
             "name": "POST 请求",
             "cmd": "curl -X POST %{URL}% -H \"Content-Type: application/json\" -d '%{JSON数据}%'",
             "params": {
-              "URL": { "type": "string", "required": true, "description": "请求 URL", "example": "https://api.example.com/users", "notes": "常用" },
-              "JSON数据": { "type": "string", "required": true, "description": "JSON 请求体", "example": "{\"name\":\"test\"}", "notes": "常用" }
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": "常用"
+              },
+              "JSON数据": {
+                "type": "string",
+                "required": true,
+                "description": "JSON 请求体",
+                "example": "{\"name\":\"test\"}",
+                "notes": "常用"
+              }
             },
             "keyword": "curl POST 请求"
           },
@@ -435,8 +573,20 @@
             "name": "带请求头",
             "cmd": "curl -H \"%{请求头}%\" %{URL}%",
             "params": {
-              "请求头": { "type": "string", "required": true, "description": "HTTP 请求头", "example": "Authorization: Bearer token123", "notes": "常用" },
-              "URL": { "type": "string", "required": true, "description": "请求 URL", "example": "https://api.example.com/users", "notes": "常用" }
+              "请求头": {
+                "type": "string",
+                "required": true,
+                "description": "HTTP 请求头",
+                "example": "Authorization: Bearer token123",
+                "notes": "常用"
+              },
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "请求 URL",
+                "example": "https://api.example.com/users",
+                "notes": "常用"
+              }
             },
             "keyword": "curl header 请求头",
             "notes": "常用"
@@ -445,7 +595,13 @@
             "name": "详细输出",
             "cmd": "curl -v %{URL}%",
             "params": {
-              "URL": { "type": "string", "required": true, "description": "请求 URL", "example": "https://api.example.com", "notes": "常用" }
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": "常用"
+              }
             },
             "keyword": "curl verbose 详情",
             "notes": "常用"
@@ -454,7 +610,13 @@
             "name": "显示响应头",
             "cmd": "curl -i %{URL}%",
             "params": {
-              "URL": { "type": "string", "required": true, "description": "请求 URL", "example": "https://api.example.com", "notes": "常用" }
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": "常用"
+              }
             },
             "keyword": "curl include 响应头"
           },
@@ -462,16 +624,40 @@
             "name": "用户认证",
             "cmd": "curl -u %{用户名}%:%{密码}% %{URL}%",
             "params": {
-              "用户名": { "type": "string", "required": true, "description": "用户名", "example": "admin", "notes": "" },
-              "密码": { "type": "string", "required": true, "description": "密码", "example": "password", "notes": "" },
-              "URL": { "type": "string", "required": true, "description": "请求 URL", "example": "https://api.example.com", "notes": "常用" }
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "admin",
+                "notes": "可选"
+              },
+              "密码": {
+                "type": "string",
+                "required": true,
+                "description": "密码",
+                "example": "password",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "请求 URL",
+                "example": "https://api.example.com",
+                "notes": "常用"
+              }
             },
             "keyword": "curl auth 认证",
             "notes": "常用"
           }
         ],
         "params": {
-          "URL": { "type": "string", "required": true, "description": "请求 URL", "example": "https://api.example.com", "notes": "常用" }
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "请求 URL",
+            "example": "https://api.example.com",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -479,7 +665,7 @@
       "dirPath": "/测试框架/",
       "name": "npx nyc NYC覆盖率统计",
       "keyword": "nyc istanbul 覆盖",
-      "description": "使用 NYC/Istanbul 统计测试覆盖率",
+      "description": "使用 NYC/Istanbul 统计测试覆盖率。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npx nyc %{命令}%",
         "extensions": [
@@ -514,7 +700,13 @@
             "name": "检查阈值",
             "cmd": "npx nyc --check-coverage --branches %{阈值}%",
             "params": {
-              "阈值": { "type": "string", "required": true, "description": "分支覆盖率阈值", "example": "80", "notes": "常用" }
+              "阈值": {
+                "type": "string",
+                "required": true,
+                "description": "分支覆盖率阈值",
+                "example": "80",
+                "notes": "常用"
+              }
             },
             "keyword": "nyc threshold 阈值",
             "notes": "常用"
@@ -523,13 +715,25 @@
             "name": "排除文件",
             "cmd": "npx nyc --exclude='%{文件或目录}%'",
             "params": {
-              "文件或目录": { "type": "string", "required": true, "description": "排除的文件或目录", "example": "**/node_modules/**", "notes": "" }
+              "文件或目录": {
+                "type": "string",
+                "required": true,
+                "description": "排除的文件或目录",
+                "example": "**/node_modules/**",
+                "notes": "可选"
+              }
             },
             "keyword": "nyc exclude 排除"
           }
         ],
         "params": {
-          "命令": { "type": "string", "required": true, "description": "要执行的测试命令", "example": "jest", "notes": "常用" }
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "要执行的测试命令",
+            "example": "jest",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -573,7 +777,13 @@
             "name": "检查阈值",
             "cmd": "coverage report --fail-under=%{阈值}%",
             "params": {
-              "阈值": { "type": "string", "required": true, "description": "覆盖率阈值", "example": "80", "notes": "常用" }
+              "阈值": {
+                "type": "string",
+                "required": true,
+                "description": "覆盖率阈值",
+                "example": "80",
+                "notes": "常用"
+              }
             },
             "keyword": "coverage fail-under 阈值",
             "notes": "常用"
@@ -586,7 +796,7 @@
       "dirPath": "/测试框架/",
       "name": "codecov 上传",
       "keyword": "codecov 上传",
-      "description": "上传覆盖率到 Codecov",
+      "description": "上传覆盖率到 Codecov。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "codecov",
         "extensions": [
@@ -594,7 +804,13 @@
             "name": "Token上传",
             "cmd": "codecov --token=%{TOKEN}%",
             "params": {
-              "TOKEN": { "type": "string", "required": true, "description": "Codecov 项目 Token", "example": "abc123...", "notes": "常用" }
+              "TOKEN": {
+                "type": "string",
+                "required": true,
+                "description": "Codecov 项目 Token",
+                "example": "abc123...",
+                "notes": "常用"
+              }
             },
             "keyword": "codecov token 上传",
             "notes": "常用"
@@ -603,7 +819,13 @@
             "name": "指定覆盖率文件",
             "cmd": "codecov --file=%{覆盖率文件}%",
             "params": {
-              "覆盖率文件": { "type": "string", "required": true, "description": "覆盖率数据文件", "example": "coverage/lcov.info", "notes": "常用" }
+              "覆盖率文件": {
+                "type": "string",
+                "required": true,
+                "description": "覆盖率数据文件",
+                "example": "coverage/lcov.info",
+                "notes": "常用"
+              }
             },
             "keyword": "codecov file 文件"
           },
@@ -611,7 +833,13 @@
             "name": "指定提交SHA",
             "cmd": "codecov --sha %{COMMIT_SHA}%",
             "params": {
-              "COMMIT_SHA": { "type": "string", "required": true, "description": "Git 提交 SHA", "example": "abc123def456", "notes": "" }
+              "COMMIT_SHA": {
+                "type": "string",
+                "required": true,
+                "description": "Git 提交 SHA",
+                "example": "abc123def456",
+                "notes": "可选"
+              }
             },
             "keyword": "codecov sha 提交"
           }
@@ -623,7 +851,7 @@
       "dirPath": "/测试框架/",
       "name": "npm test 运行测试",
       "keyword": "npm test 测试",
-      "description": "运行 npm test 脚本",
+      "description": "运行 npm test 脚本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm test",
         "extensions": [
@@ -663,7 +891,7 @@
       "dirPath": "/测试框架/",
       "name": "npx msw init MSW初始化",
       "keyword": "msw mock service worker",
-      "description": "初始化 Mock Service Worker (MSW)",
+      "description": "初始化 Mock Service Worker (MSW)。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npx msw init %{公共目录}%",
         "extensions": [
@@ -682,7 +910,13 @@
           }
         ],
         "params": {
-          "公共目录": { "type": "string", "required": true, "description": "公共资源目录", "example": "public/", "notes": "常用" }
+          "公共目录": {
+            "type": "string",
+            "required": true,
+            "description": "公共资源目录",
+            "example": "public/",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -690,7 +924,7 @@
       "dirPath": "/测试框架/",
       "name": "go test Go测试",
       "keyword": "go test httptest",
-      "description": "运行 Go 测试 (httptest)",
+      "description": "运行 Go 测试 (httptest)。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "go test -v ./...",
         "extensions": [
@@ -712,7 +946,13 @@
             "name": "生成覆盖文件",
             "cmd": "go test -coverprofile=%{覆盖文件}% ./...",
             "params": {
-              "覆盖文件": { "type": "string", "required": true, "description": "覆盖率输出文件", "example": "coverage.out", "notes": "" }
+              "覆盖文件": {
+                "type": "string",
+                "required": true,
+                "description": "覆盖率输出文件",
+                "example": "coverage.out",
+                "notes": "可选"
+              }
             },
             "keyword": "go test coverprofile 覆盖文件"
           }
@@ -724,7 +964,7 @@
       "dirPath": "/测试框架/",
       "name": "sinon spy 创建Spy",
       "keyword": "sinon spy mock stub",
-      "description": "创建 Sinon Spy、Stub 和 Mock",
+      "description": "创建 Sinon Spy、Stub 和 Mock。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "sinon.spy()",
         "extensions": [
@@ -771,7 +1011,7 @@
       "dirPath": "/测试框架/",
       "name": "nock HTTP Mock",
       "keyword": "nock mock http",
-      "description": "使用 nock 进行 HTTP Mock 测试",
+      "description": "使用 nock 进行 HTTP Mock 测试。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "nock('https://api.example.com').get('/users').reply(200, { users: [] });",
         "extensions": [
@@ -816,7 +1056,7 @@
       "dirPath": "/测试框架/",
       "name": "pytest-xdist 并行测试",
       "keyword": "pytest-xdist parallel 并行",
-      "description": "使用 pytest-xdist 进行并行测试",
+      "description": "使用 pytest-xdist 进行并行测试。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "pytest -n auto",
         "extensions": [
@@ -824,7 +1064,13 @@
             "name": "指定进程数",
             "cmd": "pytest -n %{进程数}%",
             "params": {
-              "进程数": { "type": "string", "required": true, "description": "并行进程数", "example": "4", "notes": "常用" }
+              "进程数": {
+                "type": "string",
+                "required": true,
+                "description": "并行进程数",
+                "example": "4",
+                "notes": "常用"
+              }
             },
             "keyword": "pytest xdist 进程"
           },
@@ -848,7 +1094,7 @@
       "dirPath": "/测试框架/",
       "name": "selenium-side-runner Selenium测试",
       "keyword": "selenium webdriver",
-      "description": "使用 Selenium IDE 命令行运行测试",
+      "description": "使用 Selenium IDE 命令行运行测试。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "selenium-side-runner %{项目文件}.side",
         "extensions": [
@@ -856,8 +1102,20 @@
             "name": "指定浏览器",
             "cmd": "selenium-side-runner --browser %{浏览器名}% %{项目文件}%",
             "params": {
-              "浏览器名": { "type": "string", "required": true, "description": "浏览器名称", "example": "chrome", "notes": "常用" },
-              "项目文件": { "type": "string", "required": true, "description": "Selenium 项目文件", "example": "tests/my-project.side", "notes": "常用" }
+              "浏览器名": {
+                "type": "string",
+                "required": true,
+                "description": "浏览器名称",
+                "example": "chrome",
+                "notes": "常用"
+              },
+              "项目文件": {
+                "type": "string",
+                "required": true,
+                "description": "Selenium 项目文件",
+                "example": "tests/my-project.side",
+                "notes": "常用"
+              }
             },
             "keyword": "selenium browser 浏览器"
           },
@@ -865,14 +1123,32 @@
             "name": "指定Grid地址",
             "cmd": "selenium-side-runner --webdriver-url %{Grid地址}% %{项目文件}%",
             "params": {
-              "Grid地址": { "type": "string", "required": true, "description": "Selenium Grid URL", "example": "http://localhost:4444/wd/hub", "notes": "" },
-              "项目文件": { "type": "string", "required": true, "description": "Selenium 项目文件", "example": "tests/my-project.side", "notes": "常用" }
+              "Grid地址": {
+                "type": "string",
+                "required": true,
+                "description": "Selenium Grid URL",
+                "example": "http://localhost:4444/wd/hub",
+                "notes": "可选"
+              },
+              "项目文件": {
+                "type": "string",
+                "required": true,
+                "description": "Selenium 项目文件",
+                "example": "tests/my-project.side",
+                "notes": "常用"
+              }
             },
             "keyword": "selenium grid remote"
           }
         ],
         "params": {
-          "项目文件": { "type": "string", "required": true, "description": "Selenium IDE 项目文件路径", "example": "tests/my-project.side", "notes": "常用" }
+          "项目文件": {
+            "type": "string",
+            "required": true,
+            "description": "Selenium IDE 项目文件路径",
+            "example": "tests/my-project.side",
+            "notes": "常用"
+          }
         }
       }
     }

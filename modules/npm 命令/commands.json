@@ -1,0 +1,42 @@
+{
+  "module": "npm 命令",
+  "version": "2.0",
+  "description": "npm 命令命令集合，涵盖npm 命令的常用操作和最佳实践",
+  "commands": [
+    {
+      "cmd": "npm install",
+      "extensions": [
+        {
+          "name": "安装生产依赖",
+          "cmd": "npm install --production",
+          "params": {},
+          "keyword": "npm install prod"
+        },
+        {
+          "name": "安装开发依赖",
+          "cmd": "npm install --save-dev %{包名}%",
+          "params": {
+            "包名": {
+              "type": "string",
+              "required": true,
+              "description": "包名称",
+              "example": "eslint",
+              "notes": "必填"
+            }
+          },
+          "keyword": "npm install dev"
+        }
+      ],
+      "params": {},
+      "dirPath": "/npm 命令/",
+      "name": "npm 命令 命令",
+      "keyword": "npm 命令 命令",
+      "description": "npm 命令 命令的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

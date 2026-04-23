@@ -15,7 +15,13 @@
             "name": "创建 TypeScript 项目",
             "cmd": "npx create-react-app %{项目名}% --template typescript",
             "params": {
-              "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "my-react-app", "notes": "" }
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称",
+                "example": "my-react-app",
+                "notes": "可选"
+              }
             },
             "keyword": "create-react-app TypeScript"
           },
@@ -23,13 +29,25 @@
             "name": "创建 JavaScript 项目",
             "cmd": "npx create-react-app %{项目名}% --template cra-template",
             "params": {
-              "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "my-react-app", "notes": "" }
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称",
+                "example": "my-react-app",
+                "notes": "可选"
+              }
             },
             "keyword": "create-react-app JavaScript"
           }
         ],
         "params": {
-          "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "my-react-app", "notes": "常用" }
+          "项目名": {
+            "type": "string",
+            "required": true,
+            "description": "项目名称",
+            "example": "my-react-app",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -45,7 +63,13 @@
             "name": "创建 TypeScript 项目",
             "cmd": "npx create-next-app %{项目名}% --typescript",
             "params": {
-              "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "my-next-app", "notes": "" }
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称",
+                "example": "my-next-app",
+                "notes": "可选"
+              }
             },
             "keyword": "create-next-app TypeScript"
           },
@@ -53,7 +77,13 @@
             "name": "创建 App Router 项目",
             "cmd": "npx create-next-app %{项目名}% --app",
             "params": {
-              "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "my-next-app", "notes": "" }
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称",
+                "example": "my-next-app",
+                "notes": "可选"
+              }
             },
             "keyword": "create-next-app App Router"
           },
@@ -61,7 +91,13 @@
             "name": "创建 Tailwind CSS 项目",
             "cmd": "npx create-next-app %{项目名}% --tailwind",
             "params": {
-              "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "my-next-app", "notes": "" }
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称",
+                "example": "my-next-app",
+                "notes": "可选"
+              }
             },
             "keyword": "create-next-app Tailwind"
           },
@@ -69,7 +105,13 @@
             "name": "创建 ESLint 项目",
             "cmd": "npx create-next-app %{项目名}% --eslint",
             "params": {
-              "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "my-next-app", "notes": "" }
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称",
+                "example": "my-next-app",
+                "notes": "可选"
+              }
             },
             "keyword": "create-next-app ESLint"
           },
@@ -77,7 +119,13 @@
             "name": "创建 src 目录项目",
             "cmd": "npx create-next-app %{项目名}% --src-dir",
             "params": {
-              "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "my-next-app", "notes": "" }
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称",
+                "example": "my-next-app",
+                "notes": "可选"
+              }
             },
             "keyword": "create-next-app src 目录"
           },
@@ -85,13 +133,25 @@
             "name": "组合多个选项创建",
             "cmd": "npx create-next-app %{项目名}% --typescript --tailwind --eslint --app --src-dir",
             "params": {
-              "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "my-next-app", "notes": "" }
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称",
+                "example": "my-next-app",
+                "notes": "可选"
+              }
             },
             "keyword": "create-next-app 组合选项"
           }
         ],
         "params": {
-          "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "my-next-app", "notes": "常用" }
+          "项目名": {
+            "type": "string",
+            "required": true,
+            "description": "项目名称",
+            "example": "my-next-app",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -99,7 +159,7 @@
       "dirPath": "/React 命令/",
       "name": "npm/yarn/pnpm 安装依赖",
       "keyword": "npm yarn pnpm install 安装依赖",
-      "description": "在 React/Next.js 项目中安装依赖包",
+      "description": "在 React/Next.js 项目中安装依赖包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install %{包名}%",
         "extensions": [
@@ -113,7 +173,13 @@
             "name": "npm 安装开发依赖",
             "cmd": "npm install %{包名}% --save-dev",
             "params": {
-              "包名": { "type": "string", "required": true, "description": "npm 包名称", "example": "typescript @types/react", "notes": "" }
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "npm 包名称",
+                "example": "typescript @types/react",
+                "notes": "可选"
+              }
             },
             "keyword": "npm install 开发依赖"
           },
@@ -121,7 +187,13 @@
             "name": "yarn 安装依赖",
             "cmd": "yarn add %{包名}%",
             "params": {
-              "包名": { "type": "string", "required": true, "description": "包名称", "example": "react-router-dom", "notes": "" }
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "react-router-dom",
+                "notes": "可选"
+              }
             },
             "keyword": "yarn add"
           },
@@ -129,7 +201,13 @@
             "name": "pnpm 安装依赖",
             "cmd": "pnpm add %{包名}%",
             "params": {
-              "包名": { "type": "string", "required": true, "description": "包名称", "example": "zustand", "notes": "" }
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "zustand",
+                "notes": "可选"
+              }
             },
             "keyword": "pnpm add"
           },
@@ -137,7 +215,13 @@
             "name": "npm 卸载依赖",
             "cmd": "npm uninstall %{包名}%",
             "params": {
-              "包名": { "type": "string", "required": true, "description": "包名称", "example": "lodash", "notes": "" }
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": "可选"
+              }
             },
             "keyword": "npm uninstall"
           },
@@ -145,13 +229,25 @@
             "name": "npm 更新依赖",
             "cmd": "npm update %{包名}%",
             "params": {
-              "包名": { "type": "string", "required": true, "description": "包名称", "example": "react", "notes": "" }
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "react",
+                "notes": "可选"
+              }
             },
             "keyword": "npm update"
           }
         ],
         "params": {
-          "包名": { "type": "string", "required": true, "description": "npm 包名称", "example": "react react-dom", "notes": "常用" }
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "npm 包名称",
+            "example": "react react-dom",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -159,7 +255,7 @@
       "dirPath": "/React 命令/",
       "name": "npm run start / yarn start 启动开发服务器",
       "keyword": "npm run start 启动开发服务器 React",
-      "description": "启动 React 项目的开发服务器",
+      "description": "启动 React 项目的开发服务器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm start",
         "extensions": [
@@ -185,7 +281,13 @@
             "name": "指定端口启动",
             "cmd": "PORT=%{端口}% npm start",
             "params": {
-              "端口": { "type": "string", "required": true, "description": "端口号", "example": "3001", "notes": "" }
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口号",
+                "example": "3001",
+                "notes": "可选"
+              }
             },
             "keyword": "npm start 端口"
           }
@@ -197,7 +299,7 @@
       "dirPath": "/React 命令/",
       "name": "npm run build 构建生产版本",
       "keyword": "npm run build 构建生产版本 React",
-      "description": "构建 React 项目的生产版本",
+      "description": "构建 React 项目的生产版本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm run build",
         "extensions": [
@@ -227,7 +329,7 @@
       "dirPath": "/React 命令/",
       "name": "next dev 启动 Next.js 开发服务器",
       "keyword": "next dev 启动开发服务器 Next.js",
-      "description": "启动 Next.js 项目的开发服务器",
+      "description": "启动 Next.js 项目的开发服务器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "next dev",
         "extensions": [
@@ -241,7 +343,13 @@
             "name": "指定端口启动",
             "cmd": "next dev --port %{端口}%",
             "params": {
-              "端口": { "type": "string", "required": true, "description": "端口号", "example": "8080", "notes": "" }
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口号",
+                "example": "8080",
+                "notes": "可选"
+              }
             },
             "keyword": "next dev 端口"
           },
@@ -249,7 +357,13 @@
             "name": "指定主机启动",
             "cmd": "next dev -H %{主机}%",
             "params": {
-              "主机": { "type": "string", "required": true, "description": "主机地址", "example": "0.0.0.0", "notes": "" }
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机地址",
+                "example": "0.0.0.0",
+                "notes": "可选"
+              }
             },
             "keyword": "next dev 主机"
           },
@@ -267,7 +381,7 @@
       "dirPath": "/React 命令/",
       "name": "next build 构建 Next.js 生产版本",
       "keyword": "next build 构建生产版本 Next.js",
-      "description": "构建 Next.js 项目的生产版本",
+      "description": "构建 Next.js 项目的生产版本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "next build",
         "extensions": [
@@ -297,7 +411,7 @@
       "dirPath": "/React 命令/",
       "name": "next start 启动 Next.js 生产服务器",
       "keyword": "next start 启动生产服务器 Next.js",
-      "description": "启动 Next.js 生产环境服务器",
+      "description": "启动 Next.js 生产环境服务器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "next start",
         "extensions": [
@@ -311,7 +425,13 @@
             "name": "指定端口启动",
             "cmd": "next start -p %{端口}%",
             "params": {
-              "端口": { "type": "string", "required": true, "description": "端口号", "example": "3000", "notes": "" }
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口号",
+                "example": "3000",
+                "notes": "可选"
+              }
             },
             "keyword": "next start 端口"
           },
@@ -319,7 +439,13 @@
             "name": "指定主机启动",
             "cmd": "next start -H %{主机}%",
             "params": {
-              "主机": { "type": "string", "required": true, "description": "主机地址", "example": "0.0.0.0", "notes": "" }
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机地址",
+                "example": "0.0.0.0",
+                "notes": "可选"
+              }
             },
             "keyword": "next start 主机"
           }
@@ -331,7 +457,7 @@
       "dirPath": "/React 命令/",
       "name": "next lint 运行 ESLint 检查",
       "keyword": "next lint ESLint 代码检查",
-      "description": "运行 Next.js 内置的 ESLint 检查",
+      "description": "运行 Next.js 内置的 ESLint 检查。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "next lint",
         "extensions": [
@@ -351,7 +477,13 @@
             "name": "指定目录检查",
             "cmd": "next lint --dir %{目录}%",
             "params": {
-              "目录": { "type": "string", "required": true, "description": "目录路径", "example": "src", "notes": "" }
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径",
+                "example": "src",
+                "notes": "可选"
+              }
             },
             "keyword": "next lint 目录"
           }
@@ -363,7 +495,7 @@
       "dirPath": "/React 命令/",
       "name": "npx tsc / tsc --init TypeScript 编译",
       "keyword": "tsc TypeScript 编译检查",
-      "description": "TypeScript 编译检查命令",
+      "description": "TypeScript 编译检查命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npx tsc --noEmit",
         "extensions": [
@@ -389,7 +521,13 @@
             "name": "指定配置文件编译",
             "cmd": "npx tsc --project %{配置文件}%",
             "params": {
-              "配置文件": { "type": "string", "required": true, "description": "tsconfig 文件路径", "example": "tsconfig.json", "notes": "" }
+              "配置文件": {
+                "type": "string",
+                "required": true,
+                "description": "tsconfig 文件路径",
+                "example": "tsconfig.json",
+                "notes": "可选"
+              }
             },
             "keyword": "tsc 指定配置"
           },
@@ -413,7 +551,7 @@
       "dirPath": "/React 命令/",
       "name": "react-router 命令路由",
       "keyword": "react-router 路由安装",
-      "description": "React Router 路由库的安装和常用命令",
+      "description": "React Router 路由库的安装和常用命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install react-router-dom",
         "extensions": [
@@ -443,7 +581,7 @@
       "dirPath": "/React 命令/",
       "name": "useState Hook 状态管理",
       "keyword": "useState Hook 状态",
-      "description": "React useState Hook 的常用模式和示例",
+      "description": "React useState Hook 的常用模式和示例。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "const [state, setState] = useState(initialValue)",
         "extensions": [
@@ -611,7 +749,7 @@
       "dirPath": "/React 命令/",
       "name": "Zustand 状态管理",
       "keyword": "Zustand 状态管理安装",
-      "description": "Zustand 轻量级状态管理库的安装和常用命令",
+      "description": "Zustand 轻量级状态管理库的安装和常用命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install zustand",
         "extensions": [
@@ -641,7 +779,7 @@
       "dirPath": "/React 命令/",
       "name": "Redux Toolkit 状态管理",
       "keyword": "Redux Toolkit 状态管理安装",
-      "description": "Redux Toolkit 官方推荐的状态管理方案安装",
+      "description": "Redux Toolkit 官方推荐的状态管理方案安装。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install @reduxjs/toolkit react-redux",
         "extensions": [
@@ -713,7 +851,7 @@
       "dirPath": "/React 命令/",
       "name": "next.config.js 配置",
       "keyword": "next.config.js Next.js 配置",
-      "description": "Next.js 项目配置文件常用选项",
+      "description": "Next.js 项目配置文件常用选项。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "module.exports = { reactStrictMode: true }",
         "extensions": [
@@ -761,7 +899,7 @@
       "dirPath": "/React 命令/",
       "name": "Next.js API Routes API 路由",
       "keyword": "Next.js API Routes 接口",
-      "description": "Next.js API 路由的创建和常用模式",
+      "description": "Next.js API 路由的创建和常用模式。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "export default function handler(req, res) { res.status(200).json({ message: 'Hello' }) }",
         "extensions": [
@@ -791,7 +929,7 @@
       "dirPath": "/React 命令/",
       "name": "Next.js Middleware 中间件",
       "keyword": "Next.js Middleware 中间件",
-      "description": "Next.js Middleware 中间件的创建和配置",
+      "description": "Next.js Middleware 中间件的创建和配置。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "import { NextResponse } from 'next/server'; export function middleware(request) { return NextResponse.next() }",
         "extensions": [
@@ -827,7 +965,7 @@
       "dirPath": "/React 命令/",
       "name": "next/image 图片优化",
       "keyword": "next/image 图片优化组件",
-      "description": "Next.js Image 组件的常用配置和用法",
+      "description": "Next.js Image 组件的常用配置和用法。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "import Image from 'next/image'",
         "extensions": [
@@ -869,7 +1007,7 @@
       "dirPath": "/React 命令/",
       "name": "next/font 字体优化",
       "keyword": "next/font 字体优化",
-      "description": "Next.js Font 模块的常用配置和用法",
+      "description": "Next.js Font 模块的常用配置和用法。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "import { Inter } from 'next/font/google'",
         "extensions": [
@@ -899,7 +1037,7 @@
       "dirPath": "/React 命令/",
       "name": "Static Site Generation (SSG) 静态生成",
       "keyword": "SSG 静态生成 getStaticProps",
-      "description": "Next.js 静态站点生成（SSG）的常用模式",
+      "description": "Next.js 静态站点生成（SSG）的常用模式。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "export async function getStaticProps() { return { props: { data } } }",
         "extensions": [
@@ -929,7 +1067,7 @@
       "dirPath": "/React 命令/",
       "name": "Server-Side Rendering (SSR) 服务端渲染",
       "keyword": "SSR 服务端渲染 getServerSideProps",
-      "description": "Next.js 服务端渲染（SSR）的常用模式",
+      "description": "Next.js 服务端渲染（SSR）的常用模式。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "export async function getServerSideProps(context) { const data = await fetchData(context.params.id); return { props: { data } } }",
         "extensions": [
@@ -959,7 +1097,7 @@
       "dirPath": "/React 命令/",
       "name": "Vercel 部署 Next.js",
       "keyword": "Vercel 部署 Next.js",
-      "description": "将 Next.js 项目部署到 Vercel 平台的命令",
+      "description": "将 Next.js 项目部署到 Vercel 平台的命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "vercel",
         "extensions": [

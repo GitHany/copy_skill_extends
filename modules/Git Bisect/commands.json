@@ -1,0 +1,50 @@
+{
+  "module": "Git Bisect",
+  "version": "2.0",
+  "description": "Git Bisect命令集合，涵盖Git Bisect的常用操作和最佳实践",
+  "commands": [
+    {
+      "cmd": "git bisect start",
+      "extensions": [
+        {
+          "name": "标记坏提交",
+          "cmd": "git bisect bad %{提交}%",
+          "params": {
+            "提交": {
+              "type": "string",
+              "required": true,
+              "description": "提交",
+              "example": "HEAD",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git bisect bad"
+        },
+        {
+          "name": "标记好提交",
+          "cmd": "git bisect good %{提交}%",
+          "params": {
+            "提交": {
+              "type": "string",
+              "required": true,
+              "description": "提交",
+              "example": "v1.0.0",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git bisect good"
+        }
+      ],
+      "params": {},
+      "dirPath": "/Git Bisect/",
+      "name": "Git Bisect 命令",
+      "keyword": "Git Bisect 命令",
+      "description": "Git Bisect 命令的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

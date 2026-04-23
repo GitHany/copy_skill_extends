@@ -1,0 +1,41 @@
+{
+  "module": "Git Cherry-pick",
+  "version": "2.0",
+  "description": "Git Cherry-pick命令集合，涵盖Git Cherry-pick的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Git Cherry-pick/",
+      "name": "git cherry-pick 拣选提交",
+      "keyword": "git cherry-pick 拣选",
+      "description": "拣选一个或多个提交。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git cherry-pick %{提交}%",
+        "extensions": [
+          {
+            "name": "拣选不含提交",
+            "cmd": "git cherry-pick --no-commit %{提交}%",
+            "params": {
+              "提交": {
+                "type": "string",
+                "required": true,
+                "description": "提交",
+                "example": "abc123",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git cherry-pick no-commit"
+          }
+        ],
+        "params": {
+          "提交": {
+            "type": "string",
+            "required": true,
+            "description": "提交哈希",
+            "example": "abc1234",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

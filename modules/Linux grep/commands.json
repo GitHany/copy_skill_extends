@@ -1,0 +1,158 @@
+{
+  "module": "Linux grep",
+  "version": "2.0",
+  "description": "Linux grep 文本搜索工具。在文件内容中搜索匹配指定模式的行，支持正则表达式。用于在代码库中查找特定字符串、搜索日志关键词、从配置文件中提取信息。常见场景：调试时搜索错误信息、在项目中查找函数调用、过滤命令输出。",
+  "commands": [
+    {
+      "dirPath": "/Linux grep/",
+      "name": "grep 搜索文本",
+      "keyword": "grep 搜索",
+      "description": "在文件中搜索文本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "grep '%{模式}%' %{文件}%",
+        "extensions": [
+          {
+            "name": "递归搜索目录",
+            "description": "在目录及子目录中搜索所有文件",
+            "params": {
+              "模式": {
+                "example": "error",
+                "notes": "搜索关键词"
+              },
+              "目录": {
+                "example": "./src",
+                "notes": "搜索目录"
+              }
+            },
+            "cmd": "grep -r \"%{模式}%\" %{目录}%"
+          },
+          {
+            "name": "忽略大小写",
+            "description": "搜索时忽略大小写区别",
+            "params": {
+              "模式": {
+                "example": "exception",
+                "notes": "模式"
+              },
+              "文件": {
+                "example": "*.java",
+                "notes": "文件"
+              }
+            },
+            "cmd": "grep -i \"%{模式}%\" %{文件}%"
+          },
+          {
+            "name": "显示行号",
+            "description": "显示匹配行的行号，便于定位",
+            "params": {
+              "模式": {
+                "example": "TODO",
+                "notes": "模式"
+              },
+              "文件": {
+                "example": "main.py",
+                "notes": "文件"
+              }
+            },
+            "cmd": "grep -n \"%{模式}%\" %{文件}%"
+          },
+          {
+            "name": "只显示匹配的文件名",
+            "description": "不显示具体行，只显示包含匹配的文件名",
+            "params": {
+              "模式": {
+                "example": "config",
+                "notes": "模式"
+              },
+              "目录": {
+                "example": "/etc",
+                "notes": "目录"
+              }
+            },
+            "cmd": "grep -l \"%{模式}%\" %{目录}%/*"
+          },
+          {
+            "name": "反向匹配",
+            "description": "显示不匹配的行，排除特定内容",
+            "params": {
+              "模式": {
+                "example": "debug",
+                "notes": "排除的模式"
+              },
+              "文件": {
+                "example": "app.log",
+                "notes": "文件"
+              }
+            },
+            "cmd": "grep -v \"%{模式}%\" %{文件}%"
+          },
+          {
+            "name": "使用正则表达式",
+            "description": "使用正则进行复杂模式匹配",
+            "params": {
+              "模式": {
+                "example": "^Error.*line [0-9]+",
+                "notes": "正则模式"
+              },
+              "文件": {
+                "example": "*.log",
+                "notes": "文件"
+              }
+            },
+            "cmd": "grep -E \"%{模式}%\" %{文件}%"
+          },
+          {
+            "name": "显示前后几行",
+            "description": "显示匹配行及其上下文，便于查看完整信息",
+            "params": {
+              "行数": {
+                "example": "5",
+                "notes": "上下文行数"
+              },
+              "模式": {
+                "example": "ERROR",
+                "notes": "模式"
+              },
+              "文件": {
+                "example": "syslog",
+                "notes": "文件"
+              }
+            },
+            "cmd": "grep -B %{行数}% -A %{行数}% \"%{模式}%\" %{文件}%"
+          },
+          {
+            "name": "统计匹配次数",
+            "description": "统计模式在文件中出现的次数",
+            "params": {
+              "模式": {
+                "example": "failed",
+                "notes": "模式"
+              },
+              "文件": {
+                "example": "auth.log",
+                "notes": "文件"
+              }
+            },
+            "cmd": "grep -c \"%{模式}%\" %{文件}%"
+          }
+        ],
+        "params": {
+          "模式": {
+            "type": "string",
+            "required": true,
+            "description": "搜索模式",
+            "example": "error",
+            "notes": "必填"
+          },
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "文件",
+            "example": "log.txt",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

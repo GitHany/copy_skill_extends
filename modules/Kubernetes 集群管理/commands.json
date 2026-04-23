@@ -1,0 +1,69 @@
+{
+  "module": "Kubernetes 集群管理",
+  "version": "2.0",
+  "description": "Kubernetes 集群级别管理命令，涵盖Kubernetes 集群管理的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Kubernetes 集群管理/",
+      "name": "kubectl cluster-info 集群信息",
+      "keyword": "kubectl cluster 集群",
+      "description": "查看集群信息。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl cluster-info",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Kubernetes 集群管理/",
+      "name": "kubectl get nodes 查看节点",
+      "keyword": "kubectl nodes 节点",
+      "description": "查看集群节点。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl get nodes",
+        "extensions": [
+          {
+            "name": "显示详细信息",
+            "cmd": "kubectl get nodes -o wide",
+            "params": {},
+            "keyword": "kubectl nodes wide"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Kubernetes 集群管理/",
+      "name": "kubectl top nodes 节点资源",
+      "keyword": "kubectl top 资源",
+      "description": "查看节点资源使用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl top nodes",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Kubernetes 集群管理/",
+      "name": "kubectl get namespaces 查看命名空间",
+      "keyword": "kubectl namespaces 命名空间",
+      "description": "列出所有命名空间。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl get namespaces",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Kubernetes 集群管理/",
+      "name": "kubectl api-versions API 版本",
+      "keyword": "kubectl api API",
+      "description": "查看支持的 API 版本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl api-versions",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

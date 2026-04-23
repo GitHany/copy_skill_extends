@@ -1,0 +1,44 @@
+{
+  "module": "kubectl 调试",
+  "version": "2.0",
+  "description": "kubectl 调试命令集合，涵盖kubectl 调试的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/kubectl 调试/",
+      "name": "kubectl debug 调试 Pod",
+      "keyword": "kubectl debug 调试",
+      "description": "调试 Pod。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl debug %{Pod名称}% -it --image=%{镜像}%",
+        "extensions": [],
+        "params": {
+          "Pod名称": {
+            "type": "string",
+            "required": true,
+            "description": "Pod 名称",
+            "example": "my-pod",
+            "notes": "必填"
+          },
+          "镜像": {
+            "type": "string",
+            "required": true,
+            "description": "调试镜像",
+            "example": "busybox",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/kubectl 调试/",
+      "name": "kubectl events 查看事件",
+      "keyword": "kubectl events 事件",
+      "description": "查看集群事件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl get events --sort-by=.lastTimestamp",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

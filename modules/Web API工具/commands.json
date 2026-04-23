@@ -7,7 +7,7 @@
       "dirPath": "/Web API工具/",
       "name": "curl GET 请求",
       "keyword": "curl GET HTTP 请求",
-      "description": "使用 curl 发送 GET 请求获取资源",
+      "description": "使用 curl 发送 GET 请求获取资源。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "curl %{选项}% %{URL}%",
         "extensions": [
@@ -20,7 +20,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl GET 基础"
@@ -34,7 +34,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl 重定向"
@@ -48,7 +48,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl 响应头"
@@ -62,7 +62,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl 头部 HEAD"
@@ -76,7 +76,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl 详细 verbose"
@@ -90,14 +90,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl 下载保存"
@@ -111,7 +111,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl SSL 证书"
@@ -130,7 +130,7 @@
             "required": true,
             "description": "请求 URL",
             "example": "https://api.example.com/users",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -139,7 +139,7 @@
       "dirPath": "/Web API工具/",
       "name": "curl POST 请求",
       "keyword": "curl POST HTTP 请求",
-      "description": "使用 curl 发送 POST 请求提交数据",
+      "description": "使用 curl 发送 POST 请求提交数据。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "curl -X POST %{选项}% %{URL}%",
         "extensions": [
@@ -152,21 +152,21 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "email": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl POST 表单"
@@ -180,14 +180,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl POST JSON"
@@ -201,21 +201,21 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "数据": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl POST 认证"
@@ -229,14 +229,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl POST 文件上传"
@@ -250,14 +250,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl POST JSON 文件"
@@ -271,21 +271,21 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "header2": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl POST 请求头"
@@ -304,7 +304,7 @@
             "required": true,
             "description": "请求 URL",
             "example": "https://api.example.com/users",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -326,14 +326,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users/1",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl PUT 更新"
@@ -347,7 +347,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users/1",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl DELETE 删除"
@@ -361,14 +361,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users/1",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl DELETE 认证"
@@ -382,14 +382,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users/1",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl PATCH 部分"
@@ -403,7 +403,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users/1",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl 状态码"
@@ -429,7 +429,7 @@
             "required": true,
             "description": "请求 URL",
             "example": "https://api.example.com/users/1",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -438,7 +438,7 @@
       "dirPath": "/Web API工具/",
       "name": "curl 请求头设置",
       "keyword": "curl header 请求头 -H",
-      "description": "使用 curl 设置各种 HTTP 请求头",
+      "description": "使用 curl 设置各种 HTTP 请求头。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "curl -H \"%{header_name}%: %{header_value}%\" %{URL}%",
         "extensions": [
@@ -451,7 +451,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl content-type"
@@ -465,14 +465,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl authorization"
@@ -486,14 +486,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl 多请求头"
@@ -507,7 +507,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl user-agent"
@@ -521,7 +521,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl accept"
@@ -535,14 +535,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl 自定义头"
@@ -554,21 +554,21 @@
             "required": true,
             "description": "请求头名称",
             "example": "Content-Type",
-            "notes": ""
+            "notes": "必填"
           },
           "header_value": {
             "type": "string",
             "required": true,
             "description": "请求头值",
             "example": "application/json",
-            "notes": ""
+            "notes": "必填"
           },
           "URL": {
             "type": "string",
             "required": true,
             "description": "请求 URL",
             "example": "https://api.example.com",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -577,7 +577,7 @@
       "dirPath": "/Web API工具/",
       "name": "httpie GET 请求",
       "keyword": "httpie GET HTTP",
-      "description": "使用 httpie 发送简洁优雅的 HTTP 请求",
+      "description": "使用 httpie 发送简洁优雅的 HTTP 请求。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "http %{URL}%",
         "extensions": [
@@ -590,7 +590,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "httpie GET 基础"
@@ -604,7 +604,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "httpie 请求头响应头"
@@ -618,7 +618,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "httpie 下载"
@@ -632,21 +632,21 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "value": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "httpie 请求头"
@@ -660,14 +660,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "httpie 认证"
@@ -679,7 +679,7 @@
             "required": true,
             "description": "请求 URL",
             "example": "https://api.example.com/users",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -701,21 +701,21 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users",
-                "notes": ""
+                "notes": "可选"
               },
               "name": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "email": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "httpie POST 表单"
@@ -729,21 +729,21 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users",
-                "notes": ""
+                "notes": "可选"
               },
               "name": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "age": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "httpie POST JSON"
@@ -757,14 +757,14 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users",
-                "notes": ""
+                "notes": "可选"
               },
               "json文件": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "httpie JSON 文件"
@@ -778,14 +778,14 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users",
-                "notes": ""
+                "notes": "可选"
               },
               "文件路径": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "httpie POST 文件"
@@ -799,21 +799,21 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com/users",
-                "notes": ""
+                "notes": "可选"
               },
               "value": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "httpie POST 认证"
@@ -825,7 +825,7 @@
             "required": true,
             "description": "请求 URL",
             "example": "https://api.example.com/users",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -834,7 +834,7 @@
       "dirPath": "/Web API工具/",
       "name": "wget 基础下载",
       "keyword": "wget 下载 HTTP",
-      "description": "使用 wget 下载文件，支持断点续传和后台下载",
+      "description": "使用 wget 下载文件，支持断点续传和后台下载。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "wget %{选项}% %{URL}%",
         "extensions": [
@@ -847,7 +847,7 @@
                 "required": false,
                 "description": "下载链接",
                 "example": "https://example.com/file.zip",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wget 基础下载"
@@ -861,14 +861,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "下载链接",
                 "example": "https://example.com/file.zip",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wget 指定名称"
@@ -882,7 +882,7 @@
                 "required": false,
                 "description": "下载链接",
                 "example": "https://example.com/file.zip",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wget 续传 常用"
@@ -896,7 +896,7 @@
                 "required": false,
                 "description": "下载链接",
                 "example": "https://example.com/file.zip",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wget 后台"
@@ -910,14 +910,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "下载链接",
                 "example": "https://example.com/file.zip",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wget 限速"
@@ -931,7 +931,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wget URL 列表"
@@ -950,7 +950,7 @@
             "required": true,
             "description": "下载链接",
             "example": "https://example.com/file.zip",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -959,7 +959,7 @@
       "dirPath": "/Web API工具/",
       "name": "wget 递归和批量下载",
       "keyword": "wget 递归 批量",
-      "description": "使用 wget 进行递归下载和批量下载",
+      "description": "使用 wget 进行递归下载和批量下载。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "wget %{选项}% %{URL}%",
         "extensions": [
@@ -972,7 +972,7 @@
                 "required": false,
                 "description": "目标 URL",
                 "example": "https://example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wget 递归站点"
@@ -986,14 +986,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "目标 URL",
                 "example": "https://example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wget 递归深度"
@@ -1007,7 +1007,7 @@
                 "required": false,
                 "description": "目标 URL",
                 "example": "https://example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wget 过滤下载"
@@ -1021,7 +1021,7 @@
                 "required": false,
                 "description": "目标 URL",
                 "example": "https://example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wget 拒绝文件"
@@ -1035,21 +1035,21 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "密码": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "目标 URL",
                 "example": "https://example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wget 认证下载"
@@ -1063,7 +1063,7 @@
                 "required": false,
                 "description": "目标 URL",
                 "example": "https://example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wget 静默"
@@ -1082,7 +1082,7 @@
             "required": true,
             "description": "目标 URL",
             "example": "https://example.com",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1091,7 +1091,7 @@
       "dirPath": "/Web API工具/",
       "name": "newman Postman CLI 运行",
       "keyword": "newman postman cli 测试",
-      "description": "使用 newman 命令行工具运行 Postman 集合",
+      "description": "使用 newman 命令行工具运行 Postman 集合。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "newman run %{集合文件}%",
         "extensions": [
@@ -1104,7 +1104,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "newman 运行集合"
@@ -1118,14 +1118,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "environment": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "newman 环境"
@@ -1139,14 +1139,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "报告文件": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "newman HTML 报告"
@@ -1160,14 +1160,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "报告文件": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "newman JSON 报告"
@@ -1181,14 +1181,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "次数": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "newman 迭代"
@@ -1202,7 +1202,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "newman verbose"
@@ -1223,7 +1223,7 @@
       "dirPath": "/Web API工具/",
       "name": "Insomnia CLI 请求",
       "keyword": "insomnia cli 请求",
-      "description": "使用 Insomnia 命令行工具发送 API 请求",
+      "description": "使用 Insomnia 命令行工具发送 API 请求。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "insomnia %{command}% %{args}%",
         "extensions": [
@@ -1236,7 +1236,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "insomnia run 请求"
@@ -1250,7 +1250,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "insomnia 导出"
@@ -1264,7 +1264,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "insomnia 测试套件"
@@ -1278,14 +1278,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "request": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "insomnia 环境变量"
@@ -1326,7 +1326,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "swagger-cli 验证"
@@ -1340,7 +1340,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "swagger-cli 解析"
@@ -1354,14 +1354,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "output": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "swagger-cli bundle 打包"
@@ -1375,7 +1375,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "swagger-cli 诊断"
@@ -1402,7 +1402,7 @@
       "dirPath": "/Web API工具/",
       "name": "redoc 文档服务",
       "keyword": "redoc 文档 生成",
-      "description": "使用 redoc-cli 生成和托管 API 文档",
+      "description": "使用 redoc-cli 生成和托管 API 文档。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "redoc %{command}% %{args}%",
         "extensions": [
@@ -1415,7 +1415,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "redoc 本地服务"
@@ -1429,14 +1429,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "端口": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "redoc 端口"
@@ -1450,14 +1450,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "output_html": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "redoc 生成 HTML"
@@ -1471,21 +1471,21 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "title": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "output": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "redoc 自定义标题"
@@ -1532,7 +1532,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "httpstat 基础"
@@ -1546,7 +1546,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "httpstat curl 命令"
@@ -1560,14 +1560,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "httpstat POST"
@@ -1581,7 +1581,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "httpstat verbose"
@@ -1599,7 +1599,7 @@
             "required": true,
             "description": "请求 URL",
             "example": "https://api.example.com",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1621,7 +1621,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl verbose 调试"
@@ -1635,14 +1635,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl trace 跟踪"
@@ -1656,14 +1656,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl trace-ascii"
@@ -1677,7 +1677,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl 请求时间"
@@ -1691,7 +1691,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl 进度条"
@@ -1703,7 +1703,7 @@
             "required": true,
             "description": "请求 URL",
             "example": "https://api.example.com",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1725,7 +1725,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl HEAD 请求头"
@@ -1739,7 +1739,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl HEAD 重定向"
@@ -1753,7 +1753,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl HEAD verbose"
@@ -1767,7 +1767,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl HEAD SSL"
@@ -1781,14 +1781,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl HEAD 超时"
@@ -1800,7 +1800,7 @@
             "required": true,
             "description": "请求 URL",
             "example": "https://api.example.com",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1809,7 +1809,7 @@
       "dirPath": "/Web API工具/",
       "name": "wscat WebSocket 连接",
       "keyword": "wscat websocket ws",
-      "description": "使用 wscat 连接 WebSocket 服务器进行测试",
+      "description": "使用 wscat 连接 WebSocket 服务器进行测试。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "wscat %{选项}% %{ws_url}%",
         "extensions": [
@@ -1822,21 +1822,21 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "port": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "path": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wscat 连接"
@@ -1850,14 +1850,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "path": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wscat wss"
@@ -1871,14 +1871,14 @@
                 "required": false,
                 "description": "WebSocket URL",
                 "example": "ws://localhost:8080/ws",
-                "notes": ""
+                "notes": "可选"
               },
               "message": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wscat 发送消息"
@@ -1892,14 +1892,14 @@
                 "required": false,
                 "description": "WebSocket URL",
                 "example": "ws://localhost:8080/ws",
-                "notes": ""
+                "notes": "可选"
               },
               "token": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wscat 认证"
@@ -1913,14 +1913,14 @@
                 "required": false,
                 "description": "WebSocket URL",
                 "example": "ws://localhost:8080/ws",
-                "notes": ""
+                "notes": "可选"
               },
               "msg": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wscat 单消息"
@@ -1945,7 +1945,7 @@
             "required": true,
             "description": "WebSocket URL",
             "example": "ws://localhost:8080/ws",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1967,7 +1967,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "websocat 基础"
@@ -1981,14 +1981,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "msg": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "websocat 发送消息"
@@ -2002,7 +2002,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "websocat stdin"
@@ -2016,7 +2016,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "websocat stdout"
@@ -2030,21 +2030,21 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "host": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "path": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "websocat TCP 转发"
@@ -2058,7 +2058,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "websocat 广播"
@@ -2077,7 +2077,7 @@
             "required": true,
             "description": "WebSocket URL",
             "example": "ws://localhost:8080/ws",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -2086,7 +2086,7 @@
       "dirPath": "/Web API工具/",
       "name": "Apollo Client 初始化",
       "keyword": "apollo client 初始化 graphql",
-      "description": "在客户端项目中初始化 Apollo Client",
+      "description": "在客户端项目中初始化 Apollo Client。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install @apollo/client graphql",
         "extensions": [
@@ -2099,7 +2099,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "apollo client 实例"
@@ -2113,7 +2113,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "apollo useQuery 查询"
@@ -2133,21 +2133,21 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "query": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "variables": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "fetch graphql 请求"
@@ -2160,7 +2160,7 @@
       "dirPath": "/Web API工具/",
       "name": "urql GraphQL 客户端",
       "keyword": "urql graphql 客户端",
-      "description": "使用 urql 轻量级 GraphQL 客户端发送请求",
+      "description": "使用 urql 轻量级 GraphQL 客户端发送请求。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install urql graphql",
         "extensions": [
@@ -2173,7 +2173,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "urql client 创建"
@@ -2187,7 +2187,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "urql query 查询"
@@ -2201,7 +2201,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "urql mutation 变更"
@@ -2215,14 +2215,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "token": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "urql 认证"
@@ -2235,7 +2235,7 @@
       "dirPath": "/Web API工具/",
       "name": "API 集成测试脚本",
       "keyword": "api 测试 集成 curl",
-      "description": "使用 curl 和 shell 脚本进行 API 集成测试",
+      "description": "使用 curl 和 shell 脚本进行 API 集成测试。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "curl -X %{METHOD}% -H \"%{header}%\" %{URL}%",
         "extensions": [
@@ -2248,14 +2248,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "health_url": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "api 健康检查"
@@ -2269,21 +2269,21 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "login_url": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "api_url": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "api 链式调用"
@@ -2297,7 +2297,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "api 批量测试"
@@ -2311,14 +2311,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "url": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl 超时"
@@ -2332,7 +2332,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl jq 美化"
@@ -2358,7 +2358,7 @@
             "required": true,
             "description": "请求 URL",
             "example": "https://api.example.com",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }

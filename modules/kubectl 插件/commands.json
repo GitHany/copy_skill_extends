@@ -1,0 +1,317 @@
+{
+  "module": "kubectl 插件",
+  "version": "2.0",
+  "description": "kubectl 插件生态系统模块 - krew 是 kubectl 的插件管理器，用于发现和安装 kubectl 扩展插件。插件可以增强 kubectl 功能，如资源可视化、日志聚合、安全扫描等",
+  "commands": [
+    {
+      "dirPath": "/kubectl 插件/",
+      "name": "kubectl krew 安装插件",
+      "keyword": "kubectl krew 安装",
+      "description": "使用 krew 安装 kubectl 插件 - krew 是 kubectl 官方推荐的插件管理器。安装插件后可以通过 kubectl <插件名> 调用",
+      "data": {
+        "cmd": "kubectl krew install %{插件名}%",
+        "extensions": [
+          {
+            "name": "更新插件索引",
+            "cmd": "kubectl krew update",
+            "params": {},
+            "keyword": "kubectl krew update"
+          },
+          {
+            "name": "列出已安装插件",
+            "cmd": "kubectl krew list",
+            "params": {},
+            "keyword": "kubectl krew list"
+          },
+          {
+            "name": "搜索插件",
+            "cmd": "kubectl krew search %{关键词}%",
+            "params": {
+              "关键词": {
+                "type": "string",
+                "required": true,
+                "description": "搜索关键词",
+                "example": "secret",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl krew search"
+          },
+          {
+            "name": "升级插件",
+            "cmd": "kubectl krew upgrade %{插件名}%",
+            "params": {
+              "插件名": {
+                "type": "string",
+                "required": true,
+                "description": "插件名称",
+                "example": "view-secret",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl krew upgrade"
+          },
+          {
+            "name": "卸载插件",
+            "cmd": "kubectl krew uninstall %{插件名}%",
+            "params": {
+              "插件名": {
+                "type": "string",
+                "required": true,
+                "description": "插件名称",
+                "example": "view-secret",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl krew uninstall"
+          }
+        ],
+        "params": {
+          "插件名": {
+            "type": "string",
+            "required": true,
+            "description": "kubectl 插件名称",
+            "example": "view-secret",
+            "notes": "必填。常用插件：view-secret, resource-capacity, node-shell, ingress-nginx-conf"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/kubectl 插件/",
+      "name": "kubectl ctx 切换上下文",
+      "keyword": "kubectl ctx 上下文",
+      "description": "切换 Kubernetes 集群上下文 - 使用 kubectx 工具快速在多个集群之间切换，避免手动修改 kubeconfig",
+      "data": {
+        "cmd": "kubectl ctx %{上下文名}%",
+        "extensions": [
+          {
+            "name": "列出所有上下文",
+            "cmd": "kubectl ctx",
+            "params": {},
+            "keyword": "kubectl ctx list"
+          },
+          {
+            "name": "切换到上一个上下文",
+            "cmd": "kubectl ctx -",
+            "params": {},
+            "keyword": "kubectl ctx prev"
+          },
+          {
+            "name": "删除上下文",
+            "cmd": "kubectl ctx -d %{上下文名}%",
+            "params": {
+              "上下文名": {
+                "type": "string",
+                "required": true,
+                "description": "上下文名称",
+                "example": "prod-cluster",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl ctx delete"
+          }
+        ],
+        "params": {
+          "上下文名": {
+            "type": "string",
+            "required": true,
+            "description": "Kubernetes 上下文/集群名称",
+            "example": "prod-cluster",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/kubectl 插件/",
+      "name": "kubectl ns 切换命名空间",
+      "keyword": "kubectl ns 命名空间",
+      "description": "切换 Kubernetes 命名空间 - 使用 kubens 快速在命名空间之间切换，避免每次命令都要加 -n 参数",
+      "data": {
+        "cmd": "kubectl ns %{命名空间}%",
+        "extensions": [
+          {
+            "name": "列出所有命名空间",
+            "cmd": "kubectl ns",
+            "params": {},
+            "keyword": "kubectl ns list"
+          },
+          {
+            "name": "切换到默认命名空间",
+            "cmd": "kubectl ns default",
+            "params": {},
+            "keyword": "kubectl ns default"
+          },
+          {
+            "name": "切换到上一个命名空间",
+            "cmd": "kubectl ns -",
+            "params": {},
+            "keyword": "kubectl ns prev"
+          }
+        ],
+        "params": {
+          "命名空间": {
+            "type": "string",
+            "required": true,
+            "description": "Kubernetes 命名空间名称",
+            "example": "production",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/kubectl 插件/",
+      "name": "kubectl neat 清理 YAML",
+      "keyword": "kubectl neat 清理",
+      "description": "移除 YAML 中的冗余字段 - kubectl neat 插件可以清理 Kubernetes YAML 中的冗余字段（如 status、managedFields 等），生成干净的 YAML 模板",
+      "data": {
+        "cmd": "kubectl get %{资源类型}% %{名称}% -o yaml | kubectl neat",
+        "extensions": [
+          {
+            "name": "清理并导出",
+            "cmd": "kubectl get %{资源类型}% %{名称}% -o yaml | kubectl neat > %{输出文件}%",
+            "params": {
+              "资源类型": {
+                "type": "string",
+                "required": true,
+                "description": "资源类型",
+                "example": "deployment",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "资源名称",
+                "example": "my-app",
+                "notes": "必填"
+              },
+              "输出文件": {
+                "type": "string",
+                "required": true,
+                "description": "输出文件路径",
+                "example": "deployment.yaml",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl neat export"
+          },
+          {
+            "name": "清理 Secret",
+            "cmd": "kubectl get secret %{名称}% -o yaml | kubectl neat",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Secret 名称",
+                "example": "my-secret",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl neat secret"
+          }
+        ],
+        "params": {
+          "资源类型": {
+            "type": "string",
+            "required": true,
+            "description": "Kubernetes 资源类型",
+            "example": "pod",
+            "notes": "必填。如 pod, deployment, service, configmap, secret"
+          },
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "资源名称",
+            "example": "my-pod",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/kubectl 插件/",
+      "name": "kubectl tail 日志聚合",
+      "keyword": "kubectl tail 日志",
+      "description": "聚合多个 Pod 的日志 - 类似于 Linux tail -f，同时查看多个 Pod 的日志。适用于调试分布式应用、追踪请求链路",
+      "data": {
+        "cmd": "kubectl tail %{Deployment名称}% -n %{命名空间}%",
+        "extensions": [
+          {
+            "name": "查看最近日志",
+            "cmd": "kubectl tail %{名称}% --since %{时间}% -n %{命名空间}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment/Pod 名称",
+                "example": "my-app",
+                "notes": "必填"
+              },
+              "时间": {
+                "type": "string",
+                "required": true,
+                "description": "时间范围",
+                "example": "5m",
+                "notes": "必填。如 5m, 1h, 30s"
+              },
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间",
+                "example": "default",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl tail since"
+          },
+          {
+            "name": "跟踪特定容器",
+            "cmd": "kubectl tail %{名称}% -c %{容器名}% -n %{命名空间}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Pod 名称",
+                "example": "my-app-abc123",
+                "notes": "必填"
+              },
+              "容器名": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称",
+                "example": "sidecar",
+                "notes": "必填。多容器 Pod 时指定容器"
+              },
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间",
+                "example": "default",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl tail container"
+          }
+        ],
+        "params": {
+          "Deployment名称": {
+            "type": "string",
+            "required": true,
+            "description": "Deployment 名称",
+            "example": "nginx",
+            "notes": "必填"
+          },
+          "命名空间": {
+            "type": "string",
+            "required": true,
+            "description": "Kubernetes 命名空间",
+            "example": "default",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

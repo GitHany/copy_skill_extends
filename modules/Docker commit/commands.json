@@ -1,0 +1,33 @@
+{
+  "module": "Docker commit",
+  "version": "2.0",
+  "description": "Docker 从容器创建镜像，涵盖Docker commit的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Docker commit/",
+      "name": "docker commit 创建镜像",
+      "keyword": "docker commit 提交",
+      "description": "从容器创建新镜像。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker commit %{容器}% %{镜像}%",
+        "extensions": [],
+        "params": {
+          "容器": {
+            "type": "string",
+            "required": true,
+            "description": "容器",
+            "example": "myapp",
+            "notes": "必填"
+          },
+          "镜像": {
+            "type": "string",
+            "required": true,
+            "description": "新镜像名",
+            "example": "myapp:v1",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

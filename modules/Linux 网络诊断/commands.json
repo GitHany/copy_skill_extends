@@ -1,0 +1,127 @@
+{
+  "module": "Linux 网络诊断",
+  "version": "2.0",
+  "description": "Linux 网络诊断命令集合，涵盖Linux 网络诊断的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Linux 网络诊断/",
+      "name": "ping 测试连通性",
+      "keyword": "ping 连通性",
+      "description": "测试网络主机连通性。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "ping %{主机}%",
+        "extensions": [
+          {
+            "name": "指定次数",
+            "cmd": "ping -c %{次数}% %{主机}%",
+            "params": {
+              "次数": {
+                "type": "string",
+                "required": true,
+                "description": "ping 次数",
+                "example": "4",
+                "notes": "必填"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "目标主机",
+                "example": "8.8.8.8",
+                "notes": "必填"
+              }
+            },
+            "keyword": "ping count"
+          }
+        ],
+        "params": {
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "目标主机或 IP",
+            "example": "google.com",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux 网络诊断/",
+      "name": "traceroute 路由追踪",
+      "keyword": "traceroute 路由",
+      "description": "追踪数据包路由。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "traceroute %{主机}%",
+        "extensions": [],
+        "params": {
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "目标主机",
+            "example": "google.com",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux 网络诊断/",
+      "name": "nslookup DNS 查询",
+      "keyword": "nslookup DNS",
+      "description": "查询 DNS 记录。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "nslookup %{域名}%",
+        "extensions": [],
+        "params": {
+          "域名": {
+            "type": "string",
+            "required": true,
+            "description": "域名",
+            "example": "google.com",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux 网络诊断/",
+      "name": "dig DNS 查询",
+      "keyword": "dig DNS",
+      "description": "详细 DNS 查询。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "dig %{域名}%",
+        "extensions": [
+          {
+            "name": "指定 DNS 服务器",
+            "cmd": "dig @%{DNS}% %{域名}%",
+            "params": {
+              "DNS": {
+                "type": "string",
+                "required": true,
+                "description": "DNS 服务器",
+                "example": "8.8.8.8",
+                "notes": "必填"
+              },
+              "域名": {
+                "type": "string",
+                "required": true,
+                "description": "域名",
+                "example": "example.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "dig server"
+          }
+        ],
+        "params": {
+          "域名": {
+            "type": "string",
+            "required": true,
+            "description": "要查询的域名",
+            "example": "google.com",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

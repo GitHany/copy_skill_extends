@@ -1,0 +1,154 @@
+{
+  "module": "Linux chmod",
+  "version": "2.0",
+  "description": "Linux chmod 更改文件权限命令。控制文件或目录的访问权限，决定谁能读、写、执行该文件。使用权限数字(755)或符号形式(u+x)设置权限。常见场景：让脚本可执行、设置Web文件权限、开放共享目录。",
+  "commands": [
+    {
+      "dirPath": "/Linux chmod/",
+      "name": "chmod 更改权限",
+      "keyword": "chmod 权限",
+      "description": "更改文件权限。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "chmod %{模式}% %{文件}%",
+        "extensions": [
+          {
+            "name": "设置执行权限",
+            "description": "让脚本文件可以执行",
+            "params": {
+              "模式": {
+                "example": "+x",
+                "notes": "添加执行权限"
+              },
+              "文件": {
+                "example": "deploy.sh",
+                "notes": "脚本文件"
+              }
+            },
+            "cmd": "chmod %{模式}% %{文件}%"
+          },
+          {
+            "name": "设置读写权限",
+            "description": "给所有者读写权限，组和其他用户读权限",
+            "params": {
+              "模式": {
+                "example": "644",
+                "notes": "权限数字"
+              },
+              "文件": {
+                "example": "config.txt",
+                "notes": "文件"
+              }
+            },
+            "cmd": "chmod %{模式}% %{文件}%"
+          },
+          {
+            "name": "递归设置目录权限",
+            "description": "将目录及其内所有文件和子目录权限一起修改",
+            "params": {
+              "模式": {
+                "example": "755",
+                "notes": "权限模式"
+              },
+              "文件": {
+                "example": "/var/www",
+                "notes": "目录路径"
+              }
+            },
+            "cmd": "chmod -R %{模式}% %{文件}%"
+          },
+          {
+            "name": "删除执行权限",
+            "description": "移除文件的执行权限",
+            "params": {
+              "模式": {
+                "example": "-x",
+                "notes": "移除执行权限"
+              },
+              "文件": {
+                "example": "script.sh",
+                "notes": "文件"
+              }
+            },
+            "cmd": "chmod %{模式}% %{文件}%"
+          },
+          {
+            "name": "设置目录权限",
+            "description": "给目录设置适当的权限，通常755",
+            "params": {
+              "模式": {
+                "example": "755",
+                "notes": "权限"
+              },
+              "文件": {
+                "example": "/home/user/public",
+                "notes": "目录"
+              }
+            },
+            "cmd": "chmod %{模式}% %{文件}%"
+          },
+          {
+            "name": "只更改文件权限",
+            "description": "只修改普通文件，不影响目录",
+            "params": {
+              "模式": {
+                "example": "600",
+                "notes": "权限"
+              },
+              "文件": {
+                "example": "*.key",
+                "notes": "文件"
+              }
+            },
+            "cmd": "find . -type f -exec chmod %{模式}% {} \\;"
+          },
+          {
+            "name": "设置只读权限",
+            "description": "让文件只能被读取，不能修改",
+            "params": {
+              "模式": {
+                "example": "444",
+                "notes": "只读权限"
+              },
+              "文件": {
+                "example": "README.txt",
+                "notes": "文件"
+              }
+            },
+            "cmd": "chmod %{模式}% %{文件}%"
+          },
+          {
+            "name": "给所有用户读写执行权限",
+            "description": "完全开放文件权限，谨慎使用",
+            "params": {
+              "模式": {
+                "example": "777",
+                "notes": "最高权限"
+              },
+              "文件": {
+                "example": "tool.sh",
+                "notes": "文件"
+              }
+            },
+            "cmd": "chmod %{模式}% %{文件}%"
+          }
+        ],
+        "params": {
+          "模式": {
+            "type": "string",
+            "required": true,
+            "description": "权限模式",
+            "example": "755",
+            "notes": "必填"
+          },
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "文件",
+            "example": "script.sh",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

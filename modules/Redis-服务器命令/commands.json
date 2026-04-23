@@ -1,13 +1,13 @@
 {
   "module": "Redis-服务器命令",
   "version": "1.0",
-  "description": "Redis 服务器命令模块",
+  "description": "Redis 服务器命令模块，涵盖Redis-服务器命令的常用操作和最佳实践",
   "commands": [
     {
       "dirPath": "/Redis 命令/服务器命令/",
       "name": "redis-cli 连接",
       "keyword": "redis-cli redis 连接",
-      "description": "连接 Redis 服务器",
+      "description": "连接 Redis 服务器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "redis-cli -h %{主机}% -p %{端口}% -a %{密码}%",
         "extensions": [
@@ -21,15 +21,39 @@
             "name": "选择数据库",
             "cmd": "redis-cli -n %{数据库号}%",
             "params": {
-              "数据库号": { "type": "number", "required": true, "description": "数据库编号", "example": "0", "notes": "常用" }
+              "数据库号": {
+                "type": "number",
+                "required": true,
+                "description": "数据库编号",
+                "example": "0",
+                "notes": "常用"
+              }
             },
             "keyword": "redis-cli 选择库"
           }
         ],
         "params": {
-          "主机": { "type": "string", "required": false, "description": "Redis 主机地址", "example": "127.0.0.1", "notes": "默认 127.0.0.1" },
-          "端口": { "type": "number", "required": false, "description": "Redis 端口", "example": "6379", "notes": "默认 6379" },
-          "密码": { "type": "string", "required": false, "description": "Redis 密码", "example": "yourpassword", "notes": "无密码可省略 -a" }
+          "主机": {
+            "type": "string",
+            "required": false,
+            "description": "Redis 主机地址",
+            "example": "127.0.0.1",
+            "notes": "默认 127.0.0.1"
+          },
+          "端口": {
+            "type": "number",
+            "required": false,
+            "description": "Redis 端口",
+            "example": "6379",
+            "notes": "默认 6379"
+          },
+          "密码": {
+            "type": "string",
+            "required": false,
+            "description": "Redis 密码",
+            "example": "yourpassword",
+            "notes": "无密码可省略 -a"
+          }
         }
       }
     },
@@ -37,7 +61,7 @@
       "dirPath": "/Redis 命令/服务器命令/",
       "name": "SELECT",
       "keyword": "redis select 选择数据库",
-      "description": "切换到指定数据库",
+      "description": "切换到指定数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "redis-cli SELECT %{数据库号}%",
         "extensions": [
@@ -55,7 +79,13 @@
           }
         ],
         "params": {
-          "数据库号": { "type": "number", "required": true, "description": "数据库编号", "example": "0", "notes": "常用" }
+          "数据库号": {
+            "type": "number",
+            "required": true,
+            "description": "数据库编号",
+            "example": "0",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -63,7 +93,7 @@
       "dirPath": "/Redis 命令/服务器命令/",
       "name": "DBSIZE",
       "keyword": "redis dbsize 数据库大小",
-      "description": "返回当前数据库的键数量",
+      "description": "返回当前数据库的键数量。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "redis-cli DBSIZE",
         "extensions": [
@@ -81,7 +111,7 @@
       "dirPath": "/Redis 命令/服务器命令/",
       "name": "FLUSHDB",
       "keyword": "redis flushdb 清空数据库",
-      "description": "清空当前数据库的所有键",
+      "description": "清空当前数据库的所有键。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "redis-cli FLUSHDB",
         "extensions": [
@@ -99,7 +129,7 @@
       "dirPath": "/Redis 命令/服务器命令/",
       "name": "FLUSHALL",
       "keyword": "redis flushall 清空所有数据库",
-      "description": "清空所有数据库的所有键",
+      "description": "清空所有数据库的所有键。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "redis-cli FLUSHALL",
         "extensions": [
@@ -117,7 +147,7 @@
       "dirPath": "/Redis 命令/服务器命令/",
       "name": "SAVE",
       "keyword": "redis save 保存",
-      "description": "同步保存数据到磁盘",
+      "description": "同步保存数据到磁盘。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "redis-cli SAVE",
         "extensions": [
@@ -135,7 +165,7 @@
       "dirPath": "/Redis 命令/服务器命令/",
       "name": "BGSAVE",
       "keyword": "redis bgsave 后台保存",
-      "description": "后台异步保存数据到磁盘",
+      "description": "后台异步保存数据到磁盘。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "redis-cli BGSAVE",
         "extensions": [
@@ -153,7 +183,7 @@
       "dirPath": "/Redis 命令/服务器命令/",
       "name": "LASTSAVE",
       "keyword": "redis lastsave 最后保存时间",
-      "description": "返回最后一次成功保存到磁盘的时间戳",
+      "description": "返回最后一次成功保存到磁盘的时间戳。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "redis-cli LASTSAVE",
         "extensions": [
@@ -171,7 +201,7 @@
       "dirPath": "/Redis 命令/服务器命令/",
       "name": "INFO",
       "keyword": "redis info 服务器信息",
-      "description": "获取 Redis 服务器详细信息",
+      "description": "获取 Redis 服务器详细信息。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "redis-cli INFO %{sections}%",
         "extensions": [
@@ -213,7 +243,13 @@
           }
         ],
         "params": {
-          "sections": { "type": "string", "required": false, "description": "信息板块", "example": "memory", "notes": "可选：server, clients, memory, persistence, replication, cpu, stats, keyspace" }
+          "sections": {
+            "type": "string",
+            "required": false,
+            "description": "信息板块",
+            "example": "memory",
+            "notes": "可选：server, clients, memory, persistence, replication, cpu, stats, keyspace"
+          }
         }
       }
     },
@@ -221,7 +257,7 @@
       "dirPath": "/Redis 命令/服务器命令/",
       "name": "CONFIG GET",
       "keyword": "redis config get 获取配置",
-      "description": "获取 Redis 配置参数值",
+      "description": "获取 Redis 配置参数值。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "redis-cli CONFIG GET %{参数名}%",
         "extensions": [
@@ -251,7 +287,13 @@
           }
         ],
         "params": {
-          "参数名": { "type": "string", "required": true, "description": "配置参数名", "example": "maxmemory", "notes": "" }
+          "参数名": {
+            "type": "string",
+            "required": true,
+            "description": "配置参数名",
+            "example": "maxmemory",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -259,7 +301,7 @@
       "dirPath": "/Redis 命令/服务器命令/",
       "name": "CONFIG SET",
       "keyword": "redis config set 设置配置",
-      "description": "设置 Redis 配置参数值",
+      "description": "设置 Redis 配置参数值。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "redis-cli CONFIG SET %{参数名}% %{参数值}%",
         "extensions": [
@@ -267,7 +309,13 @@
             "name": "设置 maxmemory",
             "cmd": "redis-cli CONFIG SET maxmemory %{值}%",
             "params": {
-              "值": { "type": "string", "required": true, "description": "参数值", "example": "256mb", "notes": "" }
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "参数值",
+                "example": "256mb",
+                "notes": "可选"
+              }
             },
             "keyword": "redis CONFIG SET maxmemory"
           },
@@ -275,14 +323,32 @@
             "name": "设置 loglevel",
             "cmd": "redis-cli CONFIG SET loglevel %{级别}%",
             "params": {
-              "级别": { "type": "string", "required": true, "description": "日志级别", "example": "notice", "notes": "可选：debug, verbose, notice, warning" }
+              "级别": {
+                "type": "string",
+                "required": true,
+                "description": "日志级别",
+                "example": "notice",
+                "notes": "可选：debug, verbose, notice, warning"
+              }
             },
             "keyword": "redis CONFIG SET loglevel"
           }
         ],
         "params": {
-          "参数名": { "type": "string", "required": true, "description": "配置参数名", "example": "maxmemory", "notes": "" },
-          "参数值": { "type": "string", "required": true, "description": "配置参数值", "example": "256mb", "notes": "" }
+          "参数名": {
+            "type": "string",
+            "required": true,
+            "description": "配置参数名",
+            "example": "maxmemory",
+            "notes": "必填"
+          },
+          "参数值": {
+            "type": "string",
+            "required": true,
+            "description": "配置参数值",
+            "example": "256mb",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -290,7 +356,7 @@
       "dirPath": "/Redis 命令/服务器命令/",
       "name": "SHUTDOWN",
       "keyword": "redis shutdown 关闭",
-      "description": "安全关闭 Redis 服务器",
+      "description": "安全关闭 Redis 服务器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "redis-cli SHUTDOWN %{选项}%",
         "extensions": [
@@ -314,7 +380,13 @@
           }
         ],
         "params": {
-          "选项": { "type": "string", "required": false, "description": "关闭选项", "example": "SAVE", "notes": "可选：SAVE, NOSAVE" }
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "关闭选项",
+            "example": "SAVE",
+            "notes": "可选：SAVE, NOSAVE"
+          }
         }
       }
     },
@@ -322,7 +394,7 @@
       "dirPath": "/Redis 命令/服务器命令/",
       "name": "PING",
       "keyword": "redis ping 连接测试",
-      "description": "测试 Redis 服务器连接",
+      "description": "测试 Redis 服务器连接。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "redis-cli PING",
         "extensions": [
@@ -340,7 +412,7 @@
       "dirPath": "/Redis 命令/服务器命令/",
       "name": "ECHO",
       "keyword": "redis echo 打印",
-      "description": "打印指定字符串",
+      "description": "打印指定字符串。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "redis-cli ECHO %{消息}%",
         "extensions": [
@@ -348,13 +420,25 @@
             "name": "打印消息",
             "cmd": "redis-cli ECHO %{消息}%",
             "params": {
-              "消息": { "type": "string", "required": true, "description": "要打印的消息", "example": "hello", "notes": "" }
+              "消息": {
+                "type": "string",
+                "required": true,
+                "description": "要打印的消息",
+                "example": "hello",
+                "notes": "可选"
+              }
             },
             "keyword": "redis ECHO"
           }
         ],
         "params": {
-          "消息": { "type": "string", "required": true, "description": "要打印的消息", "example": "hello", "notes": "" }
+          "消息": {
+            "type": "string",
+            "required": true,
+            "description": "要打印的消息",
+            "example": "hello",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -362,7 +446,7 @@
       "dirPath": "/Redis 命令/服务器命令/",
       "name": "TIME",
       "keyword": "redis time 时间",
-      "description": "返回当前服务器时间",
+      "description": "返回当前服务器时间。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "redis-cli TIME",
         "extensions": [

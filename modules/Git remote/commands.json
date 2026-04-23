@@ -1,0 +1,143 @@
+{
+  "module": "Git remote",
+  "version": "2.0",
+  "description": "Git 远程仓库管理 - 用于查看、添加、删除和修改 Git 远程仓库的连接。这些命令帮助你与远程服务器上的代码仓库进行同步和协作，是团队开发的基础。",
+  "commands": [
+    {
+      "dirPath": "/Git remote/",
+      "name": "git remote 查看远程仓库",
+      "keyword": "git remote 查看",
+      "description": "查看所有远程仓库的连接状态和 URL。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git remote -v",
+        "extensions": [
+          {
+            "name": "查看远程仓库列表",
+            "cmd": "git remote",
+            "params": {}
+          },
+          {
+            "name": "查看远程仓库详细信息",
+            "cmd": "git remote show %{远程名}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程仓库名称",
+                "example": "origin",
+                "notes": "必填"
+              }
+            }
+          },
+          {
+            "name": "添加远程仓库",
+            "cmd": "git remote add %{远程名}% %{URL}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程仓库简称",
+                "example": "origin",
+                "notes": "通常使用 origin"
+              },
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "远程仓库地址",
+                "example": "https://github.com/user/repo.git",
+                "notes": "支持 HTTPS 或 SSH 格式"
+              }
+            }
+          },
+          {
+            "name": "删除远程仓库",
+            "cmd": "git remote remove %{远程名}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程仓库名称",
+                "example": "origin",
+                "notes": "删除后无法恢复"
+              }
+            }
+          },
+          {
+            "name": "重命名远程仓库",
+            "cmd": "git remote rename %{旧名}% %{新名}%",
+            "params": {
+              "旧名": {
+                "type": "string",
+                "required": true,
+                "description": "原远程仓库名称",
+                "example": "origin",
+                "notes": "必填"
+              },
+              "新名": {
+                "type": "string",
+                "required": true,
+                "description": "新的远程仓库名称",
+                "example": "upstream",
+                "notes": "必填"
+              }
+            }
+          },
+          {
+            "name": "修改远程仓库 URL",
+            "cmd": "git remote set-url %{远程名}% %{新URL}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程仓库名称",
+                "example": "origin",
+                "notes": "必填"
+              },
+              "新URL": {
+                "type": "string",
+                "required": true,
+                "description": "新的远程仓库地址",
+                "example": "https://github.com/user/repo.git",
+                "notes": "用于切换协议或更新地址"
+              }
+            }
+          },
+          {
+            "name": "获取远程仓库最新信息",
+            "cmd": "git remote prune %{远程名}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程仓库名称",
+                "example": "origin",
+                "notes": "清理已删除的远程分支"
+              }
+            }
+          },
+          {
+            "name": "重置远程仓库 URL（切换协议）",
+            "cmd": "git remote set-url --push %{远程名}% %{URL}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程仓库名称",
+                "example": "origin",
+                "notes": "必填"
+              },
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "推送用的远程仓库地址",
+                "example": "git@github.com:user/repo.git",
+                "notes": "单独设置推送 URL"
+              }
+            }
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

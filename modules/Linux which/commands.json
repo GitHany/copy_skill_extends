@@ -1,0 +1,115 @@
+{
+  "module": "Linux which",
+  "version": "2.0",
+  "description": "Linux which 命令路径查找工具。在PATH环境变量指定的目录中搜索可执行文件，返回找到的第一个完整路径。用于确认某个命令是否安装、查看命令来源、调试环境配置问题。",
+  "commands": [
+    {
+      "dirPath": "/Linux which/",
+      "name": "which 查找命令",
+      "keyword": "which 查找",
+      "description": "查找命令的完整路径。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "which %{命令}%",
+        "extensions": [
+          {
+            "name": "查找命令路径",
+            "description": "显示命令的完整路径",
+            "params": {
+              "命令": {
+                "example": "python",
+                "notes": "命令名"
+              }
+            },
+            "cmd": "which %{命令}%"
+          },
+          {
+            "name": "查找所有匹配",
+            "description": "显示PATH中所有匹配的路径",
+            "params": {
+              "命令": {
+                "example": "python",
+                "notes": "命令名"
+              }
+            },
+            "cmd": "which -a %{命令}%"
+          },
+          {
+            "name": "显示命令版本",
+            "description": "通过which找到的路径查看命令版本",
+            "params": {
+              "命令": {
+                "example": "node",
+                "notes": "命令"
+              }
+            },
+            "cmd": "which %{命令}% && %{命令}% --version"
+          },
+          {
+            "name": "检查多个命令",
+            "description": "一次检查多个命令是否存在",
+            "params": {
+              "命令": {
+                "example": "python node npm git",
+                "notes": "空格分隔的命令"
+              }
+            },
+            "cmd": "which %{命令}%"
+          },
+          {
+            "name": "显示shell内建命令",
+            "description": "检查命令是否是shell内建命令",
+            "params": {
+              "命令": {
+                "example": "cd",
+                "notes": "命令"
+              }
+            },
+            "cmd": "type %{命令}%"
+          },
+          {
+            "name": "显示命令类型",
+            "description": "判断命令是文件还是内建命令",
+            "params": {
+              "命令": {
+                "example": "ls",
+                "notes": "命令"
+              }
+            },
+            "cmd": "which %{命令}% || type %{命令}%"
+          },
+          {
+            "name": "检查Python路径",
+            "description": "查找Python解释器的位置",
+            "params": {
+              "版本": {
+                "example": "python3",
+                "notes": "Python版本"
+              }
+            },
+            "cmd": "which %{版本}%"
+          },
+          {
+            "name": "显示所有路径",
+            "description": "显示PATH中该命令的所有位置",
+            "params": {
+              "命令": {
+                "example": "gcc",
+                "notes": "编译器"
+              }
+            },
+            "cmd": "which -a %{命令}%"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "命令名",
+            "example": "python",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

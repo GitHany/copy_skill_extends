@@ -1,0 +1,118 @@
+{
+  "module": "Docker buildx",
+  "version": "2.0",
+  "description": "Docker buildx命令集合，涵盖Docker buildx的常用操作和最佳实践",
+  "commands": [
+    {
+      "name": "docker buildx ls 列出构建器",
+      "description": "列出所有可用的 buildx 构建器及其状态。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "params": {},
+      "keyword": "docker buildx ls",
+      "dirPath": "/Docker buildx/",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "name": "docker buildx create 创建构建器",
+      "description": "创建新的 buildx 构建器实例，支持 docker-container、kubernetes 等驱动",
+      "params": {
+        "构建器名": {
+          "type": "string",
+          "required": false,
+          "description": "构建器名称",
+          "example": "mybuilder",
+          "notes": "可选，不指定则自动生成"
+        },
+        "驱动类型": {
+          "type": "string",
+          "required": false,
+          "description": "构建器驱动类型",
+          "example": "docker-container",
+          "notes": "可选：docker-container、kubernetes、remote"
+        }
+      },
+      "keyword": "docker buildx create",
+      "dirPath": "/Docker buildx/",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "name": "docker buildx use 切换构建器",
+      "description": "切换到指定的构建器作为默认构建器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "params": {
+        "构建器名": {
+          "type": "string",
+          "required": true,
+          "description": "构建器名称",
+          "example": "default",
+          "notes": "必填，通过 docker buildx ls 查看可用构建器"
+        }
+      },
+      "keyword": "docker buildx use",
+      "dirPath": "/Docker buildx/",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "name": "docker buildx inspect 查看详情",
+      "description": "查看当前构建器的详细信息，包括平台支持、驱动信息等。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "params": {},
+      "keyword": "docker buildx inspect",
+      "dirPath": "/Docker buildx/",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "name": "docker buildx prune 清理缓存",
+      "description": "清理 BuildKit 构建缓存，释放磁盘空间。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "params": {
+        "清除全部": {
+          "type": "boolean",
+          "required": false,
+          "description": "清除所有构建缓存",
+          "example": "-a",
+          "notes": "谨慎使用，会清除所有缓存"
+        }
+      },
+      "keyword": "docker buildx prune",
+      "dirPath": "/Docker buildx/",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "name": "docker buildx rm 删除构建器",
+      "description": "删除指定的构建器实例。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "params": {
+        "构建器名": {
+          "type": "string",
+          "required": true,
+          "description": "要删除的构建器名称",
+          "example": "mybuilder",
+          "notes": "必填"
+        }
+      },
+      "keyword": "docker buildx rm",
+      "dirPath": "/Docker buildx/",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

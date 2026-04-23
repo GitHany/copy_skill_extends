@@ -1,0 +1,52 @@
+{
+  "module": "Docker Swarm",
+  "version": "2.0",
+  "description": "Docker Swarm命令集合，涵盖Docker Swarm的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Docker Swarm/",
+      "name": "docker swarm init 初始化集群",
+      "keyword": "docker swarm init 初始化",
+      "description": "初始化 Docker Swarm。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker swarm init --advertise-addr %{地址}%",
+        "extensions": [],
+        "params": {
+          "地址": {
+            "type": "string",
+            "required": true,
+            "description": "广播地址",
+            "example": "192.168.1.100",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Docker Swarm/",
+      "name": "docker swarm join 加入集群",
+      "keyword": "docker swarm join 加入",
+      "description": "加入 Swarm 集群。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker swarm join --token %{令牌}% %{地址}%",
+        "extensions": [],
+        "params": {
+          "令牌": {
+            "type": "string",
+            "required": true,
+            "description": "加入令牌",
+            "example": "SWMTKN-...",
+            "notes": "必填"
+          },
+          "地址": {
+            "type": "string",
+            "required": true,
+            "description": "管理器地址",
+            "example": "192.168.1.100:2377",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

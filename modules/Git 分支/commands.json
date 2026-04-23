@@ -1,0 +1,34 @@
+{
+  "module": "Git 分支",
+  "version": "2.0",
+  "description": "Git 分支命令集合，涵盖Git 分支的常用操作和最佳实践",
+  "commands": [
+    {
+      "cmd": "git branch",
+      "extensions": [
+        {
+          "name": "远程分支",
+          "cmd": "git branch -r",
+          "params": {},
+          "keyword": "git branch remote"
+        },
+        {
+          "name": "所有分支",
+          "cmd": "git branch -a",
+          "params": {},
+          "keyword": "git branch all"
+        }
+      ],
+      "params": {},
+      "dirPath": "/Git 分支/",
+      "name": "Git 分支 命令",
+      "keyword": "Git 分支 命令",
+      "description": "Git 分支 命令的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

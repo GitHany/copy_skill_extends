@@ -1,0 +1,99 @@
+{
+  "module": "Python pip",
+  "version": "2.0",
+  "description": "Python pip命令集合，涵盖Python pip的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Python pip/",
+      "name": "pip install 安装包",
+      "keyword": "pip install 安装",
+      "description": "安装 Python 包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "pip install %{包名}%",
+        "extensions": [
+          {
+            "name": "指定版本安装",
+            "cmd": "pip install %{包名}%==%{版本}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名",
+                "example": "requests",
+                "notes": "必填"
+              },
+              "版本": {
+                "type": "string",
+                "required": true,
+                "description": "版本号",
+                "example": "2.28.0",
+                "notes": "必填"
+              }
+            },
+            "keyword": "pip install version"
+          },
+          {
+            "name": "从 requirements 安装",
+            "cmd": "pip install -r %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "requirements 文件",
+                "example": "requirements.txt",
+                "notes": "必填"
+              }
+            },
+            "keyword": "pip install requirements"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "Python 包名称",
+            "example": "flask",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Python pip/",
+      "name": "pip uninstall 卸载包",
+      "keyword": "pip uninstall 卸载",
+      "description": "卸载 Python 包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "pip uninstall %{包名}%",
+        "extensions": [],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "包名",
+            "example": "flask",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Python pip/",
+      "name": "pip list 列出包",
+      "keyword": "pip list 列表",
+      "description": "列出已安装的包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "pip list",
+        "extensions": [
+          {
+            "name": "可升级包",
+            "cmd": "pip list --outdated",
+            "params": {},
+            "keyword": "pip list outdated"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

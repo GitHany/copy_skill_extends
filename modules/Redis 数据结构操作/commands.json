@@ -1,0 +1,318 @@
+{
+  "module": "Redis 数据结构操作",
+  "version": "2.0",
+  "description": "Redis 各种数据结构的完整操作命令，涵盖Redis 数据结构操作的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Redis 数据结构操作/",
+      "name": "Redis String 字符串操作",
+      "keyword": "Redis String 字符串",
+      "description": "String 类型的基本操作。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "SET %{key}% %{value}%",
+        "extensions": [
+          {
+            "name": "获取值",
+            "cmd": "GET %{key}%",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "name",
+                "notes": "必填"
+              }
+            },
+            "keyword": "GET"
+          },
+          {
+            "name": "设置过期时间",
+            "cmd": "SETEX %{key}% %{秒}% %{value}%",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "token",
+                "notes": "必填"
+              },
+              "秒": {
+                "type": "string",
+                "required": true,
+                "description": "秒数",
+                "example": "3600",
+                "notes": "必填"
+              },
+              "value": {
+                "type": "string",
+                "required": true,
+                "description": "值",
+                "example": "abc123",
+                "notes": "必填"
+              }
+            },
+            "keyword": "SETEX"
+          },
+          {
+            "name": "批量设置",
+            "cmd": "MSET %{key1}% %{value1}% %{key2}% %{value2}%",
+            "params": {
+              "key1": {
+                "type": "string",
+                "required": true,
+                "description": "键1",
+                "example": "name",
+                "notes": "必填"
+              },
+              "value1": {
+                "type": "string",
+                "required": true,
+                "description": "值1",
+                "example": "John",
+                "notes": "必填"
+              },
+              "key2": {
+                "type": "string",
+                "required": true,
+                "description": "键2",
+                "example": "age",
+                "notes": "必填"
+              },
+              "value2": {
+                "type": "string",
+                "required": true,
+                "description": "值2",
+                "example": "25",
+                "notes": "必填"
+              }
+            },
+            "keyword": "MSET"
+          }
+        ],
+        "params": {
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "键名",
+            "example": "username",
+            "notes": "必填"
+          },
+          "value": {
+            "type": "string",
+            "required": true,
+            "description": "值",
+            "example": "john123",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Redis 数据结构操作/",
+      "name": "Redis List 列表操作",
+      "keyword": "Redis List 列表",
+      "description": "List 类型的操作。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "LPUSH %{key}% %{value}%",
+        "extensions": [
+          {
+            "name": "右侧推入",
+            "cmd": "RPUSH %{key}% %{value}%",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mylist",
+                "notes": "必填"
+              },
+              "value": {
+                "type": "string",
+                "required": true,
+                "description": "值",
+                "example": "item",
+                "notes": "必填"
+              }
+            },
+            "keyword": "RPUSH"
+          },
+          {
+            "name": "获取范围",
+            "cmd": "LRANGE %{key}% %{start}% %{end}%",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mylist",
+                "notes": "必填"
+              },
+              "start": {
+                "type": "string",
+                "required": true,
+                "description": "起始索引",
+                "example": "0",
+                "notes": "必填"
+              },
+              "end": {
+                "type": "string",
+                "required": true,
+                "description": "结束索引",
+                "example": "-1",
+                "notes": "必填"
+              }
+            },
+            "keyword": "LRANGE"
+          }
+        ],
+        "params": {
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "键名",
+            "example": "tasks",
+            "notes": "必填"
+          },
+          "value": {
+            "type": "string",
+            "required": true,
+            "description": "值",
+            "example": "task1",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Redis 数据结构操作/",
+      "name": "Redis Hash 哈希操作",
+      "keyword": "Redis Hash 哈希",
+      "description": "Hash 类型的操作。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "HSET %{key}% %{field}% %{value}%",
+        "extensions": [
+          {
+            "name": "获取字段",
+            "cmd": "HGET %{key}% %{field}%",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "user:1001",
+                "notes": "必填"
+              },
+              "field": {
+                "type": "string",
+                "required": true,
+                "description": "字段",
+                "example": "name",
+                "notes": "必填"
+              }
+            },
+            "keyword": "HGET"
+          },
+          {
+            "name": "获取所有字段值",
+            "cmd": "HGETALL %{key}%",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "user:1001",
+                "notes": "必填"
+              }
+            },
+            "keyword": "HGETALL"
+          }
+        ],
+        "params": {
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "键名",
+            "example": "user:1001",
+            "notes": "必填"
+          },
+          "field": {
+            "type": "string",
+            "required": true,
+            "description": "字段名",
+            "example": "name",
+            "notes": "必填"
+          },
+          "value": {
+            "type": "string",
+            "required": true,
+            "description": "值",
+            "example": "John",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Redis 数据结构操作/",
+      "name": "Redis Set 集合操作",
+      "keyword": "Redis Set 集合",
+      "description": "Set 类型的操作。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "SADD %{key}% %{member}%",
+        "extensions": [
+          {
+            "name": "获取所有成员",
+            "cmd": "SMEMBERS %{key}%",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "tags",
+                "notes": "必填"
+              }
+            },
+            "keyword": "SMEMBERS"
+          },
+          {
+            "name": "判断是否成员",
+            "cmd": "SISMEMBER %{key}% %{member}%",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "tags",
+                "notes": "必填"
+              },
+              "member": {
+                "type": "string",
+                "required": true,
+                "description": "成员",
+                "example": "javascript",
+                "notes": "必填"
+              }
+            },
+            "keyword": "SISMEMBER"
+          }
+        ],
+        "params": {
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "键名",
+            "example": "users:set",
+            "notes": "必填"
+          },
+          "member": {
+            "type": "string",
+            "required": true,
+            "description": "成员值",
+            "example": "user123",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "module": "Linux 压缩解压",
+  "version": "2.0",
+  "description": "Linux 压缩解压命令集合，涵盖Linux 压缩解压的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Linux 压缩解压/",
+      "name": "tar 打包压缩",
+      "keyword": "tar 打包",
+      "description": "创建 tar 归档。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "tar -czvf %{文件}% %{目录}%",
+        "extensions": [
+          {
+            "name": "解压",
+            "cmd": "tar -xzvf %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "归档文件",
+                "example": "backup.tar.gz",
+                "notes": "必填"
+              }
+            },
+            "keyword": "tar extract"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "输出归档文件名",
+            "example": "archive.tar.gz",
+            "notes": "必填"
+          },
+          "目录": {
+            "type": "string",
+            "required": true,
+            "description": "要打包的目录",
+            "example": "/data",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux 压缩解压/",
+      "name": "zip 压缩",
+      "keyword": "zip 压缩",
+      "description": "创建 zip 压缩包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "zip -r %{文件}% %{目录}%",
+        "extensions": [
+          {
+            "name": "解压",
+            "cmd": "unzip %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "zip 文件",
+                "example": "backup.zip",
+                "notes": "必填"
+              }
+            },
+            "keyword": "unzip"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "输出 zip 文件",
+            "example": "archive.zip",
+            "notes": "必填"
+          },
+          "目录": {
+            "type": "string",
+            "required": true,
+            "description": "要压缩的目录",
+            "example": "/data",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

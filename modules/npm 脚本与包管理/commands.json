@@ -1,0 +1,33 @@
+{
+  "module": "npm 脚本与包管理",
+  "version": "2.0",
+  "description": "npm 脚本与包管理命令集合，涵盖npm 脚本与包管理的常用操作和最佳实践",
+  "commands": [
+    {
+      "name": "运行开发服务器",
+      "cmd": "npm run dev",
+      "params": {},
+      "keyword": "npm run dev",
+      "dirPath": "/npm 脚本与包管理/",
+      "description": "运行开发服务器的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "name": "运行测试",
+      "cmd": "npm run test",
+      "params": {},
+      "keyword": "npm run test",
+      "dirPath": "/npm 脚本与包管理/",
+      "description": "运行测试的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

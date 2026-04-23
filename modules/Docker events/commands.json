@@ -1,0 +1,52 @@
+{
+  "module": "Docker events",
+  "version": "2.0",
+  "description": "Docker 实时事件监控，涵盖Docker events的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Docker events/",
+      "name": "docker events 查看事件",
+      "keyword": "docker events 事件",
+      "description": "获取 Docker 实时事件流。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker events",
+        "extensions": [
+          {
+            "name": "过滤器",
+            "cmd": "docker events --filter 'type=%{类型}%'",
+            "params": {
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "类型",
+                "example": "container",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker events filter"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Docker events/",
+      "name": "docker events 时间范围",
+      "keyword": "docker events 时间",
+      "description": "获取指定时间范围内的事件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker events --since '%{时间}%'",
+        "extensions": [],
+        "params": {
+          "时间": {
+            "type": "string",
+            "required": true,
+            "description": "时间",
+            "example": "2024-01-01",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

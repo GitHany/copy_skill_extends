@@ -1,0 +1,166 @@
+{
+  "module": "kubectl auth",
+  "version": "2.0",
+  "description": "Check user permissions on Kubernetes resources.",
+  "commands": [
+    {
+      "dirPath": "/kubectl auth/",
+      "name": "kubectl auth can-i",
+      "keyword": "kubectl auth can-i rbac permission",
+      "description": "Check if current user can perform action",
+      "data": {
+        "cmd": "kubectl auth can-i %{action}% %{resource}%",
+        "extensions": [
+          {
+            "name": "Check delete",
+            "cmd": "kubectl auth can-i delete %{resource}%",
+            "params": {
+              "resource": {
+                "type": "string",
+                "required": true,
+                "description": "Resource type",
+                "example": "pods",
+                "notes": "Check delete permission"
+              }
+            },
+            "keyword": "kubectl auth can-i delete"
+          },
+          {
+            "name": "Check namespace",
+            "cmd": "kubectl auth can-i %{action}% %{resource}% -n %{namespace}%",
+            "params": {
+              "action": {
+                "type": "string",
+                "required": true,
+                "description": "Action",
+                "example": "get",
+                "notes": "Required"
+              },
+              "resource": {
+                "type": "string",
+                "required": true,
+                "description": "Resource type",
+                "example": "pods",
+                "notes": "Required"
+              },
+              "namespace": {
+                "type": "string",
+                "required": false,
+                "description": "Namespace",
+                "example": "default",
+                "notes": "Optional"
+              }
+            },
+            "keyword": "kubectl auth namespace"
+          },
+          {
+            "name": "Check as service account",
+            "cmd": "kubectl auth can-i %{action}% %{resource}% --as=system:serviceaccount:%{namespace}%:%{sa}%",
+            "params": {
+              "action": {
+                "type": "string",
+                "required": true,
+                "description": "Action",
+                "example": "get",
+                "notes": "Required"
+              },
+              "resource": {
+                "type": "string",
+                "required": true,
+                "description": "Resource type",
+                "example": "pods",
+                "notes": "Required"
+              },
+              "namespace": {
+                "type": "string",
+                "required": true,
+                "description": "Namespace",
+                "example": "default",
+                "notes": "Required"
+              },
+              "sa": {
+                "type": "string",
+                "required": true,
+                "description": "Service account name",
+                "example": "my-sa",
+                "notes": "Required"
+              }
+            },
+            "keyword": "kubectl auth serviceaccount"
+          },
+          {
+            "name": "Detailed output",
+            "cmd": "kubectl auth can-i %{action}% %{resource}% --dry-run=client -o yaml",
+            "params": {
+              "action": {
+                "type": "string",
+                "required": true,
+                "description": "Action",
+                "example": "get",
+                "notes": "Verbose output"
+              }
+            },
+            "keyword": "kubectl auth dry-run client"
+          },
+          {
+            "name": "List all permissions",
+            "cmd": "kubectl auth can-i --list",
+            "params": {},
+            "keyword": "kubectl auth list"
+          },
+          {
+            "name": "Check all resources",
+            "cmd": "kubectl auth can-i * %{resource}% --namespace=%{namespace}%",
+            "params": {
+              "resource": {
+                "type": "string",
+                "required": false,
+                "description": "Resource type",
+                "example": "pods",
+                "notes": "Check all"
+              },
+              "namespace": {
+                "type": "string",
+                "required": false,
+                "description": "Namespace",
+                "example": "default",
+                "notes": "Optional"
+              }
+            },
+            "keyword": "kubectl auth all resources"
+          },
+          {
+            "name": "Verify deployment access",
+            "cmd": "kubectl auth can-i get deployments -n %{namespace}%",
+            "params": {
+              "namespace": {
+                "type": "string",
+                "required": false,
+                "description": "Namespace",
+                "example": "default",
+                "notes": "Check deployment access"
+              }
+            },
+            "keyword": "kubectl auth deployments"
+          }
+        ],
+        "params": {
+          "action": {
+            "type": "string",
+            "required": true,
+            "description": "Action to perform",
+            "example": "get",
+            "notes": "Required"
+          },
+          "resource": {
+            "type": "string",
+            "required": true,
+            "description": "Resource type",
+            "example": "pods",
+            "notes": "Required"
+          }
+        }
+      }
+    }
+  ]
+}

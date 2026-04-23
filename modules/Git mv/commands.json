@@ -1,0 +1,104 @@
+{
+  "module": "Git mv",
+  "version": "2.0",
+  "description": "Git 重命名文件 — 移动或重命名文件和目录。Git mv 会自动 staging 变更，比手动 mv 后再 git add 更干净，能保留文件历史。常见场景：项目结构重组、文件命名规范化、移动文件到新目录、批量重命名系列文件。",
+  "commands": [
+    {
+      "dirPath": "/Git mv/",
+      "name": "git mv 重命名",
+      "keyword": "git mv 重命名",
+      "description": "移动或重命名文件/目录。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git mv %{旧}% %{新}%",
+        "extensions": [
+          {
+            "name": "移动到目录",
+            "cmd": "git mv %{文件}% %{目标目录}/",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "要移动的文件",
+                "example": "readme.txt",
+                "notes": "会将文件移动到目标目录，保持原文件名"
+              }
+            },
+            "keyword": "git mv move directory"
+          },
+          {
+            "name": "批量移动（通配符）",
+            "cmd": "git mv %{模式}% %{目标目录}/",
+            "params": {
+              "模式": {
+                "type": "string",
+                "required": true,
+                "description": "文件模式",
+                "example": "*.txt",
+                "notes": "使用通配符批量移动匹配的文件"
+              }
+            },
+            "keyword": "git mv wildcard batch"
+          },
+          {
+            "name": "强制重命名（覆盖）",
+            "cmd": "git mv -f %{源}% %{目标}%",
+            "params": {
+              "源": {
+                "type": "string",
+                "required": true,
+                "description": "源文件",
+                "example": "old.txt",
+                "notes": "如果目标已存在，用 -f 强制覆盖"
+              }
+            },
+            "keyword": "git mv force overwrite"
+          },
+          {
+            "name": "查看 staged 变更",
+            "cmd": "git mv -n %{旧}% %{新}%",
+            "params": {
+              "旧": {
+                "type": "string",
+                "required": true,
+                "description": "原路径",
+                "example": "readme.txt",
+                "notes": "使用 -n 预演，不实际执行"
+              }
+            },
+            "keyword": "git mv dry run preview"
+          },
+          {
+            "name": "重命名子目录中的文件",
+            "cmd": "git mv %{目录}/%{旧文件}% %{目录}/%{新文件}%",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "所在目录",
+                "example": "src/utils",
+                "notes": "在同一目录内重命名"
+              }
+            },
+            "keyword": "git mv subdirectory rename"
+          }
+        ],
+        "params": {
+          "旧": {
+            "type": "string",
+            "required": true,
+            "description": "原文件路径",
+            "example": "old.txt",
+            "notes": "必填"
+          },
+          "新": {
+            "type": "string",
+            "required": true,
+            "description": "新文件路径或目标目录",
+            "example": "new.txt",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "module": "Docker export",
+  "version": "2.0",
+  "description": "Docker 容器导出导入，涵盖Docker export的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Docker export/",
+      "name": "docker export 导出容器",
+      "keyword": "docker export 导出",
+      "description": "导出容器为 tar 文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker export %{容器}% -o %{文件}%",
+        "extensions": [],
+        "params": {
+          "容器": {
+            "type": "string",
+            "required": true,
+            "description": "容器",
+            "example": "myapp",
+            "notes": "必填"
+          },
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "输出文件",
+            "example": "container.tar",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Docker export/",
+      "name": "docker import 导入",
+      "keyword": "docker import 导入",
+      "description": "导入 tar 为镜像。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker import %{文件}% %{镜像}%",
+        "extensions": [],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "文件",
+            "example": "container.tar",
+            "notes": "必填"
+          },
+          "镜像": {
+            "type": "string",
+            "required": true,
+            "description": "镜像名",
+            "example": "myimage:latest",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

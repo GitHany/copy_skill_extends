@@ -1,0 +1,36 @@
+{
+  "module": "kubectl version",
+  "version": "2.0",
+  "description": "kubectl 版本信息，涵盖kubectl version的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/kubectl version/",
+      "name": "kubectl version 查看版本",
+      "keyword": "kubectl version 版本",
+      "description": "查看 kubectl 和集群版本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl version",
+        "extensions": [
+          {
+            "name": "客户端版本",
+            "cmd": "kubectl version --client",
+            "params": {},
+            "keyword": "kubectl version client"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/kubectl version/",
+      "name": "kubectl version --short 简化版本",
+      "keyword": "kubectl version short",
+      "description": "简化版本输出。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl version --short",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

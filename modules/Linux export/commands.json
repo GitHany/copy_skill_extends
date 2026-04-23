@@ -1,0 +1,40 @@
+{
+  "module": "Linux export",
+  "version": "2.0",
+  "description": "Shell 环境变量管理，涵盖Linux export的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Linux export/",
+      "name": "export 设置环境变量",
+      "keyword": "export 环境变量",
+      "description": "设置环境变量。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "export %{变量}%=%{值}%",
+        "extensions": [
+          {
+            "name": "列出变量",
+            "cmd": "export -p",
+            "params": {},
+            "keyword": "export list"
+          }
+        ],
+        "params": {
+          "变量": {
+            "type": "string",
+            "required": true,
+            "description": "变量名",
+            "example": "PATH",
+            "notes": "必填"
+          },
+          "值": {
+            "type": "string",
+            "required": true,
+            "description": "值",
+            "example": "/usr/local/bin:$PATH",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "module": "Linux unzip",
+  "version": "2.0",
+  "description": "Linux unzip 解压工具。解压 .zip 格式压缩包，与 tar.gz 相比在 Windows 和 Linux 间兼容性更好。用于解压从其他系统传来的压缩包、备份文件恢复、批量解压。",
+  "commands": [
+    {
+      "dirPath": "/Linux unzip/",
+      "name": "zip 压缩",
+      "keyword": "zip 压缩",
+      "description": "zip 创建压缩包 - 将一个或多个文件和目录压缩成 .zip 格式。压缩后原文件保留，支持加密、压缩级别设置等功能。广泛用于文件备份和数据传输",
+      "data": {
+        "cmd": "zip -r %{文件}% %{目录}%",
+        "extensions": [
+          {
+            "name": "解压 zip 文件",
+            "description": "解压 .zip 压缩包到当前目录",
+            "params": {
+              "文件": {
+                "example": "archive.zip",
+                "notes": "压缩包路径"
+              }
+            },
+            "cmd": "unzip %{文件}%"
+          },
+          {
+            "name": "解压到指定目录",
+            "description": "将压缩包解压到特定目录",
+            "params": {
+              "文件": {
+                "example": "backup.zip",
+                "notes": "压缩包"
+              },
+              "目标目录": {
+                "example": "/tmp/restore",
+                "notes": "目标目录"
+              }
+            },
+            "cmd": "unzip %{文件}% -d %{目标目录}%"
+          },
+          {
+            "name": "解压到当前目录",
+            "description": "强制解压到当前执行命令的目录",
+            "params": {
+              "文件": {
+                "example": "archive.zip",
+                "notes": "压缩包"
+              }
+            },
+            "cmd": "unzip %{文件}% -d ."
+          },
+          {
+            "name": "查看压缩包内容",
+            "description": "列出压缩包内的文件，不实际解压",
+            "params": {
+              "文件": {
+                "example": "archive.zip",
+                "notes": "压缩包"
+              }
+            },
+            "cmd": "unzip -l %{文件}%"
+          },
+          {
+            "name": "测试压缩包完整性",
+            "description": "检查压缩包是否损坏可正常解压",
+            "params": {
+              "文件": {
+                "example": "backup.zip",
+                "notes": "压缩包"
+              }
+            },
+            "cmd": "unzip -t %{文件}%"
+          },
+          {
+            "name": "静默解压",
+            "description": "不显示解压过程，静默完成",
+            "params": {
+              "文件": {
+                "example": "archive.zip",
+                "notes": "压缩包"
+              }
+            },
+            "cmd": "unzip -q %{文件}%"
+          },
+          {
+            "name": "覆盖已存在文件",
+            "description": "解压时自动覆盖已存在的文件",
+            "params": {
+              "文件": {
+                "example": "update.zip",
+                "notes": "压缩包"
+              }
+            },
+            "cmd": "unzip -o %{文件}%"
+          },
+          {
+            "name": "解压特定文件",
+            "description": "从压缩包中只解压特定文件",
+            "params": {
+              "文件": {
+                "example": "archive.zip",
+                "notes": "压缩包"
+              },
+              "模式": {
+                "example": "*.txt",
+                "notes": "文件模式"
+              }
+            },
+            "cmd": "unzip %{文件}% %{模式}%"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "输出的 zip 文件名",
+            "example": "backup.zip",
+            "notes": "必填"
+          },
+          "目录": {
+            "type": "string",
+            "required": true,
+            "description": "要压缩的目录",
+            "example": "/data",
+            "notes": "必填。-r 表示递归压缩子目录"
+          }
+        }
+      }
+    }
+  ]
+}

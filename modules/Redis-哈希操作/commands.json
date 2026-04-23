@@ -1,13 +1,13 @@
 {
   "module": "Redis-哈希操作",
   "version": "1.0",
-  "description": "Redis 哈希操作模块命令集合",
+  "description": "Redis 哈希操作模块命令集合，涵盖Redis-哈希操作的常用操作和最佳实践",
   "commands": [
     {
       "dirPath": "/Redis 命令/哈希操作/",
       "name": "hset 设置哈希字段",
       "keyword": "hset hash",
-      "description": "设置哈希表中字段的值",
+      "description": "设置哈希表中字段的值。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "hset %{键名}% %{字段}% %{值}%",
         "extensions": [
@@ -15,19 +15,67 @@
             "name": "批量设置",
             "cmd": "hmset %{键名}% %{字段1}% %{值1}% %{字段2}% %{值2}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "哈希键名", "example": "user:1001", "notes": "" },
-              "字段1": { "type": "string", "required": true, "description": "第一个字段", "example": "name", "notes": "" },
-              "值1": { "type": "string", "required": true, "description": "第一个值", "example": "张三", "notes": "" },
-              "字段2": { "type": "string", "required": true, "description": "第二个字段", "example": "age", "notes": "" },
-              "值2": { "type": "string", "required": true, "description": "第二个值", "example": "25", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "哈希键名",
+                "example": "user:1001",
+                "notes": "可选"
+              },
+              "字段1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个字段",
+                "example": "name",
+                "notes": "可选"
+              },
+              "值1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个值",
+                "example": "张三",
+                "notes": "可选"
+              },
+              "字段2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个字段",
+                "example": "age",
+                "notes": "可选"
+              },
+              "值2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个值",
+                "example": "25",
+                "notes": "可选"
+              }
             },
             "keyword": "hmset 批量"
           }
         ],
         "params": {
-          "键名": { "type": "string", "required": true, "description": "哈希键名", "example": "user:1001", "notes": "常用" },
-          "字段": { "type": "string", "required": true, "description": "哈希字段名", "example": "name", "notes": "" },
-          "值": { "type": "string", "required": true, "description": "字段值", "example": "张三", "notes": "" }
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名",
+            "example": "user:1001",
+            "notes": "常用"
+          },
+          "字段": {
+            "type": "string",
+            "required": true,
+            "description": "哈希字段名",
+            "example": "name",
+            "notes": "必填"
+          },
+          "值": {
+            "type": "string",
+            "required": true,
+            "description": "字段值",
+            "example": "张三",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -35,13 +83,25 @@
       "dirPath": "/Redis 命令/哈希操作/",
       "name": "hget 获取哈希字段",
       "keyword": "hget hash",
-      "description": "获取哈希表中字段的值",
+      "description": "获取哈希表中字段的值。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "hget %{键名}% %{字段}%",
         "extensions": [],
         "params": {
-          "键名": { "type": "string", "required": true, "description": "哈希键名", "example": "user:1001", "notes": "常用" },
-          "字段": { "type": "string", "required": true, "description": "字段名", "example": "name", "notes": "" }
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名",
+            "example": "user:1001",
+            "notes": "常用"
+          },
+          "字段": {
+            "type": "string",
+            "required": true,
+            "description": "字段名",
+            "example": "name",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -49,13 +109,25 @@
       "dirPath": "/Redis 命令/哈希操作/",
       "name": "hmset 批量设置哈希字段",
       "keyword": "hmset hash batch",
-      "description": "批量设置哈希表中多个字段的值",
+      "description": "批量设置哈希表中多个字段的值。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "hmset %{键名}% %{field_value_pairs}%",
         "extensions": [],
         "params": {
-          "键名": { "type": "string", "required": true, "description": "哈希键名", "example": "user:1001", "notes": "" },
-          "field_value_pairs": { "type": "string", "required": true, "description": "字段值对列表（交替排列）", "example": "name 张三 age 25 city 北京", "notes": "" }
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名",
+            "example": "user:1001",
+            "notes": "必填"
+          },
+          "field_value_pairs": {
+            "type": "string",
+            "required": true,
+            "description": "字段值对列表（交替排列）",
+            "example": "name 张三 age 25 city 北京",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -63,14 +135,32 @@
       "dirPath": "/Redis 命令/哈希操作/",
       "name": "hmget 批量获取哈希字段",
       "keyword": "hmget hash batch",
-      "description": "批量获取哈希表中多个字段的值",
+      "description": "批量获取哈希表中多个字段的值。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "hmget %{键名}% %{字段1}% %{字段2}%",
         "extensions": [],
         "params": {
-          "键名": { "type": "string", "required": true, "description": "哈希键名", "example": "user:1001", "notes": "" },
-          "字段1": { "type": "string", "required": true, "description": "第一个字段", "example": "name", "notes": "" },
-          "字段2": { "type": "string", "required": true, "description": "第二个字段", "example": "age", "notes": "" }
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名",
+            "example": "user:1001",
+            "notes": "必填"
+          },
+          "字段1": {
+            "type": "string",
+            "required": true,
+            "description": "第一个字段",
+            "example": "name",
+            "notes": "必填"
+          },
+          "字段2": {
+            "type": "string",
+            "required": true,
+            "description": "第二个字段",
+            "example": "age",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -78,14 +168,32 @@
       "dirPath": "/Redis 命令/哈希操作/",
       "name": "hdel 删除哈希字段",
       "keyword": "hdel hash delete",
-      "description": "删除哈希表中一个或多个字段",
+      "description": "删除哈希表中一个或多个字段。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "hdel %{键名}% %{字段1}% %{字段2}%",
         "extensions": [],
         "params": {
-          "键名": { "type": "string", "required": true, "description": "哈希键名", "example": "user:1001", "notes": "" },
-          "字段1": { "type": "string", "required": true, "description": "第一个字段", "example": "email", "notes": "" },
-          "字段2": { "type": "string", "required": false, "description": "第二个字段", "example": "phone", "notes": "" }
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名",
+            "example": "user:1001",
+            "notes": "必填"
+          },
+          "字段1": {
+            "type": "string",
+            "required": true,
+            "description": "第一个字段",
+            "example": "email",
+            "notes": "必填"
+          },
+          "字段2": {
+            "type": "string",
+            "required": false,
+            "description": "第二个字段",
+            "example": "phone",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -93,13 +201,25 @@
       "dirPath": "/Redis 命令/哈希操作/",
       "name": "hexists 检查哈希字段是否存在",
       "keyword": "hexists hash exists",
-      "description": "检查哈希表中指定字段是否存在",
+      "description": "检查哈希表中指定字段是否存在。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "hexists %{键名}% %{字段}%",
         "extensions": [],
         "params": {
-          "键名": { "type": "string", "required": true, "description": "哈希键名", "example": "user:1001", "notes": "" },
-          "字段": { "type": "string", "required": true, "description": "字段名", "example": "name", "notes": "" }
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名",
+            "example": "user:1001",
+            "notes": "必填"
+          },
+          "字段": {
+            "type": "string",
+            "required": true,
+            "description": "字段名",
+            "example": "name",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -107,12 +227,18 @@
       "dirPath": "/Redis 命令/哈希操作/",
       "name": "hlen 获取哈希字段数量",
       "keyword": "hlen hash length",
-      "description": "获取哈希表中字段的数量",
+      "description": "获取哈希表中字段的数量。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "hlen %{键名}%",
         "extensions": [],
         "params": {
-          "键名": { "type": "string", "required": true, "description": "哈希键名", "example": "user:1001", "notes": "" }
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名",
+            "example": "user:1001",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -120,12 +246,18 @@
       "dirPath": "/Redis 命令/哈希操作/",
       "name": "hkeys 获取所有哈希字段名",
       "keyword": "hkeys hash keys",
-      "description": "获取哈希表中所有字段名",
+      "description": "获取哈希表中所有字段名。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "hkeys %{键名}%",
         "extensions": [],
         "params": {
-          "键名": { "type": "string", "required": true, "description": "哈希键名", "example": "user:1001", "notes": "" }
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名",
+            "example": "user:1001",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -133,12 +265,18 @@
       "dirPath": "/Redis 命令/哈希操作/",
       "name": "hvals 获取所有哈希值",
       "keyword": "hvals hash values",
-      "description": "获取哈希表中所有字段的值",
+      "description": "获取哈希表中所有字段的值。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "hvals %{键名}%",
         "extensions": [],
         "params": {
-          "键名": { "type": "string", "required": true, "description": "哈希键名", "example": "user:1001", "notes": "" }
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名",
+            "example": "user:1001",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -146,12 +284,18 @@
       "dirPath": "/Redis 命令/哈希操作/",
       "name": "hgetall 获取所有哈希字段和值",
       "keyword": "hgetall hash all",
-      "description": "获取哈希表中所有的字段和值",
+      "description": "获取哈希表中所有的字段和值。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "hgetall %{键名}%",
         "extensions": [],
         "params": {
-          "键名": { "type": "string", "required": true, "description": "哈希键名", "example": "user:1001", "notes": "常用" }
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名",
+            "example": "user:1001",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -159,14 +303,32 @@
       "dirPath": "/Redis 命令/哈希操作/",
       "name": "hincrby 递增哈希字段值",
       "keyword": "hincrby hash increment",
-      "description": "将哈希表中字段的整数值增加指定增量",
+      "description": "将哈希表中字段的整数值增加指定增量。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "hincrby %{键名}% %{字段}% %{增量}%",
         "extensions": [],
         "params": {
-          "键名": { "type": "string", "required": true, "description": "哈希键名", "example": "user:1001", "notes": "" },
-          "字段": { "type": "string", "required": true, "description": "字段名", "example": "age", "notes": "" },
-          "增量": { "type": "integer", "required": true, "description": "增量值（负数为递减）", "example": "1", "notes": "" }
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名",
+            "example": "user:1001",
+            "notes": "必填"
+          },
+          "字段": {
+            "type": "string",
+            "required": true,
+            "description": "字段名",
+            "example": "age",
+            "notes": "必填"
+          },
+          "增量": {
+            "type": "integer",
+            "required": true,
+            "description": "增量值（负数为递减）",
+            "example": "1",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -174,13 +336,25 @@
       "dirPath": "/Redis 命令/哈希操作/",
       "name": "hstrlen 获取哈希字段值长度",
       "keyword": "hstrlen hash strlen",
-      "description": "获取哈希表中字段值的字符串长度",
+      "description": "获取哈希表中字段值的字符串长度。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "hstrlen %{键名}% %{字段}%",
         "extensions": [],
         "params": {
-          "键名": { "type": "string", "required": true, "description": "哈希键名", "example": "user:1001", "notes": "" },
-          "字段": { "type": "string", "required": true, "description": "字段名", "example": "name", "notes": "" }
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名",
+            "example": "user:1001",
+            "notes": "必填"
+          },
+          "字段": {
+            "type": "string",
+            "required": true,
+            "description": "字段名",
+            "example": "name",
+            "notes": "必填"
+          }
         }
       }
     }

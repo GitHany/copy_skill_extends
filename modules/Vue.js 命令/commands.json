@@ -34,7 +34,7 @@
                 "required": true,
                 "description": "项目名称",
                 "example": "my-vue-app",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "vue create jsx"
@@ -76,7 +76,7 @@
                 "required": true,
                 "description": "项目名称",
                 "example": "my-vue-app",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "vue create 完整功能"
@@ -97,7 +97,7 @@
       "dirPath": "/Vue.js 命令/",
       "name": "npm create vite@latest 创建 Vite+Vue 项目",
       "keyword": "vite vue create",
-      "description": "使用 Vite 快速创建 Vue 3 项目（推荐方式）",
+      "description": "使用 Vite 快速创建 Vue 3 项目（推荐方式）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm create vite@latest %{项目名称}% -- --template vue",
         "extensions": [
@@ -124,7 +124,7 @@
                 "required": true,
                 "description": "项目名称",
                 "example": "my-vue-app",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "vite vue tsx"
@@ -138,7 +138,7 @@
                 "required": true,
                 "description": "项目名称",
                 "example": "my-vue-app",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "vite vue cdn"
@@ -159,7 +159,7 @@
       "dirPath": "/Vue.js 命令/",
       "name": "npm run dev 启动开发服务器",
       "keyword": "vue dev server serve",
-      "description": "启动 Vue / Vite 开发服务器",
+      "description": "启动 Vue / Vite 开发服务器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm run dev",
         "extensions": [
@@ -192,7 +192,7 @@
                 "required": true,
                 "description": "主机地址",
                 "example": "0.0.0.0",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "vue dev 主机"
@@ -211,7 +211,7 @@
       "dirPath": "/Vue.js 命令/",
       "name": "npm run build 构建生产包",
       "keyword": "vue build 打包 production",
-      "description": "构建生产环境优化的 Vue 应用",
+      "description": "构建生产环境优化的 Vue 应用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm run build",
         "extensions": [
@@ -241,7 +241,7 @@
       "dirPath": "/Vue.js 命令/",
       "name": "npm run preview 预览构建结果",
       "keyword": "vue preview 预览",
-      "description": "预览生产构建的产物",
+      "description": "预览生产构建的产物。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm run preview",
         "extensions": [
@@ -254,7 +254,7 @@
                 "required": true,
                 "description": "端口号",
                 "example": "4173",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "vue preview 端口"
@@ -294,7 +294,7 @@
                 "required": true,
                 "description": "项目名称",
                 "example": "my-vue-app",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "vue cli 交互"
@@ -341,7 +341,7 @@
       "dirPath": "/Vue.js 命令/",
       "name": "npm install vue-router 安装路由",
       "keyword": "vue router 安装",
-      "description": "为 Vue 3 项目安装并配置 Vue Router",
+      "description": "为 Vue 3 项目安装并配置 Vue Router。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install vue-router",
         "extensions": [
@@ -377,7 +377,7 @@
       "dirPath": "/Vue.js 命令/",
       "name": "npm install pinia 安装状态管理",
       "keyword": "pinia 安装 store 状态",
-      "description": "为 Vue 3 项目安装并配置 Pinia 状态管理库",
+      "description": "为 Vue 3 项目安装并配置 Pinia 状态管理库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install pinia",
         "extensions": [
@@ -417,7 +417,7 @@
       "dirPath": "/Vue.js 命令/",
       "name": "ref 创建响应式引用",
       "keyword": "ref reactive 响应式 组合式API",
-      "description": "使用 ref 创建基本类型的响应式引用",
+      "description": "使用 ref 创建基本类型的响应式引用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "import { ref } from 'vue'\nconst %{变量名}% = ref(%{初始值}%)",
         "extensions": [
@@ -465,14 +465,14 @@
                 "required": true,
                 "description": "对象属性",
                 "example": "name",
-                "notes": ""
+                "notes": "可选"
               },
               "值": {
                 "type": "string",
                 "required": true,
                 "description": "属性值",
                 "example": "Alice",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "reactive 响应式对象"
@@ -493,7 +493,7 @@
                 "required": true,
                 "description": "数组元素",
                 "example": "1, 2, 3",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "reactive 数组"
@@ -521,7 +521,7 @@
       "dirPath": "/Vue.js 命令/",
       "name": "computed 计算属性",
       "keyword": "computed 计算属性",
-      "description": "使用 computed 创建计算属性",
+      "description": "使用 computed 创建计算属性。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "import { computed } from 'vue'\nconst %{计算属性}% = computed(() => %{表达式}%)",
         "extensions": [
@@ -541,7 +541,7 @@
                 "required": true,
                 "description": "get 表达式",
                 "example": "firstName + ' ' + lastName",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "computed get set"
@@ -562,7 +562,7 @@
                 "required": true,
                 "description": "计算表达式",
                 "example": "items.reduce((a, b) => a + b.price, 0)",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "computed 缓存"
@@ -624,7 +624,7 @@
                 "required": true,
                 "description": "变化时的处理逻辑",
                 "example": "console.log('changed')",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "watch deep 深度"
@@ -645,14 +645,14 @@
                 "required": true,
                 "description": "第二个数据源",
                 "example": "ref2",
-                "notes": ""
+                "notes": "可选"
               },
               "处理逻辑": {
                 "type": "string",
                 "required": true,
                 "description": "处理逻辑",
                 "example": "console.log('changed')",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "watch 多个源"
@@ -694,7 +694,7 @@
       "dirPath": "/Vue.js 命令/",
       "name": "Teleport 传送组件",
       "keyword": "Teleport 传送到 body",
-      "description": "使用 Teleport 将组件内容传送到 DOM 任意位置",
+      "description": "使用 Teleport 将组件内容传送到 DOM 任意位置。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "<Teleport to=\"%{目标位置}%\">\n  %{组件内容}%\n</Teleport>",
         "extensions": [
@@ -763,7 +763,7 @@
       "dirPath": "/Vue.js 命令/",
       "name": "Suspense 异步组件",
       "keyword": "Suspense 异步加载 加载状态",
-      "description": "使用 Suspense 处理异步组件的加载状态",
+      "description": "使用 Suspense 处理异步组件的加载状态。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "<Suspense>\n  <template #default>\n    <%{异步组件}% />\n  </template>\n  <template #fallback>\n    %{加载中内容}%\n  </template>\n</Suspense>",
         "extensions": [
@@ -788,7 +788,7 @@
                 "required": true,
                 "description": "回调函数",
                 "example": "console.log('fallback mounted')",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "Suspense error"
@@ -816,7 +816,7 @@
       "dirPath": "/Vue.js 命令/",
       "name": "provide inject 依赖注入",
       "keyword": "provide inject 依赖注入",
-      "description": "使用 provide / inject 在组件树中传递数据",
+      "description": "使用 provide / inject 在组件树中传递数据。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "// 父组件\nimport { provide } from 'vue'\nprovide('%{键名}%', %{值}%)\n\n// 子组件\nimport { inject } from 'vue'\nconst %{变量名}% = inject('%{键名}%')",
         "extensions": [
@@ -864,14 +864,14 @@
                 "required": true,
                 "description": "provide 的键名",
                 "example": "theme",
-                "notes": ""
+                "notes": "可选"
               },
               "默认值": {
                 "type": "string",
                 "required": true,
                 "description": "默认值",
                 "example": "'light'",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "inject 默认值"
@@ -986,28 +986,28 @@
                 "required": true,
                 "description": "测试描述",
                 "example": "renders user name",
-                "notes": ""
+                "notes": "可选"
               },
               "属性": {
                 "type": "string",
                 "required": true,
                 "description": "组件属性",
                 "example": "name",
-                "notes": ""
+                "notes": "可选"
               },
               "值": {
                 "type": "string",
                 "required": true,
                 "description": "属性值",
                 "example": "'Alice'",
-                "notes": ""
+                "notes": "可选"
               },
               "期望文本": {
                 "type": "string",
                 "required": true,
                 "description": "期望包含的文本",
                 "example": "Alice",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "vue test utils mount"
@@ -1028,14 +1028,14 @@
                 "required": true,
                 "description": "CSS 选择器",
                 "example": "button",
-                "notes": ""
+                "notes": "可选"
               },
               "事件": {
                 "type": "string",
                 "required": true,
                 "description": "触发的事件类型",
                 "example": "click",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "vue test utils trigger"
@@ -1060,7 +1060,7 @@
       "dirPath": "/Vue.js 命令/",
       "name": "Vite 配置与定制",
       "keyword": "vite.config 配置 插件",
-      "description": "Vite 配置文件常用配置项",
+      "description": "Vite 配置文件常用配置项。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "cat > vite.config.js << 'EOF'\nimport { defineConfig } from 'vite'\nimport vue from '@vitejs/plugin-vue'\n\nexport default defineConfig({\n  plugins: [vue()]\n})\nEOF",
         "extensions": [
@@ -1093,14 +1093,14 @@
                 "required": true,
                 "description": "应用标题",
                 "example": "'My App'",
-                "notes": ""
+                "notes": "可选"
               },
               "API地址": {
                 "type": "string",
                 "required": true,
                 "description": "API 基础地址",
                 "example": "'https://api.example.com'",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "vite env 环境变量"
@@ -1120,14 +1120,14 @@
                 "required": true,
                 "description": "构建目标",
                 "example": "'esnext'",
-                "notes": ""
+                "notes": "可选"
               },
               "压缩方式": {
                 "type": "string",
                 "required": true,
                 "description": "压缩方式",
                 "example": "'terser'",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "vite build 优化"
@@ -1140,7 +1140,7 @@
       "dirPath": "/Vue.js 命令/",
       "name": "TypeScript with Vue",
       "keyword": "vue typescript defineProps 类型",
-      "description": "Vue 3 + TypeScript 常用类型定义命令",
+      "description": "Vue 3 + TypeScript 常用类型定义命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install -D typescript vue-tsc",
         "extensions": [
@@ -1166,7 +1166,7 @@
                 "required": true,
                 "description": "事件值类型",
                 "example": "string",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "defineEmits typescript"
@@ -1187,14 +1187,14 @@
                 "required": true,
                 "description": "TypeScript 类型",
                 "example": "number",
-                "notes": ""
+                "notes": "可选"
               },
               "初始值": {
                 "type": "string",
                 "required": true,
                 "description": "初始值",
                 "example": "0",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "ref typescript 类型"
@@ -1221,14 +1221,14 @@
                 "required": true,
                 "description": "参数及类型",
                 "example": "initial: T[]",
-                "notes": ""
+                "notes": "可选"
               },
               "返回类型": {
                 "type": "string",
                 "required": true,
                 "description": "返回类型",
                 "example": "{ items: Ref<T[]> }",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "composable typescript 泛型"
@@ -1241,7 +1241,7 @@
       "dirPath": "/Vue.js 命令/",
       "name": "生命周期钩子",
       "keyword": "lifecycle hook onMounted onUpdated",
-      "description": "Vue 3 组合式 API 生命周期钩子命令",
+      "description": "Vue 3 组合式 API 生命周期钩子命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "import { %{钩子名}% } from 'vue'\n%{钩子名}%(() => {\n  %{逻辑}%\n})",
         "extensions": [
@@ -1289,7 +1289,7 @@
                 "required": true,
                 "description": "清理逻辑",
                 "example": "clearInterval(timer)",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "onUnmounted 清理"

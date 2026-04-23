@@ -1,0 +1,37 @@
+{
+  "module": "pnpm",
+  "version": "2.0",
+  "description": "pnpm 高性能包管理器，涵盖pnpm的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/pnpm/",
+      "name": "pnpm install 安装",
+      "keyword": "pnpm install 安装",
+      "description": "安装依赖。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "pnpm install",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/pnpm/",
+      "name": "pnpm add 添加",
+      "keyword": "pnpm add 添加",
+      "description": "添加依赖。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "pnpm add %{包名}%",
+        "extensions": [],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "包名",
+            "example": "express",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

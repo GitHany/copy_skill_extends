@@ -1,0 +1,41 @@
+{
+  "module": "Docker history",
+  "version": "2.0",
+  "description": "Docker 镜像历史查看，涵盖Docker history的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Docker history/",
+      "name": "docker history 查看历史",
+      "keyword": "docker history 历史",
+      "description": "查看镜像构建历史。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker history %{镜像}%",
+        "extensions": [
+          {
+            "name": "不显示摘要",
+            "cmd": "docker history --no-trunc %{镜像}%",
+            "params": {
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像",
+                "example": "nginx:latest",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker history trunc"
+          }
+        ],
+        "params": {
+          "镜像": {
+            "type": "string",
+            "required": true,
+            "description": "镜像名称",
+            "example": "nginx",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

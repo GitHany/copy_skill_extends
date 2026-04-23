@@ -1,0 +1,429 @@
+{
+  "module": "Azure CLI",
+  "version": "2.0",
+  "description": "Microsoft Azure 云平台命令行工具模块 - az 是 Azure 的官方 CLI，用于管理虚拟机、存储、网络、数据库等云资源。适合云资源管理、自动化部署、DevOps 流水线等场景",
+  "commands": [
+    {
+      "dirPath": "/Azure CLI/",
+      "name": "az login 登录",
+      "keyword": "az login 登录",
+      "description": "登录 Azure 账户 - 通过浏览器进行交互式身份验证，获取 Azure 资源访问权限。是使用 Azure CLI 的第一步",
+      "data": {
+        "cmd": "az login",
+        "extensions": [
+          {
+            "name": "使用服务主体登录",
+            "cmd": "az login --service-principal -u %{用户}% -p %{密码}% --tenant %{租户ID}%",
+            "params": {
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "服务主体应用 ID",
+                "example": "app-id",
+                "notes": "必填。用于自动化 CI/CD 流程"
+              },
+              "密码": {
+                "type": "string",
+                "required": true,
+                "description": "服务主体密钥/密码",
+                "example": "secret",
+                "notes": "必填"
+              },
+              "租户ID": {
+                "type": "string",
+                "required": true,
+                "description": "Azure 租户 ID",
+                "example": "tenant-id",
+                "notes": "必填"
+              }
+            },
+            "keyword": "az login sp"
+          },
+          {
+            "name": "使用设备码登录",
+            "cmd": "az login --use-device-code",
+            "params": {},
+            "keyword": "az login device"
+          },
+          {
+            "name": "查看当前登录状态",
+            "cmd": "az account show",
+            "params": {},
+            "keyword": "az account show"
+          },
+          {
+            "name": "列出所有订阅",
+            "cmd": "az account list",
+            "params": {},
+            "keyword": "az account list"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Azure CLI/",
+      "name": "az group 创建资源组",
+      "keyword": "az group 创建",
+      "description": "创建 Azure 资源组 - 资源组是 Azure 资源的容器，用于分组管理相关资源（如 VM、存储、网络）。每个资源组有独立的生命周期和权限",
+      "data": {
+        "cmd": "az group create --name %{组名}% --location %{区域}%",
+        "extensions": [
+          {
+            "name": "列出资源组",
+            "cmd": "az group list",
+            "params": {},
+            "keyword": "az group list"
+          },
+          {
+            "name": "删除资源组",
+            "cmd": "az group delete --name %{组名}% --yes --no-wait",
+            "params": {
+              "组名": {
+                "type": "string",
+                "required": true,
+                "description": "资源组名称",
+                "example": "myResourceGroup",
+                "notes": "必填"
+              }
+            },
+            "keyword": "az group delete"
+          },
+          {
+            "name": "查看资源组详情",
+            "cmd": "az group show --name %{组名}%",
+            "params": {
+              "组名": {
+                "type": "string",
+                "required": true,
+                "description": "资源组名称",
+                "example": "myResourceGroup",
+                "notes": "必填"
+              }
+            },
+            "keyword": "az group show"
+          }
+        ],
+        "params": {
+          "组名": {
+            "type": "string",
+            "required": true,
+            "description": "资源组名称",
+            "example": "myResourceGroup",
+            "notes": "必填"
+          },
+          "区域": {
+            "type": "string",
+            "required": true,
+            "description": "Azure 区域",
+            "example": "eastus",
+            "notes": "必填。常用：eastus, westus2, uksouth, westeurope"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Azure CLI/",
+      "name": "az vm 创建虚拟机",
+      "keyword": "az vm 创建",
+      "description": "创建 Azure 虚拟机 - 在 Azure 上创建 VM 实例，支持多种镜像、Windows/Linux、SSH 密钥、磁盘配置。适合运行应用、托管网站、开发测试环境",
+      "data": {
+        "cmd": "az vm create --name %{名称}% --resource-group %{组名}% --image %{镜像}% --size %{大小}% --admin-username %{用户名}%",
+        "extensions": [
+          {
+            "name": "创建并生成 SSH 密钥",
+            "cmd": "az vm create --name %{名称}% --resource-group %{组名}% --image UbuntuLTS --generate-ssh-keys",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "VM 名称",
+                "example": "myVM",
+                "notes": "必填"
+              },
+              "组名": {
+                "type": "string",
+                "required": true,
+                "description": "资源组名称",
+                "example": "myRG",
+                "notes": "必填"
+              }
+            },
+            "keyword": "az vm create ssh"
+          },
+          {
+            "name": "创建 Windows VM",
+            "cmd": "az vm create --name %{名称}% --resource-group %{组名}% --image Win2022AzureEdition --size %{大小}% --admin-username %{用户名}% --admin-password %{密码}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "VM 名称",
+                "example": "myWinVM",
+                "notes": "必填"
+              },
+              "组名": {
+                "type": "string",
+                "required": true,
+                "description": "资源组",
+                "example": "myRG",
+                "notes": "必填"
+              },
+              "大小": {
+                "type": "string",
+                "required": true,
+                "description": "VM 大小",
+                "example": "Standard_DS2_v2",
+                "notes": "必填"
+              },
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "管理员用户名",
+                "example": "adminuser",
+                "notes": "必填"
+              },
+              "密码": {
+                "type": "string",
+                "required": true,
+                "description": "管理员密码",
+                "example": "ComplexPassword123!",
+                "notes": "必填。需满足复杂度要求"
+              }
+            },
+            "keyword": "az vm create windows"
+          },
+          {
+            "name": "列出 VM",
+            "cmd": "az vm list --resource-group %{组名}%",
+            "params": {
+              "组名": {
+                "type": "string",
+                "required": false,
+                "description": "资源组",
+                "example": "myRG",
+                "notes": "可选。不指定则列出所有资源组的 VM"
+              }
+            },
+            "keyword": "az vm list"
+          },
+          {
+            "name": "启动/停止 VM",
+            "cmd": "az vm %{操作}% --name %{名称}% --resource-group %{组名}%",
+            "params": {
+              "操作": {
+                "type": "string",
+                "required": true,
+                "description": "操作类型",
+                "example": "start",
+                "notes": "必填。start=启动，stop=停止, deallocate=停止并释放"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "VM 名称",
+                "example": "myVM",
+                "notes": "必填"
+              },
+              "组名": {
+                "type": "string",
+                "required": true,
+                "description": "资源组",
+                "example": "myRG",
+                "notes": "必填"
+              }
+            },
+            "keyword": "az vm start stop"
+          },
+          {
+            "name": "删除 VM",
+            "cmd": "az vm delete --name %{名称}% --resource-group %{组名}% --yes",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "VM 名称",
+                "example": "myVM",
+                "notes": "必填"
+              },
+              "组名": {
+                "type": "string",
+                "required": true,
+                "description": "资源组",
+                "example": "myRG",
+                "notes": "必填"
+              }
+            },
+            "keyword": "az vm delete"
+          }
+        ],
+        "params": {
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "虚拟机名称",
+            "example": "myVM",
+            "notes": "必填"
+          },
+          "组名": {
+            "type": "string",
+            "required": true,
+            "description": "资源组名称",
+            "example": "myResourceGroup",
+            "notes": "必填"
+          },
+          "镜像": {
+            "type": "string",
+            "required": true,
+            "description": "VM 镜像",
+            "example": "UbuntuLTS",
+            "notes": "必填。常用：UbuntuLTS, Win2022AzureEdition, CentOS"
+          },
+          "大小": {
+            "type": "string",
+            "required": true,
+            "description": "VM 大小",
+            "example": "Standard_DS2_v2",
+            "notes": "必填。查看可用尺寸：az vm list-sizes"
+          },
+          "用户名": {
+            "type": "string",
+            "required": true,
+            "description": "管理员用户名",
+            "example": "azureuser",
+            "notes": "必填。Linux VM 通常用 azureuser"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Azure CLI/",
+      "name": "az vm list 列出虚拟机",
+      "keyword": "az vm 列表",
+      "description": "列出资源组中的虚拟机 - 查看指定资源组下所有 VM 的状态、大小、位置等信息",
+      "data": {
+        "cmd": "az vm list --resource-group %{组名}%",
+        "extensions": [
+          {
+            "name": "列出所有 VM（所有资源组）",
+            "cmd": "az vm list",
+            "params": {},
+            "keyword": "az vm list all"
+          },
+          {
+            "name": "显示 VM 详细信息",
+            "cmd": "az vm show --name %{名称}% --resource-group %{组名}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "VM 名称",
+                "example": "myVM",
+                "notes": "必填"
+              },
+              "组名": {
+                "type": "string",
+                "required": true,
+                "description": "资源组",
+                "example": "myRG",
+                "notes": "必填"
+              }
+            },
+            "keyword": "az vm show"
+          }
+        ],
+        "params": {
+          "组名": {
+            "type": "string",
+            "required": false,
+            "description": "资源组名称",
+            "example": "myRG",
+            "notes": "可选。不指定则列出所有 VM"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Azure CLI/",
+      "name": "az storage account 创建存储",
+      "keyword": "az storage 创建",
+      "description": "创建 Azure 存储账户 - 存储账户提供 Blob、File、Queue、Table 等存储服务。适用于文件存储、数据湖、备份、静态网站托管等场景",
+      "data": {
+        "cmd": "az storage account create --name %{账户名}% --resource-group %{组名}% --location %{区域}% --sku %{类型}%",
+        "extensions": [
+          {
+            "name": "列出存储账户",
+            "cmd": "az storage account list",
+            "params": {},
+            "keyword": "az storage list"
+          },
+          {
+            "name": "获取连接字符串",
+            "cmd": "az storage account show-connection-string --name %{账户名}%",
+            "params": {
+              "账户名": {
+                "type": "string",
+                "required": true,
+                "description": "存储账户名",
+                "example": "mystorageaccount",
+                "notes": "必填"
+              }
+            },
+            "keyword": "az storage connection"
+          },
+          {
+            "name": "创建 Blob 容器",
+            "cmd": "az storage container create --name %{容器名}% --account-name %{账户名}%",
+            "params": {
+              "容器名": {
+                "type": "string",
+                "required": true,
+                "description": "Blob 容器名称",
+                "example": "mycontainer",
+                "notes": "必填"
+              },
+              "账户名": {
+                "type": "string",
+                "required": true,
+                "description": "存储账户名",
+                "example": "mystorageaccount",
+                "notes": "必填"
+              }
+            },
+            "keyword": "az storage container"
+          }
+        ],
+        "params": {
+          "账户名": {
+            "type": "string",
+            "required": true,
+            "description": "存储账户名称（全局唯一）",
+            "example": "mystorageaccount",
+            "notes": "必填。3-24字符，小写字母和数字"
+          },
+          "组名": {
+            "type": "string",
+            "required": true,
+            "description": "资源组",
+            "example": "myRG",
+            "notes": "必填"
+          },
+          "区域": {
+            "type": "string",
+            "required": true,
+            "description": "区域",
+            "example": "eastus",
+            "notes": "必填"
+          },
+          "类型": {
+            "type": "string",
+            "required": true,
+            "description": "SKU 类型",
+            "example": "Standard_LRS",
+            "notes": "必填。LRS=本地冗余, GRS=全局冗余, ZRS=区域冗余"
+          }
+        }
+      }
+    }
+  ]
+}

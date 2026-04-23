@@ -1,0 +1,139 @@
+{
+  "_standard": {
+    "version": "2.0",
+    "description": "命令数据标准规范 - 用于统一所有模块的 commands.json 格式和内容深度",
+    "rules": {
+      "command_name": "使用 工具名 + 动词 + 对象 的格式，如 'docker run 运行容器'",
+      "description_min_length": "主命令描述至少 30 个字符，需包含使用场景和作用",
+      "param_description": "参数描述需说明参数含义、取值范围、对命令行为的影响",
+      "param_example": "每个参数必须提供真实可用的示例值",
+      "param_notes": "必须填写，说明参数是否必填、默认值、注意事项、常见取值",
+      "extensions": "每个命令至少提供 3-5 个常用扩展用法",
+      "no_number_prefix": "禁止在 name 或 description 中使用 '1-'、'2.' 等数字前缀"
+    }
+  },
+  "schema": {
+    "module": "string - 模块名称",
+    "version": "string - 版本号",
+    "description": "string - 模块详细描述，至少 20 字",
+    "commands": [
+      {
+        "dirPath": "string - 命令分类路径，如 '/Linux 命令/'",
+        "name": "string - 命令显示名称，格式：工具 动作 对象",
+        "keyword": "string - 搜索关键词，用空格分隔",
+        "description": "string - 详细描述（30字以上）：功能说明 + 使用场景 + 常见用途",
+        "data": {
+          "cmd": "string - 基础命令模板，使用 %{参数名}% 占位",
+          "extensions": [
+            {
+              "name": "string - 扩展用法名称，描述具体场景",
+              "cmd": "string - 具体命令",
+              "params": {
+                "参数名": {
+                  "type": "string|integer|boolean|array|object",
+                  "required": "boolean - 是否必填",
+                  "description": "string - 参数含义说明（15字以上），包含参数作用和对命令的影响",
+                  "example": "string - 真实可用的示例值",
+                  "notes": "string - 必填说明/默认值/取值范围/注意事项，禁止为空字符串"
+                }
+              },
+              "keyword": "string - 扩展用法的搜索关键词"
+            }
+          ],
+          "params": {
+            "参数名": {
+              "type": "string|integer|boolean|array|object",
+              "required": "boolean - 是否必填",
+              "description": "string - 参数含义说明（15字以上），包含参数作用和对命令的影响",
+              "example": "string - 真实可用的示例值",
+              "notes": "string - 必填说明/默认值/取值范围/注意事项，禁止为空字符串"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "example": {
+    "module": "Docker 命令",
+    "version": "2.0",
+    "description": "Docker 容器生命周期管理命令集合，涵盖镜像构建、容器运行、网络配置、数据卷管理等完整操作",
+    "commands": [
+      {
+        "dirPath": "/Docker 命令/",
+        "name": "docker run 运行容器",
+        "keyword": "docker run 启动 容器",
+        "description": "创建并启动一个新容器。这是最常用的 Docker 命令，用于基于指定镜像创建可运行的容器实例。支持端口映射、环境变量、数据卷挂载、网络连接等多种配置选项，适用于开发测试、生产部署、临时任务执行等场景。",
+        "data": {
+          "cmd": "docker run -d --name %{容器名称}% -p %{主机端口}%:%{容器端口}% %{镜像名称}%",
+          "extensions": [
+            {
+              "name": "挂载数据卷持久化存储",
+              "cmd": "docker run -d --name %{容器名称}% -v %{主机路径}%:%{容器路径}% %{镜像}%",
+              "params": {
+                "容器名称": {
+                  "type": "string",
+                  "required": true,
+                  "description": "为新容器指定唯一标识名称，便于后续通过名称而非 ID 来管理容器。名称只能包含字母、数字、下划线、连字符和点",
+                  "example": "myapp-web",
+                  "notes": "必填。同一主机上名称不能重复。建议使用应用名-组件格式，如 nginx-proxy、redis-cache"
+                },
+                "主机路径": {
+                  "type": "string",
+                  "required": true,
+                  "description": "宿主机上要挂载到容器的目录或文件绝对路径。用于实现容器数据的持久化存储和宿主机与容器之间的数据共享",
+                  "example": "/data/nginx/logs",
+                  "notes": "必填。路径必须在宿主机上存在，否则 Docker 会将其当作命名卷处理。建议使用绝对路径避免歧义"
+                },
+                "容器路径": {
+                  "type": "string",
+                  "required": true,
+                  "description": "容器内部的挂载目标路径，即容器内应用实际读写数据的位置",
+                  "example": "/var/log/nginx",
+                  "notes": "必填。需根据容器内应用的配置文件确认正确的路径，如 Nginx 通常是 /var/log/nginx 或 /etc/nginx"
+                },
+                "镜像": {
+                  "type": "string",
+                  "required": true,
+                  "description": "用于创建容器的 Docker 镜像名称，可以包含标签指定版本。镜像会先从本地查找，本地不存在时自动从配置的仓库拉取",
+                  "example": "nginx:1.24-alpine",
+                  "notes": "必填。建议使用带具体版本标签的镜像，避免使用 latest 标签导致不可预期的版本变更。格式：镜像名:标签"
+                }
+              },
+              "keyword": "docker run 挂载卷 持久化"
+            }
+          ],
+          "params": {
+            "容器名称": {
+              "type": "string",
+              "required": true,
+              "description": "为新容器指定唯一标识名称，便于后续通过名称而非 ID 来管理容器。名称只能包含字母、数字、下划线、连字符和点",
+              "example": "myapp-web",
+              "notes": "必填。同一主机上名称不能重复。建议使用应用名-组件格式，如 nginx-proxy、redis-cache"
+            },
+            "主机端口": {
+              "type": "string",
+              "required": true,
+              "description": "宿主机上暴露的端口号，外部请求通过此端口访问容器服务。将宿主机的网络端口映射到容器内部端口，实现外部访问",
+              "example": "8080",
+              "notes": "必填。必须是 1-65535 之间的未被占用的端口。小于 1024 的端口需要 root 权限。常用：80(HTTP)、443(HTTPS)、3306(MySQL)、6379(Redis)"
+            },
+            "容器端口": {
+              "type": "string",
+              "required": true,
+              "description": "容器内部应用实际监听的端口号。容器内应用绑定此端口提供服务，通过主机端口映射后外部可访问",
+              "example": "80",
+              "notes": "必填。需与容器内应用实际监听端口一致。常见：Nginx 80、MySQL 3306、Redis 6379、Node.js 3000"
+            },
+            "镜像名称": {
+              "type": "string",
+              "required": true,
+              "description": "用于创建容器的 Docker 镜像名称，可以包含标签指定版本。镜像会先从本地查找，本地不存在时自动从配置的仓库拉取",
+              "example": "nginx:1.24-alpine",
+              "notes": "必填。建议使用带具体版本标签的镜像，避免使用 latest 标签导致不可预期的版本变更。格式：镜像名:标签"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

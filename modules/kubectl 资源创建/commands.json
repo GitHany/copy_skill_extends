@@ -1,0 +1,82 @@
+{
+  "module": "kubectl 资源创建",
+  "version": "2.0",
+  "description": "kubectl 资源创建命令集合，涵盖kubectl 资源创建的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/kubectl 资源创建/",
+      "name": "kubectl create 创建资源",
+      "keyword": "kubectl create 创建",
+      "description": "创建 Kubernetes 资源。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl create %{资源类型}% %{名称}%",
+        "extensions": [
+          {
+            "name": "从文件创建",
+            "cmd": "kubectl create -f %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "YAML 文件",
+                "example": "deployment.yaml",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl create file"
+          }
+        ],
+        "params": {
+          "资源类型": {
+            "type": "string",
+            "required": true,
+            "description": "资源类型",
+            "example": "deployment",
+            "notes": "必填"
+          },
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "资源名",
+            "example": "myapp",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/kubectl 资源创建/",
+      "name": "kubectl apply 应用配置",
+      "keyword": "kubectl apply 应用",
+      "description": "应用或更新资源配置。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl apply -f %{文件}%",
+        "extensions": [
+          {
+            "name": "目录批量应用",
+            "cmd": "kubectl apply -f %{目录}%/",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径",
+                "example": "./k8s",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl apply dir"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "YAML 或 JSON 配置文件",
+            "example": "deploy.yaml",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

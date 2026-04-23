@@ -1,0 +1,35 @@
+{
+  "_schema_version": "2.0",
+  "description": "命令数据 JSON Schema 标准参考",
+  "schema": {
+    "module": "string - 模块名称",
+    "version": "string - 版本号，默认 1.0",
+    "description": "string - 模块详细描述，至少 20 字符",
+    "commands": "array - 命令列表"
+  },
+  "command_schema": {
+    "dirPath": "string - 分类路径，如 '/Docker 命令/'",
+    "name": "string - 命令名称，格式：工具 动作 对象",
+    "keyword": "string - 搜索关键词，空格分隔",
+    "description": "string - 详细描述，至少 30 字符",
+    "data": {
+      "cmd": "string - 命令模板，%{参数名}% 占位",
+      "extensions": "array - 扩展用法列表",
+      "params": "object - 参数定义"
+    }
+  },
+  "param_schema": {
+    "type": "string|integer|boolean|array|object",
+    "required": "boolean",
+    "description": "string - 参数说明，至少 15 字符",
+    "example": "string - 示例值",
+    "notes": "string - 必填/可选、默认值、注意事项"
+  },
+  "rules": {
+    "name_format": "工具 动作 对象，如 docker run 运行容器",
+    "description_min": 30,
+    "param_description_min": 15,
+    "no_number_prefix": "禁止 1-、2. 等前缀",
+    "notes_not_empty": "notes 字段禁止为空"
+  }
+}

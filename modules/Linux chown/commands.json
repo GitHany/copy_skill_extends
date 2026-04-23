@@ -1,0 +1,177 @@
+{
+  "module": "Linux chown",
+  "version": "2.0",
+  "description": "Linux chown 更改文件所有者命令。改变文件或目录的所有者和所属组，用于权限管理和服务配置。常见场景：Web服务运行用户、网站目录权限、部署脚本设置文件所有者。注意：普通用户无法更改文件所有者，需要sudo权限。",
+  "commands": [
+    {
+      "dirPath": "/Linux chown/",
+      "name": "chown 更改所有者",
+      "keyword": "chown 所有者",
+      "description": "更改文件所有者。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "chown %{用户}%:%{组}% %{文件}%",
+        "extensions": [
+          {
+            "name": "更改所有者和组",
+            "description": "同时修改文件的所有者和所属组",
+            "params": {
+              "用户": {
+                "example": "www-data",
+                "notes": "用户名"
+              },
+              "组": {
+                "example": "www-data",
+                "notes": "组名"
+              },
+              "文件": {
+                "example": "/var/www",
+                "notes": "文件或目录"
+              }
+            },
+            "cmd": "chown %{用户}%:%{组}% %{文件}%"
+          },
+          {
+            "name": "只更改所有者",
+            "description": "只修改文件的所有者，不改变组",
+            "params": {
+              "用户": {
+                "example": "tomcat",
+                "notes": "用户名"
+              },
+              "文件": {
+                "example": "app.jar",
+                "notes": "文件"
+              }
+            },
+            "cmd": "chown %{用户}% %{文件}%"
+          },
+          {
+            "name": "只更改组",
+            "description": "只修改文件的所属组，不改变所有者",
+            "params": {
+              "组": {
+                "example": "developers",
+                "notes": "组名"
+              },
+              "文件": {
+                "example": "project/",
+                "notes": "目录"
+              }
+            },
+            "cmd": "chown :%{组}% %{文件}%"
+          },
+          {
+            "name": "递归更改目录所有权",
+            "description": "将目录及其内所有内容的所有者一起修改",
+            "params": {
+              "用户": {
+                "example": "nginx",
+                "notes": "用户名"
+              },
+              "组": {
+                "example": "nginx",
+                "notes": "组名"
+              },
+              "文件": {
+                "example": "/var/www/html",
+                "notes": "目录"
+              }
+            },
+            "cmd": "chown -R %{用户}%:%{组}% %{文件}%"
+          },
+          {
+            "name": "复制所有权到另一个文件",
+            "description": "将一个文件的ownership复制到另一个文件",
+            "params": {
+              "源文件": {
+                "example": "reference.txt",
+                "notes": "参考文件"
+              },
+              "目标文件": {
+                "example": "newfile.txt",
+                "notes": "目标文件"
+              }
+            },
+            "cmd": "chown --reference=%{源文件}% %{目标文件}%"
+          },
+          {
+            "name": "更改符号链接所有权",
+            "description": "更改符号链接本身的所有权，而非链接指向的文件",
+            "params": {
+              "用户": {
+                "example": "admin",
+                "notes": "用户名"
+              },
+              "文件": {
+                "example": "link_to_file",
+                "notes": "符号链接"
+              }
+            },
+            "cmd": "chown -h %{用户}% %{文件}%"
+          },
+          {
+            "name": "同时设置多个文件",
+            "description": "批量更改多个文件的所有权",
+            "params": {
+              "用户": {
+                "example": "deploy",
+                "notes": "用户名"
+              },
+              "组": {
+                "example": "deploy",
+                "notes": "组名"
+              },
+              "文件": {
+                "example": "app/*.jar",
+                "notes": "文件模式"
+              }
+            },
+            "cmd": "chown %{用户}%:%{组}% %{文件}%"
+          },
+          {
+            "name": "详细模式显示更改",
+            "description": "显示每个被修改文件的处理信息",
+            "params": {
+              "用户": {
+                "example": "www-data",
+                "notes": "用户名"
+              },
+              "组": {
+                "example": "www-data",
+                "notes": "组名"
+              },
+              "文件": {
+                "example": "/var/log",
+                "notes": "目录"
+              }
+            },
+            "cmd": "chown -v %{用户}%:%{组}% %{文件}%"
+          }
+        ],
+        "params": {
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "用户名",
+            "example": "www-data",
+            "notes": "必填"
+          },
+          "组": {
+            "type": "string",
+            "required": true,
+            "description": "组名",
+            "example": "www-data",
+            "notes": "必填"
+          },
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "文件",
+            "example": "/var/www",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

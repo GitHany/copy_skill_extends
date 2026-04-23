@@ -1,0 +1,50 @@
+{
+  "module": "AWS EC2 管理",
+  "version": "2.0",
+  "description": "AWS EC2 管理命令集合，涵盖AWS EC2 管理的常用操作和最佳实践",
+  "commands": [
+    {
+      "cmd": "aws ec2 describe-instances",
+      "extensions": [
+        {
+          "name": "按标签过滤",
+          "cmd": "aws ec2 describe-instances --filters \"Name=tag:Name,Values=%{标签}%\"",
+          "params": {
+            "标签": {
+              "type": "string",
+              "required": true,
+              "description": "标签值",
+              "example": "Production",
+              "notes": "必填"
+            }
+          },
+          "keyword": "aws ec2 filter tag"
+        },
+        {
+          "name": "按状态过滤",
+          "cmd": "aws ec2 describe-instances --filters \"Name=instance-state-name,Values=%{状态}%\"",
+          "params": {
+            "状态": {
+              "type": "string",
+              "required": true,
+              "description": "实例状态",
+              "example": "running",
+              "notes": "必填"
+            }
+          },
+          "keyword": "aws ec2 filter state"
+        }
+      ],
+      "params": {},
+      "dirPath": "/AWS EC2 管理/",
+      "name": "AWS EC2 管理 命令",
+      "keyword": "AWS EC2 管理 命令",
+      "description": "AWS EC2 管理 命令的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "module": "Docker push",
+  "version": "2.0",
+  "description": "把本地制作的镜像上传到远程仓库。团队协作必备！当你写好 Dockerfile 构建好镜像后，需要分享给同事或部署到服务器时使用。就像上传到云端一样方便。常见场景：团队共享镜像、发布生产镜像、CI/CD 自动构建推送。",
+  "commands": [
+    {
+      "dirPath": "/Docker push/",
+      "name": "docker push 推送镜像",
+      "keyword": "docker push 推送",
+      "description": "上传本地镜像到远程仓库（团队协作必备）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker push %{镜像}%",
+        "extensions": [
+          {
+            "name": "docker push 推送指定标签",
+            "description": "上传镜像的特定版本（不写默认 latest）",
+            "params": {
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名:标签",
+                "example": "myapp:v1.0",
+                "notes": "必填：建议用语义化版本如 v1.0"
+              }
+            },
+            "cmd": ""
+          },
+          {
+            "name": "docker push 推送到私有仓库",
+            "description": "上传到需要认证的私有仓库",
+            "params": {
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "完整镜像路径",
+                "example": "myregistry.com/myapp:latest",
+                "notes": "必填：需先 docker login"
+              }
+            },
+            "cmd": ""
+          },
+          {
+            "name": "docker push --quiet 静默推送",
+            "description": "不显示上传进度，适合后台自动化",
+            "params": {
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名",
+                "example": "myapp:latest",
+                "notes": "必填"
+              }
+            },
+            "cmd": ""
+          },
+          {
+            "name": "docker push --disable-content-trust 跳过签名验证",
+            "description": "跳过镜像签名验证（测试环境用）",
+            "params": {
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名",
+                "example": "test-image:v1",
+                "notes": "生产环境不建议跳过"
+              }
+            },
+            "cmd": ""
+          },
+          {
+            "name": "docker push 推送到不同标签",
+            "description": "把本地镜像推送到不同的标签",
+            "params": {
+              "源镜像": {
+                "type": "string",
+                "required": true,
+                "description": "本地镜像名",
+                "example": "myapp:latest",
+                "notes": "必填"
+              },
+              "目标镜像": {
+                "type": "string",
+                "required": true,
+                "description": "目标镜像名",
+                "example": "myregistry.com/myapp:v1",
+                "notes": "必填"
+              }
+            },
+            "cmd": ""
+          },
+          {
+            "name": "docker push 重新推送已上传的镜像",
+            "description": "强制重新上传（会覆盖远程）",
+            "params": {
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名",
+                "example": "myapp:v1",
+                "notes": "远程有相同标签会覆盖"
+              }
+            },
+            "cmd": ""
+          },
+          {
+            "name": "docker push 查看镜像层信息",
+            "description": "推送前查看镜像的分层结构",
+            "params": {
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名",
+                "example": "myapp",
+                "notes": "有助于优化镜像大小"
+              }
+            },
+            "cmd": ""
+          }
+        ],
+        "params": {
+          "镜像": {
+            "type": "string",
+            "required": true,
+            "description": "镜像名",
+            "example": "myregistry.com/myapp:v1",
+            "notes": "必填：如不写标签默认 latest"
+          }
+        }
+      }
+    }
+  ]
+}

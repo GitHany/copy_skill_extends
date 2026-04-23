@@ -1,0 +1,119 @@
+{
+  "module": "Linux uniq",
+  "version": "2.0",
+  "description": "Linux uniq 过滤重复行命令。过滤或报告文件中连续重复的行。必须配合sort使用，先排序再去重。用于数据清洗、日志分析、统计唯一值、删除重复记录。",
+  "commands": [
+    {
+      "dirPath": "/Linux uniq/",
+      "name": "uniq 去重",
+      "keyword": "uniq 去重",
+      "description": "过滤重复行。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "uniq %{文件}%",
+        "extensions": [
+          {
+            "name": "去除相邻重复",
+            "description": "过滤掉连续重复的行",
+            "params": {
+              "文件": {
+                "example": "data.txt",
+                "notes": "文件名"
+              }
+            },
+            "cmd": "uniq %{文件}%"
+          },
+          {
+            "name": "统计出现次数",
+            "description": "显示每行出现的次数",
+            "params": {
+              "文件": {
+                "example": "log.txt",
+                "notes": "文件名"
+              }
+            },
+            "cmd": "uniq -c %{文件}%"
+          },
+          {
+            "name": "只显示重复行",
+            "description": "只显示重复出现的行",
+            "params": {
+              "文件": {
+                "example": "users.txt",
+                "notes": "文件"
+              }
+            },
+            "cmd": "uniq -d %{文件}%"
+          },
+          {
+            "name": "只显示唯一行",
+            "description": "只显示没有重复的唯一行",
+            "params": {
+              "文件": {
+                "example": "ids.txt",
+                "notes": "文件"
+              }
+            },
+            "cmd": "uniq -u %{文件}%"
+          },
+          {
+            "name": "忽略大小写",
+            "description": "比较时忽略大小写差异",
+            "params": {
+              "文件": {
+                "example": "names.txt",
+                "notes": "文件"
+              }
+            },
+            "cmd": "uniq -i %{文件}%"
+          },
+          {
+            "name": "指定比较字段",
+            "description": "只比较特定字符位置之后的内容",
+            "params": {
+              "字符": {
+                "example": "3",
+                "notes": "跳过的字符数"
+              },
+              "文件": {
+                "example": "data.txt",
+                "notes": "文件"
+              }
+            },
+            "cmd": "uniq -s %{字符}% %{文件}%"
+          },
+          {
+            "name": "配合sort去重",
+            "description": "先排序再去除所有重复行",
+            "params": {
+              "文件": {
+                "example": "all.txt",
+                "notes": "文件"
+              }
+            },
+            "cmd": "sort %{文件}% | uniq"
+          },
+          {
+            "name": "排序并统计",
+            "description": "找出唯一值并显示每个值出现次数",
+            "params": {
+              "文件": {
+                "example": "visitors.log",
+                "notes": "日志文件"
+              }
+            },
+            "cmd": "sort %{文件}% | uniq -c | sort -rn"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "文件",
+            "example": "data.txt",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

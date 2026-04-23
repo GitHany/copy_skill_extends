@@ -1,0 +1,141 @@
+{
+  "module": "GitHub CLI 高级操作",
+  "version": "2.0",
+  "description": "GitHub CLI 高级操作命令集合，涵盖GitHub CLI 高级操作的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/GitHub CLI 高级操作/",
+      "name": "gh api 调用 API",
+      "keyword": "gh api API",
+      "description": "调用 GitHub API。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "gh api %{端点}%",
+        "extensions": [
+          {
+            "name": "POST 请求",
+            "cmd": "gh api %{端点}% -X POST -f %{字段}%=%{值}%",
+            "params": {
+              "端点": {
+                "type": "string",
+                "required": true,
+                "description": "API 端点",
+                "example": "repos/{owner}/{repo}/issues",
+                "notes": "必填"
+              },
+              "字段": {
+                "type": "string",
+                "required": true,
+                "description": "字段名",
+                "example": "title",
+                "notes": "必填"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "字段值",
+                "example": "Bug report",
+                "notes": "必填"
+              }
+            },
+            "keyword": "gh api post"
+          }
+        ],
+        "params": {
+          "端点": {
+            "type": "string",
+            "required": true,
+            "description": "GitHub API 端点",
+            "example": "/repos/octocat/Hello-World",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHub CLI 高级操作/",
+      "name": "gh issue 评论",
+      "keyword": "gh issue 评论",
+      "description": "管理 Issue 评论。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "gh issue comment %{编号}% --body \"%{内容}%\"",
+        "extensions": [],
+        "params": {
+          "编号": {
+            "type": "string",
+            "required": true,
+            "description": "Issue 编号",
+            "example": "123",
+            "notes": "必填"
+          },
+          "内容": {
+            "type": "string",
+            "required": true,
+            "description": "评论内容",
+            "example": "Looks good!",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHub CLI 高级操作/",
+      "name": "gh pr checkout 检出 PR",
+      "keyword": "gh pr checkout 检出",
+      "description": "检出 Pull Request 分支。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "gh pr checkout %{编号}%",
+        "extensions": [],
+        "params": {
+          "编号": {
+            "type": "string",
+            "required": true,
+            "description": "PR 编号",
+            "example": "42",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/GitHub CLI 高级操作/",
+      "name": "gh release download 下载",
+      "keyword": "gh release download 下载",
+      "description": "下载 Release 资产。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "gh release download %{标签}%",
+        "extensions": [
+          {
+            "name": "指定模式下载",
+            "cmd": "gh release download %{标签}% -p \"%{模式}%\"",
+            "params": {
+              "标签": {
+                "type": "string",
+                "required": true,
+                "description": "标签名",
+                "example": "v1.0.0",
+                "notes": "必填"
+              },
+              "模式": {
+                "type": "string",
+                "required": true,
+                "description": "文件名模式",
+                "example": "*.zip",
+                "notes": "必填"
+              }
+            },
+            "keyword": "gh release pattern"
+          }
+        ],
+        "params": {
+          "标签": {
+            "type": "string",
+            "required": true,
+            "description": "Release 标签",
+            "example": "v1.0.0",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

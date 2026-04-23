@@ -1,13 +1,13 @@
 {
   "module": "PostgreSQL 命令",
   "version": "1.0",
-  "description": "PostgreSQL 命令模块命令集合",
+  "description": "PostgreSQL 命令模块命令集合，涵盖PostgreSQL 命令的常用操作和最佳实践",
   "commands": [
     {
       "dirPath": "/PostgreSQL 命令/",
       "name": "psql 连接数据库",
       "keyword": "psql postgresql 连接",
-      "description": "连接 PostgreSQL 数据库",
+      "description": "连接 PostgreSQL 数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "psql -h %{主机}% -p %{端口}% -U %{用户名}% -d %{数据库名}%",
         "extensions": [
@@ -21,20 +21,74 @@
             "name": "执行 SQL 文件",
             "cmd": "psql -h %{主机}% -p %{端口}% -U %{用户名}% -d %{数据库名}% -f %{SQL文件路径}%",
             "params": {
-              "主机": { "type": "string", "required": true, "description": "数据库主机地址", "example": "localhost", "notes": "" },
-              "端口": { "type": "number", "required": true, "description": "端口号", "example": "5432", "notes": "" },
-              "用户名": { "type": "string", "required": true, "description": "数据库用户", "example": "postgres", "notes": "" },
-              "数据库名": { "type": "string", "required": true, "description": "数据库名称", "example": "mydb", "notes": "" },
-              "SQL文件路径": { "type": "string", "required": true, "description": "SQL 文件路径", "example": "/path/to/backup.sql", "notes": "" }
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "数据库主机地址",
+                "example": "localhost",
+                "notes": "可选"
+              },
+              "端口": {
+                "type": "number",
+                "required": true,
+                "description": "端口号",
+                "example": "5432",
+                "notes": "可选"
+              },
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "数据库用户",
+                "example": "postgres",
+                "notes": "可选"
+              },
+              "数据库名": {
+                "type": "string",
+                "required": true,
+                "description": "数据库名称",
+                "example": "mydb",
+                "notes": "可选"
+              },
+              "SQL文件路径": {
+                "type": "string",
+                "required": true,
+                "description": "SQL 文件路径",
+                "example": "/path/to/backup.sql",
+                "notes": "可选"
+              }
             },
             "keyword": "psql 执行文件"
           }
         ],
         "params": {
-          "主机": { "type": "string", "required": false, "description": "主机地址", "example": "localhost", "notes": "默认 localhost" },
-          "端口": { "type": "number", "required": false, "description": "端口", "example": "5432", "notes": "默认 5432" },
-          "用户名": { "type": "string", "required": true, "description": "用户名", "example": "postgres", "notes": "" },
-          "数据库名": { "type": "string", "required": false, "description": "数据库名", "example": "mydb", "notes": "可选" }
+          "主机": {
+            "type": "string",
+            "required": false,
+            "description": "主机地址",
+            "example": "localhost",
+            "notes": "默认 localhost"
+          },
+          "端口": {
+            "type": "number",
+            "required": false,
+            "description": "端口",
+            "example": "5432",
+            "notes": "默认 5432"
+          },
+          "用户名": {
+            "type": "string",
+            "required": true,
+            "description": "用户名",
+            "example": "postgres",
+            "notes": "必填"
+          },
+          "数据库名": {
+            "type": "string",
+            "required": false,
+            "description": "数据库名",
+            "example": "mydb",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -42,7 +96,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "pg_dump 备份数据库",
       "keyword": "pg_dump 备份 导出",
-      "description": "备份 PostgreSQL 数据库",
+      "description": "备份 PostgreSQL 数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "pg_dump -h %{主机}% -p %{端口}% -U %{用户名}% -d %{数据库名}% -f %{备份文件}%",
         "extensions": [
@@ -84,11 +138,41 @@
           }
         ],
         "params": {
-          "主机": { "type": "string", "required": false, "description": "数据库主机地址", "example": "localhost", "notes": "默认 localhost" },
-          "端口": { "type": "number", "required": false, "description": "端口号", "example": "5432", "notes": "默认 5432" },
-          "用户名": { "type": "string", "required": true, "description": "数据库用户", "example": "postgres", "notes": "常用" },
-          "数据库名": { "type": "string", "required": true, "description": "数据库名称", "example": "mydb", "notes": "常用" },
-          "备份文件": { "type": "string", "required": true, "description": "备份文件路径", "example": "/path/to/backup.sql", "notes": "" }
+          "主机": {
+            "type": "string",
+            "required": false,
+            "description": "数据库主机地址",
+            "example": "localhost",
+            "notes": "默认 localhost"
+          },
+          "端口": {
+            "type": "number",
+            "required": false,
+            "description": "端口号",
+            "example": "5432",
+            "notes": "默认 5432"
+          },
+          "用户名": {
+            "type": "string",
+            "required": true,
+            "description": "数据库用户",
+            "example": "postgres",
+            "notes": "常用"
+          },
+          "数据库名": {
+            "type": "string",
+            "required": true,
+            "description": "数据库名称",
+            "example": "mydb",
+            "notes": "常用"
+          },
+          "备份文件": {
+            "type": "string",
+            "required": true,
+            "description": "备份文件路径",
+            "example": "/path/to/backup.sql",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -96,7 +180,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "pg_restore 恢复数据库",
       "keyword": "pg_restore 恢复 导入",
-      "description": "恢复 PostgreSQL 数据库备份",
+      "description": "恢复 PostgreSQL 数据库备份。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "pg_restore -h %{主机}% -p %{端口}% -U %{用户名}% -d %{数据库名}% %{备份文件}%",
         "extensions": [
@@ -126,11 +210,41 @@
           }
         ],
         "params": {
-          "主机": { "type": "string", "required": false, "description": "数据库主机地址", "example": "localhost", "notes": "默认 localhost" },
-          "端口": { "type": "number", "required": false, "description": "端口号", "example": "5432", "notes": "默认 5432" },
-          "用户名": { "type": "string", "required": true, "description": "数据库用户", "example": "postgres", "notes": "" },
-          "数据库名": { "type": "string", "required": true, "description": "目标数据库名称", "example": "mydb", "notes": "" },
-          "备份文件": { "type": "string", "required": true, "description": "备份文件路径", "example": "/path/to/backup.dump", "notes": "" }
+          "主机": {
+            "type": "string",
+            "required": false,
+            "description": "数据库主机地址",
+            "example": "localhost",
+            "notes": "默认 localhost"
+          },
+          "端口": {
+            "type": "number",
+            "required": false,
+            "description": "端口号",
+            "example": "5432",
+            "notes": "默认 5432"
+          },
+          "用户名": {
+            "type": "string",
+            "required": true,
+            "description": "数据库用户",
+            "example": "postgres",
+            "notes": "必填"
+          },
+          "数据库名": {
+            "type": "string",
+            "required": true,
+            "description": "目标数据库名称",
+            "example": "mydb",
+            "notes": "必填"
+          },
+          "备份文件": {
+            "type": "string",
+            "required": true,
+            "description": "备份文件路径",
+            "example": "/path/to/backup.dump",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -138,7 +252,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "pg_dumpall 全量备份",
       "keyword": "pg_dumpall 全量备份",
-      "description": "备份 PostgreSQL 所有数据库和全局对象",
+      "description": "备份 PostgreSQL 所有数据库和全局对象。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "pg_dumpall -h %{主机}% -p %{端口}% -U %{用户名}% > %{备份文件}%",
         "extensions": [
@@ -162,10 +276,34 @@
           }
         ],
         "params": {
-          "主机": { "type": "string", "required": false, "description": "数据库主机地址", "example": "localhost", "notes": "默认 localhost" },
-          "端口": { "type": "number", "required": false, "description": "端口号", "example": "5432", "notes": "默认 5432" },
-          "用户名": { "type": "string", "required": true, "description": "数据库用户", "example": "postgres", "notes": "" },
-          "备份文件": { "type": "string", "required": true, "description": "备份文件路径", "example": "/path/to/all_backup.sql", "notes": "" }
+          "主机": {
+            "type": "string",
+            "required": false,
+            "description": "数据库主机地址",
+            "example": "localhost",
+            "notes": "默认 localhost"
+          },
+          "端口": {
+            "type": "number",
+            "required": false,
+            "description": "端口号",
+            "example": "5432",
+            "notes": "默认 5432"
+          },
+          "用户名": {
+            "type": "string",
+            "required": true,
+            "description": "数据库用户",
+            "example": "postgres",
+            "notes": "必填"
+          },
+          "备份文件": {
+            "type": "string",
+            "required": true,
+            "description": "备份文件路径",
+            "example": "/path/to/all_backup.sql",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -173,7 +311,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "CREATE DATABASE 创建数据库",
       "keyword": "CREATE DATABASE 创建数据库",
-      "description": "创建新的 PostgreSQL 数据库",
+      "description": "创建新的 PostgreSQL 数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "CREATE DATABASE %{数据库名}%",
         "extensions": [
@@ -193,7 +331,13 @@
             "name": "创建带所有者数据库",
             "cmd": "CREATE DATABASE mydb WITH OWNER %{用户名}%;",
             "params": {
-              "用户名": { "type": "string", "required": true, "description": "数据库所有者", "example": "appuser", "notes": "" }
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "数据库所有者",
+                "example": "appuser",
+                "notes": "可选"
+              }
             },
             "keyword": "CREATE DATABASE 所有者"
           },
@@ -205,7 +349,13 @@
           }
         ],
         "params": {
-          "数据库名": { "type": "string", "required": true, "description": "数据库名称", "example": "mydb", "notes": "" }
+          "数据库名": {
+            "type": "string",
+            "required": true,
+            "description": "数据库名称",
+            "example": "mydb",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -213,7 +363,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "DROP DATABASE 删除数据库",
       "keyword": "DROP DATABASE 删除数据库",
-      "description": "删除 PostgreSQL 数据库",
+      "description": "删除 PostgreSQL 数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "DROP DATABASE %{数据库名}%;",
         "extensions": [
@@ -231,7 +381,13 @@
           }
         ],
         "params": {
-          "数据库名": { "type": "string", "required": true, "description": "数据库名称", "example": "mydb", "notes": "" }
+          "数据库名": {
+            "type": "string",
+            "required": true,
+            "description": "数据库名称",
+            "example": "mydb",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -239,7 +395,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "CREATE TABLE 创建表",
       "keyword": "CREATE TABLE 创建表",
-      "description": "创建数据表",
+      "description": "创建数据表。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "CREATE TABLE %{表名}% (%{字段定义}%);",
         "extensions": [
@@ -269,8 +425,20 @@
           }
         ],
         "params": {
-          "表名": { "type": "string", "required": true, "description": "表名称", "example": "users", "notes": "常用" },
-          "字段定义": { "type": "string", "required": true, "description": "字段定义", "example": "id SERIAL PRIMARY KEY, name VARCHAR(100)", "notes": "" }
+          "表名": {
+            "type": "string",
+            "required": true,
+            "description": "表名称",
+            "example": "users",
+            "notes": "常用"
+          },
+          "字段定义": {
+            "type": "string",
+            "required": true,
+            "description": "字段定义",
+            "example": "id SERIAL PRIMARY KEY, name VARCHAR(100)",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -278,7 +446,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "DROP TABLE 删除表",
       "keyword": "DROP TABLE 删除表",
-      "description": "删除数据表",
+      "description": "删除数据表。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "DROP TABLE %{表名}%;",
         "extensions": [
@@ -302,7 +470,13 @@
           }
         ],
         "params": {
-          "表名": { "type": "string", "required": true, "description": "表名称", "example": "users", "notes": "" }
+          "表名": {
+            "type": "string",
+            "required": true,
+            "description": "表名称",
+            "example": "users",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -310,7 +484,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "ALTER TABLE 修改表",
       "keyword": "ALTER TABLE 修改表",
-      "description": "修改表结构",
+      "description": "修改表结构。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "ALTER TABLE %{表名}% %{操作}%;",
         "extensions": [
@@ -358,8 +532,20 @@
           }
         ],
         "params": {
-          "表名": { "type": "string", "required": true, "description": "表名称", "example": "users", "notes": "" },
-          "操作": { "type": "string", "required": true, "description": "要执行的操作", "example": "ADD COLUMN email VARCHAR(255)", "notes": "" }
+          "表名": {
+            "type": "string",
+            "required": true,
+            "description": "表名称",
+            "example": "users",
+            "notes": "必填"
+          },
+          "操作": {
+            "type": "string",
+            "required": true,
+            "description": "要执行的操作",
+            "example": "ADD COLUMN email VARCHAR(255)",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -367,7 +553,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "CREATE INDEX 创建索引",
       "keyword": "CREATE INDEX 创建索引",
-      "description": "创建各类索引",
+      "description": "创建各类索引。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "CREATE %{索引类型}% INDEX %{索引名}% ON %{表名}% (%{字段}%);",
         "extensions": [
@@ -415,10 +601,34 @@
           }
         ],
         "params": {
-          "索引类型": { "type": "string", "required": false, "description": "索引类型", "example": "UNIQUE", "notes": "默认普通索引，常用" },
-          "索引名": { "type": "string", "required": true, "description": "索引名称", "example": "idx_name", "notes": "常用" },
-          "表名": { "type": "string", "required": true, "description": "表名称", "example": "users", "notes": "" },
-          "字段": { "type": "string", "required": true, "description": "索引字段", "example": "name", "notes": "" }
+          "索引类型": {
+            "type": "string",
+            "required": false,
+            "description": "索引类型",
+            "example": "UNIQUE",
+            "notes": "默认普通索引，常用"
+          },
+          "索引名": {
+            "type": "string",
+            "required": true,
+            "description": "索引名称",
+            "example": "idx_name",
+            "notes": "常用"
+          },
+          "表名": {
+            "type": "string",
+            "required": true,
+            "description": "表名称",
+            "example": "users",
+            "notes": "必填"
+          },
+          "字段": {
+            "type": "string",
+            "required": true,
+            "description": "索引字段",
+            "example": "name",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -426,7 +636,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "DROP INDEX 删除索引",
       "keyword": "DROP INDEX 删除索引",
-      "description": "删除索引",
+      "description": "删除索引。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "DROP INDEX %{索引名}%;",
         "extensions": [
@@ -450,7 +660,13 @@
           }
         ],
         "params": {
-          "索引名": { "type": "string", "required": true, "description": "索引名称", "example": "idx_name", "notes": "" }
+          "索引名": {
+            "type": "string",
+            "required": true,
+            "description": "索引名称",
+            "example": "idx_name",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -458,7 +674,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "REINDEX 重建索引",
       "keyword": "REINDEX 重建索引",
-      "description": "重建索引",
+      "description": "重建索引。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "REINDEX %{类型}% %{目标}%;",
         "extensions": [
@@ -488,8 +704,20 @@
           }
         ],
         "params": {
-          "类型": { "type": "string", "required": false, "description": "重建类型", "example": "INDEX, TABLE, DATABASE, SYSTEM", "notes": "" },
-          "目标": { "type": "string", "required": true, "description": "索引名、表名或数据库名", "example": "idx_name", "notes": "" }
+          "类型": {
+            "type": "string",
+            "required": false,
+            "description": "重建类型",
+            "example": "INDEX, TABLE, DATABASE, SYSTEM",
+            "notes": "可选"
+          },
+          "目标": {
+            "type": "string",
+            "required": true,
+            "description": "索引名、表名或数据库名",
+            "example": "idx_name",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -497,7 +725,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "VACUUM 回收空间",
       "keyword": "VACUUM 回收空间",
-      "description": "回收存储空间",
+      "description": "回收存储空间。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "VACUUM %{选项}%;",
         "extensions": [
@@ -527,7 +755,13 @@
           }
         ],
         "params": {
-          "选项": { "type": "string", "required": false, "description": "VACUUM 选项", "example": "FULL, ANALYZE, VERBOSE", "notes": "常用 ANALYZE" }
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "VACUUM 选项",
+            "example": "FULL, ANALYZE, VERBOSE",
+            "notes": "常用 ANALYZE"
+          }
         }
       }
     },
@@ -535,7 +769,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "ANALYZE 更新统计",
       "keyword": "ANALYZE 统计信息",
-      "description": "更新统计信息用于查询优化",
+      "description": "更新统计信息用于查询优化。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "ANALYZE %{表名}%;",
         "extensions": [
@@ -559,7 +793,13 @@
           }
         ],
         "params": {
-          "表名": { "type": "string", "required": false, "description": "表名称", "example": "users", "notes": "不指定则分析整个数据库" }
+          "表名": {
+            "type": "string",
+            "required": false,
+            "description": "表名称",
+            "example": "users",
+            "notes": "不指定则分析整个数据库"
+          }
         }
       }
     },
@@ -567,7 +807,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "CREATE USER 创建用户",
       "keyword": "CREATE USER 创建用户",
-      "description": "创建 PostgreSQL 用户",
+      "description": "创建 PostgreSQL 用户。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "CREATE USER %{用户名}% WITH PASSWORD '%{密码}%';",
         "extensions": [
@@ -597,8 +837,20 @@
           }
         ],
         "params": {
-          "用户名": { "type": "string", "required": true, "description": "用户名", "example": "appuser", "notes": "" },
-          "密码": { "type": "string", "required": true, "description": "用户密码", "example": "password123", "notes": "" }
+          "用户名": {
+            "type": "string",
+            "required": true,
+            "description": "用户名",
+            "example": "appuser",
+            "notes": "必填"
+          },
+          "密码": {
+            "type": "string",
+            "required": true,
+            "description": "用户密码",
+            "example": "password123",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -606,7 +858,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "ALTER USER 修改用户",
       "keyword": "ALTER USER 修改用户",
-      "description": "修改 PostgreSQL 用户",
+      "description": "修改 PostgreSQL 用户。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "ALTER USER %{用户名}% WITH %{选项}%;",
         "extensions": [
@@ -642,8 +894,20 @@
           }
         ],
         "params": {
-          "用户名": { "type": "string", "required": true, "description": "用户名", "example": "appuser", "notes": "" },
-          "选项": { "type": "string", "required": true, "description": "修改选项", "example": "PASSWORD 'newpass'", "notes": "" }
+          "用户名": {
+            "type": "string",
+            "required": true,
+            "description": "用户名",
+            "example": "appuser",
+            "notes": "必填"
+          },
+          "选项": {
+            "type": "string",
+            "required": true,
+            "description": "修改选项",
+            "example": "PASSWORD 'newpass'",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -651,7 +915,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "DROP USER 删除用户",
       "keyword": "DROP USER 删除用户",
-      "description": "删除 PostgreSQL 用户",
+      "description": "删除 PostgreSQL 用户。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "DROP USER %{用户名}%;",
         "extensions": [
@@ -669,7 +933,13 @@
           }
         ],
         "params": {
-          "用户名": { "type": "string", "required": true, "description": "用户名", "example": "appuser", "notes": "" }
+          "用户名": {
+            "type": "string",
+            "required": true,
+            "description": "用户名",
+            "example": "appuser",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -677,7 +947,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "GRANT 授予权限",
       "keyword": "GRANT 授予权限",
-      "description": "授予用户或角色权限",
+      "description": "授予用户或角色权限。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "GRANT %{权限}% ON %{对象}% TO %{用户名}%;",
         "extensions": [
@@ -713,9 +983,27 @@
           }
         ],
         "params": {
-          "权限": { "type": "string", "required": true, "description": "权限类型", "example": "SELECT, INSERT, UPDATE, DELETE, ALL", "notes": "" },
-          "对象": { "type": "string", "required": true, "description": "数据库对象", "example": "users, ALL TABLES IN SCHEMA public", "notes": "" },
-          "用户名": { "type": "string", "required": true, "description": "用户名或角色", "example": "appuser", "notes": "" }
+          "权限": {
+            "type": "string",
+            "required": true,
+            "description": "权限类型",
+            "example": "SELECT, INSERT, UPDATE, DELETE, ALL",
+            "notes": "必填"
+          },
+          "对象": {
+            "type": "string",
+            "required": true,
+            "description": "数据库对象",
+            "example": "users, ALL TABLES IN SCHEMA public",
+            "notes": "必填"
+          },
+          "用户名": {
+            "type": "string",
+            "required": true,
+            "description": "用户名或角色",
+            "example": "appuser",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -723,7 +1011,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "REVOKE 撤销权限",
       "keyword": "REVOKE 撤销权限",
-      "description": "撤销用户或角色权限",
+      "description": "撤销用户或角色权限。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "REVOKE %{权限}% ON %{对象}% FROM %{用户名}%;",
         "extensions": [
@@ -753,9 +1041,27 @@
           }
         ],
         "params": {
-          "权限": { "type": "string", "required": true, "description": "权限类型", "example": "SELECT, INSERT, UPDATE, DELETE, ALL", "notes": "" },
-          "对象": { "type": "string", "required": true, "description": "数据库对象", "example": "users, ALL TABLES IN SCHEMA public", "notes": "" },
-          "用户名": { "type": "string", "required": true, "description": "用户名或角色", "example": "appuser", "notes": "" }
+          "权限": {
+            "type": "string",
+            "required": true,
+            "description": "权限类型",
+            "example": "SELECT, INSERT, UPDATE, DELETE, ALL",
+            "notes": "必填"
+          },
+          "对象": {
+            "type": "string",
+            "required": true,
+            "description": "数据库对象",
+            "example": "users, ALL TABLES IN SCHEMA public",
+            "notes": "必填"
+          },
+          "用户名": {
+            "type": "string",
+            "required": true,
+            "description": "用户名或角色",
+            "example": "appuser",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -763,7 +1069,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "EXPLAIN ANALYZE 查询分析",
       "keyword": "EXPLAIN ANALYZE 查询分析",
-      "description": "分析查询执行计划",
+      "description": "分析查询执行计划。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "EXPLAIN (ANALYZE, BUFFERS, FORMAT TEXT) %{SQL语句}%;",
         "extensions": [
@@ -805,7 +1111,13 @@
           }
         ],
         "params": {
-          "SQL语句": { "type": "string", "required": true, "description": "要分析的 SQL 语句", "example": "SELECT * FROM users", "notes": "" }
+          "SQL语句": {
+            "type": "string",
+            "required": true,
+            "description": "要分析的 SQL 语句",
+            "example": "SELECT * FROM users",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -813,7 +1125,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "SELECT 查询数据",
       "keyword": "SELECT 查询",
-      "description": "查询数据表",
+      "description": "查询数据表。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "SELECT %{字段}% FROM %{表名}% WHERE %{条件}%;",
         "extensions": [
@@ -867,9 +1179,27 @@
           }
         ],
         "params": {
-          "字段": { "type": "string", "required": false, "description": "查询字段", "example": "*", "notes": "常用" },
-          "表名": { "type": "string", "required": true, "description": "表名称", "example": "users", "notes": "常用" },
-          "条件": { "type": "string", "required": false, "description": "查询条件", "example": "id > 10", "notes": "" }
+          "字段": {
+            "type": "string",
+            "required": false,
+            "description": "查询字段",
+            "example": "*",
+            "notes": "常用"
+          },
+          "表名": {
+            "type": "string",
+            "required": true,
+            "description": "表名称",
+            "example": "users",
+            "notes": "常用"
+          },
+          "条件": {
+            "type": "string",
+            "required": false,
+            "description": "查询条件",
+            "example": "id > 10",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -877,7 +1207,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "INSERT 插入数据",
       "keyword": "INSERT 插入",
-      "description": "插入数据到表",
+      "description": "插入数据到表。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "INSERT INTO %{表名}% (%{字段}%) VALUES (%{值}%);",
         "extensions": [
@@ -913,9 +1243,27 @@
           }
         ],
         "params": {
-          "表名": { "type": "string", "required": true, "description": "表名称", "example": "users", "notes": "常用" },
-          "字段": { "type": "string", "required": true, "description": "字段列表", "example": "name, email", "notes": "" },
-          "值": { "type": "string", "required": true, "description": "值列表", "example": "'张三', 'zhangsan@example.com'", "notes": "" }
+          "表名": {
+            "type": "string",
+            "required": true,
+            "description": "表名称",
+            "example": "users",
+            "notes": "常用"
+          },
+          "字段": {
+            "type": "string",
+            "required": true,
+            "description": "字段列表",
+            "example": "name, email",
+            "notes": "必填"
+          },
+          "值": {
+            "type": "string",
+            "required": true,
+            "description": "值列表",
+            "example": "'张三', 'zhangsan@example.com'",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -923,7 +1271,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "UPDATE 更新数据",
       "keyword": "UPDATE 更新",
-      "description": "更新表中数据",
+      "description": "更新表中数据。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "UPDATE %{表名}% SET %{字段}% WHERE %{条件}%;",
         "extensions": [
@@ -959,9 +1307,27 @@
           }
         ],
         "params": {
-          "表名": { "type": "string", "required": true, "description": "表名称", "example": "users", "notes": "常用" },
-          "字段": { "type": "string", "required": true, "description": "字段和值", "example": "name = '张三'", "notes": "" },
-          "条件": { "type": "string", "required": true, "description": "更新条件", "example": "id = 1", "notes": "" }
+          "表名": {
+            "type": "string",
+            "required": true,
+            "description": "表名称",
+            "example": "users",
+            "notes": "常用"
+          },
+          "字段": {
+            "type": "string",
+            "required": true,
+            "description": "字段和值",
+            "example": "name = '张三'",
+            "notes": "必填"
+          },
+          "条件": {
+            "type": "string",
+            "required": true,
+            "description": "更新条件",
+            "example": "id = 1",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -969,7 +1335,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "DELETE 删除数据",
       "keyword": "DELETE 删除",
-      "description": "删除表中数据",
+      "description": "删除表中数据。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "DELETE FROM %{表名}% WHERE %{条件}%;",
         "extensions": [
@@ -999,8 +1365,20 @@
           }
         ],
         "params": {
-          "表名": { "type": "string", "required": true, "description": "表名称", "example": "users", "notes": "常用" },
-          "条件": { "type": "string", "required": true, "description": "删除条件", "example": "id = 1", "notes": "" }
+          "表名": {
+            "type": "string",
+            "required": true,
+            "description": "表名称",
+            "example": "users",
+            "notes": "常用"
+          },
+          "条件": {
+            "type": "string",
+            "required": true,
+            "description": "删除条件",
+            "example": "id = 1",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -1008,7 +1386,7 @@
       "dirPath": "/PostgreSQL 命令/",
       "name": "COPY 导入导出",
       "keyword": "COPY 导入导出",
-      "description": "导入导出表数据",
+      "description": "导入导出表数据。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "COPY %{表名}% (%{字段}%) FROM '%{文件路径}%' WITH (FORMAT csv, HEADER true);",
         "extensions": [
@@ -1044,9 +1422,27 @@
           }
         ],
         "params": {
-          "表名": { "type": "string", "required": true, "description": "表名称", "example": "users", "notes": "常用" },
-          "字段": { "type": "string", "required": false, "description": "字段列表", "example": "id, name, email", "notes": "不指定则所有字段" },
-          "文件路径": { "type": "string", "required": true, "description": "文件路径", "example": "/tmp/users.csv", "notes": "必须是 PostgreSQL 服务器可访问的路径" }
+          "表名": {
+            "type": "string",
+            "required": true,
+            "description": "表名称",
+            "example": "users",
+            "notes": "常用"
+          },
+          "字段": {
+            "type": "string",
+            "required": false,
+            "description": "字段列表",
+            "example": "id, name, email",
+            "notes": "不指定则所有字段"
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "文件路径",
+            "example": "/tmp/users.csv",
+            "notes": "必须是 PostgreSQL 服务器可访问的路径"
+          }
         }
       }
     }

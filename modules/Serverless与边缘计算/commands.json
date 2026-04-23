@@ -7,7 +7,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "aws lambda create-function 创建函数",
       "keyword": "aws lambda create-function",
-      "description": "创建新的 AWS Lambda 函数",
+      "description": "创建新的 AWS Lambda 函数。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws lambda create-function --function-name %{function_name}% --runtime %{runtime}% --role %{role_arn}% --handler %{handler}% --zip-file %{zip_file}%",
         "extensions": [
@@ -335,7 +335,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "aws lambda invoke 调用函数",
       "keyword": "aws lambda invoke",
-      "description": "调用 AWS Lambda 函数",
+      "description": "调用 AWS Lambda 函数。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws lambda invoke --function-name %{function_name}% %{output_file}%",
         "extensions": [
@@ -509,7 +509,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "aws lambda update-function-code 更新函数代码",
       "keyword": "aws lambda update-function-code",
-      "description": "更新 Lambda 函数代码",
+      "description": "更新 Lambda 函数代码。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws lambda update-function-code --function-name %{function_name}% --zip-file %{zip_file}%",
         "extensions": [
@@ -676,7 +676,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "aws lambda update-function-configuration 更新函数配置",
       "keyword": "aws lambda update-function-configuration",
-      "description": "更新 Lambda 函数配置（内存、超时、环境变量等）",
+      "description": "更新 Lambda 函数配置（内存、超时、环境变量等）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "aws lambda update-function-configuration --function-name %{function_name}%",
         "extensions": [
@@ -864,7 +864,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "sam init 初始化项目",
       "keyword": "sam init",
-      "description": "初始化 AWS SAM 项目",
+      "description": "初始化 AWS SAM 项目。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "sam init",
         "extensions": [
@@ -996,7 +996,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "sam build 构建应用",
       "keyword": "sam build",
-      "description": "构建 AWS SAM 应用",
+      "description": "构建 AWS SAM 应用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "sam build",
         "extensions": [
@@ -1084,7 +1084,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "sam deploy 部署应用",
       "keyword": "sam deploy",
-      "description": "部署 AWS SAM 应用到云端",
+      "description": "部署 AWS SAM 应用到云端。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "sam deploy --guided",
         "extensions": [
@@ -1215,7 +1215,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "serverless config credentials 配置凭证",
       "keyword": "serverless config credentials",
-      "description": "配置 Serverless Framework 云服务凭证",
+      "description": "配置 Serverless Framework 云服务凭证。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "serverless config credentials --provider %{provider}% --key %{key}% --secret %{secret}%",
         "extensions": [
@@ -1228,14 +1228,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "secret_key": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "serverless config aws"
@@ -1479,7 +1479,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "serverless deploy 部署服务",
       "keyword": "serverless deploy",
-      "description": "部署 Serverless Framework 服务",
+      "description": "部署 Serverless Framework 服务。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "serverless deploy",
         "extensions": [
@@ -1643,7 +1643,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "serverless invoke 调用函数",
       "keyword": "serverless invoke",
-      "description": "调用已部署的 Serverless 函数",
+      "description": "调用已部署的 Serverless 函数。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "serverless invoke --function %{function_name}%",
         "extensions": [
@@ -1761,7 +1761,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "serverless logs 查看日志",
       "keyword": "serverless logs",
-      "description": "查看 Serverless 函数执行日志",
+      "description": "查看 Serverless 函数执行日志。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "serverless logs --function %{function_name}%",
         "extensions": [
@@ -1879,7 +1879,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "vercel 部署项目",
       "keyword": "vercel",
-      "description": "部署项目到 Vercel 平台",
+      "description": "部署项目到 Vercel 平台。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "vercel",
         "extensions": [
@@ -1973,7 +1973,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "vercel env 环境变量管理",
       "keyword": "vercel env",
-      "description": "管理 Vercel 项目环境变量",
+      "description": "管理 Vercel 项目环境变量。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "vercel env pull %{file}%",
         "extensions": [
@@ -2062,7 +2062,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "vercel secrets 密钥管理",
       "keyword": "vercel secrets",
-      "description": "管理 Vercel 全局密钥（已迁移到 env）",
+      "description": "管理 Vercel 全局密钥（已迁移到 env）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "vercel secrets add %{name}% %{value}%",
         "extensions": [
@@ -2165,7 +2165,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "vercel logs 查看日志",
       "keyword": "vercel logs",
-      "description": "查看 Vercel 部署日志",
+      "description": "查看 Vercel 部署日志。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "vercel logs %{url}%",
         "extensions": [
@@ -2276,7 +2276,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "vercel inspect 查看部署详情",
       "keyword": "vercel inspect",
-      "description": "查看 Vercel 部署详情",
+      "description": "查看 Vercel 部署详情。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "vercel inspect %{deployment_id}%",
         "extensions": [
@@ -2330,7 +2330,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "vercel remove 删除部署",
       "keyword": "vercel remove",
-      "description": "删除 Vercel 部署",
+      "description": "删除 Vercel 部署。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "vercel remove %{deployment_id}%",
         "extensions": [
@@ -2384,7 +2384,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "netlify init 初始化站点",
       "keyword": "netlify init",
-      "description": "初始化 Netlify 站点",
+      "description": "初始化 Netlify 站点。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "netlify init",
         "extensions": [
@@ -2487,7 +2487,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "netlify deploy 部署",
       "keyword": "netlify deploy",
-      "description": "部署到 Netlify",
+      "description": "部署到 Netlify。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "netlify deploy",
         "extensions": [
@@ -2686,7 +2686,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "netlify env 环境变量",
       "keyword": "netlify env",
-      "description": "管理 Netlify 环境变量",
+      "description": "管理 Netlify 环境变量。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "netlify env:list",
         "extensions": [
@@ -2789,7 +2789,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "netlify edge-functions 边缘函数",
       "keyword": "netlify edge-functions",
-      "description": "管理 Netlify Edge Functions",
+      "description": "管理 Netlify Edge Functions。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "netlify edge-functions:create %{name}%",
         "extensions": [
@@ -2878,7 +2878,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "wrangler init 初始化项目",
       "keyword": "wrangler init",
-      "description": "初始化 Cloudflare Workers 项目",
+      "description": "初始化 Cloudflare Workers 项目。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "wrangler init %{name}%",
         "extensions": [
@@ -2974,7 +2974,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "wrangler dev 本地开发",
       "keyword": "wrangler dev",
-      "description": "本地启动 Cloudflare Workers 开发服务器",
+      "description": "本地启动 Cloudflare Workers 开发服务器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "wrangler dev",
         "extensions": [
@@ -3077,7 +3077,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "wrangler deploy 部署",
       "keyword": "wrangler deploy",
-      "description": "部署 Cloudflare Workers 到生产环境",
+      "description": "部署 Cloudflare Workers 到生产环境。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "wrangler deploy",
         "extensions": [
@@ -3159,7 +3159,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "wrangler kv KV 存储",
       "keyword": "wrangler kv",
-      "description": "管理 Cloudflare Workers KV 存储",
+      "description": "管理 Cloudflare Workers KV 存储。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "wrangler kv:namespace create %{name}%",
         "extensions": [
@@ -3304,7 +3304,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "wrangler secret 密钥管理",
       "keyword": "wrangler secret",
-      "description": "管理 Cloudflare Workers 环境密钥",
+      "description": "管理 Cloudflare Workers 环境密钥。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "wrangler secret put %{name}%",
         "extensions": [
@@ -3358,7 +3358,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "deployctl deploy 部署 Deno 项目",
       "keyword": "deployctl deploy",
-      "description": "部署 Deno 应用到 Deno Deploy",
+      "description": "部署 Deno 应用到 Deno Deploy。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "deployctl deploy --project=%{project}% ./%{file}%",
         "extensions": [
@@ -3482,7 +3482,7 @@
       "dirPath": "/Serverless与边缘计算/",
       "name": "supabase functions new 创建函数",
       "keyword": "supabase functions new",
-      "description": "创建新的 Supabase Edge Function",
+      "description": "创建新的 Supabase Edge Function。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "supabase functions new %{name}%",
         "extensions": [

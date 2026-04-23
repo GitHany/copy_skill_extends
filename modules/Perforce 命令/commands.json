@@ -1,0 +1,546 @@
+{
+  "module": "Perforce 命令",
+  "version": "2.0",
+  "description": "Perforce Helix Core 版本控制系统命令模块 - Perforce 是企业级集中式版本控制系统，适用于管理大型代码仓库。提供高效的分支、合并、权限管理功能，常用于游戏开发、金融、芯片设计等大型项目",
+  "commands": [
+    {
+      "dirPath": "/Perforce 命令/",
+      "name": "p4 sync 同步文件",
+      "keyword": "p4 sync 同步",
+      "description": "同步工作区文件到最新版本 - 将 Perforce 服务器上的最新文件下载到本地工作区。团队协作时每次开始工作前应先同步",
+      "data": {
+        "cmd": "p4 sync",
+        "extensions": [
+          {
+            "name": "同步指定文件",
+            "cmd": "p4 sync %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径",
+                "example": "//depot/project/...",
+                "notes": "必填。支持通配符如 ... 表示递归"
+              }
+            },
+            "keyword": "p4 sync 文件"
+          },
+          {
+            "name": "强制同步",
+            "cmd": "p4 sync -f",
+            "params": {},
+            "keyword": "p4 sync force"
+          },
+          {
+            "name": "预览同步结果",
+            "cmd": "p4 sync -n",
+            "params": {},
+            "keyword": "p4 sync preview"
+          },
+          {
+            "name": "同步到特定版本",
+            "cmd": "p4 sync %{文件}%@{ changeset }%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径",
+                "example": "//depot/project/file.txt",
+                "notes": "必填"
+              },
+              "changeset": {
+                "type": "string",
+                "required": true,
+                "description": "变更集编号",
+                "example": "12345",
+                "notes": "必填。同步到指定版本而非最新"
+              }
+            },
+            "keyword": "p4 sync version"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Perforce 命令/",
+      "name": "p4 submit 提交更改",
+      "keyword": "p4 submit 提交",
+      "description": "将更改提交到 Perforce 服务器 - 提交前需先用 p4 edit 打开文件。提交会创建新的变更集（changelist），包含所有待提交的更改",
+      "data": {
+        "cmd": "p4 submit -d %{描述}%",
+        "extensions": [
+          {
+            "name": "提交当前打开的文件",
+            "cmd": "p4 submit",
+            "params": {},
+            "keyword": "p4 submit all"
+          },
+          {
+            "name": "指定变更集提交",
+            "cmd": "p4 submit -c %{变更集号}%",
+            "params": {
+              "变更集号": {
+                "type": "string",
+                "required": true,
+                "description": "变更集编号",
+                "example": "12345",
+                "notes": "必填"
+              }
+            },
+            "keyword": "p4 submit changelist"
+          },
+          {
+            "name": "仅预览不提交",
+            "cmd": "p4 submit -n",
+            "params": {},
+            "keyword": "p4 submit preview"
+          }
+        ],
+        "params": {
+          "描述": {
+            "type": "string",
+            "required": true,
+            "description": "变更描述",
+            "example": "Fixed login bug",
+            "notes": "必填。建议描述清楚改了什么和为什么改"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Perforce 命令/",
+      "name": "p4 edit 打开编辑",
+      "keyword": "p4 edit 编辑",
+      "description": "将文件标记为可编辑状态 - 在 Perforce 中编辑文件前必须先执行 p4 edit，否则文件是只读的。此操作会锁定文件防止冲突",
+      "data": {
+        "cmd": "p4 edit %{文件}%",
+        "extensions": [
+          {
+            "name": "批量打开多个文件",
+            "cmd": "p4 edit %{文件1}% %{文件2}%",
+            "params": {
+              "文件1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个文件",
+                "example": "//depot/file1.txt",
+                "notes": "必填"
+              },
+              "文件2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个文件",
+                "example": "//depot/file2.txt",
+                "notes": "必填"
+              }
+            },
+            "keyword": "p4 edit batch"
+          },
+          {
+            "name": "递归打开目录",
+            "cmd": "p4 edit %{目录}%/...",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径",
+                "example": "//depot/project/src",
+                "notes": "必填。... 表示递归所有文件"
+              }
+            },
+            "keyword": "p4 edit recursive"
+          },
+          {
+            "name": "仅打开已修改的文件",
+            "cmd": "p4 opened -m %{数量}% | p4 -x - edit",
+            "params": {
+              "数量": {
+                "type": "string",
+                "required": true,
+                "description": "文件数量",
+                "example": "10",
+                "notes": "必填"
+              }
+            },
+            "keyword": "p4 edit modified"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "Perforce 文件路径",
+            "example": "//depot/file.txt",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Perforce 命令/",
+      "name": "p4 add 添加文件",
+      "keyword": "p4 add 添加",
+      "description": "将新文件添加到 Perforce 控制 - 用于首次添加本地创建的新文件。添加后文件进入待提交状态，下次 p4 submit 时会上传到服务器",
+      "data": {
+        "cmd": "p4 add %{文件}%",
+        "extensions": [
+          {
+            "name": "递归添加目录",
+            "cmd": "p4 add %{目录}%/...",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径",
+                "example": "//depot/newproject/...",
+                "notes": "必填。递归添加目录下所有文件"
+              }
+            },
+            "keyword": "p4 add recursive"
+          },
+          {
+            "name": "添加二进制文件",
+            "cmd": "p4 add -tb %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "二进制文件",
+                "example": "//depot/art/image.png",
+                "notes": "必填。-tb 指定为二进制类型"
+              }
+            },
+            "keyword": "p4 add binary"
+          },
+          {
+            "name": "添加并查看待处理列表",
+            "cmd": "p4 add %{文件}% && p4 opened",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径",
+                "example": "newfile.txt",
+                "notes": "必填"
+              }
+            },
+            "keyword": "p4 add check"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "要添加的文件路径",
+            "example": "newfile.txt",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Perforce 命令/",
+      "name": "p4 revert 还原更改",
+      "keyword": "p4 revert 还原",
+      "description": "还原未提交的更改 - 放弃对文件的修改，恢复到服务器上的版本。常用于取消不需要的改动",
+      "data": {
+        "cmd": "p4 revert %{文件}%",
+        "extensions": [
+          {
+            "name": "还原所有未提交的更改",
+            "cmd": "p4 revert -a",
+            "params": {},
+            "keyword": "p4 revert all"
+          },
+          {
+            "name": "还原并保留本地备份",
+            "cmd": "p4 revert -n %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径",
+                "example": "//depot/file.txt",
+                "notes": "必填。-n 仅预览不实际还原"
+              }
+            },
+            "keyword": "p4 revert preview"
+          },
+          {
+            "name": "还原整个工作区",
+            "cmd": "p4 revert //...",
+            "params": {},
+            "keyword": "p4 revert workspace"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "Perforce 文件路径",
+            "example": "//depot/file.txt",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Perforce 命令/",
+      "name": "p4 changes 查看变更",
+      "keyword": "p4 changes 变更",
+      "description": "查看变更列表 - 列出提交到 Perforce 服务器的变更集。可以看到谁提交了什么、什么时候、变更描述等信息",
+      "data": {
+        "cmd": "p4 changes",
+        "extensions": [
+          {
+            "name": "查看我的变更",
+            "cmd": "p4 changes -m %{数量}% -u %{用户}%",
+            "params": {
+              "数量": {
+                "type": "string",
+                "required": true,
+                "description": "显示的变更数量",
+                "example": "10",
+                "notes": "必填"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "john",
+                "notes": "必填"
+              }
+            },
+            "keyword": "p4 changes user"
+          },
+          {
+            "name": "查看待提交的变更",
+            "cmd": "p4 changes -m %{数量}% -s pending",
+            "params": {
+              "数量": {
+                "type": "string",
+                "required": true,
+                "description": "显示数量",
+                "example": "10",
+                "notes": "必填"
+              }
+            },
+            "keyword": "p4 changes pending"
+          },
+          {
+            "name": "查看指定文件的变更",
+            "cmd": "p4 changes %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径",
+                "example": "//depot/project/...",
+                "notes": "必填"
+              }
+            },
+            "keyword": "p4 changes file"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Perforce 命令/",
+      "name": "p4 describe 查看详情",
+      "keyword": "p4 describe 详情",
+      "description": "查看变更详情 - 显示某个变更集的完整信息，包括提交人、时间、描述、以及所有被修改的文件列表",
+      "data": {
+        "cmd": "p4 describe %{变更号}%",
+        "extensions": [
+          {
+            "name": "显示完整文件内容差异",
+            "cmd": "p4 describe -dc %{变更号}%",
+            "params": {
+              "变更号": {
+                "type": "string",
+                "required": true,
+                "description": "变更编号",
+                "example": "12345",
+                "notes": "必填"
+              }
+            },
+            "keyword": "p4 describe diff"
+          },
+          {
+            "name": "仅显示文件列表",
+            "cmd": "p4 describe -s %{变更号}%",
+            "params": {
+              "变更号": {
+                "type": "string",
+                "required": true,
+                "description": "变更编号",
+                "example": "12345",
+                "notes": "必填"
+              }
+            },
+            "keyword": "p4 describe short"
+          }
+        ],
+        "params": {
+          "变更号": {
+            "type": "string",
+            "required": true,
+            "description": "变更编号",
+            "example": "12345",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Perforce 命令/",
+      "name": "p4 diff 查看差异",
+      "keyword": "p4 diff 差异",
+      "description": "查看文件差异 - 比较本地文件与 Perforce 服务器版本的区别。显示添加、删除、修改的行",
+      "data": {
+        "cmd": "p4 diff %{文件}%",
+        "extensions": [
+          {
+            "name": "查看所有打开文件的差异",
+            "cmd": "p4 diff",
+            "params": {},
+            "keyword": "p4 diff all"
+          },
+          {
+            "name": "查看未打开文件的差异",
+            "cmd": "p4 diff -f %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径",
+                "example": "//depot/file.txt",
+                "notes": "必填"
+              }
+            },
+            "keyword": "p4 diff file"
+          },
+          {
+            "name": "统计差异行数",
+            "cmd": "p4 diff -dc %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径",
+                "example": "//depot/file.txt",
+                "notes": "必填"
+              }
+            },
+            "keyword": "p4 diff stats"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": false,
+            "description": "Perforce 文件路径",
+            "example": "//depot/file.txt",
+            "notes": "可选。不指定则显示所有打开文件的差异"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Perforce 命令/",
+      "name": "p4 opened 查看打开文件",
+      "keyword": "p4 opened 打开",
+      "description": "查看已打开的文件 - 显示当前用户已打开（待提交）的所有文件，包括 edit、add、delete 等状态",
+      "data": {
+        "cmd": "p4 opened",
+        "extensions": [
+          {
+            "name": "查看指定变更集的文件",
+            "cmd": "p4 opened -c %{变更集号}%",
+            "params": {
+              "变更集号": {
+                "type": "string",
+                "required": true,
+                "description": "变更集编号",
+                "example": "12345",
+                "notes": "必填"
+              }
+            },
+            "keyword": "p4 opened changelist"
+          },
+          {
+            "name": "按文件类型筛选",
+            "cmd": "p4 opened %{文件模式}%",
+            "params": {
+              "文件模式": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径模式",
+                "example": "//depot/project/*.txt",
+                "notes": "必填"
+              }
+            },
+            "keyword": "p4 opened filter"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Perforce 命令/",
+      "name": "p4 client 工作区",
+      "keyword": "p4 client 工作区",
+      "description": "创建或编辑工作区配置 - 工作区（Client）定义了本地目录与 Perforce 仓库的映射关系",
+      "data": {
+        "cmd": "p4 client %{工作区名}%",
+        "extensions": [
+          {
+            "name": "查看当前工作区",
+            "cmd": "p4 client -o",
+            "params": {},
+            "keyword": "p4 client show"
+          },
+          {
+            "name": "设置工作区根目录",
+            "cmd": "p4 client -o %{工作区名}% | sed 's|Root:|Root: /new/path|' | p4 client -i",
+            "params": {
+              "工作区名": {
+                "type": "string",
+                "required": true,
+                "description": "工作区名称",
+                "example": "john-workspace",
+                "notes": "必填"
+              }
+            },
+            "keyword": "p4 client root"
+          },
+          {
+            "name": "列出所有工作区",
+            "cmd": "p4 clients -u %{用户}%",
+            "params": {
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "john",
+                "notes": "必填"
+              }
+            },
+            "keyword": "p4 clients list"
+          }
+        ],
+        "params": {
+          "工作区名": {
+            "type": "string",
+            "required": true,
+            "description": "工作区名称",
+            "example": "john-workspace",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

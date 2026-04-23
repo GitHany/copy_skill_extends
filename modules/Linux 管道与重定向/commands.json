@@ -1,0 +1,81 @@
+{
+  "module": "Linux 管道与重定向",
+  "version": "2.0",
+  "description": "Linux 管道与重定向命令集合，涵盖Linux 管道与重定向的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Linux 管道与重定向/",
+      "name": "管道操作",
+      "keyword": "管道 重定向",
+      "description": "使用管道连接命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "%{命令1}% | %{命令2}%",
+        "extensions": [],
+        "params": {
+          "命令1": {
+            "type": "string",
+            "required": true,
+            "description": "第一个命令",
+            "example": "cat file.txt",
+            "notes": "必填"
+          },
+          "命令2": {
+            "type": "string",
+            "required": true,
+            "description": "第二个命令",
+            "example": "grep error",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux 管道与重定向/",
+      "name": "输出重定向",
+      "keyword": "重定向 输出",
+      "description": "重定向标准输出。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "%{命令}% > %{文件}%",
+        "extensions": [
+          {
+            "name": "追加重定向",
+            "cmd": "%{命令}% >> %{文件}%",
+            "params": {
+              "命令": {
+                "type": "string",
+                "required": true,
+                "description": "命令",
+                "example": "echo test",
+                "notes": "必填"
+              },
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件",
+                "example": "log.txt",
+                "notes": "必填"
+              }
+            },
+            "keyword": "追加"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "命令",
+            "example": "echo hello",
+            "notes": "必填"
+          },
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "输出文件",
+            "example": "output.txt",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

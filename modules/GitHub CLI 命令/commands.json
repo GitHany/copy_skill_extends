@@ -7,7 +7,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh repo clone 克隆仓库",
       "keyword": "gh repo clone",
-      "description": "克隆 GitHub 仓库",
+      "description": "克隆 GitHub 仓库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh repo clone %{owner}/%{repo}%",
         "extensions": [
@@ -20,7 +20,7 @@
                 "required": false,
                 "description": "仓库名称",
                 "example": "hello-world",
-                "notes": ""
+                "notes": "可选"
               },
               "directory": {
                 "type": "string",
@@ -39,14 +39,14 @@
             "required": true,
             "description": "仓库所有者用户名",
             "example": "octocat",
-            "notes": ""
+            "notes": "必填"
           },
           "repo": {
             "type": "string",
             "required": true,
             "description": "仓库名称",
             "example": "hello-world",
-            "notes": ""
+            "notes": "必填"
           },
           "directory": {
             "type": "string",
@@ -62,7 +62,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh repo create 创建仓库",
       "keyword": "gh repo create",
-      "description": "创建新 GitHub 仓库",
+      "description": "创建新 GitHub 仓库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh repo create %{name}%",
         "extensions": [
@@ -138,7 +138,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh repo fork 派生仓库",
       "keyword": "gh repo fork",
-      "description": "派生仓库到个人账户",
+      "description": "派生仓库到个人账户。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh repo fork %{owner}/%{repo}%",
         "extensions": [
@@ -151,7 +151,7 @@
                 "required": false,
                 "description": "仓库名称",
                 "example": "hello-world",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "gh repo fork 克隆"
@@ -165,7 +165,7 @@
                 "required": false,
                 "description": "仓库名称",
                 "example": "hello-world",
-                "notes": ""
+                "notes": "可选"
               },
               "org": {
                 "type": "string",
@@ -184,14 +184,14 @@
             "required": true,
             "description": "仓库所有者用户名",
             "example": "github",
-            "notes": ""
+            "notes": "必填"
           },
           "repo": {
             "type": "string",
             "required": true,
             "description": "仓库名称",
             "example": "hello-world",
-            "notes": ""
+            "notes": "必填"
           },
           "org": {
             "type": "string",
@@ -207,7 +207,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh repo view 查看仓库",
       "keyword": "gh repo view",
-      "description": "查看仓库信息",
+      "description": "查看仓库信息。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh repo view",
         "extensions": [
@@ -260,7 +260,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh repo list 列出仓库",
       "keyword": "gh repo list",
-      "description": "列出用户或组织的仓库",
+      "description": "列出用户或组织的仓库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh repo list %{username}%",
         "extensions": [
@@ -273,7 +273,7 @@
                 "required": false,
                 "description": "GitHub 用户名",
                 "example": "octocat",
-                "notes": ""
+                "notes": "可选"
               },
               "number": {
                 "type": "number",
@@ -308,7 +308,7 @@
                 "required": false,
                 "description": "GitHub 用户名",
                 "example": "octocat",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "gh repo list 来源"
@@ -320,7 +320,7 @@
             "required": true,
             "description": "GitHub 用户名",
             "example": "octocat",
-            "notes": ""
+            "notes": "必填"
           },
           "number": {
             "type": "number",
@@ -343,7 +343,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh issue list 列出 Issue",
       "keyword": "gh issue list",
-      "description": "列出仓库的 Issue",
+      "description": "列出仓库的 Issue。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh issue list",
         "extensions": [
@@ -510,7 +510,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh issue view 查看 Issue",
       "keyword": "gh issue view",
-      "description": "查看 Issue 详情",
+      "description": "查看 Issue 详情。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh issue view %{issue_number}%",
         "extensions": [
@@ -593,7 +593,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh issue create 创建 Issue",
       "keyword": "gh issue create",
-      "description": "创建新 Issue",
+      "description": "创建新 Issue。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh issue create --title \"%{title}%\" --body \"%{body}%\"",
         "extensions": [
@@ -773,7 +773,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh issue close 关闭 Issue",
       "keyword": "gh issue close",
-      "description": "关闭 Issue",
+      "description": "关闭 Issue。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh issue close %{issue_number}%",
         "extensions": [
@@ -786,7 +786,7 @@
                 "required": false,
                 "description": "Issue 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               },
               "reason": {
                 "type": "string",
@@ -807,7 +807,7 @@
                 "required": false,
                 "description": "Issue 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               },
               "repo": {
                 "type": "string",
@@ -826,7 +826,7 @@
             "required": true,
             "description": "Issue 编号",
             "example": "123",
-            "notes": ""
+            "notes": "必填"
           },
           "reason": {
             "type": "string",
@@ -856,7 +856,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh issue reopen 重新打开 Issue",
       "keyword": "gh issue reopen",
-      "description": "重新打开已关闭的 Issue",
+      "description": "重新打开已关闭的 Issue。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh issue reopen %{issue_number}%",
         "extensions": [
@@ -869,7 +869,7 @@
                 "required": false,
                 "description": "Issue 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               },
               "repo": {
                 "type": "string",
@@ -888,7 +888,7 @@
             "required": true,
             "description": "Issue 编号",
             "example": "123",
-            "notes": ""
+            "notes": "必填"
           },
           "owner": {
             "type": "string",
@@ -911,7 +911,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh issue edit 编辑 Issue",
       "keyword": "gh issue edit",
-      "description": "编辑 Issue 信息",
+      "description": "编辑 Issue 信息。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh issue edit %{issue_number}%",
         "extensions": [
@@ -924,7 +924,7 @@
                 "required": false,
                 "description": "Issue 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               },
               "title": {
                 "type": "string",
@@ -952,7 +952,7 @@
                 "required": false,
                 "description": "Issue 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               },
               "label": {
                 "type": "string",
@@ -973,7 +973,7 @@
                 "required": false,
                 "description": "Issue 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               },
               "assignee": {
                 "type": "string",
@@ -994,7 +994,7 @@
                 "required": false,
                 "description": "Issue 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               },
               "milestone": {
                 "type": "string",
@@ -1015,7 +1015,7 @@
                 "required": false,
                 "description": "Issue 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               },
               "repo": {
                 "type": "string",
@@ -1034,7 +1034,7 @@
             "required": true,
             "description": "Issue 编号",
             "example": "123",
-            "notes": ""
+            "notes": "必填"
           },
           "title": {
             "type": "string",
@@ -1092,7 +1092,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh issue comment 添加评论",
       "keyword": "gh issue comment",
-      "description": "为 Issue 添加评论",
+      "description": "为 Issue 添加评论。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh issue comment %{issue_number}% --body \"%{body}%\"",
         "extensions": [
@@ -1105,14 +1105,14 @@
                 "required": false,
                 "description": "Issue 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               },
               "body": {
                 "type": "string",
                 "required": false,
                 "description": "评论内容",
                 "example": "感谢报告，已确认此问题",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "gh issue comment 编辑"
@@ -1126,7 +1126,7 @@
                 "required": false,
                 "description": "Issue 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "gh issue comment 删除"
@@ -1140,7 +1140,7 @@
                 "required": false,
                 "description": "Issue 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               },
               "repo": {
                 "type": "string",
@@ -1154,7 +1154,7 @@
                 "required": false,
                 "description": "评论内容",
                 "example": "感谢报告，已确认此问题",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "gh issue comment 仓库"
@@ -1166,14 +1166,14 @@
             "required": true,
             "description": "Issue 编号",
             "example": "123",
-            "notes": ""
+            "notes": "必填"
           },
           "body": {
             "type": "string",
             "required": true,
             "description": "评论内容",
             "example": "感谢报告，已确认此问题",
-            "notes": ""
+            "notes": "必填"
           },
           "owner": {
             "type": "string",
@@ -1196,7 +1196,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh label list 查看标签",
       "keyword": "gh label list",
-      "description": "查看仓库所有标签",
+      "description": "查看仓库所有标签。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh label list",
         "extensions": [
@@ -1258,7 +1258,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh pr create 创建 Pull Request",
       "keyword": "gh pr create",
-      "description": "创建新的 Pull Request",
+      "description": "创建新的 Pull Request。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh pr create --title \"%{title}%\" --body \"%{body}%\"",
         "extensions": [
@@ -1544,7 +1544,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh pr list 列出 Pull Request",
       "keyword": "gh pr list",
-      "description": "列出仓库的 Pull Request",
+      "description": "列出仓库的 Pull Request。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh pr list",
         "extensions": [
@@ -1690,7 +1690,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh pr view 查看 Pull Request",
       "keyword": "gh pr view",
-      "description": "查看 Pull Request 详情",
+      "description": "查看 Pull Request 详情。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh pr view %{pr_number}%",
         "extensions": [
@@ -1703,7 +1703,7 @@
                 "required": false,
                 "description": "PR 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "gh pr view 浏览器"
@@ -1717,7 +1717,7 @@
                 "required": false,
                 "description": "PR 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "gh pr view 评论"
@@ -1731,7 +1731,7 @@
                 "required": false,
                 "description": "PR 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "gh pr view 文件"
@@ -1743,7 +1743,7 @@
             "required": true,
             "description": "PR 编号",
             "example": "123",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1752,7 +1752,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh pr checkout 检出 Pull Request",
       "keyword": "gh pr checkout",
-      "description": "检出 PR 到本地分支",
+      "description": "检出 PR 到本地分支。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh pr checkout %{pr_number}%",
         "extensions": [
@@ -1786,7 +1786,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh pr merge 合并 Pull Request",
       "keyword": "gh pr merge",
-      "description": "合并 Pull Request",
+      "description": "合并 Pull Request。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh pr merge %{pr_number}%",
         "extensions": [
@@ -1918,7 +1918,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh pr close 关闭 Pull Request",
       "keyword": "gh pr close",
-      "description": "关闭 Pull Request",
+      "description": "关闭 Pull Request。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh pr close %{pr_number}%",
         "extensions": [
@@ -1931,7 +1931,7 @@
                 "required": false,
                 "description": "PR 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "gh pr close 删除分支"
@@ -1943,7 +1943,7 @@
             "required": true,
             "description": "PR 编号",
             "example": "123",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1952,7 +1952,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh pr reopen 重新打开 Pull Request",
       "keyword": "gh pr reopen",
-      "description": "重新打开已关闭的 Pull Request",
+      "description": "重新打开已关闭的 Pull Request。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh pr reopen %{pr_number}%",
         "extensions": [
@@ -1965,7 +1965,7 @@
                 "required": false,
                 "description": "PR 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               },
               "comment": {
                 "type": "string",
@@ -1984,7 +1984,7 @@
             "required": true,
             "description": "PR 编号",
             "example": "123",
-            "notes": ""
+            "notes": "必填"
           },
           "comment": {
             "type": "string",
@@ -2000,7 +2000,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh pr edit 编辑 Pull Request",
       "keyword": "gh pr edit",
-      "description": "编辑 Pull Request 信息",
+      "description": "编辑 Pull Request 信息。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh pr edit %{pr_number}%",
         "extensions": [
@@ -2013,7 +2013,7 @@
                 "required": false,
                 "description": "PR 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               },
               "title": {
                 "type": "string",
@@ -2041,7 +2041,7 @@
                 "required": false,
                 "description": "PR 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               },
               "base": {
                 "type": "string",
@@ -2062,7 +2062,7 @@
                 "required": false,
                 "description": "PR 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               },
               "label": {
                 "type": "string",
@@ -2083,7 +2083,7 @@
                 "required": false,
                 "description": "PR 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               },
               "label": {
                 "type": "string",
@@ -2104,7 +2104,7 @@
                 "required": false,
                 "description": "PR 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               },
               "assignee": {
                 "type": "string",
@@ -2125,7 +2125,7 @@
                 "required": false,
                 "description": "PR 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               },
               "assignee": {
                 "type": "string",
@@ -2144,7 +2144,7 @@
             "required": true,
             "description": "PR 编号",
             "example": "123",
-            "notes": ""
+            "notes": "必填"
           },
           "title": {
             "type": "string",
@@ -2188,7 +2188,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh pr add-assignee 添加受理人",
       "keyword": "gh pr add-assignee",
-      "description": "为 PR 添加受理人",
+      "description": "为 PR 添加受理人。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh pr add-assignee %{pr_number}% %{assignee}%",
         "extensions": [
@@ -2201,7 +2201,7 @@
                 "required": false,
                 "description": "PR 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               },
               "assignee1": {
                 "type": "string",
@@ -2227,7 +2227,7 @@
             "required": true,
             "description": "PR 编号",
             "example": "123",
-            "notes": ""
+            "notes": "必填"
           },
           "assignee": {
             "type": "string",
@@ -2257,7 +2257,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh pr add-label 添加标签",
       "keyword": "gh pr add-label",
-      "description": "为 PR 添加标签",
+      "description": "为 PR 添加标签。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh pr add-label %{pr_number}% %{label}%",
         "extensions": [
@@ -2270,7 +2270,7 @@
                 "required": false,
                 "description": "PR 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               },
               "label1": {
                 "type": "string",
@@ -2296,7 +2296,7 @@
             "required": true,
             "description": "PR 编号",
             "example": "123",
-            "notes": ""
+            "notes": "必填"
           },
           "label": {
             "type": "string",
@@ -2326,7 +2326,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh pr review 审查 Pull Request",
       "keyword": "gh pr review",
-      "description": "审查 Pull Request",
+      "description": "审查 Pull Request。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh pr review %{pr_number}%",
         "extensions": [
@@ -2430,7 +2430,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh pr checks 查看 CI 状态",
       "keyword": "gh pr checks",
-      "description": "查看 PR 的 CI 检查状态",
+      "description": "查看 PR 的 CI 检查状态。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh pr checks %{pr_number}%",
         "extensions": [
@@ -2443,7 +2443,7 @@
                 "required": false,
                 "description": "PR 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "gh pr checks 等待"
@@ -2457,7 +2457,7 @@
                 "required": false,
                 "description": "PR 编号",
                 "example": "123",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "gh pr checks 详细"
@@ -2469,7 +2469,7 @@
             "required": true,
             "description": "PR 编号",
             "example": "123",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -2478,7 +2478,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh run list 列出 Actions 运行",
       "keyword": "gh run list",
-      "description": "列出仓库的 Actions 工作流运行",
+      "description": "列出仓库的 Actions 工作流运行。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh run list",
         "extensions": [
@@ -2603,7 +2603,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh run view 查看 Actions 运行",
       "keyword": "gh run view",
-      "description": "查看 Actions 运行详情",
+      "description": "查看 Actions 运行详情。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh run view %{run_id}%",
         "extensions": [
@@ -2700,7 +2700,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh run rerun 重新运行",
       "keyword": "gh run rerun",
-      "description": "重新运行 Actions 工作流",
+      "description": "重新运行 Actions 工作流。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh run rerun %{run_id}%",
         "extensions": [
@@ -2769,7 +2769,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh run cancel 取消运行",
       "keyword": "gh run cancel",
-      "description": "取消正在运行的 Actions 工作流",
+      "description": "取消正在运行的 Actions 工作流。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh run cancel %{run_id}%",
         "extensions": [
@@ -2782,7 +2782,7 @@
                 "required": false,
                 "description": "运行 ID",
                 "example": "123456789",
-                "notes": ""
+                "notes": "可选"
               },
               "repo": {
                 "type": "string",
@@ -2801,7 +2801,7 @@
             "required": true,
             "description": "运行 ID",
             "example": "123456789",
-            "notes": ""
+            "notes": "必填"
           },
           "owner": {
             "type": "string",
@@ -2824,7 +2824,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh workflow list 列出工作流",
       "keyword": "gh workflow list",
-      "description": "列出仓库的 Actions 工作流",
+      "description": "列出仓库的 Actions 工作流。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh workflow list",
         "extensions": [
@@ -2871,7 +2871,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh workflow view 查看工作流",
       "keyword": "gh workflow view",
-      "description": "查看工作流详情",
+      "description": "查看工作流详情。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh workflow view %{workflow_id}%",
         "extensions": [
@@ -2884,7 +2884,7 @@
                 "required": false,
                 "description": "工作流名称或 ID",
                 "example": "CI",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "gh workflow view 浏览器"
@@ -2898,7 +2898,7 @@
                 "required": false,
                 "description": "工作流名称或 ID",
                 "example": "CI",
-                "notes": ""
+                "notes": "可选"
               },
               "repo": {
                 "type": "string",
@@ -2917,7 +2917,7 @@
             "required": true,
             "description": "工作流名称或 ID",
             "example": "CI",
-            "notes": ""
+            "notes": "必填"
           },
           "owner": {
             "type": "string",
@@ -2940,7 +2940,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh workflow run 运行工作流",
       "keyword": "gh workflow run",
-      "description": "手动触发 Actions 工作流",
+      "description": "手动触发 Actions 工作流。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh workflow run %{workflow_name}%",
         "extensions": [
@@ -3065,7 +3065,7 @@
       "dirPath": "/GitHub CLI 命令/",
       "name": "gh api 查询 API",
       "keyword": "gh api",
-      "description": "直接调用 GitHub REST API",
+      "description": "直接调用 GitHub REST API。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh api %{path}%",
         "extensions": [
@@ -3127,7 +3127,7 @@
             "required": false,
             "description": "API 路径",
             "example": "repos/octocat/hello-world",
-            "notes": ""
+            "notes": "可选"
           },
           "owner": {
             "type": "string",

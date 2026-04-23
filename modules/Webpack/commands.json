@@ -1,0 +1,53 @@
+{
+  "module": "Webpack",
+  "version": "2.0",
+  "description": "Webpack 模块打包工具，涵盖Webpack的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Webpack/",
+      "name": "webpack 构建",
+      "keyword": "webpack build 构建",
+      "description": "使用 Webpack 构建。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "webpack",
+        "extensions": [
+          {
+            "name": "生产模式",
+            "cmd": "webpack --mode production",
+            "params": {},
+            "keyword": "webpack mode"
+          },
+          {
+            "name": "开发模式",
+            "cmd": "webpack --mode development",
+            "params": {},
+            "keyword": "webpack dev"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Webpack/",
+      "name": "webpack serve 开发服务器",
+      "keyword": "webpack serve 服务器",
+      "description": "启动 Webpack 开发服务器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "webpack serve",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Webpack/",
+      "name": "webpack watch 监听模式",
+      "keyword": "webpack watch 监听",
+      "description": "启动监听模式。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "webpack --watch",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

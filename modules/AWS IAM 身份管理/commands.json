@@ -1,0 +1,37 @@
+{
+  "module": "AWS IAM 身份管理",
+  "version": "2.0",
+  "description": "AWS IAM 身份管理命令集合，涵盖AWS IAM 身份管理的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/AWS IAM 身份管理/",
+      "name": "aws iam create-user 创建用户",
+      "keyword": "aws iam user 创建",
+      "description": "创建 IAM 用户。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws iam create-user --user-name %{用户名}%",
+        "extensions": [],
+        "params": {
+          "用户名": {
+            "type": "string",
+            "required": true,
+            "description": "用户名",
+            "example": "developer",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/AWS IAM 身份管理/",
+      "name": "aws iam list-users 列出用户",
+      "keyword": "aws iam users 用户",
+      "description": "列出 IAM 用户。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws iam list-users",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "module": "Linux 进程管理",
+  "version": "2.0",
+  "description": "Linux 进程管理命令集合，涵盖Linux 进程管理的常用操作和最佳实践",
+  "commands": [
+    {
+      "cmd": "ps aux",
+      "extensions": [
+        {
+          "name": "显示进程树",
+          "cmd": "ps auxf",
+          "params": {},
+          "keyword": "ps tree"
+        },
+        {
+          "name": "按 CPU 排序",
+          "cmd": "ps aux --sort=-%cpu",
+          "params": {},
+          "keyword": "ps cpu"
+        },
+        {
+          "name": "按内存排序",
+          "cmd": "ps aux --sort=-%mem",
+          "params": {},
+          "keyword": "ps memory"
+        }
+      ],
+      "params": {},
+      "dirPath": "/Linux 进程管理/",
+      "name": "Linux 进程管理 命令",
+      "keyword": "Linux 进程管理 命令",
+      "description": "Linux 进程管理 命令的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

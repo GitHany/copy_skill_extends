@@ -1,0 +1,45 @@
+{
+  "module": "Prometheus",
+  "version": "2.0",
+  "description": "Prometheus 监控系统命令行工具",
+  "commands": [
+    {
+      "dirPath": "/Prometheus/",
+      "name": "promtool 检查配置",
+      "keyword": "promtool 检查",
+      "description": "检查 Prometheus 配置。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "promtool check config %{配置文件}%",
+        "extensions": [],
+        "params": {
+          "配置文件": {
+            "type": "string",
+            "required": true,
+            "description": "配置文件路径",
+            "example": "prometheus.yml",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Prometheus/",
+      "name": "promtool 规则验证",
+      "keyword": "promtool 规则",
+      "description": "验证 Prometheus 规则文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "promtool check rules %{规则文件}%",
+        "extensions": [],
+        "params": {
+          "规则文件": {
+            "type": "string",
+            "required": true,
+            "description": "规则文件路径",
+            "example": "rules.yml",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

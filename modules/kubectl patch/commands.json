@@ -1,0 +1,40 @@
+{
+  "module": "kubectl patch",
+  "version": "2.0",
+  "description": "kubectl 资源修补，涵盖kubectl patch的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/kubectl patch/",
+      "name": "kubectl patch 修补资源",
+      "keyword": "kubectl patch 修补",
+      "description": "更新资源字段。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl patch %{类型}% %{名称}% -p '%{补丁}%'",
+        "extensions": [],
+        "params": {
+          "类型": {
+            "type": "string",
+            "required": true,
+            "description": "类型",
+            "example": "deployment",
+            "notes": "必填"
+          },
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "名",
+            "example": "myapp",
+            "notes": "必填"
+          },
+          "补丁": {
+            "type": "string",
+            "required": true,
+            "description": "补丁 JSON",
+            "example": "{\"spec\":{\"replicas\":3}}",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

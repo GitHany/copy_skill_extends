@@ -1,0 +1,224 @@
+{
+  "module": "kubectl run",
+  "version": "2.0",
+  "description": "快速创建单个 Pod 并运行容器，用于快速测试、临时任务或一次性作业。最简洁的 Pod 创建方式，但不适合生产环境（有状态管理、滚动更新等需求时用 Deployment）。",
+  "commands": [
+    {
+      "dirPath": "/kubectl run/",
+      "name": "kubectl run 运行 Pod",
+      "keyword": "kubectl run 运行 临时 测试",
+      "description": "快速创建并运行一个 Pod，适合临时测试、调试或一次性任务。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl run %{名称}% --image=%{镜像}%",
+        "extensions": [
+          {
+            "name": "创建 Pod 并进入交互式 Shell",
+            "cmd": "kubectl run -it %{名称}% --image=%{镜像}% --restart=Never -- sh",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Pod 名称",
+                "example": "debug-pod",
+                "notes": "必填，-it 会分配交互终端"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "容器镜像",
+                "example": "busybox",
+                "notes": "常用 busybox、alpine 进行调试"
+              }
+            },
+            "keyword": "kubectl run 交互式",
+            "description": "创建临时 Pod 并进入交互式 Shell，适用于调试集群内问题（如网络测试、配置检查）"
+          },
+          {
+            "name": "创建一次性 Job（完成即退出）",
+            "cmd": "kubectl run %{名称}% --image=%{镜像}% --restart=OnFailure -- %{命令}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Job 名称",
+                "example": "data-import",
+                "notes": "Pod 完成后 Job 状态为 Completed"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "容器镜像",
+                "example": "python:3.11",
+                "notes": "包含所需工具的镜像"
+              },
+              "命令": {
+                "type": "string",
+                "required": false,
+                "description": "容器启动命令",
+                "example": "echo hello",
+                "notes": "覆盖镜像默认命令"
+              }
+            },
+            "keyword": "kubectl run job",
+            "description": "创建 Job 类型的 Pod，适用于一次性任务（如数据导入、批处理脚本）"
+          },
+          {
+            "name": "创建带环境变量的 Pod",
+            "cmd": "kubectl run %{名称}% --image=%{镜像}% --env=%{环境变量}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Pod 名称",
+                "example": "config-test",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "容器镜像",
+                "example": "nginx",
+                "notes": "必填"
+              },
+              "环境变量": {
+                "type": "string",
+                "required": true,
+                "description": "环境变量（key=value 格式）",
+                "example": "DATABASE_URL=postgres://localhost:5432/db",
+                "notes": "可多次使用 --env 设置多个变量"
+              }
+            },
+            "keyword": "kubectl run 环境变量",
+            "description": "创建 Pod 时注入环境变量，适用于测试应用在不同配置下的行为"
+          },
+          {
+            "name": "创建带资源限制的 Pod",
+            "cmd": "kubectl run %{名称}% --image=%{镜像}% --limits=%{资源限制}% --requests=%{资源请求}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Pod 名称",
+                "example": "resource-test",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "容器镜像",
+                "example": "nginx",
+                "notes": "必填"
+              },
+              "资源限制": {
+                "type": "string",
+                "required": false,
+                "description": "资源上限（CPU/内存）",
+                "example": "cpu=500m,memory=512Mi",
+                "notes": "限制容器最大可用资源"
+              },
+              "资源请求": {
+                "type": "string",
+                "required": false,
+                "description": "资源请求（CPU/内存）",
+                "example": "cpu=250m,memory=256Mi",
+                "notes": "调度器根据此信息决定节点分配"
+              }
+            },
+            "keyword": "kubectl run 资源限制",
+            "description": "创建 Pod 时设置 CPU 和内存限制，避免单个容器耗尽节点资源"
+          },
+          {
+            "name": "创建并暴露端口（生成 Service）",
+            "cmd": "kubectl run %{名称}% --image=%{镜像}% --port=%{端口}% --expose",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Pod 名称",
+                "example": "web-server",
+                "notes": "必填，同时会创建同名 Service"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "容器镜像",
+                "example": "nginx",
+                "notes": "必填"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "容器监听端口",
+                "example": "80",
+                "notes": "自动创建 ClusterIP Service 暴露此端口"
+              }
+            },
+            "keyword": "kubectl run 暴露端口",
+            "description": "创建 Pod 时自动创建 Service，无需单独执行 expose 命令"
+          },
+          {
+            "name": "查看正在运行的 Pod",
+            "cmd": "kubectl get pods -o wide | grep %{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Pod 名称（部分匹配）",
+                "example": "debug",
+                "notes": "查看 Pod 部署位置和状态"
+              }
+            },
+            "keyword": "kubectl run 查看 pod",
+            "description": "查看创建的 Pod 状态和运行节点，适用于确认部署成功"
+          },
+          {
+            "name": "查看 Pod 日志",
+            "cmd": "kubectl logs %{Pod名称}%",
+            "params": {
+              "Pod名称": {
+                "type": "string",
+                "required": true,
+                "description": "Pod 名称",
+                "example": "debug-pod",
+                "notes": "查看容器标准输出日志"
+              }
+            },
+            "keyword": "kubectl run 日志",
+            "description": "查看 Pod 容器日志，适用于调试运行中的问题"
+          },
+          {
+            "name": "删除临时 Pod",
+            "cmd": "kubectl delete pod %{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Pod 名称",
+                "example": "debug-pod",
+                "notes": "删除后无法恢复，请确认不再需要"
+              }
+            },
+            "keyword": "kubectl run 删除",
+            "description": "删除临时 Pod，释放集群资源。DaemonSet 管理的 Pod 无法通过此方式删除"
+          }
+        ],
+        "params": {
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "Pod 名称",
+            "example": "my-pod",
+            "notes": "必填，建议使用有意义的名称"
+          },
+          "镜像": {
+            "type": "string",
+            "required": true,
+            "description": "容器镜像地址",
+            "example": "nginx",
+            "notes": "必填，推荐使用完整镜像名（镜像:版本）避免默认拉取 latest"
+          }
+        }
+      }
+    }
+  ]
+}

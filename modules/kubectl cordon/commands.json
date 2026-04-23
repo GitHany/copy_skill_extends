@@ -1,0 +1,109 @@
+{
+  "module": "kubectl cordon",
+  "version": "2.0",
+  "description": "将节点标记为不可调度，防止新 Pod 被调度到该节点上。常用于节点维护、升级或故障排查时，确保服务稳定性。",
+  "commands": [
+    {
+      "dirPath": "/kubectl cordon/",
+      "name": "kubectl cordon 标记节点不可调度",
+      "keyword": "kubectl cordon 标记 不可调度 维护",
+      "description": "标记节点为不可调度状态，防止新 Pod 调度到该节点。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl cordon %{节点}%",
+        "extensions": [
+          {
+            "name": "安全驱逐 Pod（忽略 DaemonSet）",
+            "cmd": "kubectl cordon %{节点}% --ignore-daemonsets --delete-emptydir-data",
+            "params": {
+              "节点": {
+                "type": "string",
+                "required": true,
+                "description": "目标节点名称",
+                "example": "node1",
+                "notes": "必填，执行前确认节点名称"
+              }
+            },
+            "keyword": "kubectl cordon 安全驱逐",
+            "description": "在标记不可调度的同时，安全驱逐该节点上的 Pod，并忽略 DaemonSet 管理的 Pod"
+          },
+          {
+            "name": "标记节点并驱逐本地有状态 Pod",
+            "cmd": "kubectl cordon %{节点}% --delete-emptydir-data --force",
+            "params": {
+              "节点": {
+                "type": "string",
+                "required": true,
+                "description": "目标节点名称",
+                "example": "node1",
+                "notes": "必填，适用于已确认无重要本地数据的节点"
+              }
+            },
+            "keyword": "kubectl cordon 强制驱逐",
+            "description": "强制驱逐包含 emptyDir 卷的 Pod，适用于已备份数据的节点维护"
+          },
+          {
+            "name": "查看节点调度状态",
+            "cmd": "kubectl get nodes | grep -v Ready",
+            "params": {},
+            "keyword": "kubectl cordon 查看不可调度节点",
+            "description": "快速查看当前所有不可调度的节点（非 Ready 状态）"
+          },
+          {
+            "name": "批量标记多个节点不可调度",
+            "cmd": "kubectl get nodes -l %{标签}% -o name | xargs -I {} kubectl cordon {}",
+            "params": {
+              "标签": {
+                "type": "string",
+                "required": true,
+                "description": "节点标签选择器",
+                "example": "zone=us-east-1a",
+                "notes": "用于批量操作同一区域或类型的节点"
+              }
+            },
+            "keyword": "kubectl cordon 批量标记",
+            "description": "基于标签批量将多个节点标记为不可调度，适用于区域维护场景"
+          },
+          {
+            "name": "查看节点污点状态",
+            "cmd": "kubectl describe node %{节点}% | grep -A5 Taints",
+            "params": {
+              "节点": {
+                "type": "string",
+                "required": true,
+                "description": "目标节点名称",
+                "example": "node1",
+                "notes": "必填，用于了解节点是否有不可调度污点"
+              }
+            },
+            "keyword": "kubectl cordon 查看污点",
+            "description": "查看节点污点（Taints）信息，判断节点是否被明确标记为不可调度"
+          },
+          {
+            "name": "解锁节点恢复调度",
+            "cmd": "kubectl uncordon %{节点}%",
+            "params": {
+              "节点": {
+                "type": "string",
+                "required": true,
+                "description": "目标节点名称",
+                "example": "node1",
+                "notes": "维护完成后必须执行，使节点恢复可调度"
+              }
+            },
+            "keyword": "kubectl uncordon 恢复调度",
+            "description": "将节点恢复为可调度状态，通常在维护完成后使用，使新 Pod 可以重新调度到该节点"
+          }
+        ],
+        "params": {
+          "节点": {
+            "type": "string",
+            "required": true,
+            "description": "目标节点名称",
+            "example": "node1",
+            "notes": "必填，执行前建议查看节点状态确认名称正确"
+          }
+        }
+      }
+    }
+  ]
+}

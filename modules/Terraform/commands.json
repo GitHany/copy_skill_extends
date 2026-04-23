@@ -1,0 +1,224 @@
+{
+  "module": "Terraform",
+  "version": "2.0",
+  "description": "HashiCorp Terraform 基础设施即代码工具",
+  "commands": [
+    {
+      "dirPath": "/Terraform/",
+      "name": "terraform init 初始化",
+      "keyword": "terraform init 初始化",
+      "description": "初始化 Terraform 工作目录。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "terraform init",
+        "extensions": [
+          {
+            "name": "指定后端",
+            "cmd": "terraform init -backend-config=%{配置}%",
+            "params": {
+              "配置": {
+                "type": "string",
+                "required": true,
+                "description": "后端配置",
+                "example": "backend.hcl",
+                "notes": "必填"
+              }
+            },
+            "keyword": "terraform init backend"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Terraform/",
+      "name": "terraform plan 预览计划",
+      "keyword": "terraform plan 计划",
+      "description": "预览将要创建的变更。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "terraform plan",
+        "extensions": [
+          {
+            "name": "输出到文件",
+            "cmd": "terraform plan -out=%{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "输出文件",
+                "example": "plan.tfplan",
+                "notes": "必填"
+              }
+            },
+            "keyword": "terraform plan out"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Terraform/",
+      "name": "terraform apply 应用变更",
+      "keyword": "terraform apply 应用",
+      "description": "应用基础设施变更。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "terraform apply",
+        "extensions": [
+          {
+            "name": "自动批准",
+            "cmd": "terraform apply -auto-approve",
+            "params": {},
+            "keyword": "terraform apply auto"
+          },
+          {
+            "name": "应用计划文件",
+            "cmd": "terraform apply %{计划文件}%",
+            "params": {
+              "计划文件": {
+                "type": "string",
+                "required": true,
+                "description": "计划文件",
+                "example": "plan.tfplan",
+                "notes": "必填"
+              }
+            },
+            "keyword": "terraform apply plan"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Terraform/",
+      "name": "terraform destroy 销毁资源",
+      "keyword": "terraform destroy 销毁",
+      "description": "销毁 Terraform 管理的所有资源。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "terraform destroy",
+        "extensions": [
+          {
+            "name": "自动批准销毁",
+            "cmd": "terraform destroy -auto-approve",
+            "params": {},
+            "keyword": "terraform destroy auto"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Terraform/",
+      "name": "terraform state 查看状态",
+      "keyword": "terraform state 状态",
+      "description": "查看和管理 Terraform 状态。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "terraform state list",
+        "extensions": [
+          {
+            "name": "查看资源详情",
+            "cmd": "terraform state show %{资源地址}%",
+            "params": {
+              "资源地址": {
+                "type": "string",
+                "required": true,
+                "description": "资源地址",
+                "example": "aws_instance.example",
+                "notes": "必填"
+              }
+            },
+            "keyword": "terraform state show"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Terraform/",
+      "name": "terraform fmt 格式化配置",
+      "keyword": "terraform fmt 格式化",
+      "description": "格式化 Terraform 配置文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "terraform fmt",
+        "extensions": [
+          {
+            "name": "递归格式化",
+            "cmd": "terraform fmt -recursive",
+            "params": {},
+            "keyword": "terraform fmt recursive"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Terraform/",
+      "name": "terraform validate 验证配置",
+      "keyword": "terraform validate 验证",
+      "description": "验证 Terraform 配置语法。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "terraform validate",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Terraform/",
+      "name": "terraform output 查看输出",
+      "keyword": "terraform output 输出",
+      "description": "查看 Terraform 输出变量。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "terraform output",
+        "extensions": [
+          {
+            "name": "查看指定输出",
+            "cmd": "terraform output %{输出名}%",
+            "params": {
+              "输出名": {
+                "type": "string",
+                "required": true,
+                "description": "输出名称",
+                "example": "instance_ip",
+                "notes": "必填"
+              }
+            },
+            "keyword": "terraform output name"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Terraform/",
+      "name": "terraform workspace 工作区",
+      "keyword": "terraform workspace 工作区",
+      "description": "管理工作区。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "terraform workspace new %{名称}%",
+        "extensions": [
+          {
+            "name": "切换工作区",
+            "cmd": "terraform workspace select %{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "工作区名称",
+                "example": "prod",
+                "notes": "必填"
+              }
+            },
+            "keyword": "terraform workspace select"
+          }
+        ],
+        "params": {
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "工作区名称",
+            "example": "dev",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

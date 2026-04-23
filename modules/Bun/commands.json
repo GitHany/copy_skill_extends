@@ -1,0 +1,37 @@
+{
+  "module": "Bun",
+  "version": "2.0",
+  "description": "Bun JavaScript 运行时和工具",
+  "commands": [
+    {
+      "dirPath": "/Bun/",
+      "name": "bun install 安装",
+      "keyword": "bun install 安装",
+      "description": "安装依赖。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "bun install",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Bun/",
+      "name": "bun run 运行",
+      "keyword": "bun run 运行",
+      "description": "运行脚本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "bun run %{脚本}%",
+        "extensions": [],
+        "params": {
+          "脚本": {
+            "type": "string",
+            "required": true,
+            "description": "脚本名",
+            "example": "dev",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "module": "Linux fdisk",
+  "version": "2.0",
+  "description": "Linux fdisk 磁盘分区工具。查看和管理磁盘分区表，创建、删除、调整磁盘分区。是磁盘管理的基础工具，在添加新硬盘时必须使用。注意：分区操作需要root权限，错误操作可能导致数据丢失。",
+  "commands": [
+    {
+      "dirPath": "/Linux fdisk/",
+      "name": "fdisk 分区管理",
+      "keyword": "fdisk 分区",
+      "description": "磁盘分区工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "fdisk -l %{设备}%",
+        "extensions": [
+          {
+            "name": "列出所有分区",
+            "description": "显示系统中所有磁盘和分区的详细信息",
+            "params": {},
+            "cmd": "fdisk -l"
+          },
+          {
+            "name": "查看指定磁盘分区",
+            "description": "查看特定磁盘的分区表",
+            "params": {
+              "设备": {
+                "example": "/dev/sdb",
+                "notes": "磁盘设备"
+              }
+            },
+            "cmd": "fdisk -l %{设备}%"
+          },
+          {
+            "name": "进入交互式分区模式",
+            "description": "对磁盘进行交互式分区操作",
+            "params": {
+              "设备": {
+                "example": "/dev/sdb",
+                "notes": "目标磁盘"
+              }
+            },
+            "cmd": "fdisk %{设备}%"
+          },
+          {
+            "name": "显示分区大小",
+            "description": "查看磁盘每个分区的大小",
+            "params": {
+              "设备": {
+                "example": "/dev/sda",
+                "notes": "设备名"
+              }
+            },
+            "cmd": "fdisk -s %{设备}%"
+          },
+          {
+            "name": "创建新分区",
+            "description": "在交互模式中创建新分区步骤说明",
+            "params": {
+              "设备": {
+                "example": "/dev/sdb",
+                "notes": "磁盘设备"
+              }
+            },
+            "cmd": "fdisk %{设备}%\\nn\\np\\n1\\n\\n\\n\\nw"
+          },
+          {
+            "name": "删除分区",
+            "description": "在交互模式中删除现有分区步骤说明",
+            "params": {
+              "设备": {
+                "example": "/dev/sdb",
+                "notes": "磁盘设备"
+              }
+            },
+            "cmd": "fdisk %{设备}%\\nd\\n1\\nw"
+          },
+          {
+            "name": "查看分区类型",
+            "description": "显示分区的类型标识(Linux, Linux LVM等)",
+            "params": {
+              "设备": {
+                "example": "/dev/sda",
+                "notes": "设备"
+              }
+            },
+            "cmd": "fdisk -l %{设备}% | grep -E \"Linux|LVM\""
+          },
+          {
+            "name": "打印帮助信息",
+            "description": "在fdisk交互模式中显示可用命令帮助",
+            "params": {},
+            "cmd": "fdisk /dev/sdb\\nm"
+          }
+        ],
+        "params": {
+          "设备": {
+            "type": "string",
+            "required": true,
+            "description": "设备",
+            "example": "/dev/sda",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

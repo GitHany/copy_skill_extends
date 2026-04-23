@@ -1,0 +1,72 @@
+{
+  "module": "Linux ss",
+  "version": "2.0",
+  "description": "Linux ss (socket statistics) 套接字统计命令。比netstat更快速、更详细地显示网络连接信息，包括TCP、UDP和Unix套接字。是查看端口监听、诊断网络连接、监控服务器性能的首选工具。",
+  "commands": [
+    {
+      "dirPath": "/Linux ss/",
+      "name": "ss 套接字",
+      "keyword": "ss 套接字",
+      "description": "显示套接字统计。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "ss -tuln",
+        "extensions": [
+          {
+            "name": "显示所有网络连接",
+            "description": "显示所有TCP、UDP和Unix套接字连接",
+            "params": {},
+            "cmd": "ss -tuln"
+          },
+          {
+            "name": "显示TCP连接",
+            "description": "只显示TCP连接",
+            "params": {},
+            "cmd": "ss -t"
+          },
+          {
+            "name": "显示UDP连接",
+            "description": "只显示UDP连接",
+            "params": {},
+            "cmd": "ss -u"
+          },
+          {
+            "name": "显示监听端口",
+            "description": "只显示正在监听的 sockets",
+            "params": {},
+            "cmd": "ss -ltn"
+          },
+          {
+            "name": "显示进程ID",
+            "description": "显示连接对应的进程信息",
+            "params": {},
+            "cmd": "ss -tlnp"
+          },
+          {
+            "name": "按状态过滤",
+            "description": "只显示特定状态的连接，如已建立",
+            "params": {
+              "状态": {
+                "example": "established",
+                "notes": "连接状态"
+              }
+            },
+            "cmd": "ss -t state %{状态}%"
+          },
+          {
+            "name": "显示详细计时器",
+            "description": "显示网络协议的定时器信息",
+            "params": {},
+            "cmd": "ss -o"
+          },
+          {
+            "name": "显示内存使用",
+            "description": "显示套接字使用的内存和队列信息",
+            "params": {},
+            "cmd": "ss -m"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

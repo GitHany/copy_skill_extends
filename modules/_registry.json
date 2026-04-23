@@ -1,39 +1,117 @@
 {
   "modules": [
     {
+      "name": "AI_ML工具",
+      "path": "modules/AI_ML工具/commands.json",
+      "count": 17,
+      "has_docs": true
+    },
+    {
+      "name": "Ansible",
+      "path": "modules/Ansible/commands.json",
+      "count": 4,
+      "has_docs": false
+    },
+    {
       "name": "API与认证",
       "path": "modules/API与认证/commands.json",
       "count": 22,
       "has_docs": true
     },
     {
-      "name": "AI_ML工具",
-      "path": "modules/AI_ML工具/commands.json",
-      "count": 18,
+      "name": "AWS CLI命令",
+      "path": "modules/AWS CLI命令/commands.json",
+      "count": 33,
       "has_docs": true
     },
     {
-      "name": "Elasticsearch",
-      "path": "modules/Elasticsearch/commands.json",
-      "count": 7,
-      "has_docs": true
+      "name": "AWS CloudFormation",
+      "path": "modules/AWS CloudFormation/commands.json",
+      "count": 2,
+      "has_docs": false
     },
     {
-      "name": "SSH远程操作",
-      "path": "modules/SSH远程操作/commands.json",
+      "name": "AWS ec2 describe",
+      "path": "modules/AWS ec2 describe/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "AWS EC2 管理",
+      "path": "modules/AWS EC2 管理/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "AWS IAM 身份管理",
+      "path": "modules/AWS IAM 身份管理/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "AWS Lambda",
+      "path": "modules/AWS Lambda/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "AWS S3",
+      "path": "modules/AWS S3/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "AWS s3 mb",
+      "path": "modules/AWS s3 mb/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "AWS S3 sync",
+      "path": "modules/AWS S3 sync/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "AWS S3 存储操作",
+      "path": "modules/AWS S3 存储操作/commands.json",
+      "count": 3,
+      "has_docs": false
+    },
+    {
+      "name": "Azure CLI",
+      "path": "modules/Azure CLI/commands.json",
       "count": 5,
+      "has_docs": false
+    },
+    {
+      "name": "Bun",
+      "path": "modules/Bun/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "CDN与缓存",
+      "path": "modules/CDN与缓存/commands.json",
+      "count": 24,
+      "has_docs": true
+    },
+    {
+      "name": "CI_CD 流水线",
+      "path": "modules/CI_CD 流水线/commands.json",
+      "count": 28,
       "has_docs": true
     },
     {
       "name": "Claude Skills-ccg",
       "path": "modules/Claude Skills-ccg/commands.json",
-      "count": 1,
+      "count": 0,
       "has_docs": true
     },
     {
       "name": "Claude Skills-ecc",
       "path": "modules/Claude Skills-ecc/commands.json",
-      "count": 12,
+      "count": 11,
       "has_docs": true
     },
     {
@@ -45,13 +123,13 @@
     {
       "name": "Claude Skills-openspec",
       "path": "modules/Claude Skills-openspec/commands.json",
-      "count": 5,
+      "count": 0,
       "has_docs": true
     },
     {
       "name": "Claude Skills-providers",
       "path": "modules/Claude Skills-providers/commands.json",
-      "count": 3,
+      "count": 0,
       "has_docs": true
     },
     {
@@ -63,26 +141,302 @@
     {
       "name": "Claude Skills-superpowers",
       "path": "modules/Claude Skills-superpowers/commands.json",
-      "count": 11,
-      "has_docs": true
-    },
-    {
-      "name": "CI_CD 流水线",
-      "path": "modules/CI_CD 流水线/commands.json",
-      "count": 27,
+      "count": 0,
       "has_docs": true
     },
     {
       "name": "Claude Skills-ultrawork",
       "path": "modules/Claude Skills-ultrawork/commands.json",
-      "count": 2,
+      "count": 0,
       "has_docs": true
+    },
+    {
+      "name": "curl 命令",
+      "path": "modules/curl 命令/commands.json",
+      "count": 3,
+      "has_docs": false
+    },
+    {
+      "name": "Docker attach",
+      "path": "modules/Docker attach/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker Build",
+      "path": "modules/Docker Build/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker buildx",
+      "path": "modules/Docker buildx/commands.json",
+      "count": 6,
+      "has_docs": false
+    },
+    {
+      "name": "Docker commit",
+      "path": "modules/Docker commit/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker compose version",
+      "path": "modules/Docker compose version/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker Compose 完整命令",
+      "path": "modules/Docker Compose 完整命令/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker cp",
+      "path": "modules/Docker cp/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Docker create",
+      "path": "modules/Docker create/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker create network",
+      "path": "modules/Docker create network/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker diff",
+      "path": "modules/Docker diff/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker events",
+      "path": "modules/Docker events/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Docker exec",
+      "path": "modules/Docker exec/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker export",
+      "path": "modules/Docker export/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Docker history",
+      "path": "modules/Docker history/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker images",
+      "path": "modules/Docker images/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker info",
+      "path": "modules/Docker info/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker Inspect",
+      "path": "modules/Docker Inspect/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Docker kill",
+      "path": "modules/Docker kill/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker login",
+      "path": "modules/Docker login/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Docker Network",
+      "path": "modules/Docker Network/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Docker pause",
+      "path": "modules/Docker pause/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker prune",
+      "path": "modules/Docker prune/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker ps",
+      "path": "modules/Docker ps/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker pull",
+      "path": "modules/Docker pull/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker push",
+      "path": "modules/Docker push/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker rename",
+      "path": "modules/Docker rename/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker restart",
+      "path": "modules/Docker restart/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker rm",
+      "path": "modules/Docker rm/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker rmi",
+      "path": "modules/Docker rmi/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker save",
+      "path": "modules/Docker save/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Docker Service",
+      "path": "modules/Docker Service/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Docker start",
+      "path": "modules/Docker start/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker stop",
+      "path": "modules/Docker stop/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker Swarm",
+      "path": "modules/Docker Swarm/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Docker unpause",
+      "path": "modules/Docker unpause/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker update",
+      "path": "modules/Docker update/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker version",
+      "path": "modules/Docker version/commands.json",
+      "count": 4,
+      "has_docs": false
+    },
+    {
+      "name": "Docker Volume",
+      "path": "modules/Docker Volume/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Docker wait",
+      "path": "modules/Docker wait/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker 卷",
+      "path": "modules/Docker 卷/commands.json",
+      "count": 2,
+      "has_docs": false
     },
     {
       "name": "Docker 命令",
       "path": "modules/Docker 命令/commands.json",
-      "count": 19,
+      "count": 21,
       "has_docs": true
+    },
+    {
+      "name": "Docker 容器生命周期",
+      "path": "modules/Docker 容器生命周期/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker 容器管理",
+      "path": "modules/Docker 容器管理/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Docker 日志与监控",
+      "path": "modules/Docker 日志与监控/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker 系统管理",
+      "path": "modules/Docker 系统管理/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Docker 网络",
+      "path": "modules/Docker 网络/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Docker 镜像管理",
+      "path": "modules/Docker 镜像管理/commands.json",
+      "count": 1,
+      "has_docs": false
     },
     {
       "name": "DockerCompose",
@@ -93,8 +447,218 @@
     {
       "name": "DockerCompose 高级模式",
       "path": "modules/DockerCompose 高级模式/commands.json",
-      "count": 21,
+      "count": 20,
       "has_docs": true
+    },
+    {
+      "name": "Dockerfile 构建",
+      "path": "modules/Dockerfile 构建/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Elasticsearch",
+      "path": "modules/Elasticsearch/commands.json",
+      "count": 7,
+      "has_docs": true
+    },
+    {
+      "name": "GCP CLI",
+      "path": "modules/GCP CLI/commands.json",
+      "count": 5,
+      "has_docs": false
+    },
+    {
+      "name": "Git add",
+      "path": "modules/Git add/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git Archive",
+      "path": "modules/Git Archive/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git Bisect",
+      "path": "modules/Git Bisect/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git branch",
+      "path": "modules/Git branch/commands.json",
+      "count": 6,
+      "has_docs": false
+    },
+    {
+      "name": "Git checkout",
+      "path": "modules/Git checkout/commands.json",
+      "count": 6,
+      "has_docs": false
+    },
+    {
+      "name": "Git Cherry-pick",
+      "path": "modules/Git Cherry-pick/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git clone",
+      "path": "modules/Git clone/commands.json",
+      "count": 7,
+      "has_docs": false
+    },
+    {
+      "name": "Git commit",
+      "path": "modules/Git commit/commands.json",
+      "count": 7,
+      "has_docs": false
+    },
+    {
+      "name": "Git config",
+      "path": "modules/Git config/commands.json",
+      "count": 8,
+      "has_docs": false
+    },
+    {
+      "name": "Git diff",
+      "path": "modules/Git diff/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git fetch",
+      "path": "modules/Git fetch/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git grep",
+      "path": "modules/Git grep/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git init",
+      "path": "modules/Git init/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git log",
+      "path": "modules/Git log/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git merge",
+      "path": "modules/Git merge/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git mv",
+      "path": "modules/Git mv/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git pull",
+      "path": "modules/Git pull/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git push",
+      "path": "modules/Git push/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git rebase",
+      "path": "modules/Git rebase/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git Reflog",
+      "path": "modules/Git Reflog/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Git remote",
+      "path": "modules/Git remote/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git reset",
+      "path": "modules/Git reset/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git Revert",
+      "path": "modules/Git Revert/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git rm",
+      "path": "modules/Git rm/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git show",
+      "path": "modules/Git show/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git stash show",
+      "path": "modules/Git stash show/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git status",
+      "path": "modules/Git status/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git tag",
+      "path": "modules/Git tag/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git 分支",
+      "path": "modules/Git 分支/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git 别名与配置",
+      "path": "modules/Git 别名与配置/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git 历史与版本",
+      "path": "modules/Git 历史与版本/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git 变基与合并",
+      "path": "modules/Git 变基与合并/commands.json",
+      "count": 3,
+      "has_docs": false
     },
     {
       "name": "Git 命令",
@@ -103,21 +667,111 @@
       "has_docs": true
     },
     {
+      "name": "Git 子模块",
+      "path": "modules/Git 子模块/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Git 工作区",
+      "path": "modules/Git 工作区/commands.json",
+      "count": 3,
+      "has_docs": false
+    },
+    {
+      "name": "Git 忽略文件",
+      "path": "modules/Git 忽略文件/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Git 暂存区管理",
+      "path": "modules/Git 暂存区管理/commands.json",
+      "count": 4,
+      "has_docs": false
+    },
+    {
+      "name": "Git 暂存管理",
+      "path": "modules/Git 暂存管理/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Git 标签",
+      "path": "modules/Git 标签/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Git 补丁操作",
+      "path": "modules/Git 补丁操作/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Git 远程",
+      "path": "modules/Git 远程/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "GitHub Actions",
+      "path": "modules/GitHub Actions/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
       "name": "GitHub CLI 命令",
       "path": "modules/GitHub CLI 命令/commands.json",
-      "count": 30,
+      "count": 33,
       "has_docs": true
+    },
+    {
+      "name": "GitHub CLI 高级操作",
+      "path": "modules/GitHub CLI 高级操作/commands.json",
+      "count": 4,
+      "has_docs": false
     },
     {
       "name": "GitHubActions",
       "path": "modules/GitHubActions/commands.json",
-      "count": 10,
+      "count": 11,
       "has_docs": true
+    },
+    {
+      "name": "GitLab CLI",
+      "path": "modules/GitLab CLI/commands.json",
+      "count": 13,
+      "has_docs": false
+    },
+    {
+      "name": "Git工作流",
+      "path": "modules/Git工作流/commands.json",
+      "count": 26,
+      "has_docs": true
+    },
+    {
+      "name": "Go 命令",
+      "path": "modules/Go 命令/commands.json",
+      "count": 20,
+      "has_docs": true
+    },
+    {
+      "name": "Grafana CLI",
+      "path": "modules/Grafana CLI/commands.json",
+      "count": 2,
+      "has_docs": false
     },
     {
       "name": "GraphQL 命令",
       "path": "modules/GraphQL 命令/commands.json",
-      "count": 25,
+      "count": 26,
+      "has_docs": true
+    },
+    {
+      "name": "Helm",
+      "path": "modules/Helm/commands.json",
+      "count": 15,
       "has_docs": true
     },
     {
@@ -127,16 +781,712 @@
       "has_docs": true
     },
     {
+      "name": "Jenkins CLI",
+      "path": "modules/Jenkins CLI/commands.json",
+      "count": 3,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl annotate",
+      "path": "modules/kubectl annotate/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl api-resources",
+      "path": "modules/kubectl api-resources/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl api-versions",
+      "path": "modules/kubectl api-versions/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl apply",
+      "path": "modules/kubectl apply/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl auth",
+      "path": "modules/kubectl auth/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl cluster-info",
+      "path": "modules/kubectl cluster-info/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl config",
+      "path": "modules/kubectl config/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl convert",
+      "path": "modules/kubectl convert/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl cordon",
+      "path": "modules/kubectl cordon/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl cp",
+      "path": "modules/kubectl cp/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl create",
+      "path": "modules/kubectl create/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl delete",
+      "path": "modules/kubectl delete/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl describe",
+      "path": "modules/kubectl describe/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl drain",
+      "path": "modules/kubectl drain/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl edit",
+      "path": "modules/kubectl edit/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl exec",
+      "path": "modules/kubectl exec/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl explain",
+      "path": "modules/kubectl explain/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl expose",
+      "path": "modules/kubectl expose/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl get",
+      "path": "modules/kubectl get/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl label",
+      "path": "modules/kubectl label/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl logs",
+      "path": "modules/kubectl logs/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl patch",
+      "path": "modules/kubectl patch/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl port-forward",
+      "path": "modules/kubectl port-forward/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl proxy",
+      "path": "modules/kubectl proxy/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl Rollout",
+      "path": "modules/kubectl Rollout/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl run",
+      "path": "modules/kubectl run/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl scale",
+      "path": "modules/kubectl scale/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl Scaling",
+      "path": "modules/kubectl Scaling/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl top",
+      "path": "modules/kubectl top/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl uncordon",
+      "path": "modules/kubectl uncordon/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl version",
+      "path": "modules/kubectl version/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl wait",
+      "path": "modules/kubectl wait/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl 插件",
+      "path": "modules/kubectl 插件/commands.json",
+      "count": 5,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl 标签与注解",
+      "path": "modules/kubectl 标签与注解/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl 调试",
+      "path": "modules/kubectl 调试/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl 资源创建",
+      "path": "modules/kubectl 资源创建/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "kubectl 资源编辑",
+      "path": "modules/kubectl 资源编辑/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Kubernetes ConfigMap 与 Secret",
+      "path": "modules/Kubernetes ConfigMap 与 Secret/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Kubernetes Deployment",
+      "path": "modules/Kubernetes Deployment/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Kubernetes Ingress",
+      "path": "modules/Kubernetes Ingress/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Kubernetes Pod 管理",
+      "path": "modules/Kubernetes Pod 管理/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Kubernetes Service",
+      "path": "modules/Kubernetes Service/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
       "name": "Kubernetes 命令",
       "path": "modules/Kubernetes 命令/commands.json",
+      "count": 29,
+      "has_docs": true
+    },
+    {
+      "name": "Kubernetes 集群管理",
+      "path": "modules/Kubernetes 集群管理/commands.json",
+      "count": 5,
+      "has_docs": false
+    },
+    {
+      "name": "Kubernetes 高级操作",
+      "path": "modules/Kubernetes 高级操作/commands.json",
       "count": 22,
       "has_docs": true
     },
     {
+      "name": "Linux alias",
+      "path": "modules/Linux alias/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux awk",
+      "path": "modules/Linux awk/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux cat",
+      "path": "modules/Linux cat/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux cd",
+      "path": "modules/Linux cd/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux chmod",
+      "path": "modules/Linux chmod/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux chown",
+      "path": "modules/Linux chown/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux cron",
+      "path": "modules/Linux cron/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Linux curl",
+      "path": "modules/Linux curl/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux date",
+      "path": "modules/Linux date/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux du",
+      "path": "modules/Linux du/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux env",
+      "path": "modules/Linux env/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux export",
+      "path": "modules/Linux export/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux fdisk",
+      "path": "modules/Linux fdisk/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux find",
+      "path": "modules/Linux find/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux grep",
+      "path": "modules/Linux grep/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux gzip",
+      "path": "modules/Linux gzip/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux head",
+      "path": "modules/Linux head/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux history",
+      "path": "modules/Linux history/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux hostname",
+      "path": "modules/Linux hostname/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux id",
+      "path": "modules/Linux id/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux iptables",
+      "path": "modules/Linux iptables/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux journalctl",
+      "path": "modules/Linux journalctl/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux ln",
+      "path": "modules/Linux ln/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux locate",
+      "path": "modules/Linux locate/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux lsblk",
+      "path": "modules/Linux lsblk/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux lsof",
+      "path": "modules/Linux lsof/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux mount",
+      "path": "modules/Linux mount/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux netstat",
+      "path": "modules/Linux netstat/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux nohup",
+      "path": "modules/Linux nohup/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux pwd",
+      "path": "modules/Linux pwd/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux rsync",
+      "path": "modules/Linux rsync/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux scp",
+      "path": "modules/Linux scp/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux screen",
+      "path": "modules/Linux screen/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux sed",
+      "path": "modules/Linux sed/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux sort",
+      "path": "modules/Linux sort/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux ss",
+      "path": "modules/Linux ss/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux ssh-keygen",
+      "path": "modules/Linux ssh-keygen/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux stat",
+      "path": "modules/Linux stat/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux strace",
+      "path": "modules/Linux strace/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux systemctl",
+      "path": "modules/Linux systemctl/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux tail",
+      "path": "modules/Linux tail/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux tar",
+      "path": "modules/Linux tar/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux tmux",
+      "path": "modules/Linux tmux/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux touch",
+      "path": "modules/Linux touch/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux tree",
+      "path": "modules/Linux tree/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux ulimit",
+      "path": "modules/Linux ulimit/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux uname",
+      "path": "modules/Linux uname/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux uniq",
+      "path": "modules/Linux uniq/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux unzip",
+      "path": "modules/Linux unzip/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux uptime",
+      "path": "modules/Linux uptime/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux watch",
+      "path": "modules/Linux watch/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux wc",
+      "path": "modules/Linux wc/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux wget",
+      "path": "modules/Linux wget/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux which",
+      "path": "modules/Linux which/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux whoami",
+      "path": "modules/Linux whoami/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux xargs",
+      "path": "modules/Linux xargs/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux 压缩解压",
+      "path": "modules/Linux 压缩解压/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
       "name": "Linux 命令",
       "path": "modules/Linux 命令/commands.json",
-      "count": 42,
+      "count": 43,
       "has_docs": true
+    },
+    {
+      "name": "Linux 文件操作",
+      "path": "modules/Linux 文件操作/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux 文本处理",
+      "path": "modules/Linux 文本处理/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux 权限管理",
+      "path": "modules/Linux 权限管理/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Linux 用户管理",
+      "path": "modules/Linux 用户管理/commands.json",
+      "count": 3,
+      "has_docs": false
+    },
+    {
+      "name": "Linux 磁盘管理",
+      "path": "modules/Linux 磁盘管理/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux 管道与重定向",
+      "path": "modules/Linux 管道与重定向/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Linux 系统监控",
+      "path": "modules/Linux 系统监控/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Linux 系统管理",
+      "path": "modules/Linux 系统管理/commands.json",
+      "count": 5,
+      "has_docs": false
+    },
+    {
+      "name": "Linux 网络诊断",
+      "path": "modules/Linux 网络诊断/commands.json",
+      "count": 4,
+      "has_docs": false
+    },
+    {
+      "name": "Linux 网络配置",
+      "path": "modules/Linux 网络配置/commands.json",
+      "count": 4,
+      "has_docs": false
+    },
+    {
+      "name": "Linux 进程管理",
+      "path": "modules/Linux 进程管理/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "Mercurial 命令",
+      "path": "modules/Mercurial 命令/commands.json",
+      "count": 11,
+      "has_docs": false
+    },
+    {
+      "name": "MongoDB 命令",
+      "path": "modules/MongoDB 命令/commands.json",
+      "count": 27,
+      "has_docs": true
+    },
+    {
+      "name": "MySQL mysql",
+      "path": "modules/MySQL mysql/commands.json",
+      "count": 2,
+      "has_docs": false
     },
     {
       "name": "MySQL 命令",
@@ -145,16 +1495,106 @@
       "has_docs": true
     },
     {
+      "name": "MySQL 数据库管理",
+      "path": "modules/MySQL 数据库管理/commands.json",
+      "count": 3,
+      "has_docs": false
+    },
+    {
+      "name": "Nginx 命令",
+      "path": "modules/Nginx 命令/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Nginx命令",
+      "path": "modules/Nginx命令/commands.json",
+      "count": 5,
+      "has_docs": true
+    },
+    {
+      "name": "Node.js npm Scripts",
+      "path": "modules/Node.js npm Scripts/commands.json",
+      "count": 4,
+      "has_docs": false
+    },
+    {
+      "name": "Node.js 后端命令",
+      "path": "modules/Node.js 后端命令/commands.json",
+      "count": 27,
+      "has_docs": true
+    },
+    {
+      "name": "npm 命令",
+      "path": "modules/npm 命令/commands.json",
+      "count": 1,
+      "has_docs": false
+    },
+    {
+      "name": "npm 脚本与包管理",
+      "path": "modules/npm 脚本与包管理/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "ORM框架",
+      "path": "modules/ORM框架/commands.json",
+      "count": 22,
+      "has_docs": true
+    },
+    {
+      "name": "Perforce 命令",
+      "path": "modules/Perforce 命令/commands.json",
+      "count": 10,
+      "has_docs": false
+    },
+    {
+      "name": "pnpm",
+      "path": "modules/pnpm/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "PostgreSQL psql",
+      "path": "modules/PostgreSQL psql/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
       "name": "PostgreSQL 命令",
       "path": "modules/PostgreSQL 命令/commands.json",
       "count": 25,
       "has_docs": true
     },
     {
+      "name": "PostgreSQL 数据库管理",
+      "path": "modules/PostgreSQL 数据库管理/commands.json",
+      "count": 3,
+      "has_docs": false
+    },
+    {
+      "name": "Prometheus",
+      "path": "modules/Prometheus/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Python pip",
+      "path": "modules/Python pip/commands.json",
+      "count": 3,
+      "has_docs": false
+    },
+    {
       "name": "Python Web框架",
       "path": "modules/Python Web框架/commands.json",
       "count": 25,
       "has_docs": true
+    },
+    {
+      "name": "Python 虚拟环境",
+      "path": "modules/Python 虚拟环境/commands.json",
+      "count": 3,
+      "has_docs": false
     },
     {
       "name": "Python命令",
@@ -169,9 +1609,21 @@
       "has_docs": true
     },
     {
-      "name": "Redis-基本操作",
-      "path": "modules/Redis-基本操作/commands.json",
-      "count": 17,
+      "name": "Redis 命令",
+      "path": "modules/Redis 命令/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "Redis 数据结构操作",
+      "path": "modules/Redis 数据结构操作/commands.json",
+      "count": 4,
+      "has_docs": false
+    },
+    {
+      "name": "Redis-列表操作",
+      "path": "modules/Redis-列表操作/commands.json",
+      "count": 13,
       "has_docs": true
     },
     {
@@ -181,27 +1633,9 @@
       "has_docs": true
     },
     {
-      "name": "Redis-键管理",
-      "path": "modules/Redis-键管理/commands.json",
-      "count": 15,
-      "has_docs": true
-    },
-    {
-      "name": "Redis-列表操作",
-      "path": "modules/Redis-列表操作/commands.json",
-      "count": 13,
-      "has_docs": true
-    },
-    {
-      "name": "Redis-集合操作",
-      "path": "modules/Redis-集合操作/commands.json",
-      "count": 15,
-      "has_docs": true
-    },
-    {
-      "name": "Redis-服务器命令",
-      "path": "modules/Redis-服务器命令/commands.json",
-      "count": 14,
+      "name": "Redis-基本操作",
+      "path": "modules/Redis-基本操作/commands.json",
+      "count": 18,
       "has_docs": true
     },
     {
@@ -211,9 +1645,33 @@
       "has_docs": true
     },
     {
-      "name": "安全加固",
-      "path": "modules/安全加固/commands.json",
-      "count": 25,
+      "name": "Redis-服务器命令",
+      "path": "modules/Redis-服务器命令/commands.json",
+      "count": 15,
+      "has_docs": true
+    },
+    {
+      "name": "Redis-键管理",
+      "path": "modules/Redis-键管理/commands.json",
+      "count": 16,
+      "has_docs": true
+    },
+    {
+      "name": "Redis-集合操作",
+      "path": "modules/Redis-集合操作/commands.json",
+      "count": 15,
+      "has_docs": true
+    },
+    {
+      "name": "Rust Cargo",
+      "path": "modules/Rust Cargo/commands.json",
+      "count": 3,
+      "has_docs": false
+    },
+    {
+      "name": "Serverless与边缘计算",
+      "path": "modules/Serverless与边缘计算/commands.json",
+      "count": 34,
       "has_docs": true
     },
     {
@@ -223,27 +1681,51 @@
       "has_docs": true
     },
     {
-      "name": "前端包管理器",
-      "path": "modules/前端包管理器/commands.json",
-      "count": 19,
+      "name": "SSH 命令",
+      "path": "modules/SSH 命令/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
+      "name": "SSH远程操作",
+      "path": "modules/SSH远程操作/commands.json",
+      "count": 5,
       "has_docs": true
     },
     {
-      "name": "Go 命令",
-      "path": "modules/Go 命令/commands.json",
-      "count": 21,
+      "name": "SVN 命令",
+      "path": "modules/SVN 命令/commands.json",
+      "count": 11,
+      "has_docs": false
+    },
+    {
+      "name": "Tailwind CSS",
+      "path": "modules/Tailwind CSS/commands.json",
+      "count": 26,
       "has_docs": true
     },
     {
-      "name": "测试框架",
-      "path": "modules/测试框架/commands.json",
+      "name": "Terraform",
+      "path": "modules/Terraform/commands.json",
+      "count": 9,
+      "has_docs": false
+    },
+    {
+      "name": "TypeScript 命令",
+      "path": "modules/TypeScript 命令/commands.json",
       "count": 20,
       "has_docs": true
     },
     {
+      "name": "Vite",
+      "path": "modules/Vite/commands.json",
+      "count": 2,
+      "has_docs": false
+    },
+    {
       "name": "Vue.js 命令",
       "path": "modules/Vue.js 命令/commands.json",
-      "count": 22,
+      "count": 19,
       "has_docs": true
     },
     {
@@ -253,45 +1735,99 @@
       "has_docs": true
     },
     {
-      "name": "网络诊断",
-      "path": "modules/网络诊断/commands.json",
-      "count": 8,
-      "has_docs": true
+      "name": "Webpack",
+      "path": "modules/Webpack/commands.json",
+      "count": 3,
+      "has_docs": false
     },
     {
-      "name": "系统监控",
-      "path": "modules/系统监控/commands.json",
-      "count": 8,
-      "has_docs": true
+      "name": "Yarn",
+      "path": "modules/Yarn/commands.json",
+      "count": 3,
+      "has_docs": false
     },
     {
-      "name": "TypeScript 命令",
-      "path": "modules/TypeScript 命令/commands.json",
-      "count": 22,
-      "has_docs": true
-    },
-    {
-      "name": "AWS CLI命令",
-      "path": "modules/AWS CLI命令/commands.json",
-      "count": 30,
-      "has_docs": true
-    },
-    {
-      "name": "消息队列",
-      "path": "modules/消息队列/commands.json",
-      "count": 41,
+      "name": "前端包管理器",
+      "path": "modules/前端包管理器/commands.json",
+      "count": 20,
       "has_docs": true
     },
     {
       "name": "包管理器",
       "path": "modules/包管理器/commands.json",
-      "count": 35,
+      "count": 37,
       "has_docs": true
     },
     {
-      "name": "Git工作流",
-      "path": "modules/Git工作流/commands.json",
-      "count": 27,
+      "name": "安全加固",
+      "path": "modules/安全加固/commands.json",
+      "count": 25,
+      "has_docs": true
+    },
+    {
+      "name": "容器安全",
+      "path": "modules/容器安全/commands.json",
+      "count": 20,
+      "has_docs": true
+    },
+    {
+      "name": "微服务架构",
+      "path": "modules/微服务架构/commands.json",
+      "count": 23,
+      "has_docs": true
+    },
+    {
+      "name": "搜索引擎",
+      "path": "modules/搜索引擎/commands.json",
+      "count": 12,
+      "has_docs": true
+    },
+    {
+      "name": "测试框架",
+      "path": "modules/测试框架/commands.json",
+      "count": 19,
+      "has_docs": true
+    },
+    {
+      "name": "消息队列",
+      "path": "modules/消息队列/commands.json",
+      "count": 14,
+      "has_docs": true
+    },
+    {
+      "name": "监控与可观测性",
+      "path": "modules/监控与可观测性/commands.json",
+      "count": 17,
+      "has_docs": true
+    },
+    {
+      "name": "移动开发",
+      "path": "modules/移动开发/commands.json",
+      "count": 30,
+      "has_docs": true
+    },
+    {
+      "name": "系统监控",
+      "path": "modules/系统监控/commands.json",
+      "count": 0,
+      "has_docs": true
+    },
+    {
+      "name": "编辑器命令",
+      "path": "modules/编辑器命令/commands.json",
+      "count": 19,
+      "has_docs": true
+    },
+    {
+      "name": "网络诊断",
+      "path": "modules/网络诊断/commands.json",
+      "count": 9,
+      "has_docs": true
+    },
+    {
+      "name": "配置管理",
+      "path": "modules/配置管理/commands.json",
+      "count": 18,
       "has_docs": true
     }
   ]

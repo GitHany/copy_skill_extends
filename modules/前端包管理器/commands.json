@@ -1,13 +1,13 @@
 {
   "module": "前端包管理器",
   "version": "1.0",
-  "description": "前端包管理器 模块命令集合",
+  "description": "前端包管理器 模块命令集合，涵盖前端包管理器的常用操作和最佳实践",
   "commands": [
     {
       "dirPath": "/前端包管理器/",
       "name": "npm install 安装依赖",
       "keyword": "npm install 安装",
-      "description": "安装项目依赖包",
+      "description": "安装项目依赖包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install %{包名}%",
         "extensions": [
@@ -103,7 +103,7 @@
       "dirPath": "/前端包管理器/",
       "name": "npm uninstall 卸载依赖",
       "keyword": "npm uninstall 卸载",
-      "description": "卸载项目依赖包",
+      "description": "卸载项目依赖包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm uninstall %{包名}%",
         "extensions": [
@@ -116,7 +116,7 @@
                 "required": false,
                 "description": "要卸载的包名称",
                 "example": "lodash",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "npm uninstall 移除"
@@ -130,7 +130,7 @@
                 "required": false,
                 "description": "要卸载的包名称",
                 "example": "lodash",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "npm uninstall dev"
@@ -144,7 +144,7 @@
                 "required": false,
                 "description": "要卸载的包名称",
                 "example": "lodash",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "npm 卸载全局"
@@ -156,7 +156,7 @@
             "required": true,
             "description": "要卸载的包名称",
             "example": "lodash",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -165,7 +165,7 @@
       "dirPath": "/前端包管理器/",
       "name": "npm run 执行脚本",
       "keyword": "npm run 脚本",
-      "description": "运行 package.json 中定义的脚本",
+      "description": "运行 package.json 中定义的脚本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm run %{脚本名}%",
         "extensions": [
@@ -184,7 +184,7 @@
                 "required": false,
                 "description": "脚本名称",
                 "example": "build",
-                "notes": ""
+                "notes": "可选"
               },
               "参数": {
                 "type": "string",
@@ -203,7 +203,7 @@
             "required": true,
             "description": "脚本名称",
             "example": "build",
-            "notes": ""
+            "notes": "必填"
           },
           "参数": {
             "type": "string",
@@ -219,7 +219,7 @@
       "dirPath": "/前端包管理器/",
       "name": "npm dev 启动开发服务器",
       "keyword": "npm dev 开发",
-      "description": "启动开发服务器",
+      "description": "启动开发服务器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm run dev",
         "extensions": [
@@ -259,7 +259,7 @@
       "dirPath": "/前端包管理器/",
       "name": "npm build 生产构建",
       "keyword": "npm build 构建",
-      "description": "执行生产环境构建",
+      "description": "执行生产环境构建。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm run build",
         "extensions": [
@@ -277,7 +277,7 @@
       "dirPath": "/前端包管理器/",
       "name": "npm list 查看依赖列表",
       "keyword": "npm list 列表",
-      "description": "列出已安装的依赖包",
+      "description": "列出已安装的依赖包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm list %{选项}%",
         "extensions": [
@@ -357,7 +357,7 @@
       "dirPath": "/前端包管理器/",
       "name": "npm outdated 检查过期依赖",
       "keyword": "npm outdated 过期",
-      "description": "检查哪些依赖有新版本可用",
+      "description": "检查哪些依赖有新版本可用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm outdated",
         "extensions": [
@@ -403,7 +403,7 @@
       "dirPath": "/前端包管理器/",
       "name": "npm update 更新依赖",
       "keyword": "npm update 升级",
-      "description": "更新依赖包到最新兼容版本",
+      "description": "更新依赖包到最新兼容版本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm update %{包名}%",
         "extensions": [
@@ -457,7 +457,7 @@
       "dirPath": "/前端包管理器/",
       "name": "npm init 初始化项目",
       "keyword": "npm init 初始化",
-      "description": "初始化一个新的 npm 项目",
+      "description": "初始化一个新的 npm 项目。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm init %{选项}%",
         "extensions": [
@@ -510,7 +510,7 @@
       "dirPath": "/前端包管理器/",
       "name": "yarn add 添加依赖",
       "keyword": "yarn add 安装",
-      "description": "添加项目依赖包",
+      "description": "添加项目依赖包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "yarn add %{包名}%",
         "extensions": [
@@ -523,7 +523,7 @@
                 "required": false,
                 "description": "包名称",
                 "example": "lodash",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "yarn add 添加"
@@ -537,7 +537,7 @@
                 "required": false,
                 "description": "包名称",
                 "example": "lodash",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "yarn add dev"
@@ -551,7 +551,7 @@
                 "required": false,
                 "description": "包名称",
                 "example": "lodash",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "yarn add optional"
@@ -565,7 +565,7 @@
                 "required": false,
                 "description": "包名称",
                 "example": "lodash",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "yarn 全局添加"
@@ -579,7 +579,7 @@
                 "required": false,
                 "description": "包名称",
                 "example": "lodash",
-                "notes": ""
+                "notes": "可选"
               },
               "版本": {
                 "type": "string",
@@ -598,7 +598,7 @@
             "required": true,
             "description": "包名称",
             "example": "lodash",
-            "notes": ""
+            "notes": "必填"
           },
           "版本": {
             "type": "string",
@@ -614,7 +614,7 @@
       "dirPath": "/前端包管理器/",
       "name": "yarn remove 移除依赖",
       "keyword": "yarn remove 卸载",
-      "description": "移除项目依赖包",
+      "description": "移除项目依赖包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "yarn remove %{包名}%",
         "extensions": [
@@ -627,7 +627,7 @@
                 "required": false,
                 "description": "要移除的包名称",
                 "example": "lodash",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "yarn remove 移除"
@@ -641,7 +641,7 @@
                 "required": false,
                 "description": "要移除的包名称",
                 "example": "lodash",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "yarn 全局移除"
@@ -653,7 +653,7 @@
             "required": true,
             "description": "要移除的包名称",
             "example": "lodash",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -662,7 +662,7 @@
       "dirPath": "/前端包管理器/",
       "name": "yarn dev 启动开发服务器",
       "keyword": "yarn dev 开发",
-      "description": "使用 yarn 启动开发服务器",
+      "description": "使用 yarn 启动开发服务器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "yarn dev",
         "extensions": [
@@ -702,7 +702,7 @@
       "dirPath": "/前端包管理器/",
       "name": "yarn build 生产构建",
       "keyword": "yarn build 构建",
-      "description": "使用 yarn 执行生产环境构建",
+      "description": "使用 yarn 执行生产环境构建。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "yarn build",
         "extensions": [
@@ -720,7 +720,7 @@
       "dirPath": "/前端包管理器/",
       "name": "yarn list 查看依赖列表",
       "keyword": "yarn list 列表",
-      "description": "列出已安装的依赖包",
+      "description": "列出已安装的依赖包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "yarn list %{选项}%",
         "extensions": [
@@ -773,7 +773,7 @@
       "dirPath": "/前端包管理器/",
       "name": "yarn upgrade 升级依赖",
       "keyword": "yarn upgrade 升级",
-      "description": "升级依赖包到最新版本",
+      "description": "升级依赖包到最新版本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "yarn upgrade %{包名}%",
         "extensions": [
@@ -833,7 +833,7 @@
       "dirPath": "/前端包管理器/",
       "name": "pnpm add 添加依赖",
       "keyword": "pnpm add 安装",
-      "description": "使用 pnpm 添加项目依赖包",
+      "description": "使用 pnpm 添加项目依赖包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "pnpm add %{包名}%",
         "extensions": [
@@ -846,7 +846,7 @@
                 "required": false,
                 "description": "包名称",
                 "example": "lodash",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "pnpm add 添加"
@@ -860,7 +860,7 @@
                 "required": false,
                 "description": "包名称",
                 "example": "lodash",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "pnpm add dev"
@@ -874,7 +874,7 @@
                 "required": false,
                 "description": "包名称",
                 "example": "lodash",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "pnpm add optional"
@@ -888,7 +888,7 @@
                 "required": false,
                 "description": "包名称",
                 "example": "lodash",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "pnpm 全局添加"
@@ -902,7 +902,7 @@
                 "required": false,
                 "description": "包名称",
                 "example": "lodash",
-                "notes": ""
+                "notes": "可选"
               },
               "版本": {
                 "type": "string",
@@ -923,7 +923,7 @@
                 "required": false,
                 "description": "包名称",
                 "example": "lodash",
-                "notes": ""
+                "notes": "可选"
               },
               "workspace": {
                 "type": "string",
@@ -942,7 +942,7 @@
             "required": true,
             "description": "包名称",
             "example": "lodash",
-            "notes": ""
+            "notes": "必填"
           },
           "版本": {
             "type": "string",
@@ -965,7 +965,7 @@
       "dirPath": "/前端包管理器/",
       "name": "pnpm remove 移除依赖",
       "keyword": "pnpm remove 卸载",
-      "description": "使用 pnpm 移除项目依赖包",
+      "description": "使用 pnpm 移除项目依赖包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "pnpm remove %{包名}%",
         "extensions": [
@@ -978,7 +978,7 @@
                 "required": false,
                 "description": "要移除的包名称",
                 "example": "lodash",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "pnpm remove 移除"
@@ -992,7 +992,7 @@
                 "required": false,
                 "description": "要移除的包名称",
                 "example": "lodash",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "pnpm 全局移除"
@@ -1006,7 +1006,7 @@
                 "required": false,
                 "description": "要移除的包名称",
                 "example": "lodash",
-                "notes": ""
+                "notes": "可选"
               },
               "workspace": {
                 "type": "string",
@@ -1025,7 +1025,7 @@
             "required": true,
             "description": "要移除的包名称",
             "example": "lodash",
-            "notes": ""
+            "notes": "必填"
           },
           "workspace": {
             "type": "string",
@@ -1041,7 +1041,7 @@
       "dirPath": "/前端包管理器/",
       "name": "pnpm dev 启动开发服务器",
       "keyword": "pnpm dev 开发",
-      "description": "使用 pnpm 启动开发服务器",
+      "description": "使用 pnpm 启动开发服务器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "pnpm dev",
         "extensions": [
@@ -1081,7 +1081,7 @@
       "dirPath": "/前端包管理器/",
       "name": "pnpm build 生产构建",
       "keyword": "pnpm build 构建",
-      "description": "使用 pnpm 执行生产环境构建",
+      "description": "使用 pnpm 执行生产环境构建。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "pnpm build",
         "extensions": [
@@ -1099,7 +1099,7 @@
       "dirPath": "/前端包管理器/",
       "name": "pnpm list 查看依赖列表",
       "keyword": "pnpm list 列表",
-      "description": "使用 pnpm 列出已安装的依赖包",
+      "description": "使用 pnpm 列出已安装的依赖包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "pnpm list %{选项}%",
         "extensions": [

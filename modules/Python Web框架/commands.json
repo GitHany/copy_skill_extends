@@ -21,14 +21,32 @@
             "name": "指定路径创建",
             "cmd": "django-admin startproject %{项目名称}% %{路径}%",
             "params": {
-              "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "mysite", "notes": "常用" },
-              "路径": { "type": "string", "required": true, "description": "目录路径", "example": "./projects", "notes": "" }
+              "项目名称": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称",
+                "example": "mysite",
+                "notes": "常用"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径",
+                "example": "./projects",
+                "notes": "可选"
+              }
             },
             "keyword": "django-admin startproject 路径"
           }
         ],
         "params": {
-          "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "mysite", "notes": "常用" }
+          "项目名称": {
+            "type": "string",
+            "required": true,
+            "description": "项目名称",
+            "example": "mysite",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -36,7 +54,7 @@
       "dirPath": "/Python Web框架/",
       "name": "python manage.py startapp 创建Django应用",
       "keyword": "startapp 创建应用",
-      "description": "在 Django 项目中创建新的应用",
+      "description": "在 Django 项目中创建新的应用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "python manage.py startapp %{应用名称}%",
         "extensions": [
@@ -44,14 +62,32 @@
             "name": "在子目录创建",
             "cmd": "python manage.py startapp %{应用名称}% %{目录}%",
             "params": {
-              "应用名称": { "type": "string", "required": true, "description": "应用名称", "example": "blog", "notes": "常用" },
-              "目录": { "type": "string", "required": true, "description": "目录路径", "example": "apps/", "notes": "" }
+              "应用名称": {
+                "type": "string",
+                "required": true,
+                "description": "应用名称",
+                "example": "blog",
+                "notes": "常用"
+              },
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径",
+                "example": "apps/",
+                "notes": "可选"
+              }
             },
             "keyword": "startapp 子目录"
           }
         ],
         "params": {
-          "应用名称": { "type": "string", "required": true, "description": "应用名称", "example": "blog", "notes": "常用" }
+          "应用名称": {
+            "type": "string",
+            "required": true,
+            "description": "应用名称",
+            "example": "blog",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -59,7 +95,7 @@
       "dirPath": "/Python Web框架/",
       "name": "python manage.py runserver 启动Django开发服务器",
       "keyword": "runserver 启动服务器",
-      "description": "启动 Django 开发服务器",
+      "description": "启动 Django 开发服务器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "python manage.py runserver %{端口}%",
         "extensions": [
@@ -73,8 +109,20 @@
             "name": "指定IP和端口",
             "cmd": "python manage.py runserver %{IP}%:%{端口}%",
             "params": {
-              "IP": { "type": "string", "required": true, "description": "IP地址", "example": "0.0.0.0", "notes": "" },
-              "端口": { "type": "string", "required": true, "description": "端口号", "example": "8000", "notes": "常用" }
+              "IP": {
+                "type": "string",
+                "required": true,
+                "description": "IP地址",
+                "example": "0.0.0.0",
+                "notes": "可选"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口号",
+                "example": "8000",
+                "notes": "常用"
+              }
             },
             "keyword": "runserver IP端口"
           },
@@ -92,7 +140,13 @@
           }
         ],
         "params": {
-          "端口": { "type": "string", "required": false, "description": "端口号", "example": "8080", "notes": "默认8000" }
+          "端口": {
+            "type": "string",
+            "required": false,
+            "description": "端口号",
+            "example": "8080",
+            "notes": "默认8000"
+          }
         }
       }
     },
@@ -100,7 +154,7 @@
       "dirPath": "/Python Web框架/",
       "name": "python manage.py makemigrations 生成迁移",
       "keyword": "makemigrations 迁移",
-      "description": "根据模型变更生成数据库迁移文件",
+      "description": "根据模型变更生成数据库迁移文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "python manage.py makemigrations %{应用名称}%",
         "extensions": [
@@ -114,8 +168,20 @@
             "name": "指定迁移文件名",
             "cmd": "python manage.py makemigrations %{应用名称}% --name %{迁移名}%",
             "params": {
-              "应用名称": { "type": "string", "required": true, "description": "应用名称", "example": "blog", "notes": "常用" },
-              "迁移名": { "type": "string", "required": true, "description": "迁移文件名", "example": "add_field", "notes": "" }
+              "应用名称": {
+                "type": "string",
+                "required": true,
+                "description": "应用名称",
+                "example": "blog",
+                "notes": "常用"
+              },
+              "迁移名": {
+                "type": "string",
+                "required": true,
+                "description": "迁移文件名",
+                "example": "add_field",
+                "notes": "可选"
+              }
             },
             "keyword": "makemigrations 命名"
           },
@@ -127,7 +193,13 @@
           }
         ],
         "params": {
-          "应用名称": { "type": "string", "required": false, "description": "应用名称", "example": "blog", "notes": "可选" }
+          "应用名称": {
+            "type": "string",
+            "required": false,
+            "description": "应用名称",
+            "example": "blog",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -135,7 +207,7 @@
       "dirPath": "/Python Web框架/",
       "name": "python manage.py migrate 执行迁移",
       "keyword": "migrate 数据库迁移",
-      "description": "执行数据库迁移，将迁移应用到数据库",
+      "description": "执行数据库迁移，将迁移应用到数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "python manage.py migrate",
         "extensions": [
@@ -143,7 +215,13 @@
             "name": "迁移指定应用",
             "cmd": "python manage.py migrate %{应用名称}%",
             "params": {
-              "应用名称": { "type": "string", "required": true, "description": "应用名称", "example": "blog", "notes": "常用" }
+              "应用名称": {
+                "type": "string",
+                "required": true,
+                "description": "应用名称",
+                "example": "blog",
+                "notes": "常用"
+              }
             },
             "keyword": "migrate 指定应用"
           },
@@ -151,8 +229,20 @@
             "name": "迁移到指定版本",
             "cmd": "python manage.py migrate %{应用名称}% %{版本}%",
             "params": {
-              "应用名称": { "type": "string", "required": true, "description": "应用名称", "example": "blog", "notes": "" },
-              "版本": { "type": "string", "required": true, "description": "版本号", "example": "0001", "notes": "" }
+              "应用名称": {
+                "type": "string",
+                "required": true,
+                "description": "应用名称",
+                "example": "blog",
+                "notes": "可选"
+              },
+              "版本": {
+                "type": "string",
+                "required": true,
+                "description": "版本号",
+                "example": "0001",
+                "notes": "可选"
+              }
             },
             "keyword": "migrate 指定版本"
           },
@@ -166,7 +256,13 @@
             "name": "标记为已应用",
             "cmd": "python manage.py migrate %{应用名称}% --fake",
             "params": {
-              "应用名称": { "type": "string", "required": true, "description": "应用名称", "example": "blog", "notes": "" }
+              "应用名称": {
+                "type": "string",
+                "required": true,
+                "description": "应用名称",
+                "example": "blog",
+                "notes": "可选"
+              }
             },
             "keyword": "migrate fake"
           }
@@ -178,7 +274,7 @@
       "dirPath": "/Python Web框架/",
       "name": "python manage.py createsuperuser 创建管理员",
       "keyword": "createsuperuser 管理员",
-      "description": "创建 Django 超级用户用于管理后台",
+      "description": "创建 Django 超级用户用于管理后台。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "python manage.py createsuperuser",
         "extensions": [
@@ -186,7 +282,13 @@
             "name": "指定用户名",
             "cmd": "python manage.py createsuperuser --username %{用户名}%",
             "params": {
-              "用户名": { "type": "string", "required": true, "description": "用户名", "example": "admin", "notes": "常用" }
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "admin",
+                "notes": "常用"
+              }
             },
             "keyword": "createsuperuser 用户名"
           },
@@ -194,7 +296,13 @@
             "name": "指定邮箱",
             "cmd": "python manage.py createsuperuser --email %{邮箱}%",
             "params": {
-              "邮箱": { "type": "string", "required": true, "description": "邮箱地址", "example": "admin@example.com", "notes": "" }
+              "邮箱": {
+                "type": "string",
+                "required": true,
+                "description": "邮箱地址",
+                "example": "admin@example.com",
+                "notes": "可选"
+              }
             },
             "keyword": "createsuperuser 邮箱"
           },
@@ -212,7 +320,7 @@
       "dirPath": "/Python Web框架/",
       "name": "python manage.py shell Django交互式Shell",
       "keyword": "shell 交互",
-      "description": "启动 Django 交互式 Shell 用于调试和操作",
+      "description": "启动 Django 交互式 Shell 用于调试和操作。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "python manage.py shell",
         "extensions": [
@@ -232,7 +340,13 @@
             "name": "执行脚本",
             "cmd": "python manage.py shell < %{脚本}%.py",
             "params": {
-              "脚本": { "type": "string", "required": true, "description": "脚本文件名", "example": "seed", "notes": "" }
+              "脚本": {
+                "type": "string",
+                "required": true,
+                "description": "脚本文件名",
+                "example": "seed",
+                "notes": "可选"
+              }
             },
             "keyword": "shell 脚本"
           }
@@ -244,7 +358,7 @@
       "dirPath": "/Python Web框架/",
       "name": "python manage.py dbshell 数据库命令行",
       "keyword": "dbshell 数据库",
-      "description": "打开数据库原生命令行客户端",
+      "description": "打开数据库原生命令行客户端。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "python manage.py dbshell",
         "extensions": [
@@ -262,7 +376,7 @@
       "dirPath": "/Python Web框架/",
       "name": "python manage.py test 运行Django测试",
       "keyword": "test 测试",
-      "description": "运行 Django 项目测试套件",
+      "description": "运行 Django 项目测试套件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "python manage.py test %{应用名称}%",
         "extensions": [
@@ -276,8 +390,20 @@
             "name": "运行指定测试类",
             "cmd": "python manage.py test %{应用名称}%.tests.%{类名}%",
             "params": {
-              "应用名称": { "type": "string", "required": true, "description": "应用名称", "example": "blog", "notes": "常用" },
-              "类名": { "type": "string", "required": true, "description": "测试类名", "example": "ModelTest", "notes": "" }
+              "应用名称": {
+                "type": "string",
+                "required": true,
+                "description": "应用名称",
+                "example": "blog",
+                "notes": "常用"
+              },
+              "类名": {
+                "type": "string",
+                "required": true,
+                "description": "测试类名",
+                "example": "ModelTest",
+                "notes": "可选"
+              }
             },
             "keyword": "test 指定类"
           },
@@ -295,7 +421,13 @@
           }
         ],
         "params": {
-          "应用名称": { "type": "string", "required": false, "description": "应用名称", "example": "blog", "notes": "可选" }
+          "应用名称": {
+            "type": "string",
+            "required": false,
+            "description": "应用名称",
+            "example": "blog",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -303,7 +435,7 @@
       "dirPath": "/Python Web框架/",
       "name": "pytest-django 运行Django测试",
       "keyword": "pytest-django 测试",
-      "description": "使用 pytest 运行 Django 测试",
+      "description": "使用 pytest 运行 Django 测试。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "pytest",
         "extensions": [
@@ -311,7 +443,13 @@
             "name": "运行指定文件",
             "cmd": "pytest %{路径}%.py",
             "params": {
-              "路径": { "type": "string", "required": true, "description": "测试文件路径", "example": "tests/test_models.py", "notes": "常用" }
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "测试文件路径",
+                "example": "tests/test_models.py",
+                "notes": "常用"
+              }
             },
             "keyword": "pytest 文件"
           },
@@ -319,8 +457,20 @@
             "name": "运行指定函数",
             "cmd": "pytest %{路径}%::%{函数}%",
             "params": {
-              "路径": { "type": "string", "required": true, "description": "文件路径", "example": "tests/test_models.py", "notes": "常用" },
-              "函数": { "type": "string", "required": true, "description": "函数名", "example": "test_create_user", "notes": "" }
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径",
+                "example": "tests/test_models.py",
+                "notes": "常用"
+              },
+              "函数": {
+                "type": "string",
+                "required": true,
+                "description": "函数名",
+                "example": "test_create_user",
+                "notes": "可选"
+              }
             },
             "keyword": "pytest 函数"
           },
@@ -328,8 +478,20 @@
             "name": "显示覆盖率",
             "cmd": "pytest --cov=%{应用}% --cov-report=%{报告}%",
             "params": {
-              "应用": { "type": "string", "required": true, "description": "应用名", "example": "myapp", "notes": "" },
-              "报告": { "type": "string", "required": true, "description": "报告类型", "example": "html", "notes": "" }
+              "应用": {
+                "type": "string",
+                "required": true,
+                "description": "应用名",
+                "example": "myapp",
+                "notes": "可选"
+              },
+              "报告": {
+                "type": "string",
+                "required": true,
+                "description": "报告类型",
+                "example": "html",
+                "notes": "可选"
+              }
             },
             "keyword": "pytest 覆盖率"
           },
@@ -337,7 +499,13 @@
             "name": "标记过滤",
             "cmd": "pytest -m %{标记}%",
             "params": {
-              "标记": { "type": "string", "required": true, "description": "标记名", "example": "slow", "notes": "" }
+              "标记": {
+                "type": "string",
+                "required": true,
+                "description": "标记名",
+                "example": "slow",
+                "notes": "可选"
+              }
             },
             "keyword": "pytest 标记"
           }
@@ -349,7 +517,7 @@
       "dirPath": "/Python Web框架/",
       "name": "flask run 启动Flask开发服务器",
       "keyword": "flask run 启动",
-      "description": "启动 Flask 开发服务器",
+      "description": "启动 Flask 开发服务器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "flask run",
         "extensions": [
@@ -357,8 +525,20 @@
             "name": "指定host和端口",
             "cmd": "flask run --host=%{IP}% --port=%{端口}%",
             "params": {
-              "IP": { "type": "string", "required": true, "description": "IP地址", "example": "0.0.0.0", "notes": "" },
-              "端口": { "type": "string", "required": true, "description": "端口号", "example": "5000", "notes": "常用" }
+              "IP": {
+                "type": "string",
+                "required": true,
+                "description": "IP地址",
+                "example": "0.0.0.0",
+                "notes": "可选"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口号",
+                "example": "5000",
+                "notes": "常用"
+              }
             },
             "keyword": "flask run 端口"
           },
@@ -372,7 +552,13 @@
             "name": "指定应用",
             "cmd": "FLASK_APP=%{应用}% flask run",
             "params": {
-              "应用": { "type": "string", "required": true, "description": "应用名", "example": "app:create_app", "notes": "" }
+              "应用": {
+                "type": "string",
+                "required": true,
+                "description": "应用名",
+                "example": "app:create_app",
+                "notes": "可选"
+              }
             },
             "keyword": "flask run 指定应用"
           }
@@ -384,7 +570,7 @@
       "dirPath": "/Python Web框架/",
       "name": "FLASK_APP 环境变量设置",
       "keyword": "FLASK_APP 环境变量",
-      "description": "设置 FLASK_APP 环境变量指定 Flask 应用",
+      "description": "设置 FLASK_APP 环境变量指定 Flask 应用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "export FLASK_APP=%{应用}%",
         "extensions": [
@@ -398,7 +584,13 @@
             "name": "工厂函数模式",
             "cmd": "export FLASK_APP=app:create_app('%{环境}%')",
             "params": {
-              "环境": { "type": "string", "required": true, "description": "环境名", "example": "development", "notes": "" }
+              "环境": {
+                "type": "string",
+                "required": true,
+                "description": "环境名",
+                "example": "development",
+                "notes": "可选"
+              }
             },
             "keyword": "FLASK_APP 工厂函数"
           },
@@ -416,7 +608,13 @@
           }
         ],
         "params": {
-          "应用": { "type": "string", "required": true, "description": "应用名", "example": "app", "notes": "常用" }
+          "应用": {
+            "type": "string",
+            "required": true,
+            "description": "应用名",
+            "example": "app",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -424,7 +622,7 @@
       "dirPath": "/Python Web框架/",
       "name": "FLASK_ENV 环境变量设置",
       "keyword": "FLASK_ENV 环境变量",
-      "description": "设置 FLASK_ENV 环境变量指定运行模式",
+      "description": "设置 FLASK_ENV 环境变量指定运行模式。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "export FLASK_ENV=%{环境}%",
         "extensions": [
@@ -448,7 +646,13 @@
           }
         ],
         "params": {
-          "环境": { "type": "string", "required": true, "description": "环境", "example": "development", "notes": "常用" }
+          "环境": {
+            "type": "string",
+            "required": true,
+            "description": "环境",
+            "example": "development",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -456,7 +660,7 @@
       "dirPath": "/Python Web框架/",
       "name": "flask db init 初始化Flask数据库迁移",
       "keyword": "flask db init 初始化",
-      "description": "初始化 Flask-Migrate 数据库迁移目录",
+      "description": "初始化 Flask-Migrate 数据库迁移目录。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "flask db init",
         "extensions": [
@@ -464,7 +668,13 @@
             "name": "创建迁移",
             "cmd": "flask db migrate -m \"%{消息}%\"",
             "params": {
-              "消息": { "type": "string", "required": true, "description": "迁移消息", "example": "add users table", "notes": "常用" }
+              "消息": {
+                "type": "string",
+                "required": true,
+                "description": "迁移消息",
+                "example": "add users table",
+                "notes": "常用"
+              }
             },
             "keyword": "flask db migrate"
           },
@@ -500,7 +710,7 @@
       "dirPath": "/Python Web框架/",
       "name": "flask db migrate 生成Flask迁移",
       "keyword": "flask db migrate 生成",
-      "description": "使用 Flask-Migrate 生成数据库迁移脚本",
+      "description": "使用 Flask-Migrate 生成数据库迁移脚本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "flask db migrate",
         "extensions": [
@@ -508,7 +718,13 @@
             "name": "带消息生成",
             "cmd": "flask db migrate -m \"%{描述}%\"",
             "params": {
-              "描述": { "type": "string", "required": true, "description": "迁移描述", "example": "add posts table", "notes": "常用" }
+              "描述": {
+                "type": "string",
+                "required": true,
+                "description": "迁移描述",
+                "example": "add posts table",
+                "notes": "常用"
+              }
             },
             "keyword": "flask db migrate 消息"
           },
@@ -516,7 +732,13 @@
             "name": "生成SQL脚本",
             "cmd": "flask db migrate --sql > %{文件}%.sql",
             "params": {
-              "文件": { "type": "string", "required": true, "description": "输出文件", "example": "migration", "notes": "" }
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "输出文件",
+                "example": "migration",
+                "notes": "可选"
+              }
             },
             "keyword": "flask db migrate sql"
           },
@@ -524,7 +746,13 @@
             "name": "升级到指定版本",
             "cmd": "flask db upgrade %{版本}%",
             "params": {
-              "版本": { "type": "string", "required": true, "description": "版本号", "example": "head", "notes": "" }
+              "版本": {
+                "type": "string",
+                "required": true,
+                "description": "版本号",
+                "example": "head",
+                "notes": "可选"
+              }
             },
             "keyword": "flask db upgrade 版本"
           }
@@ -536,7 +764,7 @@
       "dirPath": "/Python Web框架/",
       "name": "black 代码格式化",
       "keyword": "black 格式化",
-      "description": "使用 black 格式化 Python 代码",
+      "description": "使用 black 格式化 Python 代码。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "black %{路径}%",
         "extensions": [
@@ -544,7 +772,13 @@
             "name": "检查格式不修改",
             "cmd": "black --check %{路径}%",
             "params": {
-              "路径": { "type": "string", "required": true, "description": "目录路径", "example": "src", "notes": "常用" }
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径",
+                "example": "src",
+                "notes": "常用"
+              }
             },
             "keyword": "black check"
           },
@@ -552,7 +786,13 @@
             "name": "显示差异",
             "cmd": "black --diff %{路径}%",
             "params": {
-              "路径": { "type": "string", "required": true, "description": "目录路径", "example": "src", "notes": "常用" }
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径",
+                "example": "src",
+                "notes": "常用"
+              }
             },
             "keyword": "black diff"
           },
@@ -560,8 +800,20 @@
             "name": "排除目录",
             "cmd": "black --exclude '%{正则}%' %{路径}%",
             "params": {
-              "正则": { "type": "string", "required": true, "description": "正则表达式", "example": "/migrations/", "notes": "" },
-              "路径": { "type": "string", "required": true, "description": "目录路径", "example": ".", "notes": "常用" }
+              "正则": {
+                "type": "string",
+                "required": true,
+                "description": "正则表达式",
+                "example": "/migrations/",
+                "notes": "可选"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径",
+                "example": ".",
+                "notes": "常用"
+              }
             },
             "keyword": "black exclude"
           },
@@ -573,7 +825,13 @@
           }
         ],
         "params": {
-          "路径": { "type": "string", "required": true, "description": "目录路径", "example": "src", "notes": "常用" }
+          "路径": {
+            "type": "string",
+            "required": true,
+            "description": "目录路径",
+            "example": "src",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -581,7 +839,7 @@
       "dirPath": "/Python Web框架/",
       "name": "flake8 代码检查",
       "keyword": "flake8 检查",
-      "description": "使用 flake8 检查 Python 代码风格",
+      "description": "使用 flake8 检查 Python 代码风格。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "flake8 %{路径}%",
         "extensions": [
@@ -589,8 +847,20 @@
             "name": "忽略错误码",
             "cmd": "flake8 --ignore=%{错误码}% %{路径}%",
             "params": {
-              "错误码": { "type": "string", "required": true, "description": "错误码", "example": "E501,W503", "notes": "常用" },
-              "路径": { "type": "string", "required": true, "description": "目录路径", "example": ".", "notes": "常用" }
+              "错误码": {
+                "type": "string",
+                "required": true,
+                "description": "错误码",
+                "example": "E501,W503",
+                "notes": "常用"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径",
+                "example": ".",
+                "notes": "常用"
+              }
             },
             "keyword": "flake8 ignore"
           },
@@ -598,7 +868,13 @@
             "name": "显示错误源码",
             "cmd": "flake8 --show-source %{路径}%",
             "params": {
-              "路径": { "type": "string", "required": true, "description": "目录路径", "example": "app", "notes": "" }
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径",
+                "example": "app",
+                "notes": "可选"
+              }
             },
             "keyword": "flake8 source"
           },
@@ -606,8 +882,20 @@
             "name": "最大行长度",
             "cmd": "flake8 --max-line-length=%{长度}% %{路径}%",
             "params": {
-              "长度": { "type": "string", "required": true, "description": "行长度", "example": "120", "notes": "" },
-              "路径": { "type": "string", "required": true, "description": "目录路径", "example": ".", "notes": "常用" }
+              "长度": {
+                "type": "string",
+                "required": true,
+                "description": "行长度",
+                "example": "120",
+                "notes": "可选"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径",
+                "example": ".",
+                "notes": "常用"
+              }
             },
             "keyword": "flake8 max-line-length"
           },
@@ -615,13 +903,25 @@
             "name": "统计错误",
             "cmd": "flake8 --statistics %{路径}%",
             "params": {
-              "路径": { "type": "string", "required": true, "description": "目录路径", "example": ".", "notes": "" }
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径",
+                "example": ".",
+                "notes": "可选"
+              }
             },
             "keyword": "flake8 statistics"
           }
         ],
         "params": {
-          "路径": { "type": "string", "required": true, "description": "目录路径", "example": "app", "notes": "常用" }
+          "路径": {
+            "type": "string",
+            "required": true,
+            "description": "目录路径",
+            "example": "app",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -629,7 +929,7 @@
       "dirPath": "/Python Web框架/",
       "name": "mypy 静态类型检查",
       "keyword": "mypy 类型检查",
-      "description": "使用 mypy 进行 Python 静态类型检查",
+      "description": "使用 mypy 进行 Python 静态类型检查。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "mypy %{路径}%",
         "extensions": [
@@ -637,7 +937,13 @@
             "name": "严格模式",
             "cmd": "mypy --strict %{路径}%",
             "params": {
-              "路径": { "type": "string", "required": true, "description": "目录路径", "example": "src", "notes": "常用" }
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径",
+                "example": "src",
+                "notes": "常用"
+              }
             },
             "keyword": "mypy strict"
           },
@@ -645,7 +951,13 @@
             "name": "忽略缺失导入",
             "cmd": "mypy --ignore-missing-imports %{路径}%",
             "params": {
-              "路径": { "type": "string", "required": true, "description": "目录路径", "example": "src", "notes": "" }
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径",
+                "example": "src",
+                "notes": "可选"
+              }
             },
             "keyword": "mypy ignore-missing"
           },
@@ -653,7 +965,13 @@
             "name": "显示错误上下文",
             "cmd": "mypy --show-error-context %{路径}%",
             "params": {
-              "路径": { "type": "string", "required": true, "description": "目录路径", "example": "src", "notes": "" }
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径",
+                "example": "src",
+                "notes": "可选"
+              }
             },
             "keyword": "mypy context"
           },
@@ -661,13 +979,25 @@
             "name": "增量检查",
             "cmd": "mypy --incremental %{路径}%",
             "params": {
-              "路径": { "type": "string", "required": true, "description": "目录路径", "example": "src", "notes": "" }
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径",
+                "example": "src",
+                "notes": "可选"
+              }
             },
             "keyword": "mypy incremental"
           }
         ],
         "params": {
-          "路径": { "type": "string", "required": true, "description": "目录路径", "example": "src", "notes": "常用" }
+          "路径": {
+            "type": "string",
+            "required": true,
+            "description": "目录路径",
+            "example": "src",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -675,7 +1005,7 @@
       "dirPath": "/Python Web框架/",
       "name": "pytest 运行测试",
       "keyword": "pytest 测试",
-      "description": "使用 pytest 运行 Python 测试",
+      "description": "使用 pytest 运行 Python 测试。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "pytest %{路径}%",
         "extensions": [
@@ -713,7 +1043,13 @@
             "name": "标记过滤",
             "cmd": "pytest -m %{标记}%",
             "params": {
-              "标记": { "type": "string", "required": true, "description": "标记名", "example": "slow", "notes": "常用" }
+              "标记": {
+                "type": "string",
+                "required": true,
+                "description": "标记名",
+                "example": "slow",
+                "notes": "常用"
+              }
             },
             "keyword": "pytest marker"
           },
@@ -725,7 +1061,13 @@
           }
         ],
         "params": {
-          "路径": { "type": "string", "required": false, "description": "测试文件路径", "example": "tests/test_api.py", "notes": "可选" }
+          "路径": {
+            "type": "string",
+            "required": false,
+            "description": "测试文件路径",
+            "example": "tests/test_api.py",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -733,7 +1075,7 @@
       "dirPath": "/Python Web框架/",
       "name": "pytest-cov 测试覆盖率",
       "keyword": "pytest-cov 覆盖率",
-      "description": "使用 pytest-cov 生成测试覆盖率报告",
+      "description": "使用 pytest-cov 生成测试覆盖率报告。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "pytest --cov=%{包名}% --cov-report=%{报告类型}%",
         "extensions": [
@@ -741,7 +1083,13 @@
             "name": "终端报告",
             "cmd": "pytest --cov=%{包名}% --cov-report=term-missing",
             "params": {
-              "包名": { "type": "string", "required": true, "description": "包名", "example": "app", "notes": "常用" }
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名",
+                "example": "app",
+                "notes": "常用"
+              }
             },
             "keyword": "pytest-cov 终端"
           },
@@ -749,7 +1097,13 @@
             "name": "HTML报告",
             "cmd": "pytest --cov=%{包名}% --cov-report=html",
             "params": {
-              "包名": { "type": "string", "required": true, "description": "包名", "example": "app", "notes": "常用" }
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名",
+                "example": "app",
+                "notes": "常用"
+              }
             },
             "keyword": "pytest-cov html"
           },
@@ -757,7 +1111,13 @@
             "name": "XML报告",
             "cmd": "pytest --cov=%{包名}% --cov-report=xml",
             "params": {
-              "包名": { "type": "string", "required": true, "description": "包名", "example": "app", "notes": "" }
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名",
+                "example": "app",
+                "notes": "可选"
+              }
             },
             "keyword": "pytest-cov xml"
           },
@@ -765,15 +1125,39 @@
             "name": "最低覆盖率阈值",
             "cmd": "pytest --cov=%{包名}% --cov-fail-under=%{阈值}%",
             "params": {
-              "包名": { "type": "string", "required": true, "description": "包名", "example": "app", "notes": "" },
-              "阈值": { "type": "string", "required": true, "description": "阈值", "example": "80", "notes": "" }
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名",
+                "example": "app",
+                "notes": "可选"
+              },
+              "阈值": {
+                "type": "string",
+                "required": true,
+                "description": "阈值",
+                "example": "80",
+                "notes": "可选"
+              }
             },
             "keyword": "pytest-cov fail-under"
           }
         ],
         "params": {
-          "包名": { "type": "string", "required": true, "description": "包名", "example": "app", "notes": "常用" },
-          "报告类型": { "type": "string", "required": true, "description": "报告类型", "example": "term-missing", "notes": "常用" }
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "包名",
+            "example": "app",
+            "notes": "常用"
+          },
+          "报告类型": {
+            "type": "string",
+            "required": true,
+            "description": "报告类型",
+            "example": "term-missing",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -781,7 +1165,7 @@
       "dirPath": "/Python Web框架/",
       "name": "uv pip install 使用uv安装包",
       "keyword": "uv 安装",
-      "description": "使用 uv 快速安装 Python 包",
+      "description": "使用 uv 快速安装 Python 包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "uv pip install %{包名}%",
         "extensions": [
@@ -801,7 +1185,13 @@
             "name": "创建虚拟环境",
             "cmd": "uv venv %{环境名}%",
             "params": {
-              "环境名": { "type": "string", "required": true, "description": "环境名", "example": ".venv", "notes": "常用" }
+              "环境名": {
+                "type": "string",
+                "required": true,
+                "description": "环境名",
+                "example": ".venv",
+                "notes": "常用"
+              }
             },
             "keyword": "uv venv"
           },
@@ -809,7 +1199,13 @@
             "name": "运行命令",
             "cmd": "uv run %{命令}%",
             "params": {
-              "命令": { "type": "string", "required": true, "description": "命令", "example": "pytest", "notes": "常用" }
+              "命令": {
+                "type": "string",
+                "required": true,
+                "description": "命令",
+                "example": "pytest",
+                "notes": "常用"
+              }
             },
             "keyword": "uv run"
           },
@@ -817,7 +1213,13 @@
             "name": "升级包",
             "cmd": "uv pip install --upgrade %{包名}%",
             "params": {
-              "包名": { "type": "string", "required": true, "description": "包名", "example": "flask", "notes": "" }
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名",
+                "example": "flask",
+                "notes": "可选"
+              }
             },
             "keyword": "uv pip install 升级"
           },
@@ -829,7 +1231,13 @@
           }
         ],
         "params": {
-          "包名": { "type": "string", "required": true, "description": "包名", "example": "flask", "notes": "常用" }
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "包名",
+            "example": "flask",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -837,7 +1245,7 @@
       "dirPath": "/Python Web框架/",
       "name": "virtualenv 创建虚拟环境",
       "keyword": "virtualenv 虚拟环境",
-      "description": "使用 virtualenv 创建 Python 虚拟环境",
+      "description": "使用 virtualenv 创建 Python 虚拟环境。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "virtualenv %{环境名}%",
         "extensions": [
@@ -845,8 +1253,20 @@
             "name": "指定Python版本",
             "cmd": "virtualenv --python=%{Python路径}% %{环境名}%",
             "params": {
-              "Python路径": { "type": "string", "required": true, "description": "Python路径", "example": "python3.10", "notes": "" },
-              "环境名": { "type": "string", "required": true, "description": "环境名", "example": "venv", "notes": "常用" }
+              "Python路径": {
+                "type": "string",
+                "required": true,
+                "description": "Python路径",
+                "example": "python3.10",
+                "notes": "可选"
+              },
+              "环境名": {
+                "type": "string",
+                "required": true,
+                "description": "环境名",
+                "example": "venv",
+                "notes": "常用"
+              }
             },
             "keyword": "virtualenv python版本"
           },
@@ -854,7 +1274,13 @@
             "name": "无系统包",
             "cmd": "virtualenv --no-site-packages %{环境名}%",
             "params": {
-              "环境名": { "type": "string", "required": true, "description": "环境名", "example": "venv", "notes": "常用" }
+              "环境名": {
+                "type": "string",
+                "required": true,
+                "description": "环境名",
+                "example": "venv",
+                "notes": "常用"
+              }
             },
             "keyword": "virtualenv no-site"
           },
@@ -862,7 +1288,13 @@
             "name": "激活环境Linux/Mac",
             "cmd": "source %{环境名}%/bin/activate",
             "params": {
-              "环境名": { "type": "string", "required": true, "description": "环境名", "example": "venv", "notes": "常用" }
+              "环境名": {
+                "type": "string",
+                "required": true,
+                "description": "环境名",
+                "example": "venv",
+                "notes": "常用"
+              }
             },
             "keyword": "virtualenv 激活 linux"
           },
@@ -870,7 +1302,13 @@
             "name": "激活环境Windows",
             "cmd": "%{环境名}%\\Scripts\\activate",
             "params": {
-              "环境名": { "type": "string", "required": true, "description": "环境名", "example": "venv", "notes": "常用" }
+              "环境名": {
+                "type": "string",
+                "required": true,
+                "description": "环境名",
+                "example": "venv",
+                "notes": "常用"
+              }
             },
             "keyword": "virtualenv 激活 windows"
           },
@@ -882,7 +1320,13 @@
           }
         ],
         "params": {
-          "环境名": { "type": "string", "required": true, "description": "环境名", "example": "venv", "notes": "常用" }
+          "环境名": {
+            "type": "string",
+            "required": true,
+            "description": "环境名",
+            "example": "venv",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -890,7 +1334,7 @@
       "dirPath": "/Python Web框架/",
       "name": "celery Worker启动",
       "keyword": "celery worker 异步",
-      "description": "启动 Celery Worker 处理异步任务",
+      "description": "启动 Celery Worker 处理异步任务。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "celery -A %{项目名}% worker -l info",
         "extensions": [
@@ -898,7 +1342,13 @@
             "name": "启动Beat定时任务",
             "cmd": "celery -A %{项目名}% beat -l info",
             "params": {
-              "项目名": { "type": "string", "required": true, "description": "项目名", "example": "mysite", "notes": "常用" }
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名",
+                "example": "mysite",
+                "notes": "常用"
+              }
             },
             "keyword": "celery beat 定时"
           },
@@ -906,7 +1356,13 @@
             "name": "查看活跃任务",
             "cmd": "celery -A %{项目名}% inspect active",
             "params": {
-              "项目名": { "type": "string", "required": true, "description": "项目名", "example": "mysite", "notes": "" }
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名",
+                "example": "mysite",
+                "notes": "可选"
+              }
             },
             "keyword": "celery inspect active"
           },
@@ -914,7 +1370,13 @@
             "name": "列出已注册任务",
             "cmd": "celery -A %{项目名}% inspect registered",
             "params": {
-              "项目名": { "type": "string", "required": true, "description": "项目名", "example": "mysite", "notes": "" }
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名",
+                "example": "mysite",
+                "notes": "可选"
+              }
             },
             "keyword": "celery inspect registered"
           },
@@ -922,13 +1384,25 @@
             "name": "Flower监控界面",
             "cmd": "celery -A %{项目名}% flower",
             "params": {
-              "项目名": { "type": "string", "required": true, "description": "项目名", "example": "mysite", "notes": "" }
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名",
+                "example": "mysite",
+                "notes": "可选"
+              }
             },
             "keyword": "celery flower"
           }
         ],
         "params": {
-          "项目名": { "type": "string", "required": true, "description": "项目名", "example": "mysite", "notes": "常用" }
+          "项目名": {
+            "type": "string",
+            "required": true,
+            "description": "项目名",
+            "example": "mysite",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -936,7 +1410,7 @@
       "dirPath": "/Python Web框架/",
       "name": "Django Debug Toolbar调试",
       "keyword": "debug toolbar 调试",
-      "description": "使用 Django Debug Toolbar 进行调试",
+      "description": "使用 Django Debug Toolbar 进行调试。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "python manage.py runserver",
         "extensions": [

@@ -1,0 +1,45 @@
+{
+  "module": "Docker login",
+  "version": "2.0",
+  "description": "Docker 镜像仓库登录，涵盖Docker login的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Docker login/",
+      "name": "docker login 登录仓库",
+      "keyword": "docker login 登录",
+      "description": "登录 Docker 仓库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker login %{仓库}%",
+        "extensions": [],
+        "params": {
+          "仓库": {
+            "type": "string",
+            "required": true,
+            "description": "仓库地址",
+            "example": "docker.io",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Docker login/",
+      "name": "docker logout 登出",
+      "keyword": "docker logout 登出",
+      "description": "登出 Docker 仓库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker logout %{仓库}%",
+        "extensions": [],
+        "params": {
+          "仓库": {
+            "type": "string",
+            "required": true,
+            "description": "仓库",
+            "example": "docker.io",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

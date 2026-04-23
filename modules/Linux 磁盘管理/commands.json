@@ -1,0 +1,42 @@
+{
+  "module": "Linux 磁盘管理",
+  "version": "2.0",
+  "description": "Linux 磁盘管理命令集合，涵盖Linux 磁盘管理的常用操作和最佳实践",
+  "commands": [
+    {
+      "cmd": "df -h",
+      "extensions": [
+        {
+          "name": "查看 inode",
+          "cmd": "df -i",
+          "params": {},
+          "keyword": "df inode"
+        },
+        {
+          "name": "指定文件系统",
+          "cmd": "df -h -t %{类型}%",
+          "params": {
+            "类型": {
+              "type": "string",
+              "required": true,
+              "description": "文件系统类型",
+              "example": "ext4",
+              "notes": "必填"
+            }
+          },
+          "keyword": "df type"
+        }
+      ],
+      "params": {},
+      "dirPath": "/Linux 磁盘管理/",
+      "name": "Linux 磁盘管理 命令",
+      "keyword": "Linux 磁盘管理 命令",
+      "description": "Linux 磁盘管理 命令的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

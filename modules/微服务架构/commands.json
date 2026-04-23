@@ -7,7 +7,7 @@
       "dirPath": "/微服务架构/",
       "name": "Consul Agent 启动",
       "keyword": "consul agent",
-      "description": "启动 Consul Agent 开发模式",
+      "description": "启动 Consul Agent 开发模式。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "consul agent -dev -ui",
         "extensions": [
@@ -27,7 +27,13 @@
             "name": "加入已有集群",
             "cmd": "consul agent -retry-join=%{集群地址}%",
             "params": {
-              "集群地址": { "type": "string", "required": true, "description": "集群节点地址", "example": "192.168.1.10", "notes": "必填" }
+              "集群地址": {
+                "type": "string",
+                "required": true,
+                "description": "集群节点地址",
+                "example": "192.168.1.10",
+                "notes": "必填"
+              }
             },
             "keyword": "consul join"
           }
@@ -39,7 +45,7 @@
       "dirPath": "/微服务架构/",
       "name": "Consul Services 注册与查询",
       "keyword": "consul services",
-      "description": "服务注册到 Consul 并查询",
+      "description": "服务注册到 Consul 并查询。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "consul services register -name=%{服务名}% -address=%{地址}% -port=%{端口}%",
         "extensions": [
@@ -53,7 +59,13 @@
             "name": "查看特定服务实例",
             "cmd": "curl localhost:8500/v1/health/service/%{服务名}%",
             "params": {
-              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "payment", "notes": "必填" }
+              "服务名": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "payment",
+                "notes": "必填"
+              }
             },
             "keyword": "consul health service"
           },
@@ -61,15 +73,39 @@
             "name": " deregister 服务",
             "cmd": "consul services deregister -id=%{服务ID}%",
             "params": {
-              "服务ID": { "type": "string", "required": true, "description": "服务 ID", "example": "payment-001", "notes": "必填" }
+              "服务ID": {
+                "type": "string",
+                "required": true,
+                "description": "服务 ID",
+                "example": "payment-001",
+                "notes": "必填"
+              }
             },
             "keyword": "consul deregister"
           }
         ],
         "params": {
-          "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "payment", "notes": "必填" },
-          "地址": { "type": "string", "required": true, "description": "服务地址", "example": "127.0.0.1", "notes": "必填" },
-          "端口": { "type": "string", "required": true, "description": "服务端口", "example": "8080", "notes": "必填" }
+          "服务名": {
+            "type": "string",
+            "required": true,
+            "description": "服务名称",
+            "example": "payment",
+            "notes": "必填"
+          },
+          "地址": {
+            "type": "string",
+            "required": true,
+            "description": "服务地址",
+            "example": "127.0.0.1",
+            "notes": "必填"
+          },
+          "端口": {
+            "type": "string",
+            "required": true,
+            "description": "服务端口",
+            "example": "8080",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -77,7 +113,7 @@
       "dirPath": "/微服务架构/",
       "name": "etcdctl 集群健康检查",
       "keyword": "etcdctl cluster-health",
-      "description": "检查 etcd 集群健康状态",
+      "description": "检查 etcd 集群健康状态。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "etcdctl cluster-health",
         "extensions": [
@@ -91,8 +127,20 @@
             "name": "写入 Key-Value",
             "cmd": "etcdctl put %{key}% %{value}%",
             "params": {
-              "key": { "type": "string", "required": true, "description": "键名", "example": "config/service", "notes": "必填" },
-              "value": { "type": "string", "required": true, "description": "值", "example": "localhost:8080", "notes": "必填" }
+              "key": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "config/service",
+                "notes": "必填"
+              },
+              "value": {
+                "type": "string",
+                "required": true,
+                "description": "值",
+                "example": "localhost:8080",
+                "notes": "必填"
+              }
             },
             "keyword": "etcdctl put"
           },
@@ -100,7 +148,13 @@
             "name": "读取 Key",
             "cmd": "etcdctl get %{key}%",
             "params": {
-              "key": { "type": "string", "required": true, "description": "键名", "example": "config/service", "notes": "必填" }
+              "key": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "config/service",
+                "notes": "必填"
+              }
             },
             "keyword": "etcdctl get"
           },
@@ -108,7 +162,13 @@
             "name": "监听 Key 变化",
             "cmd": "etcdctl watch %{key}%",
             "params": {
-              "key": { "type": "string", "required": true, "description": "键名", "example": "config/service", "notes": "必填" }
+              "key": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "config/service",
+                "notes": "必填"
+              }
             },
             "keyword": "etcdctl watch"
           }
@@ -150,7 +210,7 @@
       "dirPath": "/微服务架构/",
       "name": "Nacos 服务注册",
       "keyword": "nacos service register",
-      "description": "Nacos 服务注册与发现操作",
+      "description": "Nacos 服务注册与发现操作。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "curl -X POST 'http://%{NACOS_HOST}%:8848/nacos/v1/ns/instance' \\\n  -d 'serviceName=%{服务名}%' \\\n  -d 'ip=%{IP地址}%' \\\n  -d 'port=%{端口}%'",
         "extensions": [
@@ -158,8 +218,20 @@
             "name": "查询服务实例列表",
             "cmd": "curl 'http://%{NACOS_HOST}%:8848/nacos/v1/ns/instance/list?serviceName=%{服务名}%'",
             "params": {
-              "NACOS_HOST": { "type": "string", "required": false, "description": "Nacos 服务器地址", "example": "localhost", "notes": "默认 localhost" },
-              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "order-service", "notes": "必填" }
+              "NACOS_HOST": {
+                "type": "string",
+                "required": false,
+                "description": "Nacos 服务器地址",
+                "example": "localhost",
+                "notes": "默认 localhost"
+              },
+              "服务名": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "order-service",
+                "notes": "必填"
+              }
             },
             "keyword": "nacos query service"
           },
@@ -167,10 +239,34 @@
             "name": "发布配置",
             "cmd": "curl -X POST 'http://%{NACOS_HOST}%:8848/nacos/v1/cs/configs' \\\n  -d 'dataId=%{配置ID}%' \\\n  -d 'group=%{分组}%' \\\n  -d 'content=%{内容}%'",
             "params": {
-              "NACOS_HOST": { "type": "string", "required": false, "description": "Nacos 服务器地址", "example": "localhost", "notes": "默认 localhost" },
-              "配置ID": { "type": "string", "required": true, "description": "配置 ID", "example": "application.yml", "notes": "必填" },
-              "分组": { "type": "string", "required": false, "description": "配置分组", "example": "DEFAULT_GROUP", "notes": "默认 DEFAULT_GROUP" },
-              "内容": { "type": "string", "required": true, "description": "配置内容", "example": "server.port=8080", "notes": "必填" }
+              "NACOS_HOST": {
+                "type": "string",
+                "required": false,
+                "description": "Nacos 服务器地址",
+                "example": "localhost",
+                "notes": "默认 localhost"
+              },
+              "配置ID": {
+                "type": "string",
+                "required": true,
+                "description": "配置 ID",
+                "example": "application.yml",
+                "notes": "必填"
+              },
+              "分组": {
+                "type": "string",
+                "required": false,
+                "description": "配置分组",
+                "example": "DEFAULT_GROUP",
+                "notes": "默认 DEFAULT_GROUP"
+              },
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "配置内容",
+                "example": "server.port=8080",
+                "notes": "必填"
+              }
             },
             "keyword": "nacos publish config"
           },
@@ -178,18 +274,60 @@
             "name": "获取配置",
             "cmd": "curl 'http://%{NACOS_HOST}%:8848/nacos/v1/cs/configs?dataId=%{配置ID}%&group=%{分组}%'",
             "params": {
-              "NACOS_HOST": { "type": "string", "required": false, "description": "Nacos 服务器地址", "example": "localhost", "notes": "默认 localhost" },
-              "配置ID": { "type": "string", "required": true, "description": "配置 ID", "example": "application.yml", "notes": "必填" },
-              "分组": { "type": "string", "required": false, "description": "配置分组", "example": "DEFAULT_GROUP", "notes": "默认 DEFAULT_GROUP" }
+              "NACOS_HOST": {
+                "type": "string",
+                "required": false,
+                "description": "Nacos 服务器地址",
+                "example": "localhost",
+                "notes": "默认 localhost"
+              },
+              "配置ID": {
+                "type": "string",
+                "required": true,
+                "description": "配置 ID",
+                "example": "application.yml",
+                "notes": "必填"
+              },
+              "分组": {
+                "type": "string",
+                "required": false,
+                "description": "配置分组",
+                "example": "DEFAULT_GROUP",
+                "notes": "默认 DEFAULT_GROUP"
+              }
             },
             "keyword": "nacos get config"
           }
         ],
         "params": {
-          "NACOS_HOST": { "type": "string", "required": false, "description": "Nacos 服务器地址", "example": "localhost", "notes": "默认 localhost" },
-          "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "order-service", "notes": "必填" },
-          "IP地址": { "type": "string", "required": true, "description": "服务 IP 地址", "example": "192.168.1.100", "notes": "必填" },
-          "端口": { "type": "string", "required": true, "description": "服务端口", "example": "8080", "notes": "必填" }
+          "NACOS_HOST": {
+            "type": "string",
+            "required": false,
+            "description": "Nacos 服务器地址",
+            "example": "localhost",
+            "notes": "默认 localhost"
+          },
+          "服务名": {
+            "type": "string",
+            "required": true,
+            "description": "服务名称",
+            "example": "order-service",
+            "notes": "必填"
+          },
+          "IP地址": {
+            "type": "string",
+            "required": true,
+            "description": "服务 IP 地址",
+            "example": "192.168.1.100",
+            "notes": "必填"
+          },
+          "端口": {
+            "type": "string",
+            "required": true,
+            "description": "服务端口",
+            "example": "8080",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -197,7 +335,7 @@
       "dirPath": "/微服务架构/",
       "name": "Kong API Gateway 启动管理",
       "keyword": "kong start",
-      "description": "Kong API 网关启动与管理命令",
+      "description": "Kong API 网关启动与管理命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kong start",
         "extensions": [
@@ -233,7 +371,7 @@
       "dirPath": "/微服务架构/",
       "name": "Kong Route 与 Service 管理",
       "keyword": "kong route service",
-      "description": "Kong 路由与服务配置",
+      "description": "Kong 路由与服务配置。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "# 创建 Upstream（上游服务）\ncurl -i -X POST http://localhost:8001/upstreams \\\n  -d 'name=%{上游名}%' \\\n  -d 'healthchecks.active.url=http://%{上游名}%/health'\n\n# 创建 Target（后端实例）\ncurl -X POST http://localhost:8001/upstreams/%{上游名}%/targets \\\n  -d 'target=%{目标地址}%:%{目标端口}%'",
         "extensions": [
@@ -241,8 +379,20 @@
             "name": "创建 Service",
             "cmd": "curl -i -X POST http://localhost:8001/services \\\n  -d 'name=%{服务名}%' \\\n  -d 'url=http://%{上游名}%/'",
             "params": {
-              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "order-service", "notes": "必填" },
-              "上游名": { "type": "string", "required": true, "description": "上游名称", "example": "order-upstream", "notes": "必填" }
+              "服务名": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "order-service",
+                "notes": "必填"
+              },
+              "上游名": {
+                "type": "string",
+                "required": true,
+                "description": "上游名称",
+                "example": "order-upstream",
+                "notes": "必填"
+              }
             },
             "keyword": "kong create service"
           },
@@ -250,9 +400,27 @@
             "name": "创建 Route",
             "cmd": "curl -i -X POST http://localhost:8001/routes \\\n  -d 'name=%{路由名}%' \\\n  -d 'service.name=%{服务名}%' \\\n  -d 'paths[]=/%{路径}%'",
             "params": {
-              "路由名": { "type": "string", "required": true, "description": "路由名称", "example": "order-route", "notes": "必填" },
-              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "order-service", "notes": "必填" },
-              "路径": { "type": "string", "required": true, "description": "路由路径", "example": "api/orders", "notes": "必填" }
+              "路由名": {
+                "type": "string",
+                "required": true,
+                "description": "路由名称",
+                "example": "order-route",
+                "notes": "必填"
+              },
+              "服务名": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "order-service",
+                "notes": "必填"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "路由路径",
+                "example": "api/orders",
+                "notes": "必填"
+              }
             },
             "keyword": "kong create route"
           },
@@ -260,15 +428,39 @@
             "name": "启用限流插件",
             "cmd": "curl -X POST http://localhost:8001/services/%{服务名}%/plugins \\\n  -d 'name=rate-limiting' \\\n  -d 'config.minute=100'",
             "params": {
-              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "order-service", "notes": "必填" }
+              "服务名": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "order-service",
+                "notes": "必填"
+              }
             },
             "keyword": "kong rate limiting"
           }
         ],
         "params": {
-          "上游名": { "type": "string", "required": true, "description": "上游服务名称", "example": "order-upstream", "notes": "必填" },
-          "目标地址": { "type": "string", "required": true, "description": "后端实例地址", "example": "192.168.1.101", "notes": "必填" },
-          "目标端口": { "type": "string", "required": true, "description": "后端实例端口", "example": "8080", "notes": "必填" }
+          "上游名": {
+            "type": "string",
+            "required": true,
+            "description": "上游服务名称",
+            "example": "order-upstream",
+            "notes": "必填"
+          },
+          "目标地址": {
+            "type": "string",
+            "required": true,
+            "description": "后端实例地址",
+            "example": "192.168.1.101",
+            "notes": "必填"
+          },
+          "目标端口": {
+            "type": "string",
+            "required": true,
+            "description": "后端实例端口",
+            "example": "8080",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -276,7 +468,7 @@
       "dirPath": "/微服务架构/",
       "name": "Nginx 网关配置",
       "keyword": "nginx upstream",
-      "description": "Nginx upstream 负载均衡与网关配置",
+      "description": "Nginx upstream 负载均衡与网关配置。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "upstream %{上游名}% {\n    server %{后端1}% weight=5;\n    server %{后端2}% weight=5;\n    keepalive 32;\n}\n\nserver {\n    listen 80;\n    server_name %{域名}%;\n\n    location / {\n        proxy_pass http://%{上游名}%;\n        proxy_set_header Host $host;\n        proxy_set_header X-Real-IP $remote_addr;\n        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n    }\n}",
         "extensions": [
@@ -300,10 +492,34 @@
           }
         ],
         "params": {
-          "上游名": { "type": "string", "required": true, "description": "上游服务名称", "example": "order_backend", "notes": "必填" },
-          "后端1": { "type": "string", "required": true, "description": "后端服务器地址", "example": "192.168.1.101:8080", "notes": "必填" },
-          "后端2": { "type": "string", "required": true, "description": "后端服务器地址", "example": "192.168.1.102:8080", "notes": "必填" },
-          "域名": { "type": "string", "required": true, "description": "服务域名", "example": "api.example.com", "notes": "必填" }
+          "上游名": {
+            "type": "string",
+            "required": true,
+            "description": "上游服务名称",
+            "example": "order_backend",
+            "notes": "必填"
+          },
+          "后端1": {
+            "type": "string",
+            "required": true,
+            "description": "后端服务器地址",
+            "example": "192.168.1.101:8080",
+            "notes": "必填"
+          },
+          "后端2": {
+            "type": "string",
+            "required": true,
+            "description": "后端服务器地址",
+            "example": "192.168.1.102:8080",
+            "notes": "必填"
+          },
+          "域名": {
+            "type": "string",
+            "required": true,
+            "description": "服务域名",
+            "example": "api.example.com",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -319,9 +535,27 @@
             "name": "创建资源",
             "cmd": "aws apigateway create-resource --rest-api-id %{API_ID}% --parent-id %{父资源ID}% --path-part '%{路径}%'",
             "params": {
-              "API_ID": { "type": "string", "required": true, "description": "API ID", "example": "abc123def", "notes": "必填" },
-              "父资源ID": { "type": "string", "required": true, "description": "父资源 ID", "example": "abc123", "notes": "必填" },
-              "路径": { "type": "string", "required": true, "description": "资源路径", "example": "orders", "notes": "必填" }
+              "API_ID": {
+                "type": "string",
+                "required": true,
+                "description": "API ID",
+                "example": "abc123def",
+                "notes": "必填"
+              },
+              "父资源ID": {
+                "type": "string",
+                "required": true,
+                "description": "父资源 ID",
+                "example": "abc123",
+                "notes": "必填"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "资源路径",
+                "example": "orders",
+                "notes": "必填"
+              }
             },
             "keyword": "aws apigateway create-resource"
           },
@@ -329,8 +563,20 @@
             "name": "创建方法",
             "cmd": "aws apigateway put-method --rest-api-id %{API_ID}% --resource-id %{资源ID}% --http-method GET --authorization-type NONE",
             "params": {
-              "API_ID": { "type": "string", "required": true, "description": "API ID", "example": "abc123def", "notes": "必填" },
-              "资源ID": { "type": "string", "required": true, "description": "资源 ID", "example": "xyz789", "notes": "必填" }
+              "API_ID": {
+                "type": "string",
+                "required": true,
+                "description": "API ID",
+                "example": "abc123def",
+                "notes": "必填"
+              },
+              "资源ID": {
+                "type": "string",
+                "required": true,
+                "description": "资源 ID",
+                "example": "xyz789",
+                "notes": "必填"
+              }
             },
             "keyword": "aws apigateway put-method"
           },
@@ -338,8 +584,20 @@
             "name": "部署 API",
             "cmd": "aws apigateway create-deployment --rest-api-id %{API_ID}% --stage-name '%{阶段名}%'",
             "params": {
-              "API_ID": { "type": "string", "required": true, "description": "API ID", "example": "abc123def", "notes": "必填" },
-              "阶段名": { "type": "string", "required": true, "description": "部署阶段名", "example": "prod", "notes": "必填" }
+              "API_ID": {
+                "type": "string",
+                "required": true,
+                "description": "API ID",
+                "example": "abc123def",
+                "notes": "必填"
+              },
+              "阶段名": {
+                "type": "string",
+                "required": true,
+                "description": "部署阶段名",
+                "example": "prod",
+                "notes": "必填"
+              }
             },
             "keyword": "aws apigateway deploy"
           },
@@ -347,13 +605,25 @@
             "name": "创建 Usage Plan",
             "cmd": "aws apigateway create-usage-plan --name '%{计划名}%' --throttle burstLimit=100 --throttle rateLimit=50",
             "params": {
-              "计划名": { "type": "string", "required": true, "description": "使用计划名称", "example": "basic-plan", "notes": "必填" }
+              "计划名": {
+                "type": "string",
+                "required": true,
+                "description": "使用计划名称",
+                "example": "basic-plan",
+                "notes": "必填"
+              }
             },
             "keyword": "aws apigateway usage plan"
           }
         ],
         "params": {
-          "API名称": { "type": "string", "required": true, "description": "API Gateway 名称", "example": "OrderServiceAPI", "notes": "必填" }
+          "API名称": {
+            "type": "string",
+            "required": true,
+            "description": "API Gateway 名称",
+            "example": "OrderServiceAPI",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -361,7 +631,7 @@
       "dirPath": "/微服务架构/",
       "name": "Istioctl 安装与配置",
       "keyword": "istioctl install",
-      "description": "Istio 安装与配置管理",
+      "description": "Istio 安装与配置管理。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "istioctl install --set profile=%{配置集}%",
         "extensions": [
@@ -381,8 +651,20 @@
             "name": "远程安装（不解压）",
             "cmd": "istioctl install --set profile=%{配置集}% --set values.global.proxy.hub=%{镜像仓库}%",
             "params": {
-              "配置集": { "type": "string", "required": true, "description": "Istio 配置集", "example": "default", "notes": "default/minimal/demo" },
-              "镜像仓库": { "type": "string", "required": false, "description": "代理镜像仓库", "example": "docker.io/istio", "notes": "可选" }
+              "配置集": {
+                "type": "string",
+                "required": true,
+                "description": "Istio 配置集",
+                "example": "default",
+                "notes": "default/minimal/demo"
+              },
+              "镜像仓库": {
+                "type": "string",
+                "required": false,
+                "description": "代理镜像仓库",
+                "example": "docker.io/istio",
+                "notes": "可选"
+              }
             },
             "keyword": "istioctl install remote"
           },
@@ -394,7 +676,13 @@
           }
         ],
         "params": {
-          "配置集": { "type": "string", "required": true, "description": "Istio 配置集", "example": "demo", "notes": "default/minimal/demo/remote" }
+          "配置集": {
+            "type": "string",
+            "required": true,
+            "description": "Istio 配置集",
+            "example": "demo",
+            "notes": "default/minimal/demo/remote"
+          }
         }
       }
     },
@@ -402,7 +690,7 @@
       "dirPath": "/微服务架构/",
       "name": "Istioctl 流量分析与诊断",
       "keyword": "istioctl analyze",
-      "description": "Istio 流量分析与配置诊断",
+      "description": "Istio 流量分析与配置诊断。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "istioctl analyze",
         "extensions": [
@@ -410,7 +698,13 @@
             "name": "分析特定命名空间",
             "cmd": "istioctl analyze -n %{命名空间}%",
             "params": {
-              "命名空间": { "type": "string", "required": true, "description": "Kubernetes 命名空间", "example": "istio-system", "notes": "必填" }
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "Kubernetes 命名空间",
+                "example": "istio-system",
+                "notes": "必填"
+              }
             },
             "keyword": "istioctl analyze ns"
           },
@@ -418,8 +712,20 @@
             "name": "查看 Envoy 配置",
             "cmd": "istioctl proxy-config cluster %{POD名}% -n %{命名空间}%",
             "params": {
-              "POD名": { "type": "string", "required": true, "description": "Pod 名称", "example": "order-abc123", "notes": "必填" },
-              "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "default", "notes": "必填" }
+              "POD名": {
+                "type": "string",
+                "required": true,
+                "description": "Pod 名称",
+                "example": "order-abc123",
+                "notes": "必填"
+              },
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间",
+                "example": "default",
+                "notes": "必填"
+              }
             },
             "keyword": "istioctl proxy-config cluster"
           },
@@ -427,8 +733,20 @@
             "name": "查看路由配置",
             "cmd": "istioctl proxy-config route %{POD名}% -n %{命名空间}%",
             "params": {
-              "POD名": { "type": "string", "required": true, "description": "Pod 名称", "example": "order-abc123", "notes": "必填" },
-              "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "default", "notes": "必填" }
+              "POD名": {
+                "type": "string",
+                "required": true,
+                "description": "Pod 名称",
+                "example": "order-abc123",
+                "notes": "必填"
+              },
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间",
+                "example": "default",
+                "notes": "必填"
+              }
             },
             "keyword": "istioctl proxy-config route"
           },
@@ -436,8 +754,20 @@
             "name": "查看 Pod 状态",
             "cmd": "istioctl ps %{POD名}% -n %{命名空间}%",
             "params": {
-              "POD名": { "type": "string", "required": true, "description": "Pod 名称", "example": "order-abc123", "notes": "必填" },
-              "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "default", "notes": "必填" }
+              "POD名": {
+                "type": "string",
+                "required": true,
+                "description": "Pod 名称",
+                "example": "order-abc123",
+                "notes": "必填"
+              },
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间",
+                "example": "default",
+                "notes": "必填"
+              }
             },
             "keyword": "istioctl ps"
           },
@@ -445,8 +775,20 @@
             "name": "查看服务网格拓扑",
             "cmd": "istioctl x describe service %{服务名}% -n %{命名空间}%",
             "params": {
-              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "order-service", "notes": "必填" },
-              "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "default", "notes": "必填" }
+              "服务名": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "order-service",
+                "notes": "必填"
+              },
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间",
+                "example": "default",
+                "notes": "必填"
+              }
             },
             "keyword": "istioctl describe service"
           }
@@ -466,8 +808,20 @@
             "name": "超时配置",
             "cmd": "apiVersion: networking.istio.io/v1alpha3\nkind: VirtualService\nmetadata:\n  name: %{服务名}%-vs\nspec:\n  hosts:\n  - %{服务名}%\n  http:\n  - route:\n    - destination:\n        host: %{服务名}%\n    timeout: %{超时时间}%s",
             "params": {
-              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "order-service", "notes": "必填" },
-              "超时时间": { "type": "string", "required": true, "description": "超时时间（秒）", "example": "5", "notes": "必填" }
+              "服务名": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "order-service",
+                "notes": "必填"
+              },
+              "超时时间": {
+                "type": "string",
+                "required": true,
+                "description": "超时时间（秒）",
+                "example": "5",
+                "notes": "必填"
+              }
             },
             "keyword": "istio virtualservice timeout"
           },
@@ -475,15 +829,39 @@
             "name": "熔断配置（DestinationRule）",
             "cmd": "apiVersion: networking.istio.io/v1alpha3\nkind: DestinationRule\nmetadata:\n  name: %{服务名}%-dr\nspec:\n  host: %{服务名}%\n  trafficPolicy:\n    outlierDetection:\n      consecutive5xxErrors: 5\n      interval: 30s\n      baseEjectionTime: 30s",
             "params": {
-              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "order-service", "notes": "必填" }
+              "服务名": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "order-service",
+                "notes": "必填"
+              }
             },
             "keyword": "istio destinationrule circuit breaker"
           }
         ],
         "params": {
-          "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "order-service", "notes": "必填" },
-          "权重1": { "type": "string", "required": true, "description": "版本1权重", "example": "90", "notes": "必填" },
-          "权重2": { "type": "string", "required": true, "description": "版本2权重", "example": "10", "notes": "必填" }
+          "服务名": {
+            "type": "string",
+            "required": true,
+            "description": "服务名称",
+            "example": "order-service",
+            "notes": "必填"
+          },
+          "权重1": {
+            "type": "string",
+            "required": true,
+            "description": "版本1权重",
+            "example": "90",
+            "notes": "必填"
+          },
+          "权重2": {
+            "type": "string",
+            "required": true,
+            "description": "版本2权重",
+            "example": "10",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -491,7 +869,7 @@
       "dirPath": "/微服务架构/",
       "name": "Linkerd 安装与管理",
       "keyword": "linkerd install",
-      "description": "Linkerd 服务网格安装与运维",
+      "description": "Linkerd 服务网格安装与运维。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "linkerd install | kubectl apply -f -",
         "extensions": [
@@ -505,7 +883,13 @@
             "name": "将命名空间加入网格",
             "cmd": "linkerd inject %{命名空间}% | kubectl apply -f -",
             "params": {
-              "命名空间": { "type": "string", "required": true, "description": "Kubernetes 命名空间", "example": "default", "notes": "必填" }
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "Kubernetes 命名空间",
+                "example": "default",
+                "notes": "必填"
+              }
             },
             "keyword": "linkerd inject"
           },
@@ -519,8 +903,20 @@
             "name": "查看路由 stats",
             "cmd": "linkerd routes svc/%{服务名}% --to svc/%{目标服务}%",
             "params": {
-              "服务名": { "type": "string", "required": true, "description": "源服务名称", "example": "web", "notes": "必填" },
-              "目标服务": { "type": "string", "required": true, "description": "目标服务名称", "example": "api", "notes": "必填" }
+              "服务名": {
+                "type": "string",
+                "required": true,
+                "description": "源服务名称",
+                "example": "web",
+                "notes": "必填"
+              },
+              "目标服务": {
+                "type": "string",
+                "required": true,
+                "description": "目标服务名称",
+                "example": "api",
+                "notes": "必填"
+              }
             },
             "keyword": "linkerd routes"
           },
@@ -538,7 +934,7 @@
       "dirPath": "/微服务架构/",
       "name": "Envoy 代理配置与启动",
       "keyword": "envoy -c",
-      "description": "Envoy 代理启动与配置管理",
+      "description": "Envoy 代理启动与配置管理。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "envoy -c %{配置文件}% --service-cluster %{集群名}% --service-node %{节点名}%",
         "extensions": [
@@ -546,7 +942,13 @@
             "name": "热重载配置",
             "cmd": "curl -X POST http://%{ADMIN地址}%:9901/quitquitquit",
             "params": {
-              "ADMIN地址": { "type": "string", "required": true, "description": "Envoy 管理地址", "example": "localhost", "notes": "必填" }
+              "ADMIN地址": {
+                "type": "string",
+                "required": true,
+                "description": "Envoy 管理地址",
+                "example": "localhost",
+                "notes": "必填"
+              }
             },
             "keyword": "envoy quit"
           },
@@ -554,7 +956,13 @@
             "name": "查看集群配置",
             "cmd": "curl http://%{ADMIN地址}%:9901/config_dump | jq '.configs[] | select(.[\"@type\"]==\"type.googleapis.com/envoy.config.cluster.v3.Cluster\")'",
             "params": {
-              "ADMIN地址": { "type": "string", "required": true, "description": "Envoy 管理地址", "example": "localhost", "notes": "必填" }
+              "ADMIN地址": {
+                "type": "string",
+                "required": true,
+                "description": "Envoy 管理地址",
+                "example": "localhost",
+                "notes": "必填"
+              }
             },
             "keyword": "envoy config dump cluster"
           },
@@ -562,15 +970,39 @@
             "name": "更新日志等级",
             "cmd": "curl -X POST http://%{ADMIN地址}%:9901/logging?level=debug",
             "params": {
-              "ADMIN地址": { "type": "string", "required": true, "description": "Envoy 管理地址", "example": "localhost", "notes": "必填" }
+              "ADMIN地址": {
+                "type": "string",
+                "required": true,
+                "description": "Envoy 管理地址",
+                "example": "localhost",
+                "notes": "必填"
+              }
             },
             "keyword": "envoy logging"
           }
         ],
         "params": {
-          "配置文件": { "type": "string", "required": true, "description": "Envoy 配置文件路径", "example": "/etc/envoy/envoy.yaml", "notes": "必填" },
-          "集群名": { "type": "string", "required": true, "description": "服务集群名称", "example": "order-cluster", "notes": "必填" },
-          "节点名": { "type": "string", "required": true, "description": "服务节点名称", "example": "order-node-1", "notes": "必填" }
+          "配置文件": {
+            "type": "string",
+            "required": true,
+            "description": "Envoy 配置文件路径",
+            "example": "/etc/envoy/envoy.yaml",
+            "notes": "必填"
+          },
+          "集群名": {
+            "type": "string",
+            "required": true,
+            "description": "服务集群名称",
+            "example": "order-cluster",
+            "notes": "必填"
+          },
+          "节点名": {
+            "type": "string",
+            "required": true,
+            "description": "服务节点名称",
+            "example": "order-node-1",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -578,7 +1010,7 @@
       "dirPath": "/微服务架构/",
       "name": "Jaegertracing 追踪查询",
       "keyword": "jaeger query",
-      "description": "Jaeger 分布式追踪查询与管理",
+      "description": "Jaeger 分布式追踪查询与管理。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "# 启动 Jaeger Query UI\njaeger-ui --query.ui-archive=http://localhost:14268",
         "extensions": [
@@ -592,7 +1024,13 @@
             "name": "查看 trace（命令行）",
             "cmd": "curl 'http://localhost:16686/api/traces/%{TRACE_ID}%' | jq .",
             "params": {
-              "TRACE_ID": { "type": "string", "required": true, "description": "Trace ID", "example": "abc123def456", "notes": "必填" }
+              "TRACE_ID": {
+                "type": "string",
+                "required": true,
+                "description": "Trace ID",
+                "example": "abc123def456",
+                "notes": "必填"
+              }
             },
             "keyword": "jaeger trace curl"
           },
@@ -610,7 +1048,7 @@
       "dirPath": "/微服务架构/",
       "name": "Zipkin 分布式追踪",
       "keyword": "zipkin server",
-      "description": "Zipkin 追踪服务器启动与查询",
+      "description": "Zipkin 追踪服务器启动与查询。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "# Docker 启动 Zipkin\ndocker run -d -p 9411:9411 openzipkin/zipkin",
         "extensions": [
@@ -624,8 +1062,20 @@
             "name": "查询依赖关系",
             "cmd": "curl 'http://localhost:9411/api/v2/dependencies?startTime=%{开始时间}%&endTime=%{结束时间}%'",
             "params": {
-              "开始时间": { "type": "string", "required": true, "description": "开始时间（毫秒）", "example": "1609459200000", "notes": "必填" },
-              "结束时间": { "type": "string", "required": true, "description": "结束时间（毫秒）", "example": "1609545600000", "notes": "必填" }
+              "开始时间": {
+                "type": "string",
+                "required": true,
+                "description": "开始时间（毫秒）",
+                "example": "1609459200000",
+                "notes": "必填"
+              },
+              "结束时间": {
+                "type": "string",
+                "required": true,
+                "description": "结束时间（毫秒）",
+                "example": "1609545600000",
+                "notes": "必填"
+              }
             },
             "keyword": "zipkin dependencies"
           },
@@ -633,7 +1083,13 @@
             "name": "查询 Span",
             "cmd": "curl 'http://localhost:9411/api/v2/spans?serviceName=%{服务名}%'",
             "params": {
-              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "order-service", "notes": "必填" }
+              "服务名": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "order-service",
+                "notes": "必填"
+              }
             },
             "keyword": "zipkin spans"
           }
@@ -645,7 +1101,7 @@
       "dirPath": "/微服务架构/",
       "name": "OpenTelemetry Collector 部署",
       "keyword": "otelcol start",
-      "description": "OpenTelemetry Collector 启动与配置",
+      "description": "OpenTelemetry Collector 启动与配置。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "otelcol --config=%{配置文件}%",
         "extensions": [
@@ -659,7 +1115,13 @@
             "name": "验证配置",
             "cmd": "otelcol --config=%{配置文件}% --dry-run",
             "params": {
-              "配置文件": { "type": "string", "required": true, "description": "配置文件路径", "example": "./config.yaml", "notes": "必填" }
+              "配置文件": {
+                "type": "string",
+                "required": true,
+                "description": "配置文件路径",
+                "example": "./config.yaml",
+                "notes": "必填"
+              }
             },
             "keyword": "otelcol dry run"
           },
@@ -671,7 +1133,13 @@
           }
         ],
         "params": {
-          "配置文件": { "type": "string", "required": true, "description": "Collector 配置文件路径", "example": "./config.yaml", "notes": "必填" }
+          "配置文件": {
+            "type": "string",
+            "required": true,
+            "description": "Collector 配置文件路径",
+            "example": "./config.yaml",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -679,7 +1147,7 @@
       "dirPath": "/微服务架构/",
       "name": "Resilience4j 熔断器配置",
       "keyword": "resilience4j circuitbreaker",
-      "description": "Resilience4j 熔断器 Java 配置示例",
+      "description": "Resilience4j 熔断器 Java 配置示例。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "CircuitBreakerRegistry registry = CircuitBreakerRegistry.of(\n    CircuitBreakerConfig.custom()\n        .failureRateThreshold(50)\n        .slidingWindowSize(10)\n        .minimumNumberOfCalls(5)\n        .waitDurationInOpenState(Duration.ofSeconds(30))\n        .permittedNumberOfCallsInHalfOpenState(3)\n        .build()\n);\nCircuitBreaker circuitBreaker = registry.circuitBreaker(\"orderService\");",
         "extensions": [
@@ -709,7 +1177,7 @@
       "dirPath": "/微服务架构/",
       "name": "Hystrix 命令行与监控",
       "keyword": "hystrix stream",
-      "description": "Hystrix 断路器监控流与命令",
+      "description": "Hystrix 断路器监控流与命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "# Hystrix Stream 端点（Spring Boot Actuator）\ncurl http://localhost:actuator/hystrix.stream",
         "extensions": [
@@ -723,7 +1191,13 @@
             "name": "Turbine Stream 聚合",
             "cmd": "java -jar turbine-*.jar --spring.cloud.turbine.stream-config=%{配置}%",
             "params": {
-              "配置": { "type": "string", "required": true, "description": "Turbine 配置", "example": "{...}", "notes": "必填" }
+              "配置": {
+                "type": "string",
+                "required": true,
+                "description": "Turbine 配置",
+                "example": "{...}",
+                "notes": "必填"
+              }
             },
             "keyword": "turbine stream"
           },
@@ -741,7 +1215,7 @@
       "dirPath": "/微服务架构/",
       "name": "Prometheus 熔断器指标",
       "keyword": "prometheus circuit breaker metrics",
-      "description": "通过 Prometheus 监控熔断器指标",
+      "description": "通过 Prometheus 监控熔断器指标。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "# 查看熔断器状态指标（Resilience4j Prometheus）\ncurl http://localhost:8080/actuator/prometheus | grep circuitbreaker",
         "extensions": [
@@ -755,7 +1229,13 @@
             "name": "查询熔断器熔断次数",
             "cmd": "promtool query instant 'resilience4j_circuitbreaker_calls_total{state=\"closed\",name=\"%{服务名}%\"}'",
             "params": {
-              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "order-service", "notes": "必填" }
+              "服务名": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "order-service",
+                "notes": "必填"
+              }
             },
             "keyword": "prometheus query circuitbreaker"
           },
@@ -773,7 +1253,7 @@
       "dirPath": "/微服务架构/",
       "name": "HAProxy 负载均衡配置",
       "keyword": "haproxy.cfg",
-      "description": "HAProxy 负载均衡器完整配置",
+      "description": "HAProxy 负载均衡器完整配置。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "global\n    log localhost local0\n    maxconn 4096\n    user haproxy\n    group haproxy\n\ndefaults\n    log global\n    mode http\n    option httplog\n    timeout connect 5000ms\n    timeout client 50000ms\n    timeout server 50000ms\n\nfrontend http_front\n    bind *:80\n    default_backend web_back\n\nbackend web_back\n    balance roundrobin\n    option httpchk GET /health\n    server web1 %{后端1}% check inter 2000 rise 2 fall 3\n    server web2 %{后端2}% check inter 2000 rise 2 fall 3",
         "extensions": [
@@ -787,8 +1267,20 @@
             "name": "健康检查与权重",
             "cmd": "server web1 %{后端1}% weight %{权重}% check",
             "params": {
-              "后端1": { "type": "string", "required": true, "description": "后端地址", "example": "192.168.1.101:8080", "notes": "必填" },
-              "权重": { "type": "string", "required": true, "description": "权重值", "example": "100", "notes": "必填" }
+              "后端1": {
+                "type": "string",
+                "required": true,
+                "description": "后端地址",
+                "example": "192.168.1.101:8080",
+                "notes": "必填"
+              },
+              "权重": {
+                "type": "string",
+                "required": true,
+                "description": "权重值",
+                "example": "100",
+                "notes": "必填"
+              }
             },
             "keyword": "haproxy weight"
           },
@@ -806,8 +1298,20 @@
           }
         ],
         "params": {
-          "后端1": { "type": "string", "required": true, "description": "后端服务器地址", "example": "192.168.1.101:8080", "notes": "必填" },
-          "后端2": { "type": "string", "required": true, "description": "后端服务器地址", "example": "192.168.1.102:8080", "notes": "必填" }
+          "后端1": {
+            "type": "string",
+            "required": true,
+            "description": "后端服务器地址",
+            "example": "192.168.1.101:8080",
+            "notes": "必填"
+          },
+          "后端2": {
+            "type": "string",
+            "required": true,
+            "description": "后端服务器地址",
+            "example": "192.168.1.102:8080",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -815,7 +1319,7 @@
       "dirPath": "/微服务架构/",
       "name": "Traefik 反向代理与动态配置",
       "keyword": "traefik",
-      "description": "Traefik 云原生反向代理与动态服务发现",
+      "description": "Traefik 云原生反向代理与动态服务发现。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "# 启动 Traefik（Docker）\ndocker run -d -p 80:80 -p 8080:8080 \\\n  -v /var/run/docker.sock:/var/run/docker.sock \\\n  traefik:v2.10 --api.insecure=true --providers.docker",
         "extensions": [
@@ -851,7 +1355,7 @@
       "dirPath": "/微服务架构/",
       "name": "Envoy 动态服务发现负载均衡",
       "keyword": "envoy dynamic service discovery",
-      "description": "Envoy 动态服务发现与负载均衡配置",
+      "description": "Envoy 动态服务发现与负载均衡配置。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "static_resources:\n  listeners:\n  - address:\n      socket_address:\n        address: 0.0.0.0\n        port_value: 8080\n    filter_chains:\n    - filters:\n      - name: envoy.filters.network.http_connection_manager\n        config:\n          stat_prefix: ingress_http\n          route_config:\n            virtual_hosts:\n            - name: service\n              domains: ['*']\n              routes:\n              - match: { prefix: '/' }\n                route:\n                  cluster: order_cluster\n          http_filters:\n          - name: envoy.filters.http.router\n  clusters:\n  - name: order_cluster\n    type: EDS\n    lb_policy: ROUND_ROBIN\n    eds_cluster_config:\n      service_name: order-service",
         "extensions": [

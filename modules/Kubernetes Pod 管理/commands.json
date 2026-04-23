@@ -1,0 +1,48 @@
+{
+  "module": "Kubernetes Pod 管理",
+  "version": "2.0",
+  "description": "Kubernetes Pod 管理命令集合",
+  "commands": [
+    {
+      "cmd": "kubectl get pods",
+      "extensions": [
+        {
+          "name": "指定命名空间",
+          "cmd": "kubectl get pods -n %{命名空间}%",
+          "params": {
+            "命名空间": {
+              "type": "string",
+              "required": true,
+              "description": "命名空间",
+              "example": "default",
+              "notes": "必填"
+            }
+          },
+          "keyword": "kubectl get pods ns"
+        },
+        {
+          "name": "宽表格式",
+          "cmd": "kubectl get pods -o wide",
+          "params": {},
+          "keyword": "kubectl get pods wide"
+        },
+        {
+          "name": "查看标签",
+          "cmd": "kubectl get pods --show-labels",
+          "params": {},
+          "keyword": "kubectl get pods labels"
+        }
+      ],
+      "params": {},
+      "dirPath": "/Kubernetes Pod 管理/",
+      "name": "Kubernetes Pod 管理 命令",
+      "keyword": "Kubernetes Pod 管理 命令",
+      "description": "Kubernetes Pod 管理 命令的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

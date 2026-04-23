@@ -1,13 +1,13 @@
 {
   "module": "Go 命令",
   "version": "1.0",
-  "description": "Go 语言开发命令模块集合",
+  "description": "Go 语言开发命令模块集合，涵盖Go 命令的常用操作和最佳实践",
   "commands": [
     {
       "dirPath": "/Go 命令/",
       "name": "go mod init 初始化模块",
       "keyword": "go mod init 初始化",
-      "description": "初始化一个新的 Go 模块，创建 go.mod 文件",
+      "description": "初始化一个新的 Go 模块，创建 go.mod 文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "go mod init %{模块名}%",
         "extensions": [
@@ -15,8 +15,20 @@
             "name": "初始化 GitHub 模块",
             "cmd": "go mod init github.com/%{用户}%/%{项目}%",
             "params": {
-              "用户": { "type": "string", "required": true, "description": "GitHub 用户名", "example": "myuser", "notes": "" },
-              "项目": { "type": "string", "required": true, "description": "项目名称", "example": "myproject", "notes": "" }
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "GitHub 用户名",
+                "example": "myuser",
+                "notes": "可选"
+              },
+              "项目": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称",
+                "example": "myproject",
+                "notes": "可选"
+              }
             },
             "keyword": "go mod init github"
           },
@@ -24,13 +36,25 @@
             "name": "初始化本地模块",
             "cmd": "go mod init %{模块名}%",
             "params": {
-              "模块名": { "type": "string", "required": true, "description": "模块名称", "example": "mymodule", "notes": "常用" }
+              "模块名": {
+                "type": "string",
+                "required": true,
+                "description": "模块名称",
+                "example": "mymodule",
+                "notes": "常用"
+              }
             },
             "keyword": "go mod init 本地模块"
           }
         ],
         "params": {
-          "模块名": { "type": "string", "required": true, "description": "模块名称", "example": "github.com/user/project", "notes": "常用" }
+          "模块名": {
+            "type": "string",
+            "required": true,
+            "description": "模块名称",
+            "example": "github.com/user/project",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -38,7 +62,7 @@
       "dirPath": "/Go 命令/",
       "name": "go mod tidy 整理依赖",
       "keyword": "go mod tidy 整理依赖",
-      "description": "整理 go.mod，添加缺失依赖，移除未使用依赖",
+      "description": "整理 go.mod，添加缺失依赖，移除未使用依赖。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "go mod tidy",
         "extensions": [
@@ -52,7 +76,13 @@
             "name": "查看依赖原因",
             "cmd": "go mod why %{包名}%",
             "params": {
-              "包名": { "type": "string", "required": true, "description": "包名", "example": "github.com/gin-gonic/gin", "notes": "常用" }
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名",
+                "example": "github.com/gin-gonic/gin",
+                "notes": "常用"
+              }
             },
             "keyword": "go mod why 依赖原因"
           },
@@ -76,7 +106,7 @@
       "dirPath": "/Go 命令/",
       "name": "go build 编译程序",
       "keyword": "go build 编译",
-      "description": "编译 Go 程序或包",
+      "description": "编译 Go 程序或包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "go build %{文件或包}%",
         "extensions": [
@@ -84,8 +114,20 @@
             "name": "指定输出文件名",
             "cmd": "go build -o %{输出名称}% %{主文件}%",
             "params": {
-              "输出名称": { "type": "string", "required": true, "description": "输出可执行文件名称", "example": "myapp", "notes": "常用" },
-              "主文件": { "type": "string", "required": true, "description": "主程序文件", "example": "main.go", "notes": "常用" }
+              "输出名称": {
+                "type": "string",
+                "required": true,
+                "description": "输出可执行文件名称",
+                "example": "myapp",
+                "notes": "常用"
+              },
+              "主文件": {
+                "type": "string",
+                "required": true,
+                "description": "主程序文件",
+                "example": "main.go",
+                "notes": "常用"
+              }
             },
             "keyword": "go build 输出名称"
           },
@@ -99,7 +141,13 @@
             "name": "交叉编译 Linux amd64",
             "cmd": "GOOS=linux GOARCH=amd64 go build -o %{输出}%",
             "params": {
-              "输出": { "type": "string", "required": true, "description": "输出文件名称", "example": "app", "notes": "常用" }
+              "输出": {
+                "type": "string",
+                "required": true,
+                "description": "输出文件名称",
+                "example": "app",
+                "notes": "常用"
+              }
             },
             "keyword": "go build Linux 交叉编译"
           },
@@ -107,7 +155,13 @@
             "name": "交叉编译 Windows",
             "cmd": "GOOS=windows GOARCH=amd64 go build -o %{输出}%.exe",
             "params": {
-              "输出": { "type": "string", "required": true, "description": "输出文件名称", "example": "app", "notes": "常用" }
+              "输出": {
+                "type": "string",
+                "required": true,
+                "description": "输出文件名称",
+                "example": "app",
+                "notes": "常用"
+              }
             },
             "keyword": "go build Windows 交叉编译"
           },
@@ -115,14 +169,32 @@
             "name": "编译为共享库",
             "cmd": "go build -buildmode=c-shared -o %{输出}% %{文件}%",
             "params": {
-              "输出": { "type": "string", "required": true, "description": "输出文件名称", "example": "lib.so", "notes": "" },
-              "文件": { "type": "string", "required": true, "description": "主文件", "example": "main.go", "notes": "常用" }
+              "输出": {
+                "type": "string",
+                "required": true,
+                "description": "输出文件名称",
+                "example": "lib.so",
+                "notes": "可选"
+              },
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "主文件",
+                "example": "main.go",
+                "notes": "常用"
+              }
             },
             "keyword": "go build 共享库"
           }
         ],
         "params": {
-          "文件或包": { "type": "string", "required": false, "description": "文件或包路径", "example": "main.go", "notes": "常用" }
+          "文件或包": {
+            "type": "string",
+            "required": false,
+            "description": "文件或包路径",
+            "example": "main.go",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -130,7 +202,7 @@
       "dirPath": "/Go 命令/",
       "name": "go run 运行程序",
       "keyword": "go run 运行",
-      "description": "编译并运行 Go 程序",
+      "description": "编译并运行 Go 程序。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "go run %{文件}%",
         "extensions": [
@@ -144,14 +216,32 @@
             "name": "带参数运行",
             "cmd": "go run %{文件}% %{参数}%",
             "params": {
-              "文件": { "type": "string", "required": true, "description": "主文件", "example": "main.go", "notes": "常用" },
-              "参数": { "type": "string", "required": true, "description": "命令行参数", "example": "-config config.yaml", "notes": "常用" }
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "主文件",
+                "example": "main.go",
+                "notes": "常用"
+              },
+              "参数": {
+                "type": "string",
+                "required": true,
+                "description": "命令行参数",
+                "example": "-config config.yaml",
+                "notes": "常用"
+              }
             },
             "keyword": "go run 带参数"
           }
         ],
         "params": {
-          "文件": { "type": "string", "required": true, "description": "主程序文件", "example": "main.go", "notes": "常用" }
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "主程序文件",
+            "example": "main.go",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -159,7 +249,7 @@
       "dirPath": "/Go 命令/",
       "name": "go install 安装程序",
       "keyword": "go install 安装",
-      "description": "编译并安装可执行程序到 GOPATH/bin",
+      "description": "编译并安装可执行程序到 GOPATH/bin。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "go install %{包名}%@%{版本}%",
         "extensions": [
@@ -167,7 +257,13 @@
             "name": "安装最新版本",
             "cmd": "go install %{包名}%@latest",
             "params": {
-              "包名": { "type": "string", "required": true, "description": "包名", "example": "github.com/user/tool", "notes": "常用" }
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名",
+                "example": "github.com/user/tool",
+                "notes": "常用"
+              }
             },
             "keyword": "go install 最新版本"
           },
@@ -175,14 +271,32 @@
             "name": "安装 Go 工具",
             "cmd": "go install golang.org/x/tools/cmd/%{工具名}%@latest",
             "params": {
-              "工具名": { "type": "string", "required": true, "description": "工具名称", "example": "gopls", "notes": "常用" }
+              "工具名": {
+                "type": "string",
+                "required": true,
+                "description": "工具名称",
+                "example": "gopls",
+                "notes": "常用"
+              }
             },
             "keyword": "go install golang工具"
           }
         ],
         "params": {
-          "包名": { "type": "string", "required": true, "description": "包名", "example": "github.com/user/tool", "notes": "常用" },
-          "版本": { "type": "string", "required": false, "description": "版本号", "example": "v1.20.0", "notes": "" }
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "包名",
+            "example": "github.com/user/tool",
+            "notes": "常用"
+          },
+          "版本": {
+            "type": "string",
+            "required": false,
+            "description": "版本号",
+            "example": "v1.20.0",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -190,7 +304,7 @@
       "dirPath": "/Go 命令/",
       "name": "go get 获取依赖",
       "keyword": "go get 获取依赖",
-      "description": "获取并安装依赖包",
+      "description": "获取并安装依赖包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "go get %{包名}%",
         "extensions": [
@@ -198,8 +312,20 @@
             "name": "获取指定版本",
             "cmd": "go get %{包名}%@%{版本}%",
             "params": {
-              "包名": { "type": "string", "required": true, "description": "包名", "example": "github.com/gin-gonic/gin", "notes": "常用" },
-              "版本": { "type": "string", "required": true, "description": "版本号", "example": "v1.9.0", "notes": "常用" }
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名",
+                "example": "github.com/gin-gonic/gin",
+                "notes": "常用"
+              },
+              "版本": {
+                "type": "string",
+                "required": true,
+                "description": "版本号",
+                "example": "v1.9.0",
+                "notes": "常用"
+              }
             },
             "keyword": "go get 指定版本"
           },
@@ -207,7 +333,13 @@
             "name": "更新到最新",
             "cmd": "go get -u %{包名}%",
             "params": {
-              "包名": { "type": "string", "required": true, "description": "包名", "example": "github.com/gin-gonic/gin", "notes": "常用" }
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名",
+                "example": "github.com/gin-gonic/gin",
+                "notes": "常用"
+              }
             },
             "keyword": "go get 更新"
           },
@@ -219,7 +351,13 @@
           }
         ],
         "params": {
-          "包名": { "type": "string", "required": true, "description": "包名", "example": "github.com/gin-gonic/gin", "notes": "常用" }
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "包名",
+            "example": "github.com/gin-gonic/gin",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -227,7 +365,7 @@
       "dirPath": "/Go 命令/",
       "name": "go test 运行测试",
       "keyword": "go test 测试",
-      "description": "运行 Go 测试",
+      "description": "运行 Go 测试。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "go test %{包}%",
         "extensions": [
@@ -247,7 +385,13 @@
             "name": "生成覆盖率报告",
             "cmd": "go test -coverprofile=%{文件}% ./...",
             "params": {
-              "文件": { "type": "string", "required": true, "description": "覆盖率文件", "example": "coverage.out", "notes": "常用" }
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "覆盖率文件",
+                "example": "coverage.out",
+                "notes": "常用"
+              }
             },
             "keyword": "go test 覆盖率文件"
           },
@@ -255,7 +399,13 @@
             "name": "运行基准测试",
             "cmd": "go test -bench=. -benchmem %{包}%",
             "params": {
-              "包": { "type": "string", "required": false, "description": "包路径", "example": "./...", "notes": "常用" }
+              "包": {
+                "type": "string",
+                "required": false,
+                "description": "包路径",
+                "example": "./...",
+                "notes": "常用"
+              }
             },
             "keyword": "go test 基准测试"
           },
@@ -263,8 +413,20 @@
             "name": "运行匹配测试",
             "cmd": "go test -v -run %{正则}% %{包}%",
             "params": {
-              "正则": { "type": "string", "required": true, "description": "测试名称正则", "example": "TestFoo", "notes": "常用" },
-              "包": { "type": "string", "required": false, "description": "包路径", "example": "./...", "notes": "" }
+              "正则": {
+                "type": "string",
+                "required": true,
+                "description": "测试名称正则",
+                "example": "TestFoo",
+                "notes": "常用"
+              },
+              "包": {
+                "type": "string",
+                "required": false,
+                "description": "包路径",
+                "example": "./...",
+                "notes": "可选"
+              }
             },
             "keyword": "go test 匹配"
           },
@@ -272,14 +434,32 @@
             "name": "设置超时",
             "cmd": "go test -timeout %{时间}% %{包}%",
             "params": {
-              "时间": { "type": "string", "required": true, "description": "超时时间", "example": "30s", "notes": "常用" },
-              "包": { "type": "string", "required": false, "description": "包路径", "example": "./...", "notes": "" }
+              "时间": {
+                "type": "string",
+                "required": true,
+                "description": "超时时间",
+                "example": "30s",
+                "notes": "常用"
+              },
+              "包": {
+                "type": "string",
+                "required": false,
+                "description": "包路径",
+                "example": "./...",
+                "notes": "可选"
+              }
             },
             "keyword": "go test 超时"
           }
         ],
         "params": {
-          "包": { "type": "string", "required": false, "description": "包路径", "example": "./...", "notes": "常用" }
+          "包": {
+            "type": "string",
+            "required": false,
+            "description": "包路径",
+            "example": "./...",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -287,7 +467,7 @@
       "dirPath": "/Go 命令/",
       "name": "gofmt 代码格式化",
       "keyword": "gofmt 格式化",
-      "description": "格式化 Go 代码",
+      "description": "格式化 Go 代码。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gofmt -w %{文件}%",
         "extensions": [
@@ -301,7 +481,13 @@
             "name": "显示差异",
             "cmd": "gofmt -d %{文件}%",
             "params": {
-              "文件": { "type": "string", "required": true, "description": "文件路径", "example": "main.go", "notes": "常用" }
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径",
+                "example": "main.go",
+                "notes": "常用"
+              }
             },
             "keyword": "gofmt 差异"
           },
@@ -309,13 +495,25 @@
             "name": "简化模式",
             "cmd": "gofmt -s -w %{文件}%",
             "params": {
-              "文件": { "type": "string", "required": true, "description": "文件路径", "example": "main.go", "notes": "常用" }
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径",
+                "example": "main.go",
+                "notes": "常用"
+              }
             },
             "keyword": "gofmt 简化"
           }
         ],
         "params": {
-          "文件": { "type": "string", "required": true, "description": "文件路径", "example": "main.go", "notes": "常用" }
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "文件路径",
+            "example": "main.go",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -323,7 +521,7 @@
       "dirPath": "/Go 命令/",
       "name": "goimports 智能导入",
       "keyword": "goimports 导入",
-      "description": "格式化代码并自动管理 import 语句",
+      "description": "格式化代码并自动管理 import 语句。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "goimports -w %{文件}%",
         "extensions": [
@@ -337,14 +535,32 @@
             "name": "本地导入前缀",
             "cmd": "goimports -local \"%{路径}%\" -w %{文件}%",
             "params": {
-              "路径": { "type": "string", "required": true, "description": "本地包路径前缀", "example": "github.com/myorg", "notes": "常用" },
-              "文件": { "type": "string", "required": true, "description": "文件路径", "example": "main.go", "notes": "常用" }
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "本地包路径前缀",
+                "example": "github.com/myorg",
+                "notes": "常用"
+              },
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径",
+                "example": "main.go",
+                "notes": "常用"
+              }
             },
             "keyword": "goimports 本地前缀"
           }
         ],
         "params": {
-          "文件": { "type": "string", "required": true, "description": "文件路径", "example": "main.go", "notes": "常用" }
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "文件路径",
+            "example": "main.go",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -352,7 +568,7 @@
       "dirPath": "/Go 命令/",
       "name": "go vet 代码检查",
       "keyword": "go vet 检查",
-      "description": "检查代码中潜在的问题",
+      "description": "检查代码中潜在的问题。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "go vet %{包或文件}%",
         "extensions": [
@@ -366,13 +582,25 @@
             "name": "详细输出",
             "cmd": "go vet -v %{包}%",
             "params": {
-              "包": { "type": "string", "required": true, "description": "包路径", "example": "./...", "notes": "常用" }
+              "包": {
+                "type": "string",
+                "required": true,
+                "description": "包路径",
+                "example": "./...",
+                "notes": "常用"
+              }
             },
             "keyword": "go vet 详细"
           }
         ],
         "params": {
-          "包或文件": { "type": "string", "required": false, "description": "包或文件路径", "example": "./...", "notes": "常用" }
+          "包或文件": {
+            "type": "string",
+            "required": false,
+            "description": "包或文件路径",
+            "example": "./...",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -380,7 +608,7 @@
       "dirPath": "/Go 命令/",
       "name": "protoc 编译 proto",
       "keyword": "protoc 编译proto",
-      "description": "编译 Protocol Buffer 定义文件",
+      "description": "编译 Protocol Buffer 定义文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "protoc --go_out=. --go-grpc_out=. %{proto文件}%",
         "extensions": [
@@ -388,8 +616,20 @@
             "name": "指定导入路径",
             "cmd": "protoc --go_out=. --go-grpc_out=. -I%{导入路径}% %{proto文件}%",
             "params": {
-              "导入路径": { "type": "string", "required": true, "description": "proto 导入路径", "example": "./proto", "notes": "常用" },
-              "proto文件": { "type": "string", "required": true, "description": "proto 文件路径", "example": "proto/service.proto", "notes": "常用" }
+              "导入路径": {
+                "type": "string",
+                "required": true,
+                "description": "proto 导入路径",
+                "example": "./proto",
+                "notes": "常用"
+              },
+              "proto文件": {
+                "type": "string",
+                "required": true,
+                "description": "proto 文件路径",
+                "example": "proto/service.proto",
+                "notes": "常用"
+              }
             },
             "keyword": "protoc 导入路径"
           },
@@ -403,13 +643,25 @@
             "name": "生成 gRPC-Gateway",
             "cmd": "protoc --go_out=. --go-grpc_out=. --grpc-gateway_out=. %{proto文件}%",
             "params": {
-              "proto文件": { "type": "string", "required": true, "description": "proto 文件路径", "example": "proto/service.proto", "notes": "常用" }
+              "proto文件": {
+                "type": "string",
+                "required": true,
+                "description": "proto 文件路径",
+                "example": "proto/service.proto",
+                "notes": "常用"
+              }
             },
             "keyword": "protoc gateway"
           }
         ],
         "params": {
-          "proto文件": { "type": "string", "required": true, "description": "proto 文件路径", "example": "proto/service.proto", "notes": "常用" }
+          "proto文件": {
+            "type": "string",
+            "required": true,
+            "description": "proto 文件路径",
+            "example": "proto/service.proto",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -417,7 +669,7 @@
       "dirPath": "/Go 命令/",
       "name": "go env 环境变量",
       "keyword": "go env 环境",
-      "description": "查看或设置 Go 环境变量",
+      "description": "查看或设置 Go 环境变量。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "go env %{变量名}%",
         "extensions": [
@@ -447,7 +699,13 @@
           }
         ],
         "params": {
-          "变量名": { "type": "string", "required": false, "description": "环境变量名", "example": "GOVERSION", "notes": "常用" }
+          "变量名": {
+            "type": "string",
+            "required": false,
+            "description": "环境变量名",
+            "example": "GOVERSION",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -455,7 +713,7 @@
       "dirPath": "/Go 命令/",
       "name": "golang-migrate 迁移数据库",
       "keyword": "migrate 数据库迁移",
-      "description": "数据库迁移管理工具",
+      "description": "数据库迁移管理工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "migrate -path %{路径}% -database \"%{URL}%\" up",
         "extensions": [
@@ -463,8 +721,20 @@
             "name": "创建迁移文件",
             "cmd": "migrate create -ext sql -dir %{路径}% -seq %{迁移名}%",
             "params": {
-              "路径": { "type": "string", "required": true, "description": "迁移文件目录", "example": "./migrations", "notes": "常用" },
-              "迁移名": { "type": "string", "required": true, "description": "迁移名称", "example": "add_users_table", "notes": "常用" }
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "迁移文件目录",
+                "example": "./migrations",
+                "notes": "常用"
+              },
+              "迁移名": {
+                "type": "string",
+                "required": true,
+                "description": "迁移名称",
+                "example": "add_users_table",
+                "notes": "常用"
+              }
             },
             "keyword": "migrate create 创建"
           },
@@ -472,9 +742,27 @@
             "name": "回滚迁移",
             "cmd": "migrate -path %{路径}% -database \"%{URL}%\" down %{数量}%",
             "params": {
-              "路径": { "type": "string", "required": true, "description": "迁移文件目录", "example": "./migrations", "notes": "常用" },
-              "URL": { "type": "string", "required": true, "description": "数据库连接 URL", "example": "postgres://user:pass@localhost:5432/db?sslmode=disable", "notes": "常用" },
-              "数量": { "type": "string", "required": true, "description": "回滚数量", "example": "1", "notes": "常用" }
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "迁移文件目录",
+                "example": "./migrations",
+                "notes": "常用"
+              },
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "数据库连接 URL",
+                "example": "postgres://user:pass@localhost:5432/db?sslmode=disable",
+                "notes": "常用"
+              },
+              "数量": {
+                "type": "string",
+                "required": true,
+                "description": "回滚数量",
+                "example": "1",
+                "notes": "常用"
+              }
             },
             "keyword": "migrate down 回滚"
           },
@@ -482,15 +770,39 @@
             "name": "查看版本",
             "cmd": "migrate -path %{路径}% -database \"%{URL}%\" version",
             "params": {
-              "路径": { "type": "string", "required": true, "description": "迁移文件目录", "example": "./migrations", "notes": "常用" },
-              "URL": { "type": "string", "required": true, "description": "数据库连接 URL", "example": "postgres://user:pass@localhost:5432/db?sslmode=disable", "notes": "常用" }
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "迁移文件目录",
+                "example": "./migrations",
+                "notes": "常用"
+              },
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "数据库连接 URL",
+                "example": "postgres://user:pass@localhost:5432/db?sslmode=disable",
+                "notes": "常用"
+              }
             },
             "keyword": "migrate version 版本"
           }
         ],
         "params": {
-          "路径": { "type": "string", "required": true, "description": "迁移文件目录", "example": "./migrations", "notes": "常用" },
-          "URL": { "type": "string", "required": true, "description": "数据库连接 URL", "example": "postgres://user:pass@localhost:5432/db?sslmode=disable", "notes": "常用" }
+          "路径": {
+            "type": "string",
+            "required": true,
+            "description": "迁移文件目录",
+            "example": "./migrations",
+            "notes": "常用"
+          },
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "数据库连接 URL",
+            "example": "postgres://user:pass@localhost:5432/db?sslmode=disable",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -498,7 +810,7 @@
       "dirPath": "/Go 命令/",
       "name": "docker build Go 多阶段构建",
       "keyword": "docker build go 多阶段",
-      "description": "使用 Docker 多阶段构建优化 Go 应用镜像",
+      "description": "使用 Docker 多阶段构建优化 Go 应用镜像。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker build -t %{镜像名}%:%{标签}% %{构建路径}%",
         "extensions": [
@@ -506,9 +818,27 @@
             "name": "无缓存构建",
             "cmd": "docker build --no-cache -t %{镜像名}%:%{标签}% %{路径}%",
             "params": {
-              "镜像名": { "type": "string", "required": true, "description": "镜像名称", "example": "myapp", "notes": "常用" },
-              "标签": { "type": "string", "required": true, "description": "镜像标签", "example": "latest", "notes": "" },
-              "路径": { "type": "string", "required": true, "description": "构建路径", "example": ".", "notes": "常用" }
+              "镜像名": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名称",
+                "example": "myapp",
+                "notes": "常用"
+              },
+              "标签": {
+                "type": "string",
+                "required": true,
+                "description": "镜像标签",
+                "example": "latest",
+                "notes": "可选"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "构建路径",
+                "example": ".",
+                "notes": "常用"
+              }
             },
             "keyword": "docker build 无缓存"
           },
@@ -516,10 +846,34 @@
             "name": "指定 Dockerfile",
             "cmd": "docker build -f %{Dockerfile}% -t %{镜像名}%:%{标签}% %{路径}%",
             "params": {
-              "Dockerfile": { "type": "string", "required": true, "description": "Dockerfile 路径", "example": "Dockerfile.prod", "notes": "常用" },
-              "镜像名": { "type": "string", "required": true, "description": "镜像名称", "example": "myapp", "notes": "常用" },
-              "标签": { "type": "string", "required": true, "description": "镜像标签", "example": "v1.0", "notes": "" },
-              "路径": { "type": "string", "required": true, "description": "构建路径", "example": ".", "notes": "常用" }
+              "Dockerfile": {
+                "type": "string",
+                "required": true,
+                "description": "Dockerfile 路径",
+                "example": "Dockerfile.prod",
+                "notes": "常用"
+              },
+              "镜像名": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名称",
+                "example": "myapp",
+                "notes": "常用"
+              },
+              "标签": {
+                "type": "string",
+                "required": true,
+                "description": "镜像标签",
+                "example": "v1.0",
+                "notes": "可选"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "构建路径",
+                "example": ".",
+                "notes": "常用"
+              }
             },
             "keyword": "docker build 指定Dockerfile"
           },
@@ -527,17 +881,53 @@
             "name": "BuildKit 构建",
             "cmd": "DOCKER_BUILDKIT=1 docker build -t %{镜像名}%:%{标签}% %{路径}%",
             "params": {
-              "镜像名": { "type": "string", "required": true, "description": "镜像名称", "example": "myapp", "notes": "常用" },
-              "标签": { "type": "string", "required": true, "description": "镜像标签", "example": "latest", "notes": "" },
-              "路径": { "type": "string", "required": true, "description": "构建路径", "example": ".", "notes": "常用" }
+              "镜像名": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名称",
+                "example": "myapp",
+                "notes": "常用"
+              },
+              "标签": {
+                "type": "string",
+                "required": true,
+                "description": "镜像标签",
+                "example": "latest",
+                "notes": "可选"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "构建路径",
+                "example": ".",
+                "notes": "常用"
+              }
             },
             "keyword": "docker build BuildKit"
           }
         ],
         "params": {
-          "镜像名": { "type": "string", "required": true, "description": "镜像名称", "example": "myapp", "notes": "常用" },
-          "标签": { "type": "string", "required": true, "description": "镜像标签", "example": "latest", "notes": "常用" },
-          "构建路径": { "type": "string", "required": true, "description": "构建路径", "example": ".", "notes": "常用" }
+          "镜像名": {
+            "type": "string",
+            "required": true,
+            "description": "镜像名称",
+            "example": "myapp",
+            "notes": "常用"
+          },
+          "标签": {
+            "type": "string",
+            "required": true,
+            "description": "镜像标签",
+            "example": "latest",
+            "notes": "常用"
+          },
+          "构建路径": {
+            "type": "string",
+            "required": true,
+            "description": "构建路径",
+            "example": ".",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -545,7 +935,7 @@
       "dirPath": "/Go 命令/",
       "name": "go mod vendor 供应商模式",
       "keyword": "go mod vendor 供应商",
-      "description": "将依赖复制到 vendor 目录",
+      "description": "将依赖复制到 vendor 目录。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "go mod vendor",
         "extensions": [
@@ -569,7 +959,7 @@
       "dirPath": "/Go 命令/",
       "name": "go generate 代码生成",
       "keyword": "go generate 生成",
-      "description": "运行代码生成指令",
+      "description": "运行代码生成指令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "go generate %{文件或包}%",
         "extensions": [
@@ -583,13 +973,25 @@
             "name": "运行 protoc",
             "cmd": "go generate -run=\"protoc\" %{目录}%",
             "params": {
-              "目录": { "type": "string", "required": true, "description": "目录路径", "example": "./proto", "notes": "常用" }
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径",
+                "example": "./proto",
+                "notes": "常用"
+              }
             },
             "keyword": "go generate protoc"
           }
         ],
         "params": {
-          "文件或包": { "type": "string", "required": false, "description": "文件或包路径", "example": "main.go", "notes": "常用" }
+          "文件或包": {
+            "type": "string",
+            "required": false,
+            "description": "文件或包路径",
+            "example": "main.go",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -597,7 +999,7 @@
       "dirPath": "/Go 命令/",
       "name": "gocyclo 圈复杂度分析",
       "keyword": "gocyclo 圈复杂度",
-      "description": "分析 Go 代码的圈复杂度",
+      "description": "分析 Go 代码的圈复杂度。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gocyclo -over=%{阈值}% %{文件}%",
         "extensions": [
@@ -605,7 +1007,13 @@
             "name": "分析所有包",
             "cmd": "gocyclo -over=%{阈值}% ./...",
             "params": {
-              "阈值": { "type": "string", "required": true, "description": "圈复杂度阈值", "example": "15", "notes": "常用" }
+              "阈值": {
+                "type": "string",
+                "required": true,
+                "description": "圈复杂度阈值",
+                "example": "15",
+                "notes": "常用"
+              }
             },
             "keyword": "gocyclo 所有包"
           },
@@ -613,7 +1021,13 @@
             "name": "显示最复杂函数",
             "cmd": "gocyclo -top=%{数量}% ./...",
             "params": {
-              "数量": { "type": "string", "required": true, "description": "显示数量", "example": "20", "notes": "常用" }
+              "数量": {
+                "type": "string",
+                "required": true,
+                "description": "显示数量",
+                "example": "20",
+                "notes": "常用"
+              }
             },
             "keyword": "gocyclo top"
           },
@@ -621,14 +1035,32 @@
             "name": "JSON 输出",
             "cmd": "gocyclo -json %{文件}%",
             "params": {
-              "文件": { "type": "string", "required": true, "description": "文件路径", "example": "main.go", "notes": "常用" }
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径",
+                "example": "main.go",
+                "notes": "常用"
+              }
             },
             "keyword": "gocyclo json"
           }
         ],
         "params": {
-          "阈值": { "type": "string", "required": true, "description": "圈复杂度阈值", "example": "15", "notes": "常用" },
-          "文件": { "type": "string", "required": true, "description": "文件路径", "example": "main.go", "notes": "常用" }
+          "阈值": {
+            "type": "string",
+            "required": true,
+            "description": "圈复杂度阈值",
+            "example": "15",
+            "notes": "常用"
+          },
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "文件路径",
+            "example": "main.go",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -636,7 +1068,7 @@
       "dirPath": "/Go 命令/",
       "name": "golint 代码风格检查",
       "keyword": "golint 代码风格",
-      "description": "检查 Go 代码风格问题",
+      "description": "检查 Go 代码风格问题。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "golint %{包}%",
         "extensions": [
@@ -650,13 +1082,25 @@
             "name": "检查单个文件",
             "cmd": "golint %{文件}%",
             "params": {
-              "文件": { "type": "string", "required": true, "description": "文件路径", "example": "main.go", "notes": "常用" }
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径",
+                "example": "main.go",
+                "notes": "常用"
+              }
             },
             "keyword": "golint 单文件"
           }
         ],
         "params": {
-          "包": { "type": "string", "required": true, "description": "包路径", "example": "./...", "notes": "常用" }
+          "包": {
+            "type": "string",
+            "required": true,
+            "description": "包路径",
+            "example": "./...",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -664,7 +1108,7 @@
       "dirPath": "/Go 命令/",
       "name": "go list 列出包信息",
       "keyword": "go list 列出包",
-      "description": "列出包信息",
+      "description": "列出包信息。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "go list %{包}%",
         "extensions": [
@@ -678,7 +1122,13 @@
             "name": "列出 JSON 格式",
             "cmd": "go list -json %{包}%",
             "params": {
-              "包": { "type": "string", "required": true, "description": "包路径", "example": "./...", "notes": "常用" }
+              "包": {
+                "type": "string",
+                "required": true,
+                "description": "包路径",
+                "example": "./...",
+                "notes": "常用"
+              }
             },
             "keyword": "go list json"
           },
@@ -690,7 +1140,13 @@
           }
         ],
         "params": {
-          "包": { "type": "string", "required": false, "description": "包路径", "example": "./...", "notes": "常用" }
+          "包": {
+            "type": "string",
+            "required": false,
+            "description": "包路径",
+            "example": "./...",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -698,7 +1154,7 @@
       "dirPath": "/Go 命令/",
       "name": "go clean 清理构建缓存",
       "keyword": "go clean 清理",
-      "description": "清理构建缓存和临时文件",
+      "description": "清理构建缓存和临时文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "go clean",
         "extensions": [

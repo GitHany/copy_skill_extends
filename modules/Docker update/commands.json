@@ -1,0 +1,48 @@
+{
+  "module": "Docker update",
+  "version": "2.0",
+  "description": "Docker 容器配置更新命令（Update Container Resources）。动态更新运行中容器的资源配置，无需停止容器即可调整内存、CPU 等限制。入门提示：update 不会重启容器，但如果资源限制过小可能导致容器性能下降或 OOM。新手常见错误：将内存限制设得过小导致应用频繁崩溃。",
+  "commands": [
+    {
+      "dirPath": "/Docker update/",
+      "name": "docker update 更新容器配置",
+      "keyword": "docker update 更新",
+      "description": "动态更新容器资源配置。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker update --memory=%{内存}% %{容器}%",
+        "extensions": [
+          {
+            "name": "docker inspect 查看当前配置",
+            "description": "查看容器的当前资源配置（更新前先查看现有值）",
+            "params": {
+              "容器": {
+                "type": "string",
+                "required": true,
+                "description": "容器名或ID",
+                "example": "myapp",
+                "notes": "必填：查看 HostConfig 中的资源限制"
+              }
+            },
+            "cmd": ""
+          }
+        ],
+        "params": {
+          "内存": {
+            "type": "string",
+            "required": true,
+            "description": "内存限制（格式：512m、1g）",
+            "example": "512m",
+            "notes": "必填：建议根据应用需求合理设置"
+          },
+          "容器": {
+            "type": "string",
+            "required": true,
+            "description": "容器名或ID",
+            "example": "myapp",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

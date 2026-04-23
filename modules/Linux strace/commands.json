@@ -1,0 +1,119 @@
+{
+  "module": "Linux strace",
+  "version": "2.0",
+  "description": "Linux strace 系统调用追踪工具。跟踪进程执行的系统调用和接收的信号，是调试程序、分析行为、排查问题的利器。用于理解程序如何与内核交互、查找崩溃原因、性能分析。",
+  "commands": [
+    {
+      "dirPath": "/Linux strace/",
+      "name": "strace 追踪",
+      "keyword": "strace 追踪",
+      "description": "追踪系统调用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "strace %{命令}%",
+        "extensions": [
+          {
+            "name": "追踪程序执行",
+            "description": "跟踪命令执行时的所有系统调用",
+            "params": {
+              "命令": {
+                "example": "ls -la",
+                "notes": "要追踪的命令"
+              }
+            },
+            "cmd": "strace %{命令}%"
+          },
+          {
+            "name": "输出到文件",
+            "description": "将追踪结果保存到文件以便分析",
+            "params": {
+              "命令": {
+                "example": "./app",
+                "notes": "命令"
+              },
+              "输出": {
+                "example": "trace.log",
+                "notes": "输出文件"
+              }
+            },
+            "cmd": "strace -o %{输出}% %{命令}%"
+          },
+          {
+            "name": "跟踪子进程",
+            "description": "同时跟踪由主进程fork出的子进程",
+            "params": {
+              "命令": {
+                "example": "python app.py",
+                "notes": "命令"
+              }
+            },
+            "cmd": "strace -f %{命令}%"
+          },
+          {
+            "name": "显示时间戳",
+            "description": "在每行输出前显示时间戳",
+            "params": {
+              "命令": {
+                "example": "./server",
+                "notes": "命令"
+              }
+            },
+            "cmd": "strace -t %{命令}%"
+          },
+          {
+            "name": "显示调用耗时",
+            "description": "显示每个系统调用的执行时间",
+            "params": {
+              "命令": {
+                "example": "curl http://example.com",
+                "notes": "命令"
+              }
+            },
+            "cmd": "strace -T %{命令}%"
+          },
+          {
+            "name": "只跟踪文件操作",
+            "description": "只显示与文件访问相关的系统调用",
+            "params": {
+              "命令": {
+                "example": "cat README.md",
+                "notes": "命令"
+              }
+            },
+            "cmd": "strace -e trace=file %{命令}%"
+          },
+          {
+            "name": "只跟踪网络操作",
+            "description": "只显示网络相关的系统调用",
+            "params": {
+              "命令": {
+                "example": "ping google.com",
+                "notes": "命令"
+              }
+            },
+            "cmd": "strace -e trace=network %{命令}%"
+          },
+          {
+            "name": "attach到运行进程",
+            "description": "附加到已运行的进程进行追踪",
+            "params": {
+              "PID": {
+                "example": "1234",
+                "notes": "进程ID"
+              }
+            },
+            "cmd": "strace -p %{PID}%"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "命令",
+            "example": "ls",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

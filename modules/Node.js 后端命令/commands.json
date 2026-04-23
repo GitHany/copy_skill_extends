@@ -7,7 +7,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "npm install 安装依赖",
       "keyword": "npm install 安装依赖",
-      "description": "安装 npm 包到项目依赖",
+      "description": "安装 npm 包到项目依赖。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install %{包名称}%",
         "extensions": [
@@ -15,7 +15,13 @@
             "name": "安装生产依赖",
             "cmd": "npm install %{包名}% --save",
             "params": {
-              "包名": { "type": "string", "required": true, "description": "包名称", "example": "express", "notes": "常用" }
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "express",
+                "notes": "常用"
+              }
             },
             "keyword": "npm install 生产依赖"
           },
@@ -23,7 +29,13 @@
             "name": "安装开发依赖",
             "cmd": "npm install %{包名}% --save-dev",
             "params": {
-              "包名": { "type": "string", "required": true, "description": "包名称", "example": "nodemon", "notes": "常用" }
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "nodemon",
+                "notes": "常用"
+              }
             },
             "keyword": "npm install 开发依赖"
           },
@@ -31,7 +43,13 @@
             "name": "全局安装",
             "cmd": "npm install -g %{包名}%",
             "params": {
-              "包名": { "type": "string", "required": true, "description": "包名称", "example": "pm2", "notes": "常用" }
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "pm2",
+                "notes": "常用"
+              }
             },
             "keyword": "npm install 全局"
           },
@@ -39,8 +57,20 @@
             "name": "安装特定版本",
             "cmd": "npm install %{包名}%@%{版本号}%",
             "params": {
-              "包名": { "type": "string", "required": true, "description": "包名称", "example": "express", "notes": "常用" },
-              "版本号": { "type": "string", "required": true, "description": "版本号", "example": "4.18.0", "notes": "常用" }
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "express",
+                "notes": "常用"
+              },
+              "版本号": {
+                "type": "string",
+                "required": true,
+                "description": "版本号",
+                "example": "4.18.0",
+                "notes": "常用"
+              }
             },
             "keyword": "npm install 指定版本"
           },
@@ -52,7 +82,13 @@
           }
         ],
         "params": {
-          "包名称": { "type": "string", "required": true, "description": "要安装的包名称", "example": "express", "notes": "常用" }
+          "包名称": {
+            "type": "string",
+            "required": true,
+            "description": "要安装的包名称",
+            "example": "express",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -60,7 +96,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "npm audit 安全审计",
       "keyword": "npm audit 安全审计",
-      "description": "检查项目依赖中的安全漏洞",
+      "description": "检查项目依赖中的安全漏洞。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm audit",
         "extensions": [
@@ -120,7 +156,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "yarn/pnpm 安装依赖",
       "keyword": "yarn pnpm 安装",
-      "description": "使用 yarn 或 pnpm 安装项目依赖",
+      "description": "使用 yarn 或 pnpm 安装项目依赖。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "yarn install",
         "extensions": [
@@ -134,7 +170,13 @@
             "name": "yarn 添加依赖",
             "cmd": "yarn add %{包名}%",
             "params": {
-              "包名": { "type": "string", "required": true, "description": "包名称", "example": "express", "notes": "常用" }
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "express",
+                "notes": "常用"
+              }
             },
             "keyword": "yarn add 添加"
           },
@@ -142,7 +184,13 @@
             "name": "pnpm 添加开发依赖",
             "cmd": "pnpm add %{包名}% -D",
             "params": {
-              "包名": { "type": "string", "required": true, "description": "包名称", "example": "nodemon", "notes": "常用" }
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "nodemon",
+                "notes": "常用"
+              }
             },
             "keyword": "pnpm add dev"
           },
@@ -150,7 +198,13 @@
             "name": "yarn 删除依赖",
             "cmd": "yarn remove %{包名}%",
             "params": {
-              "包名": { "type": "string", "required": true, "description": "包名称", "example": "lodash", "notes": "常用" }
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称",
+                "example": "lodash",
+                "notes": "常用"
+              }
             },
             "keyword": "yarn remove 删除"
           },
@@ -168,7 +222,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "nvm 安装切换 Node 版本",
       "keyword": "nvm node 版本",
-      "description": "使用 nvm 安装和切换 Node.js 版本",
+      "description": "使用 nvm 安装和切换 Node.js 版本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "nvm install %{版本号}%",
         "extensions": [
@@ -182,7 +236,13 @@
             "name": "使用特定版本",
             "cmd": "nvm use %{版本号}%",
             "params": {
-              "版本号": { "type": "string", "required": true, "description": "Node 版本号", "example": "18.16.0", "notes": "常用" }
+              "版本号": {
+                "type": "string",
+                "required": true,
+                "description": "Node 版本号",
+                "example": "18.16.0",
+                "notes": "常用"
+              }
             },
             "keyword": "nvm use 切换"
           },
@@ -190,7 +250,13 @@
             "name": "设为默认版本",
             "cmd": "nvm alias default %{版本号}%",
             "params": {
-              "版本号": { "type": "string", "required": true, "description": "Node 版本号", "example": "18.16.0", "notes": "常用" }
+              "版本号": {
+                "type": "string",
+                "required": true,
+                "description": "Node 版本号",
+                "example": "18.16.0",
+                "notes": "常用"
+              }
             },
             "keyword": "nvm alias default 默认"
           },
@@ -204,13 +270,25 @@
             "name": "卸载指定版本",
             "cmd": "nvm uninstall %{版本号}%",
             "params": {
-              "版本号": { "type": "string", "required": true, "description": "Node 版本号", "example": "16.0.0", "notes": "" }
+              "版本号": {
+                "type": "string",
+                "required": true,
+                "description": "Node 版本号",
+                "example": "16.0.0",
+                "notes": "可选"
+              }
             },
             "keyword": "nvm uninstall 卸载"
           }
         ],
         "params": {
-          "版本号": { "type": "string", "required": true, "description": "Node.js 版本号", "example": "18.16.0", "notes": "常用" }
+          "版本号": {
+            "type": "string",
+            "required": true,
+            "description": "Node.js 版本号",
+            "example": "18.16.0",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -218,7 +296,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "n 轻量版本管理",
       "keyword": "n 版本管理",
-      "description": "使用 n 轻量管理 Node.js 版本",
+      "description": "使用 n 轻量管理 Node.js 版本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "n %{版本号}%",
         "extensions": [
@@ -242,7 +320,13 @@
           }
         ],
         "params": {
-          "版本号": { "type": "string", "required": true, "description": "Node 版本号", "example": "18.16.0", "notes": "常用" }
+          "版本号": {
+            "type": "string",
+            "required": true,
+            "description": "Node 版本号",
+            "example": "18.16.0",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -258,7 +342,13 @@
             "name": "指定视图引擎",
             "cmd": "npx express-generator --view=ejs %{项目名}%",
             "params": {
-              "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "myapp", "notes": "常用" }
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称",
+                "example": "myapp",
+                "notes": "常用"
+              }
             },
             "keyword": "express-generator ejs"
           },
@@ -266,7 +356,13 @@
             "name": "指定 pug 模板",
             "cmd": "npx express-generator --view=pug %{项目名}%",
             "params": {
-              "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "myapp", "notes": "常用" }
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称",
+                "example": "myapp",
+                "notes": "常用"
+              }
             },
             "keyword": "express-generator pug"
           },
@@ -278,7 +374,13 @@
           }
         ],
         "params": {
-          "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "myapp", "notes": "常用" }
+          "项目名称": {
+            "type": "string",
+            "required": true,
+            "description": "项目名称",
+            "example": "myapp",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -286,7 +388,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "NestJS CLI 创建项目",
       "keyword": "nest new 创建项目",
-      "description": "使用 NestJS CLI 创建新项目",
+      "description": "使用 NestJS CLI 创建新项目。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "nest new %{项目名称}%",
         "extensions": [
@@ -294,7 +396,13 @@
             "name": "指定 npm 包管理器",
             "cmd": "nest new %{项目名}% --package-manager npm",
             "params": {
-              "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "my-nest-app", "notes": "常用" }
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称",
+                "example": "my-nest-app",
+                "notes": "常用"
+              }
             },
             "keyword": "nest new npm"
           },
@@ -302,13 +410,25 @@
             "name": "跳过安装依赖",
             "cmd": "nest new %{项目名}% --skip-git",
             "params": {
-              "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "my-nest-app", "notes": "" }
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称",
+                "example": "my-nest-app",
+                "notes": "可选"
+              }
             },
             "keyword": "nest new 跳过 git"
           }
         ],
         "params": {
-          "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "my-nest-app", "notes": "常用" }
+          "项目名称": {
+            "type": "string",
+            "required": true,
+            "description": "项目名称",
+            "example": "my-nest-app",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -316,7 +436,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "NestJS generate 生成代码",
       "keyword": "nest generate 生成",
-      "description": "使用 NestJS CLI 生成模块、控制器、服务等",
+      "description": "使用 NestJS CLI 生成模块、控制器、服务等。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "nest g resource %{资源名称}%",
         "extensions": [
@@ -324,7 +444,13 @@
             "name": "生成模块",
             "cmd": "nest g module %{模块名}%",
             "params": {
-              "模块名": { "type": "string", "required": true, "description": "模块名称", "example": "auth", "notes": "常用" }
+              "模块名": {
+                "type": "string",
+                "required": true,
+                "description": "模块名称",
+                "example": "auth",
+                "notes": "常用"
+              }
             },
             "keyword": "nest g module 模块"
           },
@@ -332,7 +458,13 @@
             "name": "生成控制器",
             "cmd": "nest g controller %{名称}%",
             "params": {
-              "名称": { "type": "string", "required": true, "description": "控制器名称", "example": "users", "notes": "常用" }
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "控制器名称",
+                "example": "users",
+                "notes": "常用"
+              }
             },
             "keyword": "nest g controller 控制器"
           },
@@ -340,7 +472,13 @@
             "name": "生成服务",
             "cmd": "nest g service %{名称}%",
             "params": {
-              "名称": { "type": "string", "required": true, "description": "服务名称", "example": "users", "notes": "常用" }
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "users",
+                "notes": "常用"
+              }
             },
             "keyword": "nest g service 服务"
           },
@@ -348,13 +486,25 @@
             "name": "生成守卫",
             "cmd": "nest g guard %{名称}%",
             "params": {
-              "名称": { "type": "string", "required": true, "description": "守卫名称", "example": "auth", "notes": "常用" }
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "守卫名称",
+                "example": "auth",
+                "notes": "常用"
+              }
             },
             "keyword": "nest g guard 守卫"
           }
         ],
         "params": {
-          "资源名称": { "type": "string", "required": true, "description": "资源名称（生成 REST CRUD 模块）", "example": "users", "notes": "常用" }
+          "资源名称": {
+            "type": "string",
+            "required": true,
+            "description": "资源名称（生成 REST CRUD 模块）",
+            "example": "users",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -362,7 +512,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "NestJS build start 构建启动",
       "keyword": "nest build start 启动",
-      "description": "构建和启动 NestJS 项目",
+      "description": "构建和启动 NestJS 项目。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "nest build",
         "extensions": [
@@ -398,7 +548,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "Koa generator 脚手架",
       "keyword": "koa generator 脚手架",
-      "description": "使用 koa-generator 生成 Koa.js 项目",
+      "description": "使用 koa-generator 生成 Koa.js 项目。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npx koa-generator %{项目名称}%",
         "extensions": [
@@ -406,7 +556,13 @@
             "name": "指定 ejs 模板",
             "cmd": "npx koa-generator --ejs %{项目名}%",
             "params": {
-              "项目名": { "type": "string", "required": true, "description": "项目名称", "example": "myapp", "notes": "常用" }
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称",
+                "example": "myapp",
+                "notes": "常用"
+              }
             },
             "keyword": "koa-generator ejs"
           },
@@ -418,7 +574,13 @@
           }
         ],
         "params": {
-          "项目名称": { "type": "string", "required": true, "description": "项目名称", "example": "myapp", "notes": "常用" }
+          "项目名称": {
+            "type": "string",
+            "required": true,
+            "description": "项目名称",
+            "example": "myapp",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -426,7 +588,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "Node.js 调试模式",
       "keyword": "node --inspect 调试",
-      "description": "使用 Node.js 内置调试器调试应用",
+      "description": "使用 Node.js 内置调试器调试应用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "node --inspect %{文件}%",
         "extensions": [
@@ -434,7 +596,13 @@
             "name": "首行断点暂停",
             "cmd": "node --inspect-brk %{文件}%",
             "params": {
-              "文件": { "type": "string", "required": true, "description": "入口文件", "example": "app.js", "notes": "常用" }
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "入口文件",
+                "example": "app.js",
+                "notes": "常用"
+              }
             },
             "keyword": "node --inspect-brk 断点"
           },
@@ -442,7 +610,13 @@
             "name": "远程调试",
             "cmd": "node --inspect=0.0.0.0:9229 %{文件}%",
             "params": {
-              "文件": { "type": "string", "required": true, "description": "入口文件", "example": "app.js", "notes": "常用" }
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "入口文件",
+                "example": "app.js",
+                "notes": "常用"
+              }
             },
             "keyword": "node inspect 远程"
           },
@@ -450,13 +624,25 @@
             "name": "追踪警告",
             "cmd": "node --trace-warnings %{文件}%",
             "params": {
-              "文件": { "type": "string", "required": true, "description": "入口文件", "example": "app.js", "notes": "常用" }
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "入口文件",
+                "example": "app.js",
+                "notes": "常用"
+              }
             },
             "keyword": "node --trace-warnings 警告"
           }
         ],
         "params": {
-          "文件": { "type": "string", "required": true, "description": "Node.js 入口文件", "example": "app.js", "notes": "常用" }
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "Node.js 入口文件",
+            "example": "app.js",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -464,7 +650,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "PM2 启动管理进程",
       "keyword": "pm2 start 启动",
-      "description": "使用 PM2 启动和管理 Node.js 进程",
+      "description": "使用 PM2 启动和管理 Node.js 进程。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "pm2 start %{入口文件}%",
         "extensions": [
@@ -472,8 +658,20 @@
             "name": "命名启动",
             "cmd": "pm2 start %{文件}% --name %{名称}%",
             "params": {
-              "文件": { "type": "string", "required": true, "description": "入口文件", "example": "app.js", "notes": "常用" },
-              "名称": { "type": "string", "required": true, "description": "进程名称", "example": "api-server", "notes": "常用" }
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "入口文件",
+                "example": "app.js",
+                "notes": "常用"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "进程名称",
+                "example": "api-server",
+                "notes": "常用"
+              }
             },
             "keyword": "pm2 start 命名"
           },
@@ -493,7 +691,13 @@
             "name": "重启进程",
             "cmd": "pm2 restart %{名称}%",
             "params": {
-              "名称": { "type": "string", "required": true, "description": "进程名称或 ID", "example": "api-server", "notes": "常用" }
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "进程名称或 ID",
+                "example": "api-server",
+                "notes": "常用"
+              }
             },
             "keyword": "pm2 restart 重启"
           },
@@ -501,7 +705,13 @@
             "name": "停止进程",
             "cmd": "pm2 stop %{名称}%",
             "params": {
-              "名称": { "type": "string", "required": true, "description": "进程名称或 ID", "example": "api-server", "notes": "常用" }
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "进程名称或 ID",
+                "example": "api-server",
+                "notes": "常用"
+              }
             },
             "keyword": "pm2 stop 停止"
           },
@@ -509,7 +719,13 @@
             "name": "删除进程",
             "cmd": "pm2 delete %{名称}%",
             "params": {
-              "名称": { "type": "string", "required": true, "description": "进程名称或 ID", "example": "api-server", "notes": "常用" }
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "进程名称或 ID",
+                "example": "api-server",
+                "notes": "常用"
+              }
             },
             "keyword": "pm2 delete 删除"
           },
@@ -527,7 +743,13 @@
           }
         ],
         "params": {
-          "入口文件": { "type": "string", "required": true, "description": "Node.js 入口文件", "example": "app.js", "notes": "常用" }
+          "入口文件": {
+            "type": "string",
+            "required": true,
+            "description": "Node.js 入口文件",
+            "example": "app.js",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -535,7 +757,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "PM2 集群模式",
       "keyword": "pm2 集群 cluster",
-      "description": "使用 PM2 集群模式充分利用多核 CPU",
+      "description": "使用 PM2 集群模式充分利用多核 CPU。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "pm2 start %{文件}% -i max",
         "extensions": [
@@ -543,8 +765,20 @@
             "name": "指定实例数",
             "cmd": "pm2 start %{文件}% -i %{数量}%",
             "params": {
-              "文件": { "type": "string", "required": true, "description": "入口文件", "example": "app.js", "notes": "常用" },
-              "数量": { "type": "string", "required": true, "description": "实例数量", "example": "4", "notes": "常用" }
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "入口文件",
+                "example": "app.js",
+                "notes": "常用"
+              },
+              "数量": {
+                "type": "string",
+                "required": true,
+                "description": "实例数量",
+                "example": "4",
+                "notes": "常用"
+              }
             },
             "keyword": "pm2 -i 指定实例"
           },
@@ -562,7 +796,13 @@
           }
         ],
         "params": {
-          "文件": { "type": "string", "required": true, "description": "入口文件", "example": "app.js", "notes": "常用" }
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "入口文件",
+            "example": "app.js",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -570,7 +810,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "PM2 日志管理",
       "keyword": "pm2 logs 日志",
-      "description": "查看和管理 PM2 进程日志",
+      "description": "查看和管理 PM2 进程日志。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "pm2 logs",
         "extensions": [
@@ -578,7 +818,13 @@
             "name": "查看实时日志",
             "cmd": "pm2 logs %{名称}%",
             "params": {
-              "名称": { "type": "string", "required": true, "description": "进程名称", "example": "api-server", "notes": "常用" }
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "进程名称",
+                "example": "api-server",
+                "notes": "常用"
+              }
             },
             "keyword": "pm2 logs 实时"
           },
@@ -602,7 +848,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "PostgreSQL pg 连接",
       "keyword": "pg postgres 连接",
-      "description": "使用 pg 库连接 PostgreSQL 数据库",
+      "description": "使用 pg 库连接 PostgreSQL 数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install pg --save",
         "extensions": [
@@ -632,7 +878,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "MySQL2 连接数据库",
       "keyword": "mysql2 mysql 连接",
-      "description": "使用 mysql2 库连接 MySQL 数据库",
+      "description": "使用 mysql2 库连接 MySQL 数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install mysql2 --save",
         "extensions": [
@@ -662,7 +908,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "MongoDB mongoose 连接",
       "keyword": "mongoose mongodb 连接",
-      "description": "使用 mongoose 连接 MongoDB 数据库",
+      "description": "使用 mongoose 连接 MongoDB 数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install mongoose --save",
         "extensions": [
@@ -698,7 +944,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "Passport 认证配置",
       "keyword": "passport 认证",
-      "description": "使用 Passport 配置身份认证",
+      "description": "使用 Passport 配置身份认证。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install passport passport-local passport-jwt --save",
         "extensions": [
@@ -734,7 +980,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "JWT jsonwebtoken 生成验证",
       "keyword": "jwt token 生成验证",
-      "description": "使用 jsonwebtoken 生成和验证 Token",
+      "description": "使用 jsonwebtoken 生成和验证 Token。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install jsonwebtoken --save",
         "extensions": [
@@ -764,7 +1010,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "CORS 跨域配置",
       "keyword": "cors 跨域",
-      "description": "配置 Express 应用支持跨域请求",
+      "description": "配置 Express 应用支持跨域请求。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install cors --save",
         "extensions": [
@@ -800,7 +1046,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "Helmet 安全头配置",
       "keyword": "helmet 安全头",
-      "description": "使用 Helmet 配置 HTTP 安全头",
+      "description": "使用 Helmet 配置 HTTP 安全头。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install helmet --save",
         "extensions": [
@@ -836,7 +1082,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "Joi 数据验证",
       "keyword": "joi 验证",
-      "description": "使用 Joi 进行请求数据验证",
+      "description": "使用 Joi 进行请求数据验证。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install joi --save",
         "extensions": [
@@ -866,7 +1112,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "Zod 数据验证",
       "keyword": "zod 验证",
-      "description": "使用 Zod 进行类型安全的请求数据验证",
+      "description": "使用 Zod 进行类型安全的请求数据验证。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install zod --save",
         "extensions": [
@@ -896,7 +1142,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "express-validator 验证",
       "keyword": "express-validator 验证",
-      "description": "使用 express-validator 进行请求验证",
+      "description": "使用 express-validator 进行请求验证。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install express-validator --save",
         "extensions": [
@@ -926,7 +1172,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "Node.js 内存泄漏检测",
       "keyword": "heapdump 内存泄漏",
-      "description": "检测 Node.js 应用内存泄漏",
+      "description": "检测 Node.js 应用内存泄漏。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install heapdump --save",
         "extensions": [
@@ -956,7 +1202,7 @@
       "dirPath": "/Node.js 后端命令/",
       "name": "Node.js 性能分析",
       "keyword": "node --prof 性能分析",
-      "description": "使用 Node.js 内置性能分析工具",
+      "description": "使用 Node.js 内置性能分析工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "node --prof %{文件}%",
         "extensions": [
@@ -980,7 +1226,13 @@
           }
         ],
         "params": {
-          "文件": { "type": "string", "required": true, "description": "入口文件", "example": "app.js", "notes": "常用" }
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "入口文件",
+            "example": "app.js",
+            "notes": "常用"
+          }
         }
       }
     }

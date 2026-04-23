@@ -7,7 +7,7 @@
       "dirPath": "/Tailwind CSS/",
       "name": "npx tailwindcss init 初始化项目",
       "keyword": "tailwindcss init 初始化",
-      "description": "初始化 Tailwind CSS 项目，生成配置文件",
+      "description": "初始化 Tailwind CSS 项目，生成配置文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npx tailwindcss init",
         "extensions": [
@@ -37,7 +37,7 @@
       "dirPath": "/Tailwind CSS/",
       "name": "npx tailwindcss 构建输出",
       "keyword": "tailwindcss 构建 编译",
-      "description": "使用 Tailwind CLI 构建并输出 CSS 文件",
+      "description": "使用 Tailwind CLI 构建并输出 CSS 文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npx tailwindcss -o %{输出文件}%",
         "extensions": [
@@ -137,7 +137,7 @@
       "dirPath": "/Tailwind CSS/",
       "name": "tailwind.config.js 配置",
       "keyword": "tailwind.config 配置 主题",
-      "description": "配置 Tailwind 主题、内容路径和插件",
+      "description": "配置 Tailwind 主题、内容路径和插件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "module.exports = { content: ['./src/**/*.{html,js}'], theme: { extend: {} }, plugins: [] }",
         "extensions": [
@@ -215,7 +215,7 @@
       "dirPath": "/Tailwind CSS/",
       "name": "@tailwind 指令",
       "keyword": "@tailwind 指令 directives",
-      "description": "在 CSS 中使用 Tailwind 指令注入样式",
+      "description": "在 CSS 中使用 Tailwind 指令注入样式。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "@tailwind base; @tailwind components; @tailwind utilities;",
         "extensions": [
@@ -251,7 +251,7 @@
       "dirPath": "/Tailwind CSS/",
       "name": "间距类 m- p-",
       "keyword": "m- p- mx- my- 间距 margin padding",
-      "description": "使用 Tailwind 间距类控制元素外边距和内边距",
+      "description": "使用 Tailwind 间距类控制元素外边距和内边距。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "m-%{数值}% p-%{数值}%",
         "extensions": [
@@ -347,7 +347,7 @@
       "dirPath": "/Tailwind CSS/",
       "name": "尺寸类 w- h-",
       "keyword": "w- h- min- max- 尺寸 宽度 高度",
-      "description": "使用 Tailwind 尺寸类控制元素宽度和高度",
+      "description": "使用 Tailwind 尺寸类控制元素宽度和高度。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "w-%{数值}% h-%{数值}%",
         "extensions": [
@@ -440,7 +440,7 @@
       "dirPath": "/Tailwind CSS/",
       "name": "颜色类 text- bg- border-",
       "keyword": "text- bg- border- 颜色 color",
-      "description": "使用 Tailwind 颜色类控制文本、背景和边框颜色",
+      "description": "使用 Tailwind 颜色类控制文本、背景和边框颜色。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "text-%{颜色代号}% bg-%{颜色代号}% border-%{颜色代号}%",
         "extensions": [
@@ -523,7 +523,7 @@
                 "required": false,
                 "description": "Tailwind 颜色值",
                 "example": "blue-500",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "gradient 渐变"
@@ -549,7 +549,7 @@
             "required": false,
             "description": "Tailwind 颜色值",
             "example": "blue-500",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -558,7 +558,7 @@
       "dirPath": "/Tailwind CSS/",
       "name": "Flexbox flex justify- items-",
       "keyword": "flex justify items align flexbox",
-      "description": "使用 Tailwind Flexbox 类创建灵活布局",
+      "description": "使用 Tailwind Flexbox 类创建灵活布局。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "flex justify-%{对齐}% items-%{对齐}%",
         "extensions": [
@@ -632,7 +632,7 @@
       "dirPath": "/Tailwind CSS/",
       "name": "Grid 网格 grid gap- col- row-",
       "keyword": "grid gap- col- row- grid布局",
-      "description": "使用 Tailwind Grid 类创建网格布局",
+      "description": "使用 Tailwind Grid 类创建网格布局。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "grid grid-cols-%{列数}% gap-%{数值}%",
         "extensions": [
@@ -749,7 +749,7 @@
       "dirPath": "/Tailwind CSS/",
       "name": "排版类 text- font- leading- tracking-",
       "keyword": "text- font- leading- tracking- 排版",
-      "description": "使用 Tailwind 排版类控制文本样式",
+      "description": "使用 Tailwind 排版类控制文本样式。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "text-%{尺寸}% font-%{粗细}% leading-%{行高}%",
         "extensions": [
@@ -870,7 +870,7 @@
       "dirPath": "/Tailwind CSS/",
       "name": "效果类 shadow opacity blend",
       "keyword": "shadow opacity blend 阴影 透明",
-      "description": "使用 Tailwind 效果类添加阴影、透明度和混合效果",
+      "description": "使用 Tailwind 效果类添加阴影、透明度和混合效果。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "shadow-%{大小}% opacity-%{数值}%",
         "extensions": [
@@ -983,7 +983,7 @@
       "dirPath": "/Tailwind CSS/",
       "name": "过渡与动画 transition animate",
       "keyword": "transition animate 过渡 动画",
-      "description": "使用 Tailwind 过渡和动画类创建动态效果",
+      "description": "使用 Tailwind 过渡和动画类创建动态效果。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "transition duration-%{毫秒}% hover:%{类名}%",
         "extensions": [
@@ -1146,7 +1146,7 @@
       "dirPath": "/Tailwind CSS/",
       "name": "npm install Tailwind 插件",
       "keyword": "tailwindcss forms typography line-clamp 插件",
-      "description": "安装和使用 Tailwind 官方插件",
+      "description": "安装和使用 Tailwind 官方插件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install -D @tailwindcss/%{插件名}%",
         "extensions": [
@@ -1181,7 +1181,7 @@
             "required": true,
             "description": "插件名称（forms/typography/line-clamp/aspect-ratio）",
             "example": "forms",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1190,7 +1190,7 @@
       "dirPath": "/Tailwind CSS/",
       "name": "Tailwind 插件配置使用",
       "keyword": "plugins require 插件配置",
-      "description": "在 tailwind.config.js 中配置和使用插件",
+      "description": "在 tailwind.config.js 中配置和使用插件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "plugins: [require('@tailwindcss/%{插件名}%')]",
         "extensions": [
@@ -1237,7 +1237,7 @@
             "required": true,
             "description": "插件名称",
             "example": "forms",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1282,7 +1282,7 @@
       "dirPath": "/Tailwind CSS/",
       "name": "Vue 集成 Tailwind",
       "keyword": "vue tailwind Vue",
-      "description": "在 Vue 项目中安装和配置 Tailwind CSS",
+      "description": "在 Vue 项目中安装和配置 Tailwind CSS。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm install -D tailwindcss postcss autoprefixer && npx tailwindcss init -p",
         "extensions": [
@@ -1390,7 +1390,7 @@
       "dirPath": "/Tailwind CSS/",
       "name": "JIT 模式配置",
       "keyword": "jit just-in-time 即时编译",
-      "description": "启用 Tailwind JIT 即时编译模式",
+      "description": "启用 Tailwind JIT 即时编译模式。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npx tailwindcss -o dist/style.css --watch --jit",
         "extensions": [
@@ -1426,7 +1426,7 @@
       "dirPath": "/Tailwind CSS/",
       "name": "PurgeCSS 内容配置",
       "keyword": "purge purgecss 内容扫描",
-      "description": "配置 Tailwind 内容扫描路径以启用 CSS 清理",
+      "description": "配置 Tailwind 内容扫描路径以启用 CSS 清理。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "content: ['./src/**/*.{html,js,jsx,tsx,vue}']",
         "extensions": [
@@ -1462,7 +1462,7 @@
       "dirPath": "/Tailwind CSS/",
       "name": "暗色模式 darkMode",
       "keyword": "darkMode 暗色模式 dark class",
-      "description": "配置 Tailwind 暗色模式支持",
+      "description": "配置 Tailwind 暗色模式支持。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "darkMode: 'class'",
         "extensions": [
@@ -1552,7 +1552,7 @@
       "dirPath": "/Tailwind CSS/",
       "name": "响应式设计断点",
       "keyword": "sm md lg xl 响应式 responsive 断点",
-      "description": "使用 Tailwind 响应式前缀实现移动优先的响应式设计",
+      "description": "使用 Tailwind 响应式前缀实现移动优先的响应式设计。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "%{断点前缀}%:%{类名}%",
         "extensions": [
@@ -1653,7 +1653,7 @@
       "dirPath": "/Tailwind CSS/",
       "name": "状态变体 hover focus active",
       "keyword": "hover focus active 状态 variant",
-      "description": "使用 Tailwind 状态变体为元素添加交互效果",
+      "description": "使用 Tailwind 状态变体为元素添加交互效果。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "hover:%{类名}% focus:%{类名}% active:%{类名}%",
         "extensions": [
@@ -1749,7 +1749,7 @@
       "dirPath": "/Tailwind CSS/",
       "name": "边框与圆角 border rounded",
       "keyword": "border rounded 边框 圆角",
-      "description": "使用 Tailwind 边框和圆角类装饰元素",
+      "description": "使用 Tailwind 边框和圆角类装饰元素。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "border-%{宽度}% rounded-%{大小}%",
         "extensions": [

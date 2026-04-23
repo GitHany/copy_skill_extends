@@ -1,0 +1,59 @@
+{
+  "module": "Kubernetes Ingress",
+  "version": "2.0",
+  "description": "Kubernetes Ingress 资源管理",
+  "commands": [
+    {
+      "dirPath": "/Kubernetes Ingress/",
+      "name": "kubectl get ingress 查看 Ingress",
+      "keyword": "kubectl ingress 查看",
+      "description": "列出 Ingress 资源。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl get ingress",
+        "extensions": [
+          {
+            "name": "指定命名空间",
+            "cmd": "kubectl get ingress -n %{命名空间}%",
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间",
+                "example": "default",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl ingress ns"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Kubernetes Ingress/",
+      "name": "kubectl describe ingress 描述 Ingress",
+      "keyword": "kubectl ingress 描述",
+      "description": "查看 Ingress 详情。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl describe ingress %{名称}% -n %{命名空间}%",
+        "extensions": [],
+        "params": {
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "Ingress 名",
+            "example": "my-ingress",
+            "notes": "必填"
+          },
+          "命名空间": {
+            "type": "string",
+            "required": true,
+            "description": "命名空间",
+            "example": "production",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

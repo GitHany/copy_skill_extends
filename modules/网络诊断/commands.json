@@ -1,13 +1,13 @@
 {
   "module": "网络诊断",
   "version": "1.0",
-  "description": "网络诊断 命令模块集合",
+  "description": "网络诊断 命令模块集合，涵盖网络诊断的常用操作和最佳实践",
   "commands": [
     {
       "dirPath": "/网络诊断/",
       "name": "ping 连通性测试",
       "keyword": "ping 连通 测试",
-      "description": "测试主机网络连通性",
+      "description": "测试主机网络连通性。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "ping %{选项}% %{主机或IP}%",
         "extensions": [
@@ -20,7 +20,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "ping 指定次数"
@@ -34,7 +34,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "ping 持续"
@@ -48,7 +48,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "ping 间隔"
@@ -62,7 +62,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "ping 大数据包"
@@ -76,7 +76,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "ping 详细"
@@ -95,7 +95,7 @@
             "required": true,
             "description": "目标主机名或 IP 地址",
             "example": "google.com",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -104,7 +104,7 @@
       "dirPath": "/网络诊断/",
       "name": "traceroute/tracert 路由追踪",
       "keyword": "traceroute tracert 路由 追踪",
-      "description": "追踪数据包经过的路由节点",
+      "description": "追踪数据包经过的路由节点。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "traceroute %{选项}% %{主机}%",
         "extensions": [
@@ -117,7 +117,7 @@
                 "required": false,
                 "description": "目标主机或 IP",
                 "example": "google.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "traceroute 最大跳数"
@@ -131,7 +131,7 @@
                 "required": false,
                 "description": "目标主机或 IP",
                 "example": "google.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "traceroute 超时"
@@ -145,7 +145,7 @@
                 "required": false,
                 "description": "目标主机或 IP",
                 "example": "google.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "traceroute ICMP"
@@ -159,7 +159,7 @@
                 "required": false,
                 "description": "目标主机或 IP",
                 "example": "google.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "tracert Windows"
@@ -173,7 +173,7 @@
                 "required": false,
                 "description": "目标主机或 IP",
                 "example": "google.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "traceroute IP"
@@ -192,7 +192,7 @@
             "required": true,
             "description": "目标主机或 IP",
             "example": "google.com",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -201,7 +201,7 @@
       "dirPath": "/网络诊断/",
       "name": "netstat 网络连接状态",
       "keyword": "netstat 网络 连接 状态",
-      "description": "显示网络连接、路由表、接口统计等信息",
+      "description": "显示网络连接、路由表、接口统计等信息。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "netstat %{选项}%",
         "extensions": [
@@ -263,7 +263,7 @@
       "dirPath": "/网络诊断/",
       "name": "nslookup DNS 查询",
       "keyword": "nslookup DNS 查询",
-      "description": "查询域名系统 (DNS) 记录",
+      "description": "查询域名系统 (DNS) 记录。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "nslookup %{域名}% %{DNS服务器}%",
         "extensions": [
@@ -276,7 +276,7 @@
                 "required": false,
                 "description": "要查询的域名",
                 "example": "google.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "nslookup A记录"
@@ -290,7 +290,7 @@
                 "required": false,
                 "description": "要查询的域名",
                 "example": "google.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "nslookup 指定DNS"
@@ -304,7 +304,7 @@
                 "required": false,
                 "description": "要查询的域名",
                 "example": "google.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "nslookup MX"
@@ -318,7 +318,7 @@
                 "required": false,
                 "description": "要查询的域名",
                 "example": "google.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "nslookup TXT"
@@ -336,7 +336,7 @@
             "required": true,
             "description": "要查询的域名",
             "example": "google.com",
-            "notes": ""
+            "notes": "必填"
           },
           "DNS服务器": {
             "type": "string",
@@ -352,7 +352,7 @@
       "dirPath": "/网络诊断/",
       "name": "dig DNS 查询",
       "keyword": "dig DNS 查询",
-      "description": "详细的 DNS 查询工具，比 nslookup 更强大",
+      "description": "详细的 DNS 查询工具，比 nslookup 更强大。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "dig %{选项}% %{域名}%",
         "extensions": [
@@ -365,7 +365,7 @@
                 "required": false,
                 "description": "要查询的域名",
                 "example": "google.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "dig A记录"
@@ -379,7 +379,7 @@
                 "required": false,
                 "description": "要查询的域名",
                 "example": "google.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "dig MX记录"
@@ -393,7 +393,7 @@
                 "required": false,
                 "description": "要查询的域名",
                 "example": "google.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "dig 指定DNS"
@@ -407,7 +407,7 @@
                 "required": false,
                 "description": "要查询的域名",
                 "example": "google.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "dig 简短"
@@ -421,7 +421,7 @@
                 "required": false,
                 "description": "要查询的域名",
                 "example": "google.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "dig 追踪"
@@ -435,7 +435,7 @@
                 "required": false,
                 "description": "要查询的域名",
                 "example": "google.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "dig NS记录"
@@ -449,7 +449,7 @@
                 "required": false,
                 "description": "要查询的域名",
                 "example": "google.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "dig TXT记录"
@@ -468,7 +468,7 @@
             "required": true,
             "description": "要查询的域名",
             "example": "google.com",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -477,7 +477,7 @@
       "dirPath": "/网络诊断/",
       "name": "curl HTTP 请求",
       "keyword": "curl HTTP 请求",
-      "description": "发送 HTTP 请求，支持多种协议",
+      "description": "发送 HTTP 请求，支持多种协议。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "curl %{选项}% %{URL}%",
         "extensions": [
@@ -490,7 +490,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl 下载"
@@ -504,14 +504,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl 保存文件"
@@ -525,14 +525,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl POST"
@@ -546,7 +546,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl 请求头"
@@ -560,7 +560,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl 重定向"
@@ -574,7 +574,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl 响应头"
@@ -588,7 +588,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl 详细"
@@ -602,7 +602,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl 跳过SSL"
@@ -616,7 +616,7 @@
                 "required": false,
                 "description": "请求 URL",
                 "example": "https://api.example.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "curl JSON"
@@ -635,7 +635,7 @@
             "required": true,
             "description": "请求 URL",
             "example": "https://api.example.com",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -644,7 +644,7 @@
       "dirPath": "/网络诊断/",
       "name": "wget 文件下载",
       "keyword": "wget 下载",
-      "description": "非交互式网络文件下载工具",
+      "description": "非交互式网络文件下载工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "wget %{选项}% %{URL}%",
         "extensions": [
@@ -657,14 +657,14 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "下载链接",
                 "example": "https://example.com/file.zip",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wget 指定名称"
@@ -678,7 +678,7 @@
                 "required": false,
                 "description": "下载链接",
                 "example": "https://example.com/file.zip",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wget 续传"
@@ -692,7 +692,7 @@
                 "required": false,
                 "description": "下载链接",
                 "example": "https://example.com/file.zip",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wget 后台"
@@ -706,7 +706,7 @@
                 "required": false,
                 "description": "下载链接",
                 "example": "https://example.com/file.zip",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wget 限速"
@@ -720,7 +720,7 @@
                 "required": false,
                 "description": "下载链接",
                 "example": "https://example.com/file.zip",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wget 递归"
@@ -734,21 +734,21 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "密码": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
                 "description": "下载链接",
                 "example": "https://example.com/file.zip",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wget 认证"
@@ -762,7 +762,7 @@
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wget 文件列表"
@@ -776,7 +776,7 @@
                 "required": false,
                 "description": "下载链接",
                 "example": "https://example.com/file.zip",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "wget 匹配"
@@ -795,7 +795,7 @@
             "required": true,
             "description": "下载链接",
             "example": "https://example.com/file.zip",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -804,7 +804,7 @@
       "dirPath": "/网络诊断/",
       "name": "telnet 端口测试",
       "keyword": "telnet 端口 测试",
-      "description": "测试远程主机端口连通性",
+      "description": "测试远程主机端口连通性。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "telnet %{主机}% %{端口}%",
         "extensions": [
@@ -817,7 +817,7 @@
                 "required": false,
                 "description": "目标主机或 IP",
                 "example": "smtp.gmail.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "telnet HTTP"
@@ -831,7 +831,7 @@
                 "required": false,
                 "description": "目标主机或 IP",
                 "example": "smtp.gmail.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "telnet HTTPS"
@@ -845,7 +845,7 @@
                 "required": false,
                 "description": "目标主机或 IP",
                 "example": "smtp.gmail.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "telnet SMTP"
@@ -859,7 +859,7 @@
                 "required": false,
                 "description": "目标主机或 IP",
                 "example": "smtp.gmail.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "telnet SSH"
@@ -873,7 +873,7 @@
                 "required": false,
                 "description": "目标主机或 IP",
                 "example": "smtp.gmail.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "telnet MySQL"
@@ -887,7 +887,7 @@
                 "required": false,
                 "description": "目标主机或 IP",
                 "example": "smtp.gmail.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "telnet Redis"
@@ -899,14 +899,14 @@
             "required": true,
             "description": "目标主机或 IP",
             "example": "smtp.gmail.com",
-            "notes": ""
+            "notes": "必填"
           },
           "端口": {
             "type": "string",
             "required": true,
             "description": "目标端口",
             "example": "80",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -915,7 +915,7 @@
       "dirPath": "/网络诊断/",
       "name": "nc/netcat 网络瑞士军刀",
       "keyword": "nc netcat 网络 瑞士军刀",
-      "description": "功能强大的网络工具，可用于端口扫描、传输文件、调试等",
+      "description": "功能强大的网络工具，可用于端口扫描、传输文件、调试等。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "nc %{选项}% %{主机}% %{端口}%",
         "extensions": [
@@ -935,7 +935,7 @@
                 "required": false,
                 "description": "端口号",
                 "example": "80",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "nc 端口扫描"
@@ -963,14 +963,14 @@
                 "required": false,
                 "description": "端口号",
                 "example": "80",
-                "notes": ""
+                "notes": "可选"
               },
               "文件名": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "nc 接收文件"
@@ -991,14 +991,14 @@
                 "required": false,
                 "description": "端口号",
                 "example": "80",
-                "notes": ""
+                "notes": "可选"
               },
               "文件": {
                 "type": "string",
                 "required": false,
                 "description": "",
                 "example": "",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "nc 发送文件"
@@ -1012,7 +1012,7 @@
                 "required": false,
                 "description": "端口号",
                 "example": "80",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "nc 聊天"
@@ -1033,7 +1033,7 @@
                 "required": false,
                 "description": "端口号",
                 "example": "80",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "nc 连接"
@@ -1054,7 +1054,7 @@
                 "required": false,
                 "description": "端口号",
                 "example": "80",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "nc 远程命令"
@@ -1089,7 +1089,7 @@
                 "required": false,
                 "description": "端口号",
                 "example": "80",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "nc 超时"
@@ -1115,7 +1115,7 @@
             "required": true,
             "description": "端口号",
             "example": "80",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }

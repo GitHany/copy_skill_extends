@@ -7,7 +7,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "gh workflow list 列出工作流",
       "keyword": "gh workflow list",
-      "description": "列出仓库中所有 GitHub Actions 工作流",
+      "description": "列出仓库中所有 GitHub Actions 工作流。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh workflow list",
         "extensions": [
@@ -54,7 +54,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "gh workflow run 触发工作流",
       "keyword": "gh workflow run",
-      "description": "手动触发 GitHub Actions 工作流运行",
+      "description": "手动触发 GitHub Actions 工作流运行。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh workflow run %{workflow_name}%",
         "extensions": [
@@ -165,7 +165,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "gh secret list 列出密钥",
       "keyword": "gh secret list",
-      "description": "列出仓库中所有 GitHub Actions 密钥",
+      "description": "列出仓库中所有 GitHub Actions 密钥。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh secret list",
         "extensions": [
@@ -206,7 +206,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "gh secret set 设置密钥",
       "keyword": "gh secret set",
-      "description": "为 GitHub Actions 设置密钥",
+      "description": "为 GitHub Actions 设置密钥。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh secret set %{secret_name}% --body \"%{value}%\"",
         "extensions": [
@@ -324,7 +324,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "gh secret delete 删除密钥",
       "keyword": "gh secret delete",
-      "description": "删除 GitHub Actions 密钥",
+      "description": "删除 GitHub Actions 密钥。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh secret delete %{secret_name}%",
         "extensions": [
@@ -407,7 +407,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "gh variable list 列出变量",
       "keyword": "gh variable list",
-      "description": "列出 GitHub Actions 仓库变量",
+      "description": "列出 GitHub Actions 仓库变量。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh variable list",
         "extensions": [
@@ -448,7 +448,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "gh variable set 设置变量",
       "keyword": "gh variable set",
-      "description": "为 GitHub Actions 设置仓库变量",
+      "description": "为 GitHub Actions 设置仓库变量。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh variable set %{var_name}% --body \"%{value}%\"",
         "extensions": [
@@ -531,7 +531,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "gh run rerun 重新运行",
       "keyword": "gh run rerun",
-      "description": "重新运行一个失败的 GitHub Actions 工作流",
+      "description": "重新运行一个失败的 GitHub Actions 工作流。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh run rerun %{run_id}%",
         "extensions": [
@@ -653,7 +653,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "terraform plan 规划变更",
       "keyword": "terraform plan",
-      "description": "生成执行计划，展示将要做的变更",
+      "description": "生成执行计划，展示将要做的变更。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "terraform plan",
         "extensions": [
@@ -735,7 +735,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "terraform apply 执行变更",
       "keyword": "terraform apply",
-      "description": "执行 Terraform 计划，创建或更新基础设施",
+      "description": "执行 Terraform 计划，创建或更新基础设施。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "terraform apply",
         "extensions": [
@@ -817,7 +817,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "terraform destroy 销毁资源",
       "keyword": "terraform destroy",
-      "description": "销毁 Terraform 管理的基础设施资源",
+      "description": "销毁 Terraform 管理的基础设施资源。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "terraform destroy",
         "extensions": [
@@ -878,7 +878,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "terraform validate 验证配置",
       "keyword": "terraform validate",
-      "description": "验证 Terraform 配置的语法和逻辑正确性",
+      "description": "验证 Terraform 配置的语法和逻辑正确性。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "terraform validate",
         "extensions": [
@@ -896,7 +896,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "terraform fmt 格式化配置",
       "keyword": "terraform fmt",
-      "description": "格式化 Terraform 配置文件为标准风格",
+      "description": "格式化 Terraform 配置文件为标准风格。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "terraform fmt",
         "extensions": [
@@ -926,7 +926,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "terraform show 查看状态",
       "keyword": "terraform show",
-      "description": "以人类可读或 JSON 格式展示 Terraform 状态",
+      "description": "以人类可读或 JSON 格式展示 Terraform 状态。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "terraform show",
         "extensions": [
@@ -966,7 +966,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "terraform output 查看输出",
       "keyword": "terraform output",
-      "description": "查看 Terraform 声明的输出变量",
+      "description": "查看 Terraform 声明的输出变量。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "terraform output",
         "extensions": [
@@ -1094,7 +1094,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "ansible-playbook 执行剧本",
       "keyword": "ansible-playbook",
-      "description": "执行 Ansible playbook 自动化配置管理",
+      "description": "执行 Ansible playbook 自动化配置管理。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "ansible-playbook %{playbook}%",
         "extensions": [
@@ -1261,7 +1261,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "ansible-vault 加密管理",
       "keyword": "ansible-vault",
-      "description": "加密解密 Ansible 敏感数据文件",
+      "description": "加密解密 Ansible 敏感数据文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "ansible-vault %{action}% %{file}%",
         "extensions": [
@@ -1482,7 +1482,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "docker login 登录镜像仓库",
       "keyword": "docker login",
-      "description": "登录 Docker 镜像仓库进行 push/pull 操作",
+      "description": "登录 Docker 镜像仓库进行 push/pull 操作。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker login %{registry}%",
         "extensions": [
@@ -1557,7 +1557,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "docker push 推送镜像",
       "keyword": "docker push",
-      "description": "将本地镜像推送到远程镜像仓库",
+      "description": "将本地镜像推送到远程镜像仓库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker push %{image}%",
         "extensions": [
@@ -1647,7 +1647,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "docker pull 拉取镜像",
       "keyword": "docker pull",
-      "description": "从远程镜像仓库拉取镜像到本地",
+      "description": "从远程镜像仓库拉取镜像到本地。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker pull %{image}%",
         "extensions": [
@@ -1723,7 +1723,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "docker-compose up 启动服务",
       "keyword": "docker-compose up",
-      "description": "创建并启动 docker-compose 定义的服务",
+      "description": "创建并启动 docker-compose 定义的服务。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker-compose up",
         "extensions": [
@@ -1810,7 +1810,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "docker-compose down 停止服务",
       "keyword": "docker-compose down",
-      "description": "停止并移除 docker-compose 管理的容器和网络",
+      "description": "停止并移除 docker-compose 管理的容器和网络。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker-compose down",
         "extensions": [
@@ -1871,7 +1871,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "docker-compose build 构建服务",
       "keyword": "docker-compose build",
-      "description": "构建 docker-compose 中定义的镜像",
+      "description": "构建 docker-compose 中定义的镜像。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker-compose build",
         "extensions": [
@@ -2161,7 +2161,7 @@
       "dirPath": "/CI_CD 流水线/",
       "name": "gitlab-runner 注册运行器",
       "keyword": "gitlab-runner register",
-      "description": "向 GitLab CI 注册新的 runner 执行器",
+      "description": "向 GitLab CI 注册新的 runner 执行器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gitlab-runner register",
         "extensions": [

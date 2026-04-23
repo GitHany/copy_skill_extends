@@ -1,0 +1,81 @@
+{
+  "module": "AWS S3",
+  "version": "2.0",
+  "description": "AWS S3 存储服务命令行，涵盖AWS S3的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/AWS S3/",
+      "name": "aws s3 ls 列出存储桶",
+      "keyword": "aws s3 ls 列表",
+      "description": "列出 S3 存储桶。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws s3 ls",
+        "extensions": [
+          {
+            "name": "列出对象",
+            "cmd": "aws s3 ls s3://%{桶名}%/",
+            "params": {
+              "桶名": {
+                "type": "string",
+                "required": true,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 ls bucket"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/AWS S3/",
+      "name": "aws s3 cp 复制文件",
+      "keyword": "aws s3 cp 复制",
+      "description": "复制文件到 S3 或从 S3 复制。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws s3 cp %{源}% %{目标}%",
+        "extensions": [
+          {
+            "name": "递归复制",
+            "cmd": "aws s3 cp %{源}% %{目标}% --recursive",
+            "params": {
+              "源": {
+                "type": "string",
+                "required": true,
+                "description": "源路径",
+                "example": "./data/",
+                "notes": "必填"
+              },
+              "目标": {
+                "type": "string",
+                "required": true,
+                "description": "目标路径",
+                "example": "s3://my-bucket/data/",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 cp recursive"
+          }
+        ],
+        "params": {
+          "源": {
+            "type": "string",
+            "required": true,
+            "description": "源路径",
+            "example": "file.txt",
+            "notes": "必填"
+          },
+          "目标": {
+            "type": "string",
+            "required": true,
+            "description": "目标路径",
+            "example": "s3://my-bucket/",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

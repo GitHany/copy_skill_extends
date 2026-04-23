@@ -1,13 +1,13 @@
 {
   "module": "MySQL 命令",
   "version": "1.0",
-  "description": "MySQL 命令模块命令集合",
+  "description": "MySQL 命令模块命令集合，涵盖MySQL 命令的常用操作和最佳实践",
   "commands": [
     {
       "dirPath": "/MySQL 命令/",
       "name": "mysql 连接数据库",
       "keyword": "mysql 连接",
-      "description": "连接 MySQL 数据库",
+      "description": "连接 MySQL 数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "mysql -u %{用户名}% -p%{密码}% -h %{主机}% -P %{端口}% -D %{数据库名}%",
         "extensions": [
@@ -21,10 +21,34 @@
             "name": "连接远程数据库",
             "cmd": "mysql -u %{用户名}% -p%{密码}% -h %{主机}% -P %{端口}%",
             "params": {
-              "用户名": { "type": "string", "required": true, "description": "MySQL 用户名", "example": "root", "notes": "" },
-              "密码": { "type": "string", "required": true, "description": "密码", "example": "password", "notes": "" },
-              "主机": { "type": "string", "required": true, "description": "主机地址", "example": "192.168.1.100", "notes": "" },
-              "端口": { "type": "string", "required": true, "description": "端口", "example": "3306", "notes": "" }
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "MySQL 用户名",
+                "example": "root",
+                "notes": "可选"
+              },
+              "密码": {
+                "type": "string",
+                "required": true,
+                "description": "密码",
+                "example": "password",
+                "notes": "可选"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机地址",
+                "example": "192.168.1.100",
+                "notes": "可选"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口",
+                "example": "3306",
+                "notes": "可选"
+              }
             },
             "keyword": "mysql 远程"
           },
@@ -32,9 +56,27 @@
             "name": "指定数据库连接",
             "cmd": "mysql -u %{用户名}% -p%{密码}% -D %{数据库名}%",
             "params": {
-              "用户名": { "type": "string", "required": true, "description": "MySQL 用户名", "example": "root", "notes": "" },
-              "密码": { "type": "string", "required": true, "description": "密码", "example": "password", "notes": "" },
-              "数据库名": { "type": "string", "required": true, "description": "数据库名", "example": "mydb", "notes": "" }
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "MySQL 用户名",
+                "example": "root",
+                "notes": "可选"
+              },
+              "密码": {
+                "type": "string",
+                "required": true,
+                "description": "密码",
+                "example": "password",
+                "notes": "可选"
+              },
+              "数据库名": {
+                "type": "string",
+                "required": true,
+                "description": "数据库名",
+                "example": "mydb",
+                "notes": "可选"
+              }
             },
             "keyword": "mysql 指定数据库"
           },
@@ -42,9 +84,27 @@
             "name": "执行 SQL 文件",
             "cmd": "mysql -u %{用户名}% -p%{密码}% < %{SQL文件}%",
             "params": {
-              "用户名": { "type": "string", "required": true, "description": "MySQL 用户名", "example": "root", "notes": "" },
-              "密码": { "type": "string", "required": true, "description": "密码", "example": "password", "notes": "" },
-              "SQL文件": { "type": "string", "required": true, "description": "SQL 文件路径", "example": "backup.sql", "notes": "" }
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "MySQL 用户名",
+                "example": "root",
+                "notes": "可选"
+              },
+              "密码": {
+                "type": "string",
+                "required": true,
+                "description": "密码",
+                "example": "password",
+                "notes": "可选"
+              },
+              "SQL文件": {
+                "type": "string",
+                "required": true,
+                "description": "SQL 文件路径",
+                "example": "backup.sql",
+                "notes": "可选"
+              }
             },
             "keyword": "mysql 执行SQL文件"
           },
@@ -52,19 +112,67 @@
             "name": "带字符集连接",
             "cmd": "mysql -u %{用户名}% -p%{密码}% --default-character-set=%{字符集}%",
             "params": {
-              "用户名": { "type": "string", "required": true, "description": "MySQL 用户名", "example": "root", "notes": "" },
-              "密码": { "type": "string", "required": true, "description": "密码", "example": "password", "notes": "" },
-              "字符集": { "type": "string", "required": true, "description": "字符集", "example": "utf8mb4", "notes": "" }
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "MySQL 用户名",
+                "example": "root",
+                "notes": "可选"
+              },
+              "密码": {
+                "type": "string",
+                "required": true,
+                "description": "密码",
+                "example": "password",
+                "notes": "可选"
+              },
+              "字符集": {
+                "type": "string",
+                "required": true,
+                "description": "字符集",
+                "example": "utf8mb4",
+                "notes": "可选"
+              }
             },
             "keyword": "mysql UTF8连接"
           }
         ],
         "params": {
-          "用户名": { "type": "string", "required": true, "description": "MySQL 用户名", "example": "root", "notes": "" },
-          "密码": { "type": "string", "required": true, "description": "密码", "example": "password", "notes": "注意：密码会明文显示，生产环境建议使用配置文件" },
-          "主机": { "type": "string", "required": false, "description": "主机地址", "example": "localhost", "notes": "默认 localhost" },
-          "端口": { "type": "string", "required": false, "description": "端口", "example": "3306", "notes": "默认 3306" },
-          "数据库名": { "type": "string", "required": false, "description": "数据库名", "example": "mydb", "notes": "可选" }
+          "用户名": {
+            "type": "string",
+            "required": true,
+            "description": "MySQL 用户名",
+            "example": "root",
+            "notes": "必填"
+          },
+          "密码": {
+            "type": "string",
+            "required": true,
+            "description": "密码",
+            "example": "password",
+            "notes": "注意：密码会明文显示，生产环境建议使用配置文件"
+          },
+          "主机": {
+            "type": "string",
+            "required": false,
+            "description": "主机地址",
+            "example": "localhost",
+            "notes": "默认 localhost"
+          },
+          "端口": {
+            "type": "string",
+            "required": false,
+            "description": "端口",
+            "example": "3306",
+            "notes": "默认 3306"
+          },
+          "数据库名": {
+            "type": "string",
+            "required": false,
+            "description": "数据库名",
+            "example": "mydb",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -72,7 +180,7 @@
       "dirPath": "/MySQL 命令/",
       "name": "mysqldump 备份数据库",
       "keyword": "mysqldump 备份",
-      "description": "备份 MySQL 数据库",
+      "description": "备份 MySQL 数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "mysqldump -u %{用户名}% -p%{密码}% -h %{主机}% -P %{端口}% %{数据库名}% > %{备份文件}%",
         "extensions": [
@@ -104,11 +212,41 @@
             "name": "远程备份",
             "cmd": "mysqldump -u %{用户名}% -p%{密码}% -h %{主机}% %{数据库名}% > %{备份文件}%",
             "params": {
-              "用户名": { "type": "string", "required": true, "description": "MySQL 用户名", "example": "root", "notes": "" },
-              "密码": { "type": "string", "required": true, "description": "密码", "example": "password", "notes": "" },
-              "主机": { "type": "string", "required": true, "description": "主机地址", "example": "192.168.1.100", "notes": "" },
-              "数据库名": { "type": "string", "required": true, "description": "数据库名", "example": "mydb", "notes": "" },
-              "备份文件": { "type": "string", "required": true, "description": "备份文件路径", "example": "remote_backup.sql", "notes": "" }
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "MySQL 用户名",
+                "example": "root",
+                "notes": "可选"
+              },
+              "密码": {
+                "type": "string",
+                "required": true,
+                "description": "密码",
+                "example": "password",
+                "notes": "可选"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机地址",
+                "example": "192.168.1.100",
+                "notes": "可选"
+              },
+              "数据库名": {
+                "type": "string",
+                "required": true,
+                "description": "数据库名",
+                "example": "mydb",
+                "notes": "可选"
+              },
+              "备份文件": {
+                "type": "string",
+                "required": true,
+                "description": "备份文件路径",
+                "example": "remote_backup.sql",
+                "notes": "可选"
+              }
             },
             "keyword": "mysqldump 远程备份"
           },
@@ -128,21 +266,81 @@
             "name": "备份并压缩",
             "cmd": "mysqldump -u %{用户名}% -p%{密码}% %{数据库名}% | gzip > %{备份文件}%.gz",
             "params": {
-              "用户名": { "type": "string", "required": true, "description": "MySQL 用户名", "example": "root", "notes": "" },
-              "密码": { "type": "string", "required": true, "description": "密码", "example": "password", "notes": "" },
-              "数据库名": { "type": "string", "required": true, "description": "数据库名", "example": "mydb", "notes": "" },
-              "备份文件": { "type": "string", "required": true, "description": "备份文件路径(不含.gz后缀)", "example": "mydb_backup", "notes": "" }
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "MySQL 用户名",
+                "example": "root",
+                "notes": "可选"
+              },
+              "密码": {
+                "type": "string",
+                "required": true,
+                "description": "密码",
+                "example": "password",
+                "notes": "可选"
+              },
+              "数据库名": {
+                "type": "string",
+                "required": true,
+                "description": "数据库名",
+                "example": "mydb",
+                "notes": "可选"
+              },
+              "备份文件": {
+                "type": "string",
+                "required": true,
+                "description": "备份文件路径(不含.gz后缀)",
+                "example": "mydb_backup",
+                "notes": "可选"
+              }
             },
             "keyword": "mysqldump 压缩"
           }
         ],
         "params": {
-          "用户名": { "type": "string", "required": true, "description": "MySQL 用户名", "example": "root", "notes": "" },
-          "密码": { "type": "string", "required": true, "description": "密码", "example": "password", "notes": "" },
-          "主机": { "type": "string", "required": false, "description": "主机地址", "example": "localhost", "notes": "默认 localhost" },
-          "端口": { "type": "string", "required": false, "description": "端口", "example": "3306", "notes": "默认 3306" },
-          "数据库名": { "type": "string", "required": true, "description": "数据库名", "example": "mydb", "notes": "" },
-          "备份文件": { "type": "string", "required": true, "description": "备份文件路径", "example": "backup.sql", "notes": "" }
+          "用户名": {
+            "type": "string",
+            "required": true,
+            "description": "MySQL 用户名",
+            "example": "root",
+            "notes": "必填"
+          },
+          "密码": {
+            "type": "string",
+            "required": true,
+            "description": "密码",
+            "example": "password",
+            "notes": "必填"
+          },
+          "主机": {
+            "type": "string",
+            "required": false,
+            "description": "主机地址",
+            "example": "localhost",
+            "notes": "默认 localhost"
+          },
+          "端口": {
+            "type": "string",
+            "required": false,
+            "description": "端口",
+            "example": "3306",
+            "notes": "默认 3306"
+          },
+          "数据库名": {
+            "type": "string",
+            "required": true,
+            "description": "数据库名",
+            "example": "mydb",
+            "notes": "必填"
+          },
+          "备份文件": {
+            "type": "string",
+            "required": true,
+            "description": "备份文件路径",
+            "example": "backup.sql",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -150,7 +348,7 @@
       "dirPath": "/MySQL 命令/",
       "name": "CREATE DATABASE",
       "keyword": "创建数据库",
-      "description": "创建 MySQL 数据库",
+      "description": "创建 MySQL 数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "CREATE DATABASE %{数据库名}% CHARACTER SET %{字符集}% COLLATE %{排序规则}%;",
         "extensions": [
@@ -176,7 +374,13 @@
             "name": "选择数据库",
             "cmd": "USE %{数据库名}%;",
             "params": {
-              "数据库名": { "type": "string", "required": true, "description": "数据库名", "example": "mydb", "notes": "" }
+              "数据库名": {
+                "type": "string",
+                "required": true,
+                "description": "数据库名",
+                "example": "mydb",
+                "notes": "可选"
+              }
             },
             "keyword": "USE DATABASE"
           },
@@ -184,7 +388,13 @@
             "name": "删除数据库",
             "cmd": "DROP DATABASE %{数据库名}%;",
             "params": {
-              "数据库名": { "type": "string", "required": true, "description": "数据库名", "example": "mydb", "notes": "" }
+              "数据库名": {
+                "type": "string",
+                "required": true,
+                "description": "数据库名",
+                "example": "mydb",
+                "notes": "可选"
+              }
             },
             "keyword": "DROP DATABASE"
           },
@@ -192,17 +402,53 @@
             "name": "修改数据库字符集",
             "cmd": "ALTER DATABASE %{数据库名}% CHARACTER SET %{字符集}% COLLATE %{排序规则}%;",
             "params": {
-              "数据库名": { "type": "string", "required": true, "description": "数据库名", "example": "mydb", "notes": "" },
-              "字符集": { "type": "string", "required": true, "description": "字符集", "example": "utf8mb4", "notes": "推荐使用 utf8mb4" },
-              "排序规则": { "type": "string", "required": true, "description": "排序规则", "example": "utf8mb4_unicode_ci", "notes": "" }
+              "数据库名": {
+                "type": "string",
+                "required": true,
+                "description": "数据库名",
+                "example": "mydb",
+                "notes": "可选"
+              },
+              "字符集": {
+                "type": "string",
+                "required": true,
+                "description": "字符集",
+                "example": "utf8mb4",
+                "notes": "推荐使用 utf8mb4"
+              },
+              "排序规则": {
+                "type": "string",
+                "required": true,
+                "description": "排序规则",
+                "example": "utf8mb4_unicode_ci",
+                "notes": "可选"
+              }
             },
             "keyword": "ALTER DATABASE"
           }
         ],
         "params": {
-          "数据库名": { "type": "string", "required": true, "description": "数据库名称", "example": "mydb", "notes": "" },
-          "字符集": { "type": "string", "required": false, "description": "字符集", "example": "utf8mb4", "notes": "推荐使用 utf8mb4" },
-          "排序规则": { "type": "string", "required": false, "description": "排序规则", "example": "utf8mb4_unicode_ci", "notes": "" }
+          "数据库名": {
+            "type": "string",
+            "required": true,
+            "description": "数据库名称",
+            "example": "mydb",
+            "notes": "必填"
+          },
+          "字符集": {
+            "type": "string",
+            "required": false,
+            "description": "字符集",
+            "example": "utf8mb4",
+            "notes": "推荐使用 utf8mb4"
+          },
+          "排序规则": {
+            "type": "string",
+            "required": false,
+            "description": "排序规则",
+            "example": "utf8mb4_unicode_ci",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -210,7 +456,7 @@
       "dirPath": "/MySQL 命令/",
       "name": "CREATE TABLE",
       "keyword": "创建表",
-      "description": "创建 MySQL 数据表",
+      "description": "创建 MySQL 数据表。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "CREATE TABLE %{表名}% (%{字段定义}%);",
         "extensions": [
@@ -236,7 +482,13 @@
             "name": "查看表结构",
             "cmd": "DESC %{表名}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              }
             },
             "keyword": "DESC 表结构"
           },
@@ -244,7 +496,13 @@
             "name": "查看建表语句",
             "cmd": "SHOW CREATE TABLE %{表名}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              }
             },
             "keyword": "SHOW CREATE TABLE"
           },
@@ -252,15 +510,39 @@
             "name": "修改表名",
             "cmd": "RENAME TABLE %{旧表名}% TO %{新表名}%;",
             "params": {
-              "旧表名": { "type": "string", "required": true, "description": "原表名", "example": "old_name", "notes": "" },
-              "新表名": { "type": "string", "required": true, "description": "新表名", "example": "new_name", "notes": "" }
+              "旧表名": {
+                "type": "string",
+                "required": true,
+                "description": "原表名",
+                "example": "old_name",
+                "notes": "可选"
+              },
+              "新表名": {
+                "type": "string",
+                "required": true,
+                "description": "新表名",
+                "example": "new_name",
+                "notes": "可选"
+              }
             },
             "keyword": "RENAME TABLE"
           }
         ],
         "params": {
-          "表名": { "type": "string", "required": true, "description": "表名称", "example": "users", "notes": "" },
-          "字段定义": { "type": "string", "required": true, "description": "字段定义", "example": "id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100)", "notes": "" }
+          "表名": {
+            "type": "string",
+            "required": true,
+            "description": "表名称",
+            "example": "users",
+            "notes": "必填"
+          },
+          "字段定义": {
+            "type": "string",
+            "required": true,
+            "description": "字段定义",
+            "example": "id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100)",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -268,7 +550,7 @@
       "dirPath": "/MySQL 命令/",
       "name": "ALTER TABLE",
       "keyword": "修改表",
-      "description": "修改 MySQL 表结构",
+      "description": "修改 MySQL 表结构。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "ALTER TABLE %{表名}% %{操作}%",
         "extensions": [
@@ -276,9 +558,27 @@
             "name": "添加字段",
             "cmd": "ALTER TABLE %{表名}% ADD COLUMN %{字段名}% %{字段类型}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" },
-              "字段名": { "type": "string", "required": true, "description": "字段名", "example": "phone", "notes": "" },
-              "字段类型": { "type": "string", "required": true, "description": "字段类型", "example": "VARCHAR(50)", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              },
+              "字段名": {
+                "type": "string",
+                "required": true,
+                "description": "字段名",
+                "example": "phone",
+                "notes": "可选"
+              },
+              "字段类型": {
+                "type": "string",
+                "required": true,
+                "description": "字段类型",
+                "example": "VARCHAR(50)",
+                "notes": "可选"
+              }
             },
             "keyword": "ALTER TABLE ADD"
           },
@@ -286,8 +586,20 @@
             "name": "删除字段",
             "cmd": "ALTER TABLE %{表名}% DROP COLUMN %{字段名}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" },
-              "字段名": { "type": "string", "required": true, "description": "字段名", "example": "phone", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              },
+              "字段名": {
+                "type": "string",
+                "required": true,
+                "description": "字段名",
+                "example": "phone",
+                "notes": "可选"
+              }
             },
             "keyword": "ALTER TABLE DROP"
           },
@@ -295,9 +607,27 @@
             "name": "修改字段",
             "cmd": "ALTER TABLE %{表名}% MODIFY COLUMN %{字段名}% %{新字段类型}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" },
-              "字段名": { "type": "string", "required": true, "description": "字段名", "example": "name", "notes": "" },
-              "新字段类型": { "type": "string", "required": true, "description": "新字段类型", "example": "VARCHAR(200)", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              },
+              "字段名": {
+                "type": "string",
+                "required": true,
+                "description": "字段名",
+                "example": "name",
+                "notes": "可选"
+              },
+              "新字段类型": {
+                "type": "string",
+                "required": true,
+                "description": "新字段类型",
+                "example": "VARCHAR(200)",
+                "notes": "可选"
+              }
             },
             "keyword": "ALTER TABLE MODIFY"
           },
@@ -305,8 +635,20 @@
             "name": "添加主键",
             "cmd": "ALTER TABLE %{表名}% ADD PRIMARY KEY (%{字段名}%);",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" },
-              "字段名": { "type": "string", "required": true, "description": "字段名", "example": "id", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              },
+              "字段名": {
+                "type": "string",
+                "required": true,
+                "description": "字段名",
+                "example": "id",
+                "notes": "可选"
+              }
             },
             "keyword": "ADD PRIMARY KEY"
           },
@@ -314,7 +656,13 @@
             "name": "删除主键",
             "cmd": "ALTER TABLE %{表名}% DROP PRIMARY KEY;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              }
             },
             "keyword": "DROP PRIMARY KEY"
           },
@@ -322,16 +670,46 @@
             "name": "添加索引",
             "cmd": "ALTER TABLE %{表名}% ADD INDEX %{索引名}% (%{字段名}%);",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" },
-              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "idx_name", "notes": "" },
-              "字段名": { "type": "string", "required": true, "description": "字段名", "example": "name", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              },
+              "索引名": {
+                "type": "string",
+                "required": true,
+                "description": "索引名",
+                "example": "idx_name",
+                "notes": "可选"
+              },
+              "字段名": {
+                "type": "string",
+                "required": true,
+                "description": "字段名",
+                "example": "name",
+                "notes": "可选"
+              }
             },
             "keyword": "ALTER TABLE ADD INDEX"
           }
         ],
         "params": {
-          "表名": { "type": "string", "required": true, "description": "表名称", "example": "users", "notes": "" },
-          "操作": { "type": "string", "required": true, "description": "操作语句", "example": "ADD COLUMN age INT", "notes": "" }
+          "表名": {
+            "type": "string",
+            "required": true,
+            "description": "表名称",
+            "example": "users",
+            "notes": "必填"
+          },
+          "操作": {
+            "type": "string",
+            "required": true,
+            "description": "操作语句",
+            "example": "ADD COLUMN age INT",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -339,7 +717,7 @@
       "dirPath": "/MySQL 命令/",
       "name": "DROP TABLE",
       "keyword": "删除表",
-      "description": "删除 MySQL 表",
+      "description": "删除 MySQL 表。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "DROP TABLE %{表名}%;",
         "extensions": [
@@ -347,7 +725,13 @@
             "name": "删除表",
             "cmd": "DROP TABLE %{表名}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              }
             },
             "keyword": "DROP TABLE"
           },
@@ -355,8 +739,20 @@
             "name": "删除多个表",
             "cmd": "DROP TABLE %{表名1}%, %{表名2}%;",
             "params": {
-              "表名1": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" },
-              "表名2": { "type": "string", "required": true, "description": "表名", "example": "orders", "notes": "" }
+              "表名1": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              },
+              "表名2": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "orders",
+                "notes": "可选"
+              }
             },
             "keyword": "DROP TABLE 多表"
           },
@@ -364,13 +760,25 @@
             "name": "安全删除表",
             "cmd": "DROP TABLE IF EXISTS %{表名}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "表不存在时不报错" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "表不存在时不报错"
+              }
             },
             "keyword": "DROP TABLE IF EXISTS"
           }
         ],
         "params": {
-          "表名": { "type": "string", "required": true, "description": "表名称", "example": "users", "notes": "" }
+          "表名": {
+            "type": "string",
+            "required": true,
+            "description": "表名称",
+            "example": "users",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -378,7 +786,7 @@
       "dirPath": "/MySQL 命令/",
       "name": "CREATE USER",
       "keyword": "创建用户",
-      "description": "创建 MySQL 用户",
+      "description": "创建 MySQL 用户。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "CREATE USER '%{用户名}%'@'%{主机}%' IDENTIFIED BY '%{密码}%';",
         "extensions": [
@@ -398,9 +806,27 @@
             "name": "修改用户密码",
             "cmd": "ALTER USER '%{用户名}%'@'%{主机}%' IDENTIFIED BY '%{新密码}%';",
             "params": {
-              "用户名": { "type": "string", "required": true, "description": "用户名", "example": "appuser", "notes": "" },
-              "主机": { "type": "string", "required": true, "description": "主机", "example": "localhost", "notes": "" },
-              "新密码": { "type": "string", "required": true, "description": "新密码", "example": "newpassword", "notes": "" }
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "appuser",
+                "notes": "可选"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机",
+                "example": "localhost",
+                "notes": "可选"
+              },
+              "新密码": {
+                "type": "string",
+                "required": true,
+                "description": "新密码",
+                "example": "newpassword",
+                "notes": "可选"
+              }
             },
             "keyword": "ALTER USER 密码"
           },
@@ -408,16 +834,46 @@
             "name": "删除用户",
             "cmd": "DROP USER '%{用户名}%'@'%{主机}%';",
             "params": {
-              "用户名": { "type": "string", "required": true, "description": "用户名", "example": "appuser", "notes": "" },
-              "主机": { "type": "string", "required": true, "description": "主机", "example": "localhost", "notes": "" }
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "appuser",
+                "notes": "可选"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机",
+                "example": "localhost",
+                "notes": "可选"
+              }
             },
             "keyword": "DROP USER"
           }
         ],
         "params": {
-          "用户名": { "type": "string", "required": true, "description": "MySQL 用户名", "example": "appuser", "notes": "" },
-          "主机": { "type": "string", "required": true, "description": "允许访问的主机", "example": "localhost", "notes": "使用 % 允许任意主机" },
-          "密码": { "type": "string", "required": true, "description": "用户密码", "example": "password123", "notes": "" }
+          "用户名": {
+            "type": "string",
+            "required": true,
+            "description": "MySQL 用户名",
+            "example": "appuser",
+            "notes": "必填"
+          },
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "允许访问的主机",
+            "example": "localhost",
+            "notes": "使用 % 允许任意主机"
+          },
+          "密码": {
+            "type": "string",
+            "required": true,
+            "description": "用户密码",
+            "example": "password123",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -425,7 +881,7 @@
       "dirPath": "/MySQL 命令/",
       "name": "GRANT REVOKE",
       "keyword": "权限管理",
-      "description": "授予和撤销 MySQL 权限",
+      "description": "授予和撤销 MySQL 权限。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "GRANT %{权限}% ON %{数据库名}%.%{表名}% TO '%{用户名}%'@'%{主机}%';",
         "extensions": [
@@ -433,9 +889,27 @@
             "name": "授予所有权限",
             "cmd": "GRANT ALL PRIVILEGES ON %{数据库名}%.* TO '%{用户名}%'@'%{主机}%';",
             "params": {
-              "数据库名": { "type": "string", "required": true, "description": "数据库名", "example": "mydb", "notes": "" },
-              "用户名": { "type": "string", "required": true, "description": "用户名", "example": "appuser", "notes": "" },
-              "主机": { "type": "string", "required": true, "description": "主机", "example": "localhost", "notes": "" }
+              "数据库名": {
+                "type": "string",
+                "required": true,
+                "description": "数据库名",
+                "example": "mydb",
+                "notes": "可选"
+              },
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "appuser",
+                "notes": "可选"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机",
+                "example": "localhost",
+                "notes": "可选"
+              }
             },
             "keyword": "GRANT ALL"
           },
@@ -443,9 +917,27 @@
             "name": "授予特定权限",
             "cmd": "GRANT SELECT, INSERT, UPDATE ON %{数据库名}%.* TO '%{用户名}%'@'%{主机}%';",
             "params": {
-              "数据库名": { "type": "string", "required": true, "description": "数据库名", "example": "mydb", "notes": "" },
-              "用户名": { "type": "string", "required": true, "description": "用户名", "example": "appuser", "notes": "" },
-              "主机": { "type": "string", "required": true, "description": "主机", "example": "localhost", "notes": "" }
+              "数据库名": {
+                "type": "string",
+                "required": true,
+                "description": "数据库名",
+                "example": "mydb",
+                "notes": "可选"
+              },
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "appuser",
+                "notes": "可选"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机",
+                "example": "localhost",
+                "notes": "可选"
+              }
             },
             "keyword": "GRANT SELECT"
           },
@@ -453,10 +945,34 @@
             "name": "撤销权限",
             "cmd": "REVOKE %{权限}% ON %{数据库名}%.* FROM '%{用户名}%'@'%{主机}%';",
             "params": {
-              "权限": { "type": "string", "required": true, "description": "权限类型", "example": "DELETE", "notes": "" },
-              "数据库名": { "type": "string", "required": true, "description": "数据库名", "example": "mydb", "notes": "" },
-              "用户名": { "type": "string", "required": true, "description": "用户名", "example": "appuser", "notes": "" },
-              "主机": { "type": "string", "required": true, "description": "主机", "example": "localhost", "notes": "" }
+              "权限": {
+                "type": "string",
+                "required": true,
+                "description": "权限类型",
+                "example": "DELETE",
+                "notes": "可选"
+              },
+              "数据库名": {
+                "type": "string",
+                "required": true,
+                "description": "数据库名",
+                "example": "mydb",
+                "notes": "可选"
+              },
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "appuser",
+                "notes": "可选"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机",
+                "example": "localhost",
+                "notes": "可选"
+              }
             },
             "keyword": "REVOKE"
           },
@@ -470,18 +986,60 @@
             "name": "查看用户权限",
             "cmd": "SHOW GRANTS FOR '%{用户名}%'@'%{主机}%';",
             "params": {
-              "用户名": { "type": "string", "required": true, "description": "用户名", "example": "appuser", "notes": "" },
-              "主机": { "type": "string", "required": true, "description": "主机", "example": "localhost", "notes": "" }
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "appuser",
+                "notes": "可选"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机",
+                "example": "localhost",
+                "notes": "可选"
+              }
             },
             "keyword": "SHOW GRANTS"
           }
         ],
         "params": {
-          "权限": { "type": "string", "required": true, "description": "权限类型", "example": "SELECT", "notes": "常用: SELECT, INSERT, UPDATE, DELETE, ALL PRIVILEGES" },
-          "数据库名": { "type": "string", "required": true, "description": "数据库名", "example": "mydb", "notes": "" },
-          "表名": { "type": "string", "required": true, "description": "表名", "example": "*", "notes": "* 表示所有表" },
-          "用户名": { "type": "string", "required": true, "description": "用户名", "example": "appuser", "notes": "" },
-          "主机": { "type": "string", "required": true, "description": "主机", "example": "localhost", "notes": "" }
+          "权限": {
+            "type": "string",
+            "required": true,
+            "description": "权限类型",
+            "example": "SELECT",
+            "notes": "常用: SELECT, INSERT, UPDATE, DELETE, ALL PRIVILEGES"
+          },
+          "数据库名": {
+            "type": "string",
+            "required": true,
+            "description": "数据库名",
+            "example": "mydb",
+            "notes": "必填"
+          },
+          "表名": {
+            "type": "string",
+            "required": true,
+            "description": "表名",
+            "example": "*",
+            "notes": "* 表示所有表"
+          },
+          "用户名": {
+            "type": "string",
+            "required": true,
+            "description": "用户名",
+            "example": "appuser",
+            "notes": "必填"
+          },
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "主机",
+            "example": "localhost",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -489,7 +1047,7 @@
       "dirPath": "/MySQL 命令/",
       "name": "SELECT",
       "keyword": "查询数据",
-      "description": "查询 MySQL 数据",
+      "description": "查询 MySQL 数据。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "SELECT %{字段}% FROM %{表名}% WHERE %{条件}%;",
         "extensions": [
@@ -497,7 +1055,13 @@
             "name": "查询所有字段",
             "cmd": "SELECT * FROM %{表名}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "常用" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "常用"
+              }
             },
             "keyword": "SELECT *"
           },
@@ -505,8 +1069,20 @@
             "name": "查询指定字段",
             "cmd": "SELECT %{字段}% FROM %{表名}%;",
             "params": {
-              "字段": { "type": "string", "required": true, "description": "字段列表", "example": "id, name, email", "notes": "常用" },
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "常用" }
+              "字段": {
+                "type": "string",
+                "required": true,
+                "description": "字段列表",
+                "example": "id, name, email",
+                "notes": "常用"
+              },
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "常用"
+              }
             },
             "keyword": "SELECT 字段"
           },
@@ -514,8 +1090,20 @@
             "name": "带条件查询",
             "cmd": "SELECT * FROM %{表名}% WHERE %{条件}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "常用" },
-              "条件": { "type": "string", "required": true, "description": "查询条件", "example": "id = 1", "notes": "常用" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "常用"
+              },
+              "条件": {
+                "type": "string",
+                "required": true,
+                "description": "查询条件",
+                "example": "id = 1",
+                "notes": "常用"
+              }
             },
             "keyword": "SELECT WHERE"
           },
@@ -523,9 +1111,27 @@
             "name": "模糊查询",
             "cmd": "SELECT * FROM %{表名}% WHERE %{字段}% LIKE '%%{关键字}%';",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "常用" },
-              "字段": { "type": "string", "required": true, "description": "字段名", "example": "name", "notes": "" },
-              "关键字": { "type": "string", "required": true, "description": "搜索关键字", "example": "张", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "常用"
+              },
+              "字段": {
+                "type": "string",
+                "required": true,
+                "description": "字段名",
+                "example": "name",
+                "notes": "可选"
+              },
+              "关键字": {
+                "type": "string",
+                "required": true,
+                "description": "搜索关键字",
+                "example": "张",
+                "notes": "可选"
+              }
             },
             "keyword": "SELECT LIKE"
           },
@@ -533,9 +1139,27 @@
             "name": "排序查询",
             "cmd": "SELECT * FROM %{表名}% ORDER BY %{字段}% %{排序方式}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "常用" },
-              "字段": { "type": "string", "required": true, "description": "排序字段", "example": "created_at", "notes": "" },
-              "排序方式": { "type": "string", "required": true, "description": "排序方式", "example": "DESC", "notes": "DESC 或 ASC" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "常用"
+              },
+              "字段": {
+                "type": "string",
+                "required": true,
+                "description": "排序字段",
+                "example": "created_at",
+                "notes": "可选"
+              },
+              "排序方式": {
+                "type": "string",
+                "required": true,
+                "description": "排序方式",
+                "example": "DESC",
+                "notes": "DESC 或 ASC"
+              }
             },
             "keyword": "SELECT ORDER BY"
           },
@@ -543,9 +1167,27 @@
             "name": "分页查询",
             "cmd": "SELECT * FROM %{表名}% LIMIT %{条数}% OFFSET %{偏移量}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "常用" },
-              "条数": { "type": "string", "required": true, "description": "返回条数", "example": "10", "notes": "" },
-              "偏移量": { "type": "string", "required": true, "description": "偏移量", "example": "20", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "常用"
+              },
+              "条数": {
+                "type": "string",
+                "required": true,
+                "description": "返回条数",
+                "example": "10",
+                "notes": "可选"
+              },
+              "偏移量": {
+                "type": "string",
+                "required": true,
+                "description": "偏移量",
+                "example": "20",
+                "notes": "可选"
+              }
             },
             "keyword": "SELECT LIMIT"
           },
@@ -553,8 +1195,20 @@
             "name": "聚合统计",
             "cmd": "SELECT COUNT(*) FROM %{表名}% WHERE %{条件}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "常用" },
-              "条件": { "type": "string", "required": false, "description": "查询条件", "example": "status = 1", "notes": "可选" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "常用"
+              },
+              "条件": {
+                "type": "string",
+                "required": false,
+                "description": "查询条件",
+                "example": "status = 1",
+                "notes": "可选"
+              }
             },
             "keyword": "SELECT COUNT"
           },
@@ -562,8 +1216,20 @@
             "name": "分组查询",
             "cmd": "SELECT %{分组字段}%, COUNT(*) FROM %{表名}% GROUP BY %{分组字段}%;",
             "params": {
-              "分组字段": { "type": "string", "required": true, "description": "分组字段", "example": "department", "notes": "" },
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "employees", "notes": "" }
+              "分组字段": {
+                "type": "string",
+                "required": true,
+                "description": "分组字段",
+                "example": "department",
+                "notes": "可选"
+              },
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "employees",
+                "notes": "可选"
+              }
             },
             "keyword": "SELECT GROUP BY"
           },
@@ -571,11 +1237,41 @@
             "name": "多表连接",
             "cmd": "SELECT %{字段}% FROM %{表1}% %{连接类型}% JOIN %{表2}% ON %{表1}%.%{关联字段}% = %{表2}%.%{关联字段}%;",
             "params": {
-              "字段": { "type": "string", "required": true, "description": "查询字段", "example": "u.name, o.total", "notes": "" },
-              "表1": { "type": "string", "required": true, "description": "表1", "example": "users u", "notes": "" },
-              "连接类型": { "type": "string", "required": false, "description": "连接类型", "example": "LEFT", "notes": "INNER, LEFT, RIGHT" },
-              "表2": { "type": "string", "required": true, "description": "表2", "example": "orders o", "notes": "" },
-              "关联字段": { "type": "string", "required": true, "description": "关联字段", "example": "id", "notes": "" }
+              "字段": {
+                "type": "string",
+                "required": true,
+                "description": "查询字段",
+                "example": "u.name, o.total",
+                "notes": "可选"
+              },
+              "表1": {
+                "type": "string",
+                "required": true,
+                "description": "表1",
+                "example": "users u",
+                "notes": "可选"
+              },
+              "连接类型": {
+                "type": "string",
+                "required": false,
+                "description": "连接类型",
+                "example": "LEFT",
+                "notes": "INNER, LEFT, RIGHT"
+              },
+              "表2": {
+                "type": "string",
+                "required": true,
+                "description": "表2",
+                "example": "orders o",
+                "notes": "可选"
+              },
+              "关联字段": {
+                "type": "string",
+                "required": true,
+                "description": "关联字段",
+                "example": "id",
+                "notes": "可选"
+              }
             },
             "keyword": "SELECT JOIN"
           },
@@ -583,11 +1279,41 @@
             "name": "子查询",
             "cmd": "SELECT * FROM %{表名}% WHERE %{字段}% IN (SELECT %{子查询字段}% FROM %{子查询表}% WHERE %{子查询条件}%);",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "常用" },
-              "字段": { "type": "string", "required": true, "description": "字段", "example": "id", "notes": "" },
-              "子查询字段": { "type": "string", "required": true, "description": "子查询字段", "example": "user_id", "notes": "" },
-              "子查询表": { "type": "string", "required": true, "description": "子查询表", "example": "orders", "notes": "" },
-              "子查询条件": { "type": "string", "required": true, "description": "子查询条件", "example": "total > 100", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "常用"
+              },
+              "字段": {
+                "type": "string",
+                "required": true,
+                "description": "字段",
+                "example": "id",
+                "notes": "可选"
+              },
+              "子查询字段": {
+                "type": "string",
+                "required": true,
+                "description": "子查询字段",
+                "example": "user_id",
+                "notes": "可选"
+              },
+              "子查询表": {
+                "type": "string",
+                "required": true,
+                "description": "子查询表",
+                "example": "orders",
+                "notes": "可选"
+              },
+              "子查询条件": {
+                "type": "string",
+                "required": true,
+                "description": "子查询条件",
+                "example": "total > 100",
+                "notes": "可选"
+              }
             },
             "keyword": "SELECT 子查询"
           },
@@ -595,16 +1321,46 @@
             "name": "去重查询",
             "cmd": "SELECT DISTINCT %{字段}% FROM %{表名}%;",
             "params": {
-              "字段": { "type": "string", "required": true, "description": "字段", "example": "name", "notes": "常用" },
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "常用" }
+              "字段": {
+                "type": "string",
+                "required": true,
+                "description": "字段",
+                "example": "name",
+                "notes": "常用"
+              },
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "常用"
+              }
             },
             "keyword": "SELECT DISTINCT"
           }
         ],
         "params": {
-          "字段": { "type": "string", "required": false, "description": "要查询的字段", "example": "*", "notes": "默认为 *，常用" },
-          "表名": { "type": "string", "required": true, "description": "表名称", "example": "users", "notes": "常用" },
-          "条件": { "type": "string", "required": false, "description": "查询条件", "example": "id > 10", "notes": "可选，常用" }
+          "字段": {
+            "type": "string",
+            "required": false,
+            "description": "要查询的字段",
+            "example": "*",
+            "notes": "默认为 *，常用"
+          },
+          "表名": {
+            "type": "string",
+            "required": true,
+            "description": "表名称",
+            "example": "users",
+            "notes": "常用"
+          },
+          "条件": {
+            "type": "string",
+            "required": false,
+            "description": "查询条件",
+            "example": "id > 10",
+            "notes": "可选，常用"
+          }
         }
       }
     },
@@ -612,7 +1368,7 @@
       "dirPath": "/MySQL 命令/",
       "name": "INSERT",
       "keyword": "插入数据",
-      "description": "向 MySQL 表插入数据",
+      "description": "向 MySQL 表插入数据。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "INSERT INTO %{表名}% (%{字段}%) VALUES (%{值}%);",
         "extensions": [
@@ -620,9 +1376,27 @@
             "name": "插入单条数据",
             "cmd": "INSERT INTO %{表名}% (%{字段}%) VALUES (%{值}%);",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "常用" },
-              "字段": { "type": "string", "required": true, "description": "字段列表", "example": "name, email", "notes": "常用" },
-              "值": { "type": "string", "required": true, "description": "值列表", "example": "'张三', 'zhang@example.com'", "notes": "常用" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "常用"
+              },
+              "字段": {
+                "type": "string",
+                "required": true,
+                "description": "字段列表",
+                "example": "name, email",
+                "notes": "常用"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "值列表",
+                "example": "'张三', 'zhang@example.com'",
+                "notes": "常用"
+              }
             },
             "keyword": "INSERT 单条"
           },
@@ -630,10 +1404,34 @@
             "name": "批量插入",
             "cmd": "INSERT INTO %{表名}% (%{字段}%) VALUES (%{值1}%), (%{值2}%);",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "常用" },
-              "字段": { "type": "string", "required": true, "description": "字段列表", "example": "name, email", "notes": "常用" },
-              "值1": { "type": "string", "required": true, "description": "值1", "example": "'张三', 'zhang@example.com'", "notes": "" },
-              "值2": { "type": "string", "required": true, "description": "值2", "example": "'李四', 'li@example.com'", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "常用"
+              },
+              "字段": {
+                "type": "string",
+                "required": true,
+                "description": "字段列表",
+                "example": "name, email",
+                "notes": "常用"
+              },
+              "值1": {
+                "type": "string",
+                "required": true,
+                "description": "值1",
+                "example": "'张三', 'zhang@example.com'",
+                "notes": "可选"
+              },
+              "值2": {
+                "type": "string",
+                "required": true,
+                "description": "值2",
+                "example": "'李四', 'li@example.com'",
+                "notes": "可选"
+              }
             },
             "keyword": "INSERT 批量"
           },
@@ -641,10 +1439,34 @@
             "name": "ON DUPLICATE KEY UPDATE",
             "cmd": "INSERT INTO %{表名}% (%{字段}%) VALUES (%{值}%) ON DUPLICATE KEY UPDATE %{更新字段}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "常用" },
-              "字段": { "type": "string", "required": true, "description": "字段列表", "example": "id, name", "notes": "" },
-              "值": { "type": "string", "required": true, "description": "值列表", "example": "1, '新名字'", "notes": "" },
-              "更新字段": { "type": "string", "required": true, "description": "更新字段", "example": "name = '新名字'", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "常用"
+              },
+              "字段": {
+                "type": "string",
+                "required": true,
+                "description": "字段列表",
+                "example": "id, name",
+                "notes": "可选"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "值列表",
+                "example": "1, '新名字'",
+                "notes": "可选"
+              },
+              "更新字段": {
+                "type": "string",
+                "required": true,
+                "description": "更新字段",
+                "example": "name = '新名字'",
+                "notes": "可选"
+              }
             },
             "keyword": "INSERT ON DUPLICATE"
           },
@@ -652,17 +1474,53 @@
             "name": "REPLACE INTO",
             "cmd": "REPLACE INTO %{表名}% (%{字段}%) VALUES (%{值}%);",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "常用" },
-              "字段": { "type": "string", "required": true, "description": "字段列表", "example": "id, name", "notes": "" },
-              "值": { "type": "string", "required": true, "description": "值列表", "example": "1, '新名字'", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "常用"
+              },
+              "字段": {
+                "type": "string",
+                "required": true,
+                "description": "字段列表",
+                "example": "id, name",
+                "notes": "可选"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "值列表",
+                "example": "1, '新名字'",
+                "notes": "可选"
+              }
             },
             "keyword": "REPLACE"
           }
         ],
         "params": {
-          "表名": { "type": "string", "required": true, "description": "表名称", "example": "users", "notes": "常用" },
-          "字段": { "type": "string", "required": true, "description": "字段列表", "example": "name, email", "notes": "常用" },
-          "值": { "type": "string", "required": true, "description": "值列表", "example": "'张三', 'zhang@example.com'", "notes": "常用" }
+          "表名": {
+            "type": "string",
+            "required": true,
+            "description": "表名称",
+            "example": "users",
+            "notes": "常用"
+          },
+          "字段": {
+            "type": "string",
+            "required": true,
+            "description": "字段列表",
+            "example": "name, email",
+            "notes": "常用"
+          },
+          "值": {
+            "type": "string",
+            "required": true,
+            "description": "值列表",
+            "example": "'张三', 'zhang@example.com'",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -670,7 +1528,7 @@
       "dirPath": "/MySQL 命令/",
       "name": "UPDATE",
       "keyword": "更新数据",
-      "description": "更新 MySQL 表数据",
+      "description": "更新 MySQL 表数据。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "UPDATE %{表名}% SET %{字段}=%{新值}% WHERE %{条件}%;",
         "extensions": [
@@ -678,10 +1536,34 @@
             "name": "更新数据",
             "cmd": "UPDATE %{表名}% SET %{字段}=%{新值}% WHERE %{条件}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "常用" },
-              "字段": { "type": "string", "required": true, "description": "字段名", "example": "name", "notes": "常用" },
-              "新值": { "type": "string", "required": true, "description": "新值", "example": "'新名字'", "notes": "常用" },
-              "条件": { "type": "string", "required": true, "description": "条件", "example": "id = 1", "notes": "常用" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "常用"
+              },
+              "字段": {
+                "type": "string",
+                "required": true,
+                "description": "字段名",
+                "example": "name",
+                "notes": "常用"
+              },
+              "新值": {
+                "type": "string",
+                "required": true,
+                "description": "新值",
+                "example": "'新名字'",
+                "notes": "常用"
+              },
+              "条件": {
+                "type": "string",
+                "required": true,
+                "description": "条件",
+                "example": "id = 1",
+                "notes": "常用"
+              }
             },
             "keyword": "UPDATE"
           },
@@ -689,21 +1571,81 @@
             "name": "批量更新",
             "cmd": "UPDATE %{表名}% SET %{字段1}=%{新值1}%, %{字段2}=%{新值2}% WHERE %{条件}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "常用" },
-              "字段1": { "type": "string", "required": true, "description": "字段1", "example": "name", "notes": "" },
-              "新值1": { "type": "string", "required": true, "description": "新值1", "example": "'新名字'", "notes": "" },
-              "字段2": { "type": "string", "required": true, "description": "字段2", "example": "status", "notes": "" },
-              "新值2": { "type": "string", "required": true, "description": "新值2", "example": "1", "notes": "" },
-              "条件": { "type": "string", "required": true, "description": "条件", "example": "id > 10", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "常用"
+              },
+              "字段1": {
+                "type": "string",
+                "required": true,
+                "description": "字段1",
+                "example": "name",
+                "notes": "可选"
+              },
+              "新值1": {
+                "type": "string",
+                "required": true,
+                "description": "新值1",
+                "example": "'新名字'",
+                "notes": "可选"
+              },
+              "字段2": {
+                "type": "string",
+                "required": true,
+                "description": "字段2",
+                "example": "status",
+                "notes": "可选"
+              },
+              "新值2": {
+                "type": "string",
+                "required": true,
+                "description": "新值2",
+                "example": "1",
+                "notes": "可选"
+              },
+              "条件": {
+                "type": "string",
+                "required": true,
+                "description": "条件",
+                "example": "id > 10",
+                "notes": "可选"
+              }
             },
             "keyword": "UPDATE 批量"
           }
         ],
         "params": {
-          "表名": { "type": "string", "required": true, "description": "表名称", "example": "users", "notes": "常用" },
-          "字段": { "type": "string", "required": true, "description": "字段名", "example": "name", "notes": "常用" },
-          "新值": { "type": "string", "required": true, "description": "新值", "example": "'新名字'", "notes": "常用" },
-          "条件": { "type": "string", "required": true, "description": "更新条件", "example": "id = 1", "notes": "常用" }
+          "表名": {
+            "type": "string",
+            "required": true,
+            "description": "表名称",
+            "example": "users",
+            "notes": "常用"
+          },
+          "字段": {
+            "type": "string",
+            "required": true,
+            "description": "字段名",
+            "example": "name",
+            "notes": "常用"
+          },
+          "新值": {
+            "type": "string",
+            "required": true,
+            "description": "新值",
+            "example": "'新名字'",
+            "notes": "常用"
+          },
+          "条件": {
+            "type": "string",
+            "required": true,
+            "description": "更新条件",
+            "example": "id = 1",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -711,7 +1653,7 @@
       "dirPath": "/MySQL 命令/",
       "name": "DELETE",
       "keyword": "删除数据",
-      "description": "删除 MySQL 表数据",
+      "description": "删除 MySQL 表数据。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "DELETE FROM %{表名}% WHERE %{条件}%;",
         "extensions": [
@@ -719,8 +1661,20 @@
             "name": "删除数据",
             "cmd": "DELETE FROM %{表名}% WHERE %{条件}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "常用" },
-              "条件": { "type": "string", "required": true, "description": "删除条件", "example": "id = 1", "notes": "常用" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "常用"
+              },
+              "条件": {
+                "type": "string",
+                "required": true,
+                "description": "删除条件",
+                "example": "id = 1",
+                "notes": "常用"
+              }
             },
             "keyword": "DELETE"
           },
@@ -728,7 +1682,13 @@
             "name": "清空表数据",
             "cmd": "TRUNCATE TABLE %{表名}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              }
             },
             "keyword": "TRUNCATE"
           },
@@ -736,16 +1696,46 @@
             "name": "删除多条",
             "cmd": "DELETE FROM %{表名}% WHERE %{字段}% IN (%{值列表}%);",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "常用" },
-              "字段": { "type": "string", "required": true, "description": "字段名", "example": "id", "notes": "" },
-              "值列表": { "type": "string", "required": true, "description": "值列表", "example": "1, 2, 3", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "常用"
+              },
+              "字段": {
+                "type": "string",
+                "required": true,
+                "description": "字段名",
+                "example": "id",
+                "notes": "可选"
+              },
+              "值列表": {
+                "type": "string",
+                "required": true,
+                "description": "值列表",
+                "example": "1, 2, 3",
+                "notes": "可选"
+              }
             },
             "keyword": "DELETE 多条"
           }
         ],
         "params": {
-          "表名": { "type": "string", "required": true, "description": "表名称", "example": "users", "notes": "常用" },
-          "条件": { "type": "string", "required": true, "description": "删除条件", "example": "id = 1", "notes": "常用" }
+          "表名": {
+            "type": "string",
+            "required": true,
+            "description": "表名称",
+            "example": "users",
+            "notes": "常用"
+          },
+          "条件": {
+            "type": "string",
+            "required": true,
+            "description": "删除条件",
+            "example": "id = 1",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -753,7 +1743,7 @@
       "dirPath": "/MySQL 命令/",
       "name": "CREATE INDEX",
       "keyword": "创建索引",
-      "description": "创建 MySQL 索引",
+      "description": "创建 MySQL 索引。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "CREATE %{索引类型}% INDEX %{索引名}% ON %{表名}% (%{字段}%);",
         "extensions": [
@@ -761,9 +1751,27 @@
             "name": "创建普通索引",
             "cmd": "CREATE INDEX %{索引名}% ON %{表名}% (%{字段}%);",
             "params": {
-              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "idx_name", "notes": "" },
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" },
-              "字段": { "type": "string", "required": true, "description": "索引字段", "example": "name", "notes": "" }
+              "索引名": {
+                "type": "string",
+                "required": true,
+                "description": "索引名",
+                "example": "idx_name",
+                "notes": "可选"
+              },
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              },
+              "字段": {
+                "type": "string",
+                "required": true,
+                "description": "索引字段",
+                "example": "name",
+                "notes": "可选"
+              }
             },
             "keyword": "CREATE INDEX"
           },
@@ -771,9 +1779,27 @@
             "name": "创建唯一索引",
             "cmd": "CREATE UNIQUE INDEX %{索引名}% ON %{表名}% (%{字段}%);",
             "params": {
-              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "idx_email", "notes": "" },
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" },
-              "字段": { "type": "string", "required": true, "description": "索引字段", "example": "email", "notes": "" }
+              "索引名": {
+                "type": "string",
+                "required": true,
+                "description": "索引名",
+                "example": "idx_email",
+                "notes": "可选"
+              },
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              },
+              "字段": {
+                "type": "string",
+                "required": true,
+                "description": "索引字段",
+                "example": "email",
+                "notes": "可选"
+              }
             },
             "keyword": "CREATE UNIQUE INDEX"
           },
@@ -781,9 +1807,27 @@
             "name": "创建全文索引",
             "cmd": "CREATE FULLTEXT INDEX %{索引名}% ON %{表名}% (%{字段}%);",
             "params": {
-              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "idx_content", "notes": "" },
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "articles", "notes": "" },
-              "字段": { "type": "string", "required": true, "description": "索引字段", "example": "content", "notes": "" }
+              "索引名": {
+                "type": "string",
+                "required": true,
+                "description": "索引名",
+                "example": "idx_content",
+                "notes": "可选"
+              },
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "articles",
+                "notes": "可选"
+              },
+              "字段": {
+                "type": "string",
+                "required": true,
+                "description": "索引字段",
+                "example": "content",
+                "notes": "可选"
+              }
             },
             "keyword": "CREATE FULLTEXT INDEX"
           },
@@ -791,10 +1835,34 @@
             "name": "创建复合索引",
             "cmd": "CREATE INDEX %{索引名}% ON %{表名}% (%{字段1}%, %{字段2}%);",
             "params": {
-              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "idx_name_status", "notes": "" },
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" },
-              "字段1": { "type": "string", "required": true, "description": "字段1", "example": "name", "notes": "" },
-              "字段2": { "type": "string", "required": true, "description": "字段2", "example": "status", "notes": "" }
+              "索引名": {
+                "type": "string",
+                "required": true,
+                "description": "索引名",
+                "example": "idx_name_status",
+                "notes": "可选"
+              },
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              },
+              "字段1": {
+                "type": "string",
+                "required": true,
+                "description": "字段1",
+                "example": "name",
+                "notes": "可选"
+              },
+              "字段2": {
+                "type": "string",
+                "required": true,
+                "description": "字段2",
+                "example": "status",
+                "notes": "可选"
+              }
             },
             "keyword": "CREATE 复合索引"
           },
@@ -802,7 +1870,13 @@
             "name": "查看表索引",
             "cmd": "SHOW INDEX FROM %{表名}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              }
             },
             "keyword": "SHOW INDEX"
           },
@@ -810,17 +1884,53 @@
             "name": "删除索引",
             "cmd": "DROP INDEX %{索引名}% ON %{表名}%;",
             "params": {
-              "索引名": { "type": "string", "required": true, "description": "索引名", "example": "idx_name", "notes": "" },
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" }
+              "索引名": {
+                "type": "string",
+                "required": true,
+                "description": "索引名",
+                "example": "idx_name",
+                "notes": "可选"
+              },
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              }
             },
             "keyword": "DROP INDEX"
           }
         ],
         "params": {
-          "索引类型": { "type": "string", "required": false, "description": "索引类型", "example": "UNIQUE", "notes": "可选: UNIQUE, FULLTEXT" },
-          "索引名": { "type": "string", "required": true, "description": "索引名称", "example": "idx_name", "notes": "" },
-          "表名": { "type": "string", "required": true, "description": "表名称", "example": "users", "notes": "" },
-          "字段": { "type": "string", "required": true, "description": "索引字段", "example": "name", "notes": "" }
+          "索引类型": {
+            "type": "string",
+            "required": false,
+            "description": "索引类型",
+            "example": "UNIQUE",
+            "notes": "可选: UNIQUE, FULLTEXT"
+          },
+          "索引名": {
+            "type": "string",
+            "required": true,
+            "description": "索引名称",
+            "example": "idx_name",
+            "notes": "必填"
+          },
+          "表名": {
+            "type": "string",
+            "required": true,
+            "description": "表名称",
+            "example": "users",
+            "notes": "必填"
+          },
+          "字段": {
+            "type": "string",
+            "required": true,
+            "description": "索引字段",
+            "example": "name",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -828,7 +1938,7 @@
       "dirPath": "/MySQL 命令/",
       "name": "EXPLAIN",
       "keyword": "分析查询",
-      "description": "分析 MySQL 查询性能",
+      "description": "分析 MySQL 查询性能。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "EXPLAIN %{SQL语句}%;",
         "extensions": [
@@ -836,8 +1946,20 @@
             "name": "分析 SELECT",
             "cmd": "EXPLAIN SELECT * FROM %{表名}% WHERE %{条件}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" },
-              "条件": { "type": "string", "required": true, "description": "条件", "example": "id = 1", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              },
+              "条件": {
+                "type": "string",
+                "required": true,
+                "description": "条件",
+                "example": "id = 1",
+                "notes": "可选"
+              }
             },
             "keyword": "EXPLAIN SELECT"
           },
@@ -845,8 +1967,20 @@
             "name": "详细分析",
             "cmd": "EXPLAIN ANALYZE SELECT * FROM %{表名}% WHERE %{条件}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" },
-              "条件": { "type": "string", "required": true, "description": "条件", "example": "id = 1", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              },
+              "条件": {
+                "type": "string",
+                "required": true,
+                "description": "条件",
+                "example": "id = 1",
+                "notes": "可选"
+              }
             },
             "keyword": "EXPLAIN ANALYZE"
           },
@@ -854,9 +1988,27 @@
             "name": "分析 INSERT",
             "cmd": "EXPLAIN INSERT INTO %{表名}% (%{字段}%) VALUES (%{值}%);",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" },
-              "字段": { "type": "string", "required": true, "description": "字段", "example": "name", "notes": "" },
-              "值": { "type": "string", "required": true, "description": "值", "example": "'test'", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              },
+              "字段": {
+                "type": "string",
+                "required": true,
+                "description": "字段",
+                "example": "name",
+                "notes": "可选"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "值",
+                "example": "'test'",
+                "notes": "可选"
+              }
             },
             "keyword": "EXPLAIN INSERT"
           },
@@ -864,16 +2016,46 @@
             "name": "分析 UPDATE",
             "cmd": "EXPLAIN UPDATE %{表名}% SET %{字段}=%{新值}% WHERE %{条件}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" },
-              "字段": { "type": "string", "required": true, "description": "字段", "example": "name", "notes": "" },
-              "新值": { "type": "string", "required": true, "description": "新值", "example": "'test'", "notes": "" },
-              "条件": { "type": "string", "required": true, "description": "条件", "example": "id = 1", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              },
+              "字段": {
+                "type": "string",
+                "required": true,
+                "description": "字段",
+                "example": "name",
+                "notes": "可选"
+              },
+              "新值": {
+                "type": "string",
+                "required": true,
+                "description": "新值",
+                "example": "'test'",
+                "notes": "可选"
+              },
+              "条件": {
+                "type": "string",
+                "required": true,
+                "description": "条件",
+                "example": "id = 1",
+                "notes": "可选"
+              }
             },
             "keyword": "EXPLAIN UPDATE"
           }
         ],
         "params": {
-          "SQL语句": { "type": "string", "required": true, "description": "要分析的 SQL 语句", "example": "SELECT * FROM users WHERE id = 1", "notes": "" }
+          "SQL语句": {
+            "type": "string",
+            "required": true,
+            "description": "要分析的 SQL 语句",
+            "example": "SELECT * FROM users WHERE id = 1",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -881,7 +2063,7 @@
       "dirPath": "/MySQL 命令/",
       "name": "SHOW PROCESSLIST",
       "keyword": "查看进程",
-      "description": "查看 MySQL 进程列表",
+      "description": "查看 MySQL 进程列表。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "SHOW PROCESSLIST;",
         "extensions": [
@@ -901,7 +2083,13 @@
             "name": "杀死进程",
             "cmd": "KILL %{进程ID}%;",
             "params": {
-              "进程ID": { "type": "string", "required": true, "description": "进程 ID", "example": "123", "notes": "从 SHOW PROCESSLIST 获取" }
+              "进程ID": {
+                "type": "string",
+                "required": true,
+                "description": "进程 ID",
+                "example": "123",
+                "notes": "从 SHOW PROCESSLIST 获取"
+              }
             },
             "keyword": "KILL PROCESS"
           },
@@ -919,7 +2107,13 @@
           }
         ],
         "params": {
-          "进程ID": { "type": "string", "required": true, "description": "进程 ID", "example": "123", "notes": "从 SHOW PROCESSLIST 获取" }
+          "进程ID": {
+            "type": "string",
+            "required": true,
+            "description": "进程 ID",
+            "example": "123",
+            "notes": "从 SHOW PROCESSLIST 获取"
+          }
         }
       }
     },
@@ -927,7 +2121,7 @@
       "dirPath": "/MySQL 命令/",
       "name": "OPTIMIZE TABLE",
       "keyword": "优化表",
-      "description": "优化 MySQL 表",
+      "description": "优化 MySQL 表。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "OPTIMIZE TABLE %{表名}%;",
         "extensions": [
@@ -935,7 +2129,13 @@
             "name": "优化表",
             "cmd": "OPTIMIZE TABLE %{表名}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              }
             },
             "keyword": "OPTIMIZE TABLE"
           },
@@ -943,14 +2143,32 @@
             "name": "优化多个表",
             "cmd": "OPTIMIZE TABLE %{表名1}%, %{表名2}%;",
             "params": {
-              "表名1": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" },
-              "表名2": { "type": "string", "required": true, "description": "表名", "example": "orders", "notes": "" }
+              "表名1": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              },
+              "表名2": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "orders",
+                "notes": "可选"
+              }
             },
             "keyword": "OPTIMIZE 多表"
           }
         ],
         "params": {
-          "表名": { "type": "string", "required": true, "description": "表名称", "example": "users", "notes": "" }
+          "表名": {
+            "type": "string",
+            "required": true,
+            "description": "表名称",
+            "example": "users",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -958,7 +2176,7 @@
       "dirPath": "/MySQL 命令/",
       "name": "ANALYZE TABLE",
       "keyword": "分析表",
-      "description": "分析 MySQL 表",
+      "description": "分析 MySQL 表。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "ANALYZE TABLE %{表名}%;",
         "extensions": [
@@ -966,7 +2184,13 @@
             "name": "分析表",
             "cmd": "ANALYZE TABLE %{表名}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              }
             },
             "keyword": "ANALYZE TABLE"
           },
@@ -974,14 +2198,32 @@
             "name": "分析多个表",
             "cmd": "ANALYZE TABLE %{表名1}%, %{表名2}%;",
             "params": {
-              "表名1": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" },
-              "表名2": { "type": "string", "required": true, "description": "表名", "example": "orders", "notes": "" }
+              "表名1": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              },
+              "表名2": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "orders",
+                "notes": "可选"
+              }
             },
             "keyword": "ANALYZE 多表"
           }
         ],
         "params": {
-          "表名": { "type": "string", "required": true, "description": "表名称", "example": "users", "notes": "" }
+          "表名": {
+            "type": "string",
+            "required": true,
+            "description": "表名称",
+            "example": "users",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -989,7 +2231,7 @@
       "dirPath": "/MySQL 命令/",
       "name": "CHECK TABLE",
       "keyword": "检查表",
-      "description": "检查 MySQL 表",
+      "description": "检查 MySQL 表。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "CHECK TABLE %{表名}%;",
         "extensions": [
@@ -997,7 +2239,13 @@
             "name": "检查表",
             "cmd": "CHECK TABLE %{表名}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              }
             },
             "keyword": "CHECK TABLE"
           },
@@ -1005,13 +2253,25 @@
             "name": "扩展检查",
             "cmd": "CHECK TABLE %{表名}% EXTENDED;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              }
             },
             "keyword": "CHECK TABLE EXTENDED"
           }
         ],
         "params": {
-          "表名": { "type": "string", "required": true, "description": "表名称", "example": "users", "notes": "" }
+          "表名": {
+            "type": "string",
+            "required": true,
+            "description": "表名称",
+            "example": "users",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -1019,7 +2279,7 @@
       "dirPath": "/MySQL 命令/",
       "name": "REPAIR TABLE",
       "keyword": "修复表",
-      "description": "修复 MySQL 表",
+      "description": "修复 MySQL 表。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "REPAIR TABLE %{表名}%;",
         "extensions": [
@@ -1027,7 +2287,13 @@
             "name": "修复表",
             "cmd": "REPAIR TABLE %{表名}%;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              }
             },
             "keyword": "REPAIR TABLE"
           },
@@ -1035,7 +2301,13 @@
             "name": "快速修复",
             "cmd": "REPAIR TABLE %{表名}% QUICK;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              }
             },
             "keyword": "REPAIR TABLE QUICK"
           },
@@ -1043,13 +2315,25 @@
             "name": "扩展修复",
             "cmd": "REPAIR TABLE %{表名}% EXTENDED;",
             "params": {
-              "表名": { "type": "string", "required": true, "description": "表名", "example": "users", "notes": "" }
+              "表名": {
+                "type": "string",
+                "required": true,
+                "description": "表名",
+                "example": "users",
+                "notes": "可选"
+              }
             },
             "keyword": "REPAIR TABLE EXTENDED"
           }
         ],
         "params": {
-          "表名": { "type": "string", "required": true, "description": "表名称", "example": "users", "notes": "" }
+          "表名": {
+            "type": "string",
+            "required": true,
+            "description": "表名称",
+            "example": "users",
+            "notes": "必填"
+          }
         }
       }
     }

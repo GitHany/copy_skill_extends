@@ -7,7 +7,7 @@
       "dirPath": "/编辑器命令/",
       "name": "nvim 启动 Neovim",
       "keyword": "nvim neovim 启动",
-      "description": "启动 Neovim 编辑器",
+      "description": "启动 Neovim 编辑器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "nvim %{文件名}%",
         "extensions": [
@@ -15,7 +15,13 @@
             "name": "Neovim 极简模式",
             "cmd": "nvim --clean %{文件名}%",
             "params": {
-              "文件名": { "type": "string", "required": false, "description": "要打开的文件路径", "example": "src/main.js", "notes": "" }
+              "文件名": {
+                "type": "string",
+                "required": false,
+                "description": "要打开的文件路径",
+                "example": "src/main.js",
+                "notes": "可选"
+              }
             },
             "keyword": "nvim 极简模式"
           },
@@ -23,7 +29,13 @@
             "name": "Neovim 只读模式",
             "cmd": "nvim -R %{文件名}%",
             "params": {
-              "文件名": { "type": "string", "required": false, "description": "要打开的文件路径", "example": "README.md", "notes": "" }
+              "文件名": {
+                "type": "string",
+                "required": false,
+                "description": "要打开的文件路径",
+                "example": "README.md",
+                "notes": "可选"
+              }
             },
             "keyword": "nvim 只读"
           },
@@ -35,7 +47,13 @@
           }
         ],
         "params": {
-          "文件名": { "type": "string", "required": false, "description": "要打开的文件路径", "example": "src/app.js", "notes": "" }
+          "文件名": {
+            "type": "string",
+            "required": false,
+            "description": "要打开的文件路径",
+            "example": "src/app.js",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -43,24 +61,72 @@
       "dirPath": "/编辑器命令/",
       "name": "Vim 基础导航",
       "keyword": "vim 导航 移动",
-      "description": "Vim/Neovim 基础光标导航命令",
+      "description": "Vim/Neovim 基础光标导航命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "h j k l",
         "extensions": [
-          { "name": "跳到行首", "cmd": "0", "params": {}, "keyword": "vim 行首" },
-          { "name": "跳到行尾", "cmd": "$", "params": {}, "keyword": "vim 行尾" },
-          { "name": "跳到文件开头", "cmd": "gg", "params": {}, "keyword": "vim 文件开头" },
-          { "name": "跳到文件结尾", "cmd": "G", "params": {}, "keyword": "vim 文件结尾" },
+          {
+            "name": "跳到行首",
+            "cmd": "0",
+            "params": {},
+            "keyword": "vim 行首"
+          },
+          {
+            "name": "跳到行尾",
+            "cmd": "$",
+            "params": {},
+            "keyword": "vim 行尾"
+          },
+          {
+            "name": "跳到文件开头",
+            "cmd": "gg",
+            "params": {},
+            "keyword": "vim 文件开头"
+          },
+          {
+            "name": "跳到文件结尾",
+            "cmd": "G",
+            "params": {},
+            "keyword": "vim 文件结尾"
+          },
           {
             "name": "跳到指定行",
             "cmd": ":{行号}",
-            "params": { "行号": { "type": "string", "required": true, "description": "目标行号", "example": "50", "notes": "" } },
+            "params": {
+              "行号": {
+                "type": "string",
+                "required": true,
+                "description": "目标行号",
+                "example": "50",
+                "notes": "可选"
+              }
+            },
             "keyword": "vim 跳行"
           },
-          { "name": "跳到下一个词首", "cmd": "w", "params": {}, "keyword": "vim 词首" },
-          { "name": "跳到上一个词首", "cmd": "b", "params": {}, "keyword": "vim 上一个词首" },
-          { "name": "跳到当前词尾", "cmd": "e", "params": {}, "keyword": "vim 词尾" },
-          { "name": "返回上一个位置", "cmd": "Ctrl+o", "params": {}, "keyword": "vim 上一个位置" }
+          {
+            "name": "跳到下一个词首",
+            "cmd": "w",
+            "params": {},
+            "keyword": "vim 词首"
+          },
+          {
+            "name": "跳到上一个词首",
+            "cmd": "b",
+            "params": {},
+            "keyword": "vim 上一个词首"
+          },
+          {
+            "name": "跳到当前词尾",
+            "cmd": "e",
+            "params": {},
+            "keyword": "vim 词尾"
+          },
+          {
+            "name": "返回上一个位置",
+            "cmd": "Ctrl+o",
+            "params": {},
+            "keyword": "vim 上一个位置"
+          }
         ],
         "params": {}
       }
@@ -69,26 +135,84 @@
       "dirPath": "/编辑器命令/",
       "name": "Vim 基础编辑",
       "keyword": "vim 编辑 插入 删除 复制",
-      "description": "Vim/Neovim 基础编辑命令",
+      "description": "Vim/Neovim 基础编辑命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "i",
         "extensions": [
-          { "name": "在行首插入", "cmd": "I", "params": {}, "keyword": "vim 行首插入" },
-          { "name": "在光标后插入", "cmd": "a", "params": {}, "keyword": "vim 光标后插入" },
-          { "name": "在行尾插入", "cmd": "A", "params": {}, "keyword": "vim 行尾插入" },
-          { "name": "在下方新建行插入", "cmd": "o", "params": {}, "keyword": "vim 下方插入" },
-          { "name": "在上方新建行插入", "cmd": "O", "params": {}, "keyword": "vim 上方插入" },
-          { "name": "删除当前行", "cmd": "dd", "params": {}, "keyword": "vim 删除行" },
+          {
+            "name": "在行首插入",
+            "cmd": "I",
+            "params": {},
+            "keyword": "vim 行首插入"
+          },
+          {
+            "name": "在光标后插入",
+            "cmd": "a",
+            "params": {},
+            "keyword": "vim 光标后插入"
+          },
+          {
+            "name": "在行尾插入",
+            "cmd": "A",
+            "params": {},
+            "keyword": "vim 行尾插入"
+          },
+          {
+            "name": "在下方新建行插入",
+            "cmd": "o",
+            "params": {},
+            "keyword": "vim 下方插入"
+          },
+          {
+            "name": "在上方新建行插入",
+            "cmd": "O",
+            "params": {},
+            "keyword": "vim 上方插入"
+          },
+          {
+            "name": "删除当前行",
+            "cmd": "dd",
+            "params": {},
+            "keyword": "vim 删除行"
+          },
           {
             "name": "删除 N 行",
             "cmd": "{N}dd",
-            "params": { "N": { "type": "string", "required": true, "description": "要删除的行数", "example": "3", "notes": "" } },
+            "params": {
+              "N": {
+                "type": "string",
+                "required": true,
+                "description": "要删除的行数",
+                "example": "3",
+                "notes": "可选"
+              }
+            },
             "keyword": "vim 删除多行"
           },
-          { "name": "复制当前行", "cmd": "yy", "params": {}, "keyword": "vim 复制行" },
-          { "name": "粘贴", "cmd": "p", "params": {}, "keyword": "vim 粘贴" },
-          { "name": "撤销", "cmd": "u", "params": {}, "keyword": "vim 撤销" },
-          { "name": "重做", "cmd": "Ctrl+r", "params": {}, "keyword": "vim 重做" }
+          {
+            "name": "复制当前行",
+            "cmd": "yy",
+            "params": {},
+            "keyword": "vim 复制行"
+          },
+          {
+            "name": "粘贴",
+            "cmd": "p",
+            "params": {},
+            "keyword": "vim 粘贴"
+          },
+          {
+            "name": "撤销",
+            "cmd": "u",
+            "params": {},
+            "keyword": "vim 撤销"
+          },
+          {
+            "name": "重做",
+            "cmd": "Ctrl+r",
+            "params": {},
+            "keyword": "vim 重做"
+          }
         ],
         "params": {}
       }
@@ -97,24 +221,54 @@
       "dirPath": "/编辑器命令/",
       "name": "Vim 搜索与替换",
       "keyword": "vim 搜索 替换",
-      "description": "Vim/Neovim 搜索与替换命令",
+      "description": "Vim/Neovim 搜索与替换命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "/%{字符串}%",
         "extensions": [
           {
             "name": "向上搜索",
             "cmd": "?%{字符串}%",
-            "params": { "字符串": { "type": "string", "required": true, "description": "要搜索的字符串", "example": "function", "notes": "" } },
+            "params": {
+              "字符串": {
+                "type": "string",
+                "required": true,
+                "description": "要搜索的字符串",
+                "example": "function",
+                "notes": "可选"
+              }
+            },
             "keyword": "vim 向上搜索"
           },
-          { "name": "跳到下一个匹配", "cmd": "n", "params": {}, "keyword": "vim 下一个匹配" },
-          { "name": "跳到上一个匹配", "cmd": "N", "params": {}, "keyword": "vim 上一个匹配" },
+          {
+            "name": "跳到下一个匹配",
+            "cmd": "n",
+            "params": {},
+            "keyword": "vim 下一个匹配"
+          },
+          {
+            "name": "跳到上一个匹配",
+            "cmd": "N",
+            "params": {},
+            "keyword": "vim 上一个匹配"
+          },
           {
             "name": "替换当前行第一个匹配",
             "cmd": ":s/%{旧字符串}%/%{新字符串}%/",
             "params": {
-              "旧字符串": { "type": "string", "required": true, "description": "要被替换的字符串", "example": "foo", "notes": "" },
-              "新字符串": { "type": "string", "required": true, "description": "替换后的字符串", "example": "bar", "notes": "" }
+              "旧字符串": {
+                "type": "string",
+                "required": true,
+                "description": "要被替换的字符串",
+                "example": "foo",
+                "notes": "可选"
+              },
+              "新字符串": {
+                "type": "string",
+                "required": true,
+                "description": "替换后的字符串",
+                "example": "bar",
+                "notes": "可选"
+              }
             },
             "keyword": "vim 替换当前行"
           },
@@ -122,8 +276,20 @@
             "name": "替换当前行所有匹配",
             "cmd": ":s/%{旧字符串}%/%{新字符串}%/g",
             "params": {
-              "旧字符串": { "type": "string", "required": true, "description": "要被替换的字符串", "example": "foo", "notes": "" },
-              "新字符串": { "type": "string", "required": true, "description": "替换后的字符串", "example": "bar", "notes": "" }
+              "旧字符串": {
+                "type": "string",
+                "required": true,
+                "description": "要被替换的字符串",
+                "example": "foo",
+                "notes": "可选"
+              },
+              "新字符串": {
+                "type": "string",
+                "required": true,
+                "description": "替换后的字符串",
+                "example": "bar",
+                "notes": "可选"
+              }
             },
             "keyword": "vim 替换当前行全部"
           },
@@ -131,8 +297,20 @@
             "name": "替换文件中所有匹配",
             "cmd": ":%s/%{旧字符串}%/%{新字符串}%/g",
             "params": {
-              "旧字符串": { "type": "string", "required": true, "description": "要被替换的字符串", "example": "foo", "notes": "" },
-              "新字符串": { "type": "string", "required": true, "description": "替换后的字符串", "example": "bar", "notes": "" }
+              "旧字符串": {
+                "type": "string",
+                "required": true,
+                "description": "要被替换的字符串",
+                "example": "foo",
+                "notes": "可选"
+              },
+              "新字符串": {
+                "type": "string",
+                "required": true,
+                "description": "替换后的字符串",
+                "example": "bar",
+                "notes": "可选"
+              }
             },
             "keyword": "vim 替换全部"
           },
@@ -140,54 +318,129 @@
             "name": "替换文件所有匹配（逐个确认）",
             "cmd": ":%s/%{旧字符串}%/%{新字符串}%/gc",
             "params": {
-              "旧字符串": { "type": "string", "required": true, "description": "要被替换的字符串", "example": "foo", "notes": "" },
-              "新字符串": { "type": "string", "required": true, "description": "替换后的字符串", "example": "bar", "notes": "" }
+              "旧字符串": {
+                "type": "string",
+                "required": true,
+                "description": "要被替换的字符串",
+                "example": "foo",
+                "notes": "可选"
+              },
+              "新字符串": {
+                "type": "string",
+                "required": true,
+                "description": "替换后的字符串",
+                "example": "bar",
+                "notes": "可选"
+              }
             },
             "keyword": "vim 替换确认"
           }
         ],
-        "params": { "字符串": { "type": "string", "required": true, "description": "要搜索的字符串", "example": "TODO", "notes": "常用" } }
+        "params": {
+          "字符串": {
+            "type": "string",
+            "required": true,
+            "description": "要搜索的字符串",
+            "example": "TODO",
+            "notes": "常用"
+          }
+        }
       }
     },
     {
       "dirPath": "/编辑器命令/",
       "name": "Vim 缓冲区与文件操作",
       "keyword": "vim 缓冲区 文件 保存 退出",
-      "description": "Vim/Neovim 缓冲区与文件操作命令",
+      "description": "Vim/Neovim 缓冲区与文件操作命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": ":w",
         "extensions": [
-          { "name": "保存并退出", "cmd": ":wq", "params": {}, "keyword": "vim 保存退出" },
-          { "name": "强制退出（放弃修改）", "cmd": ":q!", "params": {}, "keyword": "vim 强制退出" },
+          {
+            "name": "保存并退出",
+            "cmd": ":wq",
+            "params": {},
+            "keyword": "vim 保存退出"
+          },
+          {
+            "name": "强制退出（放弃修改）",
+            "cmd": ":q!",
+            "params": {},
+            "keyword": "vim 强制退出"
+          },
           {
             "name": "另存为",
             "cmd": ":w %{文件名}%",
-            "params": { "文件名": { "type": "string", "required": true, "description": "新的文件名", "example": "backup.js", "notes": "" } },
+            "params": {
+              "文件名": {
+                "type": "string",
+                "required": true,
+                "description": "新的文件名",
+                "example": "backup.js",
+                "notes": "可选"
+              }
+            },
             "keyword": "vim 另存为"
           },
           {
             "name": "打开文件",
             "cmd": ":e %{文件名}%",
-            "params": { "文件名": { "type": "string", "required": true, "description": "要打开的文件路径", "example": "src/main.js", "notes": "" } },
+            "params": {
+              "文件名": {
+                "type": "string",
+                "required": true,
+                "description": "要打开的文件路径",
+                "example": "src/main.js",
+                "notes": "可选"
+              }
+            },
             "keyword": "vim 打开文件"
           },
-          { "name": "列出所有缓冲区", "cmd": ":ls", "params": {}, "keyword": "vim 缓冲区列表" },
+          {
+            "name": "列出所有缓冲区",
+            "cmd": ":ls",
+            "params": {},
+            "keyword": "vim 缓冲区列表"
+          },
           {
             "name": "切换到缓冲区",
             "cmd": ":b %{编号或名称}%",
-            "params": { "编号或名称": { "type": "string", "required": true, "description": "缓冲区编号或名称", "example": "2", "notes": "" } },
+            "params": {
+              "编号或名称": {
+                "type": "string",
+                "required": true,
+                "description": "缓冲区编号或名称",
+                "example": "2",
+                "notes": "可选"
+              }
+            },
             "keyword": "vim 切换缓冲区"
           },
           {
             "name": "水平分屏打开文件",
             "cmd": ":sp %{文件名}%",
-            "params": { "文件名": { "type": "string", "required": false, "description": "要打开的文件路径", "example": "src/config.js", "notes": "" } },
+            "params": {
+              "文件名": {
+                "type": "string",
+                "required": false,
+                "description": "要打开的文件路径",
+                "example": "src/config.js",
+                "notes": "可选"
+              }
+            },
             "keyword": "vim 水平分屏"
           },
           {
             "name": "垂直分屏打开文件",
             "cmd": ":vsp %{文件名}%",
-            "params": { "文件名": { "type": "string", "required": false, "description": "要打开的文件路径", "example": "src/config.js", "notes": "" } },
+            "params": {
+              "文件名": {
+                "type": "string",
+                "required": false,
+                "description": "要打开的文件路径",
+                "example": "src/config.js",
+                "notes": "可选"
+              }
+            },
             "keyword": "vim 垂直分屏"
           }
         ],
@@ -198,25 +451,56 @@
       "dirPath": "/编辑器命令/",
       "name": "Neovim Mason LSP 管理",
       "keyword": "neovim mason lsp 安装",
-      "description": "Neovim Mason LSP 服务器管理",
+      "description": "Neovim Mason LSP 服务器管理。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": ":Mason",
         "extensions": [
           {
             "name": "安装 LSP 服务器",
             "cmd": ":MasonInstall %{lsp服务器}%",
-            "params": { "lsp服务器": { "type": "string", "required": true, "description": "LSP 服务器名称", "example": "pyright", "notes": "" } },
+            "params": {
+              "lsp服务器": {
+                "type": "string",
+                "required": true,
+                "description": "LSP 服务器名称",
+                "example": "pyright",
+                "notes": "可选"
+              }
+            },
             "keyword": "mason 安装 lsp"
           },
           {
             "name": "卸载 LSP 服务器",
             "cmd": ":MasonUninstall %{lsp服务器}%",
-            "params": { "lsp服务器": { "type": "string", "required": true, "description": "LSP 服务器名称", "example": "pyright", "notes": "" } },
+            "params": {
+              "lsp服务器": {
+                "type": "string",
+                "required": true,
+                "description": "LSP 服务器名称",
+                "example": "pyright",
+                "notes": "可选"
+              }
+            },
             "keyword": "mason 卸载 lsp"
           },
-          { "name": "更新所有 Mason 包", "cmd": ":MasonUpdate", "params": {}, "keyword": "mason 更新" },
-          { "name": "查看 LSP 连接状态", "cmd": ":LspInfo", "params": {}, "keyword": "lspinfo 状态" },
-          { "name": "显示所有诊断", "cmd": ":Diagnostics", "params": {}, "keyword": "lsp 诊断" }
+          {
+            "name": "更新所有 Mason 包",
+            "cmd": ":MasonUpdate",
+            "params": {},
+            "keyword": "mason 更新"
+          },
+          {
+            "name": "查看 LSP 连接状态",
+            "cmd": ":LspInfo",
+            "params": {},
+            "keyword": "lspinfo 状态"
+          },
+          {
+            "name": "显示所有诊断",
+            "cmd": ":Diagnostics",
+            "params": {},
+            "keyword": "lsp 诊断"
+          }
         ],
         "params": {}
       }
@@ -225,20 +509,48 @@
       "dirPath": "/编辑器命令/",
       "name": "Vim 插件管理 vim-plug",
       "keyword": "vim-plug 插件管理",
-      "description": "vim-plug 插件管理器命令",
+      "description": "vim-plug 插件管理器命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": ":PlugInstall",
         "extensions": [
-          { "name": "更新所有插件", "cmd": ":PlugUpdate", "params": {}, "keyword": "vim-plug 更新" },
+          {
+            "name": "更新所有插件",
+            "cmd": ":PlugUpdate",
+            "params": {},
+            "keyword": "vim-plug 更新"
+          },
           {
             "name": "更新指定插件",
             "cmd": ":PlugUpdate %{插件名}%",
-            "params": { "插件名": { "type": "string", "required": true, "description": "插件名称", "example": "vim-fugitive", "notes": "" } },
+            "params": {
+              "插件名": {
+                "type": "string",
+                "required": true,
+                "description": "插件名称",
+                "example": "vim-fugitive",
+                "notes": "可选"
+              }
+            },
             "keyword": "vim-plug 更新单个"
           },
-          { "name": "清理未使用插件", "cmd": ":PlugClean", "params": {}, "keyword": "vim-plug 清理" },
-          { "name": "查看插件状态", "cmd": ":PlugStatus", "params": {}, "keyword": "vim-plug 状态" },
-          { "name": "升级 vim-plug 本身", "cmd": ":PlugUpgrade", "params": {}, "keyword": "vim-plug 升级" }
+          {
+            "name": "清理未使用插件",
+            "cmd": ":PlugClean",
+            "params": {},
+            "keyword": "vim-plug 清理"
+          },
+          {
+            "name": "查看插件状态",
+            "cmd": ":PlugStatus",
+            "params": {},
+            "keyword": "vim-plug 状态"
+          },
+          {
+            "name": "升级 vim-plug 本身",
+            "cmd": ":PlugUpgrade",
+            "params": {},
+            "keyword": "vim-plug 升级"
+          }
         ],
         "params": {}
       }
@@ -251,11 +563,36 @@
       "data": {
         "cmd": ":PackerSync",
         "extensions": [
-          { "name": "安装插件", "cmd": ":PackerInstall", "params": {}, "keyword": "packer 安装" },
-          { "name": "更新插件", "cmd": ":PackerUpdate", "params": {}, "keyword": "packer 更新" },
-          { "name": "清理未使用插件", "cmd": ":PackerClean", "params": {}, "keyword": "packer 清理" },
-          { "name": "重新编译插件配置", "cmd": ":PackerCompile", "params": {}, "keyword": "packer 编译" },
-          { "name": "查看插件状态", "cmd": ":PackerStatus", "params": {}, "keyword": "packer 状态" }
+          {
+            "name": "安装插件",
+            "cmd": ":PackerInstall",
+            "params": {},
+            "keyword": "packer 安装"
+          },
+          {
+            "name": "更新插件",
+            "cmd": ":PackerUpdate",
+            "params": {},
+            "keyword": "packer 更新"
+          },
+          {
+            "name": "清理未使用插件",
+            "cmd": ":PackerClean",
+            "params": {},
+            "keyword": "packer 清理"
+          },
+          {
+            "name": "重新编译插件配置",
+            "cmd": ":PackerCompile",
+            "params": {},
+            "keyword": "packer 编译"
+          },
+          {
+            "name": "查看插件状态",
+            "cmd": ":PackerStatus",
+            "params": {},
+            "keyword": "packer 状态"
+          }
         ],
         "params": {}
       }
@@ -264,30 +601,69 @@
       "dirPath": "/编辑器命令/",
       "name": "code VSCode 打开文件",
       "keyword": "code vscode 打开",
-      "description": "VSCode CLI 打开文件和目录",
+      "description": "VSCode CLI 打开文件和目录。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "code %{路径}%",
         "extensions": [
-          { "name": "在当前目录打开", "cmd": "code .", "params": {}, "keyword": "code 当前目录" },
+          {
+            "name": "在当前目录打开",
+            "cmd": "code .",
+            "params": {},
+            "keyword": "code 当前目录"
+          },
           {
             "name": "新窗口打开",
             "cmd": "code --new-window %{路径}%",
-            "params": { "路径": { "type": "string", "required": false, "description": "文件或目录路径", "example": "src", "notes": "" } },
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": false,
+                "description": "文件或目录路径",
+                "example": "src",
+                "notes": "可选"
+              }
+            },
             "keyword": "code 新窗口"
           },
           {
             "name": "复用窗口打开",
             "cmd": "code --reuse-window %{路径}%",
-            "params": { "路径": { "type": "string", "required": false, "description": "文件或目录路径", "example": "src/app.js", "notes": "" } },
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": false,
+                "description": "文件或目录路径",
+                "example": "src/app.js",
+                "notes": "可选"
+              }
+            },
             "keyword": "code 复用窗口"
           },
           {
             "name": "跳转到指定位置",
             "cmd": "code --goto %{文件}%:%{行}%:%{列}%",
             "params": {
-              "文件": { "type": "string", "required": true, "description": "文件路径", "example": "src/app.js", "notes": "" },
-              "行": { "type": "string", "required": true, "description": "行号", "example": "10", "notes": "" },
-              "列": { "type": "string", "required": true, "description": "列号", "example": "5", "notes": "" }
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径",
+                "example": "src/app.js",
+                "notes": "可选"
+              },
+              "行": {
+                "type": "string",
+                "required": true,
+                "description": "行号",
+                "example": "10",
+                "notes": "可选"
+              },
+              "列": {
+                "type": "string",
+                "required": true,
+                "description": "列号",
+                "example": "5",
+                "notes": "可选"
+              }
             },
             "keyword": "code 跳转"
           },
@@ -295,155 +671,360 @@
             "name": "比较两个文件",
             "cmd": "code --diff %{文件1}% %{文件2}%",
             "params": {
-              "文件1": { "type": "string", "required": true, "description": "第一个文件路径", "example": "a.js", "notes": "" },
-              "文件2": { "type": "string", "required": true, "description": "第二个文件路径", "example": "b.js", "notes": "" }
+              "文件1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个文件路径",
+                "example": "a.js",
+                "notes": "可选"
+              },
+              "文件2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个文件路径",
+                "example": "b.js",
+                "notes": "可选"
+              }
             },
             "keyword": "code diff"
           }
         ],
-        "params": { "路径": { "type": "string", "required": false, "description": "文件或目录路径", "example": "src/app.js", "notes": "" } }
+        "params": {
+          "路径": {
+            "type": "string",
+            "required": false,
+            "description": "文件或目录路径",
+            "example": "src/app.js",
+            "notes": "可选"
+          }
+        }
       }
     },
     {
       "dirPath": "/编辑器命令/",
       "name": "code VSCode 扩展管理",
       "keyword": "code vscode 扩展 插件",
-      "description": "VSCode CLI 扩展管理命令",
+      "description": "VSCode CLI 扩展管理命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "code --install-extension %{扩展ID}%",
         "extensions": [
-          { "name": "列出已安装扩展", "cmd": "code --list-extensions", "params": {}, "keyword": "code 扩展列表" },
+          {
+            "name": "列出已安装扩展",
+            "cmd": "code --list-extensions",
+            "params": {},
+            "keyword": "code 扩展列表"
+          },
           {
             "name": "卸载扩展",
             "cmd": "code --uninstall-extension %{扩展ID}%",
-            "params": { "扩展ID": { "type": "string", "required": true, "description": "扩展的唯一标识", "example": "ms-python.python", "notes": "" } },
+            "params": {
+              "扩展ID": {
+                "type": "string",
+                "required": true,
+                "description": "扩展的唯一标识",
+                "example": "ms-python.python",
+                "notes": "可选"
+              }
+            },
             "keyword": "code 卸载扩展"
           },
           {
             "name": "禁用扩展",
             "cmd": "code --disable-extension %{扩展ID}%",
-            "params": { "扩展ID": { "type": "string", "required": true, "description": "扩展的唯一标识", "example": "ms-python.python", "notes": "" } },
+            "params": {
+              "扩展ID": {
+                "type": "string",
+                "required": true,
+                "description": "扩展的唯一标识",
+                "example": "ms-python.python",
+                "notes": "可选"
+              }
+            },
             "keyword": "code 禁用扩展"
           },
           {
             "name": "安全模式启动",
             "cmd": "code --safe-mode %{路径}%",
-            "params": { "路径": { "type": "string", "required": false, "description": "文件或目录路径", "example": ".", "notes": "" } },
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": false,
+                "description": "文件或目录路径",
+                "example": ".",
+                "notes": "可选"
+              }
+            },
             "keyword": "code 安全模式"
           },
           {
             "name": "禁用扩展启动",
             "cmd": "code --disable-extensions %{路径}%",
-            "params": { "路径": { "type": "string", "required": false, "description": "文件或目录路径", "example": ".", "notes": "" } },
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": false,
+                "description": "文件或目录路径",
+                "example": ".",
+                "notes": "可选"
+              }
+            },
             "keyword": "code 禁用扩展启动"
           }
         ],
-        "params": { "扩展ID": { "type": "string", "required": true, "description": "扩展的唯一标识", "example": "esbenp.prettier-vscode", "notes": "常用" } }
+        "params": {
+          "扩展ID": {
+            "type": "string",
+            "required": true,
+            "description": "扩展的唯一标识",
+            "example": "esbenp.prettier-vscode",
+            "notes": "常用"
+          }
+        }
       }
     },
     {
       "dirPath": "/编辑器命令/",
       "name": "JetBrains IDE CLI 打开",
       "keyword": "idea pycharm webstorm jetbrains 打开",
-      "description": "JetBrains IDE 命令行启动工具",
+      "description": "JetBrains IDE 命令行启动工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "idea %{路径}%",
         "extensions": [
           {
             "name": "用 PyCharm 打开",
             "cmd": "pycharm %{路径}%",
-            "params": { "路径": { "type": "string", "required": false, "description": "目录或文件路径", "example": "./myproject", "notes": "" } },
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": false,
+                "description": "目录或文件路径",
+                "example": "./myproject",
+                "notes": "可选"
+              }
+            },
             "keyword": "pycharm 打开"
           },
           {
             "name": "用 WebStorm 打开",
             "cmd": "webstorm %{路径}%",
-            "params": { "路径": { "type": "string", "required": false, "description": "目录或文件路径", "example": "./frontend", "notes": "" } },
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": false,
+                "description": "目录或文件路径",
+                "example": "./frontend",
+                "notes": "可选"
+              }
+            },
             "keyword": "webstorm 打开"
           },
           {
             "name": "用 GoLand 打开",
             "cmd": "goland %{路径}%",
-            "params": { "路径": { "type": "string", "required": false, "description": "目录或文件路径", "example": "./myproject", "notes": "" } },
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": false,
+                "description": "目录或文件路径",
+                "example": "./myproject",
+                "notes": "可选"
+              }
+            },
             "keyword": "goland 打开"
           },
           {
             "name": "用 CLion 打开",
             "cmd": "clion %{路径}%",
-            "params": { "路径": { "type": "string", "required": false, "description": "目录或文件路径", "example": "./cpp-project", "notes": "" } },
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": false,
+                "description": "目录或文件路径",
+                "example": "./cpp-project",
+                "notes": "可选"
+              }
+            },
             "keyword": "clion 打开"
           },
           {
             "name": "用 Rider 打开",
             "cmd": "rider %{路径}%",
-            "params": { "路径": { "type": "string", "required": false, "description": "目录或文件路径", "example": "./dotnet-project", "notes": "" } },
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": false,
+                "description": "目录或文件路径",
+                "example": "./dotnet-project",
+                "notes": "可选"
+              }
+            },
             "keyword": "rider 打开"
           },
           {
             "name": "用 Android Studio 打开",
             "cmd": "studio %{路径}%",
-            "params": { "路径": { "type": "string", "required": false, "description": "目录或文件路径", "example": "./android-app", "notes": "" } },
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": false,
+                "description": "目录或文件路径",
+                "example": "./android-app",
+                "notes": "可选"
+              }
+            },
             "keyword": "android studio 打开"
           }
         ],
-        "params": { "路径": { "type": "string", "required": false, "description": "目录或文件路径", "example": "./project", "notes": "" } }
+        "params": {
+          "路径": {
+            "type": "string",
+            "required": false,
+            "description": "目录或文件路径",
+            "example": "./project",
+            "notes": "可选"
+          }
+        }
       }
     },
     {
       "dirPath": "/编辑器命令/",
       "name": "tmux 会话管理",
       "keyword": "tmux 会话",
-      "description": "tmux 会话创建与管理",
+      "description": "tmux 会话创建与管理。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "tmux new -s %{会话名}%",
         "extensions": [
-          { "name": "列出所有会话", "cmd": "tmux ls", "params": {}, "keyword": "tmux 列表" },
+          {
+            "name": "列出所有会话",
+            "cmd": "tmux ls",
+            "params": {},
+            "keyword": "tmux 列表"
+          },
           {
             "name": "附加到会话",
             "cmd": "tmux attach -t %{会话名}%",
-            "params": { "会话名": { "type": "string", "required": true, "description": "会话名称", "example": "dev", "notes": "" } },
+            "params": {
+              "会话名": {
+                "type": "string",
+                "required": true,
+                "description": "会话名称",
+                "example": "dev",
+                "notes": "可选"
+              }
+            },
             "keyword": "tmux 附加"
           },
-          { "name": "分离当前会话", "cmd": "Ctrl+b d", "params": {}, "keyword": "tmux 分离" },
+          {
+            "name": "分离当前会话",
+            "cmd": "Ctrl+b d",
+            "params": {},
+            "keyword": "tmux 分离"
+          },
           {
             "name": "关闭会话",
             "cmd": "tmux kill-session -t %{会话名}%",
-            "params": { "会话名": { "type": "string", "required": true, "description": "会话名称", "example": "dev", "notes": "" } },
+            "params": {
+              "会话名": {
+                "type": "string",
+                "required": true,
+                "description": "会话名称",
+                "example": "dev",
+                "notes": "可选"
+              }
+            },
             "keyword": "tmux 关闭会话"
           },
           {
             "name": "重命名会话",
             "cmd": "tmux rename-session -t %{旧名}% %{新名}%",
             "params": {
-              "旧名": { "type": "string", "required": true, "description": "当前会话名", "example": "dev", "notes": "" },
-              "新名": { "type": "string", "required": true, "description": "新会话名", "example": "project", "notes": "" }
+              "旧名": {
+                "type": "string",
+                "required": true,
+                "description": "当前会话名",
+                "example": "dev",
+                "notes": "可选"
+              },
+              "新名": {
+                "type": "string",
+                "required": true,
+                "description": "新会话名",
+                "example": "project",
+                "notes": "可选"
+              }
             },
             "keyword": "tmux 重命名"
           }
         ],
-        "params": { "会话名": { "type": "string", "required": true, "description": "会话名称", "example": "dev", "notes": "常用" } }
+        "params": {
+          "会话名": {
+            "type": "string",
+            "required": true,
+            "description": "会话名称",
+            "example": "dev",
+            "notes": "常用"
+          }
+        }
       }
     },
     {
       "dirPath": "/编辑器命令/",
       "name": "tmux 窗口与面板",
       "keyword": "tmux 窗口 面板 分屏",
-      "description": "tmux 窗口与面板操作",
+      "description": "tmux 窗口与面板操作。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "Ctrl+b \"",
         "extensions": [
-          { "name": "垂直分屏", "cmd": "Ctrl+b %", "params": {}, "keyword": "tmux 垂直分屏" },
-          { "name": "切换面板", "cmd": "Ctrl+b 方向键", "params": {}, "keyword": "tmux 切换面板" },
-          { "name": "最大化/还原面板", "cmd": "Ctrl+b z", "params": {}, "keyword": "tmux 最大化面板" },
-          { "name": "关闭当前面板", "cmd": "Ctrl+b x", "params": {}, "keyword": "tmux 关闭面板" },
-          { "name": "新建窗口", "cmd": "Ctrl+b c", "params": {}, "keyword": "tmux 新建窗口" },
+          {
+            "name": "垂直分屏",
+            "cmd": "Ctrl+b %",
+            "params": {},
+            "keyword": "tmux 垂直分屏"
+          },
+          {
+            "name": "切换面板",
+            "cmd": "Ctrl+b 方向键",
+            "params": {},
+            "keyword": "tmux 切换面板"
+          },
+          {
+            "name": "最大化/还原面板",
+            "cmd": "Ctrl+b z",
+            "params": {},
+            "keyword": "tmux 最大化面板"
+          },
+          {
+            "name": "关闭当前面板",
+            "cmd": "Ctrl+b x",
+            "params": {},
+            "keyword": "tmux 关闭面板"
+          },
+          {
+            "name": "新建窗口",
+            "cmd": "Ctrl+b c",
+            "params": {},
+            "keyword": "tmux 新建窗口"
+          },
           {
             "name": "切换到指定窗口",
             "cmd": "Ctrl+b %{数字}%",
-            "params": { "数字": { "type": "string", "required": true, "description": "窗口编号", "example": "0", "notes": "" } },
+            "params": {
+              "数字": {
+                "type": "string",
+                "required": true,
+                "description": "窗口编号",
+                "example": "0",
+                "notes": "可选"
+              }
+            },
             "keyword": "tmux 切换窗口"
           },
-          { "name": "重命名当前窗口", "cmd": "Ctrl+b ,", "params": {}, "keyword": "tmux 重命名窗口" }
+          {
+            "name": "重命名当前窗口",
+            "cmd": "Ctrl+b ,",
+            "params": {},
+            "keyword": "tmux 重命名窗口"
+          }
         ],
         "params": {}
       }
@@ -452,82 +1033,192 @@
       "dirPath": "/编辑器命令/",
       "name": "rg ripgrep 搜索",
       "keyword": "rg ripgrep 搜索 grep",
-      "description": "ripgrep 快速全文搜索工具",
+      "description": "ripgrep 快速全文搜索工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "rg \"%{内容}%\"",
         "extensions": [
           {
             "name": "搜索并显示行号",
             "cmd": "rg -n \"%{内容}%\"",
-            "params": { "内容": { "type": "string", "required": true, "description": "要搜索的内容", "example": "TODO", "notes": "" } },
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要搜索的内容",
+                "example": "TODO",
+                "notes": "可选"
+              }
+            },
             "keyword": "rg 行号"
           },
           {
             "name": "只显示文件名",
             "cmd": "rg -l \"%{内容}%\"",
-            "params": { "内容": { "type": "string", "required": true, "description": "要搜索的内容", "example": "function", "notes": "" } },
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要搜索的内容",
+                "example": "function",
+                "notes": "可选"
+              }
+            },
             "keyword": "rg 只显示文件"
           },
           {
             "name": "搜索指定文件类型",
             "cmd": "rg -t %{类型}% \"%{内容}%\"",
             "params": {
-              "类型": { "type": "string", "required": true, "description": "文件类型", "example": "js", "notes": "" },
-              "内容": { "type": "string", "required": true, "description": "要搜索的内容", "example": "TODO", "notes": "" }
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "文件类型",
+                "example": "js",
+                "notes": "可选"
+              },
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要搜索的内容",
+                "example": "TODO",
+                "notes": "可选"
+              }
             },
             "keyword": "rg 指定类型"
           },
           {
             "name": "忽略大小写搜索",
             "cmd": "rg -i \"%{内容}%\"",
-            "params": { "内容": { "type": "string", "required": true, "description": "要搜索的内容", "example": "error", "notes": "" } },
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要搜索的内容",
+                "example": "error",
+                "notes": "可选"
+              }
+            },
             "keyword": "rg 忽略大小写"
           },
           {
             "name": "显示匹配上下文",
             "cmd": "rg -C %{行数}% \"%{内容}%\"",
             "params": {
-              "行数": { "type": "string", "required": true, "description": "上下文的行数", "example": "3", "notes": "" },
-              "内容": { "type": "string", "required": true, "description": "要搜索的内容", "example": "TODO", "notes": "" }
+              "行数": {
+                "type": "string",
+                "required": true,
+                "description": "上下文的行数",
+                "example": "3",
+                "notes": "可选"
+              },
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要搜索的内容",
+                "example": "TODO",
+                "notes": "可选"
+              }
             },
             "keyword": "rg 上下文"
           },
           {
             "name": "排除目录搜索",
             "cmd": "rg \"%{内容}%\" -g \"!node_modules\"",
-            "params": { "内容": { "type": "string", "required": true, "description": "要搜索的内容", "example": "TODO", "notes": "" } },
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要搜索的内容",
+                "example": "TODO",
+                "notes": "可选"
+              }
+            },
             "keyword": "rg 排除目录"
           },
           {
             "name": "正则表达式搜索",
             "cmd": "rg -e \"%{正则}%\"",
-            "params": { "正则": { "type": "string", "required": true, "description": "正则表达式", "example": "error\\d+", "notes": "" } },
+            "params": {
+              "正则": {
+                "type": "string",
+                "required": true,
+                "description": "正则表达式",
+                "example": "error\\d+",
+                "notes": "可选"
+              }
+            },
             "keyword": "rg 正则"
           },
           {
             "name": "搜索整个单词",
             "cmd": "rg -w \"%{单词}%\"",
-            "params": { "单词": { "type": "string", "required": true, "description": "完整单词", "example": "console", "notes": "" } },
+            "params": {
+              "单词": {
+                "type": "string",
+                "required": true,
+                "description": "完整单词",
+                "example": "console",
+                "notes": "可选"
+              }
+            },
             "keyword": "rg 单词"
           }
         ],
-        "params": { "内容": { "type": "string", "required": true, "description": "要搜索的内容", "example": "TODO", "notes": "常用" } }
+        "params": {
+          "内容": {
+            "type": "string",
+            "required": true,
+            "description": "要搜索的内容",
+            "example": "TODO",
+            "notes": "常用"
+          }
+        }
       }
     },
     {
       "dirPath": "/编辑器命令/",
       "name": "fzf 模糊搜索",
       "keyword": "fzf 模糊 搜索 查找",
-      "description": "fzf 通用模糊查找工具",
+      "description": "fzf 通用模糊查找工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "fzf",
         "extensions": [
-          { "name": "带预览的文件搜索", "cmd": "fzf --preview 'cat {}'", "params": {}, "keyword": "fzf 预览" },
-          { "name": "在文件内容中搜索", "cmd": "find . -type f | fzf", "params": {}, "keyword": "fzf 查找文件" },
-          { "name": "搜索命令历史", "cmd": "history | fzf", "params": {}, "keyword": "fzf 历史" },
-          { "name": "切换 git 分支", "cmd": "git branch | fzf | xargs git checkout", "params": {}, "keyword": "fzf git 分支" },
-          { "name": "杀掉进程", "cmd": "ps aux | fzf | awk '{print $2}' | xargs kill", "params": {}, "keyword": "fzf 杀进程" },
-          { "name": "组合 rg 搜索", "cmd": "rg --color=always -n . | fzf", "params": {}, "keyword": "fzf rg 组合" }
+          {
+            "name": "带预览的文件搜索",
+            "cmd": "fzf --preview 'cat {}'",
+            "params": {},
+            "keyword": "fzf 预览"
+          },
+          {
+            "name": "在文件内容中搜索",
+            "cmd": "find . -type f | fzf",
+            "params": {},
+            "keyword": "fzf 查找文件"
+          },
+          {
+            "name": "搜索命令历史",
+            "cmd": "history | fzf",
+            "params": {},
+            "keyword": "fzf 历史"
+          },
+          {
+            "name": "切换 git 分支",
+            "cmd": "git branch | fzf | xargs git checkout",
+            "params": {},
+            "keyword": "fzf git 分支"
+          },
+          {
+            "name": "杀掉进程",
+            "cmd": "ps aux | fzf | awk '{print $2}' | xargs kill",
+            "params": {},
+            "keyword": "fzf 杀进程"
+          },
+          {
+            "name": "组合 rg 搜索",
+            "cmd": "rg --color=always -n . | fzf",
+            "params": {},
+            "keyword": "fzf rg 组合"
+          }
         ],
         "params": {}
       }
@@ -536,26 +1227,62 @@
       "dirPath": "/编辑器命令/",
       "name": "eslint 代码检查",
       "keyword": "eslint 检查 代码质量",
-      "description": "ESLint 代码检查工具 CLI",
+      "description": "ESLint 代码检查工具 CLI。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npx eslint .",
         "extensions": [
           {
             "name": "检查指定文件",
             "cmd": "npx eslint %{文件名}%",
-            "params": { "文件名": { "type": "string", "required": true, "description": "文件路径", "example": "src/app.js", "notes": "" } },
+            "params": {
+              "文件名": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径",
+                "example": "src/app.js",
+                "notes": "可选"
+              }
+            },
             "keyword": "eslint 检查文件"
           },
-          { "name": "自动修复问题", "cmd": "npx eslint --fix .", "params": {}, "keyword": "eslint 自动修复" },
+          {
+            "name": "自动修复问题",
+            "cmd": "npx eslint --fix .",
+            "params": {},
+            "keyword": "eslint 自动修复"
+          },
           {
             "name": "使用指定配置文件",
             "cmd": "npx eslint --config %{配置文件}% .",
-            "params": { "配置文件": { "type": "string", "required": true, "description": "ESLint 配置文件路径", "example": ".eslintrc.js", "notes": "" } },
+            "params": {
+              "配置文件": {
+                "type": "string",
+                "required": true,
+                "description": "ESLint 配置文件路径",
+                "example": ".eslintrc.js",
+                "notes": "可选"
+              }
+            },
             "keyword": "eslint 配置文件"
           },
-          { "name": "启用缓存", "cmd": "npx eslint --cache .", "params": {}, "keyword": "eslint 缓存" },
-          { "name": "安静模式（只显示错误）", "cmd": "npx eslint --quiet .", "params": {}, "keyword": "eslint 安静模式" },
-          { "name": "输出 JSON 格式", "cmd": "npx eslint -f json .", "params": {}, "keyword": "eslint json 输出" }
+          {
+            "name": "启用缓存",
+            "cmd": "npx eslint --cache .",
+            "params": {},
+            "keyword": "eslint 缓存"
+          },
+          {
+            "name": "安静模式（只显示错误）",
+            "cmd": "npx eslint --quiet .",
+            "params": {},
+            "keyword": "eslint 安静模式"
+          },
+          {
+            "name": "输出 JSON 格式",
+            "cmd": "npx eslint -f json .",
+            "params": {},
+            "keyword": "eslint json 输出"
+          }
         ],
         "params": {}
       }
@@ -564,27 +1291,68 @@
       "dirPath": "/编辑器命令/",
       "name": "prettier 代码格式化",
       "keyword": "prettier 格式化 代码",
-      "description": "Prettier 代码格式化工具 CLI",
+      "description": "Prettier 代码格式化工具 CLI。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npx prettier --write .",
         "extensions": [
           {
             "name": "格式化指定文件",
             "cmd": "npx prettier --write %{文件名}%",
-            "params": { "文件名": { "type": "string", "required": true, "description": "文件路径", "example": "src/app.js", "notes": "" } },
+            "params": {
+              "文件名": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径",
+                "example": "src/app.js",
+                "notes": "可选"
+              }
+            },
             "keyword": "prettier 格式化文件"
           },
-          { "name": "检查格式（不修改）", "cmd": "npx prettier --check .", "params": {}, "keyword": "prettier 检查" },
+          {
+            "name": "检查格式（不修改）",
+            "cmd": "npx prettier --check .",
+            "params": {},
+            "keyword": "prettier 检查"
+          },
           {
             "name": "使用指定配置文件",
             "cmd": "npx prettier --config %{配置文件}% .",
-            "params": { "配置文件": { "type": "string", "required": true, "description": "Prettier 配置文件路径", "example": ".prettierrc", "notes": "" } },
+            "params": {
+              "配置文件": {
+                "type": "string",
+                "required": true,
+                "description": "Prettier 配置文件路径",
+                "example": ".prettierrc",
+                "notes": "可选"
+              }
+            },
             "keyword": "prettier 配置"
           },
-          { "name": "格式化指定类型文件", "cmd": "npx prettier --write \"**/*.{js,jsx,ts,tsx}\"", "params": {}, "keyword": "prettier 指定类型" },
-          { "name": "设置缩进宽度", "cmd": "npx prettier --write --tab-width 2 .", "params": {}, "keyword": "prettier 缩进" },
-          { "name": "使用单引号", "cmd": "npx prettier --write --single-quote .", "params": {}, "keyword": "prettier 单引号" },
-          { "name": "不添加分号", "cmd": "npx prettier --write --no-semi .", "params": {}, "keyword": "prettier 无分号" }
+          {
+            "name": "格式化指定类型文件",
+            "cmd": "npx prettier --write \"**/*.{js,jsx,ts,tsx}\"",
+            "params": {},
+            "keyword": "prettier 指定类型"
+          },
+          {
+            "name": "设置缩进宽度",
+            "cmd": "npx prettier --write --tab-width 2 .",
+            "params": {},
+            "keyword": "prettier 缩进"
+          },
+          {
+            "name": "使用单引号",
+            "cmd": "npx prettier --write --single-quote .",
+            "params": {},
+            "keyword": "prettier 单引号"
+          },
+          {
+            "name": "不添加分号",
+            "cmd": "npx prettier --write --no-semi .",
+            "params": {},
+            "keyword": "prettier 无分号"
+          }
         ],
         "params": {}
       }
@@ -593,21 +1361,54 @@
       "dirPath": "/编辑器命令/",
       "name": "pre-commit Git 钩子",
       "keyword": "pre-commit git hook 钩子",
-      "description": "pre-commit Git 钩子管理工具",
+      "description": "pre-commit Git 钩子管理工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "pre-commit install",
         "extensions": [
-          { "name": "运行所有钩子", "cmd": "pre-commit run --all-files", "params": {}, "keyword": "pre-commit 运行全部" },
+          {
+            "name": "运行所有钩子",
+            "cmd": "pre-commit run --all-files",
+            "params": {},
+            "keyword": "pre-commit 运行全部"
+          },
           {
             "name": "运行指定钩子",
             "cmd": "pre-commit run %{钩子名}%",
-            "params": { "钩子名": { "type": "string", "required": true, "description": "钩子名称", "example": "trailing-whitespace", "notes": "" } },
+            "params": {
+              "钩子名": {
+                "type": "string",
+                "required": true,
+                "description": "钩子名称",
+                "example": "trailing-whitespace",
+                "notes": "可选"
+              }
+            },
             "keyword": "pre-commit 运行单个"
           },
-          { "name": "更新钩子版本", "cmd": "pre-commit autoupdate", "params": {}, "keyword": "pre-commit 更新" },
-          { "name": "卸载钩子", "cmd": "pre-commit uninstall", "params": {}, "keyword": "pre-commit 卸载" },
-          { "name": "列出所有钩子", "cmd": "pre-commit list", "params": {}, "keyword": "pre-commit 列表" },
-          { "name": "清除缓存", "cmd": "pre-commit clean", "params": {}, "keyword": "pre-commit 清除缓存" }
+          {
+            "name": "更新钩子版本",
+            "cmd": "pre-commit autoupdate",
+            "params": {},
+            "keyword": "pre-commit 更新"
+          },
+          {
+            "name": "卸载钩子",
+            "cmd": "pre-commit uninstall",
+            "params": {},
+            "keyword": "pre-commit 卸载"
+          },
+          {
+            "name": "列出所有钩子",
+            "cmd": "pre-commit list",
+            "params": {},
+            "keyword": "pre-commit 列表"
+          },
+          {
+            "name": "清除缓存",
+            "cmd": "pre-commit clean",
+            "params": {},
+            "keyword": "pre-commit 清除缓存"
+          }
         ],
         "params": {}
       }
@@ -616,17 +1417,34 @@
       "dirPath": "/编辑器命令/",
       "name": "toolbox JetBrains Toolbox",
       "keyword": "toolbox jetbrains toolbox",
-      "description": "JetBrains Toolbox 命令行管理工具",
+      "description": "JetBrains Toolbox 命令行管理工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "toolbox",
         "extensions": [
-          { "name": "列出已安装 IDE", "cmd": "toolbox list", "params": {}, "keyword": "toolbox 列表" },
+          {
+            "name": "列出已安装 IDE",
+            "cmd": "toolbox list",
+            "params": {},
+            "keyword": "toolbox 列表"
+          },
           {
             "name": "通过 Toolbox 启动 IDE",
             "cmd": "toolbox exec %{IDE}% %{路径}%",
             "params": {
-              "IDE": { "type": "string", "required": true, "description": "IDE 名称", "example": "idea", "notes": "" },
-              "路径": { "type": "string", "required": false, "description": "项目路径", "example": "./project", "notes": "" }
+              "IDE": {
+                "type": "string",
+                "required": true,
+                "description": "IDE 名称",
+                "example": "idea",
+                "notes": "可选"
+              },
+              "路径": {
+                "type": "string",
+                "required": false,
+                "description": "项目路径",
+                "example": "./project",
+                "notes": "可选"
+              }
             },
             "keyword": "toolbox exec"
           },
@@ -634,13 +1452,36 @@
             "name": "启动指定版本 IDE",
             "cmd": "toolbox exec --version %{版本}% %{IDE}% %{路径}%",
             "params": {
-              "版本": { "type": "string", "required": true, "description": "IDE 版本号", "example": "2024.1", "notes": "" },
-              "IDE": { "type": "string", "required": true, "description": "IDE 名称", "example": "idea", "notes": "" },
-              "路径": { "type": "string", "required": false, "description": "项目路径", "example": "./project", "notes": "" }
+              "版本": {
+                "type": "string",
+                "required": true,
+                "description": "IDE 版本号",
+                "example": "2024.1",
+                "notes": "可选"
+              },
+              "IDE": {
+                "type": "string",
+                "required": true,
+                "description": "IDE 名称",
+                "example": "idea",
+                "notes": "可选"
+              },
+              "路径": {
+                "type": "string",
+                "required": false,
+                "description": "项目路径",
+                "example": "./project",
+                "notes": "可选"
+              }
             },
             "keyword": "toolbox 指定版本"
           },
-          { "name": "更新 Toolbox", "cmd": "toolbox update", "params": {}, "keyword": "toolbox 更新" }
+          {
+            "name": "更新 Toolbox",
+            "cmd": "toolbox update",
+            "params": {},
+            "keyword": "toolbox 更新"
+          }
         ],
         "params": {}
       }

@@ -1,0 +1,80 @@
+{
+  "module": "PostgreSQL psql",
+  "version": "2.0",
+  "description": "PostgreSQL 数据库 psql 客户端",
+  "commands": [
+    {
+      "dirPath": "/PostgreSQL psql/",
+      "name": "psql 连接数据库",
+      "keyword": "psql 连接",
+      "description": "连接 PostgreSQL 数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "psql -h %{主机}% -U %{用户}% -d %{数据库名}%",
+        "extensions": [],
+        "params": {
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "数据库主机",
+            "example": "localhost",
+            "notes": "必填"
+          },
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "用户名",
+            "example": "postgres",
+            "notes": "必填"
+          },
+          "数据库名": {
+            "type": "string",
+            "required": true,
+            "description": "数据库名",
+            "example": "mydb",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/PostgreSQL psql/",
+      "name": "psql 执行 SQL",
+      "keyword": "psql SQL",
+      "description": "执行 SQL 文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "psql -h %{主机}% -U %{用户}% -d %{数据库}% -f %{文件}%",
+        "extensions": [],
+        "params": {
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "主机",
+            "example": "localhost",
+            "notes": "必填"
+          },
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "用户",
+            "example": "postgres",
+            "notes": "必填"
+          },
+          "数据库": {
+            "type": "string",
+            "required": true,
+            "description": "数据库",
+            "example": "mydb",
+            "notes": "必填"
+          },
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "SQL 文件",
+            "example": "query.sql",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

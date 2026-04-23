@@ -1,0 +1,94 @@
+{
+  "module": "MySQL mysql",
+  "version": "2.0",
+  "description": "MySQL 数据库 mysql 客户端，涵盖MySQL mysql的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/MySQL mysql/",
+      "name": "mysql 连接数据库",
+      "keyword": "mysql 连接",
+      "description": "连接 MySQL 数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "mysql -h %{主机}% -u %{用户}% -p%{密码}% %{数据库名}%",
+        "extensions": [],
+        "params": {
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "数据库主机",
+            "example": "localhost",
+            "notes": "必填"
+          },
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "用户名",
+            "example": "root",
+            "notes": "必填"
+          },
+          "密码": {
+            "type": "string",
+            "required": true,
+            "description": "密码",
+            "example": "password",
+            "notes": "必填"
+          },
+          "数据库名": {
+            "type": "string",
+            "required": false,
+            "description": "数据库名",
+            "example": "mydb",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/MySQL mysql/",
+      "name": "mysql 执行 SQL",
+      "keyword": "mysql SQL",
+      "description": "执行 SQL 文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "mysql -h %{主机}% -u %{用户}% -p%{密码}% %{数据库}% < %{文件}%",
+        "extensions": [],
+        "params": {
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "主机",
+            "example": "localhost",
+            "notes": "必填"
+          },
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "用户",
+            "example": "root",
+            "notes": "必填"
+          },
+          "密码": {
+            "type": "string",
+            "required": true,
+            "description": "密码",
+            "example": "password",
+            "notes": "必填"
+          },
+          "数据库": {
+            "type": "string",
+            "required": true,
+            "description": "数据库",
+            "example": "mydb",
+            "notes": "必填"
+          },
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "SQL 文件",
+            "example": "script.sql",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,562 @@
+{
+  "module": "Mercurial 命令",
+  "version": "2.0",
+  "description": "Mercurial 分布式版本控制系统命令模块 - hg 是 Mercurial 的命令行工具，是轻量级分布式 VCS，适合中小型项目。与 Git 类似但命令更简洁，学习曲线平缓",
+  "commands": [
+    {
+      "dirPath": "/Mercurial 命令/",
+      "name": "hg clone 克隆仓库",
+      "keyword": "hg clone 克隆",
+      "description": "克隆 Mercurial 仓库 - 从远程仓库下载完整的仓库副本，包括所有历史记录和分支",
+      "data": {
+        "cmd": "hg clone %{仓库URL}%",
+        "extensions": [
+          {
+            "name": "克隆到指定目录",
+            "cmd": "hg clone %{仓库URL}% %{目录}%",
+            "params": {
+              "仓库URL": {
+                "type": "string",
+                "required": true,
+                "description": "Mercurial 仓库 URL",
+                "example": "https://hg.example.com/repo",
+                "notes": "必填"
+              },
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "目标目录",
+                "example": "myrepo",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hg clone 目录"
+          },
+          {
+            "name": "浅克隆（指定版本深度）",
+            "cmd": "hg clone %{仓库URL}% --rev %{版本}%",
+            "params": {
+              "仓库URL": {
+                "type": "string",
+                "required": true,
+                "description": "仓库 URL",
+                "example": "https://hg.example.com/repo",
+                "notes": "必填"
+              },
+              "版本": {
+                "type": "string",
+                "required": true,
+                "description": "版本/变更集",
+                "example": "10",
+                "notes": "必填。只克隆到指定版本"
+              }
+            },
+            "keyword": "hg clone shallow"
+          },
+          {
+            "name": "更新到指定版本后克隆",
+            "cmd": "hg clone -u %{版本}% %{仓库URL}%",
+            "params": {
+              "版本": {
+                "type": "string",
+                "required": true,
+                "description": "版本标签或哈希",
+                "example": "v1.0",
+                "notes": "必填。克隆后切换到指定版本"
+              },
+              "仓库URL": {
+                "type": "string",
+                "required": true,
+                "description": "仓库 URL",
+                "example": "https://hg.example.com/repo",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hg clone update"
+          }
+        ],
+        "params": {
+          "仓库URL": {
+            "type": "string",
+            "required": true,
+            "description": "Mercurial 仓库 URL",
+            "example": "https://hg.example.com/repo",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Mercurial 命令/",
+      "name": "hg commit 提交更改",
+      "keyword": "hg commit 提交",
+      "description": "提交更改到本地仓库 - 将工作区的修改记录到本地历史，每次提交需要输入提交信息描述更改内容",
+      "data": {
+        "cmd": "hg commit -m %{提交信息}%",
+        "extensions": [
+          {
+            "name": "提交所有更改",
+            "cmd": "hg commit -A -m %{信息}%",
+            "params": {
+              "信息": {
+                "type": "string",
+                "required": true,
+                "description": "提交信息",
+                "example": "Add new feature",
+                "notes": "必填。-A 包含所有文件包括新文件"
+              }
+            },
+            "keyword": "hg commit all"
+          },
+          {
+            "name": "交互式提交",
+            "cmd": "hg commit --interactive",
+            "params": {},
+            "keyword": "hg commit interactive"
+          },
+          {
+            "name": "指定文件提交",
+            "cmd": "hg commit -m %{信息}% %{文件}%",
+            "params": {
+              "信息": {
+                "type": "string",
+                "required": true,
+                "description": "提交信息",
+                "example": "Fix bug",
+                "notes": "必填"
+              },
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径",
+                "example": "src/main.py",
+                "notes": "必填。只提交指定文件"
+              }
+            },
+            "keyword": "hg commit file"
+          }
+        ],
+        "params": {
+          "提交信息": {
+            "type": "string",
+            "required": true,
+            "description": "提交说明",
+            "example": "Add new feature",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Mercurial 命令/",
+      "name": "hg push 推送更改",
+      "keyword": "hg push 推送",
+      "description": "推送更改到远程仓库 - 将本地提交推送到远程 Mercurial 仓库，使团队成员可以看到你的更改",
+      "data": {
+        "cmd": "hg push",
+        "extensions": [
+          {
+            "name": "推送到指定仓库",
+            "cmd": "hg push %{仓库URL}%",
+            "params": {
+              "仓库URL": {
+                "type": "string",
+                "required": true,
+                "description": "远程仓库 URL",
+                "example": "https://hg.example.com/repo",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hg push remote"
+          },
+          {
+            "name": "强制推送（慎用）",
+            "cmd": "hg push -f",
+            "params": {},
+            "keyword": "hg push force"
+          },
+          {
+            "name": "推送所有分支",
+            "cmd": "hg push --all",
+            "params": {},
+            "keyword": "hg push all branches"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Mercurial 命令/",
+      "name": "hg pull 拉取更改",
+      "keyword": "hg pull 拉取",
+      "description": "从远程仓库拉取更改 - 将远程仓库的更新下载到本地，但不会自动合并或更新工作区",
+      "data": {
+        "cmd": "hg pull",
+        "extensions": [
+          {
+            "name": "拉取并更新",
+            "cmd": "hg pull -u",
+            "params": {},
+            "keyword": "hg pull update"
+          },
+          {
+            "name": "从指定仓库拉取",
+            "cmd": "hg pull %{仓库URL}%",
+            "params": {
+              "仓库URL": {
+                "type": "string",
+                "required": true,
+                "description": "远程仓库 URL",
+                "example": "https://hg.example.com/repo",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hg pull remote"
+          },
+          {
+            "name": "拉取指定分支",
+            "cmd": "hg pull -b %{分支}%",
+            "params": {
+              "分支": {
+                "type": "string",
+                "required": true,
+                "description": "分支名",
+                "example": "develop",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hg pull branch"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Mercurial 命令/",
+      "name": "hg update 更新工作区",
+      "keyword": "hg update 更新",
+      "description": "更新工作区到指定版本 - 将工作区的文件切换到指定版本，可以是分支、标签或特定变更集",
+      "data": {
+        "cmd": "hg update %{分支或版本}%",
+        "extensions": [
+          {
+            "name": "切换到新分支",
+            "cmd": "hg update %{分支名}%",
+            "params": {
+              "分支名": {
+                "type": "string",
+                "required": true,
+                "description": "分支名称",
+                "example": "develop",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hg update 分支"
+          },
+          {
+            "name": "切换到最新版本",
+            "cmd": "hg update tip",
+            "params": {},
+            "keyword": "hg update tip"
+          },
+          {
+            "name": "切换到指定版本（清理未提交更改）",
+            "cmd": "hg update -C %{版本}%",
+            "params": {
+              "版本": {
+                "type": "string",
+                "required": true,
+                "description": "版本号或哈希",
+                "example": "5",
+                "notes": "必填。-C 强制丢弃本地更改"
+              }
+            },
+            "keyword": "hg update clean"
+          },
+          {
+            "name": "查看可用分支",
+            "cmd": "hg branches",
+            "params": {},
+            "keyword": "hg update branches"
+          }
+        ],
+        "params": {
+          "分支或版本": {
+            "type": "string",
+            "required": false,
+            "description": "分支名、标签或版本号",
+            "example": "default",
+            "notes": "可选。默认为当前分支"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Mercurial 命令/",
+      "name": "hg log 查看日志",
+      "keyword": "hg log 日志",
+      "description": "查看提交历史 - 显示仓库的提交记录，包括变更集哈希、作者、时间、提交信息",
+      "data": {
+        "cmd": "hg log",
+        "extensions": [
+          {
+            "name": "限制输出数量",
+            "cmd": "hg log -l %{数量}%",
+            "params": {
+              "数量": {
+                "type": "string",
+                "required": true,
+                "description": "日志条数",
+                "example": "10",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hg log limit"
+          },
+          {
+            "name": "查看指定文件的历史",
+            "cmd": "hg log %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径",
+                "example": "src/main.py",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hg log file"
+          },
+          {
+            "name": "搜索提交信息",
+            "cmd": "hg log --keyword %{关键词}%",
+            "params": {
+              "关键词": {
+                "type": "string",
+                "required": true,
+                "description": "搜索关键词",
+                "example": "fix bug",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hg log search"
+          },
+          {
+            "name": "显示图形化历史",
+            "cmd": "hg log -G",
+            "params": {},
+            "keyword": "hg log graph"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Mercurial 命令/",
+      "name": "hg branch 管理分支",
+      "keyword": "hg branch 分支",
+      "description": "创建或切换分支 - Mercurial 的分支是轻量级的，用于隔离不同功能或版本的开发",
+      "data": {
+        "cmd": "hg branch %{分支名}%",
+        "extensions": [
+          {
+            "name": "查看所有分支",
+            "cmd": "hg branches",
+            "params": {},
+            "keyword": "hg branches"
+          },
+          {
+            "name": "查看当前分支",
+            "cmd": "hg branch",
+            "params": {},
+            "keyword": "hg branch current"
+          },
+          {
+            "name": "关闭分支",
+            "cmd": "hg commit --close-branch -m \"Close %{分支名}%\"",
+            "params": {
+              "分支名": {
+                "type": "string",
+                "required": true,
+                "description": "分支名",
+                "example": "feature-old",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hg branch close"
+          }
+        ],
+        "params": {
+          "分支名": {
+            "type": "string",
+            "required": true,
+            "description": "分支名称",
+            "example": "feature-new",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Mercurial 命令/",
+      "name": "hg branches 查看分支",
+      "keyword": "hg branches 分支",
+      "description": "列出所有分支 - 查看仓库中所有分支及其最新提交。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "hg branches",
+        "extensions": [
+          {
+            "name": "包含已关闭分支",
+            "cmd": "hg branches -c",
+            "params": {},
+            "keyword": "hg branches closed"
+          },
+          {
+            "name": "查看分支标签",
+            "cmd": "hg tags",
+            "params": {},
+            "keyword": "hg tags"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Mercurial 命令/",
+      "name": "hg merge 合并分支",
+      "keyword": "hg merge 合并",
+      "description": "合并指定分支 - 将另一个分支的更改合并到当前分支，解决可能的冲突",
+      "data": {
+        "cmd": "hg merge %{分支名}%",
+        "extensions": [
+          {
+            "name": "合并时保留一个分支的历史",
+            "cmd": "hg merge -f %{分支}%",
+            "params": {
+              "分支": {
+                "type": "string",
+                "required": true,
+                "description": "要合并的分支",
+                "example": "default",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hg merge force"
+          },
+          {
+            "name": "使用合并工具",
+            "cmd": "hg merge --tool %{工具}%",
+            "params": {
+              "工具": {
+                "type": "string",
+                "required": true,
+                "description": "合并工具",
+                "example": "kdiff3",
+                "notes": "必填。如 kdiff3, meld, vimdiff"
+              }
+            },
+            "keyword": "hg merge tool"
+          }
+        ],
+        "params": {
+          "分支名": {
+            "type": "string",
+            "required": true,
+            "description": "要合并的分支",
+            "example": "default",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Mercurial 命令/",
+      "name": "hg status 查看状态",
+      "keyword": "hg status 状态",
+      "description": "查看工作区状态 - 显示文件的修改状态，包括已修改、已添加、已删除等",
+      "data": {
+        "cmd": "hg status",
+        "extensions": [
+          {
+            "name": "显示所有文件（包括忽略的）",
+            "cmd": "hg status -A",
+            "params": {},
+            "keyword": "hg status all"
+          },
+          {
+            "name": "仅显示已修改文件",
+            "cmd": "hg status -m",
+            "params": {},
+            "keyword": "hg status modified"
+          },
+          {
+            "name": "仅显示新增文件",
+            "cmd": "hg status -a",
+            "params": {},
+            "keyword": "hg status added"
+          },
+          {
+            "name": "仅显示已删除文件",
+            "cmd": "hg status -d",
+            "params": {},
+            "keyword": "hg status deleted"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Mercurial 命令/",
+      "name": "hg diff 查看差异",
+      "keyword": "hg diff 差异",
+      "description": "查看文件更改 - 显示文件与仓库版本的差异，类似 git diff",
+      "data": {
+        "cmd": "hg diff %{文件}%",
+        "extensions": [
+          {
+            "name": "查看所有更改",
+            "cmd": "hg diff",
+            "params": {},
+            "keyword": "hg diff all"
+          },
+          {
+            "name": "比较两个版本",
+            "cmd": "hg diff -r %{版本1}% -r %{版本2}%",
+            "params": {
+              "版本1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个版本",
+                "example": "5",
+                "notes": "必填"
+              },
+              "版本2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个版本",
+                "example": "10",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hg diff versions"
+          },
+          {
+            "name": "统计更改行数",
+            "cmd": "hg diff --stat",
+            "params": {},
+            "keyword": "hg diff stat"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": false,
+            "description": "文件路径",
+            "example": "file.txt",
+            "notes": "可选。不指定则显示所有文件"
+          }
+        }
+      }
+    }
+  ]
+}

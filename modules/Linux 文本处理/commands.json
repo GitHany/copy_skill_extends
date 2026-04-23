@@ -1,0 +1,35 @@
+{
+  "module": "Linux 文本处理",
+  "version": "2.0",
+  "description": "Linux 文本处理命令集合，涵盖Linux 文本处理的常用操作和最佳实践",
+  "commands": [
+    {
+      "name": "忽略大小写",
+      "cmd": "grep -i %{模式}% %{文件}%",
+      "params": {
+        "模式": {
+          "type": "string",
+          "required": true,
+          "description": "模式",
+          "example": "warning",
+          "notes": "必填"
+        },
+        "文件": {
+          "type": "string",
+          "required": true,
+          "description": "文件",
+          "example": "app.log",
+          "notes": "必填"
+        }
+      },
+      "keyword": "grep ignore",
+      "dirPath": "/Linux 文本处理/",
+      "description": "忽略大小写的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

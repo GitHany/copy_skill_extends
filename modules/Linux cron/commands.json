@@ -1,0 +1,85 @@
+{
+  "module": "Linux cron",
+  "version": "2.0",
+  "description": "Cron 定时任务管理，涵盖Linux cron的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Linux cron/",
+      "name": "crontab 编辑定时任务",
+      "keyword": "crontab 定时",
+      "description": "管理 cron 定时任务。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "crontab -e",
+        "extensions": [
+          {
+            "name": "列出任务",
+            "cmd": "crontab -l",
+            "params": {},
+            "keyword": "crontab list"
+          },
+          {
+            "name": "删除任务",
+            "cmd": "crontab -r",
+            "params": {},
+            "keyword": "crontab remove"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Linux cron/",
+      "name": "crontab 时间格式",
+      "keyword": "crontab 时间",
+      "description": "Cron 时间格式说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "%{分}% %{时}% %{日}% %{月}% %{星期}% %{命令}%",
+        "extensions": [],
+        "params": {
+          "分": {
+            "type": "string",
+            "required": true,
+            "description": "分钟",
+            "example": "0",
+            "notes": "必填"
+          },
+          "时": {
+            "type": "string",
+            "required": true,
+            "description": "小时",
+            "example": "2",
+            "notes": "必填"
+          },
+          "日": {
+            "type": "string",
+            "required": true,
+            "description": "日",
+            "example": "*",
+            "notes": "必填"
+          },
+          "月": {
+            "type": "string",
+            "required": true,
+            "description": "月",
+            "example": "*",
+            "notes": "必填"
+          },
+          "星期": {
+            "type": "string",
+            "required": true,
+            "description": "星期",
+            "example": "*",
+            "notes": "必填"
+          },
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "命令",
+            "example": "/scripts/backup.sh",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

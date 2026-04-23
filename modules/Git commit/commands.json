@@ -1,0 +1,276 @@
+{
+  "module": "Git commit",
+  "version": "2.0",
+  "description": "Git commit - Record changes to the repository history. Each commit is a snapshot that can be reviewed, shared, and if needed, reverted. Write clear messages that explain why changes were made.",
+  "commands": [
+    {
+      "dirPath": "/Git commit/",
+      "name": "git commit basic",
+      "keyword": "git commit message",
+      "description": "Commit staged changes with a message - always use -m, without it Git opens an editor which can be confusing for beginners",
+      "data": {
+        "cmd": "git commit -m \"%{message}%\"",
+        "extensions": [
+          {
+            "name": "git commit multi-line message",
+            "description": "Commit with a multi-line message - first line is title, blank line, then detailed description",
+            "params": {
+              "message": {
+                "type": "string",
+                "required": true,
+                "description": "Multi-line commit message",
+                "example": "Add user authentication - details below",
+                "notes": "Use git commit -m \"Title\" -m \"Body\" for multi-line in CLI"
+              }
+            },
+            "cmd": ""
+          }
+        ],
+        "params": {
+          "message": {
+            "type": "string",
+            "required": true,
+            "description": "Commit message describing the change",
+            "example": "Add user login form",
+            "notes": "Use present tense: Add not Added. Keep first line under 50 chars."
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Git commit/",
+      "name": "git commit all changes",
+      "keyword": "git commit all modified",
+      "description": "Stage and commit all tracked modified files in one step - skips git add for known files",
+      "data": {
+        "cmd": "git commit -am \"%{message}%\"",
+        "extensions": [
+          {
+            "name": "commit all with description",
+            "cmd": "git commit -am \"%{message}%\" && git push",
+            "params": {
+              "message": {
+                "type": "string",
+                "required": true,
+                "description": "Commit message",
+                "example": "Fix navigation bug",
+                "notes": "Only works for already-tracked files"
+              }
+            },
+            "keyword": "commit and push"
+          },
+          {
+            "name": "commit all verbose",
+            "cmd": "git commit -av -m \"%{message}%\"",
+            "params": {
+              "message": {
+                "type": "string",
+                "required": true,
+                "description": "Commit message",
+                "example": "Update styles",
+                "notes": "The -a flag stages all tracked files"
+              }
+            },
+            "keyword": "commit all verbose"
+          }
+        ],
+        "params": {
+          "message": {
+            "type": "string",
+            "required": true,
+            "description": "Commit message",
+            "example": "Fix navigation bug",
+            "notes": "Only works for already-tracked files. New files still need git add."
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Git commit/",
+      "name": "git commit amend",
+      "keyword": "git commit amend last",
+      "description": "Modify the last commit - add forgotten files, fix message, or change content before pushing",
+      "data": {
+        "cmd": "git commit --amend",
+        "extensions": [
+          {
+            "name": "git commit amend message only",
+            "description": "Change only the commit message of the last commit - keeps the snapshot exactly the same",
+            "params": {
+              "message": {
+                "type": "string",
+                "required": true,
+                "description": "New commit message",
+                "example": "Add user authentication form",
+                "notes": "Only changes the message, not the actual code changes"
+              }
+            },
+            "cmd": ""
+          },
+          {
+            "name": "git commit amend no edit",
+            "description": "Amend without changing message - use when you just need to add more files to last commit",
+            "params": {},
+            "cmd": ""
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Git commit/",
+      "name": "git commit verbose",
+      "keyword": "git commit verbose diff",
+      "description": "Commit with full diff shown in editor - lets you review exactly what changed before finalizing",
+      "data": {
+        "cmd": "git commit -v",
+        "extensions": [
+          {
+            "name": "verbose with message",
+            "cmd": "git commit -v -m \"%{message}%\"",
+            "params": {
+              "message": {
+                "type": "string",
+                "required": true,
+                "description": "Commit message",
+                "example": "Refactor API calls",
+                "notes": "Shows diff in editor even with -m"
+              }
+            },
+            "keyword": "verbose message"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Git commit/",
+      "name": "git commit empty",
+      "keyword": "git commit empty",
+      "description": "Create a commit with no changes - useful to mark a milestone, trigger CI, or preserve a specific commit hash",
+      "data": {
+        "cmd": "git commit --allow-empty -m \"%{message}%\"",
+        "extensions": [
+          {
+            "name": "empty commit with tag",
+            "cmd": "git commit --allow-empty -m \"%{message}%\" && git tag %{tag}%",
+            "params": {
+              "message": {
+                "type": "string",
+                "required": true,
+                "description": "Commit message",
+                "example": "Deployment v2.0.0",
+                "notes": "For marking milestones"
+              },
+              "tag": {
+                "type": "string",
+                "required": true,
+                "description": "Tag name",
+                "example": "v2.0.0",
+                "notes": "Version tag"
+              }
+            },
+            "keyword": "empty commit tag"
+          },
+          {
+            "name": "empty commit for CI",
+            "cmd": "git commit --allow-empty -m \"trigger CI build\"",
+            "params": {},
+            "keyword": "empty CI trigger"
+          }
+        ],
+        "params": {
+          "message": {
+            "type": "string",
+            "required": true,
+            "description": "Commit message",
+            "example": "Deployment v2.0.0",
+            "notes": "Rarely needed, but useful for tagging releases or triggering webhooks"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Git commit/",
+      "name": "git commit signoff",
+      "keyword": "git commit signoff",
+      "description": "Commit with signoff for DCO - adds a signed-off-by line, required by some open source projects",
+      "data": {
+        "cmd": "git commit -s -m \"%{message}%\"",
+        "extensions": [
+          {
+            "name": "signoff with amend",
+            "cmd": "git commit -s --amend -m \"%{message}%\"",
+            "params": {
+              "message": {
+                "type": "string",
+                "required": true,
+                "description": "Commit message",
+                "example": "Update license header",
+                "notes": "Amend previous commit with signoff"
+              }
+            },
+            "keyword": "signoff amend"
+          }
+        ],
+        "params": {
+          "message": {
+            "type": "string",
+            "required": true,
+            "description": "Commit message",
+            "example": "Update license header",
+            "notes": "Adds Signed-off-by line with your configured name and email"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Git commit/",
+      "name": "git commit include untracked",
+      "keyword": "git commit all files",
+      "description": "Stage all files (including untracked) and commit - captures everything in one snapshot",
+      "data": {
+        "cmd": "git add -A && git commit -m \"%{message}%\"",
+        "extensions": [
+          {
+            "name": "commit all with force",
+            "cmd": "git add -A && git commit -m \"%{message}%\" --no-verify",
+            "params": {
+              "message": {
+                "type": "string",
+                "required": true,
+                "description": "Commit message",
+                "example": "Initial project setup",
+                "notes": "Careful: stages ALL changes"
+              }
+            },
+            "keyword": "commit all noverify"
+          },
+          {
+            "name": "commit all and push",
+            "cmd": "git add -A && git commit -m \"%{message}%\" && git push",
+            "params": {
+              "message": {
+                "type": "string",
+                "required": true,
+                "description": "Commit message",
+                "example": "Initial project setup",
+                "notes": "Stages all and pushes"
+              }
+            },
+            "keyword": "commit all push"
+          }
+        ],
+        "params": {
+          "message": {
+            "type": "string",
+            "required": true,
+            "description": "Commit message",
+            "example": "Initial project setup",
+            "notes": "Careful: stages ALL changes including potentially unwanted files"
+          }
+        }
+      }
+    }
+  ]
+}

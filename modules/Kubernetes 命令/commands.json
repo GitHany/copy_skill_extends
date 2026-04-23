@@ -7,7 +7,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl get 查看资源",
       "keyword": "kubectl get",
-      "description": "查看集群中的资源",
+      "description": "查看集群中的资源。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl get %{资源类型}%",
         "extensions": [
@@ -82,7 +82,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl get pods 查看 Pods",
       "keyword": "kubectl get pods",
-      "description": "查看 Pods（常用）",
+      "description": "查看 Pods（常用）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl get pods",
         "extensions": [
@@ -133,14 +133,14 @@
                 "required": true,
                 "description": "标签键名",
                 "example": "app",
-                "notes": ""
+                "notes": "可选"
               },
               "标签值": {
                 "type": "string",
                 "required": true,
                 "description": "标签值",
                 "example": "nginx",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl get pods 过滤标签"
@@ -159,14 +159,14 @@
             "required": false,
             "description": "标签键名",
             "example": "app",
-            "notes": ""
+            "notes": "可选"
           },
           "标签值": {
             "type": "string",
             "required": false,
             "description": "标签值",
             "example": "nginx",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -175,7 +175,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl get deployments 查看 Deployments",
       "keyword": "kubectl get deployments",
-      "description": "查看 Deployments",
+      "description": "查看 Deployments。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl get deployments",
         "extensions": [
@@ -188,7 +188,7 @@
                 "required": false,
                 "description": "命名空间名称",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl get deployments 命名空间"
@@ -212,7 +212,7 @@
             "required": false,
             "description": "命名空间名称",
             "example": "default",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -221,7 +221,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl get services 查看 Services",
       "keyword": "kubectl get services",
-      "description": "查看 Services",
+      "description": "查看 Services。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl get services",
         "extensions": [
@@ -234,7 +234,7 @@
                 "required": false,
                 "description": "命名空间名称",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl get services 命名空间"
@@ -252,7 +252,7 @@
             "required": false,
             "description": "命名空间名称",
             "example": "default",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -261,7 +261,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl get ingress 查看 Ingress",
       "keyword": "kubectl get ingress",
-      "description": "查看 Ingress",
+      "description": "查看 Ingress。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl get ingress",
         "extensions": [
@@ -274,7 +274,7 @@
                 "required": false,
                 "description": "命名空间名称",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl get ingress 命名空间"
@@ -292,7 +292,7 @@
             "required": false,
             "description": "命名空间名称",
             "example": "default",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -301,7 +301,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl get configmaps 查看 ConfigMaps",
       "keyword": "kubectl get configmaps",
-      "description": "查看 ConfigMaps",
+      "description": "查看 ConfigMaps。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl get configmaps",
         "extensions": [
@@ -314,7 +314,7 @@
                 "required": false,
                 "description": "命名空间名称",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl get configmaps 命名空间"
@@ -326,7 +326,7 @@
             "required": false,
             "description": "命名空间名称",
             "example": "default",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -335,7 +335,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl get secrets 查看 Secrets",
       "keyword": "kubectl get secrets",
-      "description": "查看 Secrets",
+      "description": "查看 Secrets。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl get secrets",
         "extensions": [
@@ -348,7 +348,7 @@
                 "required": false,
                 "description": "命名空间名称",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl get secrets 命名空间"
@@ -360,7 +360,7 @@
             "required": false,
             "description": "命名空间名称",
             "example": "default",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -369,7 +369,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl get nodes 查看节点",
       "keyword": "kubectl get nodes",
-      "description": "查看集群节点",
+      "description": "查看集群节点。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl get nodes",
         "extensions": [
@@ -393,7 +393,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl describe 查看资源详情",
       "keyword": "kubectl describe",
-      "description": "查看资源详细信息（常用）",
+      "description": "查看资源详细信息（常用）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl describe %{资源类型}% %{资源名称}%",
         "extensions": [
@@ -426,7 +426,7 @@
                 "required": true,
                 "description": "Deployment 名称",
                 "example": "nginx-deployment",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl describe deployment"
@@ -445,7 +445,7 @@
             "required": false,
             "description": "资源名称",
             "example": "myapp-abc123",
-            "notes": ""
+            "notes": "可选"
           },
           "Pod名称": {
             "type": "string",
@@ -459,7 +459,7 @@
             "required": false,
             "description": "Deployment 名称",
             "example": "nginx-deployment",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -468,7 +468,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl logs 查看 Pod 日志",
       "keyword": "kubectl logs",
-      "description": "查看 Pod 日志（常用）",
+      "description": "查看 Pod 日志（常用）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl logs %{Pod名称}%",
         "extensions": [
@@ -516,7 +516,7 @@
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl logs 命名空间"
@@ -544,7 +544,7 @@
                 "required": true,
                 "description": "容器名称（多容器 Pod）",
                 "example": "main",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl logs 指定容器"
@@ -577,21 +577,21 @@
             "required": false,
             "description": "显示最后 N 行",
             "example": "100",
-            "notes": ""
+            "notes": "可选"
           },
           "命名空间": {
             "type": "string",
             "required": false,
             "description": "命名空间",
             "example": "default",
-            "notes": ""
+            "notes": "可选"
           },
           "容器名称": {
             "type": "string",
             "required": false,
             "description": "容器名称（多容器 Pod）",
             "example": "main",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -600,7 +600,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl exec 进入容器",
       "keyword": "kubectl exec",
-      "description": "进入容器执行命令（常用）",
+      "description": "进入容器执行命令（常用）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl exec -it %{Pod名称}% -- /bin/bash",
         "extensions": [
@@ -620,7 +620,7 @@
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl exec 命名空间"
@@ -648,7 +648,7 @@
                 "required": true,
                 "description": "容器名称（多容器 Pod）",
                 "example": "main",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl exec 指定容器"
@@ -681,21 +681,21 @@
             "required": false,
             "description": "命名空间",
             "example": "default",
-            "notes": ""
+            "notes": "可选"
           },
           "命令": {
             "type": "string",
             "required": false,
             "description": "要执行的命令",
             "example": "ls -la",
-            "notes": ""
+            "notes": "可选"
           },
           "容器名称": {
             "type": "string",
             "required": false,
             "description": "容器名称（多容器 Pod）",
             "example": "main",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -704,7 +704,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl apply 应用配置文件",
       "keyword": "kubectl apply",
-      "description": "应用配置文件（常用）",
+      "description": "应用配置文件（常用）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl apply -f %{文件名或URL}%",
         "extensions": [
@@ -723,7 +723,7 @@
                 "required": true,
                 "description": "包含 YAML 文件的目录路径",
                 "example": "./k8s",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl apply 目录"
@@ -770,14 +770,14 @@
             "required": false,
             "description": "包含 YAML 文件的目录路径",
             "example": "./k8s",
-            "notes": ""
+            "notes": "可选"
           },
           "文件名": {
             "type": "string",
             "required": false,
             "description": "YAML 文件路径",
             "example": "./deployment.yaml",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -786,7 +786,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl delete 删除资源",
       "keyword": "kubectl delete",
-      "description": "删除资源（常用）",
+      "description": "删除资源（常用）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl delete -f %{文件名}%",
         "extensions": [
@@ -813,7 +813,7 @@
                 "required": true,
                 "description": "Deployment 名称",
                 "example": "nginx-deployment",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl delete deployment"
@@ -834,7 +834,7 @@
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl delete 命名空间"
@@ -873,21 +873,21 @@
             "required": false,
             "description": "Pod 名称",
             "example": "myapp-abc123",
-            "notes": ""
+            "notes": "可选"
           },
           "Deployment名称": {
             "type": "string",
             "required": false,
             "description": "Deployment 名称",
             "example": "nginx-deployment",
-            "notes": ""
+            "notes": "可选"
           },
           "命名空间": {
             "type": "string",
             "required": false,
             "description": "命名空间",
             "example": "default",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -896,7 +896,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl create 创建资源",
       "keyword": "kubectl create",
-      "description": "创建资源",
+      "description": "创建资源。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl create -f %{文件名}%",
         "extensions": [
@@ -909,7 +909,7 @@
                 "required": true,
                 "description": "命名空间名称",
                 "example": "my-namespace",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl create namespace"
@@ -923,7 +923,7 @@
                 "required": true,
                 "description": "YAML 文件路径",
                 "example": "./deployment.yaml",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl create 预览"
@@ -935,14 +935,14 @@
             "required": false,
             "description": "YAML 文件路径",
             "example": "./deployment.yaml",
-            "notes": ""
+            "notes": "可选"
           },
           "命名空间名称": {
             "type": "string",
             "required": false,
             "description": "命名空间名称",
             "example": "my-namespace",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -951,7 +951,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl create namespace 创建命名空间",
       "keyword": "kubectl create namespace",
-      "description": "创建命名空间",
+      "description": "创建命名空间。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl create ns %{命名空间名称}%",
         "extensions": [],
@@ -961,7 +961,7 @@
             "required": true,
             "description": "命名空间名称",
             "example": "my-namespace",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -970,7 +970,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl scale 扩缩容",
       "keyword": "kubectl scale",
-      "description": "扩缩容 Deployment（常用）",
+      "description": "扩缩容 Deployment（常用）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl scale deployment %{Deployment名称}% --replicas=%{副本数}%",
         "extensions": [
@@ -997,7 +997,7 @@
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl scale 命名空间"
@@ -1044,7 +1044,7 @@
             "required": false,
             "description": "命名空间",
             "example": "default",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1053,7 +1053,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl rollout status 查看滚动更新状态",
       "keyword": "kubectl rollout status",
-      "description": "查看滚动更新状态（常用）",
+      "description": "查看滚动更新状态（常用）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl rollout status deployment/%{Deployment名称}%",
         "extensions": [
@@ -1073,7 +1073,7 @@
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl rollout status 命名空间"
@@ -1106,7 +1106,7 @@
             "required": false,
             "description": "命名空间",
             "example": "default",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1115,7 +1115,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl rollout undo 回滚",
       "keyword": "kubectl rollout undo",
-      "description": "回滚到上一版本（常用）",
+      "description": "回滚到上一版本（常用）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl rollout undo deployment/%{Deployment名称}%",
         "extensions": [
@@ -1128,7 +1128,7 @@
                 "required": true,
                 "description": "版本号（通过 rollout history 查看）",
                 "example": "2",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl rollout undo 指定版本"
@@ -1149,7 +1149,7 @@
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl rollout undo 命名空间"
@@ -1168,14 +1168,14 @@
             "required": false,
             "description": "版本号（通过 rollout history 查看）",
             "example": "2",
-            "notes": ""
+            "notes": "可选"
           },
           "命名空间": {
             "type": "string",
             "required": false,
             "description": "命名空间",
             "example": "default",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1184,7 +1184,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl set image 更新镜像",
       "keyword": "kubectl set image",
-      "description": "更新容器镜像（常用）",
+      "description": "更新容器镜像（常用）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl set image deployment/%{Deployment名称}% %{容器名称}%=%{镜像名称}%",
         "extensions": [
@@ -1218,7 +1218,7 @@
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl set image 命名空间"
@@ -1279,7 +1279,7 @@
             "required": false,
             "description": "命名空间",
             "example": "default",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1288,7 +1288,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl port-forward 端口转发",
       "keyword": "kubectl port-forward",
-      "description": "端口转发（常用）",
+      "description": "端口转发（常用）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl port-forward %{Pod名称}% %{本地端口}%:%{Pod端口}%",
         "extensions": [
@@ -1322,7 +1322,7 @@
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl port-forward 命名空间"
@@ -1336,7 +1336,7 @@
                 "required": true,
                 "description": "Service 名称",
                 "example": "nginx-service",
-                "notes": ""
+                "notes": "可选"
               },
               "本地端口": {
                 "type": "string",
@@ -1350,7 +1350,7 @@
                 "required": true,
                 "description": "Service 端口",
                 "example": "80",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl port-forward Service"
@@ -1383,21 +1383,21 @@
             "required": false,
             "description": "命名空间",
             "example": "default",
-            "notes": ""
+            "notes": "可选"
           },
           "Service名称": {
             "type": "string",
             "required": false,
             "description": "Service 名称",
             "example": "nginx-service",
-            "notes": ""
+            "notes": "可选"
           },
           "Service端口": {
             "type": "string",
             "required": false,
             "description": "Service 端口",
             "example": "80",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1406,7 +1406,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl top pod 查看 Pod 资源使用",
       "keyword": "kubectl top pod",
-      "description": "查看 Pod 资源使用",
+      "description": "查看 Pod 资源使用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl top pod",
         "extensions": [
@@ -1419,7 +1419,7 @@
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl top pod 命名空间"
@@ -1445,7 +1445,7 @@
                 "required": true,
                 "description": "Pod 名称",
                 "example": "myapp-abc123",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl top pod 指定Pod"
@@ -1457,14 +1457,14 @@
             "required": false,
             "description": "命名空间",
             "example": "default",
-            "notes": ""
+            "notes": "可选"
           },
           "Pod名称": {
             "type": "string",
             "required": false,
             "description": "Pod 名称",
             "example": "myapp-abc123",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1473,7 +1473,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl top node 查看节点资源",
       "keyword": "kubectl top node",
-      "description": "查看节点资源使用",
+      "description": "查看节点资源使用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl top node",
         "extensions": [
@@ -1486,7 +1486,7 @@
                 "required": true,
                 "description": "节点名称",
                 "example": "node-1",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl top node 指定节点"
@@ -1504,7 +1504,7 @@
             "required": false,
             "description": "节点名称",
             "example": "node-1",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1513,7 +1513,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl cluster-info 查看集群信息",
       "keyword": "kubectl cluster-info",
-      "description": "查看集群信息",
+      "description": "查看集群信息。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl cluster-info",
         "extensions": [
@@ -1532,7 +1532,7 @@
                 "required": true,
                 "description": "输出目录路径",
                 "example": "/tmp/cluster-dump",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl cluster-info 转储"
@@ -1544,7 +1544,7 @@
             "required": false,
             "description": "输出目录路径",
             "example": "/tmp/cluster-dump",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1553,7 +1553,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl config get-contexts 查看上下文",
       "keyword": "kubectl config get-contexts",
-      "description": "查看所有上下文",
+      "description": "查看所有上下文。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl config get-contexts",
         "extensions": [
@@ -1571,7 +1571,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl config use-context 切换上下文",
       "keyword": "kubectl config use-context",
-      "description": "切换到指定上下文",
+      "description": "切换到指定上下文。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl config use-context %{上下文名称}%",
         "extensions": [],
@@ -1581,7 +1581,7 @@
             "required": true,
             "description": "上下文名称",
             "example": "prod-cluster",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1590,7 +1590,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl api-resources 查看 API 资源",
       "keyword": "kubectl api-resources",
-      "description": "查看支持的 API 资源",
+      "description": "查看支持的 API 资源。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl api-resources",
         "extensions": [
@@ -1620,7 +1620,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl explain 查看资源定义",
       "keyword": "kubectl explain",
-      "description": "查看资源字段定义",
+      "description": "查看资源字段定义。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl explain %{资源类型}%",
         "extensions": [
@@ -1633,7 +1633,7 @@
                 "required": false,
                 "description": "资源类型",
                 "example": "pod",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl explain 递归"
@@ -1647,7 +1647,7 @@
                 "required": true,
                 "description": "字段路径",
                 "example": "containers",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl explain 字段"
@@ -1659,14 +1659,14 @@
             "required": true,
             "description": "资源类型",
             "example": "pod",
-            "notes": ""
+            "notes": "必填"
           },
           "字段路径": {
             "type": "string",
             "required": false,
             "description": "字段路径",
             "example": "containers",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1675,7 +1675,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl cp 复制文件",
       "keyword": "kubectl cp",
-      "description": "在容器间复制文件",
+      "description": "在容器间复制文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl cp %{命名空间}/%{Pod名称}%:%{源路径}% %{目标路径}%",
         "extensions": [
@@ -1688,14 +1688,14 @@
                 "required": true,
                 "description": "本地文件路径",
                 "example": "./config.conf",
-                "notes": ""
+                "notes": "可选"
               },
               "目标路径": {
                 "type": "string",
                 "required": true,
                 "description": "目标路径",
                 "example": "/etc/nginx/conf.d",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl cp 到容器"
@@ -1709,7 +1709,7 @@
                 "required": true,
                 "description": "容器名称",
                 "example": "main",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl cp 指定容器"
@@ -1735,28 +1735,28 @@
             "required": true,
             "description": "源文件路径",
             "example": "/etc/nginx/nginx.conf",
-            "notes": ""
+            "notes": "必填"
           },
           "目标路径": {
             "type": "string",
             "required": true,
             "description": "目标文件路径",
             "example": "./nginx.conf",
-            "notes": ""
+            "notes": "必填"
           },
           "本地路径": {
             "type": "string",
             "required": false,
             "description": "本地文件路径",
             "example": "./config.conf",
-            "notes": ""
+            "notes": "可选"
           },
           "容器名称": {
             "type": "string",
             "required": false,
             "description": "容器名称",
             "example": "main",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1765,7 +1765,7 @@
       "dirPath": "/Kubernetes 命令/",
       "name": "kubectl get events 查看事件",
       "keyword": "kubectl get events",
-      "description": "查看集群事件",
+      "description": "查看集群事件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl get events",
         "extensions": [
@@ -1784,7 +1784,7 @@
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl get events 命名空间"
@@ -1804,7 +1804,7 @@
                 "required": true,
                 "description": "限制显示的事件数量",
                 "example": "50",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl get events 限制数量"
@@ -1816,14 +1816,14 @@
             "required": false,
             "description": "命名空间",
             "example": "default",
-            "notes": ""
+            "notes": "可选"
           },
           "数量": {
             "type": "string",
             "required": false,
             "description": "限制显示的事件数量",
             "example": "50",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }

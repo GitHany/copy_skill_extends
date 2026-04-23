@@ -1,0 +1,269 @@
+{
+  "module": "MySQL 数据库管理",
+  "version": "2.0",
+  "description": "MySQL 数据库管理命令集合，涵盖MySQL 数据库管理的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/MySQL 数据库管理/",
+      "name": "mysql 数据库操作",
+      "keyword": "mysql 数据库",
+      "description": "连接并操作 MySQL 数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "mysql -h %{主机}% -u %{用户}% -p%{密码}% %{数据库}% -e \"%{SQL}%\"",
+        "extensions": [
+          {
+            "name": "执行 SQL 文件",
+            "cmd": "mysql -h %{主机}% -u %{用户}% -p%{密码}% %{数据库}% < %{文件}%",
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机",
+                "example": "localhost",
+                "notes": "必填"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "root",
+                "notes": "必填"
+              },
+              "密码": {
+                "type": "string",
+                "required": true,
+                "description": "密码",
+                "example": "password",
+                "notes": "必填"
+              },
+              "数据库": {
+                "type": "string",
+                "required": true,
+                "description": "数据库",
+                "example": "mydb",
+                "notes": "必填"
+              },
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "SQL 文件",
+                "example": "script.sql",
+                "notes": "必填"
+              }
+            },
+            "keyword": "mysql source"
+          }
+        ],
+        "params": {
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "MySQL 主机",
+            "example": "localhost",
+            "notes": "必填"
+          },
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "用户名",
+            "example": "root",
+            "notes": "必填"
+          },
+          "密码": {
+            "type": "string",
+            "required": true,
+            "description": "密码",
+            "example": "password",
+            "notes": "必填"
+          },
+          "数据库": {
+            "type": "string",
+            "required": true,
+            "description": "数据库名",
+            "example": "mydb",
+            "notes": "必填"
+          },
+          "SQL": {
+            "type": "string",
+            "required": true,
+            "description": "SQL 语句",
+            "example": "SELECT * FROM users",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/MySQL 数据库管理/",
+      "name": "mysqldump 备份数据库",
+      "keyword": "mysqldump 备份",
+      "description": "导出数据库备份。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "mysqldump -h %{主机}% -u %{用户}% -p%{密码}% %{数据库}% > %{文件}%",
+        "extensions": [
+          {
+            "name": "备份所有数据库",
+            "cmd": "mysqldump -h %{主机}% -u %{用户}% -p%{密码}% --all-databases > %{文件}%",
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机",
+                "example": "localhost",
+                "notes": "必填"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户",
+                "example": "root",
+                "notes": "必填"
+              },
+              "密码": {
+                "type": "string",
+                "required": true,
+                "description": "密码",
+                "example": "password",
+                "notes": "必填"
+              },
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "备份文件",
+                "example": "backup.sql",
+                "notes": "必填"
+              }
+            },
+            "keyword": "mysqldump all"
+          },
+          {
+            "name": "仅结构",
+            "cmd": "mysqldump -h %{主机}% -u %{用户}% -p%{密码}% --no-data %{数据库}% > %{文件}%",
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机",
+                "example": "localhost",
+                "notes": "必填"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户",
+                "example": "root",
+                "notes": "必填"
+              },
+              "密码": {
+                "type": "string",
+                "required": true,
+                "description": "密码",
+                "example": "password",
+                "notes": "必填"
+              },
+              "数据库": {
+                "type": "string",
+                "required": true,
+                "description": "数据库",
+                "example": "mydb",
+                "notes": "必填"
+              },
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件",
+                "example": "schema.sql",
+                "notes": "必填"
+              }
+            },
+            "keyword": "mysqldump schema"
+          }
+        ],
+        "params": {
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "MySQL 主机",
+            "example": "localhost",
+            "notes": "必填"
+          },
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "用户名",
+            "example": "root",
+            "notes": "必填"
+          },
+          "密码": {
+            "type": "string",
+            "required": true,
+            "description": "密码",
+            "example": "password",
+            "notes": "必填"
+          },
+          "数据库": {
+            "type": "string",
+            "required": true,
+            "description": "数据库名",
+            "example": "mydb",
+            "notes": "必填"
+          },
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "输出文件",
+            "example": "backup.sql",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/MySQL 数据库管理/",
+      "name": "mysqlimport 导入数据",
+      "keyword": "mysqlimport 导入",
+      "description": "导入数据到 MySQL。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "mysqlimport -h %{主机}% -u %{用户}% -p%{密码}% %{数据库}% %{文件}%",
+        "extensions": [],
+        "params": {
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "主机",
+            "example": "localhost",
+            "notes": "必填"
+          },
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "用户",
+            "example": "root",
+            "notes": "必填"
+          },
+          "密码": {
+            "type": "string",
+            "required": true,
+            "description": "密码",
+            "example": "password",
+            "notes": "必填"
+          },
+          "数据库": {
+            "type": "string",
+            "required": true,
+            "description": "数据库",
+            "example": "mydb",
+            "notes": "必填"
+          },
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "数据文件",
+            "example": "data.csv",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

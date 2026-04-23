@@ -7,7 +7,7 @@
       "dirPath": "/配置管理/",
       "name": "dotenv 运行Node应用",
       "keyword": "dotenv env node",
-      "description": "使用.env文件加载环境变量运行Node.js应用",
+      "description": "使用.env文件加载环境变量运行Node.js应用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "node -r dotenv/config server.js",
         "extensions": [
@@ -15,7 +15,13 @@
             "name": "指定.env路径",
             "cmd": "DOTENV_CONFIG_PATH=/path/to/.env node server.js",
             "params": {
-              "路径": { "type": "string", "required": true, "description": ".env文件路径", "example": "/data/prod.env" }
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": ".env文件路径",
+                "example": "/data/prod.env",
+                "notes": "可选"
+              }
             },
             "keyword": "dotenv 指定路径"
           },
@@ -39,7 +45,7 @@
       "dirPath": "/配置管理/",
       "name": "python-dotenv 运行Python脚本",
       "keyword": "python-dotenv dotenv python",
-      "description": "使用.env文件加载环境变量运行Python脚本",
+      "description": "使用.env文件加载环境变量运行Python脚本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "python -m dotenv.cli run server.py",
         "extensions": [
@@ -53,8 +59,20 @@
             "name": "设置变量并运行",
             "cmd": "dotenv set KEY=value && dotenv run python app.py",
             "params": {
-              "KEY": { "type": "string", "required": true, "description": "变量名", "example": "DEBUG" },
-              "value": { "type": "string", "required": true, "description": "变量值", "example": "true" }
+              "KEY": {
+                "type": "string",
+                "required": true,
+                "description": "变量名",
+                "example": "DEBUG",
+                "notes": "可选"
+              },
+              "value": {
+                "type": "string",
+                "required": true,
+                "description": "变量值",
+                "example": "true",
+                "notes": "可选"
+              }
             },
             "keyword": "dotenv set 运行"
           },
@@ -72,7 +90,7 @@
       "dirPath": "/配置管理/",
       "name": "direnv 环境自动加载",
       "keyword": "direnv envrc allow deny",
-      "description": "direnv自动加载.envrc配置的环境变量",
+      "description": "direnv自动加载.envrc配置的环境变量。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "direnv allow",
         "extensions": [
@@ -108,7 +126,7 @@
       "dirPath": "/配置管理/",
       "name": "envchain 密钥安全管理",
       "keyword": "envchain namespace secret",
-      "description": "使用envchain安全存储和读取环境变量密钥",
+      "description": "使用envchain安全存储和读取环境变量密钥。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "envchain --namespace myapp python script.py",
         "extensions": [
@@ -116,8 +134,20 @@
             "name": "读取存储的密钥",
             "cmd": "envchain --namespace myapp --env printenv API_KEY",
             "params": {
-              "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "myapp" },
-              "变量名": { "type": "string", "required": true, "description": "环境变量名", "example": "API_KEY" }
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间",
+                "example": "myapp",
+                "notes": "可选"
+              },
+              "变量名": {
+                "type": "string",
+                "required": true,
+                "description": "环境变量名",
+                "example": "API_KEY",
+                "notes": "可选"
+              }
             },
             "keyword": "envchain 读取"
           },
@@ -125,7 +155,13 @@
             "name": "交互式设置密钥",
             "cmd": "envchain --namespace myapp set SERVICE_API_KEY",
             "params": {
-              "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "myapp" }
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间",
+                "example": "myapp",
+                "notes": "可选"
+              }
             },
             "keyword": "envchain 设置"
           },
@@ -133,7 +169,13 @@
             "name": "删除密钥",
             "cmd": "envchain --namespace myapp unset SERVICE_API_KEY",
             "params": {
-              "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "myapp" }
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间",
+                "example": "myapp",
+                "notes": "可选"
+              }
             },
             "keyword": "envchain 删除"
           },
@@ -141,13 +183,25 @@
             "name": "列出所有变量",
             "cmd": "envchain --namespace myapp env",
             "params": {
-              "命名空间": { "type": "string", "required": true, "description": "命名空间", "example": "myapp" }
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间",
+                "example": "myapp",
+                "notes": "可选"
+              }
             },
             "keyword": "envchain 列出"
           }
         ],
         "params": {
-          "命名空间": { "type": "string", "required": true, "description": "envchain命名空间", "example": "myapp" }
+          "命名空间": {
+            "type": "string",
+            "required": true,
+            "description": "envchain命名空间",
+            "example": "myapp",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -169,9 +223,27 @@
             "name": "更新指定字段",
             "cmd": "sops set secrets.yaml api_key \"newvalue\"",
             "params": {
-              "文件": { "type": "string", "required": true, "description": "加密文件路径", "example": "secrets.yaml" },
-              "字段": { "type": "string", "required": true, "description": "字段路径", "example": "api_key" },
-              "值": { "type": "string", "required": true, "description": "新值", "example": "newvalue" }
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "加密文件路径",
+                "example": "secrets.yaml",
+                "notes": "可选"
+              },
+              "字段": {
+                "type": "string",
+                "required": true,
+                "description": "字段路径",
+                "example": "api_key",
+                "notes": "可选"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "新值",
+                "example": "newvalue",
+                "notes": "可选"
+              }
             },
             "keyword": "sops set 更新字段"
           },
@@ -179,7 +251,13 @@
             "name": "KMS加密",
             "cmd": "sops -e --kms arn:aws:kms:us-east-1:123:key/xxx secrets.yaml",
             "params": {
-              "KMS密钥": { "type": "string", "required": true, "description": "KMS密钥ARN", "example": "arn:aws:kms:us-east-1:123:key/xxx" }
+              "KMS密钥": {
+                "type": "string",
+                "required": true,
+                "description": "KMS密钥ARN",
+                "example": "arn:aws:kms:us-east-1:123:key/xxx",
+                "notes": "可选"
+              }
             },
             "keyword": "sops kms"
           },
@@ -203,7 +281,13 @@
           }
         ],
         "params": {
-          "文件": { "type": "string", "required": true, "description": "要加密的文件路径", "example": "secrets.yaml" }
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "要加密的文件路径",
+            "example": "secrets.yaml",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -211,7 +295,7 @@
       "dirPath": "/配置管理/",
       "name": "age 文件加密",
       "keyword": "age encrypt decrypt key",
-      "description": "使用age进行简单安全的文件加密",
+      "description": "使用age进行简单安全的文件加密。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "age-keygen -o key.txt",
         "extensions": [
@@ -219,9 +303,27 @@
             "name": "公钥加密",
             "cmd": "age -r age1xxxxxxxxxxxxxxxxxxxxxxxx -p -o out.enc in.txt",
             "params": {
-              "公钥": { "type": "string", "required": true, "description": "接收者age公钥", "example": "age1xxxxxxxx" },
-              "输入文件": { "type": "string", "required": true, "description": "原始文件", "example": "in.txt" },
-              "输出文件": { "type": "string", "required": true, "description": "加密输出文件", "example": "out.enc" }
+              "公钥": {
+                "type": "string",
+                "required": true,
+                "description": "接收者age公钥",
+                "example": "age1xxxxxxxx",
+                "notes": "可选"
+              },
+              "输入文件": {
+                "type": "string",
+                "required": true,
+                "description": "原始文件",
+                "example": "in.txt",
+                "notes": "可选"
+              },
+              "输出文件": {
+                "type": "string",
+                "required": true,
+                "description": "加密输出文件",
+                "example": "out.enc",
+                "notes": "可选"
+              }
             },
             "keyword": "age 加密"
           },
@@ -235,7 +337,13 @@
             "name": "解密文件",
             "cmd": "age -d -i key.txt -o out.txt in.enc",
             "params": {
-              "密钥文件": { "type": "string", "required": true, "description": "密钥文件路径", "example": "key.txt" }
+              "密钥文件": {
+                "type": "string",
+                "required": true,
+                "description": "密钥文件路径",
+                "example": "key.txt",
+                "notes": "可选"
+              }
             },
             "keyword": "age 解密"
           },
@@ -253,7 +361,7 @@
       "dirPath": "/配置管理/",
       "name": "GPG 加密与密钥管理",
       "keyword": "gpg gnupg pgp encrypt key",
-      "description": "GPG加密文件和密钥管理",
+      "description": "GPG加密文件和密钥管理。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gpg --gen-key",
         "extensions": [
@@ -261,7 +369,13 @@
             "name": "导出公钥",
             "cmd": "gpg --export -a \"Name\" > pub.asc",
             "params": {
-              "名称": { "type": "string", "required": true, "description": "密钥名称或邮箱", "example": "user@example.com" }
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "密钥名称或邮箱",
+                "example": "user@example.com",
+                "notes": "可选"
+              }
             },
             "keyword": "gpg 导出公钥"
           },
@@ -275,7 +389,13 @@
             "name": "加密文件",
             "cmd": "gpg -e -r \"Name\" secrets.txt",
             "params": {
-              "接收者": { "type": "string", "required": true, "description": "接收者名称或邮箱", "example": "user@example.com" }
+              "接收者": {
+                "type": "string",
+                "required": true,
+                "description": "接收者名称或邮箱",
+                "example": "user@example.com",
+                "notes": "可选"
+              }
             },
             "keyword": "gpg 加密"
           },
@@ -305,7 +425,7 @@
       "dirPath": "/配置管理/",
       "name": "1Password CLI 密钥管理",
       "keyword": "1password op signin secret",
-      "description": "1Password命令行工具管理密码和密钥",
+      "description": "1Password命令行工具管理密码和密钥。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "op signin --account my.1password.com",
         "extensions": [
@@ -313,7 +433,13 @@
             "name": "获取指定字段值",
             "cmd": "op item get \"SSH Keys\" --fields label=private",
             "params": {
-              "条目": { "type": "string", "required": true, "description": "条目名称", "example": "SSH Keys" }
+              "条目": {
+                "type": "string",
+                "required": true,
+                "description": "条目名称",
+                "example": "SSH Keys",
+                "notes": "可选"
+              }
             },
             "keyword": "op get field"
           },
@@ -321,7 +447,13 @@
             "name": "使用环境变量运行命令",
             "cmd": "op run --env-file=ops_secrets.env -- node app.js",
             "params": {
-              "环境文件": { "type": "string", "required": true, "description": "1Password导出的env文件", "example": "ops_secrets.env" }
+              "环境文件": {
+                "type": "string",
+                "required": true,
+                "description": "1Password导出的env文件",
+                "example": "ops_secrets.env",
+                "notes": "可选"
+              }
             },
             "keyword": "op run"
           },
@@ -351,7 +483,7 @@
       "dirPath": "/配置管理/",
       "name": "Bitwarden CLI 密钥管理",
       "keyword": "bitwarden bw cli secret",
-      "description": "Bitwarden命令行工具管理密码和密钥",
+      "description": "Bitwarden命令行工具管理密码和密钥。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "bw login",
         "extensions": [
@@ -365,7 +497,13 @@
             "name": "搜索项目",
             "cmd": "bw list items --search \"api\"",
             "params": {
-              "关键词": { "type": "string", "required": true, "description": "搜索关键词", "example": "api" }
+              "关键词": {
+                "type": "string",
+                "required": true,
+                "description": "搜索关键词",
+                "example": "api",
+                "notes": "可选"
+              }
             },
             "keyword": "bw search"
           },
@@ -401,7 +539,7 @@
       "dirPath": "/配置管理/",
       "name": "Consul KV 配置管理",
       "keyword": "consul kv put get delete",
-      "description": "Consul键值存储配置管理",
+      "description": "Consul键值存储配置管理。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "consul kv put config/app/database \"mysql://host:3306\"",
         "extensions": [
@@ -443,8 +581,20 @@
           }
         ],
         "params": {
-          "键": { "type": "string", "required": true, "description": "Consul KV键路径", "example": "config/app/database" },
-          "值": { "type": "string", "required": true, "description": "键值内容", "example": "mysql://host:3306" }
+          "键": {
+            "type": "string",
+            "required": true,
+            "description": "Consul KV键路径",
+            "example": "config/app/database",
+            "notes": "必填"
+          },
+          "值": {
+            "type": "string",
+            "required": true,
+            "description": "键值内容",
+            "example": "mysql://host:3306",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -452,7 +602,7 @@
       "dirPath": "/配置管理/",
       "name": "etcdctl KV存储操作",
       "keyword": "etcdctl put get delete watch",
-      "description": "etcd键值存储操作，包括读写、监控、快照",
+      "description": "etcd键值存储操作，包括读写、监控、快照。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "etcdctl put /config/app/version \"1.0.0\"",
         "extensions": [
@@ -494,8 +644,20 @@
           }
         ],
         "params": {
-          "键": { "type": "string", "required": true, "description": "etcd键路径", "example": "/config/app/version" },
-          "值": { "type": "string", "required": true, "description": "键值内容", "example": "1.0.0" }
+          "键": {
+            "type": "string",
+            "required": true,
+            "description": "etcd键路径",
+            "example": "/config/app/version",
+            "notes": "必填"
+          },
+          "值": {
+            "type": "string",
+            "required": true,
+            "description": "键值内容",
+            "example": "1.0.0",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -503,7 +665,7 @@
       "dirPath": "/配置管理/",
       "name": "Vault 密钥管理",
       "keyword": "vault kv put get delete secret",
-      "description": "HashiCorp Vault密钥管理和安全存储",
+      "description": "HashiCorp Vault密钥管理和安全存储。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "vault kv put secret/myapp API_KEY=\"xxx\"",
         "extensions": [
@@ -551,7 +713,13 @@
           }
         ],
         "params": {
-          "路径": { "type": "string", "required": true, "description": "Vault路径", "example": "secret/myapp" }
+          "路径": {
+            "type": "string",
+            "required": true,
+            "description": "Vault路径",
+            "example": "secret/myapp",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -559,7 +727,7 @@
       "dirPath": "/配置管理/",
       "name": "npm config 配置管理",
       "keyword": "npm config set registry",
-      "description": "npm配置管理，包括镜像源、代理等",
+      "description": "npm配置管理，包括镜像源、代理等。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npm config set registry https://registry.npmmirror.com",
         "extensions": [
@@ -595,8 +763,20 @@
           }
         ],
         "params": {
-          "配置项": { "type": "string", "required": true, "description": "配置项名称", "example": "registry" },
-          "值": { "type": "string", "required": true, "description": "配置值", "example": "https://registry.npmmirror.com" }
+          "配置项": {
+            "type": "string",
+            "required": true,
+            "description": "配置项名称",
+            "example": "registry",
+            "notes": "必填"
+          },
+          "值": {
+            "type": "string",
+            "required": true,
+            "description": "配置值",
+            "example": "https://registry.npmmirror.com",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -604,7 +784,7 @@
       "dirPath": "/配置管理/",
       "name": "pip config 配置管理",
       "keyword": "pip config set index mirror",
-      "description": "pip配置管理，包括镜像源、信任主机等",
+      "description": "pip配置管理，包括镜像源、信任主机等。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple",
         "extensions": [
@@ -634,7 +814,7 @@
       "dirPath": "/配置管理/",
       "name": "brew 包管理",
       "keyword": "brew install uninstall update",
-      "description": "Homebrew包管理器常用命令",
+      "description": "Homebrew包管理器常用命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "brew install node@18",
         "extensions": [
@@ -676,7 +856,13 @@
           }
         ],
         "params": {
-          "包名": { "type": "string", "required": true, "description": "要安装的包名和版本", "example": "node@18" }
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "要安装的包名和版本",
+            "example": "node@18",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -684,7 +870,7 @@
       "dirPath": "/配置管理/",
       "name": "webpack 构建配置",
       "keyword": "webpack build bundle production",
-      "description": "webpack构建工具命令行使用",
+      "description": "webpack构建工具命令行使用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "npx webpack --mode production",
         "extensions": [
@@ -698,7 +884,13 @@
             "name": "指定配置文件",
             "cmd": "npx webpack --config webpack.prod.js",
             "params": {
-              "配置文件": { "type": "string", "required": true, "description": "配置文件名", "example": "webpack.prod.js" }
+              "配置文件": {
+                "type": "string",
+                "required": true,
+                "description": "配置文件名",
+                "example": "webpack.prod.js",
+                "notes": "可选"
+              }
             },
             "keyword": "webpack config"
           },
@@ -728,7 +920,7 @@
       "dirPath": "/配置管理/",
       "name": "Vite 构建配置",
       "keyword": "vite build preview dev",
-      "description": "Vite构建工具命令行使用",
+      "description": "Vite构建工具命令行使用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "vite build",
         "extensions": [
@@ -776,7 +968,7 @@
       "dirPath": "/配置管理/",
       "name": "esbuild 快速打包",
       "keyword": "esbuild bundle minify",
-      "description": "esbuild极速打包工具",
+      "description": "esbuild极速打包工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "esbuild app.js --bundle --outfile=out.js",
         "extensions": [
@@ -818,7 +1010,13 @@
           }
         ],
         "params": {
-          "输入文件": { "type": "string", "required": true, "description": "输入文件路径", "example": "app.js" }
+          "输入文件": {
+            "type": "string",
+            "required": true,
+            "description": "输入文件路径",
+            "example": "app.js",
+            "notes": "必填"
+          }
         }
       }
     }

@@ -1,0 +1,90 @@
+{
+  "module": "Linux cd",
+  "version": "2.0",
+  "description": "Linux cd 切换目录命令。改变当前工作目录到指定路径，是最常用的导航命令。用于在目录树中移动、进入项目文件夹、切换到特定路径。掌握 cd 是使用 Linux 的基础，熟练使用可大幅提升操作效率。",
+  "commands": [
+    {
+      "dirPath": "/Linux cd/",
+      "name": "cd 切换目录",
+      "keyword": "cd 目录",
+      "description": "切换工作目录。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "cd %{目录}%",
+        "extensions": [
+          {
+            "name": "切换到绝对路径",
+            "description": "使用完整路径切换目录",
+            "params": {
+              "目录": {
+                "example": "/home/user/project",
+                "notes": "完整路径"
+              }
+            },
+            "cmd": "cd %{目录}%"
+          },
+          {
+            "name": "切换到相对路径",
+            "description": "使用相对路径切换，如子目录",
+            "params": {
+              "目录": {
+                "example": "src",
+                "notes": "相对路径"
+              }
+            },
+            "cmd": "cd %{目录}%"
+          },
+          {
+            "name": "返回上级目录",
+            "description": "切换到当前目录的上一级",
+            "params": {},
+            "cmd": "cd .."
+          },
+          {
+            "name": "返回上两级目录",
+            "description": "快速返回上两级目录",
+            "params": {},
+            "cmd": "cd ../.."
+          },
+          {
+            "name": "切换到主目录",
+            "description": "快速回到当前用户的主目录",
+            "params": {},
+            "cmd": "cd ~"
+          },
+          {
+            "name": "切换到上次目录",
+            "description": "返回上一次所在的目录",
+            "params": {},
+            "cmd": "cd -"
+          },
+          {
+            "name": "切换到根目录",
+            "description": "切换到文件系统根目录",
+            "params": {},
+            "cmd": "cd /"
+          },
+          {
+            "name": "进入目录并列出内容",
+            "description": "切换到目录后自动执行ls列出文件",
+            "params": {
+              "目录": {
+                "example": "/var/log",
+                "notes": "目标目录"
+              }
+            },
+            "cmd": "cd %{目录}% && ls -la"
+          }
+        ],
+        "params": {
+          "目录": {
+            "type": "string",
+            "required": true,
+            "description": "目录",
+            "example": "/home",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

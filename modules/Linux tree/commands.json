@@ -1,0 +1,127 @@
+{
+  "module": "Linux tree",
+  "version": "2.0",
+  "description": "Linux tree 目录树显示命令。以树形结构递归显示目录和文件的层级关系。直观展示项目结构，是了解代码库、查找文件、规划目录的好工具。默认只显示目录，可配置显示所有文件。",
+  "commands": [
+    {
+      "dirPath": "/Linux tree/",
+      "name": "tree 显示目录树",
+      "keyword": "tree 目录树",
+      "description": "以树形结构显示目录。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "tree %{目录}%",
+        "extensions": [
+          {
+            "name": "显示当前目录树",
+            "description": "显示当前目录的完整树形结构",
+            "params": {
+              "目录": {
+                "example": ".",
+                "notes": "当前目录"
+              }
+            },
+            "cmd": "tree %{目录}%"
+          },
+          {
+            "name": "显示所有文件",
+            "description": "树形显示包括普通文件，不只是目录",
+            "params": {
+              "目录": {
+                "example": "/var/www",
+                "notes": "目录路径"
+              }
+            },
+            "cmd": "tree -a %{目录}%"
+          },
+          {
+            "name": "限制显示深度",
+            "description": "只显示到指定深度的目录树",
+            "params": {
+              "目录": {
+                "example": "/",
+                "notes": "根目录"
+              },
+              "深度": {
+                "example": "2",
+                "notes": "层级深度"
+              }
+            },
+            "cmd": "tree -L %{深度}% %{目录}%"
+          },
+          {
+            "name": "显示文件大小",
+            "description": "在每个文件旁显示文件大小",
+            "params": {
+              "目录": {
+                "example": "./project",
+                "notes": "目录"
+              }
+            },
+            "cmd": "tree -h %{目录}%"
+          },
+          {
+            "name": "排除特定目录",
+            "description": "树形显示时排除某些目录如node_modules",
+            "params": {
+              "目录": {
+                "example": "./src",
+                "notes": "源目录"
+              },
+              "排除": {
+                "example": "node_modules",
+                "notes": "排除的目录"
+              }
+            },
+            "cmd": "tree -I '%{排除}%' %{目录}%"
+          },
+          {
+            "name": "只显示目录",
+            "description": "只显示目录结构，不显示文件",
+            "params": {
+              "目录": {
+                "example": "/home",
+                "notes": "目录"
+              }
+            },
+            "cmd": "tree -d %{目录}%"
+          },
+          {
+            "name": "输出到文件",
+            "description": "将目录树保存到文件以便查看",
+            "params": {
+              "目录": {
+                "example": "./project",
+                "notes": "目录"
+              },
+              "输出": {
+                "example": "structure.txt",
+                "notes": "输出文件"
+              }
+            },
+            "cmd": "tree %{目录}% > %{输出}%"
+          },
+          {
+            "name": "显示完整路径",
+            "description": "在每个条目旁显示完整路径",
+            "params": {
+              "目录": {
+                "example": "/etc",
+                "notes": "目录"
+              }
+            },
+            "cmd": "tree -f %{目录}%"
+          }
+        ],
+        "params": {
+          "目录": {
+            "type": "string",
+            "required": false,
+            "description": "目录",
+            "example": ".",
+            "notes": "可选"
+          }
+        }
+      }
+    }
+  ]
+}

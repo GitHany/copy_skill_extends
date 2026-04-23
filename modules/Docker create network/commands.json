@@ -1,0 +1,48 @@
+{
+  "module": "Docker create network",
+  "version": "2.0",
+  "description": "Docker 网络创建与管理，涵盖Docker create network的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Docker create network/",
+      "name": "docker network create 创建网络",
+      "keyword": "docker network 创建",
+      "description": "创建 Docker 网络。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker network create %{网络}%",
+        "extensions": [
+          {
+            "name": "驱动类型",
+            "cmd": "docker network create --driver=%{驱动}% %{网络}%",
+            "params": {
+              "驱动": {
+                "type": "string",
+                "required": true,
+                "description": "驱动",
+                "example": "bridge",
+                "notes": "必填"
+              },
+              "网络": {
+                "type": "string",
+                "required": true,
+                "description": "网络",
+                "example": "mynet",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker network driver"
+          }
+        ],
+        "params": {
+          "网络": {
+            "type": "string",
+            "required": true,
+            "description": "网络名称",
+            "example": "backend",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

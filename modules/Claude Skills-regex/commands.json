@@ -1,106 +1,159 @@
-[
-  {
-    "dirPath": "/Claude Skills/regex/",
-    "name": "regex 邮箱验证",
-    "keyword": "/regex 邮箱",
-    "description": "验证邮箱格式",
-    "data": {
-      "cmd": "/regex email %{内容}%",
-      "extensions": [],
-      "params": {
-        "内容": { "type": "string", "required": true, "description": "要验证的内容", "example": "test@example.com", "notes": "" }
+{
+  "module": "Claude Skills-regex",
+  "version": "2.0",
+  "description": "Claude Skills-regex命令集合",
+  "commands": [
+    {
+      "dirPath": "/Claude Skills/regex/",
+      "name": "regex 邮箱验证",
+      "keyword": "/regex 邮箱",
+      "description": "验证邮箱格式。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "/regex email %{内容}%",
+        "extensions": [],
+        "params": {
+          "内容": {
+            "type": "string",
+            "required": true,
+            "description": "要验证的内容",
+            "example": "test@example.com",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Claude Skills/regex/",
+      "name": "regex 手机号验证",
+      "keyword": "/regex 手机",
+      "description": "验证手机号格式。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "/regex phone %{内容}%",
+        "extensions": [],
+        "params": {
+          "内容": {
+            "type": "string",
+            "required": true,
+            "description": "要验证的内容",
+            "example": "13812345678",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Claude Skills/regex/",
+      "name": "regex URL 匹配",
+      "keyword": "/regex url",
+      "description": "验证和匹配 URL。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "/regex url %{内容}%",
+        "extensions": [],
+        "params": {
+          "内容": {
+            "type": "string",
+            "required": true,
+            "description": "要匹配的内容",
+            "example": "https://www.example.com/path",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Claude Skills/regex/",
+      "name": "regex 密码强度",
+      "keyword": "/regex 密码",
+      "description": "验证密码强度。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "/regex password %{内容}%",
+        "extensions": [],
+        "params": {
+          "内容": {
+            "type": "string",
+            "required": true,
+            "description": "要验证的密码",
+            "example": "Abc123!@#",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Claude Skills/regex/",
+      "name": "regex 日期格式",
+      "keyword": "/regex 日期",
+      "description": "验证日期格式。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "/regex date %{内容}%",
+        "extensions": [],
+        "params": {
+          "内容": {
+            "type": "string",
+            "required": true,
+            "description": "要验证的日期",
+            "example": "2024-01-15",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Claude Skills/regex/",
+      "name": "regex IP 地址",
+      "keyword": "/regex ip",
+      "description": "验证 IP 地址格式。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "/regex ip %{内容}%",
+        "extensions": [],
+        "params": {
+          "内容": {
+            "type": "string",
+            "required": true,
+            "description": "要验证的 IP 地址",
+            "example": "192.168.1.1",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Claude Skills/regex/",
+      "name": "regex 身份证号",
+      "keyword": "/regex 身份证",
+      "description": "验证中国身份证号。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "/regex idcard %{内容}%",
+        "extensions": [],
+        "params": {
+          "内容": {
+            "type": "string",
+            "required": true,
+            "description": "要验证的身份证号",
+            "example": "110101199001011234",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Claude Skills/regex/",
+      "name": "regex HTML 标签",
+      "keyword": "/regex html",
+      "description": "匹配 HTML 标签。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "/regex html %{内容}%",
+        "extensions": [],
+        "params": {
+          "内容": {
+            "type": "string",
+            "required": true,
+            "description": "要提取的内容",
+            "example": "<div class=\"test\">content</div>",
+            "notes": "必填"
+          }
+        }
       }
     }
-  },
-  {
-    "dirPath": "/Claude Skills/regex/",
-    "name": "regex 手机号验证",
-    "keyword": "/regex 手机",
-    "description": "验证手机号格式",
-    "data": {
-      "cmd": "/regex phone %{内容}%",
-      "extensions": [],
-      "params": {
-        "内容": { "type": "string", "required": true, "description": "要验证的内容", "example": "13812345678", "notes": "" }
-      }
-    }
-  },
-  {
-    "dirPath": "/Claude Skills/regex/",
-    "name": "regex URL 匹配",
-    "keyword": "/regex url",
-    "description": "验证和匹配 URL",
-    "data": {
-      "cmd": "/regex url %{内容}%",
-      "extensions": [],
-      "params": {
-        "内容": { "type": "string", "required": true, "description": "要匹配的内容", "example": "https://www.example.com/path", "notes": "" }
-      }
-    }
-  },
-  {
-    "dirPath": "/Claude Skills/regex/",
-    "name": "regex 密码强度",
-    "keyword": "/regex 密码",
-    "description": "验证密码强度",
-    "data": {
-      "cmd": "/regex password %{内容}%",
-      "extensions": [],
-      "params": {
-        "内容": { "type": "string", "required": true, "description": "要验证的密码", "example": "Abc123!@#", "notes": "" }
-      }
-    }
-  },
-  {
-    "dirPath": "/Claude Skills/regex/",
-    "name": "regex 日期格式",
-    "keyword": "/regex 日期",
-    "description": "验证日期格式",
-    "data": {
-      "cmd": "/regex date %{内容}%",
-      "extensions": [],
-      "params": {
-        "内容": { "type": "string", "required": true, "description": "要验证的日期", "example": "2024-01-15", "notes": "" }
-      }
-    }
-  },
-  {
-    "dirPath": "/Claude Skills/regex/",
-    "name": "regex IP 地址",
-    "keyword": "/regex ip",
-    "description": "验证 IP 地址格式",
-    "data": {
-      "cmd": "/regex ip %{内容}%",
-      "extensions": [],
-      "params": {
-        "内容": { "type": "string", "required": true, "description": "要验证的 IP 地址", "example": "192.168.1.1", "notes": "" }
-      }
-    }
-  },
-  {
-    "dirPath": "/Claude Skills/regex/",
-    "name": "regex 身份证号",
-    "keyword": "/regex 身份证",
-    "description": "验证中国身份证号",
-    "data": {
-      "cmd": "/regex idcard %{内容}%",
-      "extensions": [],
-      "params": {
-        "内容": { "type": "string", "required": true, "description": "要验证的身份证号", "example": "110101199001011234", "notes": "" }
-      }
-    }
-  },
-  {
-    "dirPath": "/Claude Skills/regex/",
-    "name": "regex HTML 标签",
-    "keyword": "/regex html",
-    "description": "匹配 HTML 标签",
-    "data": {
-      "cmd": "/regex html %{内容}%",
-      "extensions": [],
-      "params": {
-        "内容": { "type": "string", "required": true, "description": "要提取的内容", "example": "<div class=\"test\">content</div>", "notes": "" }
-      }
-    }
-  }
-]
+  ]
+}

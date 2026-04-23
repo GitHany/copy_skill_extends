@@ -7,7 +7,7 @@
       "dirPath": "/GitHubActions/",
       "name": "gh run list 查看运行列表",
       "keyword": "gh run list",
-      "description": "列出 GitHub Actions 工作流运行记录",
+      "description": "列出 GitHub Actions 工作流运行记录。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh run list",
         "extensions": [
@@ -110,7 +110,7 @@
       "dirPath": "/GitHubActions/",
       "name": "gh run watch 监控运行",
       "keyword": "gh run watch",
-      "description": "实时监控 GitHub Actions 工作流运行状态",
+      "description": "实时监控 GitHub Actions 工作流运行状态。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh run watch %{run_id}%",
         "extensions": [
@@ -123,7 +123,7 @@
                 "required": false,
                 "description": "运行 ID",
                 "example": "123456789",
-                "notes": ""
+                "notes": "可选"
               },
               "repo": {
                 "type": "string",
@@ -144,7 +144,7 @@
                 "required": false,
                 "description": "运行 ID",
                 "example": "123456789",
-                "notes": ""
+                "notes": "可选"
               },
               "seconds": {
                 "type": "number",
@@ -163,7 +163,7 @@
             "required": true,
             "description": "运行 ID",
             "example": "123456789",
-            "notes": ""
+            "notes": "必填"
           },
           "owner": {
             "type": "string",
@@ -193,7 +193,7 @@
       "dirPath": "/GitHubActions/",
       "name": "gh run cancel 取消运行",
       "keyword": "gh run cancel",
-      "description": "取消正在运行的 GitHub Actions 工作流",
+      "description": "取消正在运行的 GitHub Actions 工作流。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh run cancel %{run_id}%",
         "extensions": [
@@ -248,7 +248,7 @@
       "dirPath": "/GitHubActions/",
       "name": "gh workflow list 列出工作流",
       "keyword": "gh workflow list",
-      "description": "列出仓库中所有 GitHub Actions 工作流",
+      "description": "列出仓库中所有 GitHub Actions 工作流。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh workflow list",
         "extensions": [
@@ -295,7 +295,7 @@
       "dirPath": "/GitHubActions/",
       "name": "gh workflow disable 禁用工作流",
       "keyword": "gh workflow disable",
-      "description": "禁用指定的 GitHub Actions 工作流",
+      "description": "禁用指定的 GitHub Actions 工作流。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh workflow disable %{workflow_id}%",
         "extensions": [
@@ -308,7 +308,7 @@
                 "required": false,
                 "description": "工作流名称或 ID",
                 "example": "CI",
-                "notes": ""
+                "notes": "可选"
               },
               "repo": {
                 "type": "string",
@@ -327,7 +327,7 @@
             "required": true,
             "description": "工作流名称或 ID",
             "example": "CI",
-            "notes": ""
+            "notes": "必填"
           },
           "owner": {
             "type": "string",
@@ -350,7 +350,7 @@
       "dirPath": "/GitHubActions/",
       "name": "gh workflow enable 启用工作流",
       "keyword": "gh workflow enable",
-      "description": "启用指定的 GitHub Actions 工作流",
+      "description": "启用指定的 GitHub Actions 工作流。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh workflow enable %{workflow_id}%",
         "extensions": [
@@ -363,7 +363,7 @@
                 "required": false,
                 "description": "工作流名称或 ID",
                 "example": "CI",
-                "notes": ""
+                "notes": "可选"
               },
               "repo": {
                 "type": "string",
@@ -382,7 +382,7 @@
             "required": true,
             "description": "工作流名称或 ID",
             "example": "CI",
-            "notes": ""
+            "notes": "必填"
           },
           "owner": {
             "type": "string",
@@ -405,7 +405,7 @@
       "dirPath": "/GitHubActions/",
       "name": "gh issue create 创建 Issue",
       "keyword": "gh issue create",
-      "description": "创建新的 GitHub Issue",
+      "description": "创建新的 GitHub Issue。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh issue create --title \"%{title}%\" --body \"%{body}%\"",
         "extensions": [
@@ -585,7 +585,7 @@
       "dirPath": "/GitHubActions/",
       "name": "gh issue list 列出 Issue",
       "keyword": "gh issue list",
-      "description": "列出仓库的 Issue",
+      "description": "列出仓库的 Issue。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh issue list",
         "extensions": [
@@ -752,7 +752,7 @@
       "dirPath": "/GitHubActions/",
       "name": "gh pr create 创建 Pull Request",
       "keyword": "gh pr create",
-      "description": "创建新的 Pull Request",
+      "description": "创建新的 Pull Request。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh pr create --title \"%{title}%\" --body \"%{body}%\"",
         "extensions": [
@@ -1003,7 +1003,7 @@
       "dirPath": "/GitHubActions/",
       "name": "gh pr checkout 检出 Pull Request",
       "keyword": "gh pr checkout",
-      "description": "将 PR 检出到本地分支",
+      "description": "将 PR 检出到本地分支。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh pr checkout %{pr_number}%",
         "extensions": [
@@ -1072,7 +1072,7 @@
       "dirPath": "/GitHubActions/",
       "name": "gh pr status 查看 PR 状态",
       "keyword": "gh pr status",
-      "description": "查看当前分支关联的 Pull Request 状态",
+      "description": "查看当前分支关联的 Pull Request 状态。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "gh pr status",
         "extensions": [

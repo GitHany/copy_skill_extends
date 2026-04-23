@@ -1,0 +1,71 @@
+{
+  "module": "Python 虚拟环境",
+  "version": "2.0",
+  "description": "Python 虚拟环境命令集合，涵盖Python 虚拟环境的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Python 虚拟环境/",
+      "name": "python -m venv 创建虚拟环境",
+      "keyword": "venv 创建",
+      "description": "创建 Python 虚拟环境。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "python -m venv %{环境名}%",
+        "extensions": [
+          {
+            "name": "指定 Python 版本",
+            "cmd": "python3 -m venv %{环境名}%",
+            "params": {
+              "环境名": {
+                "type": "string",
+                "required": true,
+                "description": "环境名",
+                "example": "venv",
+                "notes": "必填"
+              }
+            },
+            "keyword": "venv python3"
+          }
+        ],
+        "params": {
+          "环境名": {
+            "type": "string",
+            "required": true,
+            "description": "虚拟环境目录名",
+            "example": "myenv",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Python 虚拟环境/",
+      "name": "source activate 激活环境",
+      "keyword": "activate 激活",
+      "description": "激活虚拟环境。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "source %{环境名}%/bin/activate",
+        "extensions": [],
+        "params": {
+          "环境名": {
+            "type": "string",
+            "required": true,
+            "description": "环境目录",
+            "example": "venv",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Python 虚拟环境/",
+      "name": "deactivate 退出环境",
+      "keyword": "deactivate 退出",
+      "description": "退出虚拟环境。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "deactivate",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

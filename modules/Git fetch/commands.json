@@ -1,0 +1,92 @@
+{
+  "module": "Git fetch",
+  "version": "3.0",
+  "description": "Git fetch 用于从远程仓库下载最新的提交、分支和标签信息到本地，但不会自动合并或修改你的工作目录。这让你可以先查看他人做了哪些更新，再决定是否要合并。适合在合并前检查代码、查看同事的进度、或同步远程最新状态。常见场景：查看远程分支更新、检查团队成员提交、清理已删除的远程分支。",
+  "commands": [
+    {
+      "dirPath": "/Git fetch/",
+      "name": "git fetch 获取",
+      "keyword": "git fetch 获取",
+      "description": "从默认远程仓库获取所有更新（分支、标签等）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git fetch %{远程}%",
+        "extensions": [
+          {
+            "name": "git fetch --all 获取所有远程",
+            "description": "从所有远程仓库获取更新",
+            "params": {},
+            "cmd": ""
+          },
+          {
+            "name": "git fetch --prune 修剪远程分支",
+            "description": "获取时删除远程已不存在的分支引用",
+            "params": {},
+            "cmd": ""
+          },
+          {
+            "name": "git fetch 远程分支 获取特定分支",
+            "description": "获取指定远程的特定分支",
+            "params": {
+              "远程": {
+                "type": "string",
+                "required": true,
+                "description": "远程名",
+                "example": "origin",
+                "notes": "必填"
+              },
+              "分支名": {
+                "type": "string",
+                "required": false,
+                "description": "分支名",
+                "example": "main",
+                "notes": "可选"
+              }
+            },
+            "cmd": ""
+          },
+          {
+            "name": "git fetch --tags 获取标签",
+            "description": "同时获取远程标签到本地",
+            "params": {},
+            "cmd": ""
+          },
+          {
+            "name": "git fetch -v 详细输出",
+            "description": "显示详细的获取信息，包含每个更新的来源",
+            "params": {},
+            "cmd": ""
+          },
+          {
+            "name": "git fetch --prune-tags 修剪标签",
+            "description": "获取更新并清理远程已删除的标签",
+            "params": {},
+            "cmd": ""
+          },
+          {
+            "name": "git fetch --depth=N 浅克隆",
+            "description": "只获取最近 N 个提交，减少下载量",
+            "params": {
+              "深度": {
+                "type": "string",
+                "required": false,
+                "description": "提交的深度",
+                "example": "10",
+                "notes": "可选"
+              }
+            },
+            "cmd": ""
+          }
+        ],
+        "params": {
+          "远程": {
+            "type": "string",
+            "required": false,
+            "description": "远程",
+            "example": "origin",
+            "notes": "可选"
+          }
+        }
+      }
+    }
+  ]
+}

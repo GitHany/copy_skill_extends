@@ -1,0 +1,77 @@
+{
+  "module": "Linux id",
+  "version": "2.0",
+  "description": "Linux id 用户标识查看命令。显示当前用户或指定用户的UID、GID以及所属的所有组信息。用于确认用户权限、了解当前操作身份、调试权限问题。是系统管理和安全审计的常用工具。",
+  "commands": [
+    {
+      "dirPath": "/Linux id/",
+      "name": "id 查看 UID",
+      "keyword": "id UID",
+      "description": "显示用户和组 ID。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "id",
+        "extensions": [
+          {
+            "name": "显示当前用户ID",
+            "description": "显示当前登录用户的UID、GID和所属组",
+            "params": {},
+            "cmd": "id"
+          },
+          {
+            "name": "显示用户名",
+            "description": "只显示当前用户名",
+            "params": {},
+            "cmd": "id -un"
+          },
+          {
+            "name": "显示用户ID",
+            "description": "只显示当前用户的UID",
+            "params": {},
+            "cmd": "id -u"
+          },
+          {
+            "name": "显示组ID",
+            "description": "只显示当前用户的GID",
+            "params": {},
+            "cmd": "id -g"
+          },
+          {
+            "name": "显示所有组ID",
+            "description": "显示用户所属的所有组ID",
+            "params": {},
+            "cmd": "id -G"
+          },
+          {
+            "name": "查看指定用户ID",
+            "description": "查看特定用户的ID信息",
+            "params": {
+              "用户名": {
+                "example": "www-data",
+                "notes": "用户名"
+              }
+            },
+            "cmd": "id %{用户名}%"
+          },
+          {
+            "name": "以名字显示",
+            "description": "用名字而非数字显示组信息",
+            "params": {
+              "用户名": {
+                "example": "nginx",
+                "notes": "用户名"
+              }
+            },
+            "cmd": "id -Gn %{用户名}%"
+          },
+          {
+            "name": "有效用户ID",
+            "description": "显示有效用户ID（用于权限检查）",
+            "params": {},
+            "cmd": "id -e"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

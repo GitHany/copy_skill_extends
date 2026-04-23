@@ -7,7 +7,7 @@
       "dirPath": "/Kubernetes 高级操作/",
       "name": "operator-sdk create api 创建 CRD API",
       "keyword": "operator-sdk create api",
-      "description": "使用 Operator SDK 创建自定义资源定义和控制器",
+      "description": "使用 Operator SDK 创建自定义资源定义和控制器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "operator-sdk create api --group %{组名}% --version %{版本}% --kind %{类型}% --resource --controller",
         "extensions": [
@@ -41,21 +41,21 @@
                 "required": true,
                 "description": "API 组名",
                 "example": "apps",
-                "notes": ""
+                "notes": "可选"
               },
               "版本": {
                 "type": "string",
                 "required": true,
                 "description": "API 版本",
                 "example": "v1",
-                "notes": ""
+                "notes": "可选"
               },
               "类型": {
                 "type": "string",
                 "required": true,
                 "description": "CRD 类型名",
                 "example": "MyOperator",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "operator-sdk create webhook"
@@ -69,7 +69,7 @@
                 "required": true,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "operator-sdk run local"
@@ -89,7 +89,7 @@
                 "required": true,
                 "description": "镜像名称",
                 "example": "myorg/my-operator:v1.0.0",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "operator-sdk build"
@@ -101,49 +101,49 @@
             "required": true,
             "description": "API 组名",
             "example": "apps",
-            "notes": ""
+            "notes": "必填"
           },
           "版本": {
             "type": "string",
             "required": true,
             "description": "API 版本",
             "example": "v1",
-            "notes": ""
+            "notes": "必填"
           },
           "类型": {
             "type": "string",
             "required": true,
             "description": "CRD 类型名",
             "example": "MyOperator",
-            "notes": ""
+            "notes": "必填"
           },
           "域名": {
             "type": "string",
             "required": false,
             "description": "域名",
             "example": "my.domain",
-            "notes": ""
+            "notes": "可选"
           },
           "仓库": {
             "type": "string",
             "required": false,
             "description": "仓库路径",
             "example": "github.com/myorg/project",
-            "notes": ""
+            "notes": "可选"
           },
           "命名空间": {
             "type": "string",
             "required": false,
             "description": "命名空间",
             "example": "default",
-            "notes": ""
+            "notes": "可选"
           },
           "镜像": {
             "type": "string",
             "required": false,
             "description": "镜像名称",
             "example": "myorg/my-operator:v1.0.0",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -152,7 +152,7 @@
       "dirPath": "/Kubernetes 高级操作/",
       "name": "kubebuilder 创建 API",
       "keyword": "kubebuilder create api",
-      "description": "使用 kubebuilder 创建 CRD 和控制器代码",
+      "description": "使用 kubebuilder 创建 CRD 和控制器代码。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubebuilder create api --group %{组名}% --version %{版本}% --kind %{类型}%",
         "extensions": [
@@ -165,14 +165,14 @@
                 "required": true,
                 "description": "域名",
                 "example": "my.domain",
-                "notes": ""
+                "notes": "可选"
               },
               "仓库": {
                 "type": "string",
                 "required": true,
                 "description": "仓库路径",
                 "example": "github.com/myorg/project",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubebuilder init"
@@ -186,21 +186,21 @@
                 "required": true,
                 "description": "API 组名",
                 "example": "apps",
-                "notes": ""
+                "notes": "可选"
               },
               "版本": {
                 "type": "string",
                 "required": true,
                 "description": "API 版本",
                 "example": "v1",
-                "notes": ""
+                "notes": "可选"
               },
               "类型": {
                 "type": "string",
                 "required": true,
                 "description": "CRD 类型名",
                 "example": "MyOperator",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubebuilder create webhook"
@@ -214,14 +214,14 @@
                 "required": true,
                 "description": "初始版本",
                 "example": "v1",
-                "notes": ""
+                "notes": "可选"
               },
               "版本2": {
                 "type": "string",
                 "required": true,
                 "description": "新增版本",
                 "example": "v2",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubebuilder 多版本 API"
@@ -233,49 +233,49 @@
             "required": true,
             "description": "API 组名",
             "example": "apps",
-            "notes": ""
+            "notes": "必填"
           },
           "版本": {
             "type": "string",
             "required": true,
             "description": "API 版本",
             "example": "v1",
-            "notes": ""
+            "notes": "必填"
           },
           "类型": {
             "type": "string",
             "required": true,
             "description": "CRD 类型名",
             "example": "MyOperator",
-            "notes": ""
+            "notes": "必填"
           },
           "域名": {
             "type": "string",
             "required": false,
             "description": "域名",
             "example": "my.domain",
-            "notes": ""
+            "notes": "可选"
           },
           "仓库": {
             "type": "string",
             "required": false,
             "description": "仓库路径",
             "example": "github.com/myorg/project",
-            "notes": ""
+            "notes": "可选"
           },
           "版本1": {
             "type": "string",
             "required": false,
             "description": "初始版本",
             "example": "v1",
-            "notes": ""
+            "notes": "可选"
           },
           "版本2": {
             "type": "string",
             "required": false,
             "description": "新增版本",
             "example": "v2",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -284,7 +284,7 @@
       "dirPath": "/Kubernetes 高级操作/",
       "name": "kubectl create role 创建 Role",
       "keyword": "kubectl create role",
-      "description": "创建命名空间级别的 RBAC Role",
+      "description": "创建命名空间级别的 RBAC Role。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl create role %{角色名称}% --verb=%{动作}% --resource=%{资源}% -n %{命名空间}%",
         "extensions": [
@@ -297,14 +297,14 @@
                 "required": true,
                 "description": "操作动词",
                 "example": "get,list",
-                "notes": ""
+                "notes": "可选"
               },
               "资源": {
                 "type": "string",
                 "required": true,
                 "description": "资源类型",
                 "example": "pods",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl create clusterrole"
@@ -318,14 +318,14 @@
                 "required": true,
                 "description": "Role 名称",
                 "example": "pod-reader",
-                "notes": ""
+                "notes": "可选"
               },
               "用户名": {
                 "type": "string",
                 "required": true,
                 "description": "用户名",
                 "example": "user1",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl create rolebinding"
@@ -339,14 +339,14 @@
                 "required": true,
                 "description": "ClusterRole 名称",
                 "example": "cluster-reader",
-                "notes": ""
+                "notes": "可选"
               },
               "用户名": {
                 "type": "string",
                 "required": true,
                 "description": "用户名",
                 "example": "user1",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl create clusterrolebinding"
@@ -360,7 +360,7 @@
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl get roles"
@@ -378,49 +378,49 @@
             "required": true,
             "description": "Role 名称",
             "example": "pod-reader",
-            "notes": ""
+            "notes": "必填"
           },
           "动作": {
             "type": "string",
             "required": true,
             "description": "操作动词",
             "example": "get,list",
-            "notes": ""
+            "notes": "必填"
           },
           "资源": {
             "type": "string",
             "required": true,
             "description": "资源类型",
             "example": "pods",
-            "notes": ""
+            "notes": "必填"
           },
           "命名空间": {
             "type": "string",
             "required": false,
             "description": "命名空间",
             "example": "default",
-            "notes": ""
+            "notes": "可选"
           },
           "绑定名称": {
             "type": "string",
             "required": false,
             "description": "绑定名称",
             "example": "pod-reader-binding",
-            "notes": ""
+            "notes": "可选"
           },
           "用户名": {
             "type": "string",
             "required": false,
             "description": "用户名",
             "example": "user1",
-            "notes": ""
+            "notes": "可选"
           },
           "ClusterRole名称": {
             "type": "string",
             "required": false,
             "description": "ClusterRole 名称",
             "example": "cluster-reader",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -429,7 +429,7 @@
       "dirPath": "/Kubernetes 高级操作/",
       "name": "kubectl auth can-i 权限检查",
       "keyword": "kubectl auth can-i",
-      "description": "检查当前用户或指定用户的权限",
+      "description": "检查当前用户或指定用户的权限。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl auth can-i %{动作}% %{资源}%",
         "extensions": [
@@ -442,21 +442,21 @@
                 "required": false,
                 "description": "操作动词",
                 "example": "get",
-                "notes": ""
+                "notes": "可选"
               },
               "资源": {
                 "type": "string",
                 "required": false,
                 "description": "资源类型",
                 "example": "pods",
-                "notes": ""
+                "notes": "可选"
               },
               "命名空间": {
                 "type": "string",
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl auth can-i 命名空间"
@@ -470,7 +470,7 @@
                 "required": true,
                 "description": "用户名",
                 "example": "user1",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl auth can-i as"
@@ -484,7 +484,7 @@
                 "required": true,
                 "description": "子资源",
                 "example": "status",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl auth can-i 子资源"
@@ -496,35 +496,35 @@
             "required": true,
             "description": "操作动词",
             "example": "get",
-            "notes": ""
+            "notes": "必填"
           },
           "资源": {
             "type": "string",
             "required": true,
             "description": "资源类型",
             "example": "pods",
-            "notes": ""
+            "notes": "必填"
           },
           "命名空间": {
             "type": "string",
             "required": false,
             "description": "命名空间",
             "example": "default",
-            "notes": ""
+            "notes": "可选"
           },
           "用户": {
             "type": "string",
             "required": false,
             "description": "用户名",
             "example": "user1",
-            "notes": ""
+            "notes": "可选"
           },
           "子资源": {
             "type": "string",
             "required": false,
             "description": "子资源",
             "example": "status",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -533,7 +533,7 @@
       "dirPath": "/Kubernetes 高级操作/",
       "name": "kubectl get networkpolicy 查看网络策略",
       "keyword": "kubectl get networkpolicy",
-      "description": "查看和管理网络隔离策略",
+      "description": "查看和管理网络隔离策略。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl get networkpolicy -n %{命名空间}%",
         "extensions": [
@@ -546,7 +546,7 @@
                 "required": true,
                 "description": "网络策略名称",
                 "example": "allow-nginx",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl describe networkpolicy"
@@ -560,7 +560,7 @@
                 "required": false,
                 "description": "网络策略名称",
                 "example": "allow-nginx",
-                "notes": ""
+                "notes": "可选"
               },
               "命名空间": {
                 "type": "string",
@@ -592,7 +592,7 @@
             "required": false,
             "description": "网络策略名称",
             "example": "allow-nginx",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -614,7 +614,7 @@
                 "required": false,
                 "description": "命名空间",
                 "example": "my-namespace",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "PSS 基线策略"
@@ -628,7 +628,7 @@
                 "required": false,
                 "description": "命名空间",
                 "example": "my-namespace",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "PSS 受限策略"
@@ -642,7 +642,7 @@
                 "required": false,
                 "description": "命名空间",
                 "example": "my-namespace",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl describe namespace"
@@ -654,7 +654,7 @@
             "required": true,
             "description": "命名空间",
             "example": "my-namespace",
-            "notes": ""
+            "notes": "必填"
           },
           "级别": {
             "type": "string",
@@ -670,7 +670,7 @@
       "dirPath": "/Kubernetes 高级操作/",
       "name": "kubectl create secret generic 创建密钥",
       "keyword": "kubectl create secret generic",
-      "description": "创建通用类型的 Secret",
+      "description": "创建通用类型的 Secret。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl create secret generic %{密钥名称}% --from-literal=key=%{值}%",
         "extensions": [
@@ -683,14 +683,14 @@
                 "required": true,
                 "description": "证书文件路径",
                 "example": "./tls.crt",
-                "notes": ""
+                "notes": "可选"
               },
               "密钥文件": {
                 "type": "string",
                 "required": true,
                 "description": "密钥文件路径",
                 "example": "./tls.key",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl create secret tls"
@@ -704,7 +704,7 @@
                 "required": true,
                 "description": "文件路径",
                 "example": "./config.txt",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl create secret from-file"
@@ -718,7 +718,7 @@
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl get secrets"
@@ -730,42 +730,42 @@
             "required": true,
             "description": "密钥名称",
             "example": "my-secret",
-            "notes": ""
+            "notes": "必填"
           },
           "值": {
             "type": "string",
             "required": true,
             "description": "密钥值",
             "example": "password123",
-            "notes": ""
+            "notes": "必填"
           },
           "命名空间": {
             "type": "string",
             "required": false,
             "description": "命名空间",
             "example": "default",
-            "notes": ""
+            "notes": "可选"
           },
           "证书文件": {
             "type": "string",
             "required": false,
             "description": "证书文件路径",
             "example": "./tls.crt",
-            "notes": ""
+            "notes": "可选"
           },
           "密钥文件": {
             "type": "string",
             "required": false,
             "description": "密钥文件路径",
             "example": "./tls.key",
-            "notes": ""
+            "notes": "可选"
           },
           "文件路径": {
             "type": "string",
             "required": false,
             "description": "文件路径",
             "example": "./config.txt",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -774,7 +774,7 @@
       "dirPath": "/Kubernetes 高级操作/",
       "name": "kubectl get pvc 查看持久卷声明",
       "keyword": "kubectl get pvc",
-      "description": "查看和管理 PersistentVolumeClaim",
+      "description": "查看和管理 PersistentVolumeClaim。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl get pvc -n %{命名空间}%",
         "extensions": [
@@ -793,7 +793,7 @@
                 "required": true,
                 "description": "PVC 名称",
                 "example": "my-pvc",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl describe pvc"
@@ -807,7 +807,7 @@
                 "required": true,
                 "description": "PV 名称",
                 "example": "my-pv",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl delete pv"
@@ -821,7 +821,7 @@
                 "required": true,
                 "description": "新大小",
                 "example": "20Gi",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl patch pvc"
@@ -840,21 +840,21 @@
             "required": false,
             "description": "PVC 名称",
             "example": "my-pvc",
-            "notes": ""
+            "notes": "可选"
           },
           "PV名称": {
             "type": "string",
             "required": false,
             "description": "PV 名称",
             "example": "my-pv",
-            "notes": ""
+            "notes": "可选"
           },
           "新大小": {
             "type": "string",
             "required": false,
             "description": "新大小",
             "example": "20Gi",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -863,7 +863,7 @@
       "dirPath": "/Kubernetes 高级操作/",
       "name": "kubectl get storageclass 查看存储类",
       "keyword": "kubectl get storageclass",
-      "description": "查看和管理 StorageClass",
+      "description": "查看和管理 StorageClass。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl get storageclass",
         "extensions": [
@@ -876,7 +876,7 @@
                 "required": true,
                 "description": "存储类名称",
                 "example": "standard",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl patch storageclass default"
@@ -890,7 +890,7 @@
                 "required": false,
                 "description": "存储类名称",
                 "example": "standard",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl get storageclass yaml"
@@ -904,7 +904,7 @@
                 "required": false,
                 "description": "存储类名称",
                 "example": "standard",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl delete storageclass"
@@ -916,7 +916,7 @@
             "required": false,
             "description": "存储类名称",
             "example": "standard",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -950,7 +950,7 @@
                 "required": true,
                 "description": "CSI 驱动名称",
                 "example": "ebs.csi.aws.com",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl describe csidriver"
@@ -962,7 +962,7 @@
             "required": false,
             "description": "CSI 驱动名称",
             "example": "ebs.csi.aws.com",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -971,7 +971,7 @@
       "dirPath": "/Kubernetes 高级操作/",
       "name": "kubectl get ingress 查看 Ingress",
       "keyword": "kubectl get ingress",
-      "description": "查看和管理 Ingress 入口规则",
+      "description": "查看和管理 Ingress 入口规则。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl get ingress -n %{命名空间}%",
         "extensions": [
@@ -990,7 +990,7 @@
                 "required": true,
                 "description": "IngressClass 名称",
                 "example": "nginx",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl annotate ingressclass"
@@ -1004,7 +1004,7 @@
                 "required": false,
                 "description": "Ingress 名称",
                 "example": "my-ingress",
-                "notes": ""
+                "notes": "可选"
               },
               "命名空间": {
                 "type": "string",
@@ -1030,14 +1030,14 @@
             "required": false,
             "description": "IngressClass 名称",
             "example": "nginx",
-            "notes": ""
+            "notes": "可选"
           },
           "Ingress名称": {
             "type": "string",
             "required": false,
             "description": "Ingress 名称",
             "example": "my-ingress",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1046,7 +1046,7 @@
       "dirPath": "/Kubernetes 高级操作/",
       "name": "kubectl get virtualservice 查看 Istio 虚拟服务",
       "keyword": "kubectl get virtualservice",
-      "description": "查看 Istio 服务网格的虚拟服务和目标规则",
+      "description": "查看 Istio 服务网格的虚拟服务和目标规则。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl get virtualservice -n %{命名空间}%",
         "extensions": [
@@ -1059,7 +1059,7 @@
                 "required": false,
                 "description": "命名空间",
                 "example": "istio-system",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl get destinationrule"
@@ -1073,7 +1073,7 @@
                 "required": false,
                 "description": "命名空间",
                 "example": "istio-system",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl get sidecar"
@@ -1087,7 +1087,7 @@
                 "required": false,
                 "description": "命名空间",
                 "example": "istio-system",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl get gateway"
@@ -1099,7 +1099,7 @@
             "required": true,
             "description": "命名空间",
             "example": "istio-system",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1108,7 +1108,7 @@
       "dirPath": "/Kubernetes 高级操作/",
       "name": "istioctl proxy-config 查看代理配置",
       "keyword": "istioctl proxy-config",
-      "description": "查看 Istio Envoy 代理配置",
+      "description": "查看 Istio Envoy 代理配置。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "istioctl proxy-config cluster %{Pod名称}% -n %{命名空间}%",
         "extensions": [
@@ -1121,14 +1121,14 @@
                 "required": false,
                 "description": "Pod 名称",
                 "example": "myapp-pod",
-                "notes": ""
+                "notes": "可选"
               },
               "命名空间": {
                 "type": "string",
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "istioctl proxy-config route"
@@ -1142,14 +1142,14 @@
                 "required": false,
                 "description": "Pod 名称",
                 "example": "myapp-pod",
-                "notes": ""
+                "notes": "可选"
               },
               "命名空间": {
                 "type": "string",
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "istioctl proxy-config listener"
@@ -1163,7 +1163,7 @@
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "istioctl analyze"
@@ -1175,14 +1175,14 @@
             "required": true,
             "description": "Pod 名称",
             "example": "myapp-pod",
-            "notes": ""
+            "notes": "必填"
           },
           "命名空间": {
             "type": "string",
             "required": true,
             "description": "命名空间",
             "example": "default",
-            "notes": ""
+            "notes": "必填"
           }
         }
       }
@@ -1191,7 +1191,7 @@
       "dirPath": "/Kubernetes 高级操作/",
       "name": "kubectl top 查看资源使用",
       "keyword": "kubectl top",
-      "description": "查看节点和 Pod 的 CPU/内存使用情况",
+      "description": "查看节点和 Pod 的 CPU/内存使用情况。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl top %{资源类型}%",
         "extensions": [
@@ -1210,7 +1210,7 @@
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl top pods 命名空间"
@@ -1224,14 +1224,14 @@
                 "required": true,
                 "description": "标签键",
                 "example": "app",
-                "notes": ""
+                "notes": "可选"
               },
               "标签值": {
                 "type": "string",
                 "required": true,
                 "description": "标签值",
                 "example": "nginx",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl top pods 标签"
@@ -1245,7 +1245,7 @@
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl top pods containers"
@@ -1270,21 +1270,21 @@
             "required": false,
             "description": "命名空间",
             "example": "default",
-            "notes": ""
+            "notes": "可选"
           },
           "标签键": {
             "type": "string",
             "required": false,
             "description": "标签键",
             "example": "app",
-            "notes": ""
+            "notes": "可选"
           },
           "标签值": {
             "type": "string",
             "required": false,
             "description": "标签值",
             "example": "nginx",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1293,7 +1293,7 @@
       "dirPath": "/Kubernetes 高级操作/",
       "name": "kubectl get events 查看事件",
       "keyword": "kubectl get events 排序",
-      "description": "查看集群事件，按时间排序",
+      "description": "查看集群事件，按时间排序。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl get events -n %{命名空间}% --sort-by='.lastTimestamp'",
         "extensions": [
@@ -1312,7 +1312,7 @@
                 "required": true,
                 "description": "限制数量",
                 "example": "50",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl get events limit"
@@ -1326,7 +1326,7 @@
                 "required": true,
                 "description": "资源名称",
                 "example": "myapp-pod",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl get events field-selector"
@@ -1345,14 +1345,14 @@
             "required": false,
             "description": "限制数量",
             "example": "50",
-            "notes": ""
+            "notes": "可选"
           },
           "资源名称": {
             "type": "string",
             "required": false,
             "description": "资源名称",
             "example": "myapp-pod",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1361,7 +1361,7 @@
       "dirPath": "/Kubernetes 高级操作/",
       "name": "kubectl describe 查看资源详情",
       "keyword": "kubectl describe node",
-      "description": "查看节点、Pod、Service 等资源详细配置",
+      "description": "查看节点、Pod、Service 等资源详细配置。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl describe %{资源类型}% %{资源名称}% -n %{命名空间}%",
         "extensions": [
@@ -1374,7 +1374,7 @@
                 "required": true,
                 "description": "节点名称",
                 "example": "node-1",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl describe node"
@@ -1388,7 +1388,7 @@
                 "required": true,
                 "description": "Service 名称",
                 "example": "my-service",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl describe svc"
@@ -1402,14 +1402,14 @@
                 "required": false,
                 "description": "Deployment 名称",
                 "example": "nginx-deployment",
-                "notes": ""
+                "notes": "可选"
               },
               "命名空间": {
                 "type": "string",
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl describe deployment"
@@ -1421,42 +1421,42 @@
             "required": true,
             "description": "资源类型",
             "example": "pod",
-            "notes": ""
+            "notes": "必填"
           },
           "资源名称": {
             "type": "string",
             "required": true,
             "description": "资源名称",
             "example": "myapp-pod",
-            "notes": ""
+            "notes": "必填"
           },
           "命名空间": {
             "type": "string",
             "required": false,
             "description": "命名空间",
             "example": "default",
-            "notes": ""
+            "notes": "可选"
           },
           "节点名称": {
             "type": "string",
             "required": false,
             "description": "节点名称",
             "example": "node-1",
-            "notes": ""
+            "notes": "可选"
           },
           "Service名称": {
             "type": "string",
             "required": false,
             "description": "Service 名称",
             "example": "my-service",
-            "notes": ""
+            "notes": "可选"
           },
           "Deployment名称": {
             "type": "string",
             "required": false,
             "description": "Deployment 名称",
             "example": "nginx-deployment",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1465,7 +1465,7 @@
       "dirPath": "/Kubernetes 高级操作/",
       "name": "kubectl debug 调试 Pod",
       "keyword": "kubectl debug",
-      "description": "使用调试容器或镜像排查 Pod 问题",
+      "description": "使用调试容器或镜像排查 Pod 问题。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl debug %{Pod名称}% -it --image=%{镜像}% -n %{命名空间}%",
         "extensions": [
@@ -1478,7 +1478,7 @@
                 "required": true,
                 "description": "调试 Pod 名称",
                 "example": "myapp-debug",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl debug copy-to"
@@ -1492,21 +1492,21 @@
                 "required": false,
                 "description": "Pod 名称",
                 "example": "myapp-pod",
-                "notes": ""
+                "notes": "可选"
               },
               "调试Pod名称": {
                 "type": "string",
                 "required": false,
                 "description": "调试 Pod 名称",
                 "example": "myapp-debug",
-                "notes": ""
+                "notes": "可选"
               },
               "命名空间": {
                 "type": "string",
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl debug share-processes"
@@ -1518,28 +1518,28 @@
             "required": true,
             "description": "Pod 名称",
             "example": "myapp-pod",
-            "notes": ""
+            "notes": "必填"
           },
           "镜像": {
             "type": "string",
             "required": true,
             "description": "调试镜像",
             "example": "busybox",
-            "notes": ""
+            "notes": "必填"
           },
           "命名空间": {
             "type": "string",
             "required": true,
             "description": "命名空间",
             "example": "default",
-            "notes": ""
+            "notes": "必填"
           },
           "调试Pod名称": {
             "type": "string",
             "required": false,
             "description": "调试 Pod 名称",
             "example": "myapp-debug",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1548,7 +1548,7 @@
       "dirPath": "/Kubernetes 高级操作/",
       "name": "kubectl attach 附加到容器",
       "keyword": "kubectl attach",
-      "description": "附加到运行中的容器",
+      "description": "附加到运行中的容器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl attach %{Pod名称}% -i -t -n %{命名空间}%",
         "extensions": [
@@ -1561,7 +1561,7 @@
                 "required": true,
                 "description": "容器名称",
                 "example": "main",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl attach 指定容器"
@@ -1573,21 +1573,21 @@
             "required": true,
             "description": "Pod 名称",
             "example": "myapp-pod",
-            "notes": ""
+            "notes": "必填"
           },
           "命名空间": {
             "type": "string",
             "required": true,
             "description": "命名空间",
             "example": "default",
-            "notes": ""
+            "notes": "必填"
           },
           "容器名称": {
             "type": "string",
             "required": false,
             "description": "容器名称",
             "example": "main",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1596,7 +1596,7 @@
       "dirPath": "/Kubernetes 高级操作/",
       "name": "kubectl exec 在容器中执行命令",
       "keyword": "kubectl exec",
-      "description": "在容器中执行命令（调试常用）",
+      "description": "在容器中执行命令（调试常用）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl exec %{Pod名称}% -n %{命名空间}% -- %{命令}%",
         "extensions": [
@@ -1609,14 +1609,14 @@
                 "required": false,
                 "description": "Pod 名称",
                 "example": "myapp-pod",
-                "notes": ""
+                "notes": "可选"
               },
               "命名空间": {
                 "type": "string",
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl exec sh"
@@ -1630,14 +1630,14 @@
                 "required": false,
                 "description": "Pod 名称",
                 "example": "myapp-pod",
-                "notes": ""
+                "notes": "可选"
               },
               "命名空间": {
                 "type": "string",
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl exec bash"
@@ -1651,7 +1651,7 @@
                 "required": true,
                 "description": "容器名称",
                 "example": "main",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl exec 指定容器"
@@ -1663,28 +1663,28 @@
             "required": true,
             "description": "Pod 名称",
             "example": "myapp-pod",
-            "notes": ""
+            "notes": "必填"
           },
           "命名空间": {
             "type": "string",
             "required": true,
             "description": "命名空间",
             "example": "default",
-            "notes": ""
+            "notes": "必填"
           },
           "命令": {
             "type": "string",
             "required": true,
             "description": "要执行的命令",
             "example": "ls -la",
-            "notes": ""
+            "notes": "必填"
           },
           "容器名称": {
             "type": "string",
             "required": false,
             "description": "容器名称",
             "example": "main",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1693,7 +1693,7 @@
       "dirPath": "/Kubernetes 高级操作/",
       "name": "kubectl port-forward 端口转发",
       "keyword": "kubectl port-forward",
-      "description": "将 Pod 或 Service 端口转发到本地（调试常用）",
+      "description": "将 Pod 或 Service 端口转发到本地（调试常用）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl port-forward %{Pod名称}% %{本地端口}%:%{Pod端口}% -n %{命名空间}%",
         "extensions": [
@@ -1706,14 +1706,14 @@
                 "required": true,
                 "description": "Service 名称",
                 "example": "my-service",
-                "notes": ""
+                "notes": "可选"
               },
               "Service端口": {
                 "type": "string",
                 "required": true,
                 "description": "Service 端口",
                 "example": "80",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl port-forward service"
@@ -1727,28 +1727,28 @@
                 "required": false,
                 "description": "Pod 名称",
                 "example": "myapp-pod",
-                "notes": ""
+                "notes": "可选"
               },
               "本地端口": {
                 "type": "string",
                 "required": false,
                 "description": "本地端口",
                 "example": "8080",
-                "notes": ""
+                "notes": "可选"
               },
               "Pod端口": {
                 "type": "string",
                 "required": false,
                 "description": "Pod 端口",
                 "example": "80",
-                "notes": ""
+                "notes": "可选"
               },
               "命名空间": {
                 "type": "string",
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl port-forward address"
@@ -1762,28 +1762,28 @@
                 "required": false,
                 "description": "Pod 名称",
                 "example": "myapp-pod",
-                "notes": ""
+                "notes": "可选"
               },
               "本地端口": {
                 "type": "string",
                 "required": false,
                 "description": "本地端口",
                 "example": "8080",
-                "notes": ""
+                "notes": "可选"
               },
               "Pod端口": {
                 "type": "string",
                 "required": false,
                 "description": "Pod 端口",
                 "example": "80",
-                "notes": ""
+                "notes": "可选"
               },
               "命名空间": {
                 "type": "string",
                 "required": false,
                 "description": "命名空间",
                 "example": "default",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl port-forward 后台"
@@ -1797,28 +1797,28 @@
                 "required": true,
                 "description": "本地端口1",
                 "example": "8080",
-                "notes": ""
+                "notes": "可选"
               },
               "Pod端口1": {
                 "type": "string",
                 "required": true,
                 "description": "Pod 端口1",
                 "example": "8080",
-                "notes": ""
+                "notes": "可选"
               },
               "本地端口2": {
                 "type": "string",
                 "required": true,
                 "description": "本地端口2",
                 "example": "9090",
-                "notes": ""
+                "notes": "可选"
               },
               "Pod端口2": {
                 "type": "string",
                 "required": true,
                 "description": "Pod 端口2",
                 "example": "9090",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl port-forward 多端口"
@@ -1830,70 +1830,70 @@
             "required": true,
             "description": "Pod 名称",
             "example": "myapp-pod",
-            "notes": ""
+            "notes": "必填"
           },
           "本地端口": {
             "type": "string",
             "required": true,
             "description": "本地端口",
             "example": "8080",
-            "notes": ""
+            "notes": "必填"
           },
           "Pod端口": {
             "type": "string",
             "required": true,
             "description": "Pod 端口",
             "example": "80",
-            "notes": ""
+            "notes": "必填"
           },
           "命名空间": {
             "type": "string",
             "required": true,
             "description": "命名空间",
             "example": "default",
-            "notes": ""
+            "notes": "必填"
           },
           "Service名称": {
             "type": "string",
             "required": false,
             "description": "Service 名称",
             "example": "my-service",
-            "notes": ""
+            "notes": "可选"
           },
           "Service端口": {
             "type": "string",
             "required": false,
             "description": "Service 端口",
             "example": "80",
-            "notes": ""
+            "notes": "可选"
           },
           "本地端口1": {
             "type": "string",
             "required": false,
             "description": "本地端口1",
             "example": "8080",
-            "notes": ""
+            "notes": "可选"
           },
           "Pod端口1": {
             "type": "string",
             "required": false,
             "description": "Pod 端口1",
             "example": "8080",
-            "notes": ""
+            "notes": "可选"
           },
           "本地端口2": {
             "type": "string",
             "required": false,
             "description": "本地端口2",
             "example": "9090",
-            "notes": ""
+            "notes": "可选"
           },
           "Pod端口2": {
             "type": "string",
             "required": false,
             "description": "Pod 端口2",
             "example": "9090",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1902,7 +1902,7 @@
       "dirPath": "/Kubernetes 高级操作/",
       "name": "kubectl cordon 标记节点不可调度",
       "keyword": "kubectl cordon",
-      "description": "标记节点为不可调度，新 Pod 不会调度到该节点",
+      "description": "标记节点为不可调度，新 Pod 不会调度到该节点。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl cordon %{节点名称}%",
         "extensions": [
@@ -1915,7 +1915,7 @@
                 "required": false,
                 "description": "节点名称",
                 "example": "node-1",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl uncordon"
@@ -1929,7 +1929,7 @@
                 "required": false,
                 "description": "节点名称",
                 "example": "node-1",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl drain"
@@ -1943,7 +1943,7 @@
                 "required": true,
                 "description": "优雅终止秒数",
                 "example": "300",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl drain grace-period"
@@ -1957,7 +1957,7 @@
                 "required": false,
                 "description": "节点名称",
                 "example": "node-1",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl drain force"
@@ -1969,14 +1969,14 @@
             "required": true,
             "description": "节点名称",
             "example": "node-1",
-            "notes": ""
+            "notes": "必填"
           },
           "秒数": {
             "type": "string",
             "required": false,
             "description": "优雅终止秒数",
             "example": "300",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }
@@ -1985,7 +1985,7 @@
       "dirPath": "/Kubernetes 高级操作/",
       "name": "kubectl get volumesnapshots 查看卷快照",
       "keyword": "kubectl get volumesnapshots",
-      "description": "查看 CSI 卷快照",
+      "description": "查看 CSI 卷快照。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "kubectl get volumesnapshots -n %{命名空间}%",
         "extensions": [
@@ -1998,7 +1998,7 @@
                 "required": true,
                 "description": "快照名称",
                 "example": "my-snapshot",
-                "notes": ""
+                "notes": "可选"
               }
             },
             "keyword": "kubectl describe volumesnapshot"
@@ -2023,7 +2023,7 @@
             "required": false,
             "description": "快照名称",
             "example": "my-snapshot",
-            "notes": ""
+            "notes": "可选"
           }
         }
       }

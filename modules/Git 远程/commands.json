@@ -1,0 +1,44 @@
+{
+  "module": "Git 远程",
+  "version": "2.0",
+  "description": "Git 远程命令集合，涵盖Git 远程的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Git 远程/",
+      "name": "git remote add 添加远程",
+      "keyword": "git remote 添加",
+      "description": "添加远程仓库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git remote add %{远程名}% %{URL}%",
+        "extensions": [],
+        "params": {
+          "远程名": {
+            "type": "string",
+            "required": true,
+            "description": "远程名",
+            "example": "upstream",
+            "notes": "必填"
+          },
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "仓库 URL",
+            "example": "https://github.com/org/repo.git",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Git 远程/",
+      "name": "git remote -v 查看远程",
+      "keyword": "git remote 查看",
+      "description": "查看远程仓库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git remote -v",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

@@ -1,13 +1,13 @@
 {
   "module": "Redis-键管理",
   "version": "1.0",
-  "description": "Redis 键管理命令",
+  "description": "Redis 键管理命令，涵盖Redis-键管理的常用操作和最佳实践",
   "commands": [
     {
       "dirPath": "/Redis 命令/键管理/",
       "name": "keys 查找键",
       "keyword": "keys 键 查找",
-      "description": "查找所有匹配的键",
+      "description": "查找所有匹配的键。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "keys %{模式}%",
         "extensions": [
@@ -15,7 +15,13 @@
             "name": "删除键",
             "cmd": "del %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "要删除的键名", "example": "mykey", "notes": "常用" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "要删除的键名",
+                "example": "mykey",
+                "notes": "常用"
+              }
             },
             "keyword": "del 删除"
           },
@@ -23,7 +29,13 @@
             "name": "检查键是否存在",
             "cmd": "exists %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "要检查的键名", "example": "user:1001", "notes": "常用" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "要检查的键名",
+                "example": "user:1001",
+                "notes": "常用"
+              }
             },
             "keyword": "exists 存在 检查"
           },
@@ -31,8 +43,20 @@
             "name": "设置过期时间",
             "cmd": "expire %{键名}% %{秒数}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "temp:data", "notes": "" },
-              "秒数": { "type": "number", "required": true, "description": "过期秒数", "example": "3600", "notes": "常用" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "temp:data",
+                "notes": "可选"
+              },
+              "秒数": {
+                "type": "number",
+                "required": true,
+                "description": "过期秒数",
+                "example": "3600",
+                "notes": "常用"
+              }
             },
             "keyword": "expire 过期"
           },
@@ -40,7 +64,13 @@
             "name": "获取键剩余时间",
             "cmd": "ttl %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "user:token", "notes": "常用" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "user:token",
+                "notes": "常用"
+              }
             },
             "keyword": "ttl 剩余时间"
           },
@@ -48,13 +78,25 @@
             "name": "移除键过期时间",
             "cmd": "persist %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "session:abc", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "session:abc",
+                "notes": "可选"
+              }
             },
             "keyword": "persist 永久 移除过期"
           }
         ],
         "params": {
-          "模式": { "type": "string", "required": true, "description": "键名匹配模式", "example": "user:*", "notes": "支持 * ? [] 通配符" }
+          "模式": {
+            "type": "string",
+            "required": true,
+            "description": "键名匹配模式",
+            "example": "user:*",
+            "notes": "支持 * ? [] 通配符"
+          }
         }
       }
     },
@@ -62,7 +104,7 @@
       "dirPath": "/Redis 命令/键管理/",
       "name": "del 删除键",
       "keyword": "del 删除 删除键",
-      "description": "删除一个或多个键",
+      "description": "删除一个或多个键。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "del %{键名}%",
         "extensions": [
@@ -70,7 +112,13 @@
             "name": "检查键是否存在",
             "cmd": "exists %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "要检查的键名", "example": "mykey", "notes": "常用" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "要检查的键名",
+                "example": "mykey",
+                "notes": "常用"
+              }
             },
             "keyword": "exists 存在 检查"
           },
@@ -78,8 +126,20 @@
             "name": "设置过期时间",
             "cmd": "expire %{键名}% %{秒数}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" },
-              "秒数": { "type": "number", "required": true, "description": "过期秒数", "example": "3600", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              },
+              "秒数": {
+                "type": "number",
+                "required": true,
+                "description": "过期秒数",
+                "example": "3600",
+                "notes": "可选"
+              }
             },
             "keyword": "expire 过期"
           },
@@ -87,7 +147,13 @@
             "name": "获取键类型",
             "cmd": "type %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "type 类型"
           },
@@ -95,7 +161,13 @@
             "name": "查找键",
             "cmd": "keys %{模式}%",
             "params": {
-              "模式": { "type": "string", "required": true, "description": "键名匹配模式", "example": "user:*", "notes": "支持 * ? [] 通配符" }
+              "模式": {
+                "type": "string",
+                "required": true,
+                "description": "键名匹配模式",
+                "example": "user:*",
+                "notes": "支持 * ? [] 通配符"
+              }
             },
             "keyword": "keys 查找"
           },
@@ -103,13 +175,25 @@
             "name": "获取剩余时间",
             "cmd": "ttl %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "ttl 剩余时间"
           }
         ],
         "params": {
-          "键名": { "type": "string", "required": true, "description": "要删除的键名", "example": "mykey", "notes": "常用" }
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "要删除的键名",
+            "example": "mykey",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -117,7 +201,7 @@
       "dirPath": "/Redis 命令/键管理/",
       "name": "exists 检查键存在",
       "keyword": "exists 存在 检查",
-      "description": "检查键是否存在",
+      "description": "检查键是否存在。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "exists %{键名}%",
         "extensions": [
@@ -125,7 +209,13 @@
             "name": "删除键",
             "cmd": "del %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "要删除的键名", "example": "mykey", "notes": "常用" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "要删除的键名",
+                "example": "mykey",
+                "notes": "常用"
+              }
             },
             "keyword": "del 删除"
           },
@@ -133,7 +223,13 @@
             "name": "获取键类型",
             "cmd": "type %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "type 类型"
           },
@@ -141,8 +237,20 @@
             "name": "设置过期时间",
             "cmd": "expire %{键名}% %{秒数}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" },
-              "秒数": { "type": "number", "required": true, "description": "过期秒数", "example": "3600", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              },
+              "秒数": {
+                "type": "number",
+                "required": true,
+                "description": "过期秒数",
+                "example": "3600",
+                "notes": "可选"
+              }
             },
             "keyword": "expire 过期"
           },
@@ -150,13 +258,25 @@
             "name": "获取剩余时间",
             "cmd": "ttl %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "ttl 剩余时间"
           }
         ],
         "params": {
-          "键名": { "type": "string", "required": true, "description": "要检查的键名", "example": "user:1001", "notes": "常用" }
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "要检查的键名",
+            "example": "user:1001",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -164,7 +284,7 @@
       "dirPath": "/Redis 命令/键管理/",
       "name": "expire 设置过期",
       "keyword": "expire 过期 设置过期",
-      "description": "设置键的过期时间",
+      "description": "设置键的过期时间。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "expire %{键名}% %{秒数}%",
         "extensions": [
@@ -172,7 +292,13 @@
             "name": "获取剩余时间",
             "cmd": "ttl %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "常用" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "常用"
+              }
             },
             "keyword": "ttl 剩余时间"
           },
@@ -180,7 +306,13 @@
             "name": "移除过期时间",
             "cmd": "persist %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "persist 永久"
           },
@@ -188,7 +320,13 @@
             "name": "检查键是否存在",
             "cmd": "exists %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "exists 存在"
           },
@@ -196,15 +334,39 @@
             "name": "以毫秒为单位设置过期",
             "cmd": "pexpire %{键名}% %{毫秒数}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" },
-              "毫秒数": { "type": "number", "required": true, "description": "过期毫秒数", "example": "3600000", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              },
+              "毫秒数": {
+                "type": "number",
+                "required": true,
+                "description": "过期毫秒数",
+                "example": "3600000",
+                "notes": "可选"
+              }
             },
             "keyword": "pexpire 毫秒 过期"
           }
         ],
         "params": {
-          "键名": { "type": "string", "required": true, "description": "键名", "example": "temp:data", "notes": "常用" },
-          "秒数": { "type": "number", "required": true, "description": "过期秒数", "example": "3600", "notes": "常用" }
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "键名",
+            "example": "temp:data",
+            "notes": "常用"
+          },
+          "秒数": {
+            "type": "number",
+            "required": true,
+            "description": "过期秒数",
+            "example": "3600",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -212,7 +374,7 @@
       "dirPath": "/Redis 命令/键管理/",
       "name": "ttl 获取剩余时间",
       "keyword": "ttl 剩余时间 获取",
-      "description": "获取键的剩余生存时间",
+      "description": "获取键的剩余生存时间。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "ttl %{键名}%",
         "extensions": [
@@ -220,7 +382,13 @@
             "name": "设置过期时间",
             "cmd": "expire %{键名}% %{秒数}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "常用" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "常用"
+              }
             },
             "keyword": "expire 过期"
           },
@@ -228,7 +396,13 @@
             "name": "移除过期时间",
             "cmd": "persist %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "persist 永久"
           },
@@ -236,7 +410,13 @@
             "name": "以毫秒为单位获取剩余时间",
             "cmd": "pttl %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "pttl 毫秒"
           },
@@ -244,13 +424,25 @@
             "name": "检查键是否存在",
             "cmd": "exists %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "exists 存在"
           }
         ],
         "params": {
-          "键名": { "type": "string", "required": true, "description": "键名", "example": "user:token", "notes": "常用" }
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "键名",
+            "example": "user:token",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -258,7 +450,7 @@
       "dirPath": "/Redis 命令/键管理/",
       "name": "persist 移除过期",
       "keyword": "persist 永久 移除过期",
-      "description": "移除键的过期时间，使其永久存在",
+      "description": "移除键的过期时间，使其永久存在。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "persist %{键名}%",
         "extensions": [
@@ -266,7 +458,13 @@
             "name": "设置过期时间",
             "cmd": "expire %{键名}% %{秒数}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "常用" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "常用"
+              }
             },
             "keyword": "expire 过期"
           },
@@ -274,7 +472,13 @@
             "name": "获取剩余时间",
             "cmd": "ttl %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "ttl 剩余时间"
           },
@@ -282,13 +486,25 @@
             "name": "检查键是否存在",
             "cmd": "exists %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "exists 存在"
           }
         ],
         "params": {
-          "键名": { "type": "string", "required": true, "description": "键名", "example": "session:abc", "notes": "" }
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "键名",
+            "example": "session:abc",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -296,7 +512,7 @@
       "dirPath": "/Redis 命令/键管理/",
       "name": "type 获取类型",
       "keyword": "type 类型 获取类型",
-      "description": "获取键的值类型",
+      "description": "获取键的值类型。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "type %{键名}%",
         "extensions": [
@@ -304,7 +520,13 @@
             "name": "删除键",
             "cmd": "del %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "要删除的键名", "example": "mykey", "notes": "常用" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "要删除的键名",
+                "example": "mykey",
+                "notes": "常用"
+              }
             },
             "keyword": "del 删除"
           },
@@ -312,7 +534,13 @@
             "name": "检查键是否存在",
             "cmd": "exists %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "exists 存在"
           },
@@ -320,13 +548,25 @@
             "name": "查看键内部信息",
             "cmd": "object encoding %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "object 内部信息 encoding"
           }
         ],
         "params": {
-          "键名": { "type": "string", "required": true, "description": "键名", "example": "user:data", "notes": "" }
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "键名",
+            "example": "user:data",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -334,7 +574,7 @@
       "dirPath": "/Redis 命令/键管理/",
       "name": "rename 重命名",
       "keyword": "rename 重命名",
-      "description": "重命名键",
+      "description": "重命名键。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "rename %{旧键名}% %{新键名}%",
         "extensions": [
@@ -342,7 +582,13 @@
             "name": "重命名(仅新键不存在时)",
             "cmd": "renamenx %{旧键名}% %{新键名}%",
             "params": {
-              "旧键名": { "type": "string", "required": true, "description": "原键名", "example": "oldkey", "notes": "常用" }
+              "旧键名": {
+                "type": "string",
+                "required": true,
+                "description": "原键名",
+                "example": "oldkey",
+                "notes": "常用"
+              }
             },
             "keyword": "renamenx 重命名 新键不存在"
           },
@@ -350,7 +596,13 @@
             "name": "复制键",
             "cmd": "copy %{源键名}% %{目标键名}%",
             "params": {
-              "源键名": { "type": "string", "required": true, "description": "源键名", "example": "source", "notes": "常用" }
+              "源键名": {
+                "type": "string",
+                "required": true,
+                "description": "源键名",
+                "example": "source",
+                "notes": "常用"
+              }
             },
             "keyword": "copy 复制"
           },
@@ -358,14 +610,32 @@
             "name": "移动键到其他数据库",
             "cmd": "move %{键名}% %{数据库序号}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "move 移动 数据库"
           }
         ],
         "params": {
-          "旧键名": { "type": "string", "required": true, "description": "原键名", "example": "old:key", "notes": "" },
-          "新键名": { "type": "string", "required": true, "description": "新键名", "example": "new:key", "notes": "" }
+          "旧键名": {
+            "type": "string",
+            "required": true,
+            "description": "原键名",
+            "example": "old:key",
+            "notes": "必填"
+          },
+          "新键名": {
+            "type": "string",
+            "required": true,
+            "description": "新键名",
+            "example": "new:key",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -373,7 +643,7 @@
       "dirPath": "/Redis 命令/键管理/",
       "name": "renamenx 重命名(新键不存在)",
       "keyword": "renamenx 重命名 新键不存在",
-      "description": "仅当新键不存在时重命名键",
+      "description": "仅当新键不存在时重命名键。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "renamenx %{旧键名}% %{新键名}%",
         "extensions": [
@@ -381,7 +651,13 @@
             "name": "强制重命名",
             "cmd": "rename %{旧键名}% %{新键名}%",
             "params": {
-              "旧键名": { "type": "string", "required": true, "description": "原键名", "example": "oldkey", "notes": "常用" }
+              "旧键名": {
+                "type": "string",
+                "required": true,
+                "description": "原键名",
+                "example": "oldkey",
+                "notes": "常用"
+              }
             },
             "keyword": "rename 重命名"
           },
@@ -389,7 +665,13 @@
             "name": "检查新键是否存在",
             "cmd": "exists %{新键名}%",
             "params": {
-              "新键名": { "type": "string", "required": true, "description": "新键名", "example": "newkey", "notes": "常用" }
+              "新键名": {
+                "type": "string",
+                "required": true,
+                "description": "新键名",
+                "example": "newkey",
+                "notes": "常用"
+              }
             },
             "keyword": "exists 检查"
           },
@@ -397,14 +679,32 @@
             "name": "复制键",
             "cmd": "copy %{旧键名}% %{新键名}%",
             "params": {
-              "旧键名": { "type": "string", "required": true, "description": "源键名", "example": "source", "notes": "" }
+              "旧键名": {
+                "type": "string",
+                "required": true,
+                "description": "源键名",
+                "example": "source",
+                "notes": "可选"
+              }
             },
             "keyword": "copy 复制"
           }
         ],
         "params": {
-          "旧键名": { "type": "string", "required": true, "description": "原键名", "example": "source:key", "notes": "" },
-          "新键名": { "type": "string", "required": true, "description": "新键名", "example": "target:key", "notes": "" }
+          "旧键名": {
+            "type": "string",
+            "required": true,
+            "description": "原键名",
+            "example": "source:key",
+            "notes": "必填"
+          },
+          "新键名": {
+            "type": "string",
+            "required": true,
+            "description": "新键名",
+            "example": "target:key",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -412,7 +712,7 @@
       "dirPath": "/Redis 命令/键管理/",
       "name": "move 移动键",
       "keyword": "move 移动 数据库",
-      "description": "将键移动到指定数据库",
+      "description": "将键移动到指定数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "move %{键名}% %{数据库序号}%",
         "extensions": [
@@ -420,7 +720,13 @@
             "name": "复制键到目标数据库",
             "cmd": "copy %{源键名}% %{目标键名}% %{数据库序号}%",
             "params": {
-              "源键名": { "type": "string", "required": true, "description": "源键名", "example": "mykey", "notes": "常用" }
+              "源键名": {
+                "type": "string",
+                "required": true,
+                "description": "源键名",
+                "example": "mykey",
+                "notes": "常用"
+              }
             },
             "keyword": "copy 复制"
           },
@@ -428,7 +734,13 @@
             "name": "删除键",
             "cmd": "del %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "del 删除"
           },
@@ -436,14 +748,32 @@
             "name": "检查键是否存在",
             "cmd": "exists %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "exists 存在"
           }
         ],
         "params": {
-          "键名": { "type": "string", "required": true, "description": "键名", "example": "cache:user", "notes": "" },
-          "数据库序号": { "type": "number", "required": true, "description": "目标数据库序号", "example": "1", "notes": "" }
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "键名",
+            "example": "cache:user",
+            "notes": "必填"
+          },
+          "数据库序号": {
+            "type": "number",
+            "required": true,
+            "description": "目标数据库序号",
+            "example": "1",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -451,7 +781,7 @@
       "dirPath": "/Redis 命令/键管理/",
       "name": "copy 复制键",
       "keyword": "copy 复制 键",
-      "description": "复制键到目标键",
+      "description": "复制键到目标键。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "copy %{源键名}% %{目标键名}%",
         "extensions": [
@@ -459,7 +789,13 @@
             "name": "移动键到其他数据库",
             "cmd": "move %{键名}% %{数据库序号}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "常用" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "常用"
+              }
             },
             "keyword": "move 移动"
           },
@@ -467,7 +803,13 @@
             "name": "重命名键",
             "cmd": "rename %{旧键名}% %{新键名}%",
             "params": {
-              "旧键名": { "type": "string", "required": true, "description": "原键名", "example": "oldkey", "notes": "" }
+              "旧键名": {
+                "type": "string",
+                "required": true,
+                "description": "原键名",
+                "example": "oldkey",
+                "notes": "可选"
+              }
             },
             "keyword": "rename 重命名"
           },
@@ -475,14 +817,32 @@
             "name": "删除目标键",
             "cmd": "del %{目标键名}%",
             "params": {
-              "目标键名": { "type": "string", "required": true, "description": "目标键名", "example": "targetkey", "notes": "" }
+              "目标键名": {
+                "type": "string",
+                "required": true,
+                "description": "目标键名",
+                "example": "targetkey",
+                "notes": "可选"
+              }
             },
             "keyword": "del 删除"
           }
         ],
         "params": {
-          "源键名": { "type": "string", "required": true, "description": "源键名", "example": "user:profile", "notes": "常用" },
-          "目标键名": { "type": "string", "required": true, "description": "目标键名", "example": "user:backup", "notes": "常用" }
+          "源键名": {
+            "type": "string",
+            "required": true,
+            "description": "源键名",
+            "example": "user:profile",
+            "notes": "常用"
+          },
+          "目标键名": {
+            "type": "string",
+            "required": true,
+            "description": "目标键名",
+            "example": "user:backup",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -490,7 +850,7 @@
       "dirPath": "/Redis 命令/键管理/",
       "name": "dump 序列化键",
       "keyword": "dump 序列化",
-      "description": "序列化键值并返回",
+      "description": "序列化键值并返回。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "dump %{键名}%",
         "extensions": [
@@ -498,7 +858,13 @@
             "name": "恢复序列化键",
             "cmd": "restore %{键名}% %{毫秒数}% %{序列化值}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "restored:key", "notes": "常用" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "restored:key",
+                "notes": "常用"
+              }
             },
             "keyword": "restore 恢复"
           },
@@ -506,7 +872,13 @@
             "name": "删除键",
             "cmd": "del %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "del 删除"
           },
@@ -514,13 +886,25 @@
             "name": "获取键类型",
             "cmd": "type %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "type 类型"
           }
         ],
         "params": {
-          "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "键名",
+            "example": "mykey",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -528,7 +912,7 @@
       "dirPath": "/Redis 命令/键管理/",
       "name": "restore 恢复键",
       "keyword": "restore 恢复 反序列化",
-      "description": "从序列化值恢复键",
+      "description": "从序列化值恢复键。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "restore %{键名}% %{毫秒数}% %{序列化值}%",
         "extensions": [
@@ -536,7 +920,13 @@
             "name": "序列化键",
             "cmd": "dump %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "source:key", "notes": "常用" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "source:key",
+                "notes": "常用"
+              }
             },
             "keyword": "dump 序列化"
           },
@@ -544,7 +934,13 @@
             "name": "删除键",
             "cmd": "del %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "del 删除"
           },
@@ -552,15 +948,39 @@
             "name": "设置过期时间",
             "cmd": "expire %{键名}% %{秒数}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "expire 过期"
           }
         ],
         "params": {
-          "键名": { "type": "string", "required": true, "description": "键名", "example": "restored:key", "notes": "" },
-          "毫秒数": { "type": "number", "required": true, "description": "过期时间(毫秒)", "example": "0", "notes": "0 表示不过期" },
-          "序列化值": { "type": "string", "required": true, "description": "dump 产生的序列化值", "example": "\\x00\\x12...", "notes": "" }
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "键名",
+            "example": "restored:key",
+            "notes": "必填"
+          },
+          "毫秒数": {
+            "type": "number",
+            "required": true,
+            "description": "过期时间(毫秒)",
+            "example": "0",
+            "notes": "0 表示不过期"
+          },
+          "序列化值": {
+            "type": "string",
+            "required": true,
+            "description": "dump 产生的序列化值",
+            "example": "\\x00\\x12...",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -568,7 +988,7 @@
       "dirPath": "/Redis 命令/键管理/",
       "name": "object 查看内部信息",
       "keyword": "object 内部信息 encoding refcount",
-      "description": "查看键的内部信息",
+      "description": "查看键的内部信息。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "object subcommand %{键名}%",
         "extensions": [
@@ -576,7 +996,13 @@
             "name": "查看编码方式",
             "cmd": "object encoding %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "常用" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "常用"
+              }
             },
             "keyword": "encoding 编码"
           },
@@ -584,7 +1010,13 @@
             "name": "查看引用计数",
             "cmd": "object refcount %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "refcount 引用计数"
           },
@@ -592,7 +1024,13 @@
             "name": "查看空闲时间",
             "cmd": "object idletime %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "idletime 空闲时间"
           },
@@ -600,13 +1038,25 @@
             "name": "获取键类型",
             "cmd": "type %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "type 类型"
           }
         ],
         "params": {
-          "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "键名",
+            "example": "mykey",
+            "notes": "必填"
+          }
         }
       }
     },
@@ -614,7 +1064,7 @@
       "dirPath": "/Redis 命令/键管理/",
       "name": "randomkey 随机键",
       "keyword": "randomkey 随机 随机键",
-      "description": "从当前数据库返回随机键",
+      "description": "从当前数据库返回随机键。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "randomkey",
         "extensions": [
@@ -622,7 +1072,13 @@
             "name": "查找键",
             "cmd": "keys %{模式}%",
             "params": {
-              "模式": { "type": "string", "required": true, "description": "键名匹配模式", "example": "user:*", "notes": "常用" }
+              "模式": {
+                "type": "string",
+                "required": true,
+                "description": "键名匹配模式",
+                "example": "user:*",
+                "notes": "常用"
+              }
             },
             "keyword": "keys 查找"
           },
@@ -630,7 +1086,13 @@
             "name": "扫描键",
             "cmd": "scan %{游标}%",
             "params": {
-              "游标": { "type": "number", "required": true, "description": "游标位置", "example": "0", "notes": "首次使用 0" }
+              "游标": {
+                "type": "number",
+                "required": true,
+                "description": "游标位置",
+                "example": "0",
+                "notes": "首次使用 0"
+              }
             },
             "keyword": "scan 扫描"
           },
@@ -638,7 +1100,13 @@
             "name": "删除键",
             "cmd": "del %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "randomkey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "randomkey",
+                "notes": "可选"
+              }
             },
             "keyword": "del 删除"
           },
@@ -646,7 +1114,13 @@
             "name": "获取键类型",
             "cmd": "type %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "randomkey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "randomkey",
+                "notes": "可选"
+              }
             },
             "keyword": "type 类型"
           }
@@ -658,7 +1132,7 @@
       "dirPath": "/Redis 命令/键管理/",
       "name": "scan 扫描键",
       "keyword": "scan 扫描 游标",
-      "description": "迭代数据库中的键",
+      "description": "迭代数据库中的键。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "scan %{游标}% %{匹配模式}%",
         "extensions": [
@@ -666,7 +1140,13 @@
             "name": "查找键",
             "cmd": "keys %{模式}%",
             "params": {
-              "模式": { "type": "string", "required": true, "description": "键名匹配模式", "example": "user:*", "notes": "常用" }
+              "模式": {
+                "type": "string",
+                "required": true,
+                "description": "键名匹配模式",
+                "example": "user:*",
+                "notes": "常用"
+              }
             },
             "keyword": "keys 查找"
           },
@@ -674,7 +1154,13 @@
             "name": "删除键",
             "cmd": "del %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "del 删除"
           },
@@ -682,7 +1168,13 @@
             "name": "获取键类型",
             "cmd": "type %{键名}%",
             "params": {
-              "键名": { "type": "string", "required": true, "description": "键名", "example": "mykey", "notes": "" }
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "键名",
+                "example": "mykey",
+                "notes": "可选"
+              }
             },
             "keyword": "type 类型"
           },
@@ -690,14 +1182,32 @@
             "name": "使用 COUNT 限制数量",
             "cmd": "scan %{游标}% count %{数量}%",
             "params": {
-              "游标": { "type": "number", "required": true, "description": "游标位置", "example": "0", "notes": "首次使用 0" }
+              "游标": {
+                "type": "number",
+                "required": true,
+                "description": "游标位置",
+                "example": "0",
+                "notes": "首次使用 0"
+              }
             },
             "keyword": "count 数量"
           }
         ],
         "params": {
-          "游标": { "type": "number", "required": true, "description": "游标位置", "example": "0", "notes": "首次使用 0，之后使用返回的游标" },
-          "匹配模式": { "type": "string", "required": false, "description": "键名匹配模式", "example": "user:*", "notes": "可选，支持 * ? [] 通配符" }
+          "游标": {
+            "type": "number",
+            "required": true,
+            "description": "游标位置",
+            "example": "0",
+            "notes": "首次使用 0，之后使用返回的游标"
+          },
+          "匹配模式": {
+            "type": "string",
+            "required": false,
+            "description": "键名匹配模式",
+            "example": "user:*",
+            "notes": "可选，支持 * ? [] 通配符"
+          }
         }
       }
     }

@@ -1,0 +1,52 @@
+{
+  "module": "Kubernetes Deployment",
+  "version": "2.0",
+  "description": "Kubernetes Deployment命令集合",
+  "commands": [
+    {
+      "dirPath": "/Kubernetes Deployment/",
+      "name": "kubectl create deployment 创建",
+      "keyword": "kubectl deployment 创建",
+      "description": "创建 Deployment。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl create deployment %{名称}% --image=%{镜像}%",
+        "extensions": [],
+        "params": {
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "Deployment 名",
+            "example": "nginx",
+            "notes": "必填"
+          },
+          "镜像": {
+            "type": "string",
+            "required": true,
+            "description": "镜像",
+            "example": "nginx:latest",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Kubernetes Deployment/",
+      "name": "kubectl rollout status 状态",
+      "keyword": "kubectl rollout 状态",
+      "description": "查看部署状态。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl rollout status deployment/%{名称}%",
+        "extensions": [],
+        "params": {
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "Deployment 名",
+            "example": "nginx",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

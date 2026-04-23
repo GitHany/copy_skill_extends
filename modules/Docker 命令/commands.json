@@ -1,13 +1,13 @@
 {
   "module": "Docker 命令",
   "version": "1.0",
-  "description": "Docker 命令 模块命令集合",
+  "description": "Docker 命令 模块命令集合，涵盖Docker 命令的常用操作和最佳实践",
   "commands": [
     {
       "dirPath": "/Docker 命令/",
       "name": "docker run 运行容器",
       "keyword": "docker run 启动",
-      "description": "创建并启动一个新容器",
+      "description": "创建并启动一个新容器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker run -d --name %{容器名称}% -p %{主机端口}%:%{容器端口}% %{镜像名称}%",
         "extensions": [
@@ -15,10 +15,34 @@
             "name": "挂载卷",
             "cmd": "docker run -d --name %{容器名称}% -v %{主机路径}%:%{容器路径}% %{镜像}%",
             "params": {
-              "容器名称": { "type": "string", "required": true, "description": "容器名称", "example": "myapp", "notes": "常用" },
-              "主机路径": { "type": "string", "required": true, "description": "宿主机目录", "example": "/data/logs", "notes": "" },
-              "容器路径": { "type": "string", "required": true, "description": "容器内目录", "example": "/app/logs", "notes": "" },
-              "镜像": { "type": "string", "required": true, "description": "镜像名称", "example": "nginx", "notes": "常用" }
+              "容器名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称",
+                "example": "myapp",
+                "notes": "常用"
+              },
+              "主机路径": {
+                "type": "string",
+                "required": true,
+                "description": "宿主机目录",
+                "example": "/data/logs",
+                "notes": "可选"
+              },
+              "容器路径": {
+                "type": "string",
+                "required": true,
+                "description": "容器内目录",
+                "example": "/app/logs",
+                "notes": "可选"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名称",
+                "example": "nginx",
+                "notes": "常用"
+              }
             },
             "keyword": "docker run 挂载卷"
           },
@@ -26,10 +50,34 @@
             "name": "环境变量",
             "cmd": "docker run -d --name %{容器名称}% -e %{环境变量}%=%{变量值}% %{镜像}%",
             "params": {
-              "容器名称": { "type": "string", "required": true, "description": "容器名称", "example": "myapp", "notes": "常用" },
-              "环境变量": { "type": "string", "required": true, "description": "环境变量名", "example": "MYSQL_ROOT_PASSWORD", "notes": "" },
-              "变量值": { "type": "string", "required": true, "description": "环境变量值", "example": "password123", "notes": "" },
-              "镜像": { "type": "string", "required": true, "description": "镜像名称", "example": "mysql", "notes": "" }
+              "容器名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称",
+                "example": "myapp",
+                "notes": "常用"
+              },
+              "环境变量": {
+                "type": "string",
+                "required": true,
+                "description": "环境变量名",
+                "example": "MYSQL_ROOT_PASSWORD",
+                "notes": "可选"
+              },
+              "变量值": {
+                "type": "string",
+                "required": true,
+                "description": "环境变量值",
+                "example": "password123",
+                "notes": "可选"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名称",
+                "example": "mysql",
+                "notes": "可选"
+              }
             },
             "keyword": "docker run 环境变量"
           },
@@ -37,9 +85,27 @@
             "name": "连接网络",
             "cmd": "docker run -d --name %{容器名称}% --network %{网络名称}% %{镜像}%",
             "params": {
-              "容器名称": { "type": "string", "required": true, "description": "容器名称", "example": "myapp", "notes": "常用" },
-              "网络名称": { "type": "string", "required": true, "description": "Docker网络名称", "example": "my_network", "notes": "" },
-              "镜像": { "type": "string", "required": true, "description": "镜像名称", "example": "nginx", "notes": "" }
+              "容器名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称",
+                "example": "myapp",
+                "notes": "常用"
+              },
+              "网络名称": {
+                "type": "string",
+                "required": true,
+                "description": "Docker网络名称",
+                "example": "my_network",
+                "notes": "可选"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名称",
+                "example": "nginx",
+                "notes": "可选"
+              }
             },
             "keyword": "docker run 连接网络"
           },
@@ -47,7 +113,13 @@
             "name": "交互模式",
             "cmd": "docker run -it %{镜像}% /bin/bash",
             "params": {
-              "镜像": { "type": "string", "required": true, "description": "镜像名称", "example": "ubuntu", "notes": "常用" }
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名称",
+                "example": "ubuntu",
+                "notes": "常用"
+              }
             },
             "keyword": "docker run 交互模式"
           },
@@ -55,16 +127,46 @@
             "name": "后台运行",
             "cmd": "docker run -d %{镜像}%",
             "params": {
-              "镜像": { "type": "string", "required": true, "description": "镜像名称", "example": "nginx", "notes": "常用" }
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名称",
+                "example": "nginx",
+                "notes": "常用"
+              }
             },
             "keyword": "docker run 后台运行"
           }
         ],
         "params": {
-          "容器名称": { "type": "string", "required": true, "description": "容器名称", "example": "myapp", "notes": "常用" },
-          "主机端口": { "type": "string", "required": true, "description": "宿主机端口", "example": "8080", "notes": "常用" },
-          "容器端口": { "type": "string", "required": true, "description": "容器端口", "example": "80", "notes": "常用" },
-          "镜像名称": { "type": "string", "required": true, "description": "镜像名称", "example": "nginx", "notes": "常用" }
+          "容器名称": {
+            "type": "string",
+            "required": true,
+            "description": "容器名称",
+            "example": "myapp",
+            "notes": "常用"
+          },
+          "主机端口": {
+            "type": "string",
+            "required": true,
+            "description": "宿主机端口",
+            "example": "8080",
+            "notes": "常用"
+          },
+          "容器端口": {
+            "type": "string",
+            "required": true,
+            "description": "容器端口",
+            "example": "80",
+            "notes": "常用"
+          },
+          "镜像名称": {
+            "type": "string",
+            "required": true,
+            "description": "镜像名称",
+            "example": "nginx",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -72,7 +174,7 @@
       "dirPath": "/Docker 命令/",
       "name": "docker ps 查看容器",
       "keyword": "docker ps 查看",
-      "description": "列出运行中的容器",
+      "description": "列出运行中的容器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker ps",
         "extensions": [
@@ -108,7 +210,7 @@
       "dirPath": "/Docker 命令/",
       "name": "docker stop 停止容器",
       "keyword": "docker stop 停止",
-      "description": "停止一个或多个运行中的容器",
+      "description": "停止一个或多个运行中的容器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker stop %{容器名称或ID}%",
         "extensions": [
@@ -116,7 +218,13 @@
             "name": "启动容器",
             "cmd": "docker start %{容器名称或ID}%",
             "params": {
-              "容器名称或ID": { "type": "string", "required": true, "description": "容器名称或ID", "example": "myapp", "notes": "常用" }
+              "容器名称或ID": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称或ID",
+                "example": "myapp",
+                "notes": "常用"
+              }
             },
             "keyword": "docker start 启动"
           },
@@ -124,7 +232,13 @@
             "name": "重启容器",
             "cmd": "docker restart %{容器名称或ID}%",
             "params": {
-              "容器名称或ID": { "type": "string", "required": true, "description": "容器名称或ID", "example": "myapp", "notes": "常用" }
+              "容器名称或ID": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称或ID",
+                "example": "myapp",
+                "notes": "常用"
+              }
             },
             "keyword": "docker restart 重启"
           },
@@ -132,13 +246,25 @@
             "name": "强制停止",
             "cmd": "docker kill %{容器名称或ID}%",
             "params": {
-              "容器名称或ID": { "type": "string", "required": true, "description": "容器名称或ID", "example": "myapp", "notes": "" }
+              "容器名称或ID": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称或ID",
+                "example": "myapp",
+                "notes": "可选"
+              }
             },
             "keyword": "docker kill 强制停止"
           }
         ],
         "params": {
-          "容器名称或ID": { "type": "string", "required": true, "description": "容器名称或ID", "example": "myapp", "notes": "常用" }
+          "容器名称或ID": {
+            "type": "string",
+            "required": true,
+            "description": "容器名称或ID",
+            "example": "myapp",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -146,7 +272,7 @@
       "dirPath": "/Docker 命令/",
       "name": "docker rm 删除容器",
       "keyword": "docker rm 删除",
-      "description": "删除一个或多个容器",
+      "description": "删除一个或多个容器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker rm %{容器名称或ID}%",
         "extensions": [
@@ -154,7 +280,13 @@
             "name": "强制删除",
             "cmd": "docker rm -f %{容器名称或ID}%",
             "params": {
-              "容器名称或ID": { "type": "string", "required": true, "description": "容器名称或ID", "example": "myapp", "notes": "常用" }
+              "容器名称或ID": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称或ID",
+                "example": "myapp",
+                "notes": "常用"
+              }
             },
             "keyword": "docker rm 强制删除"
           },
@@ -168,13 +300,25 @@
             "name": "删除容器及关联卷",
             "cmd": "docker rm -v %{容器名称}%",
             "params": {
-              "容器名称": { "type": "string", "required": true, "description": "容器名称", "example": "myapp", "notes": "" }
+              "容器名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称",
+                "example": "myapp",
+                "notes": "可选"
+              }
             },
             "keyword": "docker rm 删除容器及卷"
           }
         ],
         "params": {
-          "容器名称或ID": { "type": "string", "required": true, "description": "容器名称或ID", "example": "myapp", "notes": "常用" }
+          "容器名称或ID": {
+            "type": "string",
+            "required": true,
+            "description": "容器名称或ID",
+            "example": "myapp",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -182,7 +326,7 @@
       "dirPath": "/Docker 命令/",
       "name": "docker rmi 删除镜像",
       "keyword": "docker rmi 删除镜像",
-      "description": "删除一个或多个镜像",
+      "description": "删除一个或多个镜像。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker rmi %{镜像名称或ID}%",
         "extensions": [
@@ -190,7 +334,13 @@
             "name": "强制删除",
             "cmd": "docker rmi -f %{镜像名称或ID}%",
             "params": {
-              "镜像名称或ID": { "type": "string", "required": true, "description": "镜像名称或ID", "example": "nginx", "notes": "" }
+              "镜像名称或ID": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名称或ID",
+                "example": "nginx",
+                "notes": "可选"
+              }
             },
             "keyword": "docker rmi 强制删除"
           },
@@ -208,7 +358,13 @@
           }
         ],
         "params": {
-          "镜像名称或ID": { "type": "string", "required": true, "description": "镜像名称或ID", "example": "nginx", "notes": "常用" }
+          "镜像名称或ID": {
+            "type": "string",
+            "required": true,
+            "description": "镜像名称或ID",
+            "example": "nginx",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -216,7 +372,7 @@
       "dirPath": "/Docker 命令/",
       "name": "docker images 查看镜像",
       "keyword": "docker images 列表",
-      "description": "列出本地镜像",
+      "description": "列出本地镜像。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker images",
         "extensions": [
@@ -236,7 +392,13 @@
             "name": "按名称过滤",
             "cmd": "docker images %{镜像名称}%",
             "params": {
-              "镜像名称": { "type": "string", "required": true, "description": "镜像名称", "example": "nginx", "notes": "常用" }
+              "镜像名称": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名称",
+                "example": "nginx",
+                "notes": "常用"
+              }
             },
             "keyword": "docker images 按名称过滤"
           },
@@ -254,7 +416,7 @@
       "dirPath": "/Docker 命令/",
       "name": "docker pull 拉取镜像",
       "keyword": "docker pull 拉取",
-      "description": "从镜像仓库拉取镜像",
+      "description": "从镜像仓库拉取镜像。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker pull %{镜像名称}%:%{标签}%",
         "extensions": [
@@ -262,7 +424,13 @@
             "name": "拉取最新版本",
             "cmd": "docker pull %{镜像名称}%",
             "params": {
-              "镜像名称": { "type": "string", "required": true, "description": "镜像名称", "example": "nginx", "notes": "常用" }
+              "镜像名称": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名称",
+                "example": "nginx",
+                "notes": "常用"
+              }
             },
             "keyword": "docker pull 最新"
           },
@@ -270,16 +438,46 @@
             "name": "从指定仓库拉取",
             "cmd": "docker pull %{仓库地址}%/%{镜像名称}%:%{标签}%",
             "params": {
-              "仓库地址": { "type": "string", "required": true, "description": "仓库地址", "example": "registry.example.com", "notes": "" },
-              "镜像名称": { "type": "string", "required": true, "description": "镜像名称", "example": "myapp", "notes": "" },
-              "标签": { "type": "string", "required": false, "description": "标签", "example": "latest", "notes": "" }
+              "仓库地址": {
+                "type": "string",
+                "required": true,
+                "description": "仓库地址",
+                "example": "registry.example.com",
+                "notes": "可选"
+              },
+              "镜像名称": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名称",
+                "example": "myapp",
+                "notes": "可选"
+              },
+              "标签": {
+                "type": "string",
+                "required": false,
+                "description": "标签",
+                "example": "latest",
+                "notes": "可选"
+              }
             },
             "keyword": "docker pull 指定仓库"
           }
         ],
         "params": {
-          "镜像名称": { "type": "string", "required": true, "description": "镜像名称", "example": "nginx", "notes": "常用" },
-          "标签": { "type": "string", "required": false, "description": "镜像标签", "example": "latest", "notes": "" }
+          "镜像名称": {
+            "type": "string",
+            "required": true,
+            "description": "镜像名称",
+            "example": "nginx",
+            "notes": "常用"
+          },
+          "标签": {
+            "type": "string",
+            "required": false,
+            "description": "镜像标签",
+            "example": "latest",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -287,7 +485,7 @@
       "dirPath": "/Docker 命令/",
       "name": "docker push 推送镜像",
       "keyword": "docker push 推送",
-      "description": "推送镜像到镜像仓库",
+      "description": "推送镜像到镜像仓库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker push %{镜像名称}%:%{标签}%",
         "extensions": [
@@ -295,14 +493,32 @@
             "name": "推送最新版本",
             "cmd": "docker push %{镜像名称}%:latest",
             "params": {
-              "镜像名称": { "type": "string", "required": true, "description": "镜像名称", "example": "myapp", "notes": "常用" }
+              "镜像名称": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名称",
+                "example": "myapp",
+                "notes": "常用"
+              }
             },
             "keyword": "docker push 最新"
           }
         ],
         "params": {
-          "镜像名称": { "type": "string", "required": true, "description": "镜像名称", "example": "myapp", "notes": "常用" },
-          "标签": { "type": "string", "required": true, "description": "镜像标签", "example": "v1.0", "notes": "常用" }
+          "镜像名称": {
+            "type": "string",
+            "required": true,
+            "description": "镜像名称",
+            "example": "myapp",
+            "notes": "常用"
+          },
+          "标签": {
+            "type": "string",
+            "required": true,
+            "description": "镜像标签",
+            "example": "v1.0",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -310,7 +526,7 @@
       "dirPath": "/Docker 命令/",
       "name": "docker logs 查看日志",
       "keyword": "docker logs 日志",
-      "description": "获取容器的日志",
+      "description": "获取容器的日志。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker logs %{容器名称或ID}%",
         "extensions": [
@@ -318,7 +534,13 @@
             "name": "实时跟踪日志",
             "cmd": "docker logs -f %{容器名称或ID}%",
             "params": {
-              "容器名称或ID": { "type": "string", "required": true, "description": "容器名称或ID", "example": "myapp", "notes": "常用" }
+              "容器名称或ID": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称或ID",
+                "example": "myapp",
+                "notes": "常用"
+              }
             },
             "keyword": "docker logs 实时跟踪"
           },
@@ -326,8 +548,20 @@
             "name": "显示最后N行",
             "cmd": "docker logs --tail %{行数}% %{容器名称或ID}%",
             "params": {
-              "行数": { "type": "string", "required": true, "description": "行数", "example": "100", "notes": "常用" },
-              "容器名称或ID": { "type": "string", "required": true, "description": "容器名称或ID", "example": "myapp", "notes": "常用" }
+              "行数": {
+                "type": "string",
+                "required": true,
+                "description": "行数",
+                "example": "100",
+                "notes": "常用"
+              },
+              "容器名称或ID": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称或ID",
+                "example": "myapp",
+                "notes": "常用"
+              }
             },
             "keyword": "docker logs 最后N行"
           },
@@ -335,14 +569,32 @@
             "name": "显示指定时间后的日志",
             "cmd": "docker logs --since %{时间}% %{容器名称或ID}%",
             "params": {
-              "时间": { "type": "string", "required": true, "description": "时间，如 2024-01-01 或 30m", "example": "30m", "notes": "" },
-              "容器名称或ID": { "type": "string", "required": true, "description": "容器名称或ID", "example": "myapp", "notes": "常用" }
+              "时间": {
+                "type": "string",
+                "required": true,
+                "description": "时间，如 2024-01-01 或 30m",
+                "example": "30m",
+                "notes": "可选"
+              },
+              "容器名称或ID": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称或ID",
+                "example": "myapp",
+                "notes": "常用"
+              }
             },
             "keyword": "docker logs 指定时间"
           }
         ],
         "params": {
-          "容器名称或ID": { "type": "string", "required": true, "description": "容器名称或ID", "example": "myapp", "notes": "常用" }
+          "容器名称或ID": {
+            "type": "string",
+            "required": true,
+            "description": "容器名称或ID",
+            "example": "myapp",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -350,7 +602,7 @@
       "dirPath": "/Docker 命令/",
       "name": "docker exec 进入容器",
       "keyword": "docker exec 进入",
-      "description": "在运行的容器中执行命令",
+      "description": "在运行的容器中执行命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker exec -it %{容器名称或ID}% /bin/bash",
         "extensions": [
@@ -358,8 +610,20 @@
             "name": "执行单个命令",
             "cmd": "docker exec %{容器名称或ID}% %{命令}%",
             "params": {
-              "容器名称或ID": { "type": "string", "required": true, "description": "容器名称或ID", "example": "myapp", "notes": "常用" },
-              "命令": { "type": "string", "required": true, "description": "要执行的命令", "example": "ls -la", "notes": "常用" }
+              "容器名称或ID": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称或ID",
+                "example": "myapp",
+                "notes": "常用"
+              },
+              "命令": {
+                "type": "string",
+                "required": true,
+                "description": "要执行的命令",
+                "example": "ls -la",
+                "notes": "常用"
+              }
             },
             "keyword": "docker exec 单命令"
           },
@@ -367,9 +631,27 @@
             "name": "指定用户执行",
             "cmd": "docker exec -u %{用户名}% %{容器名称或ID}% %{命令}%",
             "params": {
-              "用户名": { "type": "string", "required": true, "description": "用户名", "example": "root", "notes": "" },
-              "容器名称或ID": { "type": "string", "required": true, "description": "容器名称或ID", "example": "myapp", "notes": "常用" },
-              "命令": { "type": "string", "required": true, "description": "要执行的命令", "example": "whoami", "notes": "" }
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "root",
+                "notes": "可选"
+              },
+              "容器名称或ID": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称或ID",
+                "example": "myapp",
+                "notes": "常用"
+              },
+              "命令": {
+                "type": "string",
+                "required": true,
+                "description": "要执行的命令",
+                "example": "whoami",
+                "notes": "可选"
+              }
             },
             "keyword": "docker exec 指定用户"
           },
@@ -377,14 +659,32 @@
             "name": "后台执行",
             "cmd": "docker exec -d %{容器名称或ID}% %{命令}%",
             "params": {
-              "容器名称或ID": { "type": "string", "required": true, "description": "容器名称或ID", "example": "myapp", "notes": "常用" },
-              "命令": { "type": "string", "required": true, "description": "要执行的命令", "example": "touch /tmp/file", "notes": "" }
+              "容器名称或ID": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称或ID",
+                "example": "myapp",
+                "notes": "常用"
+              },
+              "命令": {
+                "type": "string",
+                "required": true,
+                "description": "要执行的命令",
+                "example": "touch /tmp/file",
+                "notes": "可选"
+              }
             },
             "keyword": "docker exec 后台"
           }
         ],
         "params": {
-          "容器名称或ID": { "type": "string", "required": true, "description": "容器名称或ID", "example": "myapp", "notes": "常用" }
+          "容器名称或ID": {
+            "type": "string",
+            "required": true,
+            "description": "容器名称或ID",
+            "example": "myapp",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -392,7 +692,7 @@
       "dirPath": "/Docker 命令/",
       "name": "docker cp 复制文件",
       "keyword": "docker cp 复制",
-      "description": "在容器和主机之间复制文件",
+      "description": "在容器和主机之间复制文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker cp %{源路径}% %{目标路径}%",
         "extensions": [
@@ -400,9 +700,27 @@
             "name": "从主机复制到容器",
             "cmd": "docker cp %{主机路径}% %{容器名称}%:%{容器路径}%",
             "params": {
-              "主机路径": { "type": "string", "required": true, "description": "主机文件路径", "example": "/data/config.json", "notes": "常用" },
-              "容器名称": { "type": "string", "required": true, "description": "容器名称或ID", "example": "myapp", "notes": "常用" },
-              "容器路径": { "type": "string", "required": true, "description": "容器内目标路径", "example": "/app/config.json", "notes": "常用" }
+              "主机路径": {
+                "type": "string",
+                "required": true,
+                "description": "主机文件路径",
+                "example": "/data/config.json",
+                "notes": "常用"
+              },
+              "容器名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称或ID",
+                "example": "myapp",
+                "notes": "常用"
+              },
+              "容器路径": {
+                "type": "string",
+                "required": true,
+                "description": "容器内目标路径",
+                "example": "/app/config.json",
+                "notes": "常用"
+              }
             },
             "keyword": "docker cp 主机到容器"
           },
@@ -410,16 +728,46 @@
             "name": "从容器复制到主机",
             "cmd": "docker cp %{容器名称}%:%{容器路径}% %{主机路径}%",
             "params": {
-              "容器名称": { "type": "string", "required": true, "description": "容器名称或ID", "example": "myapp", "notes": "常用" },
-              "容器路径": { "type": "string", "required": true, "description": "容器内文件路径", "example": "/app/logs/app.log", "notes": "常用" },
-              "主机路径": { "type": "string", "required": true, "description": "主机目标路径", "example": "/data/app.log", "notes": "常用" }
+              "容器名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称或ID",
+                "example": "myapp",
+                "notes": "常用"
+              },
+              "容器路径": {
+                "type": "string",
+                "required": true,
+                "description": "容器内文件路径",
+                "example": "/app/logs/app.log",
+                "notes": "常用"
+              },
+              "主机路径": {
+                "type": "string",
+                "required": true,
+                "description": "主机目标路径",
+                "example": "/data/app.log",
+                "notes": "常用"
+              }
             },
             "keyword": "docker cp 容器到主机"
           }
         ],
         "params": {
-          "源路径": { "type": "string", "required": true, "description": "源路径", "example": "file.txt", "notes": "常用" },
-          "目标路径": { "type": "string", "required": true, "description": "目标路径", "example": "container:/path", "notes": "常用" }
+          "源路径": {
+            "type": "string",
+            "required": true,
+            "description": "源路径",
+            "example": "file.txt",
+            "notes": "常用"
+          },
+          "目标路径": {
+            "type": "string",
+            "required": true,
+            "description": "目标路径",
+            "example": "container:/path",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -427,7 +775,7 @@
       "dirPath": "/Docker 命令/",
       "name": "docker inspect 查看详情",
       "keyword": "docker inspect 详情",
-      "description": "获取容器或镜像的详细信息",
+      "description": "获取容器或镜像的详细信息。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker inspect %{容器或镜像名称}%",
         "extensions": [
@@ -435,7 +783,13 @@
             "name": "查看IP地址",
             "cmd": "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' %{容器名称}%",
             "params": {
-              "容器名称": { "type": "string", "required": true, "description": "容器名称或ID", "example": "myapp", "notes": "常用" }
+              "容器名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称或ID",
+                "example": "myapp",
+                "notes": "常用"
+              }
             },
             "keyword": "docker inspect IP地址"
           },
@@ -443,7 +797,13 @@
             "name": "查看挂载点",
             "cmd": "docker inspect -f '{{json .Mounts}}' %{容器名称}%",
             "params": {
-              "容器名称": { "type": "string", "required": true, "description": "容器名称或ID", "example": "myapp", "notes": "常用" }
+              "容器名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称或ID",
+                "example": "myapp",
+                "notes": "常用"
+              }
             },
             "keyword": "docker inspect 挂载点"
           },
@@ -451,13 +811,25 @@
             "name": "查看配置信息",
             "cmd": "docker inspect -f '{{json .Config}}' %{容器名称}%",
             "params": {
-              "容器名称": { "type": "string", "required": true, "description": "容器名称或ID", "example": "myapp", "notes": "" }
+              "容器名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称或ID",
+                "example": "myapp",
+                "notes": "可选"
+              }
             },
             "keyword": "docker inspect 配置"
           }
         ],
         "params": {
-          "容器或镜像名称": { "type": "string", "required": true, "description": "容器或镜像名称或ID", "example": "myapp", "notes": "常用" }
+          "容器或镜像名称": {
+            "type": "string",
+            "required": true,
+            "description": "容器或镜像名称或ID",
+            "example": "myapp",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -465,7 +837,7 @@
       "dirPath": "/Docker 命令/",
       "name": "docker stats 查看资源使用",
       "keyword": "docker stats 资源",
-      "description": "显示容器资源使用情况",
+      "description": "显示容器资源使用情况。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker stats",
         "extensions": [
@@ -473,7 +845,13 @@
             "name": "查看指定容器",
             "cmd": "docker stats %{容器名称}%",
             "params": {
-              "容器名称": { "type": "string", "required": true, "description": "容器名称或ID", "example": "myapp", "notes": "常用" }
+              "容器名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称或ID",
+                "example": "myapp",
+                "notes": "常用"
+              }
             },
             "keyword": "docker stats 指定容器"
           },
@@ -497,7 +875,7 @@
       "dirPath": "/Docker 命令/",
       "name": "docker network create 创建网络",
       "keyword": "docker network create",
-      "description": "创建Docker网络",
+      "description": "创建Docker网络。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker network create %{网络名称}%",
         "extensions": [
@@ -511,7 +889,13 @@
             "name": "查看网络详情",
             "cmd": "docker network inspect %{网络名称}%",
             "params": {
-              "网络名称": { "type": "string", "required": true, "description": "网络名称", "example": "my_network", "notes": "常用" }
+              "网络名称": {
+                "type": "string",
+                "required": true,
+                "description": "网络名称",
+                "example": "my_network",
+                "notes": "常用"
+              }
             },
             "keyword": "docker network inspect 详情"
           },
@@ -519,7 +903,13 @@
             "name": "删除网络",
             "cmd": "docker network rm %{网络名称}%",
             "params": {
-              "网络名称": { "type": "string", "required": true, "description": "网络名称", "example": "my_network", "notes": "常用" }
+              "网络名称": {
+                "type": "string",
+                "required": true,
+                "description": "网络名称",
+                "example": "my_network",
+                "notes": "常用"
+              }
             },
             "keyword": "docker network rm 删除"
           },
@@ -527,13 +917,25 @@
             "name": "创建桥接网络",
             "cmd": "docker network create --driver bridge %{网络名称}%",
             "params": {
-              "网络名称": { "type": "string", "required": true, "description": "网络名称", "example": "bridge_net", "notes": "" }
+              "网络名称": {
+                "type": "string",
+                "required": true,
+                "description": "网络名称",
+                "example": "bridge_net",
+                "notes": "可选"
+              }
             },
             "keyword": "docker network create 桥接"
           }
         ],
         "params": {
-          "网络名称": { "type": "string", "required": true, "description": "网络名称", "example": "my_network", "notes": "常用" }
+          "网络名称": {
+            "type": "string",
+            "required": true,
+            "description": "网络名称",
+            "example": "my_network",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -541,7 +943,7 @@
       "dirPath": "/Docker 命令/",
       "name": "docker volume create 创建卷",
       "keyword": "docker volume create",
-      "description": "创建Docker数据卷",
+      "description": "创建Docker数据卷。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker volume create %{卷名称}%",
         "extensions": [
@@ -555,7 +957,13 @@
             "name": "查看卷详情",
             "cmd": "docker volume inspect %{卷名称}%",
             "params": {
-              "卷名称": { "type": "string", "required": true, "description": "卷名称", "example": "my_volume", "notes": "常用" }
+              "卷名称": {
+                "type": "string",
+                "required": true,
+                "description": "卷名称",
+                "example": "my_volume",
+                "notes": "常用"
+              }
             },
             "keyword": "docker volume inspect 详情"
           },
@@ -569,13 +977,25 @@
             "name": "删除指定卷",
             "cmd": "docker volume rm %{卷名称}%",
             "params": {
-              "卷名称": { "type": "string", "required": true, "description": "卷名称", "example": "my_volume", "notes": "常用" }
+              "卷名称": {
+                "type": "string",
+                "required": true,
+                "description": "卷名称",
+                "example": "my_volume",
+                "notes": "常用"
+              }
             },
             "keyword": "docker volume rm 删除"
           }
         ],
         "params": {
-          "卷名称": { "type": "string", "required": true, "description": "卷名称", "example": "my_volume", "notes": "常用" }
+          "卷名称": {
+            "type": "string",
+            "required": true,
+            "description": "卷名称",
+            "example": "my_volume",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -583,7 +1003,7 @@
       "dirPath": "/Docker 命令/",
       "name": "docker build 构建镜像",
       "keyword": "docker build 构建",
-      "description": "从Dockerfile构建镜像",
+      "description": "从Dockerfile构建镜像。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker build -t %{镜像名称}%:%{标签}% %{构建路径}%",
         "extensions": [
@@ -591,9 +1011,27 @@
             "name": "无缓存构建",
             "cmd": "docker build --no-cache -t %{镜像名称}%:%{标签}% %{构建路径}%",
             "params": {
-              "镜像名称": { "type": "string", "required": true, "description": "镜像名称", "example": "myapp", "notes": "常用" },
-              "标签": { "type": "string", "required": true, "description": "镜像标签", "example": "latest", "notes": "" },
-              "构建路径": { "type": "string", "required": true, "description": "构建路径", "example": ".", "notes": "常用" }
+              "镜像名称": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名称",
+                "example": "myapp",
+                "notes": "常用"
+              },
+              "标签": {
+                "type": "string",
+                "required": true,
+                "description": "镜像标签",
+                "example": "latest",
+                "notes": "可选"
+              },
+              "构建路径": {
+                "type": "string",
+                "required": true,
+                "description": "构建路径",
+                "example": ".",
+                "notes": "常用"
+              }
             },
             "keyword": "docker build 无缓存"
           },
@@ -601,10 +1039,34 @@
             "name": "指定Dockerfile",
             "cmd": "docker build -f %{Dockerfile路径}% -t %{镜像名称}%:%{标签}% %{构建上下文}%",
             "params": {
-              "Dockerfile路径": { "type": "string", "required": true, "description": "Dockerfile文件路径", "example": "Dockerfile.prod", "notes": "" },
-              "镜像名称": { "type": "string", "required": true, "description": "镜像名称", "example": "myapp", "notes": "常用" },
-              "标签": { "type": "string", "required": true, "description": "镜像标签", "example": "v1.0", "notes": "" },
-              "构建上下文": { "type": "string", "required": true, "description": "构建上下文路径", "example": ".", "notes": "常用" }
+              "Dockerfile路径": {
+                "type": "string",
+                "required": true,
+                "description": "Dockerfile文件路径",
+                "example": "Dockerfile.prod",
+                "notes": "可选"
+              },
+              "镜像名称": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名称",
+                "example": "myapp",
+                "notes": "常用"
+              },
+              "标签": {
+                "type": "string",
+                "required": true,
+                "description": "镜像标签",
+                "example": "v1.0",
+                "notes": "可选"
+              },
+              "构建上下文": {
+                "type": "string",
+                "required": true,
+                "description": "构建上下文路径",
+                "example": ".",
+                "notes": "常用"
+              }
             },
             "keyword": "docker build 指定Dockerfile"
           },
@@ -612,17 +1074,53 @@
             "name": "BuildKit构建",
             "cmd": "DOCKER_BUILDKIT=1 docker build -t %{镜像名称}%:%{标签}% %{构建路径}%",
             "params": {
-              "镜像名称": { "type": "string", "required": true, "description": "镜像名称", "example": "myapp", "notes": "常用" },
-              "标签": { "type": "string", "required": true, "description": "镜像标签", "example": "latest", "notes": "" },
-              "构建路径": { "type": "string", "required": true, "description": "构建路径", "example": ".", "notes": "常用" }
+              "镜像名称": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名称",
+                "example": "myapp",
+                "notes": "常用"
+              },
+              "标签": {
+                "type": "string",
+                "required": true,
+                "description": "镜像标签",
+                "example": "latest",
+                "notes": "可选"
+              },
+              "构建路径": {
+                "type": "string",
+                "required": true,
+                "description": "构建路径",
+                "example": ".",
+                "notes": "常用"
+              }
             },
             "keyword": "docker build BuildKit"
           }
         ],
         "params": {
-          "镜像名称": { "type": "string", "required": true, "description": "镜像名称", "example": "myapp", "notes": "常用" },
-          "标签": { "type": "string", "required": true, "description": "镜像标签", "example": "latest", "notes": "常用" },
-          "构建路径": { "type": "string", "required": true, "description": "构建路径", "example": ".", "notes": "常用" }
+          "镜像名称": {
+            "type": "string",
+            "required": true,
+            "description": "镜像名称",
+            "example": "myapp",
+            "notes": "常用"
+          },
+          "标签": {
+            "type": "string",
+            "required": true,
+            "description": "镜像标签",
+            "example": "latest",
+            "notes": "常用"
+          },
+          "构建路径": {
+            "type": "string",
+            "required": true,
+            "description": "构建路径",
+            "example": ".",
+            "notes": "常用"
+          }
         }
       }
     },
@@ -630,7 +1128,7 @@
       "dirPath": "/Docker 命令/",
       "name": "docker-compose up 启动服务",
       "keyword": "docker-compose up 启动",
-      "description": "创建并启动docker-compose服务",
+      "description": "创建并启动docker-compose服务。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker-compose up -d",
         "extensions": [
@@ -638,7 +1136,13 @@
             "name": "启动指定服务",
             "cmd": "docker-compose up -d %{服务名称}%",
             "params": {
-              "服务名称": { "type": "string", "required": true, "description": "服务名称", "example": "web", "notes": "常用" }
+              "服务名称": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "web",
+                "notes": "常用"
+              }
             },
             "keyword": "docker-compose up 指定服务"
           },
@@ -662,7 +1166,7 @@
       "dirPath": "/Docker 命令/",
       "name": "docker-compose down 停止服务",
       "keyword": "docker-compose down 停止",
-      "description": "停止并移除docker-compose服务",
+      "description": "停止并移除docker-compose服务。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker-compose down",
         "extensions": [
@@ -686,7 +1190,7 @@
       "dirPath": "/Docker 命令/",
       "name": "docker-compose logs 查看日志",
       "keyword": "docker-compose logs 日志",
-      "description": "查看docker-compose服务日志",
+      "description": "查看docker-compose服务日志。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker-compose logs -f %{服务名称}%",
         "extensions": [
@@ -700,14 +1204,32 @@
             "name": "显示最后N行",
             "cmd": "docker-compose logs --tail %{行数}% %{服务名称}%",
             "params": {
-              "行数": { "type": "string", "required": true, "description": "行数", "example": "100", "notes": "常用" },
-              "服务名称": { "type": "string", "required": true, "description": "服务名称", "example": "web", "notes": "常用" }
+              "行数": {
+                "type": "string",
+                "required": true,
+                "description": "行数",
+                "example": "100",
+                "notes": "常用"
+              },
+              "服务名称": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "web",
+                "notes": "常用"
+              }
             },
             "keyword": "docker-compose logs N行"
           }
         ],
         "params": {
-          "服务名称": { "type": "string", "required": false, "description": "服务名称", "example": "web", "notes": "" }
+          "服务名称": {
+            "type": "string",
+            "required": false,
+            "description": "服务名称",
+            "example": "web",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -715,7 +1237,7 @@
       "dirPath": "/Docker 命令/",
       "name": "docker-compose ps 查看服务",
       "keyword": "docker-compose ps 查看",
-      "description": "查看docker-compose服务状态",
+      "description": "查看docker-compose服务状态。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker-compose ps",
         "extensions": [
@@ -733,7 +1255,7 @@
       "dirPath": "/Docker 命令/",
       "name": "docker-compose build 构建服务",
       "keyword": "docker-compose build 构建",
-      "description": "构建docker-compose服务镜像",
+      "description": "构建docker-compose服务镜像。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "docker-compose build %{服务名称}%",
         "extensions": [
@@ -747,13 +1269,25 @@
             "name": "无缓存构建",
             "cmd": "docker-compose build --no-cache %{服务名称}%",
             "params": {
-              "服务名称": { "type": "string", "required": true, "description": "服务名称", "example": "web", "notes": "常用" }
+              "服务名称": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "web",
+                "notes": "常用"
+              }
             },
             "keyword": "docker-compose build 无缓存"
           }
         ],
         "params": {
-          "服务名称": { "type": "string", "required": false, "description": "服务名称", "example": "web", "notes": "" }
+          "服务名称": {
+            "type": "string",
+            "required": false,
+            "description": "服务名称",
+            "example": "web",
+            "notes": "可选"
+          }
         }
       }
     }

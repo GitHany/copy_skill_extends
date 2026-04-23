@@ -49,8 +49,20 @@
           }
         ],
         "params": {
-          "索引": { "type": "string", "required": false, "description": "索引名", "example": "logs-*", "notes": "支持通配符" },
-          "查询JSON": { "type": "string", "required": false, "description": "查询 JSON", "example": "{\"query\":{\"match_all\":{}}}", "notes": "" }
+          "索引": {
+            "type": "string",
+            "required": false,
+            "description": "索引名",
+            "example": "logs-*",
+            "notes": "支持通配符"
+          },
+          "查询JSON": {
+            "type": "string",
+            "required": false,
+            "description": "查询 JSON",
+            "example": "{\"query\":{\"match_all\":{}}}",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -58,7 +70,7 @@
       "dirPath": "/监控与可观测性/",
       "name": "Logstash 管道管理",
       "keyword": "logstash 管道 配置",
-      "description": "Logstash 管道配置测试、启动和管理",
+      "description": "Logstash 管道配置测试、启动和管理。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "logstash -t -f %{配置文件}%",
         "extensions": [
@@ -100,7 +112,13 @@
           }
         ],
         "params": {
-          "配置文件": { "type": "string", "required": false, "description": "配置文件路径", "example": "/etc/logstash/conf.d/pipeline.conf", "notes": "" }
+          "配置文件": {
+            "type": "string",
+            "required": false,
+            "description": "配置文件路径",
+            "example": "/etc/logstash/conf.d/pipeline.conf",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -128,7 +146,13 @@
             "name": "导出仪表板",
             "cmd": "curl -X POST \"http://localhost:5601/api/saved_objects/_export?type=dashboard\" -H \"kbn-xsrf: reporting\" -d '{\"objects\":[{\"type\":\"dashboard\",\"id\":\"%{仪表板ID}%\"}]}' > dashboard.ndjson",
             "params": {
-              "仪表板ID": { "type": "string", "required": true, "description": "仪表板 ID", "example": "dashboard-id", "notes": "" }
+              "仪表板ID": {
+                "type": "string",
+                "required": true,
+                "description": "仪表板 ID",
+                "example": "dashboard-id",
+                "notes": "可选"
+              }
             },
             "keyword": "kibana 导出仪表板"
           },
@@ -148,8 +172,20 @@
             "name": "创建 Space",
             "cmd": "curl -X POST \"http://localhost:5601/api/spaces/space\" -H \"kbn-xsrf: reporting\" -H \"Content-Type: application/json\" -d '{\"id\":\"%{空间ID}\",\"name\":\"%{空间名称}%\"}'",
             "params": {
-              "空间ID": { "type": "string", "required": true, "description": "空间唯一标识", "example": "prod", "notes": "" },
-              "空间名称": { "type": "string", "required": true, "description": "空间显示名称", "example": "生产环境", "notes": "" }
+              "空间ID": {
+                "type": "string",
+                "required": true,
+                "description": "空间唯一标识",
+                "example": "prod",
+                "notes": "可选"
+              },
+              "空间名称": {
+                "type": "string",
+                "required": true,
+                "description": "空间显示名称",
+                "example": "生产环境",
+                "notes": "可选"
+              }
             },
             "keyword": "kibana 创建 space"
           }
@@ -161,7 +197,7 @@
       "dirPath": "/监控与可观测性/",
       "name": "Loki LogCLI 查询",
       "keyword": "loki logcli 日志",
-      "description": "LogCLI 命令行查询 Loki 日志",
+      "description": "LogCLI 命令行查询 Loki 日志。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "logcli query '%{标签选择器}%'",
         "extensions": [
@@ -203,7 +239,13 @@
           }
         ],
         "params": {
-          "标签选择器": { "type": "string", "required": false, "description": "LogQL 标签选择器", "example": "{app=\"nginx\"}", "notes": "如 {app=\"myapp\",env=\"prod\"}" }
+          "标签选择器": {
+            "type": "string",
+            "required": false,
+            "description": "LogQL 标签选择器",
+            "example": "{app=\"nginx\"}",
+            "notes": "如 {app=\"myapp\",env=\"prod\"}"
+          }
         }
       }
     },
@@ -211,7 +253,7 @@
       "dirPath": "/监控与可观测性/",
       "name": "Fluentd 配置与管理",
       "keyword": "fluentd td-agent 配置",
-      "description": "Fluentd (td-agent) 配置测试、启动和监控",
+      "description": "Fluentd (td-agent) 配置测试、启动和监控。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "td-agent -c %{配置路径}% --dry-run",
         "extensions": [
@@ -237,7 +279,13 @@
             "name": "重载 Fluentd 配置",
             "cmd": "kill -HUP %{PID}%",
             "params": {
-              "PID": { "type": "string", "required": true, "description": "Fluentd 进程 ID", "example": "1234", "notes": "" }
+              "PID": {
+                "type": "string",
+                "required": true,
+                "description": "Fluentd 进程 ID",
+                "example": "1234",
+                "notes": "可选"
+              }
             },
             "keyword": "fluentd sighup 重载"
           },
@@ -255,7 +303,13 @@
           }
         ],
         "params": {
-          "配置路径": { "type": "string", "required": false, "description": "配置文件路径", "example": "/etc/td-agent/td-agent.conf", "notes": "" }
+          "配置路径": {
+            "type": "string",
+            "required": false,
+            "description": "配置文件路径",
+            "example": "/etc/td-agent/td-agent.conf",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -263,7 +317,7 @@
       "dirPath": "/监控与可观测性/",
       "name": "journalctl 系统日志",
       "keyword": "journalctl 系统日志",
-      "description": "journalctl 查看和管理系统日志",
+      "description": "journalctl 查看和管理系统日志。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "journalctl %{选项}%",
         "extensions": [
@@ -283,7 +337,13 @@
             "name": "指定服务日志",
             "cmd": "journalctl -u %{服务名}%.service",
             "params": {
-              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "nginx", "notes": "" }
+              "服务名": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "nginx",
+                "notes": "可选"
+              }
             },
             "keyword": "journalctl 服务"
           },
@@ -319,7 +379,13 @@
           }
         ],
         "params": {
-          "选项": { "type": "string", "required": false, "description": "journalctl 选项", "example": "-f", "notes": "" }
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "journalctl 选项",
+            "example": "-f",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -327,7 +393,7 @@
       "dirPath": "/监控与可观测性/",
       "name": "rsyslog 配置与测试",
       "keyword": "rsyslog 系统日志",
-      "description": "rsyslog 日志系统配置管理和远程日志测试",
+      "description": "rsyslog 日志系统配置管理和远程日志测试。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "logger -n %{主机}% -P %{端口}% \"%{消息}%\"",
         "extensions": [
@@ -347,8 +413,20 @@
             "name": "测试远程日志",
             "cmd": "logger -n %{主机}% -P %{端口}% \"Test message\"",
             "params": {
-              "主机": { "type": "string", "required": true, "description": "目标主机", "example": "192.168.1.100", "notes": "" },
-              "端口": { "type": "string", "required": true, "description": "目标端口", "example": "514", "notes": "" }
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "目标主机",
+                "example": "192.168.1.100",
+                "notes": "可选"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "目标端口",
+                "example": "514",
+                "notes": "可选"
+              }
             },
             "keyword": "logger 远程测试"
           },
@@ -366,9 +444,27 @@
           }
         ],
         "params": {
-          "主机": { "type": "string", "required": false, "description": "远程主机", "example": "logserver.example.com", "notes": "" },
-          "端口": { "type": "string", "required": false, "description": "端口", "example": "514", "notes": "" },
-          "消息": { "type": "string", "required": false, "description": "测试消息", "example": "Test message", "notes": "" }
+          "主机": {
+            "type": "string",
+            "required": false,
+            "description": "远程主机",
+            "example": "logserver.example.com",
+            "notes": "可选"
+          },
+          "端口": {
+            "type": "string",
+            "required": false,
+            "description": "端口",
+            "example": "514",
+            "notes": "可选"
+          },
+          "消息": {
+            "type": "string",
+            "required": false,
+            "description": "测试消息",
+            "example": "Test message",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -424,8 +520,20 @@
           }
         ],
         "params": {
-          "子命令": { "type": "string", "required": false, "description": "promtool 子命令", "example": "check config", "notes": "check/test/query/stats" },
-          "参数": { "type": "string", "required": false, "description": "额外参数", "example": "/etc/prometheus/prometheus.yml", "notes": "" }
+          "子命令": {
+            "type": "string",
+            "required": false,
+            "description": "promtool 子命令",
+            "example": "check config",
+            "notes": "check/test/query/stats"
+          },
+          "参数": {
+            "type": "string",
+            "required": false,
+            "description": "额外参数",
+            "example": "/etc/prometheus/prometheus.yml",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -447,7 +555,13 @@
             "name": "列出仪表板",
             "cmd": "curl -X GET \"http://localhost:3000/api/search?type=dashboards\" -H \"Authorization: Bearer %{令牌}%\"",
             "params": {
-              "令牌": { "type": "string", "required": true, "description": "API Token", "example": "eyJrIjoi...", "notes": "" }
+              "令牌": {
+                "type": "string",
+                "required": true,
+                "description": "API Token",
+                "example": "eyJrIjoi...",
+                "notes": "可选"
+              }
             },
             "keyword": "grafana list dashboards"
           },
@@ -455,7 +569,13 @@
             "name": "创建仪表板",
             "cmd": "curl -X POST \"http://localhost:3000/api/dashboards/db\" -H \"Authorization: Bearer %{令牌}%\" -H \"Content-Type: application/json\" -d '{\"dashboard\":{\"title\":\"My Dashboard\",\"tags\":[\"prod\"]},\"overwrite\":true}'",
             "params": {
-              "令牌": { "type": "string", "required": true, "description": "API Token", "example": "eyJrIjoi...", "notes": "" }
+              "令牌": {
+                "type": "string",
+                "required": true,
+                "description": "API Token",
+                "example": "eyJrIjoi...",
+                "notes": "可选"
+              }
             },
             "keyword": "grafana create dashboard"
           },
@@ -463,7 +583,13 @@
             "name": "查看数据源",
             "cmd": "curl -X GET \"http://localhost:3000/api/datasources\" -H \"Authorization: Bearer %{令牌}%\"",
             "params": {
-              "令牌": { "type": "string", "required": true, "description": "API Token", "example": "eyJrIjoi...", "notes": "" }
+              "令牌": {
+                "type": "string",
+                "required": true,
+                "description": "API Token",
+                "example": "eyJrIjoi...",
+                "notes": "可选"
+              }
             },
             "keyword": "grafana datasources"
           },
@@ -471,7 +597,13 @@
             "name": "发送告警通知",
             "cmd": "curl -X POST \"http://localhost:3000/api/alerting/notifications\" -H \"Authorization: Bearer %{令牌}%\" -H \"Content-Type: application/json\" -d '{\"name\":\"webhook\",\"type\":\"webhook\",\"settings\":{\"url\":\"http://example.com/webhook\"}}'",
             "params": {
-              "令牌": { "type": "string", "required": true, "description": "API Token", "example": "eyJrIjoi...", "notes": "" }
+              "令牌": {
+                "type": "string",
+                "required": true,
+                "description": "API Token",
+                "example": "eyJrIjoi...",
+                "notes": "可选"
+              }
             },
             "keyword": "grafana alert notification"
           },
@@ -479,7 +611,13 @@
             "name": "查询数据源",
             "cmd": "curl -X POST \"http://localhost:3000/api/ds/query\" -H \"Authorization: Bearer %{令牌}%\" -H \"Content-Type: application/json\" -d '{\"queries\":[{\"refId\":\"A\",\"expr\":\"up\",\"datasourceId\":1}],\"from\":\"now-1h\",\"to\":\"now\"}'",
             "params": {
-              "令牌": { "type": "string", "required": true, "description": "API Token", "example": "eyJrIjoi...", "notes": "" }
+              "令牌": {
+                "type": "string",
+                "required": true,
+                "description": "API Token",
+                "example": "eyJrIjoi...",
+                "notes": "可选"
+              }
             },
             "keyword": "grafana ds query"
           }
@@ -565,7 +703,13 @@
             "name": "查看特定容器",
             "cmd": "curl -s \"http://localhost:8080/api/v2.0/containers/%{容器ID}%\" | jq",
             "params": {
-              "容器ID": { "type": "string", "required": true, "description": "容器 ID", "example": "abc123def456", "notes": "" }
+              "容器ID": {
+                "type": "string",
+                "required": true,
+                "description": "容器 ID",
+                "example": "abc123def456",
+                "notes": "可选"
+              }
             },
             "keyword": "cadvisor 容器详情"
           },
@@ -573,7 +717,13 @@
             "name": "查看容器统计",
             "cmd": "curl -s \"http://localhost:8080/api/v2.0/containers/%{容器ID}%/stats?maxStats=5\" | jq",
             "params": {
-              "容器ID": { "type": "string", "required": true, "description": "容器 ID", "example": "abc123def456", "notes": "" }
+              "容器ID": {
+                "type": "string",
+                "required": true,
+                "description": "容器 ID",
+                "example": "abc123def456",
+                "notes": "可选"
+              }
             },
             "keyword": "cadvisor 容器 stats"
           },
@@ -597,7 +747,7 @@
       "dirPath": "/监控与可观测性/",
       "name": "Jaeger 追踪查询",
       "keyword": "jaeger tracing trace",
-      "description": "Jaeger 分布式追踪 - Trace 查询、服务列表",
+      "description": "Jaeger 分布式追踪 - Trace 查询、服务列表。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "jaeger-all-in-one --collector.zipkin.http-port=9411",
         "extensions": [
@@ -611,7 +761,13 @@
             "name": "查询 Trace",
             "cmd": "curl -s \"http://localhost:16686/api/traces?service=%{服务名}%&limit=10\"",
             "params": {
-              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "myapp", "notes": "" }
+              "服务名": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "myapp",
+                "notes": "可选"
+              }
             },
             "keyword": "jaeger trace 查询"
           },
@@ -631,7 +787,13 @@
             "name": "查看采样配置",
             "cmd": "curl -s \"http://localhost:14268/api/sampling\" -H \"Content-Type: application/json\" -d '{\"serviceName\":\"%{服务名}%\"}'",
             "params": {
-              "服务名": { "type": "string", "required": true, "description": "服务名称", "example": "myapp", "notes": "" }
+              "服务名": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "myapp",
+                "notes": "可选"
+              }
             },
             "keyword": "jaeger sampling"
           },
@@ -639,7 +801,13 @@
             "name": "查看依赖图",
             "cmd": "curl -s \"http://localhost:16686/api/dependencies?endTs=%{时间戳}%\" | jq",
             "params": {
-              "时间戳": { "type": "string", "required": false, "description": "结束时间戳 (毫秒)", "example": "1704067200000", "notes": "可选，默认当前时间" }
+              "时间戳": {
+                "type": "string",
+                "required": false,
+                "description": "结束时间戳 (毫秒)",
+                "example": "1704067200000",
+                "notes": "可选，默认当前时间"
+              }
             },
             "keyword": "jaeger dependencies"
           }
@@ -651,7 +819,7 @@
       "dirPath": "/监控与可观测性/",
       "name": "Alertmanager 静默与告警",
       "keyword": "alertmanager silence 告警",
-      "description": "Alertmanager 静默管理和告警状态查询",
+      "description": "Alertmanager 静默管理和告警状态查询。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "curl -X POST \"http://localhost:9093/api/v1/silences\" -H \"Content-Type: application/json\" -d '%{静默配置}%'",
         "extensions": [
@@ -671,7 +839,13 @@
             "name": "删除静默",
             "cmd": "curl -X DELETE \"http://localhost:9093/api/v1/silence/%{静默ID}%\"",
             "params": {
-              "静默ID": { "type": "string", "required": true, "description": "静默 ID", "example": "abc123", "notes": "" }
+              "静默ID": {
+                "type": "string",
+                "required": true,
+                "description": "静默 ID",
+                "example": "abc123",
+                "notes": "可选"
+              }
             },
             "keyword": "alertmanager delete silence"
           },
@@ -691,13 +865,25 @@
             "name": "amtool 集群状态",
             "cmd": "amtool cluster-status --cluster.address=http://%{主机}%:9094",
             "params": {
-              "主机": { "type": "string", "required": true, "description": "集群主机", "example": "192.168.1.100", "notes": "" }
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "集群主机",
+                "example": "192.168.1.100",
+                "notes": "可选"
+              }
             },
             "keyword": "amtool cluster"
           }
         ],
         "params": {
-          "静默配置": { "type": "string", "required": false, "description": "静默配置 JSON", "example": "{\"matchers\":[{\"name\":\"alertname\",\"value\":\"HighMemory\"}]}", "notes": "" }
+          "静默配置": {
+            "type": "string",
+            "required": false,
+            "description": "静默配置 JSON",
+            "example": "{\"matchers\":[{\"name\":\"alertname\",\"value\":\"HighMemory\"}]}",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -705,7 +891,7 @@
       "dirPath": "/监控与可观测性/",
       "name": "htop/top/vmstat 进程监控",
       "keyword": "htop top vmstat 进程监控",
-      "description": "htop、top 和 vmstat 系统进程与资源监控",
+      "description": "htop、top 和 vmstat 系统进程与资源监控。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "htop %{选项}%",
         "extensions": [
@@ -725,7 +911,13 @@
             "name": "监控指定用户",
             "cmd": "htop -u %{用户名}%",
             "params": {
-              "用户名": { "type": "string", "required": true, "description": "用户名", "example": "www-data", "notes": "" }
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "www-data",
+                "notes": "可选"
+              }
             },
             "keyword": "htop user"
           },
@@ -761,7 +953,13 @@
           }
         ],
         "params": {
-          "选项": { "type": "string", "required": false, "description": "htop 选项", "example": "-s M", "notes": "" }
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "htop 选项",
+            "example": "-s M",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -769,7 +967,7 @@
       "dirPath": "/监控与可观测性/",
       "name": "iostat/sar 系统统计",
       "keyword": "iostat sar 磁盘 IO",
-      "description": "iostat 和 sar 系统 I/O 和性能统计",
+      "description": "iostat 和 sar 系统 I/O 和性能统计。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "iostat %{选项}% %{间隔}% %{次数}%",
         "extensions": [
@@ -823,9 +1021,27 @@
           }
         ],
         "params": {
-          "选项": { "type": "string", "required": false, "description": "iostat 选项", "example": "-x", "notes": "" },
-          "间隔": { "type": "string", "required": false, "description": "采样间隔（秒）", "example": "1", "notes": "" },
-          "次数": { "type": "string", "required": false, "description": "采样次数", "example": "5", "notes": "" }
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "iostat 选项",
+            "example": "-x",
+            "notes": "可选"
+          },
+          "间隔": {
+            "type": "string",
+            "required": false,
+            "description": "采样间隔（秒）",
+            "example": "1",
+            "notes": "可选"
+          },
+          "次数": {
+            "type": "string",
+            "required": false,
+            "description": "采样次数",
+            "example": "5",
+            "notes": "可选"
+          }
         }
       }
     },
@@ -833,7 +1049,7 @@
       "dirPath": "/监控与可观测性/",
       "name": "Netdata 实时监控",
       "keyword": "netdata 实时监控",
-      "description": "Netdata 实时监控和指标 API",
+      "description": "Netdata 实时监控和指标 API。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "netdata -D",
         "extensions": [
@@ -881,7 +1097,7 @@
       "dirPath": "/监控与可观测性/",
       "name": "Datadog Agent 管理",
       "keyword": "datadog agent 监控",
-      "description": "Datadog Agent 启动、状态查看和指标发送",
+      "description": "Datadog Agent 启动、状态查看和指标发送。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
       "data": {
         "cmd": "datadog-agent %{命令}%",
         "extensions": [
@@ -925,14 +1141,32 @@
             "name": "发送指标",
             "cmd": "curl -X POST \"https://api.datadoghq.com/api/v1/series\" -H \"Content-Type: application/json\" -H \"DD-API-KEY: %{API_KEY}%\" -d '{\"series\":[{\"metric\":\"system.load.1\",\"points\":[[%{时间戳}%, 1.5]],\"type\":\"gauge\",\"tags\":[\"env:prod\"]}]}'",
             "params": {
-              "API_KEY": { "type": "string", "required": true, "description": "Datadog API Key", "example": "abc123def456", "notes": "" },
-              "时间戳": { "type": "string", "required": true, "description": "Unix 时间戳", "example": "1704067200", "notes": "" }
+              "API_KEY": {
+                "type": "string",
+                "required": true,
+                "description": "Datadog API Key",
+                "example": "abc123def456",
+                "notes": "可选"
+              },
+              "时间戳": {
+                "type": "string",
+                "required": true,
+                "description": "Unix 时间戳",
+                "example": "1704067200",
+                "notes": "可选"
+              }
             },
             "keyword": "datadog send metrics api"
           }
         ],
         "params": {
-          "命令": { "type": "string", "required": false, "description": "Agent 子命令", "example": "status", "notes": "status/start/stop/health/config" }
+          "命令": {
+            "type": "string",
+            "required": false,
+            "description": "Agent 子命令",
+            "example": "status",
+            "notes": "status/start/stop/health/config"
+          }
         }
       }
     }

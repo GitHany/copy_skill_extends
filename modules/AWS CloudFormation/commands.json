@@ -1,0 +1,44 @@
+{
+  "module": "AWS CloudFormation",
+  "version": "2.0",
+  "description": "AWS CloudFormation命令集合",
+  "commands": [
+    {
+      "dirPath": "/AWS CloudFormation/",
+      "name": "aws cloudformation deploy 部署",
+      "keyword": "aws cloudformation 部署",
+      "description": "部署 CloudFormation 栈。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws cloudformation deploy --template-file %{文件}% --stack-name %{栈名}%",
+        "extensions": [],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "模板文件",
+            "example": "template.yaml",
+            "notes": "必填"
+          },
+          "栈名": {
+            "type": "string",
+            "required": true,
+            "description": "栈名",
+            "example": "my-stack",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/AWS CloudFormation/",
+      "name": "aws cloudformation list-stacks 列出栈",
+      "keyword": "aws cloudformation 栈",
+      "description": "列出 CloudFormation 栈。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws cloudformation list-stacks",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

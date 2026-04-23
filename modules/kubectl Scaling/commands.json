@@ -1,0 +1,33 @@
+{
+  "module": "kubectl Scaling",
+  "version": "2.0",
+  "description": "Kubernetes 扩缩容，涵盖kubectl Scaling的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/kubectl Scaling/",
+      "name": "kubectl scale 扩缩容",
+      "keyword": "kubectl scale 扩缩容",
+      "description": "调整副本数。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl scale deployment %{名称}% --replicas=%{数量}%",
+        "extensions": [],
+        "params": {
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "Deployment 名",
+            "example": "myapp",
+            "notes": "必填"
+          },
+          "数量": {
+            "type": "string",
+            "required": true,
+            "description": "副本数",
+            "example": "5",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

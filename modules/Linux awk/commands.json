@@ -1,0 +1,173 @@
+{
+  "module": "Linux awk",
+  "version": "2.0",
+  "description": "Linux awk 文本分析处理命令。强大的文本模式和文本处理语言，逐行扫描文件、执行条件判断、格式化输出。适合处理表格数据、日志分析、数据统计、字段提取。常见场景：计算列总和、过滤符合条件行、格式化报表、字段重排。",
+  "commands": [
+    {
+      "dirPath": "/Linux awk/",
+      "name": "awk 分析文本",
+      "keyword": "awk 分析",
+      "description": "模式扫描和文本处理。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "awk '%{条件}% {print $%{列}%}' %{文件}%",
+        "extensions": [
+          {
+            "name": "打印特定列",
+            "description": "从文本中提取特定列，如第1和第3列",
+            "params": {
+              "列": {
+                "example": "1,3",
+                "notes": "列号"
+              },
+              "文件": {
+                "example": "data.csv",
+                "notes": "文件名"
+              }
+            },
+            "cmd": "awk '{print $%{列}%}' %{文件}%"
+          },
+          {
+            "name": "条件过滤",
+            "description": "只打印满足条件的行，如分数大于60的",
+            "params": {
+              "条件": {
+                "example": "$2 > 60",
+                "notes": "条件表达式"
+              },
+              "文件": {
+                "example": "grades.txt",
+                "notes": "文件名"
+              }
+            },
+            "cmd": "awk '%{条件}% {print $0}' %{文件}%"
+          },
+          {
+            "name": "计算列总和",
+            "description": "对某一列数值求和，如统计总销售额",
+            "params": {
+              "列": {
+                "example": "3",
+                "notes": "数值列"
+              },
+              "文件": {
+                "example": "sales.txt",
+                "notes": "文件名"
+              }
+            },
+            "cmd": "awk '{sum+=$%{列}%} END {print sum}' %{文件}%"
+          },
+          {
+            "name": "计算平均值",
+            "description": "计算某一列的平均值",
+            "params": {
+              "列": {
+                "example": "2",
+                "notes": "数值列"
+              },
+              "文件": {
+                "example": "scores.txt",
+                "notes": "文件名"
+              }
+            },
+            "cmd": "awk '{sum+=$%{列}%} END {print sum/NR}' %{文件}%"
+          },
+          {
+            "name": "添加表头",
+            "description": "在输出前加一行表头描述",
+            "params": {
+              "列": {
+                "example": "1",
+                "notes": "列号"
+              },
+              "表头": {
+                "example": "Name,Score",
+                "notes": "表头内容"
+              },
+              "文件": {
+                "example": "data.txt",
+                "notes": "文件名"
+              }
+            },
+            "cmd": "awk 'BEGIN {print \"%{表头}%\"} {print $%{列}%}' %{文件}%"
+          },
+          {
+            "name": "指定分隔符",
+            "description": "处理CSV或其他分隔符文件",
+            "params": {
+              "分隔符": {
+                "example": ",",
+                "notes": "分隔符"
+              },
+              "列": {
+                "example": "1",
+                "notes": "列号"
+              },
+              "文件": {
+                "example": "data.csv",
+                "notes": "文件名"
+              }
+            },
+            "cmd": "awk -F '%{分隔符}%' '{print $%{列}%}' %{文件}%"
+          },
+          {
+            "name": "统计出现次数",
+            "description": "统计每个值出现的频率",
+            "params": {
+              "列": {
+                "example": "2",
+                "notes": "统计列"
+              },
+              "文件": {
+                "example": "log.txt",
+                "notes": "文件名"
+              }
+            },
+            "cmd": "awk '{count[$%{列}%]++} END {for (k in count) print k, count[k]}' %{文件}%"
+          },
+          {
+            "name": "格式化输出",
+            "description": "按指定格式输出，如对齐表格",
+            "params": {
+              "格式": {
+                "example": "%-10s %-5d",
+                "notes": "printf格式"
+              },
+              "列": {
+                "example": "1,2",
+                "notes": "列号"
+              },
+              "文件": {
+                "example": "data.txt",
+                "notes": "文件名"
+              }
+            },
+            "cmd": "awk 'BEGIN {printf \"%-10s %-5s\\n\", \"Name\", \"Age\"} {printf \"%-10s %-5d\\n\", $%{列}%}' %{文件}%"
+          }
+        ],
+        "params": {
+          "条件": {
+            "type": "string",
+            "required": true,
+            "description": "条件",
+            "example": "$3 > 100",
+            "notes": "必填"
+          },
+          "列": {
+            "type": "string",
+            "required": true,
+            "description": "列号",
+            "example": "1",
+            "notes": "必填"
+          },
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "文件",
+            "example": "data.txt",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}
