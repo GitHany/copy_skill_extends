@@ -1,0 +1,105 @@
+{
+  "module": "容器编排/Docker-复制文件 cp",
+  "version": "2.0",
+  "description": "Docker cp命令集合，涵盖Docker cp的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker cp 从容器复制",
+      "keyword": "docker cp 复制",
+      "description": "从容器复制文件到主机。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker cp %{容器}%:%{路径}% %{目标}%",
+        "extensions": [
+          {
+            "name": "复制目录内容",
+            "description": "使用 -r 参数递归复制整个目录",
+            "cmd": "docker cp -r %{容器}%:%{路径}% %{目标}%"
+          },
+          {
+            "name": "保持文件权限",
+            "description": "使用 -L 参数跟随符号链接并保持权限",
+            "cmd": "docker cp -L %{容器}%:%{路径}% %{目标}%"
+          },
+          {
+            "name": "仅复制文件列表",
+            "description": "排除目录本身，只复制目录内文件内容",
+            "cmd": "docker cp %{容器}%:%{路径}/. %{目标}%"
+          }
+        ],
+        "params": {
+          "容器": {
+            "type": "string",
+            "required": true,
+            "description": "容器             ",
+            "example": "myapp",
+            "notes": "必填"
+          },
+          "路径": {
+            "type": "string",
+            "required": true,
+            "description": "容器内路径          ",
+            "example": "/app/logs/",
+            "notes": "必填"
+          },
+          "目标": {
+            "type": "string",
+            "required": true,
+            "description": "目标路径           ",
+            "example": "./logs/",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker cp 复制到容器",
+      "keyword": "docker cp 到容器",
+      "description": "从主机复制文件到容器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker cp %{源}% %{容器}%:%{路径}%",
+        "extensions": [
+          {
+            "name": "覆盖已存在文件",
+            "description": "强制覆盖目标路径中已存在的文件",
+            "cmd": "docker cp --force %{源}% %{容器}%:%{路径}%"
+          },
+          {
+            "name": "保留时间戳",
+            "description": "使用 -p 参数保留文件的修改时间戳",
+            "cmd": "docker cp -p %{源}% %{容器}%:%{路径}%"
+          },
+          {
+            "name": "复制目录到容器",
+            "description": "使用 -r 参数递归复制整个目录到容器",
+            "cmd": "docker cp -r %{源}% %{容器}%:%{路径}%"
+          }
+        ],
+        "params": {
+          "源": {
+            "type": "string",
+            "required": true,
+            "description": "源路径            ",
+            "example": "./config/",
+            "notes": "必填"
+          },
+          "容器": {
+            "type": "string",
+            "required": true,
+            "description": "容器             ",
+            "example": "myapp",
+            "notes": "必填"
+          },
+          "路径": {
+            "type": "string",
+            "required": true,
+            "description": "容器路径           ",
+            "example": "/app/",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,262 @@
+{
+  "module": "Web服务器/Nginx-Web服务器 Nginx",
+  "version": "1.0",
+  "description": "Nginx 命令模块命令集合，涵盖Nginx命令的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Web服务器/",
+      "name": "nginx -t 配置测试",
+      "keyword": "nginx -t 测试配置",
+      "description": "测试 Nginx 配置文件语法并尝试打开配置文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "nginx -t",
+        "extensions": [
+          {
+            "name": "测试并显示详细",
+            "cmd": "nginx -t -c %{配置文件路径}%",
+            "params": {
+              "配置文件路径": {
+                "type": "string",
+                "required": false,
+                "description": "Nginx配置文件路径    ",
+                "example": "/etc/nginx/nginx.conf",
+                "notes": "可选"
+              }
+            },
+            "keyword": "nginx -t 指定配置"
+          },
+          {
+            "name": "测试主配置",
+            "cmd": "nginx -t -g %{全局指令}%",
+            "params": {
+              "全局指令": {
+                "type": "string",
+                "required": false,
+                "description": "全局指令           ",
+                "example": "daemon off;",
+                "notes": "可选"
+              }
+            },
+            "keyword": "nginx -t 全局指令"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Web服务器/",
+      "name": "nginx -s 信号控制",
+      "keyword": "nginx -s 重载停止",
+      "description": "通过信号控制 Nginx 主进程。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "nginx -s %{信号}%",
+        "extensions": [
+          {
+            "name": "重载配置",
+            "cmd": "nginx -s reload",
+            "params": {},
+            "keyword": "nginx -s reload 重载"
+          },
+          {
+            "name": "停止服务",
+            "cmd": "nginx -s stop",
+            "params": {},
+            "keyword": "nginx -s stop 停止"
+          },
+          {
+            "name": "优雅退出",
+            "cmd": "nginx -s quit",
+            "params": {},
+            "keyword": "nginx -s quit 退出"
+          },
+          {
+            "name": "重新打开日志",
+            "cmd": "nginx -s reopen",
+            "params": {},
+            "keyword": "nginx -s reopen 日志"
+          }
+        ],
+        "params": {
+          "信号": {
+            "type": "string",
+            "required": true,
+            "description": "控制信号           ",
+            "example": "reload",
+            "notes": "常用值: reload, stop, quit, reopen"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Web服务器/",
+      "name": "nginx -c 指定配置",
+      "keyword": "nginx -c 配置文件",
+      "description": "使用指定配置文件启动 Nginx。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "nginx -c %{配置文件路径}%",
+        "extensions": [
+          {
+            "name": "指定配置并启动",
+            "cmd": "nginx -c %{配置文件路径}%",
+            "params": {
+              "配置文件路径": {
+                "type": "string",
+                "required": true,
+                "description": "Nginx配置文件路径    ",
+                "example": "/etc/nginx/nginx.conf",
+                "notes": "常用"
+              }
+            },
+            "keyword": "nginx -c 启动服务"
+          },
+          {
+            "name": "测试配置后启动",
+            "cmd": "nginx -t && nginx -c %{配置文件路径}%",
+            "params": {
+              "配置文件路径": {
+                "type": "string",
+                "required": true,
+                "description": "Nginx配置文件路径    ",
+                "example": "/etc/nginx/nginx.conf",
+                "notes": "常用"
+              }
+            },
+            "keyword": "nginx 测试并启动"
+          }
+        ],
+        "params": {
+          "配置文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "Nginx配置文件路径    ",
+            "example": "/etc/nginx/nginx.conf",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Web服务器/",
+      "name": "nginx -T 配置验证",
+      "keyword": "nginx -T 查看配置",
+      "description": "转储并验证整个配置（包括默认服务器）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "nginx -T",
+        "extensions": [
+          {
+            "name": "查看完整配置",
+            "cmd": "nginx -T | grep %{关键字}%",
+            "params": {
+              "关键字": {
+                "type": "string",
+                "required": false,
+                "description": "搜索关键字          ",
+                "example": "server_name",
+                "notes": "可选"
+              }
+            },
+            "keyword": "nginx -T 搜索"
+          },
+          {
+            "name": "保存配置输出",
+            "cmd": "nginx -T > %{输出文件}% 2>&1",
+            "params": {
+              "输出文件": {
+                "type": "string",
+                "required": false,
+                "description": "输出文件路径         ",
+                "example": "/tmp/nginx-config.txt",
+                "notes": "可选"
+              }
+            },
+            "keyword": "nginx -T 保存"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Web服务器/",
+      "name": "tail -f 查看日志",
+      "keyword": "tail -f 日志 access error",
+      "description": "实时查看 Nginx 访问日志和错误日志。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "tail -f %{日志文件}%",
+        "extensions": [
+          {
+            "name": "查看访问日志",
+            "cmd": "tail -f %{日志目录}%/access.log",
+            "params": {
+              "日志目录": {
+                "type": "string",
+                "required": true,
+                "description": "Nginx日志目录      ",
+                "example": "/var/log/nginx",
+                "notes": "常用"
+              }
+            },
+            "keyword": "tail access.log 访问"
+          },
+          {
+            "name": "查看错误日志",
+            "cmd": "tail -f %{日志目录}%/error.log",
+            "params": {
+              "日志目录": {
+                "type": "string",
+                "required": true,
+                "description": "Nginx日志目录      ",
+                "example": "/var/log/nginx",
+                "notes": "常用"
+              }
+            },
+            "keyword": "tail error.log 错误"
+          },
+          {
+            "name": "查看最后N行",
+            "cmd": "tail -n %{行数}% %{日志文件}%",
+            "params": {
+              "行数": {
+                "type": "string",
+                "required": true,
+                "description": "行数             ",
+                "example": "100",
+                "notes": "常用"
+              },
+              "日志文件": {
+                "type": "string",
+                "required": true,
+                "description": "日志文件路径         ",
+                "example": "/var/log/nginx/access.log",
+                "notes": "常用"
+              }
+            },
+            "keyword": "tail 最后N行"
+          },
+          {
+            "name": "同时查看多个日志",
+            "cmd": "tail -f %{日志目录}%/access.log %{日志目录}%/error.log",
+            "params": {
+              "日志目录": {
+                "type": "string",
+                "required": true,
+                "description": "Nginx日志目录      ",
+                "example": "/var/log/nginx",
+                "notes": "可选"
+              }
+            },
+            "keyword": "tail 多日志"
+          }
+        ],
+        "params": {
+          "日志文件": {
+            "type": "string",
+            "required": true,
+            "description": "Nginx日志文件路径    ",
+            "example": "/var/log/nginx/access.log",
+            "notes": "常用"
+          }
+        }
+      }
+    }
+  ]
+}

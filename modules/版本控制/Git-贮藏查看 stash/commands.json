@@ -1,0 +1,83 @@
+{
+  "module": "版本控制/Git-贮藏查看 stash",
+  "version": "2.0",
+  "description": "Git 暂存查看 - 查看 stash 中保存的临时修改内容。Stash 用于临时保存工作目录和暂存区的修改，以便切换分支或应用其他更改。这个命令让你在恢复 stash 前先查看具体变更内容。",
+  "commands": [
+    {
+      "dirPath": "/版本控制/",
+      "name": "git stash show 查看",
+      "keyword": "git stash show 查看",
+      "description": "查看 stash 内容的文件变更统计。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git stash show",
+        "extensions": [
+          {
+            "name": "查看最近 stash 的统计信息",
+            "cmd": "git stash show",
+            "params": {}
+          },
+          {
+            "name": "查看指定 stash 的完整变更",
+            "cmd": "git stash show -p %{序号}%",
+            "params": {
+              "序号": {
+                "type": "string",
+                "required": false,
+                "description": "Stash 序号       ",
+                "example": "stash@{0}",
+                "notes": "默认为 stash@{0}"
+              }
+            }
+          },
+          {
+            "name": "查看 stash 列表",
+            "cmd": "git stash list",
+            "params": {}
+          },
+          {
+            "name": "查看 stash@{0} 的详细变更",
+            "cmd": "git stash show -p",
+            "params": {}
+          },
+          {
+            "name": "查看某个 stash 的统计",
+            "cmd": "git stash show %{序号}%",
+            "params": {
+              "序号": {
+                "type": "string",
+                "required": false,
+                "description": "Stash 序号       ",
+                "example": "stash@{1}",
+                "notes": "查看第二个 stash"
+              }
+            }
+          },
+          {
+            "name": "查看 stash 包括未追踪文件",
+            "cmd": "git stash show --include-untracked",
+            "params": {}
+          },
+          {
+            "name": "查看 stash 并显示路径",
+            "cmd": "git stash show --stat",
+            "params": {}
+          },
+          {
+            "name": "比较 stash 与当前状态",
+            "cmd": "git diff %{序号}% HEAD",
+            "params": {
+              "序号": {
+                "type": "string",
+                "required": false,
+                "description": "Stash 序号       ",
+                "example": "stash@{0}",
+                "notes": "对比 stash 与当前分支"
+              }
+            }
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

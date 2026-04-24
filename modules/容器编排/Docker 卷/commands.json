@@ -1,0 +1,176 @@
+{
+  "module": "容器编排/Docker 卷",
+  "version": "2.0",
+  "description": "Docker 卷命令集合，涵盖Docker 卷的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker volume create 创建卷",
+      "keyword": "docker volume 创建",
+      "description": "创建数据卷。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker volume create %{卷名}%",
+        "extensions": [
+          {
+            "name": "指定驱动创建卷",
+            "description": "使用指定的卷驱动创建卷",
+            "cmd": "docker volume create --driver local %{卷名}%"
+          },
+          {
+            "name": "添加标签",
+            "description": "为卷添加标签便于分类管理",
+            "cmd": "docker volume create --label env=prod %{卷名}%"
+          },
+          {
+            "name": "指定驱动选项",
+            "description": "传递特定驱动选项给卷驱动",
+            "cmd": "docker volume create --driver local --opt type=none --opt o=bind %{卷名}%"
+          },
+          {
+            "name": "创建匿名卷",
+            "description": "创建不带名称的匿名卷，容器重启时自动清理",
+            "cmd": "docker volume create"
+          }
+        ],
+        "params": {
+          "卷名": {
+            "type": "string",
+            "required": true,
+            "description": "卷名             ",
+            "example": "mydata",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker volume ls 列表",
+      "keyword": "docker volume 列表",
+      "description": "列出卷。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker volume ls",
+        "extensions": [
+          {
+            "name": "格式化输出",
+            "description": "以表格形式显示卷信息",
+            "cmd": "docker volume ls --format \"table {{.Name}}\t{{.Driver}}\""
+          },
+          {
+            "name": "过滤悬空卷",
+            "description": "列出未被任何容器使用的卷",
+            "cmd": "docker volume ls -f dangling=true"
+          },
+          {
+            "name": "按驱动过滤",
+            "description": "只显示特定驱动类型的卷",
+            "cmd": "docker volume ls --filter driver=local"
+          },
+          {
+            "name": "JSON格式输出",
+            "description": "输出JSON格式便于程序解析",
+            "cmd": "docker volume ls --format json"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker volume rm 删除卷",
+      "keyword": "docker volume 删除",
+      "description": "删除一个或多个卷。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker volume rm %{卷名}%",
+        "extensions": [
+          {
+            "name": "强制删除",
+            "description": "强制删除正在使用的卷",
+            "cmd": "docker volume rm --force %{卷名}%"
+          },
+          {
+            "name": "删除多个卷",
+            "description": "一次性删除多个卷",
+            "cmd": "docker volume rm %{卷名1}% %{卷名2}%"
+          },
+          {
+            "name": "忽略不存在的卷",
+            "description": "删除时不报错继续执行",
+            "cmd": "docker volume rm %{卷名}% 2>/dev/null || true"
+          }
+        ],
+        "params": {
+          "卷名": {
+            "type": "string",
+            "required": true,
+            "description": "卷名",
+            "example": "mydata",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker volume inspect 检查卷",
+      "keyword": "docker volume 检查",
+      "description": "查看卷的详细信息。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker volume inspect %{卷名}%",
+        "extensions": [
+          {
+            "name": "格式化输出",
+            "description": "使用Go模板格式化输出",
+            "cmd": "docker volume inspect --format '{{.Name}} - {{.Mountpoint}}' %{卷名}%"
+          },
+          {
+            "name": "查看所有卷信息",
+            "description": "查看所有卷的详细信息",
+            "cmd": "docker volume inspect $(docker volume ls -q)"
+          },
+          {
+            "name": "查看卷标签",
+            "description": "只显示卷的标签信息",
+            "cmd": "docker volume inspect --format '{{json .Labels}}' %{卷名}%"
+          }
+        ],
+        "params": {
+          "卷名": {
+            "type": "string",
+            "required": true,
+            "description": "卷名",
+            "example": "mydata",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker volume prune 清理卷",
+      "keyword": "docker volume 清理",
+      "description": "删除所有未使用的卷。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker volume prune",
+        "extensions": [
+          {
+            "name": "强制清理不确认",
+            "description": "直接删除不提示确认",
+            "cmd": "docker volume prune --force"
+          },
+          {
+            "name": "过滤清理",
+            "description": "只删除符合过滤条件的卷",
+            "cmd": "docker volume prune --filter \"label=env=dev\""
+          },
+          {
+            "name": "清理前预览",
+            "description": "先查看会删除哪些卷",
+            "cmd": "docker volume ls -f dangling=true"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

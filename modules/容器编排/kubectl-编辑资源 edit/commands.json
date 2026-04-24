@@ -1,0 +1,104 @@
+{
+  "module": "容器编排/kubectl-编辑资源 edit",
+  "version": "2.0",
+  "description": "kubectl 资源编辑，涵盖kubectl edit的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl edit 编辑资源",
+      "keyword": "kubectl edit 编辑",
+      "description": "编辑资源配置文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl edit %{类型}% %{名称}%",
+        "extensions": [
+          {
+            "name": "编辑Deployment",
+            "cmd": "kubectl edit deployment %{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment名称",
+                "example": "my-deployment",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl edit deployment"
+          },
+          {
+            "name": "编辑Service",
+            "cmd": "kubectl edit service %{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Service名称",
+                "example": "my-service",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl edit service"
+          },
+          {
+            "name": "编辑ConfigMap",
+            "cmd": "kubectl edit configmap %{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "ConfigMap名称",
+                "example": "my-config",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl edit configmap"
+          },
+          {
+            "name": "编辑持久卷",
+            "cmd": "kubectl edit persistentvolume %{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "持久卷名称",
+                "example": "my-pv",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl edit pv"
+          },
+          {
+            "name": "编辑Ingress",
+            "cmd": "kubectl edit ingress %{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Ingress名称",
+                "example": "my-ingress",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl edit ingress"
+          }
+        ],
+        "params": {
+          "类型": {
+            "type": "string",
+            "required": true,
+            "description": "类型             ",
+            "example": "deployment",
+            "notes": "必填"
+          },
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "名              ",
+            "example": "myapp",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

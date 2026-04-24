@@ -1,0 +1,1527 @@
+{
+  "module": "数据库/Redis-有序集合 sorted",
+  "version": "2.0",
+  "description": "Redis-有序集合命令集合，涵盖Redis-有序集合的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/数据库/",
+      "name": "zadd 添加有序集合",
+      "keyword": "zadd sorted set",
+      "description": "向有序集合添加成员及分数。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "zadd %{键名}% %{分数}% %{成员}%",
+        "extensions": [
+          {
+            "name": "批量添加",
+            "cmd": "zadd %{键名}% %{分数1}% %{成员1}% %{分数2}% %{成员2}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "分数1": {
+                "type": "number",
+                "required": true,
+                "description": "第一个成员分数        ",
+                "example": "100",
+                "notes": "可选"
+              },
+              "成员1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个成员          ",
+                "example": "alice",
+                "notes": "可选"
+              },
+              "分数2": {
+                "type": "number",
+                "required": true,
+                "description": "第二个成员分数        ",
+                "example": "90",
+                "notes": "可选"
+              },
+              "成员2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个成员          ",
+                "example": "bob",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zadd 批量"
+          },
+          {
+            "name": "带选项添加",
+            "cmd": "zadd %{键名}% <NX|XX|GT|LT> <CH> <INCR> %{分数}% %{成员}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "分数": {
+                "type": "number",
+                "required": true,
+                "description": "成员分数           ",
+                "example": "100",
+                "notes": "可选"
+              },
+              "成员": {
+                "type": "string",
+                "required": true,
+                "description": "成员名            ",
+                "example": "alice",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zadd 选项 NX XX GT LT CH INCR"
+          },
+          {
+            "name": "仅更新已存在成员",
+            "cmd": "zadd %{键名}% XX %{分数}% %{成员}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "分数": {
+                "type": "number",
+                "required": true,
+                "description": "成员分数           ",
+                "example": "150",
+                "notes": "可选"
+              },
+              "成员": {
+                "type": "string",
+                "required": true,
+                "description": "成员名            ",
+                "example": "alice",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zadd XX 仅更新已存在"
+          },
+          {
+            "name": "仅添加新成员",
+            "cmd": "zadd %{键名}% NX %{分数}% %{成员}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "分数": {
+                "type": "number",
+                "required": true,
+                "description": "成员分数           ",
+                "example": "100",
+                "notes": "可选"
+              },
+              "成员": {
+                "type": "string",
+                "required": true,
+                "description": "成员名            ",
+                "example": "charlie",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zadd NX 仅添加新成员"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "有序集合键名         ",
+            "example": "leaderboard",
+            "notes": "常用"
+          },
+          "分数": {
+            "type": "number",
+            "required": true,
+            "description": "成员分数           ",
+            "example": "100",
+            "notes": "必填"
+          },
+          "成员": {
+            "type": "string",
+            "required": true,
+            "description": "成员名            ",
+            "example": "alice",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "zrange 查询有序集合",
+      "keyword": "zrange sorted set",
+      "description": "按索引区间返回有序集合成员。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "zrange %{键名}% %{起始索引}% %{结束索引}%",
+        "extensions": [
+          {
+            "name": "带分数返回",
+            "cmd": "zrange %{键名}% %{起始索引}% %{结束索引}% WITHSCORES",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "常用"
+              },
+              "起始索引": {
+                "type": "number",
+                "required": true,
+                "description": "起始索引位置         ",
+                "example": "0",
+                "notes": "可选"
+              },
+              "结束索引": {
+                "type": "number",
+                "required": true,
+                "description": "结束索引位置         ",
+                "example": "-1",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zrange WITHSCORES 带分数"
+          },
+          {
+            "name": "带lex返回",
+            "cmd": "zrange %{键名}% %{最小}% %{最大}% BYLEX",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "最小": {
+                "type": "string",
+                "required": true,
+                "description": "最小lex值         ",
+                "example": "[a",
+                "notes": "可选"
+              },
+              "最大": {
+                "type": "string",
+                "required": true,
+                "description": "最大lex值         ",
+                "example": "(z",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zrange BYLEX lex"
+          },
+          {
+            "name": "带lex和分数返回",
+            "cmd": "zrange %{键名}% %{最小}% %{最大}% BYLEX WITHSCORES",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "最小": {
+                "type": "string",
+                "required": true,
+                "description": "最小lex值         ",
+                "example": "[a",
+                "notes": "可选"
+              },
+              "最大": {
+                "type": "string",
+                "required": true,
+                "description": "最大lex值         ",
+                "example": "(z",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zrange BYLEX WITHSCORES 带lex带分数"
+          },
+          {
+            "name": "带rev反转",
+            "cmd": "zrange %{键名}% %{起始索引}% %{结束索引}% REV",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "起始索引": {
+                "type": "number",
+                "required": true,
+                "description": "起始索引位置         ",
+                "example": "0",
+                "notes": "可选"
+              },
+              "结束索引": {
+                "type": "number",
+                "required": true,
+                "description": "结束索引位置         ",
+                "example": "-1",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zrange REV 反转"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "有序集合键名         ",
+            "example": "leaderboard",
+            "notes": "常用"
+          },
+          "起始索引": {
+            "type": "number",
+            "required": true,
+            "description": "起始索引位置         ",
+            "example": "0",
+            "notes": "必填"
+          },
+          "结束索引": {
+            "type": "number",
+            "required": true,
+            "description": "结束索引位置（-1表示最后） ",
+            "example": "-1",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "zrevrange 逆序查询",
+      "keyword": "zrevrange sorted set",
+      "description": "按索引区间逆序返回有序集合成员。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "zrevrange %{键名}% %{起始索引}% %{结束索引}%",
+        "extensions": [
+          {
+            "name": "带分数逆序返回",
+            "cmd": "zrevrange %{键名}% %{起始索引}% %{结束索引}% WITHSCORES",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "起始索引": {
+                "type": "number",
+                "required": true,
+                "description": "起始索引位置         ",
+                "example": "0",
+                "notes": "可选"
+              },
+              "结束索引": {
+                "type": "number",
+                "required": true,
+                "description": "结束索引位置         ",
+                "example": "-1",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zrevrange WITHSCORES 带分数"
+          },
+          {
+            "name": "带偏移量和限制",
+            "cmd": "zrevrange %{键名}% %{起始索引}% %{结束索引}% LIMIT %{偏移量}% %{数量}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "起始索引": {
+                "type": "number",
+                "required": true,
+                "description": "起始索引位置         ",
+                "example": "0",
+                "notes": "可选"
+              },
+              "结束索引": {
+                "type": "number",
+                "required": true,
+                "description": "结束索引位置         ",
+                "example": "-1",
+                "notes": "可选"
+              },
+              "偏移量": {
+                "type": "number",
+                "required": true,
+                "description": "偏移量            ",
+                "example": "0",
+                "notes": "可选"
+              },
+              "数量": {
+                "type": "number",
+                "required": true,
+                "description": "返回数量           ",
+                "example": "10",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zrevrange LIMIT 偏移量 限制"
+          },
+          {
+            "name": "带分数和位置返回",
+            "cmd": "zrevrange %{键名}% %{起始索引}% %{结束索引}% WITHSCORES LIMIT %{偏移量}% %{数量}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "起始索引": {
+                "type": "number",
+                "required": true,
+                "description": "起始索引位置         ",
+                "example": "0",
+                "notes": "可选"
+              },
+              "结束索引": {
+                "type": "number",
+                "required": true,
+                "description": "结束索引位置         ",
+                "example": "-1",
+                "notes": "可选"
+              },
+              "偏移量": {
+                "type": "number",
+                "required": true,
+                "description": "偏移量            ",
+                "example": "0",
+                "notes": "可选"
+              },
+              "数量": {
+                "type": "number",
+                "required": true,
+                "description": "返回数量           ",
+                "example": "10",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zrevrange WITHSCORES LIMIT 完整分页"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "有序集合键名         ",
+            "example": "leaderboard",
+            "notes": "必填"
+          },
+          "起始索引": {
+            "type": "number",
+            "required": true,
+            "description": "起始索引位置         ",
+            "example": "0",
+            "notes": "必填"
+          },
+          "结束索引": {
+            "type": "number",
+            "required": true,
+            "description": "结束索引位置（-1表示最后） ",
+            "example": "-1",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "zrank 获取排名",
+      "keyword": "zrank sorted set",
+      "description": "返回成员在有序集合中的排名（按分数从小到大）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "zrank %{键名}% %{成员}%",
+        "extensions": [
+          {
+            "name": "带分数获取排名",
+            "cmd": "zrank %{键名}% %{成员}% WITHSCORE",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "常用"
+              },
+              "成员": {
+                "type": "string",
+                "required": true,
+                "description": "成员名            ",
+                "example": "alice",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zrank WITHSCORE 带分数"
+          },
+          {
+            "name": "获取排名并返回分数",
+            "cmd": "zrank %{键名}% %{成员}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "常用"
+              },
+              "成员": {
+                "type": "string",
+                "required": true,
+                "description": "成员名            ",
+                "example": "alice",
+                "notes": "必填"
+              }
+            },
+            "keyword": "zrank 获取排名 分数"
+          },
+          {
+            "name": "检查成员是否存在",
+            "cmd": "zrank %{键名}% %{成员}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "成员": {
+                "type": "string",
+                "required": true,
+                "description": "成员名            ",
+                "example": "alice",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zrank 检查成员存在"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "有序集合键名         ",
+            "example": "leaderboard",
+            "notes": "常用"
+          },
+          "成员": {
+            "type": "string",
+            "required": true,
+            "description": "成员名            ",
+            "example": "alice",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "zrevrank 逆序排名",
+      "keyword": "zrevrank sorted set",
+      "description": "返回成员在有序集合中的逆序排名（分数从大到小）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "zrevrank %{键名}% %{成员}%",
+        "extensions": [
+          {
+            "name": "带分数逆序排名",
+            "cmd": "zrevrank %{键名}% %{成员}% WITHSCORE",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "成员": {
+                "type": "string",
+                "required": true,
+                "description": "成员名            ",
+                "example": "alice",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zrevrank WITHSCORE 带分数"
+          },
+          {
+            "name": "获取逆序排名",
+            "cmd": "zrevrank %{键名}% %{成员}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "成员": {
+                "type": "string",
+                "required": true,
+                "description": "成员名            ",
+                "example": "alice",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zrevrank 获取逆序排名"
+          },
+          {
+            "name": "检查成员逆序排名存在",
+            "cmd": "zrevrank %{键名}% %{成员}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "成员": {
+                "type": "string",
+                "required": true,
+                "description": "成员名            ",
+                "example": "alice",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zrevrank 检查成员存在"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "有序集合键名         ",
+            "example": "leaderboard",
+            "notes": "必填"
+          },
+          "成员": {
+            "type": "string",
+            "required": true,
+            "description": "成员名            ",
+            "example": "alice",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "zscore 获取分数",
+      "keyword": "zscore sorted set",
+      "description": "返回成员的分数。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "zscore %{键名}% %{成员}%",
+        "extensions": [
+          {
+            "name": "获取成员分数",
+            "cmd": "zscore %{键名}% %{成员}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "常用"
+              },
+              "成员": {
+                "type": "string",
+                "required": true,
+                "description": "成员名            ",
+                "example": "alice",
+                "notes": "必填"
+              }
+            },
+            "keyword": "zscore 获取分数"
+          },
+          {
+            "name": "检查成员是否存在",
+            "cmd": "zscore %{键名}% %{成员}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "常用"
+              },
+              "成员": {
+                "type": "string",
+                "required": true,
+                "description": "成员名            ",
+                "example": "alice",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zscore 检查成员存在"
+          },
+          {
+            "name": "获取排名分数",
+            "cmd": "zscore %{键名}% %{成员}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "常用"
+              },
+              "成员": {
+                "type": "string",
+                "required": true,
+                "description": "成员名            ",
+                "example": "alice",
+                "notes": "必填"
+              }
+            },
+            "keyword": "zscore 获取排名分数"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "有序集合键名         ",
+            "example": "leaderboard",
+            "notes": "常用"
+          },
+          "成员": {
+            "type": "string",
+            "required": true,
+            "description": "成员名            ",
+            "example": "alice",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "zcard 获取成员数",
+      "keyword": "zcard sorted set",
+      "description": "返回有序集合中的成员数量。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "zcard %{键名}%",
+        "extensions": [
+          {
+            "name": "获取成员数量",
+            "cmd": "zcard %{键名}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "必填"
+              }
+            },
+            "keyword": "zcard 获取成员数量"
+          },
+          {
+            "name": "检查集合是否为空",
+            "cmd": "zcard %{键名}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zcard 检查集合为空"
+          },
+          {
+            "name": "获取排行榜总人数",
+            "cmd": "zcard %{键名}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "常用"
+              }
+            },
+            "keyword": "zcard 排行榜总人数"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "有序集合键名         ",
+            "example": "leaderboard",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "zcount 统计分数范围成员",
+      "keyword": "zcount sorted set",
+      "description": "返回指定分数范围内的成员数量。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "zcount %{键名}% %{最小分数}% %{最大分数}%",
+        "extensions": [
+          {
+            "name": "闭区间统计",
+            "cmd": "zcount %{键名}% %{最小分数}% %{最大分数}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "最小分数": {
+                "type": "number",
+                "required": true,
+                "description": "最小分数（闭区间）      ",
+                "example": "80",
+                "notes": "可选"
+              },
+              "最大分数": {
+                "type": "number",
+                "required": true,
+                "description": "最大分数（闭区间）      ",
+                "example": "100",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zcount 闭区间"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "有序集合键名         ",
+            "example": "leaderboard",
+            "notes": "必填"
+          },
+          "最小分数": {
+            "type": "number",
+            "required": true,
+            "description": "最小分数           ",
+            "example": "80",
+            "notes": "必填"
+          },
+          "最大分数": {
+            "type": "number",
+            "required": true,
+            "description": "最大分数           ",
+            "example": "100",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "zrangebyscore 按分数范围查询",
+      "keyword": "zrangebyscore sorted set",
+      "description": "返回指定分数范围内的成员。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "ZRANGEBYSCORE %{键名}% %{最小分数}% %{最大分数}%",
+        "extensions": [
+          {
+            "name": "带偏移量和限制",
+            "cmd": "ZRANGEBYSCORE %{键名}% %{最小分数}% %{最大分数}% LIMIT %{偏移量}% %{数量}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "最小分数": {
+                "type": "number",
+                "required": true,
+                "description": "最小分数           ",
+                "example": "0",
+                "notes": "可选"
+              },
+              "最大分数": {
+                "type": "number",
+                "required": true,
+                "description": "最大分数           ",
+                "example": "100",
+                "notes": "可选"
+              },
+              "偏移量": {
+                "type": "number",
+                "required": true,
+                "description": "偏移量            ",
+                "example": "0",
+                "notes": "可选"
+              },
+              "数量": {
+                "type": "number",
+                "required": true,
+                "description": "返回数量           ",
+                "example": "10",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zrangebyscore LIMIT 偏移量"
+          },
+          {
+            "name": "带分数返回",
+            "cmd": "ZRANGEBYSCORE %{键名}% %{最小分数}% %{最大分数}% WITHSCORES",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "最小分数": {
+                "type": "number",
+                "required": true,
+                "description": "最小分数           ",
+                "example": "0",
+                "notes": "可选"
+              },
+              "最大分数": {
+                "type": "number",
+                "required": true,
+                "description": "最大分数           ",
+                "example": "100",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zrangebyscore WITHSCORES 带分数"
+          },
+          {
+            "name": "反转顺序返回",
+            "cmd": "ZREVRANGEBYSCORE %{键名}% %{最大分数}% %{最小分数}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "最大分数": {
+                "type": "number",
+                "required": true,
+                "description": "最大分数           ",
+                "example": "100",
+                "notes": "可选"
+              },
+              "最小分数": {
+                "type": "number",
+                "required": true,
+                "description": "最小分数           ",
+                "example": "0",
+                "notes": "可选"
+              }
+            },
+            "keyword": "ZREVRANGEBYSCORE 反转顺序"
+          },
+          {
+            "name": "带偏移量分页",
+            "cmd": "ZRANGEBYSCORE %{键名}% %{最小分数}% %{最大分数}% LIMIT %{偏移量}% %{数量}% WITHSCORES",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "最小分数": {
+                "type": "number",
+                "required": true,
+                "description": "最小分数           ",
+                "example": "0",
+                "notes": "可选"
+              },
+              "最大分数": {
+                "type": "number",
+                "required": true,
+                "description": "最大分数           ",
+                "example": "100",
+                "notes": "可选"
+              },
+              "偏移量": {
+                "type": "number",
+                "required": true,
+                "description": "偏移量            ",
+                "example": "0",
+                "notes": "可选"
+              },
+              "数量": {
+                "type": "number",
+                "required": true,
+                "description": "返回数量           ",
+                "example": "10",
+                "notes": "可选"
+              }
+            },
+            "keyword": "ZRANGEBYSCORE LIMIT WITHSCORES 分页带分数"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "有序集合键名         ",
+            "example": "leaderboard",
+            "notes": "必填"
+          },
+          "最小分数": {
+            "type": "number",
+            "required": true,
+            "description": "最小分数           ",
+            "example": "0",
+            "notes": "必填"
+          },
+          "最大分数": {
+            "type": "number",
+            "required": true,
+            "description": "最大分数           ",
+            "example": "100",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "zrem 删除成员",
+      "keyword": "zrem sorted set",
+      "description": "从有序集合中删除一个或多个成员。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "zrem %{键名}% %{成员}%",
+        "extensions": [
+          {
+            "name": "批量删除",
+            "cmd": "zrem %{键名}% %{成员1}% %{成员2}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "成员1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个成员          ",
+                "example": "alice",
+                "notes": "可选"
+              },
+              "成员2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个成员          ",
+                "example": "bob",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zrem 批量 删除多个"
+          },
+          {
+            "name": "删除并返回删除数量",
+            "cmd": "zrem %{键名}% %{成员1}% %{成员2}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "成员1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个成员          ",
+                "example": "alice",
+                "notes": "可选"
+              },
+              "成员2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个成员          ",
+                "example": "bob",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zrem 删除返回数量"
+          },
+          {
+            "name": "删除排行榜成员",
+            "cmd": "zrem %{键名}% %{成员}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "成员": {
+                "type": "string",
+                "required": true,
+                "description": "成员名            ",
+                "example": "alice",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zrem 删除排行榜成员"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "有序集合键名         ",
+            "example": "leaderboard",
+            "notes": "必填"
+          },
+          "成员": {
+            "type": "string",
+            "required": true,
+            "description": "成员名            ",
+            "example": "alice",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "zincrby 增加分数",
+      "keyword": "zincrby sorted set",
+      "description": "增加成员的分数。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "zincrby %{键名}% %{增量}% %{成员}%",
+        "extensions": [
+          {
+            "name": "减少分数",
+            "cmd": "zincrby %{键名}% %{负增量}% %{成员}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "负增量": {
+                "type": "number",
+                "required": true,
+                "description": "负增量（减少分数）      ",
+                "example": "-10",
+                "notes": "可选"
+              },
+              "成员": {
+                "type": "string",
+                "required": true,
+                "description": "成员名            ",
+                "example": "alice",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zincrby 减少 负数"
+          },
+          {
+            "name": "增加排行榜分数",
+            "cmd": "zincrby %{键名}% %{增量}% %{成员}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "增量": {
+                "type": "number",
+                "required": true,
+                "description": "分数增量           ",
+                "example": "10",
+                "notes": "可选"
+              },
+              "成员": {
+                "type": "string",
+                "required": true,
+                "description": "成员名            ",
+                "example": "alice",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zincrby 增加分数 排行榜"
+          },
+          {
+            "name": "更新积分",
+            "cmd": "zincrby %{键名}% %{增量}% %{成员}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "增量": {
+                "type": "number",
+                "required": true,
+                "description": "分数增量           ",
+                "example": "50",
+                "notes": "可选"
+              },
+              "成员": {
+                "type": "string",
+                "required": true,
+                "description": "成员名            ",
+                "example": "alice",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zincrby 更新积分"
+          },
+          {
+            "name": "批量增加分数",
+            "cmd": "zincrby %{键名}% %{增量}% %{成员}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "有序集合键名         ",
+                "example": "leaderboard",
+                "notes": "可选"
+              },
+              "增量": {
+                "type": "number",
+                "required": true,
+                "description": "分数增量           ",
+                "example": "5",
+                "notes": "可选"
+              },
+              "成员": {
+                "type": "string",
+                "required": true,
+                "description": "成员名            ",
+                "example": "alice",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zincrby 批量增加分数"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "有序集合键名         ",
+            "example": "leaderboard",
+            "notes": "必填"
+          },
+          "增量": {
+            "type": "number",
+            "required": true,
+            "description": "分数增量           ",
+            "example": "10",
+            "notes": "必填"
+          },
+          "成员": {
+            "type": "string",
+            "required": true,
+            "description": "成员名            ",
+            "example": "alice",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "zunionstore 并集存储",
+      "keyword": "zunionstore sorted set",
+      "description": "计算多个有序集合的并集并存储到目标键。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "zunionstore %{目标键名}% %{键数量}% %{键1}% %{键2}%",
+        "extensions": [
+          {
+            "name": "带权重并集",
+            "cmd": "zunionstore %{目标键名}% %{键数量}% %{键1}% %{键2}% WEIGHTS %{权重1}% %{权重2}%",
+            "params": {
+              "目标键名": {
+                "type": "string",
+                "required": true,
+                "description": "目标键名           ",
+                "example": "combined_leaderboard",
+                "notes": "可选"
+              },
+              "键数量": {
+                "type": "number",
+                "required": true,
+                "description": "参与并集的键数量       ",
+                "example": "2",
+                "notes": "可选"
+              },
+              "键1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个源键          ",
+                "example": "leaderboard1",
+                "notes": "可选"
+              },
+              "键2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个源键          ",
+                "example": "leaderboard2",
+                "notes": "可选"
+              },
+              "权重1": {
+                "type": "number",
+                "required": true,
+                "description": "第一个键的权重        ",
+                "example": "1",
+                "notes": "可选"
+              },
+              "权重2": {
+                "type": "number",
+                "required": true,
+                "description": "第二个键的权重        ",
+                "example": "2",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zunionstore WEIGHTS 权重"
+          },
+          {
+            "name": "带聚合方式",
+            "cmd": "zunionstore %{目标键名}% %{键数量}% %{键1}% %{键2}% AGGREGATE <SUM|MIN|MAX>",
+            "params": {
+              "目标键名": {
+                "type": "string",
+                "required": true,
+                "description": "目标键名           ",
+                "example": "combined_leaderboard",
+                "notes": "可选"
+              },
+              "键数量": {
+                "type": "number",
+                "required": true,
+                "description": "参与并集的键数量       ",
+                "example": "2",
+                "notes": "可选"
+              },
+              "键1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个源键          ",
+                "example": "leaderboard1",
+                "notes": "可选"
+              },
+              "键2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个源键          ",
+                "example": "leaderboard2",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zunionstore AGGREGATE 聚合 SUM MIN MAX"
+          }
+        ],
+        "params": {
+          "目标键名": {
+            "type": "string",
+            "required": true,
+            "description": "目标键名           ",
+            "example": "combined_leaderboard",
+            "notes": "必填"
+          },
+          "键数量": {
+            "type": "number",
+            "required": true,
+            "description": "参与并集的键数量       ",
+            "example": "2",
+            "notes": "必填"
+          },
+          "键1": {
+            "type": "string",
+            "required": true,
+            "description": "第一个源键          ",
+            "example": "leaderboard1",
+            "notes": "必填"
+          },
+          "键2": {
+            "type": "string",
+            "required": true,
+            "description": "第二个源键          ",
+            "example": "leaderboard2",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "zinterstore 交集存储",
+      "keyword": "zinterstore sorted set",
+      "description": "计算多个有序集合的交集并存储到目标键。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "zinterstore %{目标键名}% %{键数量}% %{键1}% %{键2}%",
+        "extensions": [
+          {
+            "name": "带权重交集",
+            "cmd": "zinterstore %{目标键名}% %{键数量}% %{键1}% %{键2}% WEIGHTS %{权重1}% %{权重2}%",
+            "params": {
+              "目标键名": {
+                "type": "string",
+                "required": true,
+                "description": "目标键名           ",
+                "example": "intersection_result",
+                "notes": "可选"
+              },
+              "键数量": {
+                "type": "number",
+                "required": true,
+                "description": "参与交集的键数量       ",
+                "example": "2",
+                "notes": "可选"
+              },
+              "键1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个源键          ",
+                "example": "leaderboard1",
+                "notes": "可选"
+              },
+              "键2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个源键          ",
+                "example": "leaderboard2",
+                "notes": "可选"
+              },
+              "权重1": {
+                "type": "number",
+                "required": true,
+                "description": "第一个键的权重        ",
+                "example": "1",
+                "notes": "可选"
+              },
+              "权重2": {
+                "type": "number",
+                "required": true,
+                "description": "第二个键的权重        ",
+                "example": "1",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zinterstore WEIGHTS 权重"
+          },
+          {
+            "name": "带聚合方式",
+            "cmd": "zinterstore %{目标键名}% %{键数量}% %{键1}% %{键2}% AGGREGATE <SUM|MIN|MAX>",
+            "params": {
+              "目标键名": {
+                "type": "string",
+                "required": true,
+                "description": "目标键名           ",
+                "example": "intersection_result",
+                "notes": "可选"
+              },
+              "键数量": {
+                "type": "number",
+                "required": true,
+                "description": "参与交集的键数量       ",
+                "example": "2",
+                "notes": "可选"
+              },
+              "键1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个源键          ",
+                "example": "leaderboard1",
+                "notes": "可选"
+              },
+              "键2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个源键          ",
+                "example": "leaderboard2",
+                "notes": "可选"
+              }
+            },
+            "keyword": "zinterstore AGGREGATE 聚合 SUM MIN MAX"
+          }
+        ],
+        "params": {
+          "目标键名": {
+            "type": "string",
+            "required": true,
+            "description": "目标键名           ",
+            "example": "intersection_result",
+            "notes": "必填"
+          },
+          "键数量": {
+            "type": "number",
+            "required": true,
+            "description": "参与交集的键数量       ",
+            "example": "2",
+            "notes": "必填"
+          },
+          "键1": {
+            "type": "string",
+            "required": true,
+            "description": "第一个源键          ",
+            "example": "leaderboard1",
+            "notes": "必填"
+          },
+          "键2": {
+            "type": "string",
+            "required": true,
+            "description": "第二个源键          ",
+            "example": "leaderboard2",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

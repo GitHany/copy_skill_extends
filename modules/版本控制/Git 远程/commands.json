@@ -1,0 +1,486 @@
+{
+  "module": "版本控制/Git 远程",
+  "version": "2.0",
+  "description": "Git 远程命令集合，涵盖Git 远程的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/版本控制/",
+      "name": "git remote add 添加远程",
+      "keyword": "git remote 添加",
+      "description": "添加远程仓库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git remote add %{远程名}% %{URL}%",
+        "extensions": [
+          {
+            "name": "添加远程仓库（带fetch引用）",
+            "cmd": "git remote add -f %{远程名}% %{URL}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名",
+                "example": "upstream",
+                "notes": "必填"
+              },
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "仓库 URL",
+                "example": "https://github.com/org/repo.git",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git remote add fetch"
+          },
+          {
+            "name": "添加远程仓库（带标签）",
+            "cmd": "git remote add --tags %{远程名}% %{URL}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名",
+                "example": "upstream",
+                "notes": "必填"
+              },
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "仓库 URL",
+                "example": "https://github.com/org/repo.git",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git remote add tags"
+          },
+          {
+            "name": "添加远程仓库（不获取）",
+            "cmd": "git remote add --no-fetch %{远程名}% %{URL}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名",
+                "example": "upstream",
+                "notes": "必填"
+              },
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "仓库 URL",
+                "example": "https://github.com/org/repo.git",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git remote add no-fetch"
+          },
+          {
+            "name": "添加远程仓库（指定refspec）",
+            "cmd": "git remote add %{远程名}% %{URL}% +refs/heads/*:refs/remotes/%{远程名}%/*",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名",
+                "example": "upstream",
+                "notes": "必填"
+              },
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "仓库 URL",
+                "example": "https://github.com/org/repo.git",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git remote add refspec"
+          }
+        ],
+        "params": {
+          "远程名": {
+            "type": "string",
+            "required": true,
+            "description": "远程名",
+            "example": "upstream",
+            "notes": "必填"
+          },
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "仓库 URL",
+            "example": "https://github.com/org/repo.git",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git remote remove 删除远程",
+      "keyword": "git remote 删除",
+      "description": "删除远程仓库连接。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git remote remove %{远程名}%",
+        "extensions": [
+          {
+            "name": "删除远程仓库（缩写）",
+            "cmd": "git remote rm %{远程名}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名",
+                "example": "upstream",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git remote rm"
+          },
+          {
+            "name": "删除远程仓库并清除引用",
+            "cmd": "git remote remove %{远程名}% && git branch -dr %{远程名}%/%{分支名}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名",
+                "example": "origin",
+                "notes": "必填"
+              },
+              "分支名": {
+                "type": "string",
+                "required": true,
+                "description": "分支名",
+                "example": "main",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git remote remove cleanup"
+          }
+        ],
+        "params": {
+          "远程名": {
+            "type": "string",
+            "required": true,
+            "description": "远程名",
+            "example": "upstream",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git remote rename 重命名远程",
+      "keyword": "git remote 重命名",
+      "description": "重命名远程仓库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git remote rename %{旧名}% %{新名}%",
+        "extensions": [
+          {
+            "name": "重命名远程并更新跟踪分支",
+            "cmd": "git remote rename %{旧名}% %{新名}% && git branch -u %{新名}%/%{分支名}%",
+            "params": {
+              "旧名": {
+                "type": "string",
+                "required": true,
+                "description": "原远程名",
+                "example": "origin",
+                "notes": "必填"
+              },
+              "新名": {
+                "type": "string",
+                "required": true,
+                "description": "新远程名",
+                "example": "upstream",
+                "notes": "必填"
+              },
+              "分支名": {
+                "type": "string",
+                "required": true,
+                "description": "分支名",
+                "example": "main",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git remote rename track"
+          },
+          {
+            "name": "重命名后查看结果",
+            "cmd": "git remote rename %{旧名}% %{新名}% && git remote -v",
+            "params": {
+              "旧名": {
+                "type": "string",
+                "required": true,
+                "description": "原远程名",
+                "example": "origin",
+                "notes": "必填"
+              },
+              "新名": {
+                "type": "string",
+                "required": true,
+                "description": "新远程名",
+                "example": "upstream",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git remote rename verify"
+          }
+        ],
+        "params": {
+          "旧名": {
+            "type": "string",
+            "required": true,
+            "description": "原远程名",
+            "example": "origin",
+            "notes": "必填"
+          },
+          "新名": {
+            "type": "string",
+            "required": true,
+            "description": "新远程名",
+            "example": "upstream",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git remote show 查看远程",
+      "keyword": "git remote 查看",
+      "description": "查看远程仓库详细信息。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git remote -v",
+        "extensions": [
+          {
+            "name": "简洁显示远程仓库列表",
+            "cmd": "git remote",
+            "params": {},
+            "keyword": "git remote list"
+          },
+          {
+            "name": "显示远程仓库详细信息",
+            "cmd": "git remote show %{远程名}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名",
+                "example": "origin",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git remote show verbose"
+          },
+          {
+            "name": "显示远程仓库并包含HEAD信息",
+            "cmd": "git remote show %{远程名}% -n",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名",
+                "example": "origin",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git remote show head"
+          },
+          {
+            "name": "批量显示所有远程详细信息",
+            "cmd": "for remote in $(git remote); do echo \"=== $remote ===\" && git remote show $remote; done",
+            "params": {},
+            "keyword": "git remote show all"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git remote set-url 设置远程URL",
+      "keyword": "git remote set-url",
+      "description": "设置远程仓库URL。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git remote set-url %{远程名}% %{URL}%",
+        "extensions": [
+          {
+            "name": "添加新的远程URL（保留现有）",
+            "cmd": "git remote set-url --add %{远程名}% %{URL}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名",
+                "example": "origin",
+                "notes": "必填"
+              },
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "新仓库 URL",
+                "example": "https://github.com/org/repo.git",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git remote set-url add"
+          },
+          {
+            "name": "删除远程URL",
+            "cmd": "git remote set-url --delete %{远程名}% %{URL}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名",
+                "example": "origin",
+                "notes": "必填"
+              },
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "要删除的 URL",
+                "example": "https://github.com/org/repo.git",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git remote set-url delete"
+          },
+          {
+            "name": "将SSH URL转换为HTTPS",
+            "cmd": "git remote set-url %{远程名}% https://github.com/%{用户}%/%{仓库}%.git",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名",
+                "example": "origin",
+                "notes": "必填"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "GitHub用户名",
+                "example": "octocat",
+                "notes": "必填"
+              },
+              "仓库": {
+                "type": "string",
+                "required": true,
+                "description": "仓库名",
+                "example": "repo",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git remote set-url https"
+          },
+          {
+            "name": "将HTTPS URL转换为SSH",
+            "cmd": "git remote set-url %{远程名}% git@github.com:%{用户}%/%{仓库}%.git",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名",
+                "example": "origin",
+                "notes": "必填"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "GitHub用户名",
+                "example": "octocat",
+                "notes": "必填"
+              },
+              "仓库": {
+                "type": "string",
+                "required": true,
+                "description": "仓库名",
+                "example": "repo",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git remote set-url ssh"
+          }
+        ],
+        "params": {
+          "远程名": {
+            "type": "string",
+            "required": true,
+            "description": "远程名",
+            "example": "origin",
+            "notes": "必填"
+          },
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "仓库 URL",
+            "example": "https://github.com/org/repo.git",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git remote prune 清理远程分支",
+      "keyword": "git remote prune",
+      "description": "清理远程已删除的分支引用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git remote prune %{远程名}%",
+        "extensions": [
+          {
+            "name": "预览清理将删除的分支",
+            "cmd": "git remote prune --dry-run %{远程名}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名",
+                "example": "origin",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git remote prune dry-run"
+          },
+          {
+            "name": "清理所有远程的过时引用",
+            "cmd": "git remote prune --all",
+            "params": {},
+            "keyword": "git remote prune all"
+          },
+          {
+            "name": "清理并显示删除的引用",
+            "cmd": "git remote prune -v %{远程名}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名",
+                "example": "origin",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git remote prune verbose"
+          },
+          {
+            "name": "fetch后自动prune",
+            "cmd": "git config --global fetch.prune true && git fetch --prune",
+            "params": {},
+            "keyword": "git remote prune auto"
+          }
+        ],
+        "params": {
+          "远程名": {
+            "type": "string",
+            "required": true,
+            "description": "远程名",
+            "example": "origin",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

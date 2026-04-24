@@ -1,0 +1,131 @@
+{
+  "module": "Linux系统/Linux 网络配置",
+  "version": "2.0",
+  "description": "Linux 网络配置命令集合，涵盖Linux 网络配置的常用操作和最佳实践",
+  "commands": [
+    {
+      "name": "显示路由表",
+      "cmd": "netstat -r",
+      "params": {},
+      "keyword": "netstat route",
+      "dirPath": "/Linux系统/",
+      "description": "显示路由表的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "params": "-n",
+            "description": "显示IP地址而不解析主机名"
+          },
+          {
+            "params": "-e",
+            "description": "显示详细的网络接口信息"
+          },
+          {
+            "params": "-c",
+            "description": "持续显示路由表变化"
+          },
+          {
+            "params": "%{interface}%",
+            "description": "指定显示特定接口的路由信息"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "name": "显示 UDP 连接",
+      "cmd": "ss -u",
+      "params": {},
+      "keyword": "ss udp",
+      "dirPath": "/Linux系统/",
+      "description": "显示 UDP 连接的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "params": "-a",
+            "description": "显示所有UDP连接包括监听和非监听"
+          },
+          {
+            "params": "-l",
+            "description": "仅显示监听状态的UDP连接"
+          },
+          {
+            "params": "-p",
+            "description": "显示进程使用UDP连接的情况"
+          },
+          {
+            "params": "-n",
+            "description": "以数字格式显示IP地址和端口"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "name": "清除规则",
+      "cmd": "iptables -F",
+      "params": {},
+      "keyword": "iptables flush",
+      "dirPath": "/Linux系统/",
+      "description": "清除规则的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "params": "-t %{table}%",
+            "description": "指定要清除的表默认为filter表"
+          },
+          {
+            "params": "-X",
+            "description": "清除用户自定义的链"
+          },
+          {
+            "params": "-Z",
+            "description": "清除所有链的计数器"
+          },
+          {
+            "params": "-F INPUT",
+            "description": "仅清除INPUT链的规则"
+          },
+          {
+            "params": "-F OUTPUT",
+            "description": "仅清除OUTPUT链的规则"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "name": "禁用防火墙",
+      "cmd": "ufw disable",
+      "params": {},
+      "keyword": "ufw disable",
+      "dirPath": "/Linux系统/",
+      "description": "禁用防火墙的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "params": "--force",
+            "description": "强制禁用防火墙不进行确认"
+          },
+          {
+            "params": "ufw disable && ufw status",
+            "description": "禁用防火墙并检查状态"
+          },
+          {
+            "params": "--dry-run",
+            "description": "模拟执行不实际禁用防火墙"
+          },
+          {
+            "params": "systemctl stop ufw",
+            "description": "通过系统服务停止防火墙"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "module": "版本控制/Git-引用日志 Reflog",
+  "version": "2.0",
+  "description": "Git 引用日志管理，涵盖Git Reflog的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/版本控制/",
+      "name": "git reflog 查看日志",
+      "keyword": "git reflog 日志",
+      "description": "查看引用日志。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git reflog",
+        "extensions": [
+          {
+            "name": "显示最近20条",
+            "cmd": "git reflog -n 20",
+            "params": {},
+            "keyword": "reflog 最近条数"
+          },
+          {
+            "name": "显示所有引用日志",
+            "cmd": "git reflog --all",
+            "params": {},
+            "keyword": "reflog all"
+          },
+          {
+            "name": "格式化输出",
+            "cmd": "git reflog --format=%h %s",
+            "params": {},
+            "keyword": "reflog format"
+          },
+          {
+            "name": "按日期筛选",
+            "cmd": "git reflog --date=relative",
+            "params": {},
+            "keyword": "reflog date"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git reflog expire 过期清理",
+      "keyword": "git reflog 过期",
+      "description": "清理过期引用日志。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git reflog expire --expire=%{时间}% --all",
+        "extensions": [
+          {
+            "name": "清理30天前记录",
+            "cmd": "git reflog expire --expire=30 days ago --all",
+            "params": {},
+            "keyword": "reflog expire 30天"
+          },
+          {
+            "name": "清理一周前记录",
+            "cmd": "git reflog expire --expire=7 days ago --all",
+            "params": {},
+            "keyword": "reflog expire 7天"
+          },
+          {
+            "name": "强制清理",
+            "cmd": "git reflog expire --expire=%{时间}% --all --force",
+            "params": {},
+            "keyword": "reflog expire force"
+          },
+          {
+            "name": "清理特定引用",
+            "cmd": "git reflog expire --expire=%{时间}% HEAD",
+            "params": {},
+            "keyword": "reflog expire head"
+          }
+        ],
+        "params": {
+          "时间": {
+            "type": "string",
+            "required": true,
+            "description": "时间",
+            "example": "90 days ago",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

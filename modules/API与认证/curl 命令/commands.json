@@ -1,0 +1,396 @@
+{
+  "module": "API与认证/curl 命令",
+  "version": "2.0",
+  "description": "curl 命令命令集合，涵盖curl 命令的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/API与认证/",
+      "name": "curl GET 请求",
+      "keyword": "curl GET 请求",
+      "description": "发送 GET 请求。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "curl %{URL}%",
+        "extensions": [
+          {
+            "name": "显示响应头",
+            "cmd": "curl -i %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "目标 URL         ",
+                "example": "https://api.example.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "curl headers"
+          },
+          {
+            "name": "跟随重定向",
+            "cmd": "curl -L %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "目标 URL         ",
+                "example": "https://example.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "curl redirect"
+          },
+          {
+            "name": "设置User-Agent",
+            "cmd": "curl -A '%{user_agent}%' %{URL}%",
+            "params": {
+              "user_agent": {
+                "type": "string",
+                "required": true,
+                "description": "User-Agent字符串   ",
+                "example": "Mozilla/5.0",
+                "notes": "常用"
+              },
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "目标 URL         ",
+                "example": "https://api.example.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "curl user-agent UA"
+          },
+          {
+            "name": "忽略SSL证书错误",
+            "cmd": "curl -k %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "目标 URL         ",
+                "example": "https://api.example.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "curl SSL certificate ignore"
+          },
+          {
+            "name": "显示详细连接信息",
+            "cmd": "curl -v %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "目标 URL         ",
+                "example": "https://api.example.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "curl verbose debug"
+          }
+        ],
+        "params": {
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "目标 URL         ",
+            "example": "https://api.example.com/users",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "curl POST 请求",
+      "keyword": "curl POST 请求",
+      "description": "发送 POST 请求。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "curl -X POST %{URL}% -d '%{数据}%' -H 'Content-Type: application/json'",
+        "extensions": [
+          {
+            "name": "发送JSON数据",
+            "cmd": "curl -X POST -H 'Content-Type: application/json' -d '%{json数据}%' %{URL}%",
+            "params": {
+              "json数据": {
+                "type": "string",
+                "required": true,
+                "description": "JSON格式请求体    ",
+                "example": "{\"name\":\"John\",\"email\":\"john@example.com\"}",
+                "notes": "常用"
+              },
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "目标 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "必填"
+              }
+            },
+            "keyword": "curl POST JSON"
+          },
+          {
+            "name": "发送表单数据",
+            "cmd": "curl -X POST -d 'username=%{username}%&password=%{password}%' %{URL}%",
+            "params": {
+              "username": {
+                "type": "string",
+                "required": true,
+                "description": "用户名           ",
+                "example": "admin",
+                "notes": "常用"
+              },
+              "password": {
+                "type": "string",
+                "required": true,
+                "description": "密码             ",
+                "example": "123456",
+                "notes": "常用"
+              },
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "目标 URL         ",
+                "example": "https://api.example.com/login",
+                "notes": "必填"
+              }
+            },
+            "keyword": "curl POST form data"
+          },
+          {
+            "name": "带认证Token",
+            "cmd": "curl -X POST -H 'Authorization: Bearer %{token}%' -d '%{数据}%' %{URL}%",
+            "params": {
+              "token": {
+                "type": "string",
+                "required": true,
+                "description": "Bearer Token    ",
+                "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                "notes": "常用"
+              },
+              "数据": {
+                "type": "string",
+                "required": true,
+                "description": "请求体数据        ",
+                "example": "{\"name\":\"John\"}",
+                "notes": "常用"
+              },
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "目标 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "必填"
+              }
+            },
+            "keyword": "curl POST auth bearer token"
+          },
+          {
+            "name": "文件上传",
+            "cmd": "curl -X POST -F 'file=@%{文件路径}%' %{URL}%",
+            "params": {
+              "文件路径": {
+                "type": "string",
+                "required": true,
+                "description": "要上传的文件路径     ",
+                "example": "/path/to/image.png",
+                "notes": "常用"
+              },
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "目标 URL         ",
+                "example": "https://api.example.com/upload",
+                "notes": "必填"
+              }
+            },
+            "keyword": "curl POST file upload"
+          },
+          {
+            "name": "自定义请求头",
+            "cmd": "curl -X POST -H '%{header_name}%: %{header_value}%' -d '%{数据}%' %{URL}%",
+            "params": {
+              "header_name": {
+                "type": "string",
+                "required": true,
+                "description": "请求头名称        ",
+                "example": "X-Custom-Header",
+                "notes": "常用"
+              },
+              "header_value": {
+                "type": "string",
+                "required": true,
+                "description": "请求头值         ",
+                "example": "custom-value",
+                "notes": "常用"
+              },
+              "数据": {
+                "type": "string",
+                "required": true,
+                "description": "请求体数据        ",
+                "example": "{\"key\":\"value\"}",
+                "notes": "常用"
+              },
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "目标 URL         ",
+                "example": "https://api.example.com/api",
+                "notes": "必填"
+              }
+            },
+            "keyword": "curl POST custom header"
+          }
+        ],
+        "params": {
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "目标 URL         ",
+            "example": "https://api.example.com/users",
+            "notes": "必填"
+          },
+          "数据": {
+            "type": "string",
+            "required": true,
+            "description": "请求体 JSON       ",
+            "example": "{\"name\":\"John\"}",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "curl 下载文件",
+      "keyword": "curl 下载",
+      "description": "下载文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "curl -o %{文件名}% %{URL}%",
+        "extensions": [
+          {
+            "name": "显示进度下载",
+            "cmd": "curl -# -O %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "文件 URL         ",
+                "example": "https://example.com/file.zip",
+                "notes": "必填"
+              }
+            },
+            "keyword": "curl download progress"
+          },
+          {
+            "name": "断点续传下载",
+            "cmd": "curl -C - -o %{文件名}% %{URL}%",
+            "params": {
+              "文件名": {
+                "type": "string",
+                "required": true,
+                "description": "保存文件名        ",
+                "example": "output.zip",
+                "notes": "必填"
+              },
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "文件 URL         ",
+                "example": "https://example.com/largefile.zip",
+                "notes": "必填"
+              }
+            },
+            "keyword": "curl resume download"
+          },
+          {
+            "name": "限制下载速度",
+            "cmd": "curl --limit-rate %{速度}% -o %{文件名}% %{URL}%",
+            "params": {
+              "速度": {
+                "type": "string",
+                "required": true,
+                "description": "限速值（如 1M, 500K） ",
+                "example": "1M",
+                "notes": "常用"
+              },
+              "文件名": {
+                "type": "string",
+                "required": true,
+                "description": "保存文件名        ",
+                "example": "output.zip",
+                "notes": "必填"
+              },
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "文件 URL         ",
+                "example": "https://example.com/file.zip",
+                "notes": "必填"
+              }
+            },
+            "keyword": "curl limit rate speed"
+          },
+          {
+            "name": "静默下载",
+            "cmd": "curl -s -o %{文件名}% %{URL}%",
+            "params": {
+              "文件名": {
+                "type": "string",
+                "required": true,
+                "description": "保存文件名        ",
+                "example": "output.zip",
+                "notes": "必填"
+              },
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "文件 URL         ",
+                "example": "https://example.com/file.zip",
+                "notes": "必填"
+              }
+            },
+            "keyword": "curl silent quiet download"
+          },
+          {
+            "name": "同时下载多个文件",
+            "cmd": "curl -O %{URL1}% -O %{URL2}%",
+            "params": {
+              "URL1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个文件 URL    ",
+                "example": "https://example.com/file1.zip",
+                "notes": "必填"
+              },
+              "URL2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个文件 URL    ",
+                "example": "https://example.com/file2.zip",
+                "notes": "必填"
+              }
+            },
+            "keyword": "curl multiple download"
+          }
+        ],
+        "params": {
+          "文件名": {
+            "type": "string",
+            "required": true,
+            "description": "保存文件名          ",
+            "example": "output.zip",
+            "notes": "必填"
+          },
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "文件 URL         ",
+            "example": "https://example.com/file.zip",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

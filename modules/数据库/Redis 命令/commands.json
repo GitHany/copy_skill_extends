@@ -1,0 +1,117 @@
+{
+  "module": "数据库/Redis 命令",
+  "version": "2.0",
+  "description": "Redis 命令命令集合，涵盖Redis 命令的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/数据库/",
+      "name": "redis-cli 连接",
+      "keyword": "redis 连接",
+      "description": "连接 Redis 服务器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "redis-cli -h %{主机}% -p %{端口}%",
+        "extensions": [
+          {
+            "name": "带密码认证",
+            "cmd": "redis-cli -h %{主机}% -p %{端口}% -a %{密码}%",
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机             ",
+                "example": "localhost",
+                "notes": "必填"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口             ",
+                "example": "6379",
+                "notes": "必填"
+              },
+              "密码": {
+                "type": "string",
+                "required": true,
+                "description": "密码             ",
+                "example": "mypassword",
+                "notes": "必填"
+              }
+            },
+            "keyword": "redis auth"
+          }
+        ],
+        "params": {
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "Redis 主机地址     ",
+            "example": "localhost",
+            "notes": "必填"
+          },
+          "端口": {
+            "type": "string",
+            "required": true,
+            "description": "Redis 端口       ",
+            "example": "6379",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "SET 设置键值",
+      "keyword": "SET 设置",
+      "description": "设置键值对。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "SET %{key}% %{value}%",
+        "extensions": [
+          {
+            "name": "带过期时间",
+            "cmd": "SET %{key}% %{value}% EX %{秒数}%",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": true,
+                "description": "键名             ",
+                "example": "name",
+                "notes": "必填"
+              },
+              "value": {
+                "type": "string",
+                "required": true,
+                "description": "值              ",
+                "example": "John",
+                "notes": "必填"
+              },
+              "秒数": {
+                "type": "string",
+                "required": true,
+                "description": "过期秒数           ",
+                "example": "3600",
+                "notes": "必填"
+              }
+            },
+            "keyword": "SET EX"
+          }
+        ],
+        "params": {
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "键名             ",
+            "example": "username",
+            "notes": "必填"
+          },
+          "value": {
+            "type": "string",
+            "required": true,
+            "description": "值              ",
+            "example": "john123",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

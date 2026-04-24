@@ -1,0 +1,373 @@
+{
+  "module": "容器编排/Docker-版本信息 version",
+  "version": "2.0",
+  "description": "Docker version命令集合，涵盖Docker version的常用操作和最佳实践",
+  "commands": [
+    {
+      "name": "docker version --client 仅客户端",
+      "description": "仅显示 Docker 客户端版本信息，不连接服务端。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "params": {},
+      "keyword": "docker version client",
+      "dirPath": "/容器编排/",
+      "extensions": [
+        {
+          "name": "仅显示客户端版本",
+          "cmd": "docker version --format \"{{.Client.Version}}\"",
+          "params": {},
+          "keyword": "docker version client only"
+        },
+        {
+          "name": "显示客户端API版本",
+          "cmd": "docker version --format \"{{.Client.APIVersion}}\"",
+          "params": {},
+          "keyword": "docker version client api"
+        },
+        {
+          "name": "显示Go版本",
+          "cmd": "docker version --format \"{{.Client.GoVersion}}\"",
+          "params": {},
+          "keyword": "docker version go version"
+        },
+        {
+          "name": "显示客户端操作系统",
+          "cmd": "docker version --format \"{{.Client.Os}}\"",
+          "params": {},
+          "keyword": "docker version client os"
+        },
+        {
+          "name": "显示客户端架构",
+          "cmd": "docker version --format \"{{.Client.Arch}}\"",
+          "params": {},
+          "keyword": "docker version client arch"
+        }
+      ],
+      "data": {
+        "cmd": "docker version --client",
+        "extensions": [
+          {
+            "name": "仅显示客户端版本",
+            "cmd": "docker version --format \"{{.Client.Version}}\"",
+            "params": {},
+            "keyword": "docker version client only"
+          },
+          {
+            "name": "显示客户端API版本",
+            "cmd": "docker version --format \"{{.Client.APIVersion}}\"",
+            "params": {},
+            "keyword": "docker version client api"
+          },
+          {
+            "name": "显示Go版本",
+            "cmd": "docker version --format \"{{.Client.GoVersion}}\"",
+            "params": {},
+            "keyword": "docker version go version"
+          },
+          {
+            "name": "显示客户端操作系统",
+            "cmd": "docker version --format \"{{.Client.Os}}\"",
+            "params": {},
+            "keyword": "docker version client os"
+          },
+          {
+            "name": "显示客户端架构",
+            "cmd": "docker version --format \"{{.Client.Arch}}\"",
+            "params": {},
+            "keyword": "docker version client arch"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "name": "docker info 查看 Docker 信息",
+      "description": "显示 Docker 守护进程的详细配置信息，包括镜像仓库、存储驱动、日志驱动等",
+      "params": {
+        "过滤关键字": {
+          "type": "string",
+          "required": false,
+          "description": "过滤输出中的关键字",
+          "example": "Registry",
+          "notes": "可选，用于快速查找特定配置"
+        }
+      },
+      "keyword": "docker info",
+      "dirPath": "/容器编排/",
+      "extensions": [
+        {
+          "name": "格式化输出",
+          "cmd": "docker info --format \"{{json .}}\"",
+          "params": {},
+          "keyword": "docker info json format"
+        },
+        {
+          "name": "显示磁盘使用情况",
+          "cmd": "docker info --format \"{{.DriverStatus}}\"",
+          "params": {},
+          "keyword": "docker info disk usage"
+        },
+        {
+          "name": "显示仓库镜像",
+          "cmd": "docker info --format \"{{.RegistryConfig.Mirrors}}\"",
+          "params": {},
+          "keyword": "docker info registry mirrors"
+        },
+        {
+          "name": "显示存储驱动",
+          "cmd": "docker info --format \"{{.Driver}}\"",
+          "params": {},
+          "keyword": "docker info storage driver"
+        },
+        {
+          "name": "显示容器数量统计",
+          "cmd": "docker info --format \"{{.Containers}}\"",
+          "params": {},
+          "keyword": "docker info container count"
+        },
+        {
+          "name": "显示运行中容器数",
+          "cmd": "docker info --format \"{{.ContainersRunning}}\"",
+          "params": {},
+          "keyword": "docker info running containers"
+        },
+        {
+          "name": "显示镜像数量",
+          "cmd": "docker info --format \"{{.Images}}\"",
+          "params": {},
+          "keyword": "docker info image count"
+        },
+        {
+          "name": "显示插件列表",
+          "cmd": "docker info --format \"{{.Plugins}}\"",
+          "params": {},
+          "keyword": "docker info plugins"
+        },
+        {
+          "name": "显示内核版本",
+          "cmd": "docker info --format \"{{.KernelVersion}}\"",
+          "params": {},
+          "keyword": "docker info kernel"
+        },
+        {
+          "name": "显示操作系统",
+          "cmd": "docker info --format \"{{.OperatingSystem}}\"",
+          "params": {},
+          "keyword": "docker info os"
+        },
+        {
+          "name": "显示服务器版本",
+          "cmd": "docker info --format \"{{.ServerVersion}}\"",
+          "params": {},
+          "keyword": "docker info server version"
+        },
+        {
+          "name": "显示内存限制",
+          "cmd": "docker info --format \"{{.MemTotal}}\"",
+          "params": {},
+          "keyword": "docker info memory limit"
+        },
+        {
+          "name": "显示CPU数量",
+          "cmd": "docker info --format \"{{.NCPU}}\"",
+          "params": {},
+          "keyword": "docker info cpu count"
+        },
+        {
+          "name": "显示默认网桥信息",
+          "cmd": "docker info --format \"{{range .NetworkSettings.Networks}}{{.Bridge}}{{end}}\"",
+          "params": {},
+          "keyword": "docker info bridge network"
+        }
+      ],
+      "data": {
+        "cmd": "docker info",
+        "extensions": [
+          {
+            "name": "显示容器和镜像统计",
+            "cmd": "docker info --format \"容器: {{.Containers}}, 镜像: {{.Images}}\"",
+            "params": {},
+            "keyword": "docker info stats"
+          },
+          {
+            "name": "显示Docker根目录",
+            "cmd": "docker info --format \"{{.DockerRootDir}}\"",
+            "params": {},
+            "keyword": "docker info root dir"
+          },
+          {
+            "name": "显示日志驱动",
+            "cmd": "docker info --format \"{{.LoggingDriver}}\"",
+            "params": {},
+            "keyword": "docker info logging driver"
+          },
+          {
+            "name": "显示Cgroup驱动",
+            "cmd": "docker info --format \"{{.CgroupDriver}}\"",
+            "params": {},
+            "keyword": "docker info cgroup driver"
+          },
+          {
+            "name": "显示安全选项",
+            "cmd": "docker info --format \"{{.SecurityOptions}}\"",
+            "params": {},
+            "keyword": "docker info security"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "name": "docker version --format json JSON格式",
+      "description": "以 JSON 格式输出版本信息，便于程序解析。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "params": {},
+      "keyword": "docker version json",
+      "dirPath": "/容器编排/",
+      "extensions": [
+        {
+          "name": "格式化输出客户端版本",
+          "cmd": "docker version --format \"{{json .Client}}\"",
+          "params": {},
+          "keyword": "docker version json client"
+        },
+        {
+          "name": "格式化输出服务端版本",
+          "cmd": "docker version --format \"{{json .Server}}\"",
+          "params": {},
+          "keyword": "docker version json server"
+        },
+        {
+          "name": "Pretty JSON输出",
+          "cmd": "docker version --format \"{{json .}}\" | jq",
+          "params": {},
+          "keyword": "docker version pretty json"
+        },
+        {
+          "name": "显示构建信息",
+          "cmd": "docker version --format \"{{.Client.BuildInfo}}\"",
+          "params": {},
+          "keyword": "docker version build info"
+        },
+        {
+          "name": "显示版本信息概要",
+          "cmd": "docker version --format \"Client: {{.Client.Version}}, Server: {{.Server.Version}}\"",
+          "params": {},
+          "keyword": "docker version summary"
+        },
+        {
+          "name": "显示完整API版本",
+          "cmd": "docker version --format \"Client API: {{.Client.APIVersion}}, Server API: {{.Server.APIVersion}}\"",
+          "params": {},
+          "keyword": "docker version api version"
+        },
+        {
+          "name": "输出为文件",
+          "cmd": "docker version --format json > docker-version.json",
+          "params": {},
+          "keyword": "docker version save json"
+        },
+        {
+          "name": "显示平台信息",
+          "cmd": "docker version --format \"{{.Server.Os}}/{{.Server.Arch}}\"",
+          "params": {},
+          "keyword": "docker version platform"
+        },
+        {
+          "name": "显示容器运行时版本",
+          "cmd": "docker version --format \"{{.Server.ContainerRuntimeVersion}}\"",
+          "params": {},
+          "keyword": "docker version container runtime version"
+        },
+        {
+          "name": "显示操作系统详细信息",
+          "cmd": "docker version --format \"OS: {{.Server.Os}} {{.Server.OsVersion}}, Arch: {{.Server.Arch}}\"",
+          "params": {},
+          "keyword": "docker version os detail"
+        },
+        {
+          "name": "显示实验性功能状态",
+          "cmd": "docker version --format \"{{.Server.ExperimentalBuild}}\"",
+          "params": {},
+          "keyword": "docker version experimental"
+        },
+        {
+          "name": "显示版本对比信息",
+          "cmd": "docker version --format \"Client: {{.Client.Version}} ({{.Client.GitCommit}}), Server: {{.Server.Version}} ({{.Server.GitCommit}})\"",
+          "params": {},
+          "keyword": "docker version compare"
+        }
+      ],
+      "data": {
+        "cmd": "docker version --format json",
+        "extensions": [
+          {
+            "name": "显示版本号",
+            "cmd": "docker version --format \"{{.Client.Version}}\"",
+            "params": {},
+            "keyword": "docker version number"
+          },
+          {
+            "name": "显示Git提交ID",
+            "cmd": "docker version --format \"{{.Client.GitCommit}}\"",
+            "params": {},
+            "keyword": "docker version git commit"
+          },
+          {
+            "name": "显示容器运行时",
+            "cmd": "docker version --format \"{{.Server.ContainerRuntime}}\"",
+            "params": {},
+            "keyword": "docker version container runtime"
+          },
+          {
+            "name": "显示Kubernetes版本",
+            "cmd": "docker version --format \"{{.Server.KubernetesVersion}}\"",
+            "params": {},
+            "keyword": "docker version kubernetes"
+          },
+          {
+            "name": "显示操作系统信息",
+            "cmd": "docker version --format \"OS: {{.Server.Os}}, Arch: {{.Server.Arch}}\"",
+            "params": {},
+            "keyword": "docker version os arch"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "name": "docker --version 查看 CLI 版本",
+      "description": "仅显示 Docker CLI 客户端版本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "params": {},
+      "keyword": "docker --version",
+      "dirPath": "/容器编排/",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "name": "查看完整版本信息",
+            "cmd": "docker version",
+            "params": {},
+            "keyword": "docker version full"
+          },
+          {
+            "name": "查看服务端版本",
+            "cmd": "docker version --format \"{{.Server.Version}}\"",
+            "params": {},
+            "keyword": "docker version server"
+          },
+          {
+            "name": "查看客户端版本",
+            "cmd": "docker version --format \"{{.Client.Version}}\"",
+            "params": {},
+            "keyword": "docker version client"
+          },
+          {
+            "name": "JSON格式输出",
+            "cmd": "docker version --format json",
+            "params": {},
+            "keyword": "docker version json"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

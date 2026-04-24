@@ -1,0 +1,137 @@
+{
+  "module": "容器编排/K8s-入口路由 Ingress",
+  "version": "2.0",
+  "description": "Kubernetes Ingress 资源管理",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl get ingress 查看 Ingress",
+      "keyword": "kubectl ingress 查看",
+      "description": "列出 Ingress 资源。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl get ingress",
+        "extensions": [
+          {
+            "name": "指定命名空间",
+            "cmd": "kubectl get ingress -n %{命名空间}%",
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间           ",
+                "example": "default",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl ingress ns"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl describe ingress 描述 Ingress",
+      "keyword": "kubectl ingress 描述",
+      "description": "查看 Ingress 详情。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl describe ingress %{名称}% -n %{命名空间}%",
+        "extensions": [
+          {
+            "name": "查看所有命名空间 Ingress",
+            "cmd": "kubectl describe ingress %{名称}% -A",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Ingress 名",
+                "example": "my-ingress",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl ingress all-ns"
+          },
+          {
+            "name": "查看 Ingress 规则",
+            "cmd": "kubectl describe ingress %{名称}% -n %{命名空间}% | grep -A 10 Rules",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Ingress 名",
+                "example": "my-ingress",
+                "notes": "必填"
+              },
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间",
+                "example": "default",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl ingress rules"
+          },
+          {
+            "name": "查看后端服务",
+            "cmd": "kubectl describe ingress %{名称}% -n %{命名空间}% | grep -A 5 Backend",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Ingress 名",
+                "example": "my-ingress",
+                "notes": "必填"
+              },
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间",
+                "example": "production",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl ingress backend"
+          },
+          {
+            "name": "查看 TLS 配置",
+            "cmd": "kubectl describe ingress %{名称}% -n %{命名空间}% | grep -A 5 TLS",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Ingress 名",
+                "example": "my-ingress",
+                "notes": "必填"
+              },
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间",
+                "example": "production",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl ingress tls"
+          }
+        ],
+        "params": {
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "Ingress 名      ",
+            "example": "my-ingress",
+            "notes": "必填"
+          },
+          "命名空间": {
+            "type": "string",
+            "required": true,
+            "description": "命名空间           ",
+            "example": "production",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

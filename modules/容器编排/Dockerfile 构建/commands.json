@@ -1,0 +1,201 @@
+{
+  "module": "容器编排/Dockerfile 构建",
+  "version": "2.0",
+  "description": "Docker 镜像构建相关命令，涵盖Dockerfile 构建的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker build 构建镜像",
+      "keyword": "docker build 构建",
+      "description": "从 Dockerfile 构建镜像。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker build -t %{镜像名}% .",
+        "extensions": [
+          {
+            "name": "带构建参数",
+            "cmd": "docker build --build-arg %{参数}%=%{值}% -t %{镜像}% .",
+            "params": {
+              "参数": {
+                "type": "string",
+                "required": true,
+                "description": "构建参数名          ",
+                "example": "NODE_ENV",
+                "notes": "必填"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "参数值            ",
+                "example": "production",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名            ",
+                "example": "myapp:latest",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker build arg"
+          },
+          {
+            "name": "无缓存构建",
+            "cmd": "docker build --no-cache -t %{镜像}% .",
+            "params": {
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名            ",
+                "example": "myapp:latest",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker build no-cache"
+          }
+        ],
+        "params": {
+          "镜像名": {
+            "type": "string",
+            "required": true,
+            "description": "镜像名称和标签        ",
+            "example": "myapp:1.0",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker tag 标记镜像",
+      "keyword": "docker tag 标记",
+      "description": "给镜像打标签。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker tag %{源镜像}% %{目标镜像}%",
+        "extensions": [
+          {
+            "name": "添加镜像版本标签",
+            "cmd": "docker tag %{源镜像}% %{目标镜像}%:%{版本}%",
+            "params": {
+              "源镜像": {
+                "type": "string",
+                "required": true,
+                "description": "源镜像",
+                "example": "myapp:latest",
+                "notes": "必填"
+              },
+              "目标镜像": {
+                "type": "string",
+                "required": true,
+                "description": "目标镜像",
+                "example": "registry.com/myapp",
+                "notes": "必填"
+              },
+              "版本": {
+                "type": "string",
+                "required": true,
+                "description": "版本标签",
+                "example": "v1.0.0",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker tag version"
+          },
+          {
+            "name": "推送到私有仓库",
+            "cmd": "docker tag %{源镜像}% %{仓库地址}%/%{项目名}%:%{标签}% && docker push %{仓库地址}%/%{项目名}%:%{标签}%",
+            "params": {
+              "源镜像": {
+                "type": "string",
+                "required": true,
+                "description": "源镜像",
+                "example": "myapp:latest",
+                "notes": "必填"
+              },
+              "仓库地址": {
+                "type": "string",
+                "required": true,
+                "description": "仓库地址",
+                "example": "registry.com",
+                "notes": "必填"
+              },
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称",
+                "example": "myproject",
+                "notes": "必填"
+              },
+              "标签": {
+                "type": "string",
+                "required": true,
+                "description": "镜像标签",
+                "example": "latest",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker tag push registry"
+          },
+          {
+            "name": "重命名镜像",
+            "cmd": "docker tag %{源镜像}% %{新镜像名}%",
+            "params": {
+              "源镜像": {
+                "type": "string",
+                "required": true,
+                "description": "源镜像",
+                "example": "myapp:latest",
+                "notes": "必填"
+              },
+              "新镜像名": {
+                "type": "string",
+                "required": true,
+                "description": "新镜像名",
+                "example": "myapp-new:latest",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker tag rename"
+          },
+          {
+            "name": "复制镜像 ID",
+            "cmd": "docker tag %{镜像ID}% %{目标镜像}%",
+            "params": {
+              "镜像ID": {
+                "type": "string",
+                "required": true,
+                "description": "镜像ID",
+                "example": "abc123def456",
+                "notes": "必填"
+              },
+              "目标镜像": {
+                "type": "string",
+                "required": true,
+                "description": "目标镜像",
+                "example": "myapp:latest",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker tag imageid"
+          }
+        ],
+        "params": {
+          "源镜像": {
+            "type": "string",
+            "required": true,
+            "description": "源镜像            ",
+            "example": "myapp:latest",
+            "notes": "必填"
+          },
+          "目标镜像": {
+            "type": "string",
+            "required": true,
+            "description": "目标镜像           ",
+            "example": "registry.com/myapp:v1",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

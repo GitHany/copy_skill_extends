@@ -1,0 +1,249 @@
+{
+  "module": "云平台/AWS S3 存储操作",
+  "version": "2.0",
+  "description": "AWS S3 存储操作命令集合，涵盖AWS S3 存储操作的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/云平台/",
+      "name": "aws s3 ls 列出",
+      "keyword": "aws s3 ls 列表",
+      "description": "列出 S3 存储桶或对象。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws s3 ls s3://%{桶名}%/",
+        "extensions": [
+          {
+            "name": "递归列出",
+            "cmd": "aws s3 ls s3://%{桶名}% --recursive",
+            "params": {
+              "桶名": {
+                "type": "string",
+                "required": true,
+                "description": "存储桶            ",
+                "example": "my-bucket",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 recursive"
+          }
+        ],
+        "params": {
+          "桶名": {
+            "type": "string",
+            "required": true,
+            "description": "存储桶名称          ",
+            "example": "my-bucket",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/云平台/",
+      "name": "aws s3 cp 复制",
+      "keyword": "aws s3 cp 复制",
+      "description": "复制 S3 对象。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws s3 cp %{源}% s3://%{桶名}%/%{路径}%",
+        "extensions": [
+          {
+            "name": "同步目录",
+            "cmd": "aws s3 sync %{源}% s3://%{桶名}%/%{路径}%",
+            "params": {
+              "源": {
+                "type": "string",
+                "required": true,
+                "description": "源路径            ",
+                "example": "./data/",
+                "notes": "必填"
+              },
+              "桶名": {
+                "type": "string",
+                "required": true,
+                "description": "桶名             ",
+                "example": "my-bucket",
+                "notes": "必填"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "目标路径           ",
+                "example": "backup/",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 sync"
+          }
+        ],
+        "params": {
+          "源": {
+            "type": "string",
+            "required": true,
+            "description": "源路径            ",
+            "example": "file.txt",
+            "notes": "必填"
+          },
+          "桶名": {
+            "type": "string",
+            "required": true,
+            "description": "存储桶名           ",
+            "example": "my-bucket",
+            "notes": "必填"
+          },
+          "路径": {
+            "type": "string",
+            "required": true,
+            "description": "目标路径           ",
+            "example": "uploads/",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/云平台/",
+      "name": "aws s3 rm 删除",
+      "keyword": "aws s3 rm 删除",
+      "description": "删除 S3 对象。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws s3 rm s3://%{桶名}%/%{路径}%",
+        "extensions": [
+          {
+            "name": "递归删除",
+            "cmd": "aws s3 rm s3://%{桶名}%/%{路径}% --recursive",
+            "params": {
+              "桶名": {
+                "type": "string",
+                "required": true,
+                "description": "桶名",
+                "example": "my-bucket",
+                "notes": "必填"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "对象路径",
+                "example": "old/",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 rm recursive"
+          },
+          {
+            "name": "删除空目录",
+            "cmd": "aws s3 rm s3://%{桶名}%/%{路径}% --recursive --exclude \"*\" --include \"*\"",
+            "params": {
+              "桶名": {
+                "type": "string",
+                "required": true,
+                "description": "桶名",
+                "example": "my-bucket",
+                "notes": "必填"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径",
+                "example": "empty-dir/",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 rm empty"
+          },
+          {
+            "name": "删除前预览",
+            "cmd": "aws s3 rm s3://%{桶名}%/%{路径}% --dryrun",
+            "params": {
+              "桶名": {
+                "type": "string",
+                "required": true,
+                "description": "桶名",
+                "example": "my-bucket",
+                "notes": "必填"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "对象路径",
+                "example": "temp/",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 rm dryrun"
+          },
+          {
+            "name": "过滤删除文件",
+            "cmd": "aws s3 rm s3://%{桶名}%/%{路径}% --recursive --exclude \"%{排除模式}%\" --include \"%{包含模式}%\"",
+            "params": {
+              "桶名": {
+                "type": "string",
+                "required": true,
+                "description": "桶名",
+                "example": "my-bucket",
+                "notes": "必填"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径",
+                "example": "logs/",
+                "notes": "必填"
+              },
+              "排除模式": {
+                "type": "string",
+                "required": true,
+                "description": "排除的模式",
+                "example": "*.txt",
+                "notes": "必填"
+              },
+              "包含模式": {
+                "type": "string",
+                "required": true,
+                "description": "包含的模式",
+                "example": "*.log",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 rm exclude include"
+          },
+          {
+            "name": "静默删除不确认",
+            "cmd": "aws s3 rm s3://%{桶名}%/%{路径}% --quiet",
+            "params": {
+              "桶名": {
+                "type": "string",
+                "required": true,
+                "description": "桶名",
+                "example": "my-bucket",
+                "notes": "必填"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "对象路径",
+                "example": "temp/file.txt",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 rm quiet"
+          }
+        ],
+        "params": {
+          "桶名": {
+            "type": "string",
+            "required": true,
+            "description": "桶名",
+            "example": "my-bucket",
+            "notes": "必填"
+          },
+          "路径": {
+            "type": "string",
+            "required": true,
+            "description": "对象路径",
+            "example": "old/file.txt",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

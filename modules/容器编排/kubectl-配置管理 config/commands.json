@@ -1,0 +1,97 @@
+{
+  "module": "容器编排/kubectl-配置管理 config",
+  "version": "2.0",
+  "description": "kubectl kubeconfig 配置管理",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl config use-context 切换上下文",
+      "keyword": "kubectl config 上下文",
+      "description": "切换集群上下文。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl config use-context %{上下文}%",
+        "extensions": [
+          {
+            "name": "切换到默认上下文",
+            "cmd": "kubectl config use-context kubernetes-admin@kubernetes",
+            "params": {},
+            "keyword": "kubectl default"
+          },
+          {
+            "name": "切换到生产集群上下文",
+            "cmd": "kubectl config use-context %{生产上下文}%",
+            "params": {
+              "生产上下文": {
+                "type": "string",
+                "required": true,
+                "description": "生产环境上下文名称",
+                "example": "prod-cluster",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl prod"
+          },
+          {
+            "name": "切换到测试集群上下文",
+            "cmd": "kubectl config use-context %{测试上下文}%",
+            "params": {
+              "测试上下文": {
+                "type": "string",
+                "required": true,
+                "description": "测试环境上下文名称",
+                "example": "dev-cluster",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl dev"
+          }
+        ],
+        "params": {
+          "上下文": {
+            "type": "string",
+            "required": true,
+            "description": "上下文名",
+            "example": "prod-cluster",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl config get-contexts 查看上下文",
+      "keyword": "kubectl config contexts",
+      "description": "列出所有上下文。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl config get-contexts",
+        "extensions": [
+          {
+            "name": "显示当前上下文",
+            "cmd": "kubectl config get-contexts --current",
+            "params": {},
+            "keyword": "kubectl current context"
+          },
+          {
+            "name": "查看所有上下文详情",
+            "cmd": "kubectl config get-contexts -o wide",
+            "params": {},
+            "keyword": "kubectl contexts detail"
+          },
+          {
+            "name": "显示上下文用户名",
+            "cmd": "kubectl config get-contexts --output name,username",
+            "params": {},
+            "keyword": "kubectl context user"
+          },
+          {
+            "name": "查看集群信息",
+            "cmd": "kubectl config get-contexts --cluster",
+            "params": {},
+            "keyword": "kubectl context cluster"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

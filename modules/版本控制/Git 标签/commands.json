@@ -1,0 +1,480 @@
+{
+  "module": "版本控制/Git 标签",
+  "version": "2.0",
+  "description": "Git 标签命令集合，涵盖Git 标签的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/版本控制/",
+      "name": "git tag 创建标签",
+      "keyword": "git tag 创建",
+      "description": "创建轻量标签。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git tag %{标签名}%",
+        "extensions": [
+          {
+            "name": "创建附注标签",
+            "cmd": "git tag -a %{标签}% -m '%{消息}%'",
+            "params": {
+              "标签": {
+                "type": "string",
+                "required": true,
+                "description": "标签名",
+                "example": "v1.0.0",
+                "notes": "必填"
+              },
+              "消息": {
+                "type": "string",
+                "required": true,
+                "description": "标签消息",
+                "example": "Release version 1.0",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git tag annotated"
+          },
+          {
+            "name": "为指定提交创建标签",
+            "cmd": "git tag %{标签名}% %{提交ID}%",
+            "params": {
+              "标签名": {
+                "type": "string",
+                "required": true,
+                "description": "标签名",
+                "example": "v1.0.0",
+                "notes": "必填"
+              },
+              "提交ID": {
+                "type": "string",
+                "required": true,
+                "description": "提交哈希值",
+                "example": "abc123def",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git tag commit"
+          },
+          {
+            "name": "创建带签名的标签",
+            "cmd": "git tag -s %{标签名}% -m '%{消息}%'",
+            "params": {
+              "标签名": {
+                "type": "string",
+                "required": true,
+                "description": "标签名",
+                "example": "v1.0.0",
+                "notes": "必填"
+              },
+              "消息": {
+                "type": "string",
+                "required": true,
+                "description": "标签消息",
+                "example": "Signed release",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git tag signed"
+          },
+          {
+            "name": "创建带注释的GPG签名标签",
+            "cmd": "git tag -a -s %{标签名}% -m '%{消息}%'",
+            "params": {
+              "标签名": {
+                "type": "string",
+                "required": true,
+                "description": "标签名",
+                "example": "v1.0.0",
+                "notes": "必填"
+              },
+              "消息": {
+                "type": "string",
+                "required": true,
+                "description": "标签消息",
+                "example": "GPG signed release",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git tag gpg"
+          },
+          {
+            "name": "为分支最新提交创建标签",
+            "cmd": "git tag %{标签名}% %{分支名}%",
+            "params": {
+              "标签名": {
+                "type": "string",
+                "required": true,
+                "description": "标签名",
+                "example": "v1.0.0",
+                "notes": "必填"
+              },
+              "分支名": {
+                "type": "string",
+                "required": true,
+                "description": "分支名",
+                "example": "main",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git tag branch"
+          }
+        ],
+        "params": {
+          "标签名": {
+            "type": "string",
+            "required": true,
+            "description": "标签名            ",
+            "example": "v1.0.0",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git tag -l 列出标签",
+      "keyword": "git tag 列表",
+      "description": "列出所有标签。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git tag -l",
+        "extensions": [
+          {
+            "name": "列出匹配模式的标签",
+            "cmd": "git tag -l '%{模式}%'",
+            "params": {
+              "模式": {
+                "type": "string",
+                "required": true,
+                "description": "标签匹配模式",
+                "example": "v1.*",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git tag list pattern"
+          },
+          {
+            "name": "按字母顺序列出标签（列状）",
+            "cmd": "git tag --column",
+            "params": {},
+            "keyword": "git tag column"
+          },
+          {
+            "name": "列出标签并显示提交信息",
+            "cmd": "git tag -l --format '%{内容}%'",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "格式字符串",
+                "example": "%(refname:short) - %(subject)",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git tag list format"
+          },
+          {
+            "name": "按版本排序列出标签",
+            "cmd": "git tag -l --sort=version:refname",
+            "params": {},
+            "keyword": "git tag sort version"
+          },
+          {
+            "name": "显示标签数量",
+            "cmd": "git tag -l | wc -l",
+            "params": {},
+            "keyword": "git tag count"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git tag -d 删除标签",
+      "keyword": "git tag 删除",
+      "description": "删除本地标签。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git tag -d %{标签名}%",
+        "extensions": [
+          {
+            "name": "删除本地标签（缩写）",
+            "cmd": "git tag -d %{标签名}%",
+            "params": {
+              "标签名": {
+                "type": "string",
+                "required": true,
+                "description": "标签名",
+                "example": "v1.0.0",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git tag delete short"
+          },
+          {
+            "name": "删除远程标签",
+            "cmd": "git push %{远程名}% :refs/tags/%{标签名}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名",
+                "example": "origin",
+                "notes": "必填"
+              },
+              "标签名": {
+                "type": "string",
+                "required": true,
+                "description": "标签名",
+                "example": "v1.0.0",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git tag delete remote"
+          },
+          {
+            "name": "删除远程标签（使用delete选项）",
+            "cmd": "git push %{远程名}% --delete %{标签名}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名",
+                "example": "origin",
+                "notes": "必填"
+              },
+              "标签名": {
+                "type": "string",
+                "required": true,
+                "description": "标签名",
+                "example": "v1.0.0",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git tag delete push"
+          },
+          {
+            "name": "批量删除本地标签",
+            "cmd": "git tag -d $(git tag -l '%{模式}%')",
+            "params": {
+              "模式": {
+                "type": "string",
+                "required": true,
+                "description": "标签匹配模式",
+                "example": "v1.*",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git tag delete batch"
+          },
+          {
+            "name": "清理所有本地标签",
+            "cmd": "git tag -d $(git tag) && git tag",
+            "params": {},
+            "keyword": "git tag delete all"
+          }
+        ],
+        "params": {
+          "标签名": {
+            "type": "string",
+            "required": true,
+            "description": "标签名",
+            "example": "v1.0.0",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git push 推送标签",
+      "keyword": "git tag 推送",
+      "description": "推送标签到远程仓库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git push %{远程名}% %{标签名}%",
+        "extensions": [
+          {
+            "name": "推送所有本地标签到远程",
+            "cmd": "git push %{远程名}% --tags",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名",
+                "example": "origin",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git push tags all"
+          },
+          {
+            "name": "推送标签并设置跟踪",
+            "cmd": "git push -u %{远程名}% %{标签名}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名",
+                "example": "origin",
+                "notes": "必填"
+              },
+              "标签名": {
+                "type": "string",
+                "required": true,
+                "description": "标签名",
+                "example": "v1.0.0",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git push tags track"
+          },
+          {
+            "name": "删除远程标签",
+            "cmd": "git push %{远程名}% :refs/tags/%{标签名}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名",
+                "example": "origin",
+                "notes": "必填"
+              },
+              "标签名": {
+                "type": "string",
+                "required": true,
+                "description": "标签名",
+                "example": "v1.0.0",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git push tags delete"
+          },
+          {
+            "name": "仅推送轻量标签",
+            "cmd": "git push %{远程名}% --tags --include-leaked-tags",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名",
+                "example": "origin",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git push tags light"
+          }
+        ],
+        "params": {
+          "远程名": {
+            "type": "string",
+            "required": true,
+            "description": "远程名",
+            "example": "origin",
+            "notes": "必填"
+          },
+          "标签名": {
+            "type": "string",
+            "required": true,
+            "description": "标签名",
+            "example": "v1.0.0",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git checkout 检出标签",
+      "keyword": "git tag 检出",
+      "description": "检出标签对应的提交。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git checkout %{标签名}%",
+        "extensions": [
+          {
+            "name": "检出标签到新分支",
+            "cmd": "git checkout -b %{分支名}% %{标签名}%",
+            "params": {
+              "分支名": {
+                "type": "string",
+                "required": true,
+                "description": "新分支名",
+                "example": "feature-branch",
+                "notes": "必填"
+              },
+              "标签名": {
+                "type": "string",
+                "required": true,
+                "description": "标签名",
+                "example": "v1.0.0",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git checkout tag branch"
+          },
+          {
+            "name": "以分离头状态检出标签",
+            "cmd": "git checkout %{标签名}% --detach",
+            "params": {
+              "标签名": {
+                "type": "string",
+                "required": true,
+                "description": "标签名",
+                "example": "v1.0.0",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git checkout tag detach"
+          },
+          {
+            "name": "检出标签并查看日志",
+            "cmd": "git checkout %{标签名}% && git log --oneline -10",
+            "params": {
+              "标签名": {
+                "type": "string",
+                "required": true,
+                "description": "标签名",
+                "example": "v1.0.0",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git checkout tag log"
+          },
+          {
+            "name": "查看标签指向的提交详情",
+            "cmd": "git show %{标签名}%",
+            "params": {
+              "标签名": {
+                "type": "string",
+                "required": true,
+                "description": "标签名",
+                "example": "v1.0.0",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git show tag"
+          },
+          {
+            "name": "比较标签与当前分支",
+            "cmd": "git diff %{标签名}%..HEAD",
+            "params": {
+              "标签名": {
+                "type": "string",
+                "required": true,
+                "description": "标签名",
+                "example": "v1.0.0",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git diff tag head"
+          }
+        ],
+        "params": {
+          "标签名": {
+            "type": "string",
+            "required": true,
+            "description": "标签名",
+            "example": "v1.0.0",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

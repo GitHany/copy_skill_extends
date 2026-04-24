@@ -1,0 +1,268 @@
+{
+  "module": "云平台/AWS IAM 身份管理",
+  "version": "2.0",
+  "description": "AWS IAM 身份管理命令集合，涵盖AWS IAM 身份管理的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/云平台/",
+      "name": "aws iam create-user 创建用户",
+      "keyword": "aws iam user 创建",
+      "description": "创建 IAM 用户。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws iam create-user --user-name %{用户名}%",
+        "extensions": [
+          {
+            "name": "带路径创建",
+            "cmd": "aws iam create-user --user-name %{用户名}% --path %{路径}%",
+            "params": {
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "developer",
+                "notes": "必填"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "用户路径",
+                "example": "/developers/",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws iam create-user path"
+          },
+          {
+            "name": "添加标签",
+            "cmd": "aws iam create-user --user-name %{用户名}% --tags Key=%{标签键}%,Value=%{标签值}%",
+            "params": {
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "developer",
+                "notes": "必填"
+              },
+              "标签键": {
+                "type": "string",
+                "required": true,
+                "description": "标签键",
+                "example": "Department",
+                "notes": "必填"
+              },
+              "标签值": {
+                "type": "string",
+                "required": true,
+                "description": "标签值",
+                "example": "Engineering",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws iam tag"
+          },
+          {
+            "name": "创建并获取ARN",
+            "cmd": "aws iam create-user --user-name %{用户名}% --query 'User.Arn' --output text",
+            "params": {
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "developer",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws iam arn output"
+          }
+        ],
+        "params": {
+          "用户名": {
+            "type": "string",
+            "required": true,
+            "description": "用户名            ",
+            "example": "developer",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/云平台/",
+      "name": "aws iam list-users 列出用户",
+      "keyword": "aws iam users 用户",
+      "description": "列出 IAM 用户。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws iam list-users",
+        "extensions": [
+          {
+            "name": "限制返回数量",
+            "cmd": "aws iam list-users --max-items %{数量}%",
+            "params": {
+              "数量": {
+                "type": "string",
+                "required": true,
+                "description": "返回用户数量",
+                "example": "10",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws iam limit"
+          },
+          {
+            "name": "分页标记",
+            "cmd": "aws iam list-users --marker %{标记}%",
+            "params": {
+              "标记": {
+                "type": "string",
+                "required": true,
+                "description": "分页标记",
+                "example": "xxx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws iam marker pagination"
+          },
+          {
+            "name": "输出JSON",
+            "cmd": "aws iam list-users --output json",
+            "params": {},
+            "keyword": "aws iam output json"
+          },
+          {
+            "name": "按路径过滤",
+            "cmd": "aws iam list-users --path-prefix %{路径前缀}%",
+            "params": {
+              "路径前缀": {
+                "type": "string",
+                "required": true,
+                "description": "路径前缀",
+                "example": "/developers/",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws iam filter path"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/云平台/",
+      "name": "aws iam attach-policy 附加策略",
+      "keyword": "aws iam policy 附加",
+      "description": "为 IAM 用户、角色或组附加策略。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws iam attach-policy --policy-arn %{策略ARN}% --resource-type %{资源类型}% --resource-name %{资源名称}%",
+        "extensions": [
+          {
+            "name": "附加到用户",
+            "cmd": "aws iam attach-user-policy --policy-arn %{策略ARN}% --user-name %{用户名}%",
+            "params": {
+              "策略ARN": {
+                "type": "string",
+                "required": true,
+                "description": "策略ARN",
+                "example": "arn:aws:iam::aws:policy/ReadOnlyAccess",
+                "notes": "必填"
+              },
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "developer",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws iam attach user policy"
+          },
+          {
+            "name": "附加到角色",
+            "cmd": "aws iam attach-role-policy --policy-arn %{策略ARN}% --role-name %{角色名称}%",
+            "params": {
+              "策略ARN": {
+                "type": "string",
+                "required": true,
+                "description": "策略ARN",
+                "example": "arn:aws:iam::aws:policy/ReadOnlyAccess",
+                "notes": "必填"
+              },
+              "角色名称": {
+                "type": "string",
+                "required": true,
+                "description": "角色名称",
+                "example": "DevOps-Role",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws iam attach role policy"
+          },
+          {
+            "name": "附加到组",
+            "cmd": "aws iam attach-group-policy --policy-arn %{策略ARN}% --group-name %{组名称}%",
+            "params": {
+              "策略ARN": {
+                "type": "string",
+                "required": true,
+                "description": "策略ARN",
+                "example": "arn:aws:iam::aws:policy/ReadOnlyAccess",
+                "notes": "必填"
+              },
+              "组名称": {
+                "type": "string",
+                "required": true,
+                "description": "组名称",
+                "example": "Developers",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws iam attach group policy"
+          },
+          {
+            "name": "附加托管策略",
+            "cmd": "aws iam attach-user-policy --policy-arn arn:aws:iam::aws:policy/%{策略名称}% --user-name %{用户名}%",
+            "params": {
+              "策略名称": {
+                "type": "string",
+                "required": true,
+                "description": "AWS托管策略名称",
+                "example": "AmazonS3ReadOnlyAccess",
+                "notes": "必填"
+              },
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "developer",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws iam managed policy"
+          }
+        ],
+        "params": {
+          "策略ARN": {
+            "type": "string",
+            "required": true,
+            "description": "策略ARN",
+            "example": "arn:aws:iam::aws:policy/ReadOnlyAccess",
+            "notes": "必填"
+          },
+          "资源类型": {
+            "type": "string",
+            "required": true,
+            "description": "资源类型",
+            "example": "user",
+            "notes": "必填"
+          },
+          "资源名称": {
+            "type": "string",
+            "required": true,
+            "description": "资源名称",
+            "example": "developer",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "module": "容器编排/Docker-容器差异 diff",
+  "version": "2.0",
+  "description": "Docker 容器文件系统差异，涵盖Docker diff的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker diff 查看差异",
+      "keyword": "docker diff 差异",
+      "description": "检查容器文件系统变化。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker diff %{容器}%",
+        "extensions": [
+          {
+            "name": "列出变化文件",
+            "cmd": "docker diff --format '{{.%{格式化}%}}' %{容器}%",
+            "params": {
+              "格式化": {
+                "type": "string",
+                "required": true,
+                "description": "格式化",
+                "example": "Kind Modified",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker diff format"
+          },
+          {
+            "name": "显示变更统计",
+            "cmd": "docker diff --size %{容器}%",
+            "params": {},
+            "keyword": "docker diff size"
+          },
+          {
+            "name": "仅显示A状态",
+            "cmd": "docker diff --format '{{range .}}{{if eq .Kind \"A\"}}{{println .Path}}{{end}}{{end}}' %{容器}%",
+            "params": {
+              "容器": {
+                "type": "string",
+                "required": true,
+                "description": "容器",
+                "example": "myapp",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker diff added"
+          },
+          {
+            "name": "仅显示M状态",
+            "cmd": "docker diff --format '{{range .}}{{if eq .Kind \"M\"}}{{println .Path}}{{end}}{{end}}' %{容器}%",
+            "params": {
+              "容器": {
+                "type": "string",
+                "required": true,
+                "description": "容器",
+                "example": "myapp",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker diff modified"
+          }
+        ],
+        "params": {
+          "容器": {
+            "type": "string",
+            "required": true,
+            "description": "容器",
+            "example": "myapp",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

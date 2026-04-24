@@ -1,0 +1,202 @@
+{
+  "module": "容器编排/kubectl-端口转发 port-forward",
+  "version": "2.0",
+  "description": "kubectl 端口转发，涵盖kubectl port-forward的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl port-forward 端口转发",
+      "keyword": "kubectl port-forward 转发",
+      "description": "将本地端口转发到 Pod。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl port-forward %{类型}%/%{名称}% %{本地端口}%:%{目标端口}%",
+        "extensions": [
+          {
+            "name": "转发到指定本地端口",
+            "cmd": "kubectl port-forward %{类型}%/%{名称}% %{本地端口}%:%{目标端口}%",
+            "params": {
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "资源类型",
+                "example": "svc/my-svc",
+                "notes": "必填：svc/服务名 格式"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "资源名",
+                "example": "my-svc",
+                "notes": "必填"
+              },
+              "本地端口": {
+                "type": "string",
+                "required": true,
+                "description": "本地端口",
+                "example": "9090",
+                "notes": "必填"
+              },
+              "目标端口": {
+                "type": "string",
+                "required": true,
+                "description": "目标端口",
+                "example": "80",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl port-forward 本地端口"
+          },
+          {
+            "name": "多端口转发",
+            "cmd": "kubectl port-forward %{类型}%/%{名称}% %{端口1}%:%{端口2}% %{端口3}%:%{端口4}%",
+            "params": {
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "资源类型",
+                "example": "pod",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Pod名称",
+                "example": "my-pod",
+                "notes": "必填"
+              },
+              "端口1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个本地端口",
+                "example": "8080",
+                "notes": "必填"
+              },
+              "端口2": {
+                "type": "string",
+                "required": true,
+                "description": "第一个目标端口",
+                "example": "80",
+                "notes": "必填"
+              },
+              "端口3": {
+                "type": "string",
+                "required": true,
+                "description": "第二个本地端口",
+                "example": "8443",
+                "notes": "必填"
+              },
+              "端口4": {
+                "type": "string",
+                "required": true,
+                "description": "第二个目标端口",
+                "example": "443",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl port-forward 多端口"
+          },
+          {
+            "name": "指定地址监听",
+            "cmd": "kubectl port-forward --address=%{地址}% %{类型}%/%{名称}% %{本地端口}%:%{目标端口}%",
+            "params": {
+              "地址": {
+                "type": "string",
+                "required": true,
+                "description": "监听地址",
+                "example": "0.0.0.0",
+                "notes": "必填：0.0.0.0表示所有网卡"
+              },
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "资源类型",
+                "example": "svc",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "服务名",
+                "example": "my-service",
+                "notes": "必填"
+              },
+              "本地端口": {
+                "type": "string",
+                "required": true,
+                "description": "本地端口",
+                "example": "8080",
+                "notes": "必填"
+              },
+              "目标端口": {
+                "type": "string",
+                "required": true,
+                "description": "目标端口",
+                "example": "80",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl port-forward address"
+          },
+          {
+            "name": "随机本地端口转发",
+            "cmd": "kubectl port-forward %{类型}%/%{名称}% :%{目标端口}%",
+            "params": {
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "资源类型",
+                "example": "pod",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Pod名称",
+                "example": "my-pod",
+                "notes": "必填"
+              },
+              "目标端口": {
+                "type": "string",
+                "required": true,
+                "description": "目标端口",
+                "example": "80",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl port-forward 随机端口"
+          }
+        ],
+        "params": {
+          "类型": {
+            "type": "string",
+            "required": true,
+            "description": "资源类型           ",
+            "example": "pod",
+            "notes": "必填"
+          },
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "资源名            ",
+            "example": "my-pod",
+            "notes": "必填"
+          },
+          "本地端口": {
+            "type": "string",
+            "required": true,
+            "description": "本地端口           ",
+            "example": "8080",
+            "notes": "必填"
+          },
+          "目标端口": {
+            "type": "string",
+            "required": true,
+            "description": "目标端口           ",
+            "example": "80",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "module": "容器编排/Docker 容器管理",
+  "version": "2.0",
+  "description": "Docker 容器管理命令集合，涵盖Docker 容器管理的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker run 创建容器",
+      "keyword": "docker run 创建",
+      "description": "创建并启动容器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker run -d --name %{名称}% %{镜像}%",
+        "extensions": [
+          {
+            "name": "映射端口运行",
+            "cmd": "docker run -d --name %{名称}% -p %{宿主机端口}%:%{容器端口}% %{镜像}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "宿主机端口": {
+                "type": "string",
+                "required": true,
+                "description": "宿主机端口",
+                "example": "8080",
+                "notes": "必填"
+              },
+              "容器端口": {
+                "type": "string",
+                "required": true,
+                "description": "容器端口",
+                "example": "80",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker run port"
+          },
+          {
+            "name": "挂载目录运行",
+            "cmd": "docker run -d --name %{名称}% -v %{主机路径}%:%{容器路径}% %{镜像}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "主机路径": {
+                "type": "string",
+                "required": true,
+                "description": "宿主机目录",
+                "example": "/data/app",
+                "notes": "必填"
+              },
+              "容器路径": {
+                "type": "string",
+                "required": true,
+                "description": "容器内路径",
+                "example": "/app/data",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker run mount"
+          },
+          {
+            "name": "设置环境变量",
+            "cmd": "docker run -d --name %{名称}% -e %{环境变量}%=%{变量值}% %{镜像}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "环境变量": {
+                "type": "string",
+                "required": true,
+                "description": "环境变量名",
+                "example": "NODE_ENV",
+                "notes": "必填"
+              },
+              "变量值": {
+                "type": "string",
+                "required": true,
+                "description": "环境变量值",
+                "example": "production",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker run env"
+          },
+          {
+            "name": "交互式运行",
+            "cmd": "docker run -it --name %{名称}% %{镜像}% /bin/sh",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker run interactive"
+          }
+        ],
+        "params": {
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "容器名",
+            "example": "myapp",
+            "notes": "必填"
+          },
+          "镜像": {
+            "type": "string",
+            "required": true,
+            "description": "镜像名",
+            "example": "nginx",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker ps 列出容器",
+      "keyword": "docker ps 列表",
+      "description": "列出容器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker ps",
+        "extensions": [
+          {
+            "name": "显示所有容器",
+            "cmd": "docker ps -a",
+            "params": {},
+            "keyword": "docker ps all"
+          },
+          {
+            "name": "只显示容器ID",
+            "cmd": "docker ps -q",
+            "params": {},
+            "keyword": "docker ps quiet"
+          },
+          {
+            "name": "显示最新容器",
+            "cmd": "docker ps -l",
+            "params": {},
+            "keyword": "docker ps latest"
+          },
+          {
+            "name": "格式化输出",
+            "cmd": "docker ps --format \"table {{.Names}}\\t{{.Status}}\"",
+            "params": {},
+            "keyword": "docker ps format"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

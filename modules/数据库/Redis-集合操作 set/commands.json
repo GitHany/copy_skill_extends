@@ -1,0 +1,1329 @@
+{
+  "module": "数据库/Redis-集合操作 set",
+  "version": "1.0",
+  "description": "Redis 集合操作模块命令集合，涵盖Redis-集合操作的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/数据库/",
+      "name": "sadd 添加集合成员",
+      "keyword": "sadd set 添加",
+      "description": "向集合添加一个或多个成员。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "sadd %{键名}% %{成员}%",
+        "extensions": [
+          {
+            "name": "批量添加多个成员",
+            "cmd": "sadd %{键名}% %{成员1}% %{成员2}% %{成员3}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "集合键名           ",
+                "example": "myset",
+                "notes": "必填"
+              },
+              "成员1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个成员          ",
+                "example": "alice",
+                "notes": "必填"
+              },
+              "成员2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个成员          ",
+                "example": "bob",
+                "notes": "必填"
+              },
+              "成员3": {
+                "type": "string",
+                "required": false,
+                "description": "第三个成员          ",
+                "example": "charlie",
+                "notes": "可选"
+              }
+            },
+            "keyword": "sadd 批量添加"
+          },
+          {
+            "name": "添加并返回新增数量",
+            "cmd": "sadd %{键名}% %{成员}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "集合键名           ",
+                "example": "myset",
+                "notes": "必填"
+              },
+              "成员": {
+                "type": "string",
+                "required": true,
+                "description": "要添加的成员         ",
+                "example": "alice",
+                "notes": "必填"
+              }
+            },
+            "keyword": "sadd 返回数量"
+          },
+          {
+            "name": "添加多个标签到集合",
+            "cmd": "sadd %{键名}% tag1 tag2 tag3",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "标签集合键名        ",
+                "example": "user:1000:tags",
+                "notes": "必填"
+              }
+            },
+            "keyword": "sadd 标签"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "集合键名           ",
+            "example": "myset",
+            "notes": "常用"
+          },
+          "成员": {
+            "type": "string",
+            "required": true,
+            "description": "要添加的成员         ",
+            "example": "alice",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "smembers 查看集合所有成员",
+      "keyword": "smembers set 查看",
+      "description": "返回集合中的所有成员。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "smembers %{键名}%",
+        "extensions": [
+          {
+            "name": "随机获取一个成员",
+            "cmd": "srandmember %{键名}% 1",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "集合键名           ",
+                "example": "myset",
+                "notes": "必填"
+              }
+            },
+            "keyword": "smembers 随机"
+          },
+          {
+            "name": "使用sscan分页获取",
+            "cmd": "sscan %{键名}% 0 count 100",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "集合键名           ",
+                "example": "myset",
+                "notes": "必填"
+              }
+            },
+            "keyword": "smembers 分页"
+          },
+          {
+            "name": "获取所有标签",
+            "cmd": "smembers %{键名}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "标签集合键名        ",
+                "example": "user:1000:tags",
+                "notes": "必填"
+              }
+            },
+            "keyword": "smembers 标签"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "集合键名           ",
+            "example": "myset",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "sismember 判断集合成员",
+      "keyword": "sismember set 判断",
+      "description": "判断成员是否在集合中。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "sismember %{键名}% %{成员}%",
+        "extensions": [
+          {
+            "name": "批量检查多个成员",
+            "cmd": "sismember %{键名}% %{成员}% && sismember %{键名}% %{成员2}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "集合键名           ",
+                "example": "myset",
+                "notes": "必填"
+              },
+              "成员": {
+                "type": "string",
+                "required": true,
+                "description": "第一个成员          ",
+                "example": "alice",
+                "notes": "必填"
+              },
+              "成员2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个成员          ",
+                "example": "bob",
+                "notes": "必填"
+              }
+            },
+            "keyword": "sismember 批量"
+          },
+          {
+            "name": "检查用户是否关注",
+            "cmd": "sismember user:1000:following %{用户ID}%",
+            "params": {
+              "用户ID": {
+                "type": "string",
+                "required": true,
+                "description": "被检查的用户ID       ",
+                "example": "2000",
+                "notes": "必填"
+              }
+            },
+            "keyword": "sismember 关注"
+          },
+          {
+            "name": "检查用户权限",
+            "cmd": "sismember user:%{用户ID}%:permissions %{权限}%",
+            "params": {
+              "用户ID": {
+                "type": "string",
+                "required": true,
+                "description": "用户ID             ",
+                "example": "1000",
+                "notes": "必填"
+              },
+              "权限": {
+                "type": "string",
+                "required": true,
+                "description": "权限名称            ",
+                "example": "admin",
+                "notes": "必填"
+              }
+            },
+            "keyword": "sismember 权限"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "集合键名           ",
+            "example": "myset",
+            "notes": "常用"
+          },
+          "成员": {
+            "type": "string",
+            "required": true,
+            "description": "要判断的成员         ",
+            "example": "alice",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "srem 删除集合成员",
+      "keyword": "srem set 删除",
+      "description": "从集合移除一个或多个成员。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "srem %{键名}% %{成员}%",
+        "extensions": [
+          {
+            "name": "批量删除多个成员",
+            "cmd": "srem %{键名}% %{成员1}% %{成员2}% %{成员3}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "集合键名           ",
+                "example": "myset",
+                "notes": "必填"
+              },
+              "成员1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个成员          ",
+                "example": "alice",
+                "notes": "必填"
+              },
+              "成员2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个成员          ",
+                "example": "bob",
+                "notes": "必填"
+              },
+              "成员3": {
+                "type": "string",
+                "required": false,
+                "description": "第三个成员          ",
+                "example": "charlie",
+                "notes": "可选"
+              }
+            },
+            "keyword": "srem 批量删除"
+          },
+          {
+            "name": "删除并返回删除数量",
+            "cmd": "srem %{键名}% %{成员}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "集合键名           ",
+                "example": "myset",
+                "notes": "必填"
+              },
+              "成员": {
+                "type": "string",
+                "required": true,
+                "description": "要删除的成员         ",
+                "example": "alice",
+                "notes": "必填"
+              }
+            },
+            "keyword": "srem 返回数量"
+          },
+          {
+            "name": "删除用户收藏",
+            "cmd": "srem user:%{用户ID}%:favorites %{商品ID}%",
+            "params": {
+              "用户ID": {
+                "type": "string",
+                "required": true,
+                "description": "用户ID             ",
+                "example": "1000",
+                "notes": "必填"
+              },
+              "商品ID": {
+                "type": "string",
+                "required": true,
+                "description": "商品ID             ",
+                "example": "product:2000",
+                "notes": "必填"
+              }
+            },
+            "keyword": "srem 收藏"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "集合键名           ",
+            "example": "myset",
+            "notes": "常用"
+          },
+          "成员": {
+            "type": "string",
+            "required": true,
+            "description": "要删除的成员         ",
+            "example": "alice",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "scard 获取集合基数",
+      "keyword": "scard set 基数",
+      "description": "返回集合的成员数量。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "scard %{键名}%",
+        "extensions": [
+          {
+            "name": "获取集合大小",
+            "cmd": "scard %{键名}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "集合键名           ",
+                "example": "myset",
+                "notes": "必填"
+              }
+            },
+            "keyword": "scard 大小"
+          },
+          {
+            "name": "获取用户粉丝数量",
+            "cmd": "scard user:%{用户ID}%:followers",
+            "params": {
+              "用户ID": {
+                "type": "string",
+                "required": true,
+                "description": "用户ID             ",
+                "example": "1000",
+                "notes": "必填"
+              }
+            },
+            "keyword": "scard 粉丝"
+          },
+          {
+            "name": "获取标签总数",
+            "cmd": "scard %{键名}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "标签集合键名        ",
+                "example": "article:1000:tags",
+                "notes": "必填"
+              }
+            },
+            "keyword": "scard 标签"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "集合键名           ",
+            "example": "myset",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "spop 随机弹出成员",
+      "keyword": "spop set 弹出",
+      "description": "随机移除并返回集合中的一个或多个成员。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "spop %{键名}%",
+        "extensions": [
+          {
+            "name": "弹出多个成员",
+            "cmd": "spop %{键名}% %{数量}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "集合键名           ",
+                "example": "myset",
+                "notes": "可选"
+              },
+              "数量": {
+                "type": "integer",
+                "required": true,
+                "description": "弹出的成员数量        ",
+                "example": "3",
+                "notes": "可选"
+              }
+            },
+            "keyword": "spop 多个"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "集合键名           ",
+            "example": "myset",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "srandmember 随机获取成员",
+      "keyword": "srandmember set 随机",
+      "description": "随机返回集合中的一个或多个成员，不删除。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "srandmember %{键名}%",
+        "extensions": [
+          {
+            "name": "获取多个成员",
+            "cmd": "srandmember %{键名}% %{数量}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "集合键名           ",
+                "example": "myset",
+                "notes": "可选"
+              },
+              "数量": {
+                "type": "integer",
+                "required": true,
+                "description": "获取的成员数量        ",
+                "example": "3",
+                "notes": "可选"
+              }
+            },
+            "keyword": "srandmember 多个"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "集合键名           ",
+            "example": "myset",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "smove 移动集合成员",
+      "keyword": "smove set 移动",
+      "description": "将成员从源集合移动到目标集合。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "smove %{源键名}% %{目标键名}% %{成员}%",
+        "extensions": [
+          {
+            "name": "移动用户到新分组",
+            "cmd": "smove user:%{用户ID}%:old_group user:%{用户ID}%:new_group %{成员}%",
+            "params": {
+              "用户ID": {
+                "type": "string",
+                "required": true,
+                "description": "用户ID             ",
+                "example": "1000",
+                "notes": "必填"
+              },
+              "成员": {
+                "type": "string",
+                "required": true,
+                "description": "要移动的成员         ",
+                "example": "item1",
+                "notes": "必填"
+              }
+            },
+            "keyword": "smove 用户分组"
+          },
+          {
+            "name": "移动并验证结果",
+            "cmd": "smove %{源键名}% %{目标键名}% %{成员}% && sismember %{目标键名}% %{成员}%",
+            "params": {
+              "源键名": {
+                "type": "string",
+                "required": true,
+                "description": "源集合键名          ",
+                "example": "myset1",
+                "notes": "必填"
+              },
+              "目标键名": {
+                "type": "string",
+                "required": true,
+                "description": "目标集合键名         ",
+                "example": "myset2",
+                "notes": "必填"
+              },
+              "成员": {
+                "type": "string",
+                "required": true,
+                "description": "要移动的成员         ",
+                "example": "alice",
+                "notes": "必填"
+              }
+            },
+            "keyword": "smove 验证"
+          },
+          {
+            "name": "移动任务到新状态",
+            "cmd": "smove task:%{任务ID}%:pending task:%{任务ID}%:completed %{任务项}%",
+            "params": {
+              "任务ID": {
+                "type": "string",
+                "required": true,
+                "description": "任务ID             ",
+                "example": "100",
+                "notes": "必填"
+              },
+              "任务项": {
+                "type": "string",
+                "required": true,
+                "description": "要移动的任务项        ",
+                "example": "subtask1",
+                "notes": "必填"
+              }
+            },
+            "keyword": "smove 任务"
+          }
+        ],
+        "params": {
+          "源键名": {
+            "type": "string",
+            "required": true,
+            "description": "源集合键名          ",
+            "example": "myset1",
+            "notes": "必填"
+          },
+          "目标键名": {
+            "type": "string",
+            "required": true,
+            "description": "目标集合键名         ",
+            "example": "myset2",
+            "notes": "必填"
+          },
+          "成员": {
+            "type": "string",
+            "required": true,
+            "description": "要移动的成员         ",
+            "example": "alice",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "sdiff 求集合差集",
+      "keyword": "sdiff set 差集",
+      "description": "返回第一个集合与后续集合的差集。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "sdiff %{键名1}% %{键名2}%",
+        "extensions": [
+          {
+            "name": "多集合差集",
+            "cmd": "sdiff %{键名1}% %{键名2}% %{键名3}%",
+            "params": {
+              "键名1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个集合键名        ",
+                "example": "set1",
+                "notes": "可选"
+              },
+              "键名2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个集合键名        ",
+                "example": "set2",
+                "notes": "可选"
+              },
+              "键名3": {
+                "type": "string",
+                "required": false,
+                "description": "第三个集合键名        ",
+                "example": "set3",
+                "notes": "可选"
+              }
+            },
+            "keyword": "sdiff 多集合"
+          },
+          {
+            "name": "计算新增用户",
+            "cmd": "sdiff user:today:register user:yesterday:register",
+            "params": {
+              "键名1": {
+                "type": "string",
+                "required": true,
+                "description": "今日注册用户集合      ",
+                "example": "user:today:register",
+                "notes": "必填"
+              },
+              "键名2": {
+                "type": "string",
+                "required": true,
+                "description": "昨日注册用户集合      ",
+                "example": "user:yesterday:register",
+                "notes": "必填"
+              }
+            },
+            "keyword": "sdiff 新增用户"
+          },
+          {
+            "name": "差集结果计数",
+            "cmd": "sdiff %{键名1}% %{键名2}% | wc -l",
+            "params": {
+              "键名1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个集合键名        ",
+                "example": "set1",
+                "notes": "必填"
+              },
+              "键名2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个集合键名        ",
+                "example": "set2",
+                "notes": "必填"
+              }
+            },
+            "keyword": "sdiff 计数"
+          }
+        ],
+        "params": {
+          "键名1": {
+            "type": "string",
+            "required": true,
+            "description": "第一个集合键名        ",
+            "example": "set1",
+            "notes": "必填"
+          },
+          "键名2": {
+            "type": "string",
+            "required": true,
+            "description": "第二个集合键名        ",
+            "example": "set2",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "sinter 求集合交集",
+      "keyword": "sinter set 交集",
+      "description": "返回所有集合的交集。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "sinter %{键名1}% %{键名2}%",
+        "extensions": [
+          {
+            "name": "多集合交集",
+            "cmd": "sinter %{键名1}% %{键名2}% %{键名3}%",
+            "params": {
+              "键名1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个集合键名        ",
+                "example": "set1",
+                "notes": "可选"
+              },
+              "键名2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个集合键名        ",
+                "example": "set2",
+                "notes": "可选"
+              },
+              "键名3": {
+                "type": "string",
+                "required": false,
+                "description": "第三个集合键名        ",
+                "example": "set3",
+                "notes": "可选"
+              }
+            },
+            "keyword": "sinter 多集合"
+          },
+          {
+            "name": "查询共同好友",
+            "cmd": "sinter user:%{用户1}%:friends user:%{用户2}%:friends",
+            "params": {
+              "用户1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个用户ID        ",
+                "example": "1000",
+                "notes": "必填"
+              },
+              "用户2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个用户ID        ",
+                "example": "2000",
+                "notes": "必填"
+              }
+            },
+            "keyword": "sinter 好友"
+          },
+          {
+            "name": "交集结果计数",
+            "cmd": "sinter %{键名1}% %{键名2}% | wc -l",
+            "params": {
+              "键名1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个集合键名        ",
+                "example": "set1",
+                "notes": "必填"
+              },
+              "键名2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个集合键名        ",
+                "example": "set2",
+                "notes": "必填"
+              }
+            },
+            "keyword": "sinter 计数"
+          }
+        ],
+        "params": {
+          "键名1": {
+            "type": "string",
+            "required": true,
+            "description": "第一个集合键名        ",
+            "example": "set1",
+            "notes": "必填"
+          },
+          "键名2": {
+            "type": "string",
+            "required": true,
+            "description": "第二个集合键名        ",
+            "example": "set2",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "sunion 求集合并集",
+      "keyword": "sunion set 并集",
+      "description": "返回所有集合的并集。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "sunion %{键名1}% %{键名2}%",
+        "extensions": [
+          {
+            "name": "多集合并集",
+            "cmd": "sunion %{键名1}% %{键名2}% %{键名3}%",
+            "params": {
+              "键名1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个集合键名        ",
+                "example": "set1",
+                "notes": "可选"
+              },
+              "键名2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个集合键名        ",
+                "example": "set2",
+                "notes": "可选"
+              },
+              "键名3": {
+                "type": "string",
+                "required": false,
+                "description": "第三个集合键名        ",
+                "example": "set3",
+                "notes": "可选"
+              }
+            },
+            "keyword": "sunion 多集合"
+          },
+          {
+            "name": "合并多个标签组",
+            "cmd": "sunion tag:group1 tag:group2 tag:group3",
+            "params": {
+              "键名1": {
+                "type": "string",
+                "required": true,
+                "description": "标签组1             ",
+                "example": "tag:group1",
+                "notes": "必填"
+              },
+              "键名2": {
+                "type": "string",
+                "required": true,
+                "description": "标签组2             ",
+                "example": "tag:group2",
+                "notes": "必填"
+              },
+              "键名3": {
+                "type": "string",
+                "required": false,
+                "description": "标签组3             ",
+                "example": "tag:group3",
+                "notes": "可选"
+              }
+            },
+            "keyword": "sunion 标签"
+          },
+          {
+            "name": "并集结果计数",
+            "cmd": "sunion %{键名1}% %{键名2}% | wc -l",
+            "params": {
+              "键名1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个集合键名        ",
+                "example": "set1",
+                "notes": "必填"
+              },
+              "键名2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个集合键名        ",
+                "example": "set2",
+                "notes": "必填"
+              }
+            },
+            "keyword": "sunion 计数"
+          }
+        ],
+        "params": {
+          "键名1": {
+            "type": "string",
+            "required": true,
+            "description": "第一个集合键名        ",
+            "example": "set1",
+            "notes": "必填"
+          },
+          "键名2": {
+            "type": "string",
+            "required": true,
+            "description": "第二个集合键名        ",
+            "example": "set2",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "sdiffstore 存储集合差集",
+      "keyword": "sdiffstore set 差集 存储",
+      "description": "将差集结果存储到目标集合。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "sdiffstore %{目标键名}% %{键名1}% %{键名2}%",
+        "extensions": [
+          {
+            "name": "存储多集合差集",
+            "cmd": "sdiffstore %{目标键名}% %{键名1}% %{键名2}% %{键名3}%",
+            "params": {
+              "目标键名": {
+                "type": "string",
+                "required": true,
+                "description": "目标集合键名         ",
+                "example": "result",
+                "notes": "必填"
+              },
+              "键名1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个集合键名        ",
+                "example": "set1",
+                "notes": "必填"
+              },
+              "键名2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个集合键名        ",
+                "example": "set2",
+                "notes": "必填"
+              },
+              "键名3": {
+                "type": "string",
+                "required": false,
+                "description": "第三个集合键名        ",
+                "example": "set3",
+                "notes": "可选"
+              }
+            },
+            "keyword": "sdiffstore 多集合"
+          },
+          {
+            "name": "保存新增用户列表",
+            "cmd": "sdiffstore user:today:new user:today:register user:yesterday:register",
+            "params": {
+              "目标键名": {
+                "type": "string",
+                "required": true,
+                "description": "新用户集合键名       ",
+                "example": "user:today:new",
+                "notes": "必填"
+              }
+            },
+            "keyword": "sdiffstore 新用户"
+          },
+          {
+            "name": "计算差集并返回数量",
+            "cmd": "sdiffstore %{目标键名}% %{键名1}% %{键名2}% && scard %{目标键名}%",
+            "params": {
+              "目标键名": {
+                "type": "string",
+                "required": true,
+                "description": "目标集合键名         ",
+                "example": "result",
+                "notes": "必填"
+              },
+              "键名1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个集合键名        ",
+                "example": "set1",
+                "notes": "必填"
+              },
+              "键名2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个集合键名        ",
+                "example": "set2",
+                "notes": "必填"
+              }
+            },
+            "keyword": "sdiffstore 计数"
+          }
+        ],
+        "params": {
+          "目标键名": {
+            "type": "string",
+            "required": true,
+            "description": "目标集合键名         ",
+            "example": "result",
+            "notes": "必填"
+          },
+          "键名1": {
+            "type": "string",
+            "required": true,
+            "description": "第一个集合键名        ",
+            "example": "set1",
+            "notes": "必填"
+          },
+          "键名2": {
+            "type": "string",
+            "required": true,
+            "description": "第二个集合键名        ",
+            "example": "set2",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "sinterstore 存储集合交集",
+      "keyword": "sinterstore set 交集 存储",
+      "description": "将交集结果存储到目标集合。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "sinterstore %{目标键名}% %{键名1}% %{键名2}%",
+        "extensions": [
+          {
+            "name": "存储多集合交集",
+            "cmd": "sinterstore %{目标键名}% %{键名1}% %{键名2}% %{键名3}%",
+            "params": {
+              "目标键名": {
+                "type": "string",
+                "required": true,
+                "description": "目标集合键名         ",
+                "example": "result",
+                "notes": "必填"
+              },
+              "键名1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个集合键名        ",
+                "example": "set1",
+                "notes": "必填"
+              },
+              "键名2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个集合键名        ",
+                "example": "set2",
+                "notes": "必填"
+              },
+              "键名3": {
+                "type": "string",
+                "required": false,
+                "description": "第三个集合键名        ",
+                "example": "set3",
+                "notes": "可选"
+              }
+            },
+            "keyword": "sinterstore 多集合"
+          },
+          {
+            "name": "保存共同好友列表",
+            "cmd": "sinterstore user:%{用户1}%:%{用户2}%:common_friends user:%{用户1}%:friends user:%{用户2}%:friends",
+            "params": {
+              "用户1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个用户ID        ",
+                "example": "1000",
+                "notes": "必填"
+              },
+              "用户2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个用户ID        ",
+                "example": "2000",
+                "notes": "必填"
+              }
+            },
+            "keyword": "sinterstore 好友"
+          },
+          {
+            "name": "计算交集并返回数量",
+            "cmd": "sinterstore %{目标键名}% %{键名1}% %{键名2}% && scard %{目标键名}%",
+            "params": {
+              "目标键名": {
+                "type": "string",
+                "required": true,
+                "description": "目标集合键名         ",
+                "example": "result",
+                "notes": "必填"
+              },
+              "键名1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个集合键名        ",
+                "example": "set1",
+                "notes": "必填"
+              },
+              "键名2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个集合键名        ",
+                "example": "set2",
+                "notes": "必填"
+              }
+            },
+            "keyword": "sinterstore 计数"
+          }
+        ],
+        "params": {
+          "目标键名": {
+            "type": "string",
+            "required": true,
+            "description": "目标集合键名         ",
+            "example": "result",
+            "notes": "必填"
+          },
+          "键名1": {
+            "type": "string",
+            "required": true,
+            "description": "第一个集合键名        ",
+            "example": "set1",
+            "notes": "必填"
+          },
+          "键名2": {
+            "type": "string",
+            "required": true,
+            "description": "第二个集合键名        ",
+            "example": "set2",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "sunionstore 存储集合并集",
+      "keyword": "sunionstore set 并集 存储",
+      "description": "将并集结果存储到目标集合。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "sunionstore %{目标键名}% %{键名1}% %{键名2}%",
+        "extensions": [
+          {
+            "name": "存储多集合并集",
+            "cmd": "sunionstore %{目标键名}% %{键名1}% %{键名2}% %{键名3}%",
+            "params": {
+              "目标键名": {
+                "type": "string",
+                "required": true,
+                "description": "目标集合键名         ",
+                "example": "result",
+                "notes": "必填"
+              },
+              "键名1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个集合键名        ",
+                "example": "set1",
+                "notes": "必填"
+              },
+              "键名2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个集合键名        ",
+                "example": "set2",
+                "notes": "必填"
+              },
+              "键名3": {
+                "type": "string",
+                "required": false,
+                "description": "第三个集合键名        ",
+                "example": "set3",
+                "notes": "可选"
+              }
+            },
+            "keyword": "sunionstore 多集合"
+          },
+          {
+            "name": "合并用户收藏列表",
+            "cmd": "sunionstore user:%{用户ID}%:all_favorites user:%{用户ID}%:favorites1 user:%{用户ID}%:favorites2",
+            "params": {
+              "用户ID": {
+                "type": "string",
+                "required": true,
+                "description": "用户ID             ",
+                "example": "1000",
+                "notes": "必填"
+              }
+            },
+            "keyword": "sunionstore 收藏"
+          },
+          {
+            "name": "计算并集并返回数量",
+            "cmd": "sunionstore %{目标键名}% %{键名1}% %{键名2}% && scard %{目标键名}%",
+            "params": {
+              "目标键名": {
+                "type": "string",
+                "required": true,
+                "description": "目标集合键名         ",
+                "example": "result",
+                "notes": "必填"
+              },
+              "键名1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个集合键名        ",
+                "example": "set1",
+                "notes": "必填"
+              },
+              "键名2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个集合键名        ",
+                "example": "set2",
+                "notes": "必填"
+              }
+            },
+            "keyword": "sunionstore 计数"
+          }
+        ],
+        "params": {
+          "目标键名": {
+            "type": "string",
+            "required": true,
+            "description": "目标集合键名         ",
+            "example": "result",
+            "notes": "必填"
+          },
+          "键名1": {
+            "type": "string",
+            "required": true,
+            "description": "第一个集合键名        ",
+            "example": "set1",
+            "notes": "必填"
+          },
+          "键名2": {
+            "type": "string",
+            "required": true,
+            "description": "第二个集合键名        ",
+            "example": "set2",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "sscan 迭代集合",
+      "keyword": "sscan set 迭代",
+      "description": "增量迭代集合中的成员。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "sscan %{键名}% %{游标}%",
+        "extensions": [
+          {
+            "name": "指定匹配模式",
+            "cmd": "sscan %{键名}% %{游标}% match %{模式}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "集合键名           ",
+                "example": "myset",
+                "notes": "可选"
+              },
+              "游标": {
+                "type": "integer",
+                "required": true,
+                "description": "游标位置，0表示开始     ",
+                "example": "0",
+                "notes": "可选"
+              },
+              "模式": {
+                "type": "string",
+                "required": false,
+                "description": "匹配模式           ",
+                "example": "user:*",
+                "notes": "可选"
+              }
+            },
+            "keyword": "sscan match"
+          },
+          {
+            "name": "指定返回数量",
+            "cmd": "sscan %{键名}% %{游标}% count %{数量}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "集合键名           ",
+                "example": "myset",
+                "notes": "可选"
+              },
+              "游标": {
+                "type": "integer",
+                "required": true,
+                "description": "游标位置，0表示开始     ",
+                "example": "0",
+                "notes": "可选"
+              },
+              "数量": {
+                "type": "integer",
+                "required": false,
+                "description": "返回元素数量         ",
+                "example": "100",
+                "notes": "可选"
+              }
+            },
+            "keyword": "sscan count"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "集合键名           ",
+            "example": "myset",
+            "notes": "必填"
+          },
+          "游标": {
+            "type": "integer",
+            "required": true,
+            "description": "游标位置，0表示开始新一轮迭代",
+            "example": "0",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

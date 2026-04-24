@@ -1,0 +1,130 @@
+{
+  "module": "容器编排/kubectl-资源监控 top",
+  "version": "2.0",
+  "description": "kubectl top命令集合，涵盖kubectl top的常用操作和最佳实践",
+  "commands": [
+    {
+      "cmd": "kubectl top pods",
+      "extensions": [
+        {
+          "name": "指定命名空间",
+          "cmd": "kubectl top pods -n %{命名空间}%",
+          "params": {
+            "命名空间": {
+              "type": "string",
+              "required": true,
+              "description": "命名空间",
+              "example": "default",
+              "notes": "必填"
+            }
+          },
+          "keyword": "kubectl top ns"
+        },
+        {
+          "name": "查看所有命名空间",
+          "cmd": "kubectl top pods --all-namespaces",
+          "params": {},
+          "keyword": "kubectl top all-namespaces"
+        },
+        {
+          "name": "查看节点资源",
+          "cmd": "kubectl top nodes",
+          "params": {},
+          "keyword": "kubectl top nodes"
+        },
+        {
+          "name": "指定节点查看Pod",
+          "cmd": "kubectl top pods -l %{标签}% --sort-by=%{排序字段}%",
+          "params": {
+            "标签": {
+              "type": "string",
+              "required": false,
+              "description": "标签选择器",
+              "example": "node=worker-1",
+              "notes": "可选"
+            },
+            "排序字段": {
+              "type": "string",
+              "required": false,
+              "description": "排序字段",
+              "example": "cpu",
+              "notes": "可选：cpu或memory"
+            }
+          },
+          "keyword": "kubectl top pods node"
+        },
+        {
+          "name": "显示资源使用详情",
+          "cmd": "kubectl top pods -n %{命名空间}% --containers",
+          "params": {
+            "命名空间": {
+              "type": "string",
+              "required": true,
+              "description": "命名空间",
+              "example": "default",
+              "notes": "必填"
+            }
+          },
+          "keyword": "kubectl top containers"
+        }
+      ],
+      "params": {},
+      "dirPath": "/容器编排/",
+      "name": "kubectl top 命令",
+      "keyword": "kubectl top 命令",
+      "description": "kubectl top 命令的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "name": "查看Pod资源使用",
+            "cmd": "kubectl top pods",
+            "params": {},
+            "keyword": "kubectl top pods"
+          },
+          {
+            "name": "查看Node资源使用",
+            "cmd": "kubectl top nodes",
+            "params": {},
+            "keyword": "kubectl top nodes"
+          },
+          {
+            "name": "查看所有命名空间Pod",
+            "cmd": "kubectl top pods --all-namespaces",
+            "params": {},
+            "keyword": "kubectl top all-namespaces"
+          },
+          {
+            "name": "查看指定命名空间Pod",
+            "cmd": "kubectl top pods -n %{命名空间}%",
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间",
+                "example": "default",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl top namespace"
+          },
+          {
+            "name": "查看Pod容器详情",
+            "cmd": "kubectl top pods -n %{命名空间}% --containers",
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间",
+                "example": "default",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl top containers"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

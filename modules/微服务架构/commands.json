@@ -1,5 +1,5 @@
 {
-  "module": "微服务架构",
+  "module": "微服务架构/微服务架构",
   "version": "1.0",
   "description": "微服务架构核心组件命令行集合，涵盖服务发现、API网关、服务网格、分布式追踪、断路器、负载均衡等",
   "commands": [
@@ -30,7 +30,7 @@
               "集群地址": {
                 "type": "string",
                 "required": true,
-                "description": "集群节点地址",
+                "description": "集群节点地址         ",
                 "example": "192.168.1.10",
                 "notes": "必填"
               }
@@ -62,7 +62,7 @@
               "服务名": {
                 "type": "string",
                 "required": true,
-                "description": "服务名称",
+                "description": "服务名称           ",
                 "example": "payment",
                 "notes": "必填"
               }
@@ -76,7 +76,7 @@
               "服务ID": {
                 "type": "string",
                 "required": true,
-                "description": "服务 ID",
+                "description": "服务 ID          ",
                 "example": "payment-001",
                 "notes": "必填"
               }
@@ -88,21 +88,21 @@
           "服务名": {
             "type": "string",
             "required": true,
-            "description": "服务名称",
+            "description": "服务名称           ",
             "example": "payment",
             "notes": "必填"
           },
           "地址": {
             "type": "string",
             "required": true,
-            "description": "服务地址",
+            "description": "服务地址           ",
             "example": "127.0.0.1",
             "notes": "必填"
           },
           "端口": {
             "type": "string",
             "required": true,
-            "description": "服务端口",
+            "description": "服务端口           ",
             "example": "8080",
             "notes": "必填"
           }
@@ -130,14 +130,14 @@
               "key": {
                 "type": "string",
                 "required": true,
-                "description": "键名",
+                "description": "键名             ",
                 "example": "config/service",
                 "notes": "必填"
               },
               "value": {
                 "type": "string",
                 "required": true,
-                "description": "值",
+                "description": "值              ",
                 "example": "localhost:8080",
                 "notes": "必填"
               }
@@ -151,7 +151,7 @@
               "key": {
                 "type": "string",
                 "required": true,
-                "description": "键名",
+                "description": "键名             ",
                 "example": "config/service",
                 "notes": "必填"
               }
@@ -165,7 +165,7 @@
               "key": {
                 "type": "string",
                 "required": true,
-                "description": "键名",
+                "description": "键名             ",
                 "example": "config/service",
                 "notes": "必填"
               }
@@ -221,14 +221,14 @@
               "NACOS_HOST": {
                 "type": "string",
                 "required": false,
-                "description": "Nacos 服务器地址",
+                "description": "Nacos 服务器地址    ",
                 "example": "localhost",
                 "notes": "默认 localhost"
               },
               "服务名": {
                 "type": "string",
                 "required": true,
-                "description": "服务名称",
+                "description": "服务名称           ",
                 "example": "order-service",
                 "notes": "必填"
               }
@@ -242,28 +242,28 @@
               "NACOS_HOST": {
                 "type": "string",
                 "required": false,
-                "description": "Nacos 服务器地址",
+                "description": "Nacos 服务器地址    ",
                 "example": "localhost",
                 "notes": "默认 localhost"
               },
               "配置ID": {
                 "type": "string",
                 "required": true,
-                "description": "配置 ID",
+                "description": "配置 ID          ",
                 "example": "application.yml",
                 "notes": "必填"
               },
               "分组": {
                 "type": "string",
                 "required": false,
-                "description": "配置分组",
+                "description": "配置分组           ",
                 "example": "DEFAULT_GROUP",
                 "notes": "默认 DEFAULT_GROUP"
               },
               "内容": {
                 "type": "string",
                 "required": true,
-                "description": "配置内容",
+                "description": "配置内容           ",
                 "example": "server.port=8080",
                 "notes": "必填"
               }
@@ -277,21 +277,21 @@
               "NACOS_HOST": {
                 "type": "string",
                 "required": false,
-                "description": "Nacos 服务器地址",
+                "description": "Nacos 服务器地址    ",
                 "example": "localhost",
                 "notes": "默认 localhost"
               },
               "配置ID": {
                 "type": "string",
                 "required": true,
-                "description": "配置 ID",
+                "description": "配置 ID          ",
                 "example": "application.yml",
                 "notes": "必填"
               },
               "分组": {
                 "type": "string",
                 "required": false,
-                "description": "配置分组",
+                "description": "配置分组           ",
                 "example": "DEFAULT_GROUP",
                 "notes": "默认 DEFAULT_GROUP"
               }
@@ -303,28 +303,28 @@
           "NACOS_HOST": {
             "type": "string",
             "required": false,
-            "description": "Nacos 服务器地址",
+            "description": "Nacos 服务器地址    ",
             "example": "localhost",
             "notes": "默认 localhost"
           },
           "服务名": {
             "type": "string",
             "required": true,
-            "description": "服务名称",
+            "description": "服务名称           ",
             "example": "order-service",
             "notes": "必填"
           },
           "IP地址": {
             "type": "string",
             "required": true,
-            "description": "服务 IP 地址",
+            "description": "服务 IP 地址       ",
             "example": "192.168.1.100",
             "notes": "必填"
           },
           "端口": {
             "type": "string",
             "required": true,
-            "description": "服务端口",
+            "description": "服务端口           ",
             "example": "8080",
             "notes": "必填"
           }
@@ -382,14 +382,14 @@
               "服务名": {
                 "type": "string",
                 "required": true,
-                "description": "服务名称",
+                "description": "服务名称           ",
                 "example": "order-service",
                 "notes": "必填"
               },
               "上游名": {
                 "type": "string",
                 "required": true,
-                "description": "上游名称",
+                "description": "上游名称           ",
                 "example": "order-upstream",
                 "notes": "必填"
               }
@@ -403,21 +403,21 @@
               "路由名": {
                 "type": "string",
                 "required": true,
-                "description": "路由名称",
+                "description": "路由名称           ",
                 "example": "order-route",
                 "notes": "必填"
               },
               "服务名": {
                 "type": "string",
                 "required": true,
-                "description": "服务名称",
+                "description": "服务名称           ",
                 "example": "order-service",
                 "notes": "必填"
               },
               "路径": {
                 "type": "string",
                 "required": true,
-                "description": "路由路径",
+                "description": "路由路径           ",
                 "example": "api/orders",
                 "notes": "必填"
               }
@@ -431,7 +431,7 @@
               "服务名": {
                 "type": "string",
                 "required": true,
-                "description": "服务名称",
+                "description": "服务名称           ",
                 "example": "order-service",
                 "notes": "必填"
               }
@@ -443,21 +443,21 @@
           "上游名": {
             "type": "string",
             "required": true,
-            "description": "上游服务名称",
+            "description": "上游服务名称         ",
             "example": "order-upstream",
             "notes": "必填"
           },
           "目标地址": {
             "type": "string",
             "required": true,
-            "description": "后端实例地址",
+            "description": "后端实例地址         ",
             "example": "192.168.1.101",
             "notes": "必填"
           },
           "目标端口": {
             "type": "string",
             "required": true,
-            "description": "后端实例端口",
+            "description": "后端实例端口         ",
             "example": "8080",
             "notes": "必填"
           }
@@ -495,28 +495,28 @@
           "上游名": {
             "type": "string",
             "required": true,
-            "description": "上游服务名称",
+            "description": "上游服务名称         ",
             "example": "order_backend",
             "notes": "必填"
           },
           "后端1": {
             "type": "string",
             "required": true,
-            "description": "后端服务器地址",
+            "description": "后端服务器地址        ",
             "example": "192.168.1.101:8080",
             "notes": "必填"
           },
           "后端2": {
             "type": "string",
             "required": true,
-            "description": "后端服务器地址",
+            "description": "后端服务器地址        ",
             "example": "192.168.1.102:8080",
             "notes": "必填"
           },
           "域名": {
             "type": "string",
             "required": true,
-            "description": "服务域名",
+            "description": "服务域名           ",
             "example": "api.example.com",
             "notes": "必填"
           }
@@ -538,21 +538,21 @@
               "API_ID": {
                 "type": "string",
                 "required": true,
-                "description": "API ID",
+                "description": "API ID         ",
                 "example": "abc123def",
                 "notes": "必填"
               },
               "父资源ID": {
                 "type": "string",
                 "required": true,
-                "description": "父资源 ID",
+                "description": "父资源 ID         ",
                 "example": "abc123",
                 "notes": "必填"
               },
               "路径": {
                 "type": "string",
                 "required": true,
-                "description": "资源路径",
+                "description": "资源路径           ",
                 "example": "orders",
                 "notes": "必填"
               }
@@ -566,14 +566,14 @@
               "API_ID": {
                 "type": "string",
                 "required": true,
-                "description": "API ID",
+                "description": "API ID         ",
                 "example": "abc123def",
                 "notes": "必填"
               },
               "资源ID": {
                 "type": "string",
                 "required": true,
-                "description": "资源 ID",
+                "description": "资源 ID          ",
                 "example": "xyz789",
                 "notes": "必填"
               }
@@ -587,14 +587,14 @@
               "API_ID": {
                 "type": "string",
                 "required": true,
-                "description": "API ID",
+                "description": "API ID         ",
                 "example": "abc123def",
                 "notes": "必填"
               },
               "阶段名": {
                 "type": "string",
                 "required": true,
-                "description": "部署阶段名",
+                "description": "部署阶段名          ",
                 "example": "prod",
                 "notes": "必填"
               }
@@ -608,7 +608,7 @@
               "计划名": {
                 "type": "string",
                 "required": true,
-                "description": "使用计划名称",
+                "description": "使用计划名称         ",
                 "example": "basic-plan",
                 "notes": "必填"
               }
@@ -620,7 +620,7 @@
           "API名称": {
             "type": "string",
             "required": true,
-            "description": "API Gateway 名称",
+            "description": "API Gateway 名称 ",
             "example": "OrderServiceAPI",
             "notes": "必填"
           }
@@ -654,14 +654,14 @@
               "配置集": {
                 "type": "string",
                 "required": true,
-                "description": "Istio 配置集",
+                "description": "Istio 配置集      ",
                 "example": "default",
                 "notes": "default/minimal/demo"
               },
               "镜像仓库": {
                 "type": "string",
                 "required": false,
-                "description": "代理镜像仓库",
+                "description": "代理镜像仓库         ",
                 "example": "docker.io/istio",
                 "notes": "可选"
               }
@@ -679,7 +679,7 @@
           "配置集": {
             "type": "string",
             "required": true,
-            "description": "Istio 配置集",
+            "description": "Istio 配置集      ",
             "example": "demo",
             "notes": "default/minimal/demo/remote"
           }
@@ -715,14 +715,14 @@
               "POD名": {
                 "type": "string",
                 "required": true,
-                "description": "Pod 名称",
+                "description": "Pod 名称         ",
                 "example": "order-abc123",
                 "notes": "必填"
               },
               "命名空间": {
                 "type": "string",
                 "required": true,
-                "description": "命名空间",
+                "description": "命名空间           ",
                 "example": "default",
                 "notes": "必填"
               }
@@ -736,14 +736,14 @@
               "POD名": {
                 "type": "string",
                 "required": true,
-                "description": "Pod 名称",
+                "description": "Pod 名称         ",
                 "example": "order-abc123",
                 "notes": "必填"
               },
               "命名空间": {
                 "type": "string",
                 "required": true,
-                "description": "命名空间",
+                "description": "命名空间           ",
                 "example": "default",
                 "notes": "必填"
               }
@@ -757,14 +757,14 @@
               "POD名": {
                 "type": "string",
                 "required": true,
-                "description": "Pod 名称",
+                "description": "Pod 名称         ",
                 "example": "order-abc123",
                 "notes": "必填"
               },
               "命名空间": {
                 "type": "string",
                 "required": true,
-                "description": "命名空间",
+                "description": "命名空间           ",
                 "example": "default",
                 "notes": "必填"
               }
@@ -778,14 +778,14 @@
               "服务名": {
                 "type": "string",
                 "required": true,
-                "description": "服务名称",
+                "description": "服务名称           ",
                 "example": "order-service",
                 "notes": "必填"
               },
               "命名空间": {
                 "type": "string",
                 "required": true,
-                "description": "命名空间",
+                "description": "命名空间           ",
                 "example": "default",
                 "notes": "必填"
               }
@@ -811,14 +811,14 @@
               "服务名": {
                 "type": "string",
                 "required": true,
-                "description": "服务名称",
+                "description": "服务名称           ",
                 "example": "order-service",
                 "notes": "必填"
               },
               "超时时间": {
                 "type": "string",
                 "required": true,
-                "description": "超时时间（秒）",
+                "description": "超时时间（秒）        ",
                 "example": "5",
                 "notes": "必填"
               }
@@ -832,7 +832,7 @@
               "服务名": {
                 "type": "string",
                 "required": true,
-                "description": "服务名称",
+                "description": "服务名称           ",
                 "example": "order-service",
                 "notes": "必填"
               }
@@ -844,21 +844,21 @@
           "服务名": {
             "type": "string",
             "required": true,
-            "description": "服务名称",
+            "description": "服务名称           ",
             "example": "order-service",
             "notes": "必填"
           },
           "权重1": {
             "type": "string",
             "required": true,
-            "description": "版本1权重",
+            "description": "版本1权重          ",
             "example": "90",
             "notes": "必填"
           },
           "权重2": {
             "type": "string",
             "required": true,
-            "description": "版本2权重",
+            "description": "版本2权重          ",
             "example": "10",
             "notes": "必填"
           }
@@ -906,14 +906,14 @@
               "服务名": {
                 "type": "string",
                 "required": true,
-                "description": "源服务名称",
+                "description": "源服务名称          ",
                 "example": "web",
                 "notes": "必填"
               },
               "目标服务": {
                 "type": "string",
                 "required": true,
-                "description": "目标服务名称",
+                "description": "目标服务名称         ",
                 "example": "api",
                 "notes": "必填"
               }
@@ -945,7 +945,7 @@
               "ADMIN地址": {
                 "type": "string",
                 "required": true,
-                "description": "Envoy 管理地址",
+                "description": "Envoy 管理地址     ",
                 "example": "localhost",
                 "notes": "必填"
               }
@@ -959,7 +959,7 @@
               "ADMIN地址": {
                 "type": "string",
                 "required": true,
-                "description": "Envoy 管理地址",
+                "description": "Envoy 管理地址     ",
                 "example": "localhost",
                 "notes": "必填"
               }
@@ -973,7 +973,7 @@
               "ADMIN地址": {
                 "type": "string",
                 "required": true,
-                "description": "Envoy 管理地址",
+                "description": "Envoy 管理地址     ",
                 "example": "localhost",
                 "notes": "必填"
               }
@@ -985,21 +985,21 @@
           "配置文件": {
             "type": "string",
             "required": true,
-            "description": "Envoy 配置文件路径",
+            "description": "Envoy 配置文件路径   ",
             "example": "/etc/envoy/envoy.yaml",
             "notes": "必填"
           },
           "集群名": {
             "type": "string",
             "required": true,
-            "description": "服务集群名称",
+            "description": "服务集群名称         ",
             "example": "order-cluster",
             "notes": "必填"
           },
           "节点名": {
             "type": "string",
             "required": true,
-            "description": "服务节点名称",
+            "description": "服务节点名称         ",
             "example": "order-node-1",
             "notes": "必填"
           }
@@ -1027,7 +1027,7 @@
               "TRACE_ID": {
                 "type": "string",
                 "required": true,
-                "description": "Trace ID",
+                "description": "Trace ID       ",
                 "example": "abc123def456",
                 "notes": "必填"
               }
@@ -1065,14 +1065,14 @@
               "开始时间": {
                 "type": "string",
                 "required": true,
-                "description": "开始时间（毫秒）",
+                "description": "开始时间（毫秒）       ",
                 "example": "1609459200000",
                 "notes": "必填"
               },
               "结束时间": {
                 "type": "string",
                 "required": true,
-                "description": "结束时间（毫秒）",
+                "description": "结束时间（毫秒）       ",
                 "example": "1609545600000",
                 "notes": "必填"
               }
@@ -1086,7 +1086,7 @@
               "服务名": {
                 "type": "string",
                 "required": true,
-                "description": "服务名称",
+                "description": "服务名称           ",
                 "example": "order-service",
                 "notes": "必填"
               }
@@ -1118,7 +1118,7 @@
               "配置文件": {
                 "type": "string",
                 "required": true,
-                "description": "配置文件路径",
+                "description": "配置文件路径         ",
                 "example": "./config.yaml",
                 "notes": "必填"
               }
@@ -1194,7 +1194,7 @@
               "配置": {
                 "type": "string",
                 "required": true,
-                "description": "Turbine 配置",
+                "description": "Turbine 配置     ",
                 "example": "{...}",
                 "notes": "必填"
               }
@@ -1232,7 +1232,7 @@
               "服务名": {
                 "type": "string",
                 "required": true,
-                "description": "服务名称",
+                "description": "服务名称           ",
                 "example": "order-service",
                 "notes": "必填"
               }
@@ -1270,14 +1270,14 @@
               "后端1": {
                 "type": "string",
                 "required": true,
-                "description": "后端地址",
+                "description": "后端地址           ",
                 "example": "192.168.1.101:8080",
                 "notes": "必填"
               },
               "权重": {
                 "type": "string",
                 "required": true,
-                "description": "权重值",
+                "description": "权重值            ",
                 "example": "100",
                 "notes": "必填"
               }
@@ -1301,14 +1301,14 @@
           "后端1": {
             "type": "string",
             "required": true,
-            "description": "后端服务器地址",
+            "description": "后端服务器地址        ",
             "example": "192.168.1.101:8080",
             "notes": "必填"
           },
           "后端2": {
             "type": "string",
             "required": true,
-            "description": "后端服务器地址",
+            "description": "后端服务器地址        ",
             "example": "192.168.1.102:8080",
             "notes": "必填"
           }

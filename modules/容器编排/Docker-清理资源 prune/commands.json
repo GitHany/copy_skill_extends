@@ -1,0 +1,135 @@
+{
+  "module": "容器编排/Docker-清理资源 prune",
+  "version": "2.0",
+  "description": "Docker prune命令集合，涵盖Docker prune的常用操作和最佳实践",
+  "commands": [
+    {
+      "cmd": "docker system prune",
+      "extensions": [
+        {
+          "name": "清理所有未使用的镜像",
+          "cmd": "docker system prune --all",
+          "params": {},
+          "keyword": "docker prune all images"
+        },
+        {
+          "name": "清理未使用的卷",
+          "cmd": "docker system prune --volumes",
+          "params": {},
+          "keyword": "docker prune volumes"
+        },
+        {
+          "name": "清理构建缓存",
+          "cmd": "docker builder prune",
+          "params": {},
+          "keyword": "docker builder prune cache"
+        },
+        {
+          "name": "清理所有资源并确认",
+          "cmd": "docker system prune --all --volumes",
+          "params": {},
+          "keyword": "docker prune all volumes"
+        },
+        {
+          "name": "清理悬空的镜像",
+          "cmd": "docker image prune",
+          "params": {},
+          "keyword": "docker image prune dangling"
+        },
+        {
+          "name": "清理停止的容器",
+          "cmd": "docker container prune",
+          "params": {},
+          "keyword": "docker container prune stopped"
+        },
+        {
+          "name": "清理构建缓存并确认",
+          "cmd": "docker builder prune --all",
+          "params": {},
+          "keyword": "docker builder prune all"
+        }
+      ],
+      "params": {},
+      "dirPath": "/容器编排/",
+      "name": "Docker prune 命令",
+      "keyword": "Docker prune 命令",
+      "description": "Docker prune 命令的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker system prune",
+        "extensions": [
+          {
+            "name": "清理未使用的镜像",
+            "cmd": "docker image prune -a",
+            "params": {
+              "确认清理": {
+                "type": "boolean",
+                "required": false,
+                "description": "是否确认清理所有未使用的镜像（包括悬空）",
+                "example": "true",
+                "notes": "可选，默认 false"
+              }
+            },
+            "keyword": "docker image prune all"
+          },
+          {
+            "name": "清理未使用的卷",
+            "cmd": "docker volume prune",
+            "params": {
+              "确认清理": {
+                "type": "boolean",
+                "required": false,
+                "description": "是否确认清理未使用的卷",
+                "example": "true",
+                "notes": "可选，默认 false"
+              }
+            },
+            "keyword": "docker volume prune"
+          },
+          {
+            "name": "清理构建缓存",
+            "cmd": "docker builder prune --all",
+            "params": {
+              "确认清理": {
+                "type": "boolean",
+                "required": false,
+                "description": "是否确认清理所有构建缓存",
+                "example": "true",
+                "notes": "可选，默认 false"
+              }
+            },
+            "keyword": "docker builder prune all cache"
+          },
+          {
+            "name": "清理停止的容器",
+            "cmd": "docker container prune",
+            "params": {
+              "过滤条件": {
+                "type": "string",
+                "required": false,
+                "description": "过滤条件，用于筛选要清理的容器",
+                "example": "until=24h",
+                "notes": "可选，格式如 until=24h"
+              }
+            },
+            "keyword": "docker container prune stopped"
+          },
+          {
+            "name": "清理网络",
+            "cmd": "docker network prune",
+            "params": {
+              "确认清理": {
+                "type": "boolean",
+                "required": false,
+                "description": "是否确认清理未使用的网络",
+                "example": "true",
+                "notes": "可选，默认 false"
+              }
+            },
+            "keyword": "docker network prune"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

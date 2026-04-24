@@ -1,0 +1,278 @@
+{
+  "module": "容器编排/kubectl 资源编辑",
+  "version": "2.0",
+  "description": "kubectl 资源编辑命令集合，涵盖kubectl 资源编辑的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl edit 编辑资源",
+      "keyword": "kubectl edit 编辑",
+      "description": "编辑资源配置。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl edit %{资源类型}% %{名称}%",
+        "extensions": [
+          {
+            "name": "kubectl edit 保存到临时文件",
+            "description": "将资源导出到临时文件后编辑，适用于需要备份或多次修改的场景",
+            "params": {
+              "资源类型": {
+                "type": "string",
+                "required": true,
+                "description": "资源类型",
+                "example": "deployment",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "资源名称",
+                "example": "myapp",
+                "notes": "必填"
+              }
+            },
+            "cmd": "kubectl get %{资源类型}% %{名称}% -o yaml > /tmp/edit_template.yaml && kubectl edit -f /tmp/edit_template.yaml"
+          },
+          {
+            "name": "kubectl edit 指定命名空间",
+            "description": "在指定命名空间中编辑资源",
+            "params": {
+              "资源类型": {
+                "type": "string",
+                "required": true,
+                "description": "资源类型",
+                "example": "deployment",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "资源名称",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间",
+                "example": "production",
+                "notes": "必填"
+              }
+            },
+            "cmd": "kubectl edit %{资源类型}% %{名称}% -n %{命名空间}%"
+          },
+          {
+            "name": "kubectl edit 输出JSON格式",
+            "description": "以JSON格式编辑资源",
+            "params": {
+              "资源类型": {
+                "type": "string",
+                "required": true,
+                "description": "资源类型",
+                "example": "configmap",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "资源名称",
+                "example": "myconfig",
+                "notes": "必填"
+              }
+            },
+            "cmd": "kubectl edit %{资源类型}% %{名称}% -o json"
+          },
+          {
+            "name": "kubectl edit 编辑Deployment镜像版本",
+            "description": "快速编辑Deployment的容器镜像版本",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment名称",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "容器名": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称",
+                "example": "app",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "新镜像版本",
+                "example": "nginx:1.21",
+                "notes": "必填"
+              }
+            },
+            "cmd": "kubectl edit deployment %{名称}% --images=%{容器名}%=%{镜像}%"
+          }
+        ],
+        "params": {
+          "资源类型": {
+            "type": "string",
+            "required": true,
+            "description": "资源类型           ",
+            "example": "deployment",
+            "notes": "必填"
+          },
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "资源名            ",
+            "example": "myapp",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl patch 修补资源",
+      "keyword": "kubectl patch 修补",
+      "description": "修补资源配置。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl patch %{资源类型}% %{名称}% -p '%{补丁}%'",
+        "extensions": [
+          {
+            "name": "kubectl patch 更新副本数",
+            "description": "通过patch更新资源的副本数量",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "资源名称",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "副本数": {
+                "type": "string",
+                "required": true,
+                "description": "副本数量",
+                "example": "5",
+                "notes": "必填"
+              }
+            },
+            "cmd": "kubectl patch deployment %{名称}% -p '{\"spec\":{\"replicas\":%{副本数}%}}'"
+          },
+          {
+            "name": "kubectl patch 更新镜像版本",
+            "description": "更新容器镜像到新版本",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment名称",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "容器名": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称",
+                "example": "app",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "新镜像",
+                "example": "nginx:1.21",
+                "notes": "必填"
+              }
+            },
+            "cmd": "kubectl patch deployment %{名称}% -p '{\"spec\":{\"template\":{\"spec\":{\"containers\":[{\"name\":\"%{容器名}%\",\"image\":\"%{镜像}%\"}]}}}}'"
+          },
+          {
+            "name": "kubectl patch 添加标签",
+            "description": "为资源添加新的标签",
+            "params": {
+              "资源类型": {
+                "type": "string",
+                "required": true,
+                "description": "资源类型",
+                "example": "deployment",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "资源名称",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "标签键": {
+                "type": "string",
+                "required": true,
+                "description": "标签键",
+                "example": "env",
+                "notes": "必填"
+              },
+              "标签值": {
+                "type": "string",
+                "required": true,
+                "description": "标签值",
+                "example": "production",
+                "notes": "必填"
+              }
+            },
+            "cmd": "kubectl patch %{资源类型}% %{名称}% -p '{\"metadata\":{\"labels\":{\"%{标签键}%\":\"%{标签值}%\"}}}'"
+          },
+          {
+            "name": "kubectl patch JSON merge patch",
+            "description": "使用JSON merge patch方式修补资源",
+            "params": {
+              "资源类型": {
+                "type": "string",
+                "required": true,
+                "description": "资源类型",
+                "example": "configmap",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "资源名称",
+                "example": "myconfig",
+                "notes": "必填"
+              },
+              "补丁": {
+                "type": "string",
+                "required": true,
+                "description": "补丁JSON",
+                "example": "{\"data\":{\"key\":\"value\"}}",
+                "notes": "必填"
+              }
+            },
+            "cmd": "kubectl patch %{资源类型}% %{名称}% --type merge -p '%{补丁}%'"
+          }
+        ],
+        "params": {
+          "资源类型": {
+            "type": "string",
+            "required": true,
+            "description": "类型             ",
+            "example": "deployment",
+            "notes": "必填"
+          },
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "名              ",
+            "example": "myapp",
+            "notes": "必填"
+          },
+          "补丁": {
+            "type": "string",
+            "required": true,
+            "description": "补丁 JSON        ",
+            "example": "{\"spec\":{\"replicas\":3}}",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

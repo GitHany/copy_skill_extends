@@ -1,0 +1,838 @@
+{
+  "module": "Linux系统/Linux 系统监控",
+  "version": "2.0",
+  "description": "Linux 系统监控命令集合，涵盖Linux 系统监控的常用操作和最佳实践",
+  "commands": [
+    {
+      "cmd": "top",
+      "extensions": [
+        {
+          "name": "按 CPU 排序",
+          "cmd": "top -o %CPU",
+          "params": {},
+          "keyword": "top cpu"
+        },
+        {
+          "name": "按内存排序",
+          "cmd": "top -o %MEM",
+          "params": {},
+          "keyword": "top mem"
+        },
+        {
+          "name": "指定刷新间隔",
+          "cmd": "top -d %{秒}%",
+          "params": {
+            "秒": {
+              "type": "string",
+              "required": true,
+              "description": "刷新间隔（秒）",
+              "example": "2",
+              "notes": "必填"
+            }
+          },
+          "keyword": "top delay"
+        },
+        {
+          "name": "高亮运行中进程",
+          "cmd": "top -z",
+          "params": {},
+          "keyword": "top highlight"
+        },
+        {
+          "name": "显示特定用户进程",
+          "cmd": "top -u %{用户}%",
+          "params": {
+            "用户": {
+              "type": "string",
+              "required": true,
+              "description": "用户名",
+              "example": "root",
+              "notes": "必填"
+            }
+          },
+          "keyword": "top user"
+        },
+        {
+          "name": "批处理模式",
+          "cmd": "top -b -n %{次数}%",
+          "params": {
+            "次数": {
+              "type": "string",
+              "required": true,
+              "description": "批处理次数",
+              "example": "5",
+              "notes": "必填"
+            }
+          },
+          "keyword": "top batch"
+        },
+        {
+          "name": "显示进程完整命令行",
+          "cmd": "top -c",
+          "params": {},
+          "keyword": "top command"
+        },
+        {
+          "name": "显示线程信息",
+          "cmd": "top -H",
+          "params": {},
+          "keyword": "top thread"
+        },
+        {
+          "name": "显示所有CPU核心",
+          "cmd": "top -1",
+          "params": {},
+          "keyword": "top cpu all"
+        },
+        {
+          "name": "显示系统信息",
+          "cmd": "top -sys",
+          "params": {},
+          "keyword": "top sysinfo"
+        },
+        {
+          "name": "不显示idle进程",
+          "cmd": "top -I",
+          "params": {},
+          "keyword": "top no-idle"
+        },
+        {
+          "name": "批量输出到文件",
+          "cmd": "top -b -n %{次数}% > %{文件}%",
+          "params": {
+            "次数": {
+              "type": "string",
+              "required": true,
+              "description": "迭代次数",
+              "example": "10",
+              "notes": "必填"
+            },
+            "文件": {
+              "type": "string",
+              "required": true,
+              "description": "输出文件",
+              "example": "/tmp/top.log",
+              "notes": "必填"
+            }
+          },
+          "keyword": "top batch-file"
+        },
+        {
+          "name": "设置最大进程数",
+          "cmd": "top -n %{数量}%",
+          "params": {
+            "数量": {
+              "type": "string",
+              "required": true,
+              "description": "最大进程数",
+              "example": "50",
+              "notes": "必填"
+            }
+          },
+          "keyword": "top max-proc"
+        },
+        {
+          "name": "显示进程树",
+          "cmd": "top -E kilo",
+          "params": {},
+          "keyword": "top tree"
+        },
+        {
+          "name": "交互模式",
+          "cmd": "top -1",
+          "params": {},
+          "keyword": "top interactive"
+        },
+        {
+          "name": "批量模式输出CPU排序",
+          "cmd": "top -b -o %CPU -n %{次数}%",
+          "params": {
+            "次数": {
+              "type": "string",
+              "required": true,
+              "description": "迭代次数",
+              "example": "5",
+              "notes": "必填"
+            }
+          },
+          "keyword": "top batch cpu"
+        },
+        {
+          "name": "显示进程PID",
+          "cmd": "top -b -n 1 | grep %{关键词}%",
+          "params": {
+            "关键词": {
+              "type": "string",
+              "required": true,
+              "description": "进程关键词",
+              "example": "python",
+              "notes": "必填"
+            }
+          },
+          "keyword": "top pid filter"
+        },
+        {
+          "name": "实时内存监控",
+          "cmd": "watch -n 1 top -b -o %MEM",
+          "params": {},
+          "keyword": "top mem watch"
+        }
+      ],
+      "params": {},
+      "dirPath": "/Linux系统/",
+      "name": "Linux 系统监控 命令",
+      "keyword": "Linux 系统监控 命令",
+      "description": "Linux 系统监控 命令的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "cmd": "htop",
+      "extensions": [
+        {
+          "name": "按内存排序",
+          "cmd": "htop -d PERCENT_MEM",
+          "params": {},
+          "keyword": "htop memory"
+        },
+        {
+          "name": "按CPU排序",
+          "cmd": "htop -d PERCENT_CPU",
+          "params": {},
+          "keyword": "htop cpu"
+        },
+        {
+          "name": "显示特定用户",
+          "cmd": "htop -u %{用户}%",
+          "params": {
+            "用户": {
+              "type": "string",
+              "required": true,
+              "description": "用户名",
+              "example": "root",
+              "notes": "必填"
+            }
+          },
+          "keyword": "htop user"
+        },
+        {
+          "name": "隐藏空闲进程",
+          "cmd": "htop -i",
+          "params": {},
+          "keyword": "htop idle"
+        },
+        {
+          "name": "监控特定进程",
+          "cmd": "htop -p %{pid}%",
+          "params": {
+            "pid": {
+              "type": "string",
+              "required": true,
+              "description": "进程ID",
+              "example": "1234",
+              "notes": "必填"
+            }
+          },
+          "keyword": "htop pid"
+        },
+        {
+          "name": "树状显示进程",
+          "cmd": "htop -t",
+          "params": {},
+          "keyword": "htop tree"
+        },
+        {
+          "name": "设置刷新延迟",
+          "cmd": "htop -d %{延迟}%",
+          "params": {
+            "延迟": {
+              "type": "string",
+              "required": true,
+              "description": "刷新延迟（秒）",
+              "example": "10",
+              "notes": "必填"
+            }
+          },
+          "keyword": "htop delay"
+        },
+        {
+          "name": "显示进程打开的文件",
+          "cmd": "htop -p %{pid}% && lsof -p %{pid}%",
+          "params": {
+            "pid": {
+              "type": "string",
+              "required": true,
+              "description": "进程ID",
+              "example": "1234",
+              "notes": "必填"
+            }
+          },
+          "keyword": "htop files"
+        },
+        {
+          "name": "监控特定PID列表",
+          "cmd": "htop -p %{pid_list}%",
+          "params": {
+            "pid_list": {
+              "type": "string",
+              "required": true,
+              "description": "进程ID列表",
+              "example": "1234,5678",
+              "notes": "必填"
+            }
+          },
+          "keyword": "htop pid list"
+        },
+        {
+          "name": "显示命令行参数",
+          "cmd": "htop -d %{延迟}%",
+          "params": {
+            "延迟": {
+              "type": "string",
+              "required": true,
+              "description": "刷新延迟",
+              "example": "5",
+              "notes": "必填"
+            }
+          },
+          "keyword": "htop args"
+        },
+        {
+          "name": "搜索进程",
+          "cmd": "htop --filter=%{关键词}%",
+          "params": {
+            "关键词": {
+              "type": "string",
+              "required": true,
+              "description": "搜索关键词",
+              "example": "nginx",
+              "notes": "必填"
+            }
+          },
+          "keyword": "htop search"
+        },
+        {
+          "name": "设置颜色方案",
+          "cmd": "htop -C",
+          "params": {},
+          "keyword": "htop color"
+        },
+        {
+          "name": "显示帮助",
+          "cmd": "htop --help",
+          "params": {},
+          "keyword": "htop help"
+        },
+        {
+          "name": "切换视图",
+          "cmd": "htop -s %{列}%",
+          "params": {
+            "列": {
+              "type": "string",
+              "required": true,
+              "description": "排序列",
+              "example": "PERCENT_CPU",
+              "notes": "必填"
+            }
+          },
+          "keyword": "htop sort"
+        },
+        {
+          "name": "显示CPU核心温度",
+          "cmd": "htop && sensors",
+          "params": {},
+          "keyword": "htop temp"
+        },
+        {
+          "name": "显示进程数",
+          "cmd": "htop -n 1 | tail -1",
+          "params": {},
+          "keyword": "htop count"
+        },
+        {
+          "name": "垂直模式显示",
+          "cmd": "htop -v",
+          "params": {},
+          "keyword": "htop vertical"
+        },
+        {
+          "name": "显示网络IO",
+          "cmd": "htop -d 5 && cat /proc/net/dev",
+          "params": {},
+          "keyword": "htop network"
+        },
+        {
+          "name": "精确延迟监控",
+          "cmd": "htop -d %{延迟}% -n %{次数}%",
+          "params": {
+            "延迟": {
+              "type": "string",
+              "required": true,
+              "description": "刷新延迟（秒）",
+              "example": "3",
+              "notes": "必填"
+            },
+            "次数": {
+              "type": "string",
+              "required": true,
+              "description": "迭代次数",
+              "example": "10",
+              "notes": "必填"
+            }
+          },
+          "keyword": "htop precise"
+        }
+      ],
+      "params": {},
+      "dirPath": "/Linux系统/",
+      "name": "htop 交互式进程查看",
+      "keyword": "htop 进程监控",
+      "description": "htop 是增强版的进程监控工具，提供交互式界面",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "cmd": "ps",
+      "extensions": [
+        {
+          "name": "显示所有进程",
+          "cmd": "ps aux",
+          "params": {},
+          "keyword": "ps aux"
+        },
+        {
+          "name": "树状显示进程",
+          "cmd": "ps axjf",
+          "params": {},
+          "keyword": "ps tree"
+        },
+        {
+          "name": "显示进程线程",
+          "cmd": "ps -eLf",
+          "params": {},
+          "keyword": "ps thread"
+        },
+        {
+          "name": "按CPU排序",
+          "cmd": "ps aux --sort=-%cpu",
+          "params": {},
+          "keyword": "ps cpu sort"
+        },
+        {
+          "name": "按内存排序",
+          "cmd": "ps aux --sort=-%mem",
+          "params": {},
+          "keyword": "ps mem sort"
+        },
+        {
+          "name": "显示指定进程",
+          "cmd": "ps -p %{pid}%",
+          "params": {
+            "pid": {
+              "type": "string",
+              "required": true,
+              "description": "进程ID",
+              "example": "1234",
+              "notes": "必填"
+            }
+          },
+          "keyword": "ps pid"
+        },
+        {
+          "name": "格式化输出",
+          "cmd": "ps -o %{格式}%",
+          "params": {
+            "格式": {
+              "type": "string",
+              "required": true,
+              "description": "输出格式",
+              "example": "pid,ppid,cmd",
+              "notes": "必填"
+            }
+          },
+          "keyword": "ps format"
+        },
+        {
+          "name": "显示进程树",
+          "cmd": "pstree",
+          "params": {},
+          "keyword": "ps tree"
+        },
+        {
+          "name": "实时监控进程变化",
+          "cmd": "watch -n 1 %{命令}%",
+          "params": {
+            "命令": {
+              "type": "string",
+              "required": true,
+              "description": "监控命令",
+              "example": "ps aux",
+              "notes": "必填"
+            }
+          },
+          "keyword": "ps watch"
+        },
+        {
+          "name": "显示进程环境变量",
+          "cmd": "ps -p %{pid}% -E",
+          "params": {
+            "pid": {
+              "type": "string",
+              "required": true,
+              "description": "进程ID",
+              "example": "1234",
+              "notes": "必填"
+            }
+          },
+          "keyword": "ps env"
+        },
+        {
+          "name": "显示父子进程关系",
+          "cmd": "ps -e -o pid,ppid,cmd",
+          "params": {},
+          "keyword": "ps parent"
+        },
+        {
+          "name": "查找特定进程名",
+          "cmd": "pgrep -l %{进程名}%",
+          "params": {
+            "进程名": {
+              "type": "string",
+              "required": true,
+              "description": "进程名",
+              "example": "nginx",
+              "notes": "必填"
+            }
+          },
+          "keyword": "ps grep"
+        },
+        {
+          "name": "显示进程状态",
+          "cmd": "ps -e -o pid,stat,cmd",
+          "params": {},
+          "keyword": "ps state"
+        },
+        {
+          "name": "显示进程启动时间",
+          "cmd": "ps -e -o pid,lstart,cmd",
+          "params": {},
+          "keyword": "ps lstart"
+        },
+        {
+          "name": "显示进程用户",
+          "cmd": "ps -eo user,pid,cmd --no-headers",
+          "params": {},
+          "keyword": "ps user"
+        },
+        {
+          "name": "显示进程组",
+          "cmd": "ps -eo pid,gid,cmd",
+          "params": {},
+          "keyword": "ps group"
+        },
+        {
+          "name": "显示进程会话ID",
+          "cmd": "ps -eo pid,sid,cmd",
+          "params": {},
+          "keyword": "ps session"
+        },
+        {
+          "name": "显示进程优先级",
+          "cmd": "ps -eo pid,ni,cmd",
+          "params": {},
+          "keyword": "ps nice"
+        },
+        {
+          "name": "显示进程虚拟内存",
+          "cmd": "ps -eo pid,vsz,cmd",
+          "params": {},
+          "keyword": "ps vmem"
+        },
+        {
+          "name": "显示进程状态码",
+          "cmd": "ps -eo pid,state,cmd",
+          "params": {},
+          "keyword": "ps state code"
+        }
+      ],
+      "params": {},
+      "dirPath": "/Linux系统/",
+      "name": "ps 进程查看",
+      "keyword": "ps 进程",
+      "description": "ps 命令用于查看当前运行的进程状态",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "cmd": "uptime",
+      "extensions": [
+        {
+          "name": "显示当前时间",
+          "cmd": "uptime",
+          "params": {},
+          "keyword": "uptime time"
+        },
+        {
+          "name": "显示运行时间统计",
+          "cmd": "uptime -s",
+          "params": {},
+          "keyword": "uptime since"
+        },
+        {
+          "name": "简洁输出",
+          "cmd": "uptime -p",
+          "params": {},
+          "keyword": "uptime pretty"
+        },
+        {
+          "name": "显示负载均衡信息",
+          "cmd": "uptime -q",
+          "params": {},
+          "keyword": "uptime load"
+        },
+        {
+          "name": "彩色输出",
+          "cmd": "uptime --color",
+          "params": {},
+          "keyword": "uptime color"
+        },
+        {
+          "name": "显示系统位数",
+          "cmd": "uptime | grep -o 'up.*user.*load'",
+          "params": {},
+          "keyword": "uptime info"
+        },
+        {
+          "name": "显示运行时长和平均负载",
+          "cmd": "uptime -s && uptime",
+          "params": {},
+          "keyword": "uptime full"
+        },
+        {
+          "name": "查看系统运行状态",
+          "cmd": "uptime && cat /proc/loadavg",
+          "params": {},
+          "keyword": "uptime status"
+        },
+        {
+          "name": "显示最近1/5/15分钟负载",
+          "cmd": "uptime | awk -F'load average:' '{print $2}'",
+          "params": {},
+          "keyword": "uptime load avg"
+        },
+        {
+          "name": "显示系统已运行天数",
+          "cmd": "uptime -s | cut -d' ' -f1 | xargs -I {} date -d {} +%s | xargs -I {} echo $(( ($(date +%s) - {}) / 86400 )) 天",
+          "params": {},
+          "keyword": "uptime days"
+        },
+        {
+          "name": "显示谁登录过系统",
+          "cmd": "uptime && who",
+          "params": {},
+          "keyword": "uptime who"
+        },
+        {
+          "name": "显示系统唤醒时间",
+          "cmd": "uptime -v",
+          "params": {},
+          "keyword": "uptime wake"
+        },
+        {
+          "name": "显示运行天数和用户数",
+          "cmd": "uptime | awk '{print \"系统已运行: \" $3 \"天, 当前用户: \" $6 \"个\"}'",
+          "params": {},
+          "keyword": "uptime days users"
+        },
+        {
+          "name": "显示负载因子",
+          "cmd": "uptime | grep -o 'load average: .*' | awk '{print $3, $4, $5}'",
+          "params": {},
+          "keyword": "uptime load factor"
+        },
+        {
+          "name": "显示历史运行时间",
+          "cmd": "uptime -s && uptime -p",
+          "params": {},
+          "keyword": "uptime history"
+        },
+        {
+          "name": "显示服务器运行时长",
+          "cmd": "uptime -s | date -f - +%s | xargs -I {} echo \"$(( ($(date +%s) - {}) / 86400 )) 天\"",
+          "params": {},
+          "keyword": "uptime server days"
+        },
+        {
+          "name": "显示系统负载峰值",
+          "cmd": "uptime && cat /proc/loadavg && echo \"峰值: $(cat /proc/loadavg | awk '{print $1}')\"",
+          "params": {},
+          "keyword": "uptime peak"
+        }
+      ],
+      "params": {},
+      "dirPath": "/Linux系统/",
+      "name": "uptime 系统运行时间",
+      "keyword": "uptime 运行时间",
+      "description": "uptime 命令显示系统运行时间",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "cmd": "free",
+      "extensions": [
+        {
+          "name": "以字节显示",
+          "cmd": "free -b",
+          "params": {},
+          "keyword": "free bytes"
+        },
+        {
+          "name": "以MB显示",
+          "cmd": "free -m",
+          "params": {},
+          "keyword": "free mb"
+        },
+        {
+          "name": "以GB显示",
+          "cmd": "free -g",
+          "params": {},
+          "keyword": "free gb"
+        },
+        {
+          "name": "显示总计",
+          "cmd": "free -t",
+          "params": {},
+          "keyword": "free total"
+        },
+        {
+          "name": "周期性刷新",
+          "cmd": "free -s %{秒}%",
+          "params": {
+            "秒": {
+              "type": "string",
+              "required": true,
+              "description": "刷新间隔（秒）",
+              "example": "5",
+              "notes": "必填"
+            }
+          },
+          "keyword": "free seconds"
+        },
+        {
+          "name": "显示低内存阈值",
+          "cmd": "free -l",
+          "params": {},
+          "keyword": "free low"
+        },
+        {
+          "name": "显示内存和交换空间",
+          "cmd": "free -h",
+          "params": {},
+          "keyword": "free human"
+        },
+        {
+          "name": "显示详细内存信息",
+          "cmd": "free -m -a",
+          "params": {},
+          "keyword": "free detail"
+        },
+        {
+          "name": "显示内存使用百分比",
+          "cmd": "free | awk '/Mem/{printf(\"%.2f%%\", $3/$2 * 100)}'",
+          "params": {},
+          "keyword": "free percent"
+        },
+        {
+          "name": "周期性显示内存使用",
+          "cmd": "watch -n %{秒}% free -m",
+          "params": {
+            "秒": {
+              "type": "string",
+              "required": true,
+              "description": "刷新间隔（秒）",
+              "example": "2",
+              "notes": "必填"
+            }
+          },
+          "keyword": "free watch"
+        },
+        {
+          "name": "显示交换空间详情",
+          "cmd": "free -h && cat /proc/swaps",
+          "params": {},
+          "keyword": "free swap"
+        },
+        {
+          "name": "显示内存使用率和空闲率",
+          "cmd": "free | grep Mem | awk '{printf(\"使用率: %.1f%%, 空闲率: %.1f%%\\n\", ($3/$2)*100, ($4/$2)*100)}'",
+          "params": {},
+          "keyword": "free usage"
+        },
+        {
+          "name": "显示虚拟内存统计",
+          "cmd": "vmstat",
+          "params": {},
+          "keyword": "free vmstat"
+        },
+        {
+          "name": "显示内存和缓存信息",
+          "cmd": "cat /proc/meminfo | head -10",
+          "params": {},
+          "keyword": "free meminfo"
+        },
+        {
+          "name": "显示详细内存使用情况",
+          "cmd": "free -wh",
+          "params": {},
+          "keyword": "free wide human"
+        },
+        {
+          "name": "显示内存和缓冲区",
+          "cmd": "free -w",
+          "params": {},
+          "keyword": "free wide"
+        },
+        {
+          "name": "显示内存使用量和可用量",
+          "cmd": "free -h --si",
+          "params": {},
+          "keyword": "free si"
+        },
+        {
+          "name": "显示低阈值内存统计",
+          "cmd": "free -l -t",
+          "params": {},
+          "keyword": "free low total"
+        },
+        {
+          "name": "显示内存详细信息",
+          "cmd": "cat /proc/meminfo | grep -E 'MemTotal|MemFree|MemAvailable|Cached|Buffers'",
+          "params": {},
+          "keyword": "free meminfo detail"
+        }
+      ],
+      "params": {},
+      "dirPath": "/Linux系统/",
+      "name": "free 内存监控",
+      "keyword": "free 内存",
+      "description": "free 命令显示系统内存使用情况",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "module": "Linux系统/Linux 文件操作",
+  "version": "2.0",
+  "description": "Linux 文件操作命令集合，涵盖Linux 文件操作的常用操作和最佳实践",
+  "commands": [
+    {
+      "name": "显示隐藏文件",
+      "cmd": "ls -a %{目录}%",
+      "params": {
+        "目录": {
+          "type": "string",
+          "required": true,
+          "description": "目录",
+          "example": ".",
+          "notes": "必填"
+        }
+      },
+      "keyword": "ls all",
+      "dirPath": "/Linux系统/",
+      "description": "显示隐藏文件的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "name": "显示所有文件含详细信息",
+            "cmd": "ls -la %{目录}%",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "目录",
+                "example": ".",
+                "notes": "必填"
+              }
+            },
+            "keyword": "ls 详细隐藏"
+          },
+          {
+            "name": "递归显示隐藏文件",
+            "cmd": "ls -laR %{目录}%",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "目录",
+                "example": ".",
+                "notes": "必填"
+              }
+            },
+            "keyword": "ls 递归隐藏"
+          },
+          {
+            "name": "仅显示隐藏文件",
+            "cmd": "ls -d .*",
+            "params": {},
+            "keyword": "ls 仅隐藏"
+          },
+          {
+            "name": "显示隐藏文件并排序",
+            "cmd": "ls -la --sort=time %{目录}%",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "目录",
+                "example": ".",
+                "notes": "必填"
+              }
+            },
+            "keyword": "ls 隐藏时间排序"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

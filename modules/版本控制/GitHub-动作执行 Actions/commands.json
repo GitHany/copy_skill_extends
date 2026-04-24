@@ -1,0 +1,262 @@
+{
+  "module": "版本控制/GitHub-动作执行 Actions",
+  "version": "2.0",
+  "description": "GitHub Actions命令集合，涵盖GitHub Actions的常用操作和最佳实践",
+  "commands": [
+    {
+      "cmd": "act",
+      "extensions": [
+        {
+          "name": "运行指定事件",
+          "cmd": "act %{事件}%",
+          "params": {
+            "事件": {
+              "type": "string",
+              "required": true,
+              "description": "触发事件",
+              "example": "push",
+              "notes": "必填"
+            }
+          },
+          "keyword": "act event"
+        },
+        {
+          "name": "列出工作流",
+          "cmd": "act -l",
+          "params": {},
+          "keyword": "act list"
+        },
+        {
+          "name": "act 查看任务列表",
+          "cmd": "act -L",
+          "params": {},
+          "keyword": "act tasks"
+        },
+        {
+          "name": "act 使用指定工作流文件",
+          "cmd": "act -W %{文件}%",
+          "params": {
+            "文件": {
+              "type": "string",
+              "required": true,
+              "description": "工作流文件路径",
+              "example": ".github/workflows/deploy.yml",
+              "notes": "必填"
+            }
+          },
+          "keyword": "act workflow"
+        },
+        {
+          "name": "act 模拟运行（不执行操作）",
+          "cmd": "act -n",
+          "params": {},
+          "keyword": "act dry run"
+        },
+        {
+          "name": "act 后台运行",
+          "cmd": "act -b",
+          "params": {},
+          "keyword": "act background"
+        },
+        {
+          "name": "act 指定 runner 标签",
+          "cmd": "act -j %{标签}%",
+          "params": {
+            "标签": {
+              "type": "string",
+              "required": true,
+              "description": "runner 标签名",
+              "example": "ubuntu-latest",
+              "notes": "必填"
+            }
+          },
+          "keyword": "act job runner"
+        },
+        {
+          "name": "act 查看执行日志",
+          "cmd": "act --verbose",
+          "params": {},
+          "keyword": "act log verbose"
+        },
+        {
+          "name": "act 强制执行忽略条件",
+          "cmd": "act -f",
+          "params": {},
+          "keyword": "act force trigger"
+        },
+        {
+          "name": "act 使用指定 secret",
+          "cmd": "act -s %{密钥名}%=%{密钥值}%",
+          "params": {
+            "密钥名": {
+              "type": "string",
+              "required": true,
+              "description": "secret 名称",
+              "example": "API_KEY",
+              "notes": "必填"
+            },
+            "密钥值": {
+              "type": "string",
+              "required": true,
+              "description": "secret 值",
+              "example": "abc123",
+              "notes": "必填"
+            }
+          },
+          "keyword": "act secret"
+        },
+        {
+          "name": "act 拉取最新镜像",
+          "cmd": "act --pull",
+          "params": {},
+          "keyword": "act pull image"
+        },
+        {
+          "name": "act 使用 secrets 文件",
+          "cmd": "act --secrets-file %{文件路径}%",
+          "params": {
+            "文件路径": {
+              "type": "string",
+              "required": true,
+              "description": "secrets 文件路径",
+              "example": ".secrets",
+              "notes": "必填"
+            }
+          },
+          "keyword": "act secrets file"
+        },
+        {
+          "name": "act 查看版本",
+          "cmd": "act --version",
+          "params": {},
+          "keyword": "act version"
+        },
+        {
+          "name": "act 指定平台",
+          "cmd": "act --platform %{平台}%",
+          "params": {
+            "平台": {
+              "type": "string",
+              "required": true,
+              "description": "平台名称",
+              "example": "ubuntu-latest=ubuntu:20.04",
+              "notes": "必填"
+            }
+          },
+          "keyword": "act platform container"
+        },
+        {
+          "name": "act 查看帮助",
+          "cmd": "act --help",
+          "params": {},
+          "keyword": "act help"
+        },
+        {
+          "name": "act 指定事件列表文件",
+          "cmd": "act -e %{事件文件}%",
+          "params": {
+            "事件文件": {
+              "type": "string",
+              "required": true,
+              "description": "事件数据文件路径",
+              "example": "event.json",
+              "notes": "必填"
+            }
+          },
+          "keyword": "act event file"
+        },
+        {
+          "name": "act 传递环境变量",
+          "cmd": "act -e %{环境变量}%",
+          "params": {
+            "环境变量": {
+              "type": "string",
+              "required": true,
+              "description": "环境变量",
+              "example": "MY_VAR=value",
+              "notes": "必填"
+            }
+          },
+          "keyword": "act environment variable"
+        },
+        {
+          "name": "act 工作流预览",
+          "cmd": "act -n --workflows %{工作流名}%",
+          "description": "预览工作流执行步骤不实际运行",
+          "params": {
+            "工作流名": {
+              "type": "string",
+              "required": true,
+              "description": "工作流名称",
+              "example": "deploy",
+              "notes": "必填"
+            }
+          },
+          "keyword": "act workflow preview dry-run"
+        },
+        {
+          "name": "act 并行任务数限制",
+          "cmd": "act -P %{并行数}%",
+          "description": "限制并行执行的任务数量",
+          "params": {
+            "并行数": {
+              "type": "string",
+              "required": true,
+              "description": "并行任务数",
+              "example": "4",
+              "notes": "必填"
+            }
+          },
+          "keyword": "act parallel limit"
+        },
+        {
+          "name": "act 容器镜像仓库",
+          "cmd": "act --container-rmi %{镜像名}%",
+          "description": "指定容器镜像仓库前缀",
+          "params": {
+            "镜像名": {
+              "type": "string",
+              "required": true,
+              "description": "镜像名称",
+              "example": "node:18",
+              "notes": "必填"
+            }
+          },
+          "keyword": "act container rmi"
+        },
+        {
+          "name": "act 跳过容器步骤",
+          "cmd": "act --no-artfact-server",
+          "description": "跳过 artifact 服务器步骤",
+          "params": {},
+          "keyword": "act skip artifact server"
+        },
+        {
+          "name": "act 运行时目录",
+          "cmd": "act --wd %{目录路径}%",
+          "description": "指定工作流运行时的目录",
+          "params": {
+            "目录路径": {
+              "type": "string",
+              "required": true,
+              "description": "工作目录路径",
+              "example": "/app",
+              "notes": "必填"
+            }
+          },
+          "keyword": "act working directory"
+        }
+      ],
+      "params": {},
+      "dirPath": "/版本控制/",
+      "name": "GitHub Actions 命令",
+      "keyword": "GitHub Actions 命令",
+      "description": "GitHub Actions 命令的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

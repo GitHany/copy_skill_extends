@@ -1,0 +1,325 @@
+{
+  "module": "Linux系统/Linux 用户管理",
+  "version": "2.0",
+  "description": "Linux 用户管理命令集合，涵盖Linux 用户管理的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Linux系统/",
+      "name": "useradd 创建用户",
+      "keyword": "useradd 用户",
+      "description": "创建新用户。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "useradd -m %{用户}%",
+        "extensions": [
+          {
+            "name": "指定 UID",
+            "cmd": "useradd -u %{uid}% -m %{用户}%",
+            "params": {
+              "uid": {
+                "type": "string",
+                "required": true,
+                "description": "UID            ",
+                "example": "1001",
+                "notes": "必填"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名            ",
+                "example": "newuser",
+                "notes": "必填"
+              }
+            },
+            "keyword": "useradd uid"
+          },
+          {
+            "name": "添加到组",
+            "cmd": "useradd -G %{组}% -m %{用户}%",
+            "params": {
+              "组": {
+                "type": "string",
+                "required": true,
+                "description": "组              ",
+                "example": "sudo",
+                "notes": "必填"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户             ",
+                "example": "newuser",
+                "notes": "必填"
+              }
+            },
+            "keyword": "useradd group"
+          },
+          {
+            "name": "指定主目录",
+            "cmd": "useradd -d %{目录}% -m %{用户}%",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "主目录路径",
+                "example": "/home/newuser",
+                "notes": "必填"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "newuser",
+                "notes": "必填"
+              }
+            },
+            "keyword": "useradd home"
+          },
+          {
+            "name": "指定默认Shell",
+            "cmd": "useradd -s %{shell}% -m %{用户}%",
+            "params": {
+              "shell": {
+                "type": "string",
+                "required": true,
+                "description": "默认Shell",
+                "example": "/bin/bash",
+                "notes": "必填"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "newuser",
+                "notes": "必填"
+              }
+            },
+            "keyword": "useradd shell"
+          },
+          {
+            "name": "创建系统用户",
+            "cmd": "useradd -r -m %{用户}%",
+            "params": {
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "systemuser",
+                "notes": "必填"
+              }
+            },
+            "keyword": "useradd system"
+          }
+        ],
+        "params": {
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "用户名            ",
+            "example": "developer",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "usermod 修改用户",
+      "keyword": "usermod 修改",
+      "description": "修改用户属性。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "usermod -aG %{组}% %{用户}%",
+        "extensions": [
+          {
+            "name": "修改用户主目录",
+            "cmd": "usermod -d %{目录}% %{用户}%",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "新主目录",
+                "example": "/new/home/user",
+                "notes": "必填"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "developer",
+                "notes": "必填"
+              }
+            },
+            "keyword": "usermod home"
+          },
+          {
+            "name": "修改用户登录名",
+            "cmd": "usermod -l %{新用户}% %{旧用户}%",
+            "params": {
+              "新用户": {
+                "type": "string",
+                "required": true,
+                "description": "新用户名",
+                "example": "newname",
+                "notes": "必填"
+              },
+              "旧用户": {
+                "type": "string",
+                "required": true,
+                "description": "原用户名",
+                "example": "oldname",
+                "notes": "必填"
+              }
+            },
+            "keyword": "usermod login"
+          },
+          {
+            "name": "锁定用户账户",
+            "cmd": "usermod -L %{用户}%",
+            "params": {
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "developer",
+                "notes": "必填"
+              }
+            },
+            "keyword": "usermod lock"
+          },
+          {
+            "name": "解锁用户账户",
+            "cmd": "usermod -U %{用户}%",
+            "params": {
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "developer",
+                "notes": "必填"
+              }
+            },
+            "keyword": "usermod unlock"
+          }
+        ],
+        "params": {
+          "组": {
+            "type": "string",
+            "required": true,
+            "description": "组              ",
+            "example": "docker",
+            "notes": "必填"
+          },
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "用户             ",
+            "example": "developer",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "userdel 删除用户",
+      "keyword": "userdel 删除",
+      "description": "删除用户。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "userdel -r %{用户}%",
+        "extensions": [
+          {
+            "name": "强制删除用户",
+            "cmd": "userdel -rf %{用户}%",
+            "params": {
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "olduser",
+                "notes": "必填"
+              }
+            },
+            "keyword": "userdel force"
+          },
+          {
+            "name": "只删除用户保留主目录",
+            "cmd": "userdel %{用户}%",
+            "params": {
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "olduser",
+                "notes": "必填"
+              }
+            },
+            "keyword": "userdel preserve"
+          }
+        ],
+        "params": {
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "用户名            ",
+            "example": "olduser",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "groupadd 添加组",
+      "keyword": "groupadd 组",
+      "description": "创建新的用户组",
+      "data": {
+        "cmd": "groupadd %{组}%",
+        "extensions": [
+          {
+            "name": "创建系统组",
+            "cmd": "groupadd -r %{组}%",
+            "params": {
+              "组": {
+                "type": "string",
+                "required": true,
+                "description": "组名",
+                "example": "systemgrp",
+                "notes": "必填"
+              }
+            },
+            "keyword": "groupadd system"
+          },
+          {
+            "name": "指定GID创建组",
+            "cmd": "groupadd -g %{gid}% %{组}%",
+            "params": {
+              "gid": {
+                "type": "string",
+                "required": true,
+                "description": "组ID",
+                "example": "1500",
+                "notes": "必填"
+              },
+              "组": {
+                "type": "string",
+                "required": true,
+                "description": "组名",
+                "example": "newgroup",
+                "notes": "必填"
+              }
+            },
+            "keyword": "groupadd gid"
+          }
+        ],
+        "params": {
+          "组": {
+            "type": "string",
+            "required": true,
+            "description": "组名",
+            "example": "developers",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

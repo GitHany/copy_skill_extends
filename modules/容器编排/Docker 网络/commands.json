@@ -1,0 +1,248 @@
+{
+  "module": "容器编排/Docker 网络",
+  "version": "2.0",
+  "description": "Docker 网络命令集合，涵盖Docker 网络的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker network create 创建网络",
+      "keyword": "docker network 创建",
+      "description": "创建 Docker 网络。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker network create %{网络名}%",
+        "extensions": [
+          {
+            "name": "指定驱动创建",
+            "description": "使用指定的网络驱动（bridge/host/overlay等）",
+            "cmd": "docker network create --driver bridge %{网络名}%"
+          },
+          {
+            "name": "指定子网",
+            "description": "为网络指定IP段",
+            "cmd": "docker network create --subnet=192.168.1.0/24 %{网络名}%"
+          },
+          {
+            "name": "添加标签",
+            "description": "为网络添加标签便于管理",
+            "cmd": "docker network create --label env=production %{网络名}%"
+          },
+          {
+            "name": "指定网关",
+            "description": "设置网络的默认网关",
+            "cmd": "docker network create --gateway=192.168.1.1 %{网络名}%"
+          },
+          {
+            "name": "创建IPv6网络",
+            "description": "启用IPv6支持",
+            "cmd": "docker network create --ipv6 --subnet=2001:db8::/64 %{网络名}%"
+          }
+        ],
+        "params": {
+          "网络名": {
+            "type": "string",
+            "required": true,
+            "description": "网络名称           ",
+            "example": "mynet",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker network ls 列表",
+      "keyword": "docker network 列表",
+      "description": "列出网络。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker network ls",
+        "extensions": [
+          {
+            "name": "格式化输出",
+            "description": "以表格形式显示网络信息",
+            "cmd": "docker network ls --format \"table {{.Name}}\t{{.Driver}}\t{{.Scope}}\""
+          },
+          {
+            "name": "过滤内置网络",
+            "description": "隐藏默认网络",
+            "cmd": "docker network ls --filter type=builtin"
+          },
+          {
+            "name": "按驱动过滤",
+            "description": "只显示特定驱动的网络",
+            "cmd": "docker network ls --filter driver=bridge"
+          },
+          {
+            "name": "查看详细网络",
+            "description": "只显示用户创建的网络",
+            "cmd": "docker network ls --filter type=custom"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker network rm 删除网络",
+      "keyword": "docker network 删除",
+      "description": "删除一个或多个网络。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker network rm %{网络名}%",
+        "extensions": [
+          {
+            "name": "批量删除",
+            "description": "一次性删除多个网络",
+            "cmd": "docker network rm %{网络名1}% %{网络名2}%"
+          },
+          {
+            "name": "强制删除",
+            "description": "强制断开连接后删除",
+            "cmd": "docker network rm --force %{网络名}%"
+          },
+          {
+            "name": "忽略不存在的网络",
+            "description": "删除时不报错",
+            "cmd": "docker network rm %{网络名}% 2>/dev/null || true"
+          }
+        ],
+        "params": {
+          "网络名": {
+            "type": "string",
+            "required": true,
+            "description": "网络名称",
+            "example": "mynet",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker network inspect 检查网络",
+      "keyword": "docker network 检查",
+      "description": "查看网络的详细信息。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker network inspect %{网络名}%",
+        "extensions": [
+          {
+            "name": "格式化输出",
+            "description": "使用Go模板自定义输出",
+            "cmd": "docker network inspect --format '{{.Name}} - {{.IPAM.Config}}' %{网络名}%"
+          },
+          {
+            "name": "查看连接容器",
+            "description": "列出连接到该网络的所有容器",
+            "cmd": "docker network inspect --format '{{range .Containers}}{{.Name}} {{end}}' %{网络名}%"
+          },
+          {
+            "name": "查看子网信息",
+            "description": "只显示IPAM配置",
+            "cmd": "docker network inspect --format '{{json .IPAM.Config}}' %{网络名}%"
+          },
+          {
+            "name": "查看驱动信息",
+            "description": "显示网络驱动和作用域",
+            "cmd": "docker network inspect --format '{{.Driver}} {{.Scope}}' %{网络名}%"
+          }
+        ],
+        "params": {
+          "网络名": {
+            "type": "string",
+            "required": true,
+            "description": "网络名称",
+            "example": "mynet",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker network connect 连接网络",
+      "keyword": "docker network 连接",
+      "description": "将容器连接到网络。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker network connect %{网络名}% %{容器名}%",
+        "extensions": [
+          {
+            "name": "指定IP连接",
+            "description": "为容器分配特定IP地址",
+            "cmd": "docker network connect --ip=192.168.1.10 %{网络名}% %{容器名}%"
+          },
+          {
+            "name": "连接时设置别名",
+            "description": "在网络内为容器设置DNS别名",
+            "cmd": "docker network connect --alias=web %{网络名}% %{容器名}%"
+          },
+          {
+            "name": "连接多个网络",
+            "description": "一个容器可同时连接多个网络",
+            "cmd": "docker network connect %{网络名2}% %{容器名}%"
+          },
+          {
+            "name": "连接时指定驱动",
+            "description": "使用特定网络驱动连接",
+            "cmd": "docker network connect --driver=bridge %{网络名}% %{容器名}%"
+          }
+        ],
+        "params": {
+          "网络名": {
+            "type": "string",
+            "required": true,
+            "description": "网络名称",
+            "example": "mynet",
+            "notes": "必填"
+          },
+          "容器名": {
+            "type": "string",
+            "required": true,
+            "description": "容器名称",
+            "example": "mycontainer",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker network disconnect 断开网络",
+      "keyword": "docker network 断开",
+      "description": "将容器从网络断开。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker network disconnect %{网络名}% %{容器名}%",
+        "extensions": [
+          {
+            "name": "强制断开",
+            "description": "强制断开容器与网络的连接",
+            "cmd": "docker network disconnect --force %{网络名}% %{容器名}%"
+          },
+          {
+            "name": "断开所有网络",
+            "description": "将容器从所有网络断开",
+            "cmd": "for net in $(docker network ls -q); do docker network disconnect $net %{容器名}% 2>/dev/null; done"
+          },
+          {
+            "name": "批量断开",
+            "description": "断开多个容器与同一网络",
+            "cmd": "docker network disconnect %{网络名}% %{容器1}% %{容器2}%"
+          }
+        ],
+        "params": {
+          "网络名": {
+            "type": "string",
+            "required": true,
+            "description": "网络名称",
+            "example": "mynet",
+            "notes": "必填"
+          },
+          "容器名": {
+            "type": "string",
+            "required": true,
+            "description": "容器名称",
+            "example": "mycontainer",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

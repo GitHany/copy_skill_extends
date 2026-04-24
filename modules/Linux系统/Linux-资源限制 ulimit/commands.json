@@ -1,0 +1,82 @@
+{
+  "module": "Linux系统/Linux-资源限制 ulimit",
+  "version": "2.0",
+  "description": "Shell 资源限制管理，涵盖Linux ulimit的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Linux系统/",
+      "name": "ulimit 设置限制",
+      "keyword": "ulimit 限制",
+      "description": "设置 shell 资源限制。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "ulimit -%{选项}% %{值}%",
+        "extensions": [
+          {
+            "name": "查看所有限制",
+            "cmd": "ulimit -a",
+            "params": {},
+            "keyword": "ulimit all"
+          },
+          {
+            "name": "设置最大文件描述符",
+            "cmd": "ulimit -n %{数值}%",
+            "params": {
+              "数值": {
+                "type": "string",
+                "required": true,
+                "description": "文件描述符数量",
+                "example": "1024",
+                "notes": "必填"
+              }
+            },
+            "keyword": "ulimit fd"
+          },
+          {
+            "name": "设置最大进程数",
+            "cmd": "ulimit -u %{数值}%",
+            "params": {
+              "数值": {
+                "type": "string",
+                "required": true,
+                "description": "最大进程数",
+                "example": "1000",
+                "notes": "必填"
+              }
+            },
+            "keyword": "ulimit process"
+          },
+          {
+            "name": "设置最大内存大小",
+            "cmd": "ulimit -m %{数值}%",
+            "params": {
+              "数值": {
+                "type": "string",
+                "required": true,
+                "description": "内存大小(KB)",
+                "example": "unlimited",
+                "notes": "必填"
+              }
+            },
+            "keyword": "ulimit memory"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": true,
+            "description": "选项",
+            "example": "n",
+            "notes": "必填"
+          },
+          "值": {
+            "type": "string",
+            "required": true,
+            "description": "值",
+            "example": "1024",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

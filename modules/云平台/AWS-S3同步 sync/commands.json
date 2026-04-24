@@ -1,0 +1,202 @@
+{
+  "module": "云平台/AWS-S3同步 sync",
+  "version": "2.0",
+  "description": "AWS S3 sync命令集合，涵盖AWS S3 sync的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/云平台/",
+      "name": "AWS S3 sync 命令",
+      "keyword": "AWS S3 sync 命令",
+      "description": "AWS S3 sync 命令的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws s3 sync %{源}% s3://%{桶}%/%{路径}%",
+        "extensions": [
+          {
+            "name": "本地到S3同步",
+            "cmd": "aws s3 sync %{源本地}% s3://%{桶}%/%{路径}% --storage-class %{存储类型}%",
+            "params": {
+              "源本地": {
+                "type": "string",
+                "required": true,
+                "description": "本地源路径",
+                "example": "./data/",
+                "notes": "必填"
+              },
+              "桶": {
+                "type": "string",
+                "required": true,
+                "description": "桶名",
+                "example": "my-bucket",
+                "notes": "必填"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "目标路径",
+                "example": "backup/",
+                "notes": "必填"
+              },
+              "存储类型": {
+                "type": "string",
+                "required": true,
+                "description": "存储类型STANDARD或REDUCED_REDUNDANCY",
+                "example": "STANDARD",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 sync storage-class"
+          },
+          {
+            "name": "S3到本地同步",
+            "cmd": "aws s3 sync s3://%{桶}%/%{源路径}% %{目标本地}%",
+            "params": {
+              "桶": {
+                "type": "string",
+                "required": true,
+                "description": "桶名",
+                "example": "my-bucket",
+                "notes": "必填"
+              },
+              "源路径": {
+                "type": "string",
+                "required": true,
+                "description": "S3源路径",
+                "example": "data/",
+                "notes": "必填"
+              },
+              "目标本地": {
+                "type": "string",
+                "required": true,
+                "description": "本地目标路径",
+                "example": "./download/",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 sync download"
+          },
+          {
+            "name": "排除文件同步",
+            "cmd": "aws s3 sync %{源}% s3://%{桶}%/%{路径}% --exclude \"%{排除模式}%\"",
+            "params": {
+              "源": {
+                "type": "string",
+                "required": true,
+                "description": "源路径",
+                "example": "./data/",
+                "notes": "必填"
+              },
+              "桶": {
+                "type": "string",
+                "required": true,
+                "description": "桶名",
+                "example": "my-bucket",
+                "notes": "必填"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "路径",
+                "example": "backup/",
+                "notes": "必填"
+              },
+              "排除模式": {
+                "type": "string",
+                "required": true,
+                "description": "排除的模式",
+                "example": "*.tmp",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 sync exclude"
+          },
+          {
+            "name": "仅删除已删除文件",
+            "cmd": "aws s3 sync %{源}% s3://%{桶}%/%{路径}% --delete",
+            "params": {
+              "源": {
+                "type": "string",
+                "required": true,
+                "description": "源路径",
+                "example": "./data/",
+                "notes": "必填"
+              },
+              "桶": {
+                "type": "string",
+                "required": true,
+                "description": "桶名",
+                "example": "my-bucket",
+                "notes": "必填"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "路径",
+                "example": "backup/",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 sync delete"
+          },
+          {
+            "name": "设置并发线程",
+            "cmd": "aws s3 sync %{源}% s3://%{桶}%/%{路径}% --threads %{线程数}%",
+            "params": {
+              "源": {
+                "type": "string",
+                "required": true,
+                "description": "源路径",
+                "example": "./data/",
+                "notes": "必填"
+              },
+              "桶": {
+                "type": "string",
+                "required": true,
+                "description": "桶名",
+                "example": "my-bucket",
+                "notes": "必填"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "路径",
+                "example": "backup/",
+                "notes": "必填"
+              },
+              "线程数": {
+                "type": "string",
+                "required": true,
+                "description": "并发线程数",
+                "example": "10",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 sync threads"
+          }
+        ],
+        "params": {
+          "源": {
+            "type": "string",
+            "required": true,
+            "description": "源路径",
+            "example": "./data/",
+            "notes": "必填"
+          },
+          "桶": {
+            "type": "string",
+            "required": true,
+            "description": "桶名",
+            "example": "my-bucket",
+            "notes": "必填"
+          },
+          "路径": {
+            "type": "string",
+            "required": true,
+            "description": "路径",
+            "example": "backup/",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

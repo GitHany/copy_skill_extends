@@ -1,0 +1,704 @@
+{
+  "module": "云平台/AWS EC2 管理",
+  "version": "2.0",
+  "description": "AWS EC2 管理命令集合，涵盖AWS EC2 管理的常用操作和最佳实践",
+  "commands": [
+    {
+      "cmd": "aws ec2 describe-instances",
+      "extensions": [
+        {
+          "name": "按标签过滤",
+          "cmd": "aws ec2 describe-instances --filters \"Name=tag:Name,Values=%{标签}%\"",
+          "params": {
+            "标签": {
+              "type": "string",
+              "required": true,
+              "description": "标签值",
+              "example": "Production",
+              "notes": "必填"
+            }
+          },
+          "keyword": "aws ec2 filter tag"
+        },
+        {
+          "name": "按状态过滤",
+          "cmd": "aws ec2 describe-instances --filters \"Name=instance-state-name,Values=%{状态}%\"",
+          "params": {
+            "状态": {
+              "type": "string",
+              "required": true,
+              "description": "实例状态",
+              "example": "running",
+              "notes": "必填"
+            }
+          },
+          "keyword": "aws ec2 filter state"
+        },
+        {
+          "name": "输出JSON格式",
+          "cmd": "aws ec2 describe-instances --output json",
+          "params": {},
+          "keyword": "aws ec2 output json"
+        },
+        {
+          "name": "限制返回数量",
+          "cmd": "aws ec2 describe-instances --max-items %{数量}%",
+          "params": {
+            "数量": {
+              "type": "string",
+              "required": true,
+              "description": "返回实例数量",
+              "example": "10",
+              "notes": "必填"
+            }
+          },
+          "keyword": "aws ec2 limit"
+        },
+        {
+          "name": "按实例ID过滤",
+          "cmd": "aws ec2 describe-instances --instance-ids %{实例ID}%",
+          "params": {
+            "实例ID": {
+              "type": "string",
+              "required": true,
+              "description": "EC2实例ID",
+              "example": "i-1234567890abcdef0",
+              "notes": "必填"
+            }
+          },
+          "keyword": "aws ec2 instance-id"
+        }
+      ],
+      "params": {},
+      "dirPath": "/云平台/",
+      "name": "AWS EC2 管理 命令",
+      "keyword": "AWS EC2 管理 命令",
+      "description": "AWS EC2 管理 命令的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "name": "按VPC过滤",
+            "cmd": "aws ec2 describe-instances --filters \"Name=vpc-id,Values=%{VPC ID}%\"",
+            "params": {
+              "VPC ID": {
+                "type": "string",
+                "required": true,
+                "description": "VPC ID",
+                "example": "vpc-0a1b2c3d",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws ec2 vpc filter"
+          },
+          {
+            "name": "按可用区过滤",
+            "cmd": "aws ec2 describe-instances --filters \"Name=availability-zone,Values=%{可用区}%\"",
+            "params": {
+              "可用区": {
+                "type": "string",
+                "required": true,
+                "description": "可用区名称",
+                "example": "us-east-1a",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws ec2 availability-zone"
+          },
+          {
+            "name": "表格输出",
+            "cmd": "aws ec2 describe-instances --output table",
+            "params": {},
+            "keyword": "aws ec2 output table"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "cmd": "aws ec2 run-instances",
+      "extensions": [
+        {
+          "name": "指定实例类型",
+          "cmd": "aws ec2 run-instances --image-id %{镜像ID}% --instance-type %{实例类型}% --count %{数量}%",
+          "params": {
+            "镜像ID": {
+              "type": "string",
+              "required": true,
+              "description": "AMI镜像ID",
+              "example": "ami-0c55b159cbfafe1f0",
+              "notes": "必填"
+            },
+            "实例类型": {
+              "type": "string",
+              "required": true,
+              "description": "实例类型",
+              "example": "t2.micro",
+              "notes": "必填"
+            },
+            "数量": {
+              "type": "string",
+              "required": true,
+              "description": "启动数量",
+              "example": "1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "aws ec2 run instance-type"
+        },
+        {
+          "name": "指定子网启动",
+          "cmd": "aws ec2 run-instances --image-id %{镜像ID}% --subnet-id %{子网ID}%",
+          "params": {
+            "镜像ID": {
+              "type": "string",
+              "required": true,
+              "description": "AMI镜像ID",
+              "example": "ami-0c55b159cbfafe1f0",
+              "notes": "必填"
+            },
+            "子网ID": {
+              "type": "string",
+              "required": true,
+              "description": "VPC子网ID",
+              "example": "subnet-6e1a2b3d",
+              "notes": "必填"
+            }
+          },
+          "keyword": "aws ec2 subnet"
+        },
+        {
+          "name": "使用密钥对",
+          "cmd": "aws ec2 run-instances --image-id %{镜像ID}% --key-name %{密钥名称}%",
+          "params": {
+            "镜像ID": {
+              "type": "string",
+              "required": true,
+              "description": "AMI镜像ID",
+              "example": "ami-0c55b159cbfafe1f0",
+              "notes": "必填"
+            },
+            "密钥名称": {
+              "type": "string",
+              "required": true,
+              "description": "密钥对名称",
+              "example": "my-key-pair",
+              "notes": "必填"
+            }
+          },
+          "keyword": "aws ec2 key-pair"
+        },
+        {
+          "name": "指定安全组",
+          "cmd": "aws ec2 run-instances --image-id %{镜像ID}% --security-group-ids %{安全组ID}%",
+          "params": {
+            "镜像ID": {
+              "type": "string",
+              "required": true,
+              "description": "AMI镜像ID",
+              "example": "ami-0c55b159cbfafe1f0",
+              "notes": "必填"
+            },
+            "安全组ID": {
+              "type": "string",
+              "required": true,
+              "description": "安全组ID",
+              "example": "sg-0a1b2c3d",
+              "notes": "必填"
+            }
+          },
+          "keyword": "aws ec2 security-group"
+        },
+        {
+          "name": "带标签启动",
+          "cmd": "aws ec2 run-instances --image-id %{镜像ID}% --tag-specifications \"ResourceType=instance,Tags=[{Key=Name,Value=%{标签名称}%}]\"",
+          "params": {
+            "镜像ID": {
+              "type": "string",
+              "required": true,
+              "description": "AMI镜像ID",
+              "example": "ami-0c55b159cbfafe1f0",
+              "notes": "必填"
+            },
+            "标签名称": {
+              "type": "string",
+              "required": true,
+              "description": "实例标签名称",
+              "example": "Production-Server",
+              "notes": "必填"
+            }
+          },
+          "keyword": "aws ec2 tag"
+        },
+        {
+          "name": "指定IAM角色",
+          "cmd": "aws ec2 run-instances --image-id %{镜像ID}% --iam-instance-profile Name=%{IAM角色名}%",
+          "params": {
+            "镜像ID": {
+              "type": "string",
+              "required": true,
+              "description": "AMI镜像ID",
+              "example": "ami-0c55b159cbfafe1f0",
+              "notes": "必填"
+            },
+            "IAM角色名": {
+              "type": "string",
+              "required": true,
+              "description": "IAM实例配置文件名称",
+              "example": "EC2Role",
+              "notes": "必填"
+            }
+          },
+          "keyword": "aws ec2 iam instance-profile"
+        },
+        {
+          "name": "设置存储卷",
+          "cmd": "aws ec2 run-instances --image-id %{镜像ID}% --block-device-mappings \"DeviceName=/dev/sda1,Ebs={VolumeSize=%{卷大小%},VolumeType=%{卷类型}%}\"",
+          "params": {
+            "镜像ID": {
+              "type": "string",
+              "required": true,
+              "description": "AMI镜像ID",
+              "example": "ami-0c55b159cbfafe1f0",
+              "notes": "必填"
+            },
+            "卷大小": {
+              "type": "string",
+              "required": true,
+              "description": "卷大小GB",
+              "example": "100",
+              "notes": "必填"
+            },
+            "卷类型": {
+              "type": "string",
+              "required": true,
+              "description": "卷类型gp2或io1",
+              "example": "gp2",
+              "notes": "必填"
+            }
+          },
+          "keyword": "aws ec2 block-device volume"
+        },
+        {
+          "name": "用户数据启动",
+          "cmd": "aws ec2 run-instances --image-id %{镜像ID}% --user-data \"%{用户数据}%\"",
+          "params": {
+            "镜像ID": {
+              "type": "string",
+              "required": true,
+              "description": "AMI镜像ID",
+              "example": "ami-0c55b159cbfafe1f0",
+              "notes": "必填"
+            },
+            "用户数据": {
+              "type": "string",
+              "required": true,
+              "description": "实例启动脚本",
+              "example": "#!/bin/bash",
+              "notes": "必填"
+            }
+          },
+          "keyword": "aws ec2 user-data"
+        },
+        {
+          "name": "指定可用区",
+          "cmd": "aws ec2 run-instances --image-id %{镜像ID}% --placement AvailabilityZone=%{可用区}%",
+          "params": {
+            "镜像ID": {
+              "type": "string",
+              "required": true,
+              "description": "AMI镜像ID",
+              "example": "ami-0c55b159cbfafe1f0",
+              "notes": "必填"
+            },
+            "可用区": {
+              "type": "string",
+              "required": true,
+              "description": "可用区名称",
+              "example": "us-east-1a",
+              "notes": "必填"
+            }
+          },
+          "keyword": "aws ec2 placement availability-zone"
+        }
+      ],
+      "params": {},
+      "dirPath": "/云平台/",
+      "name": "AWS EC2 启动实例",
+      "keyword": "AWS EC2 run-instances",
+      "description": "启动EC2实例",
+      "data": {
+        "cmd": "aws ec2 run-instances",
+        "extensions": [
+          {
+            "name": "指定实例类型",
+            "cmd": "aws ec2 run-instances --image-id %{镜像ID}% --instance-type %{实例类型}% --count %{数量}%",
+            "params": {
+              "镜像ID": {
+                "type": "string",
+                "required": true,
+                "description": "AMI镜像ID",
+                "example": "ami-0c55b159cbfafe1f0",
+                "notes": "必填"
+              },
+              "实例类型": {
+                "type": "string",
+                "required": true,
+                "description": "实例类型",
+                "example": "t2.micro",
+                "notes": "必填"
+              },
+              "数量": {
+                "type": "string",
+                "required": true,
+                "description": "启动数量",
+                "example": "1",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws ec2 run instance-type"
+          },
+          {
+            "name": "指定子网启动",
+            "cmd": "aws ec2 run-instances --image-id %{镜像ID}% --subnet-id %{子网ID}%",
+            "params": {
+              "镜像ID": {
+                "type": "string",
+                "required": true,
+                "description": "AMI镜像ID",
+                "example": "ami-0c55b159cbfafe1f0",
+                "notes": "必填"
+              },
+              "子网ID": {
+                "type": "string",
+                "required": true,
+                "description": "VPC子网ID",
+                "example": "subnet-6e1a2b3d",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws ec2 subnet"
+          },
+          {
+            "name": "使用密钥对",
+            "cmd": "aws ec2 run-instances --image-id %{镜像ID}% --key-name %{密钥名称}%",
+            "params": {
+              "镜像ID": {
+                "type": "string",
+                "required": true,
+                "description": "AMI镜像ID",
+                "example": "ami-0c55b159cbfafe1f0",
+                "notes": "必填"
+              },
+              "密钥名称": {
+                "type": "string",
+                "required": true,
+                "description": "密钥对名称",
+                "example": "my-key-pair",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws ec2 key-pair"
+          },
+          {
+            "name": "指定安全组",
+            "cmd": "aws ec2 run-instances --image-id %{镜像ID}% --security-group-ids %{安全组ID}%",
+            "params": {
+              "镜像ID": {
+                "type": "string",
+                "required": true,
+                "description": "AMI镜像ID",
+                "example": "ami-0c55b159cbfafe1f0",
+                "notes": "必填"
+              },
+              "安全组ID": {
+                "type": "string",
+                "required": true,
+                "description": "安全组ID",
+                "example": "sg-0a1b2c3d",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws ec2 security-group"
+          },
+          {
+            "name": "带标签启动",
+            "cmd": "aws ec2 run-instances --image-id %{镜像ID}% --tag-specifications \"ResourceType=instance,Tags=[{Key=Name,Value=%{标签名称}%}]\"",
+            "params": {
+              "镜像ID": {
+                "type": "string",
+                "required": true,
+                "description": "AMI镜像ID",
+                "example": "ami-0c55b159cbfafe1f0",
+                "notes": "必填"
+              },
+              "标签名称": {
+                "type": "string",
+                "required": true,
+                "description": "实例标签名称",
+                "example": "Production-Server",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws ec2 tag"
+          },
+          {
+            "name": "启用API停止",
+            "cmd": "aws ec2 run-instances --image-id %{镜像ID}% --disable-api-stop",
+            "params": {
+              "镜像ID": {
+                "type": "string",
+                "required": true,
+                "description": "AMI镜像ID",
+                "example": "ami-0c55b159cbfafe1f0",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws ec2 disable-api-stop"
+          },
+          {
+            "name": "加密根卷",
+            "cmd": "aws ec2 run-instances --image-id %{镜像ID}% --encrypted",
+            "params": {
+              "镜像ID": {
+                "type": "string",
+                "required": true,
+                "description": "AMI镜像ID",
+                "example": "ami-0c55b159cbfafe1f0",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws ec2 encrypted root volume"
+          },
+          {
+            "name": "指定CPU选项",
+            "cmd": "aws ec2 run-instances --image-id %{镜像ID}% --cpu-options \"CoreCount=%{核心数}%,ThreadsPerCore=%{线程数}%\"",
+            "params": {
+              "镜像ID": {
+                "type": "string",
+                "required": true,
+                "description": "AMI镜像ID",
+                "example": "ami-0c55b159cbfafe1f0",
+                "notes": "必填"
+              },
+              "核心数": {
+                "type": "string",
+                "required": true,
+                "description": "CPU核心数",
+                "example": "4",
+                "notes": "必填"
+              },
+              "线程数": {
+                "type": "string",
+                "required": true,
+                "description": "每核心线程数",
+                "example": "2",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws ec2 cpu-options"
+          },
+          {
+            "name": "启用监控",
+            "cmd": "aws ec2 run-instances --image-id %{镜像ID}% --monitoring \"Enabled=true\"",
+            "params": {
+              "镜像ID": {
+                "type": "string",
+                "required": true,
+                "description": "AMI镜像ID",
+                "example": "ami-0c55b159cbfafe1f0",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws ec2 monitoring"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "cmd": "aws ec2 stop-instances",
+      "extensions": [
+        {
+          "name": "停止指定实例",
+          "cmd": "aws ec2 stop-instances --instance-ids %{实例ID}%",
+          "params": {
+            "实例ID": {
+              "type": "string",
+              "required": true,
+              "description": "EC2实例ID",
+              "example": "i-1234567890abcdef0",
+              "notes": "必填"
+            }
+          },
+          "keyword": "aws ec2 stop instance"
+        },
+        {
+          "name": "强制停止",
+          "cmd": "aws ec2 stop-instances --instance-ids %{实例ID}% --force",
+          "params": {
+            "实例ID": {
+              "type": "string",
+              "required": true,
+              "description": "EC2实例ID",
+              "example": "i-1234567890abcdef0",
+              "notes": "必填"
+            }
+          },
+          "keyword": "aws ec2 force stop"
+        },
+        {
+          "name": "批量停止",
+          "cmd": "aws ec2 stop-instances --instance-ids %{实例ID1}% %{实例ID2}%",
+          "params": {
+            "实例ID1": {
+              "type": "string",
+              "required": true,
+              "description": "实例ID 1",
+              "example": "i-1234567890abcdef0",
+              "notes": "必填"
+            },
+            "实例ID2": {
+              "type": "string",
+              "required": true,
+              "description": "实例ID 2",
+              "example": "i-1234567890abcdef1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "aws ec2 batch stop"
+        },
+        {
+          "name": "停止并hibernate",
+          "cmd": "aws ec2 stop-instances --instance-ids %{实例ID}% --hibernate",
+          "params": {
+            "实例ID": {
+              "type": "string",
+              "required": true,
+              "description": "EC2实例ID",
+              "example": "i-1234567890abcdef0",
+              "notes": "必填"
+            }
+          },
+          "keyword": "aws ec2 hibernate"
+        },
+        {
+          "name": "优雅停止等待",
+          "cmd": "aws ec2 stop-instances --instance-ids %{实例ID}% --hibernate false --force false",
+          "params": {
+            "实例ID": {
+              "type": "string",
+              "required": true,
+              "description": "EC2实例ID",
+              "example": "i-1234567890abcdef0",
+              "notes": "必填"
+            }
+          },
+          "keyword": "aws ec2 stop graceful"
+        },
+        {
+          "name": "停止多个实例",
+          "cmd": "aws ec2 stop-instances --instance-ids %{实例ID列表}%",
+          "params": {
+            "实例ID列表": {
+              "type": "string",
+              "required": true,
+              "description": "多个实例ID用空格分隔",
+              "example": "i-1234567890abcdef0 i-abcdef1234567890",
+              "notes": "必填"
+            }
+          },
+          "keyword": "aws ec2 stop multiple"
+        }
+      ],
+      "params": {},
+      "dirPath": "/云平台/",
+      "name": "AWS EC2 停止实例",
+      "keyword": "AWS EC2 stop-instances",
+      "description": "停止EC2实例",
+      "data": {
+        "cmd": "aws ec2 stop-instances",
+        "extensions": [
+          {
+            "name": "停止指定实例",
+            "cmd": "aws ec2 stop-instances --instance-ids %{实例ID}%",
+            "params": {
+              "实例ID": {
+                "type": "string",
+                "required": true,
+                "description": "EC2实例ID",
+                "example": "i-1234567890abcdef0",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws ec2 stop instance"
+          },
+          {
+            "name": "强制停止",
+            "cmd": "aws ec2 stop-instances --instance-ids %{实例ID}% --force",
+            "params": {
+              "实例ID": {
+                "type": "string",
+                "required": true,
+                "description": "EC2实例ID",
+                "example": "i-1234567890abcdef0",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws ec2 force stop"
+          },
+          {
+            "name": "批量停止",
+            "cmd": "aws ec2 stop-instances --instance-ids %{实例ID1}% %{实例ID2}%",
+            "params": {
+              "实例ID1": {
+                "type": "string",
+                "required": true,
+                "description": "实例ID 1",
+                "example": "i-1234567890abcdef0",
+                "notes": "必填"
+              },
+              "实例ID2": {
+                "type": "string",
+                "required": true,
+                "description": "实例ID 2",
+                "example": "i-1234567890abcdef1",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws ec2 batch stop"
+          },
+          {
+            "name": "停止并hibernate",
+            "cmd": "aws ec2 stop-instances --instance-ids %{实例ID}% --hibernate",
+            "params": {
+              "实例ID": {
+                "type": "string",
+                "required": true,
+                "description": "EC2实例ID",
+                "example": "i-1234567890abcdef0",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws ec2 hibernate"
+          },
+          {
+            "name": "停止并保留私有IP",
+            "cmd": "aws ec2 stop-instances --instance-ids %{实例ID}% --preserve-spot-data",
+            "params": {
+              "实例ID": {
+                "type": "string",
+                "required": true,
+                "description": "EC2实例ID",
+                "example": "i-1234567890abcdef0",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws ec2 stop preserve ip"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

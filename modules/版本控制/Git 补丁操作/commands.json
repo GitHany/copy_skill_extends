@@ -1,0 +1,75 @@
+{
+  "module": "版本控制/Git 补丁操作",
+  "version": "2.0",
+  "description": "Git 补丁操作命令集合，涵盖Git 补丁操作的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/版本控制/",
+      "name": "git diff 生成补丁",
+      "keyword": "git diff 补丁",
+      "description": "生成补丁文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git diff > %{文件}%",
+        "extensions": [
+          {
+            "name": "暂存区补丁",
+            "cmd": "git diff --staged > %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "补丁文件           ",
+                "example": "changes.patch",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git diff staged patch"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "补丁文件路径         ",
+            "example": "fix.patch",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git apply 应用补丁",
+      "keyword": "git apply 应用",
+      "description": "应用补丁文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git apply %{文件}%",
+        "extensions": [
+          {
+            "name": "检查补丁",
+            "cmd": "git apply --check %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "补丁文件           ",
+                "example": "fix.patch",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git apply check"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "补丁文件路径         ",
+            "example": "fix.patch",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,2367 @@
+{
+  "module": "API与认证/Web API-REST工具 API",
+  "version": "1.0",
+  "description": "Web API 工具模块集合，覆盖 HTTP 客户端、API 测试、文档生成、网络分析、WebSocket 和 GraphQL 客户端",
+  "commands": [
+    {
+      "dirPath": "/API与认证/",
+      "name": "curl GET 请求",
+      "keyword": "curl GET HTTP 请求",
+      "description": "使用 curl 发送 GET 请求获取资源。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "curl %{选项}% %{URL}%",
+        "extensions": [
+          {
+            "name": "基础 GET 请求",
+            "cmd": "curl %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl GET 基础"
+          },
+          {
+            "name": "跟随重定向",
+            "cmd": "curl -L %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl 重定向"
+          },
+          {
+            "name": "显示响应头",
+            "cmd": "curl -i %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl 响应头"
+          },
+          {
+            "name": "只显示头部",
+            "cmd": "curl -I %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl 头部 HEAD"
+          },
+          {
+            "name": "显示详细信息",
+            "cmd": "curl -v %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl 详细 verbose"
+          },
+          {
+            "name": "下载并保存文件",
+            "cmd": "curl -o %{文件名}% %{URL}%",
+            "params": {
+              "文件名": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl 下载保存"
+          },
+          {
+            "name": "跳过 SSL 证书验证",
+            "cmd": "curl -k %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl SSL 证书"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "curl 选项        ",
+            "example": "-v -L",
+            "notes": "可选，如 -v 详细，-L 重定向"
+          },
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "请求 URL         ",
+            "example": "https://api.example.com/users",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "curl POST 请求",
+      "keyword": "curl POST HTTP 请求",
+      "description": "使用 curl 发送 POST 请求提交数据。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "curl -X POST %{选项}% %{URL}%",
+        "extensions": [
+          {
+            "name": "发送表单数据",
+            "cmd": "curl -X POST -d \"name=%{name}%&email=%{email}%\" %{URL}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "email": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl POST 表单"
+          },
+          {
+            "name": "发送 JSON 数据",
+            "cmd": "curl -X POST -H \"Content-Type: application/json\" -d '{\"name\":\"%{name}%\"}' %{URL}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl POST JSON"
+          },
+          {
+            "name": "带认证 Token",
+            "cmd": "curl -X POST -H \"Authorization: Bearer %{token}%\" -d '%{数据}%' %{URL}%",
+            "params": {
+              "token": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "数据": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl POST 认证"
+          },
+          {
+            "name": "发送文件上传",
+            "cmd": "curl -X POST -F \"file=@%{文件路径}%\" %{URL}%",
+            "params": {
+              "文件路径": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl POST 文件上传"
+          },
+          {
+            "name": "多行 JSON",
+            "cmd": "curl -X POST -H \"Content-Type: application/json\" -d @%{json文件}% %{URL}%",
+            "params": {
+              "json文件": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl POST JSON 文件"
+          },
+          {
+            "name": "自定义请求头",
+            "cmd": "curl -X POST -H \"%{header}%\" -H \"%{header2}%\" %{URL}%",
+            "params": {
+              "header": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "header2": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl POST 请求头"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "curl 选项        ",
+            "example": "-H \"Content-Type: application/json\"",
+            "notes": "可选"
+          },
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "请求 URL         ",
+            "example": "https://api.example.com/users",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "curl PUT DELETE PATCH 请求",
+      "keyword": "curl PUT DELETE PATCH HTTP",
+      "description": "使用 curl 发送 PUT、DELETE、PATCH 请求",
+      "data": {
+        "cmd": "curl -X %{METHOD}% %{选项}% %{URL}%",
+        "extensions": [
+          {
+            "name": "PUT 更新资源",
+            "cmd": "curl -X PUT -H \"Content-Type: application/json\" -d '{\"name\":\"%{name}%\"}' %{URL}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users/1",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl PUT 更新"
+          },
+          {
+            "name": "DELETE 删除资源",
+            "cmd": "curl -X DELETE %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users/1",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl DELETE 删除"
+          },
+          {
+            "name": "DELETE 带认证",
+            "cmd": "curl -X DELETE -H \"Authorization: Bearer %{token}%\" %{URL}%",
+            "params": {
+              "token": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users/1",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl DELETE 认证"
+          },
+          {
+            "name": "PATCH 部分更新",
+            "cmd": "curl -X PATCH -H \"Content-Type: application/json\" -d '{\"name\":\"%{name}%\"}' %{URL}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users/1",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl PATCH 部分"
+          },
+          {
+            "name": "带期望状态码",
+            "cmd": "curl -X DELETE -w \"\\nHTTP Status: %{http_code}\\n\" %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users/1",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl 状态码"
+          }
+        ],
+        "params": {
+          "METHOD": {
+            "type": "string",
+            "required": true,
+            "description": "HTTP 方法        ",
+            "example": "PUT",
+            "notes": "PUT, DELETE, PATCH"
+          },
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "curl 选项        ",
+            "example": "-H \"Content-Type: application/json\"",
+            "notes": "可选"
+          },
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "请求 URL         ",
+            "example": "https://api.example.com/users/1",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "curl 请求头设置",
+      "keyword": "curl header 请求头 -H",
+      "description": "使用 curl 设置各种 HTTP 请求头。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "curl -H \"%{header_name}%: %{header_value}%\" %{URL}%",
+        "extensions": [
+          {
+            "name": "设置 Content-Type",
+            "cmd": "curl -H \"Content-Type: application/json\" %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl content-type"
+          },
+          {
+            "name": "设置 Authorization",
+            "cmd": "curl -H \"Authorization: Bearer %{token}%\" %{URL}%",
+            "params": {
+              "token": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl authorization"
+          },
+          {
+            "name": "设置多个请求头",
+            "cmd": "curl -H \"Content-Type: application/json\" -H \"Authorization: Bearer %{token}%\" %{URL}%",
+            "params": {
+              "token": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl 多请求头"
+          },
+          {
+            "name": "设置 User-Agent",
+            "cmd": "curl -H \"User-Agent: Mozilla/5.0\" %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl user-agent"
+          },
+          {
+            "name": "设置 Accept",
+            "cmd": "curl -H \"Accept: application/json\" %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl accept"
+          },
+          {
+            "name": "设置自定义头",
+            "cmd": "curl -H \"X-Custom-Header: %{value}%\" %{URL}%",
+            "params": {
+              "value": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl 自定义头"
+          }
+        ],
+        "params": {
+          "header_name": {
+            "type": "string",
+            "required": true,
+            "description": "请求头名称          ",
+            "example": "Content-Type",
+            "notes": "必填"
+          },
+          "header_value": {
+            "type": "string",
+            "required": true,
+            "description": "请求头值           ",
+            "example": "application/json",
+            "notes": "必填"
+          },
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "请求 URL         ",
+            "example": "https://api.example.com",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "httpie GET 请求",
+      "keyword": "httpie GET HTTP",
+      "description": "使用 httpie 发送简洁优雅的 HTTP 请求。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "http %{URL}%",
+        "extensions": [
+          {
+            "name": "基础 GET 请求",
+            "cmd": "http %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "可选"
+              }
+            },
+            "keyword": "httpie GET 基础"
+          },
+          {
+            "name": "显示请求和响应头",
+            "cmd": "http --print=Hh %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "可选"
+              }
+            },
+            "keyword": "httpie 请求头响应头"
+          },
+          {
+            "name": "只下载响应体",
+            "cmd": "http --download %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "可选"
+              }
+            },
+            "keyword": "httpie 下载"
+          },
+          {
+            "name": "设置请求头",
+            "cmd": "http %{header}%:%{value}% %{URL}%",
+            "params": {
+              "header": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "value": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "可选"
+              }
+            },
+            "keyword": "httpie 请求头"
+          },
+          {
+            "name": "GET 带认证",
+            "cmd": "http -A bearer %{token}% %{URL}%",
+            "params": {
+              "token": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "可选"
+              }
+            },
+            "keyword": "httpie 认证"
+          }
+        ],
+        "params": {
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "请求 URL         ",
+            "example": "https://api.example.com/users",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "httpie POST 请求",
+      "keyword": "httpie POST HTTP",
+      "description": "使用 httpie 发送 POST 请求，比 curl 更简洁",
+      "data": {
+        "cmd": "http POST %{URL}% %{字段}%=%{值}%",
+        "extensions": [
+          {
+            "name": "POST 表单数据",
+            "cmd": "http POST %{URL}% name=%{name}% email=%{email}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "可选"
+              },
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "email": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "httpie POST 表单"
+          },
+          {
+            "name": "POST JSON 数据",
+            "cmd": "http POST %{URL}% name=%{name}% age=%{age}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "可选"
+              },
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "age": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "httpie POST JSON"
+          },
+          {
+            "name": "POST 多行 JSON",
+            "cmd": "http POST %{URL}% < %{json文件}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "可选"
+              },
+              "json文件": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "httpie JSON 文件"
+          },
+          {
+            "name": "POST 带文件",
+            "cmd": "http --form POST %{URL}% file@%{文件路径}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "可选"
+              },
+              "文件路径": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "httpie POST 文件"
+          },
+          {
+            "name": "POST 带认证",
+            "cmd": "http -A bearer %{token}% POST %{URL}% data=%{value}%",
+            "params": {
+              "token": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com/users",
+                "notes": "可选"
+              },
+              "value": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "httpie POST 认证"
+          }
+        ],
+        "params": {
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "请求 URL         ",
+            "example": "https://api.example.com/users",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "wget 基础下载",
+      "keyword": "wget 下载 HTTP",
+      "description": "使用 wget 下载文件，支持断点续传和后台下载。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "wget %{选项}% %{URL}%",
+        "extensions": [
+          {
+            "name": "下载单个文件",
+            "cmd": "wget %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "下载链接           ",
+                "example": "https://example.com/file.zip",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wget 基础下载"
+          },
+          {
+            "name": "指定保存文件名",
+            "cmd": "wget -O %{文件名}% %{URL}%",
+            "params": {
+              "文件名": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "下载链接           ",
+                "example": "https://example.com/file.zip",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wget 指定名称"
+          },
+          {
+            "name": "断点续传",
+            "cmd": "wget -c %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "下载链接           ",
+                "example": "https://example.com/file.zip",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wget 续传 常用"
+          },
+          {
+            "name": "后台下载",
+            "cmd": "wget -b %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "下载链接           ",
+                "example": "https://example.com/file.zip",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wget 后台"
+          },
+          {
+            "name": "限制下载速度",
+            "cmd": "wget --limit-rate=%{速度}% %{URL}%",
+            "params": {
+              "速度": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "下载链接           ",
+                "example": "https://example.com/file.zip",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wget 限速"
+          },
+          {
+            "name": "从文件读取 URL",
+            "cmd": "wget -i %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wget URL 列表"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "wget 选项        ",
+            "example": "-c",
+            "notes": "可选"
+          },
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "下载链接           ",
+            "example": "https://example.com/file.zip",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "wget 递归和批量下载",
+      "keyword": "wget 递归 批量",
+      "description": "使用 wget 进行递归下载和批量下载。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "wget %{选项}% %{URL}%",
+        "extensions": [
+          {
+            "name": "递归下载整个站点",
+            "cmd": "wget -r %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "目标 URL         ",
+                "example": "https://example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wget 递归站点"
+          },
+          {
+            "name": "限制递归深度",
+            "cmd": "wget -r -l %{层数}% %{URL}%",
+            "params": {
+              "层数": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "目标 URL         ",
+                "example": "https://example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wget 递归深度"
+          },
+          {
+            "name": "只下载匹配文件",
+            "cmd": "wget -A \"*.pdf\" %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "目标 URL         ",
+                "example": "https://example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wget 过滤下载"
+          },
+          {
+            "name": "拒绝某些文件",
+            "cmd": "wget -R \"*.css,*.js\" %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "目标 URL         ",
+                "example": "https://example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wget 拒绝文件"
+          },
+          {
+            "name": "带认证下载",
+            "cmd": "wget --user=%{用户}% --password=%{密码}% %{URL}%",
+            "params": {
+              "用户": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "密码": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "目标 URL         ",
+                "example": "https://example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wget 认证下载"
+          },
+          {
+            "name": "静默模式",
+            "cmd": "wget -q %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "目标 URL         ",
+                "example": "https://example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wget 静默"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "wget 选项        ",
+            "example": "-r -l 2",
+            "notes": "可选"
+          },
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "目标 URL         ",
+            "example": "https://example.com",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "newman Postman CLI 运行",
+      "keyword": "newman postman cli 测试",
+      "description": "使用 newman 命令行工具运行 Postman 集合。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "newman run %{集合文件}%",
+        "extensions": [
+          {
+            "name": "运行 Postman 集合",
+            "cmd": "newman run %{collection_file}%",
+            "params": {
+              "collection_file": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "newman 运行集合"
+          },
+          {
+            "name": "指定环境",
+            "cmd": "newman run %{collection}% -e %{environment}%",
+            "params": {
+              "collection": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "environment": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "newman 环境"
+          },
+          {
+            "name": "导出 HTML 报告",
+            "cmd": "newman run %{collection}% --reporters html --reporter-html-export %{报告文件}%",
+            "params": {
+              "collection": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "报告文件": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "newman HTML 报告"
+          },
+          {
+            "name": "导出 JSON 报告",
+            "cmd": "newman run %{collection}% --reporters json --reporter-json-export %{报告文件}%",
+            "params": {
+              "collection": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "报告文件": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "newman JSON 报告"
+          },
+          {
+            "name": "指定迭代次数",
+            "cmd": "newman run %{collection}% -n %{次数}%",
+            "params": {
+              "collection": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "次数": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "newman 迭代"
+          },
+          {
+            "name": "显示请求详细信息",
+            "cmd": "newman run %{collection}% --verbose",
+            "params": {
+              "collection": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "newman verbose"
+          }
+        ],
+        "params": {
+          "集合文件": {
+            "type": "string",
+            "required": true,
+            "description": "Postman 集合文件路径或 URL",
+            "example": "./collection.json",
+            "notes": "支持本地文件或 URL"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "Insomnia CLI 请求",
+      "keyword": "insomnia cli 请求",
+      "description": "使用 Insomnia 命令行工具发送 API 请求。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "insomnia %{command}% %{args}%",
+        "extensions": [
+          {
+            "name": "运行 Insomnia 请求",
+            "cmd": "insomnia run --request %{request_id}%",
+            "params": {
+              "request_id": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "insomnia run 请求"
+          },
+          {
+            "name": "导出 Insomnia 集合",
+            "cmd": "insomnia export --output %{output_file}%",
+            "params": {
+              "output_file": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "insomnia 导出"
+          },
+          {
+            "name": "运行测试套件",
+            "cmd": "insomnia run --testsuite %{suite_id}%",
+            "params": {
+              "suite_id": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "insomnia 测试套件"
+          },
+          {
+            "name": "指定环境",
+            "cmd": "insomnia run --env %{environment_id}% %{request}%",
+            "params": {
+              "environment_id": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "request": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "insomnia 环境变量"
+          }
+        ],
+        "params": {
+          "command": {
+            "type": "string",
+            "required": true,
+            "description": "Insomnia 命令    ",
+            "example": "run",
+            "notes": "run, export, init 等"
+          },
+          "args": {
+            "type": "string",
+            "required": false,
+            "description": "命令参数           ",
+            "example": "--request abc123",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "swagger-cli 文档验证",
+      "keyword": "swagger-cli 验证 文档",
+      "description": "使用 swagger-cli 验证和解析 Swagger/OpenAPI 文档",
+      "data": {
+        "cmd": "swagger-cli validate %{文件}%",
+        "extensions": [
+          {
+            "name": "验证 OpenAPI 文档",
+            "cmd": "swagger-cli validate %{openapi_file}%",
+            "params": {
+              "openapi_file": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "swagger-cli 验证"
+          },
+          {
+            "name": "解析并打印文档",
+            "cmd": "swagger-cli parse %{file}%",
+            "params": {
+              "file": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "swagger-cli 解析"
+          },
+          {
+            "name": "bundle 打包文档",
+            "cmd": "swagger-cli bundle %{file}% -o %{output}%",
+            "params": {
+              "file": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "output": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "swagger-cli bundle 打包"
+          },
+          {
+            "name": "验证并打印错误",
+            "cmd": "swagger-cli validate %{file}% --diagnose",
+            "params": {
+              "file": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "swagger-cli 诊断"
+          },
+          {
+            "name": "全局安装 swagger-cli",
+            "cmd": "npm install -g swagger-cli",
+            "params": {},
+            "keyword": "swagger-cli 安装"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "Swagger/OpenAPI 文件路径",
+            "example": "./openapi.yaml",
+            "notes": "支持 YAML 和 JSON"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "redoc 文档服务",
+      "keyword": "redoc 文档 生成",
+      "description": "使用 redoc-cli 生成和托管 API 文档。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "redoc %{command}% %{args}%",
+        "extensions": [
+          {
+            "name": "本地启动文档服务",
+            "cmd": "redoc-cli serve %{openapi_file}%",
+            "params": {
+              "openapi_file": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "redoc 本地服务"
+          },
+          {
+            "name": "指定端口",
+            "cmd": "redoc-cli serve %{file}% -p %{端口}%",
+            "params": {
+              "file": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "端口": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "redoc 端口"
+          },
+          {
+            "name": "生成 HTML 文件",
+            "cmd": "redoc-cli build %{file}% -o %{output_html}%",
+            "params": {
+              "file": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "output_html": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "redoc 生成 HTML"
+          },
+          {
+            "name": "自定义标题",
+            "cmd": "redoc-cli build %{file}% --options.title=\"%{title}%\" -o %{output}%",
+            "params": {
+              "file": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "title": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "output": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "redoc 自定义标题"
+          },
+          {
+            "name": "全局安装 redoc-cli",
+            "cmd": "npm install -g redoc-cli",
+            "params": {},
+            "keyword": "redoc 安装"
+          }
+        ],
+        "params": {
+          "command": {
+            "type": "string",
+            "required": true,
+            "description": "redoc 命令       ",
+            "example": "serve",
+            "notes": "serve 或 build"
+          },
+          "args": {
+            "type": "string",
+            "required": false,
+            "description": "命令参数           ",
+            "example": "-p 8080",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "httpstat HTTP 可视化",
+      "keyword": "httpstat HTTP 可视化",
+      "description": "使用 httpstat 可视化显示 HTTP 请求各阶段耗时",
+      "data": {
+        "cmd": "httpstat %{URL}%",
+        "extensions": [
+          {
+            "name": "基础 HTTP 统计",
+            "cmd": "httpstat %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "httpstat 基础"
+          },
+          {
+            "name": "显示原始 curl 命令",
+            "cmd": "httpstat -u curl %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "httpstat curl 命令"
+          },
+          {
+            "name": "POST 请求统计",
+            "cmd": "httpstat -X POST -d '%{data}%' %{URL}%",
+            "params": {
+              "data": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "httpstat POST"
+          },
+          {
+            "name": "显示请求头",
+            "cmd": "httpstat -v %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "httpstat verbose"
+          },
+          {
+            "name": "安装 httpstat",
+            "cmd": "pip install httpstat",
+            "params": {},
+            "keyword": "httpstat 安装"
+          }
+        ],
+        "params": {
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "请求 URL         ",
+            "example": "https://api.example.com",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "curl -v verbose 调试",
+      "keyword": "curl -v verbose 调试 HTTP",
+      "description": "使用 curl -v 进行 HTTP 调试，显示完整请求和响应过程",
+      "data": {
+        "cmd": "curl -v %{URL}%",
+        "extensions": [
+          {
+            "name": "显示完整请求过程",
+            "cmd": "curl -v %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl verbose 调试"
+          },
+          {
+            "name": "显示更详细信息",
+            "cmd": "curl --trace %{trace_file}% %{URL}%",
+            "params": {
+              "trace_file": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl trace 跟踪"
+          },
+          {
+            "name": "十六进制跟踪",
+            "cmd": "curl --trace-ascii %{file}% %{URL}%",
+            "params": {
+              "file": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl trace-ascii"
+          },
+          {
+            "name": "显示请求时间",
+            "cmd": "curl -w \"\\nTotal time: %{time_total}s\\n\" %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl 请求时间"
+          },
+          {
+            "name": "显示下载进度",
+            "cmd": "curl -# %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl 进度条"
+          }
+        ],
+        "params": {
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "请求 URL         ",
+            "example": "https://api.example.com",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "curl -I HEAD 请求",
+      "keyword": "curl -I HEAD HTTP",
+      "description": "使用 curl -I 发送 HEAD 请求，只获取响应头不获取响应体",
+      "data": {
+        "cmd": "curl -I %{URL}%",
+        "extensions": [
+          {
+            "name": "只获取响应头",
+            "cmd": "curl -I %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl HEAD 请求头"
+          },
+          {
+            "name": "HEAD 跟随重定向",
+            "cmd": "curl -IL %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl HEAD 重定向"
+          },
+          {
+            "name": "HEAD 显示详细",
+            "cmd": "curl -Iv %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl HEAD verbose"
+          },
+          {
+            "name": "HEAD 跳过 SSL",
+            "cmd": "curl -Ik %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl HEAD SSL"
+          },
+          {
+            "name": "HEAD 设置超时",
+            "cmd": "curl -I --max-time %{秒}% %{URL}%",
+            "params": {
+              "秒": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": false,
+                "description": "请求 URL         ",
+                "example": "https://api.example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl HEAD 超时"
+          }
+        ],
+        "params": {
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "请求 URL         ",
+            "example": "https://api.example.com",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "wscat WebSocket 连接",
+      "keyword": "wscat websocket ws",
+      "description": "使用 wscat 连接 WebSocket 服务器进行测试。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "wscat %{选项}% %{ws_url}%",
+        "extensions": [
+          {
+            "name": "连接 WebSocket 服务器",
+            "cmd": "wscat ws://%{host}%:%{port}%/%{path}%",
+            "params": {
+              "host": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "port": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "path": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wscat 连接"
+          },
+          {
+            "name": "连接 WSS",
+            "cmd": "wscat -c wss://%{host}%/%{path}%",
+            "params": {
+              "host": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "path": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wscat wss"
+          },
+          {
+            "name": "发送消息",
+            "cmd": "wscat -c %{ws_url}% -x %{message}%",
+            "params": {
+              "ws_url": {
+                "type": "string",
+                "required": false,
+                "description": "WebSocket URL  ",
+                "example": "ws://localhost:8080/ws",
+                "notes": "可选"
+              },
+              "message": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wscat 发送消息"
+          },
+          {
+            "name": "带认证",
+            "cmd": "wscat -c %{ws_url}% --auth %{token}%",
+            "params": {
+              "ws_url": {
+                "type": "string",
+                "required": false,
+                "description": "WebSocket URL  ",
+                "example": "ws://localhost:8080/ws",
+                "notes": "可选"
+              },
+              "token": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wscat 认证"
+          },
+          {
+            "name": "单条消息模式",
+            "cmd": "wscat -c %{ws_url}% -x '%{msg}%' -w",
+            "params": {
+              "ws_url": {
+                "type": "string",
+                "required": false,
+                "description": "WebSocket URL  ",
+                "example": "ws://localhost:8080/ws",
+                "notes": "可选"
+              },
+              "msg": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wscat 单消息"
+          },
+          {
+            "name": "安装 wscat",
+            "cmd": "npm install -g wscat",
+            "params": {},
+            "keyword": "wscat 安装"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "wscat 选项       ",
+            "example": "-c",
+            "notes": "-c 连接模式"
+          },
+          "ws_url": {
+            "type": "string",
+            "required": true,
+            "description": "WebSocket URL  ",
+            "example": "ws://localhost:8080/ws",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "websocat 高级 WebSocket",
+      "keyword": "websocat websocket ws",
+      "description": "使用 websocat 进行更高级的 WebSocket 操作",
+      "data": {
+        "cmd": "websocat %{选项}% %{url}%",
+        "extensions": [
+          {
+            "name": "基础 WebSocket 连接",
+            "cmd": "websocat %{ws_url}%",
+            "params": {
+              "ws_url": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "websocat 基础"
+          },
+          {
+            "name": "连接并发送消息",
+            "cmd": "websocat %{ws_url}% -E \"%{msg}%\"",
+            "params": {
+              "ws_url": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "msg": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "websocat 发送消息"
+          },
+          {
+            "name": "stdin 到 WebSocket",
+            "cmd": "websocat %{ws_url}%",
+            "params": {
+              "ws_url": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "websocat stdin"
+          },
+          {
+            "name": "WebSocket 到 stdout",
+            "cmd": "websocat %{ws_url}%",
+            "params": {
+              "ws_url": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "websocat stdout"
+          },
+          {
+            "name": "TCP 转发到 WebSocket",
+            "cmd": "websocat -t tcp:localhost:%{port}% ws://%{host}%/%{path}%",
+            "params": {
+              "port": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "host": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "path": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "websocat TCP 转发"
+          },
+          {
+            "name": "WebSocket 广播",
+            "cmd": "websocat -b %{ws_url}%",
+            "params": {
+              "ws_url": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "websocat 广播"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "websocat 选项    ",
+            "example": "-E",
+            "notes": "可选"
+          },
+          "url": {
+            "type": "string",
+            "required": true,
+            "description": "WebSocket URL  ",
+            "example": "ws://localhost:8080/ws",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "Apollo Client 初始化",
+      "keyword": "apollo client 初始化 graphql",
+      "description": "在客户端项目中初始化 Apollo Client。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "npm install @apollo/client graphql",
+        "extensions": [
+          {
+            "name": "创建 Apollo Client 实例",
+            "cmd": "import { ApolloClient, InMemoryCache } from '@apollo/client'; const client = new ApolloClient({ uri: '%{graphql端点}%', cache: new InMemoryCache() });",
+            "params": {
+              "graphql端点": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "apollo client 实例"
+          },
+          {
+            "name": "使用 useQuery Hook",
+            "cmd": "const { data, loading, error } = useQuery(gql`%{gql查询}%`);",
+            "params": {
+              "gql查询": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "apollo useQuery 查询"
+          },
+          {
+            "name": "使用 useMutation Hook",
+            "cmd": "const [createUser] = useMutation(gql`mutation CreateUser($name: String!) { createUser(name: $name) { id name } }`);",
+            "params": {},
+            "keyword": "apollo useMutation 变更"
+          },
+          {
+            "name": "GraphQL 请求（Fetch）",
+            "cmd": "fetch('%{endpoint}%', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query: `%{query}%`, variables: %{variables}% }) }).then(res => res.json());",
+            "params": {
+              "endpoint": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "query": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "variables": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "fetch graphql 请求"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "urql GraphQL 客户端",
+      "keyword": "urql graphql 客户端",
+      "description": "使用 urql 轻量级 GraphQL 客户端发送请求。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "npm install urql graphql",
+        "extensions": [
+          {
+            "name": "创建 urql Client",
+            "cmd": "import { createClient } from 'urql'; const client = createClient({ url: '%{graphql端点}%' });",
+            "params": {
+              "graphql端点": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "urql client 创建"
+          },
+          {
+            "name": "执行查询",
+            "cmd": "const [result] = await client.query(`query { %{query}% }`).toPromise();",
+            "params": {
+              "query": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "urql query 查询"
+          },
+          {
+            "name": "执行变更",
+            "cmd": "const [result] = await client.mutation(`mutation %{mutation}%`).toPromise();",
+            "params": {
+              "mutation": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "urql mutation 变更"
+          },
+          {
+            "name": "带认证头",
+            "cmd": "const client = createClient({ url: '%{endpoint}%', fetchOptions: () => ({ headers: { authorization: 'Bearer %{token}%' } }) });",
+            "params": {
+              "endpoint": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "token": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "urql 认证"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/API与认证/",
+      "name": "API 集成测试脚本",
+      "keyword": "api 测试 集成 curl",
+      "description": "使用 curl 和 shell 脚本进行 API 集成测试。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "curl -X %{METHOD}% -H \"%{header}%\" %{URL}%",
+        "extensions": [
+          {
+            "name": "健康检查",
+            "cmd": "curl -s -o /dev/null -w \"%{http_code}%\" %{health_url}%",
+            "params": {
+              "http_code": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "health_url": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "api 健康检查"
+          },
+          {
+            "name": "链式 API 调用",
+            "cmd": "TOKEN=$(curl -s -X POST -d '{\"username\":\"%{user}%\"}' %{login_url}% | jq -r '.token'); curl -H \"Authorization: Bearer $TOKEN\" %{api_url}%",
+            "params": {
+              "user": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "login_url": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "api_url": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "api 链式调用"
+          },
+          {
+            "name": "批量测试",
+            "cmd": "for endpoint in %{endpoints}%; do echo \"Testing $endpoint\"; curl -s -o /dev/null -w \"%{http_code}\\n\" $endpoint; done",
+            "params": {
+              "endpoints": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "api 批量测试"
+          },
+          {
+            "name": "超时测试",
+            "cmd": "curl --max-time %{seconds}% %{url}%",
+            "params": {
+              "seconds": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "url": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl 超时"
+          },
+          {
+            "name": "输出格式美化",
+            "cmd": "curl -s %{url}% | jq '.'",
+            "params": {
+              "url": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "curl jq 美化"
+          }
+        ],
+        "params": {
+          "METHOD": {
+            "type": "string",
+            "required": true,
+            "description": "HTTP 方法        ",
+            "example": "GET",
+            "notes": "GET, POST, PUT, DELETE"
+          },
+          "header": {
+            "type": "string",
+            "required": false,
+            "description": "请求头            ",
+            "example": "Content-Type: application/json",
+            "notes": "可选"
+          },
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "请求 URL         ",
+            "example": "https://api.example.com",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

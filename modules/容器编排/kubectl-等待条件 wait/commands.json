@@ -1,0 +1,104 @@
+{
+  "module": "容器编排/kubectl-等待条件 wait",
+  "version": "2.0",
+  "description": "kubectl 等待条件命令。等待一个或多个资源满足特定条件后继续执行，常用于 CI/CD 流水线、脚本中等待资源就绪。适用于等待 Deployment 滚动更新完成、等待 Pod 进入特定状态、等待资源创建完成等场景。常见场景：部署后等待就绪、等待 Job 完成、等待服务上线。",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl wait 等待条件",
+      "keyword": "kubectl wait 等待",
+      "description": "等待资源满足指定条件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl wait --for=condition=%{条件}% %{类型}%/%{名称}%",
+        "extensions": [
+          {
+            "name": "kubectl wait 等待 Pod 就绪",
+            "description": "等待 Pod 进入 Ready 状态            ",
+            "params": {
+              "条件": {
+                "type": "string",
+                "required": true,
+                "description": "条件             ",
+                "example": "ready",
+                "notes": "必填"
+              },
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "类型             ",
+                "example": "pod",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "名称             ",
+                "example": "my-pod",
+                "notes": "必填"
+              }
+            },
+            "cmd": "kubectl wait --for=condition=%{条件}% %{类型}%/%{名称}%"
+          },
+          {
+            "name": "kubectl wait 等待删除完成",
+            "description": "等待资源被删除                       ",
+            "params": {
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "资源类型           ",
+                "example": "pod",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "资源名称           ",
+                "example": "my-pod",
+                "notes": "必填"
+              }
+            },
+            "cmd": "kubectl wait --for=condition=%{条件}% %{类型}%/%{名称}%"
+          },
+          {
+            "name": "kubectl wait 超时设置",
+            "description": "设置等待超时时间                      ",
+            "params": {
+              "超时": {
+                "type": "string",
+                "required": false,
+                "description": "超时时间           ",
+                "example": "300s",
+                "notes": "可选：默认等待无限长时间"
+              }
+            },
+            "cmd": "kubectl wait --for=condition=%{条件}% %{类型}%/%{名称}%"
+          }
+        ],
+        "params": {
+          "条件": {
+            "type": "string",
+            "required": true,
+            "description": "条件             ",
+            "example": "ready",
+            "notes": "必填"
+          },
+          "类型": {
+            "type": "string",
+            "required": true,
+            "description": "类型             ",
+            "example": "pod",
+            "notes": "必填"
+          },
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "名称             ",
+            "example": "my-pod",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

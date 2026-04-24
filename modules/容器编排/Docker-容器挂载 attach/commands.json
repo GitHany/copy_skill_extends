@@ -1,0 +1,42 @@
+{
+  "module": "容器编排/Docker-容器挂载 attach",
+  "version": "2.0",
+  "description": "Docker 附加到运行中的容器，涵盖Docker attach的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker attach 附加到容器",
+      "keyword": "docker attach 附加",
+      "description": "附加到运行中的容器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker attach %{容器}%",
+        "extensions": [
+          {
+            "name": "分离模式进入",
+            "description": "使用 --sig-proxy=false 避免信号被转发，按 Ctrl+P, Ctrl+Q 分离",
+            "cmd": "docker attach --sig-proxy=false %{容器}%"
+          },
+          {
+            "name": "自定义分离键",
+            "description": "使用 --detach-keys 自定义分离按键序列",
+            "cmd": "docker attach --detach-keys=\"ctrl-@\" %{容器}%"
+          },
+          {
+            "name": "不跟随标准输入",
+            "description": "使用 --no-stdin 不分配标准输入，保持分离状态",
+            "cmd": "docker attach --no-stdin %{容器}%"
+          }
+        ],
+        "params": {
+          "容器": {
+            "type": "string",
+            "required": true,
+            "description": "容器名称或 ID       ",
+            "example": "myapp",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

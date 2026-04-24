@@ -1,0 +1,195 @@
+{
+  "module": "容器编排/kubectl-修补资源 patch",
+  "version": "2.0",
+  "description": "kubectl 资源修补，涵盖kubectl patch的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl patch 修补资源",
+      "keyword": "kubectl patch 修补",
+      "description": "更新资源字段。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl patch %{类型}% %{名称}% -p '%{补丁}%'",
+        "extensions": [
+          {
+            "name": "JSON Patch更新副本数",
+            "cmd": "kubectl patch %{类型}% %{名称}% -n %{命名空间}% -p '{\"spec\":{\"replicas\":%{副本}%}}'",
+            "params": {
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "资源类型",
+                "example": "deployment",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "资源名",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "default",
+                "notes": "可选"
+              },
+              "副本": {
+                "type": "string",
+                "required": true,
+                "description": "副本数",
+                "example": "5",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl patch replicas"
+          },
+          {
+            "name": "Strategic Merge Patch更新镜像",
+            "cmd": "kubectl patch deployment %{名称}% -n %{命名空间}% --type=strategic -p '{\"spec\":{\"template\":{\"spec\":{\"containers\":[{\"name\":\"%{容器名}%\",\"image\":\"%{镜像}%\"}]}}}}'",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment名",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "default",
+                "notes": "可选"
+              },
+              "容器名": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称",
+                "example": "nginx",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "新镜像",
+                "example": "nginx:1.21",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl patch image"
+          },
+          {
+            "name": "添加标签",
+            "cmd": "kubectl patch %{类型}% %{名称}% -n %{命名空间}% -p '{\"metadata\":{\"labels\":{\"%{键}%\":\"%{值}%\"}}}'",
+            "params": {
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "资源类型",
+                "example": "pod",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "资源名",
+                "example": "my-pod",
+                "notes": "必填"
+              },
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "default",
+                "notes": "可选"
+              },
+              "键": {
+                "type": "string",
+                "required": true,
+                "description": "标签键",
+                "example": "env",
+                "notes": "必填"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "标签值",
+                "example": "production",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl patch label"
+          },
+          {
+            "name": "更新注解",
+            "cmd": "kubectl patch %{类型}% %{名称}% -n %{命名空间}% -p '{\"metadata\":{\"annotations\":{\"%{键}%\":\"%{值}%\"}}}'",
+            "params": {
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "资源类型",
+                "example": "configmap",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "资源名",
+                "example": "my-config",
+                "notes": "必填"
+              },
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间",
+                "example": "default",
+                "notes": "可选"
+              },
+              "键": {
+                "type": "string",
+                "required": true,
+                "description": "注解键",
+                "example": "description",
+                "notes": "必填"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "注解值",
+                "example": "Production config",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl patch annotation"
+          }
+        ],
+        "params": {
+          "类型": {
+            "type": "string",
+            "required": true,
+            "description": "类型             ",
+            "example": "deployment",
+            "notes": "必填"
+          },
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "名              ",
+            "example": "myapp",
+            "notes": "必填"
+          },
+          "补丁": {
+            "type": "string",
+            "required": true,
+            "description": "补丁 JSON        ",
+            "example": "{\"spec\":{\"replicas\":3}}",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

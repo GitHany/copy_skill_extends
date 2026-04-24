@@ -1,0 +1,132 @@
+{
+  "module": "Linux系统/Linux-后台运行 nohup",
+  "version": "2.0",
+  "description": "Linux nohup 后台运行命令。使命令忽略挂断信号，继续在后台运行，即使关闭终端也不会中断。用于运行需要长时间执行的脚本、服务器进程、数据处理任务。运行后输出会写入nohup.out文件。",
+  "commands": [
+    {
+      "dirPath": "/Linux系统/",
+      "name": "nohup 后台运行",
+      "keyword": "nohup 后台",
+      "description": "后台运行命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "nohup %{命令}% &",
+        "extensions": [
+          {
+            "name": "后台运行脚本",
+            "description": "将脚本放入后台运行，关闭终端后继续             ",
+            "params": {
+              "命令": {
+                "example": "./backup.sh",
+                "notes": "要执行的命令",
+                "description": "               "
+              }
+            },
+            "cmd": "nohup %{命令}% &"
+          },
+          {
+            "name": "指定输出文件",
+            "description": "将输出重定向到指定文件而非默认的nohup.out     ",
+            "params": {
+              "命令": {
+                "example": "python app.py",
+                "notes": "命令",
+                "description": "               "
+              },
+              "输出": {
+                "example": "/var/log/app.log",
+                "notes": "输出文件",
+                "description": "               "
+              }
+            },
+            "cmd": "nohup %{命令}% > %{输出}% 2>&1 &"
+          },
+          {
+            "name": "后台运行并立即返回",
+            "description": "启动后台进程后立即返回终端                 ",
+            "params": {
+              "命令": {
+                "example": "./long_task.sh",
+                "notes": "命令",
+                "description": "               "
+              }
+            },
+            "cmd": "nohup %{命令}% > /dev/null 2>&1 &"
+          },
+          {
+            "name": "查看后台进程",
+            "description": "查看当前后台运行的nohup进程              ",
+            "params": {},
+            "cmd": "jobs -l"
+          },
+          {
+            "name": "指定工作目录",
+            "description": "在特定目录下运行nohup命令               ",
+            "params": {
+              "目录": {
+                "example": "/opt/app",
+                "notes": "工作目录",
+                "description": "               "
+              },
+              "命令": {
+                "example": "./start.sh",
+                "notes": "启动命令",
+                "description": "               "
+              }
+            },
+            "cmd": "cd %{目录}% && nohup %{命令}% &"
+          },
+          {
+            "name": "运行Python脚本",
+            "description": "后台运行Python应用                  ",
+            "params": {
+              "脚本": {
+                "example": "server.py",
+                "notes": "Python脚本",
+                "description": "               "
+              },
+              "参数": {
+                "example": "--port 8080",
+                "notes": "脚本参数",
+                "description": "               "
+              }
+            },
+            "cmd": "nohup python %{脚本}% %{参数}% &"
+          },
+          {
+            "name": "保持运行状态",
+            "description": "确保进程不受挂断影响持续运行                ",
+            "params": {
+              "命令": {
+                "example": "./daemon.sh",
+                "notes": "守护进程命令",
+                "description": "               "
+              }
+            },
+            "cmd": "nohup %{命令}% </dev/null > /dev/null 2>&1 &"
+          },
+          {
+            "name": "nohup配合disown",
+            "description": "后台运行后从当前shell脱离               ",
+            "params": {
+              "命令": {
+                "example": "python app.py",
+                "notes": "命令",
+                "description": "               "
+              }
+            },
+            "cmd": "nohup %{命令}% & disown"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "命令             ",
+            "example": "./script.sh",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

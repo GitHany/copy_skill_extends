@@ -1,0 +1,237 @@
+{
+  "module": "容器编排/K8s-服务管理 Service",
+  "version": "2.0",
+  "description": "Kubernetes Service 服务管理",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl expose service 暴露",
+      "keyword": "kubectl expose 暴露",
+      "description": "暴露 Deployment 为 Service。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl expose deployment %{名称}% --port=%{端口}% --target-port=%{目标端口}% --type=%{类型}%",
+        "extensions": [
+          {
+            "name": "指定 ClusterIP",
+            "cmd": "kubectl expose deployment %{名称}% --port=%{端口}% --target-port=%{目标端口}% --type=ClusterIP --cluster-ip=%{集群IP}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment名",
+                "example": "nginx",
+                "notes": "必填"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "服务端口",
+                "example": "80",
+                "notes": "必填"
+              },
+              "目标端口": {
+                "type": "string",
+                "required": true,
+                "description": "容器端口",
+                "example": "8080",
+                "notes": "必填"
+              },
+              "集群IP": {
+                "type": "string",
+                "required": true,
+                "description": "虚拟IP",
+                "example": "10.0.0.100",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl expose clusterip"
+          },
+          {
+            "name": "指定 NodePort",
+            "cmd": "kubectl expose deployment %{名称}% --port=%{端口}% --target-port=%{目标端口}% --type=NodePort --node-port=%{节点端口}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment名",
+                "example": "nginx",
+                "notes": "必填"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "服务端口",
+                "example": "80",
+                "notes": "必填"
+              },
+              "目标端口": {
+                "type": "string",
+                "required": true,
+                "description": "容器端口",
+                "example": "8080",
+                "notes": "必填"
+              },
+              "节点端口": {
+                "type": "string",
+                "required": true,
+                "description": "节点端口",
+                "example": "30080",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl expose nodeport"
+          },
+          {
+            "name": "指定 LoadBalancer",
+            "cmd": "kubectl expose deployment %{名称}% --port=%{端口}% --target-port=%{目标端口}% --type=LoadBalancer --load-balancer-ip=%{负载均衡IP}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment名",
+                "example": "nginx",
+                "notes": "必填"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "服务端口",
+                "example": "80",
+                "notes": "必填"
+              },
+              "目标端口": {
+                "type": "string",
+                "required": true,
+                "description": "容器端口",
+                "example": "8080",
+                "notes": "必填"
+              },
+              "负载均衡IP": {
+                "type": "string",
+                "required": false,
+                "description": "负载均衡IP",
+                "example": "203.0.113.10",
+                "notes": "可选"
+              }
+            },
+            "keyword": "kubectl expose loadbalancer"
+          },
+          {
+            "name": "指定 externalTrafficPolicy",
+            "cmd": "kubectl expose deployment %{名称}% --port=%{端口}% --target-port=%{目标端口}% --type=%{类型}% --external-traffic-policy=%{外部流量策略}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment名",
+                "example": "nginx",
+                "notes": "必填"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "服务端口",
+                "example": "80",
+                "notes": "必填"
+              },
+              "目标端口": {
+                "type": "string",
+                "required": true,
+                "description": "容器端口",
+                "example": "8080",
+                "notes": "必填"
+              },
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "Service类型",
+                "example": "NodePort",
+                "notes": "必填"
+              },
+              "外部流量策略": {
+                "type": "string",
+                "required": true,
+                "description": "外部流量策略",
+                "example": "Local",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl expose external traffic policy"
+          },
+          {
+            "name": "指定 sessionAffinity",
+            "cmd": "kubectl expose deployment %{名称}% --port=%{端口}% --target-port=%{目标端口}% --type=%{类型}% --session-affinity=%{会话亲和性}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment名",
+                "example": "nginx",
+                "notes": "必填"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "服务端口",
+                "example": "80",
+                "notes": "必填"
+              },
+              "目标端口": {
+                "type": "string",
+                "required": true,
+                "description": "容器端口",
+                "example": "8080",
+                "notes": "必填"
+              },
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "Service类型",
+                "example": "LoadBalancer",
+                "notes": "必填"
+              },
+              "会话亲和性": {
+                "type": "string",
+                "required": true,
+                "description": "会话亲和性",
+                "example": "ClientIP",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl expose session affinity"
+          }
+        ],
+        "params": {
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "Deployment名",
+            "example": "nginx",
+            "notes": "必填"
+          },
+          "端口": {
+            "type": "string",
+            "required": true,
+            "description": "服务端口",
+            "example": "80",
+            "notes": "必填"
+          },
+          "目标端口": {
+            "type": "string",
+            "required": true,
+            "description": "容器端口",
+            "example": "8080",
+            "notes": "必填"
+          },
+          "类型": {
+            "type": "string",
+            "required": true,
+            "description": "Service类型",
+            "example": "LoadBalancer",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "module": "版本控制/Git 分支",
+  "version": "2.0",
+  "description": "Git 分支命令集合，涵盖Git 分支的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/版本控制/",
+      "name": "Git 分支 命令",
+      "keyword": "Git 分支 命令",
+      "description": "Git 分支 命令的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git branch",
+        "extensions": [
+          {
+            "name": "远程分支",
+            "cmd": "git branch -r",
+            "params": {},
+            "keyword": "git branch remote"
+          },
+          {
+            "name": "所有分支",
+            "cmd": "git branch -a",
+            "params": {},
+            "keyword": "git branch all"
+          },
+          {
+            "name": "显示详细分支信息（含hash和tracking）",
+            "cmd": "git branch -v",
+            "params": {},
+            "keyword": "git branch verbose"
+          },
+          {
+            "name": "创建新分支",
+            "cmd": "git branch %{分支名}%",
+            "params": {
+              "分支名": {
+                "type": "string",
+                "required": true,
+                "description": "新分支名称",
+                "example": "feature/new-feature",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git branch create"
+          },
+          {
+            "name": "删除已合并的分支",
+            "cmd": "git branch -d %{分支名}%",
+            "params": {
+              "分支名": {
+                "type": "string",
+                "required": true,
+                "description": "要删除的分支名",
+                "example": "feature/old-feature",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git branch delete"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

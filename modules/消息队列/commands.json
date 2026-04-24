@@ -1,5 +1,5 @@
 {
-  "module": "消息队列",
+  "module": "消息队列/消息队列",
   "version": "1.0",
   "description": "消息队列与事件驱动架构命令模块集合，涵盖消息队列的常用操作和最佳实践",
   "commands": [
@@ -90,14 +90,14 @@
               "用户名": {
                 "type": "string",
                 "required": true,
-                "description": "用户名",
+                "description": "用户名            ",
                 "example": "admin",
                 "notes": "可选"
               },
               "密码": {
                 "type": "string",
                 "required": true,
-                "description": "密码",
+                "description": "密码             ",
                 "example": "password123",
                 "notes": "可选"
               }
@@ -111,7 +111,7 @@
               "用户名": {
                 "type": "string",
                 "required": true,
-                "description": "用户名",
+                "description": "用户名            ",
                 "example": "admin",
                 "notes": "可选"
               }
@@ -125,14 +125,14 @@
               "用户名": {
                 "type": "string",
                 "required": true,
-                "description": "用户名",
+                "description": "用户名            ",
                 "example": "admin",
                 "notes": "可选"
               },
               "标签": {
                 "type": "string",
                 "required": true,
-                "description": "标签",
+                "description": "标签             ",
                 "example": "administrator",
                 "notes": "administrator/monitoring/policymaker"
               }
@@ -152,7 +152,7 @@
               "虚拟主机": {
                 "type": "string",
                 "required": true,
-                "description": "虚拟主机名",
+                "description": "虚拟主机名          ",
                 "example": "myvhost",
                 "notes": "可选"
               }
@@ -166,7 +166,7 @@
               "虚拟主机": {
                 "type": "string",
                 "required": true,
-                "description": "虚拟主机名",
+                "description": "虚拟主机名          ",
                 "example": "myvhost",
                 "notes": "可选"
               }
@@ -180,14 +180,14 @@
               "虚拟主机": {
                 "type": "string",
                 "required": true,
-                "description": "虚拟主机名",
+                "description": "虚拟主机名          ",
                 "example": "/",
                 "notes": "默认为 /"
               },
               "用户名": {
                 "type": "string",
                 "required": true,
-                "description": "用户名",
+                "description": "用户名            ",
                 "example": "admin",
                 "notes": "可选"
               }
@@ -201,7 +201,7 @@
               "虚拟主机": {
                 "type": "string",
                 "required": true,
-                "description": "虚拟主机名",
+                "description": "虚拟主机名          ",
                 "example": "/",
                 "notes": "默认为 /"
               }
@@ -215,14 +215,14 @@
               "虚拟主机": {
                 "type": "string",
                 "required": true,
-                "description": "虚拟主机名",
+                "description": "虚拟主机名          ",
                 "example": "/",
                 "notes": "默认为 /"
               },
               "队列名": {
                 "type": "string",
                 "required": true,
-                "description": "队列名称",
+                "description": "队列名称           ",
                 "example": "my_queue",
                 "notes": "可选"
               }
@@ -236,7 +236,7 @@
               "队列名": {
                 "type": "string",
                 "required": true,
-                "description": "队列名称",
+                "description": "队列名称           ",
                 "example": "my_queue",
                 "notes": "可选"
               }
@@ -250,7 +250,7 @@
               "队列名": {
                 "type": "string",
                 "required": true,
-                "description": "队列名称",
+                "description": "队列名称           ",
                 "example": "my_queue",
                 "notes": "可选"
               }
@@ -264,28 +264,28 @@
               "虚拟主机": {
                 "type": "string",
                 "required": true,
-                "description": "虚拟主机名",
+                "description": "虚拟主机名          ",
                 "example": "/",
                 "notes": "可选"
               },
               "交换机名": {
                 "type": "string",
                 "required": true,
-                "description": "交换机名称",
+                "description": "交换机名称          ",
                 "example": "my_exchange",
                 "notes": "可选"
               },
               "类型": {
                 "type": "string",
                 "required": true,
-                "description": "交换机类型",
+                "description": "交换机类型          ",
                 "example": "direct",
                 "notes": "direct/fanout/topic/headers"
               },
               "durable": {
                 "type": "string",
                 "required": false,
-                "description": "是否持久化",
+                "description": "是否持久化          ",
                 "example": "true",
                 "notes": "true/false"
               }
@@ -299,28 +299,28 @@
               "虚拟主机": {
                 "type": "string",
                 "required": true,
-                "description": "虚拟主机名",
+                "description": "虚拟主机名          ",
                 "example": "/",
                 "notes": "可选"
               },
               "队列名": {
                 "type": "string",
                 "required": true,
-                "description": "队列名称",
+                "description": "队列名称           ",
                 "example": "my_queue",
                 "notes": "可选"
               },
               "交换机名": {
                 "type": "string",
                 "required": true,
-                "description": "交换机名称",
+                "description": "交换机名称          ",
                 "example": "my_exchange",
                 "notes": "可选"
               },
               "路由键": {
                 "type": "string",
                 "required": true,
-                "description": "路由键",
+                "description": "路由键            ",
                 "example": "my.routing.key",
                 "notes": "可选"
               }
@@ -352,7 +352,7 @@
               "插件名": {
                 "type": "string",
                 "required": true,
-                "description": "插件名称",
+                "description": "插件名称           ",
                 "example": "rabbitmq_stomp",
                 "notes": "可选"
               }
@@ -404,7 +404,7 @@
               "容器名": {
                 "type": "string",
                 "required": true,
-                "description": "容器名称",
+                "description": "容器名称           ",
                 "example": "rabbitmq",
                 "notes": "可选"
               }
@@ -418,7 +418,7 @@
               "容器名": {
                 "type": "string",
                 "required": true,
-                "description": "容器名称",
+                "description": "容器名称           ",
                 "example": "rabbitmq",
                 "notes": "可选"
               }
@@ -430,42 +430,42 @@
           "容器名": {
             "type": "string",
             "required": true,
-            "description": "容器名称",
+            "description": "容器名称           ",
             "example": "rabbitmq",
             "notes": "必填"
           },
           "主机端口": {
             "type": "string",
             "required": true,
-            "description": "主机映射端口",
+            "description": "主机映射端口         ",
             "example": "5672",
             "notes": "AMQP: 5672, Management: 15672"
           },
           "容器端口": {
             "type": "string",
             "required": true,
-            "description": "容器端口",
+            "description": "容器端口           ",
             "example": "5672",
             "notes": "必填"
           },
           "用户名": {
             "type": "string",
             "required": true,
-            "description": "默认用户名",
+            "description": "默认用户名          ",
             "example": "guest",
             "notes": "必填"
           },
           "密码": {
             "type": "string",
             "required": true,
-            "description": "默认密码",
+            "description": "默认密码           ",
             "example": "guest",
             "notes": "必填"
           },
           "标签": {
             "type": "string",
             "required": false,
-            "description": "RabbitMQ 版本标签",
+            "description": "RabbitMQ 版本标签  ",
             "example": "management",
             "notes": "建议使用 management 包含管理界面"
           }
@@ -487,21 +487,21 @@
               "主题名": {
                 "type": "string",
                 "required": true,
-                "description": "主题名称",
+                "description": "主题名称           ",
                 "example": "my-topic",
                 "notes": "可选"
               },
               "分区数": {
                 "type": "string",
                 "required": true,
-                "description": "分区数量",
+                "description": "分区数量           ",
                 "example": "3",
                 "notes": "可选"
               },
               "副本数": {
                 "type": "string",
                 "required": true,
-                "description": "副本因子",
+                "description": "副本因子           ",
                 "example": "1",
                 "notes": "测试环境为1"
               }
@@ -521,7 +521,7 @@
               "主题名": {
                 "type": "string",
                 "required": true,
-                "description": "主题名称",
+                "description": "主题名称           ",
                 "example": "my-topic",
                 "notes": "可选"
               }
@@ -535,7 +535,7 @@
               "主题名": {
                 "type": "string",
                 "required": true,
-                "description": "主题名称",
+                "description": "主题名称           ",
                 "example": "my-topic",
                 "notes": "可选"
               }
@@ -549,14 +549,14 @@
               "主题名": {
                 "type": "string",
                 "required": true,
-                "description": "主题名称",
+                "description": "主题名称           ",
                 "example": "my-topic",
                 "notes": "可选"
               },
               "新分区数": {
                 "type": "string",
                 "required": true,
-                "description": "新的分区数量",
+                "description": "新的分区数量         ",
                 "example": "6",
                 "notes": "只能增加不能减少"
               }
@@ -574,21 +574,21 @@
           "服务器地址": {
             "type": "string",
             "required": true,
-            "description": "Kafka 服务器地址",
+            "description": "Kafka 服务器地址    ",
             "example": "localhost:9092",
             "notes": "必填"
           },
           "主题名": {
             "type": "string",
             "required": true,
-            "description": "主题名称",
+            "description": "主题名称           ",
             "example": "my-topic",
             "notes": "必填"
           },
           "操作": {
             "type": "string",
             "required": true,
-            "description": "操作类型",
+            "description": "操作类型           ",
             "example": "create",
             "notes": "create/list/describe/delete/alter"
           }
@@ -610,7 +610,7 @@
               "主题名": {
                 "type": "string",
                 "required": true,
-                "description": "主题名称",
+                "description": "主题名称           ",
                 "example": "my-topic",
                 "notes": "可选"
               }
@@ -624,7 +624,7 @@
               "主题名": {
                 "type": "string",
                 "required": true,
-                "description": "主题名称",
+                "description": "主题名称           ",
                 "example": "my-topic",
                 "notes": "可选"
               }
@@ -638,7 +638,7 @@
               "主题名": {
                 "type": "string",
                 "required": true,
-                "description": "主题名称",
+                "description": "主题名称           ",
                 "example": "my-topic",
                 "notes": "可选"
               }
@@ -652,7 +652,7 @@
               "主题名": {
                 "type": "string",
                 "required": true,
-                "description": "主题名称",
+                "description": "主题名称           ",
                 "example": "my-topic",
                 "notes": "可选"
               }
@@ -666,14 +666,14 @@
               "主题名": {
                 "type": "string",
                 "required": true,
-                "description": "主题名称",
+                "description": "主题名称           ",
                 "example": "my-topic",
                 "notes": "可选"
               },
               "消费组名": {
                 "type": "string",
                 "required": true,
-                "description": "消费组名称",
+                "description": "消费组名称          ",
                 "example": "my-group",
                 "notes": "可选"
               }
@@ -687,7 +687,7 @@
               "主题名": {
                 "type": "string",
                 "required": true,
-                "description": "主题名称",
+                "description": "主题名称           ",
                 "example": "my-topic",
                 "notes": "可选"
               }
@@ -699,14 +699,14 @@
           "服务器地址": {
             "type": "string",
             "required": true,
-            "description": "Kafka 服务器地址",
+            "description": "Kafka 服务器地址    ",
             "example": "localhost:9092",
             "notes": "必填"
           },
           "主题名": {
             "type": "string",
             "required": true,
-            "description": "主题名称",
+            "description": "主题名称           ",
             "example": "my-topic",
             "notes": "必填"
           }
@@ -734,7 +734,7 @@
               "消费组名": {
                 "type": "string",
                 "required": true,
-                "description": "消费组名称",
+                "description": "消费组名称          ",
                 "example": "my-group",
                 "notes": "可选"
               }
@@ -748,7 +748,7 @@
               "消费组名": {
                 "type": "string",
                 "required": true,
-                "description": "消费组名称",
+                "description": "消费组名称          ",
                 "example": "my-group",
                 "notes": "可选"
               }
@@ -762,14 +762,14 @@
               "消费组名": {
                 "type": "string",
                 "required": true,
-                "description": "消费组名称",
+                "description": "消费组名称          ",
                 "example": "my-group",
                 "notes": "可选"
               },
               "主题名": {
                 "type": "string",
                 "required": true,
-                "description": "主题名称",
+                "description": "主题名称           ",
                 "example": "my-topic",
                 "notes": "可选"
               }
@@ -783,7 +783,7 @@
               "消费组名": {
                 "type": "string",
                 "required": true,
-                "description": "消费组名称",
+                "description": "消费组名称          ",
                 "example": "my-group",
                 "notes": "可选"
               }
@@ -795,21 +795,21 @@
           "服务器地址": {
             "type": "string",
             "required": true,
-            "description": "Kafka 服务器地址",
+            "description": "Kafka 服务器地址    ",
             "example": "localhost:9092",
             "notes": "必填"
           },
           "消费组名": {
             "type": "string",
             "required": true,
-            "description": "消费组名称",
+            "description": "消费组名称          ",
             "example": "my-group",
             "notes": "必填"
           },
           "操作": {
             "type": "string",
             "required": true,
-            "description": "操作类型",
+            "description": "操作类型           ",
             "example": "describe",
             "notes": "list/describe/delete"
           }
@@ -881,7 +881,7 @@
               "主题名": {
                 "type": "string",
                 "required": true,
-                "description": "主题名称",
+                "description": "主题名称           ",
                 "example": "my-topic",
                 "notes": "可选"
               }
@@ -895,14 +895,14 @@
               "主题名": {
                 "type": "string",
                 "required": true,
-                "description": "主题名称",
+                "description": "主题名称           ",
                 "example": "my-topic",
                 "notes": "可选"
               },
               "保留毫秒": {
                 "type": "string",
                 "required": true,
-                "description": "消息保留时间（毫秒）",
+                "description": "消息保留时间（毫秒）     ",
                 "example": "604800000",
                 "notes": "7天=604800000ms"
               }
@@ -916,14 +916,14 @@
               "主题名": {
                 "type": "string",
                 "required": true,
-                "description": "主题名称",
+                "description": "主题名称           ",
                 "example": "my-topic",
                 "notes": "可选"
               },
               "配置名": {
                 "type": "string",
                 "required": true,
-                "description": "配置项名称",
+                "description": "配置项名称          ",
                 "example": "retention.ms",
                 "notes": "可选"
               }
@@ -935,28 +935,28 @@
           "服务器地址": {
             "type": "string",
             "required": true,
-            "description": "Kafka 服务器地址",
+            "description": "Kafka 服务器地址    ",
             "example": "localhost:9092",
             "notes": "必填"
           },
           "实体类型": {
             "type": "string",
             "required": true,
-            "description": "实体类型",
+            "description": "实体类型           ",
             "example": "topics",
             "notes": "topics/brokers/clients"
           },
           "实体名": {
             "type": "string",
             "required": true,
-            "description": "实体名称",
+            "description": "实体名称           ",
             "example": "my-topic",
             "notes": "必填"
           },
           "操作": {
             "type": "string",
             "required": true,
-            "description": "操作类型",
+            "description": "操作类型           ",
             "example": "describe",
             "notes": "describe/alter"
           }
@@ -978,14 +978,14 @@
               "频道名": {
                 "type": "string",
                 "required": true,
-                "description": "频道名称",
+                "description": "频道名称           ",
                 "example": "news",
                 "notes": "可选"
               },
               "消息内容": {
                 "type": "string",
                 "required": true,
-                "description": "消息内容",
+                "description": "消息内容           ",
                 "example": "Hello World",
                 "notes": "可选"
               }
@@ -999,14 +999,14 @@
               "频道名1": {
                 "type": "string",
                 "required": true,
-                "description": "频道名称",
+                "description": "频道名称           ",
                 "example": "news",
                 "notes": "可选"
               },
               "频道名2": {
                 "type": "string",
                 "required": false,
-                "description": "频道名称",
+                "description": "频道名称           ",
                 "example": "sports",
                 "notes": "可订阅多个"
               }
@@ -1020,7 +1020,7 @@
               "模式": {
                 "type": "string",
                 "required": true,
-                "description": "匹配模式",
+                "description": "匹配模式           ",
                 "example": "news.*",
                 "notes": "支持 glob 模式，如 news.* 或 *log"
               }
@@ -1034,7 +1034,7 @@
               "频道名": {
                 "type": "string",
                 "required": false,
-                "description": "频道名称",
+                "description": "频道名称           ",
                 "example": "news",
                 "notes": "不指定则取消所有"
               }
@@ -1048,7 +1048,7 @@
               "模式": {
                 "type": "string",
                 "required": false,
-                "description": "匹配模式",
+                "description": "匹配模式           ",
                 "example": "news.*",
                 "notes": "不指定则取消所有模式订阅"
               }
@@ -1062,7 +1062,7 @@
               "模式": {
                 "type": "string",
                 "required": false,
-                "description": "匹配模式",
+                "description": "匹配模式           ",
                 "example": "news*",
                 "notes": "不指定返回所有"
               }
@@ -1076,7 +1076,7 @@
               "频道名": {
                 "type": "string",
                 "required": true,
-                "description": "频道名称",
+                "description": "频道名称           ",
                 "example": "news",
                 "notes": "可选"
               }
@@ -1149,7 +1149,7 @@
               "服务名": {
                 "type": "string",
                 "required": true,
-                "description": "服务名称",
+                "description": "服务名称           ",
                 "example": "rabbitmq",
                 "notes": "可选"
               }
@@ -1184,7 +1184,7 @@
               "服务名": {
                 "type": "string",
                 "required": false,
-                "description": "服务名称",
+                "description": "服务名称           ",
                 "example": "rabbitmq",
                 "notes": "不指定则重建所有"
               }
@@ -1225,7 +1225,7 @@
               "队列名": {
                 "type": "string",
                 "required": true,
-                "description": "队列名称",
+                "description": "队列名称           ",
                 "example": "send-email",
                 "notes": "可选"
               }
@@ -1239,28 +1239,28 @@
               "任务名": {
                 "type": "string",
                 "required": true,
-                "description": "任务名称",
+                "description": "任务名称           ",
                 "example": "send-email",
                 "notes": "可选"
               },
               "数据": {
                 "type": "string",
                 "required": true,
-                "description": "任务数据",
+                "description": "任务数据           ",
                 "example": "{ to: 'user@example.com' }",
                 "notes": "可选"
               },
               "重试次数": {
                 "type": "string",
                 "required": true,
-                "description": "最大重试次数",
+                "description": "最大重试次数         ",
                 "example": "3",
                 "notes": "可选"
               },
               "延迟": {
                 "type": "string",
                 "required": true,
-                "description": "重试延迟（毫秒）",
+                "description": "重试延迟（毫秒）       ",
                 "example": "1000",
                 "notes": "可选"
               }
@@ -1274,7 +1274,7 @@
               "队列名": {
                 "type": "string",
                 "required": true,
-                "description": "队列名称",
+                "description": "队列名称           ",
                 "example": "send-email",
                 "notes": "可选"
               }
@@ -1310,7 +1310,7 @@
           "脚本文件": {
             "type": "string",
             "required": false,
-            "description": "Node.js 脚本文件",
+            "description": "Node.js 脚本文件   ",
             "example": "queue.js",
             "notes": "可选"
           }
@@ -1332,14 +1332,14 @@
               "应用名": {
                 "type": "string",
                 "required": true,
-                "description": "Celery 应用名",
+                "description": "Celery 应用名     ",
                 "example": "tasks",
                 "notes": "可选"
               },
               "并发数": {
                 "type": "string",
                 "required": true,
-                "description": "并发 worker 数量",
+                "description": "并发 worker 数量   ",
                 "example": "4",
                 "notes": "可选"
               }
@@ -1353,7 +1353,7 @@
               "应用名": {
                 "type": "string",
                 "required": true,
-                "description": "Celery 应用名",
+                "description": "Celery 应用名     ",
                 "example": "tasks",
                 "notes": "可选"
               }
@@ -1367,14 +1367,14 @@
               "应用名": {
                 "type": "string",
                 "required": true,
-                "description": "Celery 应用名",
+                "description": "Celery 应用名     ",
                 "example": "tasks",
                 "notes": "可选"
               },
               "端口": {
                 "type": "string",
                 "required": true,
-                "description": "Flower 端口",
+                "description": "Flower 端口      ",
                 "example": "5555",
                 "notes": "可选"
               }
@@ -1388,21 +1388,21 @@
               "应用名": {
                 "type": "string",
                 "required": true,
-                "description": "Celery 应用名",
+                "description": "Celery 应用名     ",
                 "example": "tasks",
                 "notes": "可选"
               },
               "任务名": {
                 "type": "string",
                 "required": true,
-                "description": "任务函数名",
+                "description": "任务函数名          ",
                 "example": "tasks.send_email",
                 "notes": "可选"
               },
               "参数": {
                 "type": "string",
                 "required": true,
-                "description": "任务参数",
+                "description": "任务参数           ",
                 "example": "'hello@example.com'",
                 "notes": "可选"
               }
@@ -1416,7 +1416,7 @@
               "应用名": {
                 "type": "string",
                 "required": true,
-                "description": "Celery 应用名",
+                "description": "Celery 应用名     ",
                 "example": "tasks",
                 "notes": "可选"
               }
@@ -1430,7 +1430,7 @@
               "应用名": {
                 "type": "string",
                 "required": true,
-                "description": "Celery 应用名",
+                "description": "Celery 应用名     ",
                 "example": "tasks",
                 "notes": "可选"
               }
@@ -1444,14 +1444,14 @@
               "应用名": {
                 "type": "string",
                 "required": true,
-                "description": "Celery 应用名",
+                "description": "Celery 应用名     ",
                 "example": "tasks",
                 "notes": "可选"
               },
               "任务ID": {
                 "type": "string",
                 "required": true,
-                "description": "任务 ID",
+                "description": "任务 ID          ",
                 "example": "abc-123",
                 "notes": "可选"
               }
@@ -1465,14 +1465,14 @@
               "应用名": {
                 "type": "string",
                 "required": true,
-                "description": "Celery 应用名",
+                "description": "Celery 应用名     ",
                 "example": "tasks",
                 "notes": "可选"
               },
               "任务ID": {
                 "type": "string",
                 "required": true,
-                "description": "任务 ID",
+                "description": "任务 ID          ",
                 "example": "abc-123",
                 "notes": "可选"
               }
@@ -1486,7 +1486,7 @@
               "应用名": {
                 "type": "string",
                 "required": true,
-                "description": "Celery 应用名",
+                "description": "Celery 应用名     ",
                 "example": "tasks",
                 "notes": "可选"
               }
@@ -1498,14 +1498,14 @@
           "应用名": {
             "type": "string",
             "required": true,
-            "description": "Celery 应用名",
+            "description": "Celery 应用名     ",
             "example": "tasks",
             "notes": "必填"
           },
           "子命令": {
             "type": "string",
             "required": true,
-            "description": "Celery 子命令",
+            "description": "Celery 子命令     ",
             "example": "worker",
             "notes": "worker/beat/inspect/call/result/revoke/purge"
           }
@@ -1527,14 +1527,14 @@
               "队列名": {
                 "type": "string",
                 "required": true,
-                "description": "队列名称",
+                "description": "队列名称           ",
                 "example": "my-queue",
                 "notes": "可选"
               },
               "属性文件": {
                 "type": "string",
                 "required": false,
-                "description": "属性 JSON 文件路径",
+                "description": "属性 JSON 文件路径   ",
                 "example": "attributes.json",
                 "notes": "可选，如 DelaySeconds/ReceiveMessageWaitTimeSeconds"
               }
@@ -1548,14 +1548,14 @@
               "队列名": {
                 "type": "string",
                 "required": true,
-                "description": "队列名称",
+                "description": "队列名称           ",
                 "example": "my-queue",
                 "notes": "必须以 .fifo 结尾"
               },
               "属性文件": {
                 "type": "string",
                 "required": false,
-                "description": "属性 JSON 文件路径",
+                "description": "属性 JSON 文件路径   ",
                 "example": "fifo-attributes.json",
                 "notes": "可选"
               }
@@ -1575,7 +1575,7 @@
               "队列名": {
                 "type": "string",
                 "required": true,
-                "description": "队列名称",
+                "description": "队列名称           ",
                 "example": "my-queue",
                 "notes": "可选"
               }
@@ -1589,14 +1589,14 @@
               "队列URL": {
                 "type": "string",
                 "required": true,
-                "description": "队列 URL",
+                "description": "队列 URL         ",
                 "example": "https://sqs.us-east-1.amazonaws.com/123456789/my-queue",
                 "notes": "可选"
               },
               "消息内容": {
                 "type": "string",
                 "required": true,
-                "description": "消息内容",
+                "description": "消息内容           ",
                 "example": "Hello World",
                 "notes": "可选"
               }
@@ -1610,21 +1610,21 @@
               "队列URL": {
                 "type": "string",
                 "required": true,
-                "description": "队列 URL",
+                "description": "队列 URL         ",
                 "example": "https://sqs.us-east-1.amazonaws.com/123456789/my-queue.fifo",
                 "notes": "可选"
               },
               "消息内容": {
                 "type": "string",
                 "required": true,
-                "description": "消息内容",
+                "description": "消息内容           ",
                 "example": "Hello",
                 "notes": "可选"
               },
               "分组ID": {
                 "type": "string",
                 "required": true,
-                "description": "消息组 ID",
+                "description": "消息组 ID         ",
                 "example": "group-1",
                 "notes": "FIFO 队列必须"
               }
@@ -1638,21 +1638,21 @@
               "队列URL": {
                 "type": "string",
                 "required": true,
-                "description": "队列 URL",
+                "description": "队列 URL         ",
                 "example": "https://sqs.us-east-1.amazonaws.com/123456789/my-queue",
                 "notes": "可选"
               },
               "数量": {
                 "type": "string",
                 "required": true,
-                "description": "最大接收消息数",
+                "description": "最大接收消息数        ",
                 "example": "10",
                 "notes": "1-10"
               },
               "等待秒": {
                 "type": "string",
                 "required": true,
-                "description": "长轮询等待秒数",
+                "description": "长轮询等待秒数        ",
                 "example": "20",
                 "notes": "0-20，启用长轮询"
               }
@@ -1666,14 +1666,14 @@
               "队列URL": {
                 "type": "string",
                 "required": true,
-                "description": "队列 URL",
+                "description": "队列 URL         ",
                 "example": "https://sqs.us-east-1.amazonaws.com/123456789/my-queue",
                 "notes": "可选"
               },
               "收据句柄": {
                 "type": "string",
                 "required": true,
-                "description": "消息收据句柄",
+                "description": "消息收据句柄         ",
                 "example": "xxxxx...",
                 "notes": "接收消息时获得"
               }
@@ -1687,14 +1687,14 @@
               "队列URL": {
                 "type": "string",
                 "required": true,
-                "description": "队列 URL",
+                "description": "队列 URL         ",
                 "example": "https://sqs.us-east-1.amazonaws.com/123456789/my-queue",
                 "notes": "可选"
               },
               "消息文件": {
                 "type": "string",
                 "required": true,
-                "description": "消息批次 JSON 文件",
+                "description": "消息批次 JSON 文件   ",
                 "example": "messages.json",
                 "notes": "可选"
               }
@@ -1708,7 +1708,7 @@
               "队列URL": {
                 "type": "string",
                 "required": true,
-                "description": "队列 URL",
+                "description": "队列 URL         ",
                 "example": "https://sqs.us-east-1.amazonaws.com/123456789/my-queue",
                 "notes": "可选"
               }
@@ -1722,7 +1722,7 @@
               "队列URL": {
                 "type": "string",
                 "required": true,
-                "description": "队列 URL",
+                "description": "队列 URL         ",
                 "example": "https://sqs.us-east-1.amazonaws.com/123456789/my-queue",
                 "notes": "可选"
               }
@@ -1734,7 +1734,7 @@
           "子命令": {
             "type": "string",
             "required": true,
-            "description": "SQS 子命令",
+            "description": "SQS 子命令        ",
             "example": "create-queue",
             "notes": "create-queue/list-queues/send-message/receive-message/delete-message"
           }
@@ -1756,7 +1756,7 @@
               "主题名": {
                 "type": "string",
                 "required": true,
-                "description": "主题名称",
+                "description": "主题名称           ",
                 "example": "my-topic",
                 "notes": "可选"
               }
@@ -1770,14 +1770,14 @@
               "主题名": {
                 "type": "string",
                 "required": true,
-                "description": "主题名称",
+                "description": "主题名称           ",
                 "example": "my-topic",
                 "notes": "必须以 .fifo 结尾"
               },
               "属性文件": {
                 "type": "string",
                 "required": false,
-                "description": "属性文件",
+                "description": "属性文件           ",
                 "example": "fifo.json",
                 "notes": "{ \"FifoTopic\": \"true\", \"ContentBasedDeduplication\": \"true\" }"
               }
@@ -1797,21 +1797,21 @@
               "主题ARN": {
                 "type": "string",
                 "required": true,
-                "description": "主题 ARN",
+                "description": "主题 ARN         ",
                 "example": "arn:aws:sns:us-east-1:123456789:my-topic",
                 "notes": "可选"
               },
               "消息内容": {
                 "type": "string",
                 "required": true,
-                "description": "消息内容",
+                "description": "消息内容           ",
                 "example": "Hello World",
                 "notes": "可选"
               },
               "主题": {
                 "type": "string",
                 "required": false,
-                "description": "邮件主题",
+                "description": "邮件主题           ",
                 "example": "Alert",
                 "notes": "Email 订阅时需要"
               }
@@ -1825,21 +1825,21 @@
               "主题ARN": {
                 "type": "string",
                 "required": true,
-                "description": "主题 ARN",
+                "description": "主题 ARN         ",
                 "example": "arn:aws:sns:us-east-1:123456789:my-topic.fifo",
                 "notes": "可选"
               },
               "消息内容": {
                 "type": "string",
                 "required": true,
-                "description": "消息内容",
+                "description": "消息内容           ",
                 "example": "Hello",
                 "notes": "可选"
               },
               "分组ID": {
                 "type": "string",
                 "required": true,
-                "description": "消息组 ID",
+                "description": "消息组 ID         ",
                 "example": "group-1",
                 "notes": "FIFO 主题必须"
               }
@@ -1853,14 +1853,14 @@
               "主题ARN": {
                 "type": "string",
                 "required": true,
-                "description": "主题 ARN",
+                "description": "主题 ARN         ",
                 "example": "arn:aws:sns:us-east-1:123456789:my-topic",
                 "notes": "可选"
               },
               "队列ARN": {
                 "type": "string",
                 "required": true,
-                "description": "SQS 队列 ARN",
+                "description": "SQS 队列 ARN     ",
                 "example": "arn:aws:sqs:us-east-1:123456789:my-queue",
                 "notes": "可选"
               }
@@ -1874,14 +1874,14 @@
               "主题ARN": {
                 "type": "string",
                 "required": true,
-                "description": "主题 ARN",
+                "description": "主题 ARN         ",
                 "example": "arn:aws:sns:us-east-1:123456789:my-topic",
                 "notes": "可选"
               },
               "LambdaARN": {
                 "type": "string",
                 "required": true,
-                "description": "Lambda 函数 ARN",
+                "description": "Lambda 函数 ARN  ",
                 "example": "arn:aws:lambda:us-east-1:123456789:function:my-function",
                 "notes": "可选"
               }
@@ -1895,14 +1895,14 @@
               "主题ARN": {
                 "type": "string",
                 "required": true,
-                "description": "主题 ARN",
+                "description": "主题 ARN         ",
                 "example": "arn:aws:sns:us-east-1:123456789:my-topic",
                 "notes": "可选"
               },
               "邮箱地址": {
                 "type": "string",
                 "required": true,
-                "description": "邮箱地址",
+                "description": "邮箱地址           ",
                 "example": "user@example.com",
                 "notes": "可选"
               }
@@ -1922,7 +1922,7 @@
               "主题ARN": {
                 "type": "string",
                 "required": true,
-                "description": "主题 ARN",
+                "description": "主题 ARN         ",
                 "example": "arn:aws:sns:us-east-1:123456789:my-topic",
                 "notes": "可选"
               }
@@ -1936,7 +1936,7 @@
               "订阅ARN": {
                 "type": "string",
                 "required": true,
-                "description": "订阅 ARN",
+                "description": "订阅 ARN         ",
                 "example": "arn:aws:sns:us-east-1:123456789:my-topic:xxxxx",
                 "notes": "可选"
               }
@@ -1948,7 +1948,7 @@
           "子命令": {
             "type": "string",
             "required": true,
-            "description": "SNS 子命令",
+            "description": "SNS 子命令        ",
             "example": "create-topic",
             "notes": "create-topic/list-topics/publish/subscribe/list-subscriptions/delete-topic"
           }
@@ -1970,7 +1970,7 @@
               "事件总线名": {
                 "type": "string",
                 "required": true,
-                "description": "事件总线名称",
+                "description": "事件总线名称         ",
                 "example": "my-bus",
                 "notes": "可选"
               }
@@ -1990,21 +1990,21 @@
               "规则名": {
                 "type": "string",
                 "required": true,
-                "description": "规则名称",
+                "description": "规则名称           ",
                 "example": "my-rule",
                 "notes": "可选"
               },
               "模式文件": {
                 "type": "string",
                 "required": true,
-                "description": "事件模式 JSON 文件",
+                "description": "事件模式 JSON 文件   ",
                 "example": "pattern.json",
                 "notes": "可选"
               },
               "总线名": {
                 "type": "string",
                 "required": true,
-                "description": "事件总线名",
+                "description": "事件总线名          ",
                 "example": "default",
                 "notes": "可选"
               }
@@ -2018,21 +2018,21 @@
               "规则名": {
                 "type": "string",
                 "required": true,
-                "description": "规则名称",
+                "description": "规则名称           ",
                 "example": "my-rule",
                 "notes": "可选"
               },
               "总线名": {
                 "type": "string",
                 "required": true,
-                "description": "事件总线名",
+                "description": "事件总线名          ",
                 "example": "default",
                 "notes": "可选"
               },
               "目标文件": {
                 "type": "string",
                 "required": true,
-                "description": "目标配置 JSON",
+                "description": "目标配置 JSON      ",
                 "example": "targets.json",
                 "notes": "可选"
               }
@@ -2052,14 +2052,14 @@
               "规则名": {
                 "type": "string",
                 "required": true,
-                "description": "规则名称",
+                "description": "规则名称           ",
                 "example": "my-rule",
                 "notes": "可选"
               },
               "总线名": {
                 "type": "string",
                 "required": true,
-                "description": "事件总线名",
+                "description": "事件总线名          ",
                 "example": "default",
                 "notes": "可选"
               }
@@ -2073,7 +2073,7 @@
               "事件文件": {
                 "type": "string",
                 "required": true,
-                "description": "事件条目 JSON 文件",
+                "description": "事件条目 JSON 文件   ",
                 "example": "events.json",
                 "notes": "可选"
               }

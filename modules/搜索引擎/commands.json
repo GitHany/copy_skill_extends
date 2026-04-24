@@ -1,5 +1,5 @@
 {
-  "module": "搜索引擎",
+  "module": "搜索引擎/搜索引擎",
   "version": "1.0",
   "description": "搜索引擎与全文检索命令模块，涵盖 Elasticsearch、Meilisearch、Algolia、OpenSearch 及搜索工具",
   "commands": [
@@ -18,28 +18,28 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "myindex",
                 "notes": "可选"
               },
               "关键词": {
                 "type": "string",
                 "required": true,
-                "description": "搜索关键词",
+                "description": "搜索关键词          ",
                 "example": "手机",
                 "notes": "可选"
               },
               "字段1": {
                 "type": "string",
                 "required": true,
-                "description": "高权重字段",
+                "description": "高权重字段          ",
                 "example": "title",
                 "notes": "^2 表示 2 倍权重"
               },
               "字段2": {
                 "type": "string",
                 "required": true,
-                "description": "普通权重字段",
+                "description": "普通权重字段         ",
                 "example": "content",
                 "notes": "可选"
               }
@@ -53,21 +53,21 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "myindex",
                 "notes": "可选"
               },
               "字段名": {
                 "type": "string",
                 "required": true,
-                "description": "字段名",
+                "description": "字段名            ",
                 "example": "name",
                 "notes": "可选"
               },
               "值": {
                 "type": "string",
                 "required": true,
-                "description": "查询值(支持拼写错误)",
+                "description": "查询值(支持拼写错误)    ",
                 "example": "张三",
                 "notes": "可选"
               }
@@ -81,21 +81,21 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "myindex",
                 "notes": "可选"
               },
               "字段名": {
                 "type": "string",
                 "required": true,
-                "description": "字段名",
+                "description": "字段名            ",
                 "example": "code",
                 "notes": "可选"
               },
               "前缀": {
                 "type": "string",
                 "required": true,
-                "description": "前缀值",
+                "description": "前缀值            ",
                 "example": "PRJ",
                 "notes": "可选"
               }
@@ -109,14 +109,14 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "myindex",
                 "notes": "可选"
               },
               "字段名": {
                 "type": "string",
                 "required": true,
-                "description": "字段名",
+                "description": "字段名            ",
                 "example": "name",
                 "notes": "可选"
               },
@@ -137,28 +137,28 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "myindex",
                 "notes": "可选"
               },
               "字段名": {
                 "type": "string",
                 "required": true,
-                "description": "字段名(数值或日期)",
+                "description": "字段名(数值或日期)     ",
                 "example": "price",
                 "notes": "可选"
               },
               "最小": {
                 "type": "string",
                 "required": true,
-                "description": "最小值",
+                "description": "最小值            ",
                 "example": "100",
                 "notes": "可选"
               },
               "最大": {
                 "type": "string",
                 "required": true,
-                "description": "最大值",
+                "description": "最大值            ",
                 "example": "5000",
                 "notes": "可选"
               }
@@ -172,14 +172,14 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "myindex",
                 "notes": "可选"
               },
               "字段名": {
                 "type": "string",
                 "required": true,
-                "description": "字段名",
+                "description": "字段名            ",
                 "example": "email",
                 "notes": "查询该字段存在且非空的文档"
               }
@@ -193,21 +193,21 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "myindex",
                 "notes": "可选"
               },
               "字段名": {
                 "type": "string",
                 "required": true,
-                "description": "字段名",
+                "description": "字段名            ",
                 "example": "price",
                 "notes": "可选"
               },
               "阈值": {
                 "type": "string",
                 "required": true,
-                "description": "阈值",
+                "description": "阈值             ",
                 "example": "100",
                 "notes": "可选"
               }
@@ -221,28 +221,28 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "myindex",
                 "notes": "可选"
               },
               "ID1": {
                 "type": "string",
                 "required": true,
-                "description": "文档 ID 1",
+                "description": "文档 ID 1        ",
                 "example": "1",
                 "notes": "可选"
               },
               "ID2": {
                 "type": "string",
                 "required": true,
-                "description": "文档 ID 2",
+                "description": "文档 ID 2        ",
                 "example": "2",
                 "notes": "可选"
               },
               "ID3": {
                 "type": "string",
                 "required": true,
-                "description": "文档 ID 3",
+                "description": "文档 ID 3        ",
                 "example": "3",
                 "notes": "可选"
               }
@@ -254,14 +254,14 @@
           "索引名": {
             "type": "string",
             "required": true,
-            "description": "索引名",
+            "description": "索引名            ",
             "example": "myindex",
             "notes": "可多索引用逗号分隔"
           },
           "查询JSON": {
             "type": "string",
             "required": true,
-            "description": "查询 JSON",
+            "description": "查询 JSON        ",
             "example": "{\"query\":{\"match_all\":{}}}",
             "notes": "必填"
           }
@@ -323,7 +323,7 @@
           "资源": {
             "type": "string",
             "required": true,
-            "description": "资源类型",
+            "description": "资源类型           ",
             "example": "indices",
             "notes": "indices/shards/templates/aliases/fielddata/recovery"
           }
@@ -363,14 +363,14 @@
               "设置项": {
                 "type": "string",
                 "required": true,
-                "description": "设置项名称",
+                "description": "设置项名称          ",
                 "example": "indices.recovery.max_bytes_per_sec",
                 "notes": "如 indices.recovery.max_bytes_per_sec"
               },
               "值": {
                 "type": "string",
                 "required": true,
-                "description": "设置值",
+                "description": "设置值            ",
                 "example": "50mb",
                 "notes": "可选"
               }
@@ -384,21 +384,21 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "myindex",
                 "notes": "可选"
               },
               "分片号": {
                 "type": "string",
                 "required": true,
-                "description": "分片号",
+                "description": "分片号            ",
                 "example": "0",
                 "notes": "可选"
               },
               "节点ID": {
                 "type": "string",
                 "required": true,
-                "description": "节点 ID",
+                "description": "节点 ID          ",
                 "example": "node1",
                 "notes": "可选"
               }
@@ -418,14 +418,14 @@
               "节点ID": {
                 "type": "string",
                 "required": true,
-                "description": "节点 ID",
+                "description": "节点 ID          ",
                 "example": "node1",
                 "notes": "可选"
               },
               "任务ID": {
                 "type": "string",
                 "required": true,
-                "description": "任务 ID",
+                "description": "任务 ID          ",
                 "example": "12345",
                 "notes": "可选"
               }
@@ -437,7 +437,7 @@
           "操作": {
             "type": "string",
             "required": true,
-            "description": "操作类型",
+            "description": "操作类型           ",
             "example": "health",
             "notes": "health/state/stats/settings/reroute"
           }
@@ -459,28 +459,28 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "myindex",
                 "notes": "可选"
               },
               "文档ID": {
                 "type": "string",
                 "required": true,
-                "description": "文档 ID",
+                "description": "文档 ID          ",
                 "example": "1",
                 "notes": "可选"
               },
               "字段名": {
                 "type": "string",
                 "required": true,
-                "description": "数值字段名",
+                "description": "数值字段名          ",
                 "example": "views",
                 "notes": "可选"
               },
               "增量": {
                 "type": "string",
                 "required": true,
-                "description": "增量值",
+                "description": "增量值            ",
                 "example": "1",
                 "notes": "可选"
               }
@@ -494,35 +494,35 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "myindex",
                 "notes": "可选"
               },
               "文档ID": {
                 "type": "string",
                 "required": true,
-                "description": "文档 ID",
+                "description": "文档 ID          ",
                 "example": "1",
                 "notes": "可选"
               },
               "字段": {
                 "type": "string",
                 "required": true,
-                "description": "字段名",
+                "description": "字段名            ",
                 "example": "status",
                 "notes": "可选"
               },
               "旧值": {
                 "type": "string",
                 "required": true,
-                "description": "旧值",
+                "description": "旧值             ",
                 "example": "pending",
                 "notes": "可选"
               },
               "新值": {
                 "type": "string",
                 "required": true,
-                "description": "新值",
+                "description": "新值             ",
                 "example": "done",
                 "notes": "可选"
               }
@@ -536,28 +536,28 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "myindex",
                 "notes": "可选"
               },
               "文档ID": {
                 "type": "string",
                 "required": true,
-                "description": "文档 ID",
+                "description": "文档 ID          ",
                 "example": "1",
                 "notes": "可选"
               },
               "数组字段": {
                 "type": "string",
                 "required": true,
-                "description": "数组字段名",
+                "description": "数组字段名          ",
                 "example": "tags",
                 "notes": "可选"
               },
               "标签": {
                 "type": "string",
                 "required": true,
-                "description": "添加的标签",
+                "description": "添加的标签          ",
                 "example": "featured",
                 "notes": "可选"
               }
@@ -571,21 +571,21 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "myindex",
                 "notes": "可选"
               },
               "文档ID": {
                 "type": "string",
                 "required": true,
-                "description": "文档 ID",
+                "description": "文档 ID          ",
                 "example": "1",
                 "notes": "可选"
               },
               "字段名": {
                 "type": "string",
                 "required": true,
-                "description": "要删除的字段名",
+                "description": "要删除的字段名        ",
                 "example": "temp_data",
                 "notes": "可选"
               }
@@ -599,28 +599,28 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "myindex",
                 "notes": "可选"
               },
               "文档ID": {
                 "type": "string",
                 "required": true,
-                "description": "文档 ID",
+                "description": "文档 ID          ",
                 "example": "1",
                 "notes": "可选"
               },
               "字段": {
                 "type": "string",
                 "required": true,
-                "description": "数值字段",
+                "description": "数值字段           ",
                 "example": "score",
                 "notes": "可选"
               },
               "增量": {
                 "type": "string",
                 "required": true,
-                "description": "增量值",
+                "description": "增量值            ",
                 "example": "10",
                 "notes": "可选"
               }
@@ -632,28 +632,28 @@
           "索引名": {
             "type": "string",
             "required": true,
-            "description": "索引名",
+            "description": "索引名            ",
             "example": "myindex",
             "notes": "必填"
           },
           "文档ID": {
             "type": "string",
             "required": true,
-            "description": "文档 ID",
+            "description": "文档 ID          ",
             "example": "1",
             "notes": "必填"
           },
           "脚本内容": {
             "type": "string",
             "required": true,
-            "description": "Painless 脚本内容",
+            "description": "Painless 脚本内容  ",
             "example": "ctx._source.views += params.inc",
             "notes": "必填"
           },
           "参数": {
             "type": "string",
             "required": false,
-            "description": "脚本参数 JSON",
+            "description": "脚本参数 JSON      ",
             "example": "{\"inc\":1}",
             "notes": "可选"
           }
@@ -675,7 +675,7 @@
               "策略名": {
                 "type": "string",
                 "required": true,
-                "description": "ILM 策略名",
+                "description": "ILM 策略名        ",
                 "example": "my_policy",
                 "notes": "可选"
               }
@@ -689,7 +689,7 @@
               "策略名": {
                 "type": "string",
                 "required": true,
-                "description": "ILM 策略名",
+                "description": "ILM 策略名        ",
                 "example": "my_policy",
                 "notes": "可选"
               }
@@ -703,14 +703,14 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "myindex",
                 "notes": "可选"
               },
               "策略名": {
                 "type": "string",
                 "required": true,
-                "description": "ILM 策略名",
+                "description": "ILM 策略名        ",
                 "example": "my_policy",
                 "notes": "可选"
               }
@@ -724,21 +724,21 @@
               "模板名": {
                 "type": "string",
                 "required": true,
-                "description": "索引模板名",
+                "description": "索引模板名          ",
                 "example": "logs_template",
                 "notes": "可选"
               },
               "索引模式": {
                 "type": "string",
                 "required": true,
-                "description": "索引匹配模式",
+                "description": "索引匹配模式         ",
                 "example": "logs-*",
                 "notes": "可选"
               },
               "策略名": {
                 "type": "string",
                 "required": true,
-                "description": "ILM 策略名",
+                "description": "ILM 策略名        ",
                 "example": "my_policy",
                 "notes": "可选"
               }
@@ -752,7 +752,7 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "myindex",
                 "notes": "可选"
               }
@@ -764,14 +764,14 @@
           "策略名": {
             "type": "string",
             "required": true,
-            "description": "ILM 策略名",
+            "description": "ILM 策略名        ",
             "example": "my_policy",
             "notes": "必填"
           },
           "策略JSON": {
             "type": "string",
             "required": true,
-            "description": "策略定义 JSON",
+            "description": "策略定义 JSON      ",
             "example": "{\"policy\":{\"phases\":{\"hot\":{\"min_age\":\"0ms\",\"actions\":{\"rollover\":{\"max_age\":\"7d\"}}}}}}",
             "notes": "必填"
           }
@@ -799,7 +799,7 @@
               "主密钥": {
                 "type": "string",
                 "required": true,
-                "description": "主密钥",
+                "description": "主密钥            ",
                 "example": "masterKey123",
                 "notes": "用于 API 认证"
               }
@@ -813,7 +813,7 @@
               "主密钥": {
                 "type": "string",
                 "required": true,
-                "description": "主密钥",
+                "description": "主密钥            ",
                 "example": "masterKey123",
                 "notes": "可选"
               }
@@ -827,14 +827,14 @@
               "索引UID": {
                 "type": "string",
                 "required": true,
-                "description": "索引唯一标识",
+                "description": "索引唯一标识         ",
                 "example": "products",
                 "notes": "可选"
               },
               "主键": {
                 "type": "string",
                 "required": true,
-                "description": "主键字段名",
+                "description": "主键字段名          ",
                 "example": "id",
                 "notes": "可选"
               }
@@ -854,7 +854,7 @@
               "索引UID": {
                 "type": "string",
                 "required": true,
-                "description": "索引唯一标识",
+                "description": "索引唯一标识         ",
                 "example": "products",
                 "notes": "可选"
               }
@@ -868,7 +868,7 @@
               "索引UID": {
                 "type": "string",
                 "required": true,
-                "description": "索引唯一标识",
+                "description": "索引唯一标识         ",
                 "example": "products",
                 "notes": "可选"
               }
@@ -880,7 +880,7 @@
           "主密钥": {
             "type": "string",
             "required": false,
-            "description": "主密钥",
+            "description": "主密钥            ",
             "example": "masterKey123",
             "notes": "可选，默认无认证"
           }
@@ -902,14 +902,14 @@
               "索引UID": {
                 "type": "string",
                 "required": true,
-                "description": "索引唯一标识",
+                "description": "索引唯一标识         ",
                 "example": "products",
                 "notes": "可选"
               },
               "文件路径": {
                 "type": "string",
                 "required": true,
-                "description": "JSON 文件路径",
+                "description": "JSON 文件路径      ",
                 "example": "/path/to/documents.json",
                 "notes": "可选"
               }
@@ -923,14 +923,14 @@
               "索引UID": {
                 "type": "string",
                 "required": true,
-                "description": "索引唯一标识",
+                "description": "索引唯一标识         ",
                 "example": "products",
                 "notes": "可选"
               },
               "过滤条件": {
                 "type": "string",
                 "required": true,
-                "description": "过滤条件",
+                "description": "过滤条件           ",
                 "example": "category = 'electronics'",
                 "notes": "可选"
               }
@@ -944,14 +944,14 @@
               "搜索词": {
                 "type": "string",
                 "required": true,
-                "description": "搜索关键词",
+                "description": "搜索关键词          ",
                 "example": "手机",
                 "notes": "可选"
               },
               "索引UID": {
                 "type": "string",
                 "required": true,
-                "description": "索引唯一标识",
+                "description": "索引唯一标识         ",
                 "example": "products",
                 "notes": "可选"
               }
@@ -965,28 +965,28 @@
               "搜索词": {
                 "type": "string",
                 "required": true,
-                "description": "搜索关键词",
+                "description": "搜索关键词          ",
                 "example": "电脑",
                 "notes": "可选"
               },
               "索引UID": {
                 "type": "string",
                 "required": true,
-                "description": "索引唯一标识",
+                "description": "索引唯一标识         ",
                 "example": "products",
                 "notes": "可选"
               },
               "过滤条件": {
                 "type": "string",
                 "required": true,
-                "description": "过滤条件",
+                "description": "过滤条件           ",
                 "example": "price >= 1000 AND price <= 5000",
                 "notes": "可选"
               },
               "排序规则": {
                 "type": "string",
                 "required": true,
-                "description": "排序规则",
+                "description": "排序规则           ",
                 "example": "price:asc",
                 "notes": "字段:asc 或字段:desc"
               }
@@ -1000,21 +1000,21 @@
               "搜索词": {
                 "type": "string",
                 "required": true,
-                "description": "搜索关键词",
+                "description": "搜索关键词          ",
                 "example": "",
                 "notes": "空字符串表示聚合所有"
               },
               "索引UID": {
                 "type": "string",
                 "required": true,
-                "description": "索引唯一标识",
+                "description": "索引唯一标识         ",
                 "example": "products",
                 "notes": "可选"
               },
               "分面字段": {
                 "type": "string",
                 "required": true,
-                "description": "分面统计字段",
+                "description": "分面统计字段         ",
                 "example": "category,brand",
                 "notes": "逗号分隔多个字段"
               }
@@ -1026,14 +1026,14 @@
           "索引UID": {
             "type": "string",
             "required": true,
-            "description": "索引唯一标识",
+            "description": "索引唯一标识         ",
             "example": "products",
             "notes": "必填"
           },
           "文件路径": {
             "type": "string",
             "required": true,
-            "description": "文档文件路径",
+            "description": "文档文件路径         ",
             "example": "/path/to/documents.json",
             "notes": "必填"
           }
@@ -1067,21 +1067,21 @@
               "API_KEY": {
                 "type": "string",
                 "required": true,
-                "description": "API 密钥",
+                "description": "API 密钥         ",
                 "example": "masterKey123",
                 "notes": "可选"
               },
               "索引UID": {
                 "type": "string",
                 "required": true,
-                "description": "索引唯一标识",
+                "description": "索引唯一标识         ",
                 "example": "products",
                 "notes": "可选"
               },
               "主键": {
                 "type": "string",
                 "required": true,
-                "description": "主键字段名",
+                "description": "主键字段名          ",
                 "example": "id",
                 "notes": "可选"
               }
@@ -1095,28 +1095,28 @@
               "索引UID": {
                 "type": "string",
                 "required": true,
-                "description": "索引唯一标识",
+                "description": "索引唯一标识         ",
                 "example": "products",
                 "notes": "可选"
               },
               "API_KEY": {
                 "type": "string",
                 "required": true,
-                "description": "API 密钥",
+                "description": "API 密钥         ",
                 "example": "masterKey123",
                 "notes": "可选"
               },
               "搜索词": {
                 "type": "string",
                 "required": true,
-                "description": "搜索关键词",
+                "description": "搜索关键词          ",
                 "example": "手机",
                 "notes": "可选"
               },
               "限制": {
                 "type": "string",
                 "required": true,
-                "description": "返回结果数",
+                "description": "返回结果数          ",
                 "example": "20",
                 "notes": "可选"
               }
@@ -1130,21 +1130,21 @@
               "索引UID": {
                 "type": "string",
                 "required": true,
-                "description": "索引唯一标识",
+                "description": "索引唯一标识         ",
                 "example": "products",
                 "notes": "可选"
               },
               "API_KEY": {
                 "type": "string",
                 "required": true,
-                "description": "API 密钥",
+                "description": "API 密钥         ",
                 "example": "masterKey123",
                 "notes": "可选"
               },
               "文档JSON": {
                 "type": "string",
                 "required": true,
-                "description": "文档 JSON 数组",
+                "description": "文档 JSON 数组     ",
                 "example": "[{\"id\":1,\"name\":\"手机\",\"price\":2999}]",
                 "notes": "可选"
               }
@@ -1158,14 +1158,14 @@
               "任务ID": {
                 "type": "string",
                 "required": true,
-                "description": "任务 ID",
+                "description": "任务 ID          ",
                 "example": "123",
                 "notes": "添加文档后返回的 taskUid"
               },
               "API_KEY": {
                 "type": "string",
                 "required": true,
-                "description": "API 密钥",
+                "description": "API 密钥         ",
                 "example": "masterKey123",
                 "notes": "可选"
               }
@@ -1177,21 +1177,21 @@
           "索引UID": {
             "type": "string",
             "required": true,
-            "description": "索引唯一标识",
+            "description": "索引唯一标识         ",
             "example": "products",
             "notes": "必填"
           },
           "API_KEY": {
             "type": "string",
             "required": true,
-            "description": "API 密钥",
+            "description": "API 密钥         ",
             "example": "masterKey123",
             "notes": "必填"
           },
           "搜索词": {
             "type": "string",
             "required": true,
-            "description": "搜索关键词",
+            "description": "搜索关键词          ",
             "example": "手机",
             "notes": "必填"
           }
@@ -1213,14 +1213,14 @@
               "APP_ID": {
                 "type": "string",
                 "required": true,
-                "description": "Algolia 应用 ID",
+                "description": "Algolia 应用 ID  ",
                 "example": "YOUR_APP_ID",
                 "notes": "可选"
               },
               "API_KEY": {
                 "type": "string",
                 "required": true,
-                "description": "Algolia API 密钥",
+                "description": "Algolia API 密钥 ",
                 "example": "YOUR_API_KEY",
                 "notes": "可选"
               }
@@ -1240,21 +1240,21 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "products",
                 "notes": "可选"
               },
               "搜索词": {
                 "type": "string",
                 "required": true,
-                "description": "搜索关键词",
+                "description": "搜索关键词          ",
                 "example": "手机",
                 "notes": "可选"
               },
               "条数": {
                 "type": "string",
                 "required": true,
-                "description": "返回条数",
+                "description": "返回条数           ",
                 "example": "20",
                 "notes": "可选"
               }
@@ -1268,28 +1268,28 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "products",
                 "notes": "可选"
               },
               "字段1": {
                 "type": "string",
                 "required": true,
-                "description": "可搜索字段1",
+                "description": "可搜索字段1         ",
                 "example": "name",
                 "notes": "可选"
               },
               "字段2": {
                 "type": "string",
                 "required": true,
-                "description": "可搜索字段2",
+                "description": "可搜索字段2         ",
                 "example": "description",
                 "notes": "可选"
               },
               "字段3": {
                 "type": "string",
                 "required": true,
-                "description": "可搜索字段3",
+                "description": "可搜索字段3         ",
                 "example": "brand",
                 "notes": "可选"
               }
@@ -1303,14 +1303,14 @@
               "源索引": {
                 "type": "string",
                 "required": true,
-                "description": "源索引名",
+                "description": "源索引名           ",
                 "example": "products",
                 "notes": "可选"
               },
               "目标索引": {
                 "type": "string",
                 "required": true,
-                "description": "目标索引名",
+                "description": "目标索引名          ",
                 "example": "products_backup",
                 "notes": "可选"
               }
@@ -1324,21 +1324,21 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "products",
                 "notes": "可选"
               },
               "文件路径": {
                 "type": "string",
                 "required": true,
-                "description": "导入文件路径",
+                "description": "导入文件路径         ",
                 "example": "/path/to/data.json",
                 "notes": "可选"
               },
               "批次大小": {
                 "type": "string",
                 "required": true,
-                "description": "每批记录数",
+                "description": "每批记录数          ",
                 "example": "1000",
                 "notes": "可选"
               }
@@ -1352,28 +1352,28 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "products",
                 "notes": "可选"
               },
               "关键词": {
                 "type": "string",
                 "required": true,
-                "description": "主关键词",
+                "description": "主关键词           ",
                 "example": "手机",
                 "notes": "可选"
               },
               "同义词1": {
                 "type": "string",
                 "required": true,
-                "description": "同义词1",
+                "description": "同义词1           ",
                 "example": "移动电话",
                 "notes": "可选"
               },
               "同义词2": {
                 "type": "string",
                 "required": true,
-                "description": "同义词2",
+                "description": "同义词2           ",
                 "example": "智能手机",
                 "notes": "可选"
               }
@@ -1385,14 +1385,14 @@
           "APP_ID": {
             "type": "string",
             "required": true,
-            "description": "Algolia 应用 ID",
+            "description": "Algolia 应用 ID  ",
             "example": "YOUR_APP_ID",
             "notes": "必填"
           },
           "API_KEY": {
             "type": "string",
             "required": true,
-            "description": "Algolia API 密钥",
+            "description": "Algolia API 密钥 ",
             "example": "YOUR_API_KEY",
             "notes": "必填"
           }
@@ -1420,14 +1420,14 @@
               "集群名": {
                 "type": "string",
                 "required": true,
-                "description": "集群名称",
+                "description": "集群名称           ",
                 "example": "my-cluster",
                 "notes": "可选"
               },
               "节点名": {
                 "type": "string",
                 "required": true,
-                "description": "节点名称",
+                "description": "节点名称           ",
                 "example": "node1",
                 "notes": "可选"
               }
@@ -1447,21 +1447,21 @@
               "端点": {
                 "type": "string",
                 "required": true,
-                "description": "API 端点",
+                "description": "API 端点         ",
                 "example": "https://localhost:9200",
                 "notes": "可选"
               },
               "用户名": {
                 "type": "string",
                 "required": true,
-                "description": "认证用户名",
+                "description": "认证用户名          ",
                 "example": "admin",
                 "notes": "可选"
               },
               "密码": {
                 "type": "string",
                 "required": true,
-                "description": "认证密码",
+                "description": "认证密码           ",
                 "example": "admin",
                 "notes": "可选"
               }
@@ -1475,35 +1475,35 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "products",
                 "notes": "可选"
               },
               "查询文件": {
                 "type": "string",
                 "required": true,
-                "description": "查询 JSON 文件路径",
+                "description": "查询 JSON 文件路径   ",
                 "example": "/path/to/query.json",
                 "notes": "可选"
               },
               "端点": {
                 "type": "string",
                 "required": true,
-                "description": "API 端点",
+                "description": "API 端点         ",
                 "example": "https://localhost:9200",
                 "notes": "可选"
               },
               "用户名": {
                 "type": "string",
                 "required": true,
-                "description": "认证用户名",
+                "description": "认证用户名          ",
                 "example": "admin",
                 "notes": "可选"
               },
               "密码": {
                 "type": "string",
                 "required": true,
-                "description": "认证密码",
+                "description": "认证密码           ",
                 "example": "admin",
                 "notes": "可选"
               }
@@ -1517,21 +1517,21 @@
               "端点": {
                 "type": "string",
                 "required": true,
-                "description": "API 端点",
+                "description": "API 端点         ",
                 "example": "https://localhost:9200",
                 "notes": "可选"
               },
               "用户名": {
                 "type": "string",
                 "required": true,
-                "description": "认证用户名",
+                "description": "认证用户名          ",
                 "example": "admin",
                 "notes": "可选"
               },
               "密码": {
                 "type": "string",
                 "required": true,
-                "description": "认证密码",
+                "description": "认证密码           ",
                 "example": "admin",
                 "notes": "可选"
               }
@@ -1543,14 +1543,14 @@
           "集群名": {
             "type": "string",
             "required": false,
-            "description": "集群名称",
+            "description": "集群名称           ",
             "example": "my-cluster",
             "notes": "默认 opensearch"
           },
           "节点名": {
             "type": "string",
             "required": false,
-            "description": "节点名称",
+            "description": "节点名称           ",
             "example": "node1",
             "notes": "可选"
           }
@@ -1572,28 +1572,28 @@
               "用户名": {
                 "type": "string",
                 "required": true,
-                "description": "认证用户名",
+                "description": "认证用户名          ",
                 "example": "admin",
                 "notes": "可选"
               },
               "密码": {
                 "type": "string",
                 "required": true,
-                "description": "认证密码",
+                "description": "认证密码           ",
                 "example": "admin",
                 "notes": "可选"
               },
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "products",
                 "notes": "可选"
               },
               "限制": {
                 "type": "string",
                 "required": true,
-                "description": "返回条数",
+                "description": "返回条数           ",
                 "example": "10",
                 "notes": "可选"
               }
@@ -1607,28 +1607,28 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "products",
                 "notes": "可选"
               },
               "保留时间": {
                 "type": "string",
                 "required": true,
-                "description": "PIT 保留时间",
+                "description": "PIT 保留时间       ",
                 "example": "1m",
                 "notes": "如 1m, 5m, 10m"
               },
               "用户名": {
                 "type": "string",
                 "required": true,
-                "description": "认证用户名",
+                "description": "认证用户名          ",
                 "example": "admin",
                 "notes": "可选"
               },
               "密码": {
                 "type": "string",
                 "required": true,
-                "description": "认证密码",
+                "description": "认证密码           ",
                 "example": "admin",
                 "notes": "可选"
               }
@@ -1642,49 +1642,49 @@
               "大小": {
                 "type": "string",
                 "required": true,
-                "description": "返回条数",
+                "description": "返回条数           ",
                 "example": "10",
                 "notes": "可选"
               },
               "字段": {
                 "type": "string",
                 "required": true,
-                "description": "搜索字段",
+                "description": "搜索字段           ",
                 "example": "name",
                 "notes": "可选"
               },
               "值": {
                 "type": "string",
                 "required": true,
-                "description": "搜索值",
+                "description": "搜索值            ",
                 "example": "手机",
                 "notes": "可选"
               },
               "PIT_ID": {
                 "type": "string",
                 "required": true,
-                "description": "PIT ID",
+                "description": "PIT ID         ",
                 "example": "pit_id",
                 "notes": "从 _pit 接口获取"
               },
               "保留时间": {
                 "type": "string",
                 "required": true,
-                "description": "PIT 保留时间",
+                "description": "PIT 保留时间       ",
                 "example": "1m",
                 "notes": "可选"
               },
               "用户名": {
                 "type": "string",
                 "required": true,
-                "description": "认证用户名",
+                "description": "认证用户名          ",
                 "example": "admin",
                 "notes": "可选"
               },
               "密码": {
                 "type": "string",
                 "required": true,
-                "description": "认证密码",
+                "description": "认证密码           ",
                 "example": "admin",
                 "notes": "可选"
               }
@@ -1698,28 +1698,28 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "products",
                 "notes": "可选"
               },
               "超时": {
                 "type": "string",
                 "required": true,
-                "description": "等待完成超时",
+                "description": "等待完成超时         ",
                 "example": "10s",
                 "notes": "超过则返回 search_id 供后续查询"
               },
               "用户名": {
                 "type": "string",
                 "required": true,
-                "description": "认证用户名",
+                "description": "认证用户名          ",
                 "example": "admin",
                 "notes": "可选"
               },
               "密码": {
                 "type": "string",
                 "required": true,
-                "description": "认证密码",
+                "description": "认证密码           ",
                 "example": "admin",
                 "notes": "可选"
               }
@@ -1733,14 +1733,14 @@
               "用户名": {
                 "type": "string",
                 "required": true,
-                "description": "认证用户名",
+                "description": "认证用户名          ",
                 "example": "admin",
                 "notes": "可选"
               },
               "密码": {
                 "type": "string",
                 "required": true,
-                "description": "认证密码",
+                "description": "认证密码           ",
                 "example": "admin",
                 "notes": "可选"
               }
@@ -1752,21 +1752,21 @@
           "用户名": {
             "type": "string",
             "required": true,
-            "description": "认证用户名",
+            "description": "认证用户名          ",
             "example": "admin",
             "notes": "必填"
           },
           "密码": {
             "type": "string",
             "required": true,
-            "description": "认证密码",
+            "description": "认证密码           ",
             "example": "admin",
             "notes": "必填"
           },
           "SQL语句": {
             "type": "string",
             "required": true,
-            "description": "SQL 查询语句",
+            "description": "SQL 查询语句       ",
             "example": "SELECT * FROM products LIMIT 10",
             "notes": "必填"
           }
@@ -1788,28 +1788,28 @@
               "URL": {
                 "type": "string",
                 "required": true,
-                "description": "API 地址",
+                "description": "API 地址         ",
                 "example": "https://api.example.com/search",
                 "notes": "可选"
               },
               "TOKEN": {
                 "type": "string",
                 "required": true,
-                "description": "认证令牌",
+                "description": "认证令牌           ",
                 "example": "token123",
                 "notes": "可选"
               },
               "搜索词": {
                 "type": "string",
                 "required": true,
-                "description": "搜索关键词",
+                "description": "搜索关键词          ",
                 "example": "关键词",
                 "notes": "可选"
               },
               "限制": {
                 "type": "string",
                 "required": true,
-                "description": "返回条数",
+                "description": "返回条数           ",
                 "example": "10",
                 "notes": "可选"
               }
@@ -1823,14 +1823,14 @@
               "URL": {
                 "type": "string",
                 "required": true,
-                "description": "API 地址",
+                "description": "API 地址         ",
                 "example": "https://api.example.com/search",
                 "notes": "可选"
               },
               "搜索词": {
                 "type": "string",
                 "required": true,
-                "description": "搜索关键词",
+                "description": "搜索关键词          ",
                 "example": "关键词",
                 "notes": "可选"
               }
@@ -1844,7 +1844,7 @@
               "文件路径": {
                 "type": "string",
                 "required": true,
-                "description": "NDJSON 文件路径",
+                "description": "NDJSON 文件路径    ",
                 "example": "/data/records.ndjson",
                 "notes": "每行 action,下一行 doc"
               }
@@ -1858,14 +1858,14 @@
               "索引名": {
                 "type": "string",
                 "required": true,
-                "description": "索引名",
+                "description": "索引名            ",
                 "example": "products",
                 "notes": "可选"
               },
               "批次大小": {
                 "type": "string",
                 "required": true,
-                "description": "每批返回条数",
+                "description": "每批返回条数         ",
                 "example": "1000",
                 "notes": "可选"
               }
@@ -1879,21 +1879,21 @@
               "旧索引": {
                 "type": "string",
                 "required": true,
-                "description": "旧索引名",
+                "description": "旧索引名           ",
                 "example": "products_v1",
                 "notes": "可选"
               },
               "新索引": {
                 "type": "string",
                 "required": true,
-                "description": "新索引名",
+                "description": "新索引名           ",
                 "example": "products_v2",
                 "notes": "可选"
               },
               "别名": {
                 "type": "string",
                 "required": true,
-                "description": "别名",
+                "description": "别名             ",
                 "example": "products",
                 "notes": "可选"
               }
@@ -1907,14 +1907,14 @@
               "源索引": {
                 "type": "string",
                 "required": true,
-                "description": "源索引名",
+                "description": "源索引名           ",
                 "example": "myindex",
                 "notes": "可选"
               },
               "目标索引": {
                 "type": "string",
                 "required": true,
-                "description": "目标索引名",
+                "description": "目标索引名          ",
                 "example": "myindex_v2",
                 "notes": "可选"
               }
@@ -1928,14 +1928,14 @@
               "URL": {
                 "type": "string",
                 "required": true,
-                "description": "API 地址",
+                "description": "API 地址         ",
                 "example": "https://api.example.com/search",
                 "notes": "可选"
               },
               "搜索词": {
                 "type": "string",
                 "required": true,
-                "description": "搜索关键词",
+                "description": "搜索关键词          ",
                 "example": "关键词",
                 "notes": "可选"
               }
@@ -1947,21 +1947,21 @@
           "URL": {
             "type": "string",
             "required": true,
-            "description": "API 地址",
+            "description": "API 地址         ",
             "example": "https://api.example.com/search",
             "notes": "必填"
           },
           "TOKEN": {
             "type": "string",
             "required": false,
-            "description": "认证令牌",
+            "description": "认证令牌           ",
             "example": "token123",
             "notes": "可选"
           },
           "BODY": {
             "type": "string",
             "required": true,
-            "description": "请求体 JSON",
+            "description": "请求体 JSON       ",
             "example": "{\"q\":\"关键词\"}",
             "notes": "必填"
           }

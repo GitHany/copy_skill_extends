@@ -1,0 +1,175 @@
+{
+  "module": "前端开发/Yarn-包管理器 Yarn",
+  "version": "2.0",
+  "description": "Yarn JavaScript 包管理器",
+  "commands": [
+    {
+      "dirPath": "/前端开发/",
+      "name": "yarn install 安装依赖",
+      "keyword": "yarn install 安装",
+      "description": "安装项目依赖。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "yarn install",
+        "extensions": [
+          {
+            "name": "生产依赖",
+            "cmd": "yarn install --production",
+            "params": {},
+            "keyword": "yarn prod"
+          },
+          {
+            "name": "离线安装",
+            "cmd": "yarn install --offline",
+            "params": {},
+            "keyword": "yarn offline"
+          },
+          {
+            "name": "强制重新安装",
+            "cmd": "yarn install --force",
+            "params": {},
+            "keyword": "yarn force"
+          },
+          {
+            "name": "全局安装",
+            "cmd": "yarn global add %{包名}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名             ",
+                "example": "typescript",
+                "notes": "必填"
+              }
+            },
+            "keyword": "yarn global"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "yarn add 添加包",
+      "keyword": "yarn add 添加",
+      "description": "添加依赖包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "yarn add %{包名}%",
+        "extensions": [
+          {
+            "name": "开发依赖",
+            "cmd": "yarn add -D %{包名}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名             ",
+                "example": "lodash",
+                "notes": "必填"
+              }
+            },
+            "keyword": "yarn add dev"
+          },
+          {
+            "name": "可选依赖",
+            "cmd": "yarn add -O %{包名}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名             ",
+                "example": "optional-dep",
+                "notes": "必填"
+              }
+            },
+            "keyword": "yarn add optional"
+          },
+          {
+            "name": "对等依赖",
+            "cmd": "yarn add -P %{包名}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名             ",
+                "example": "peer-dep",
+                "notes": "必填"
+              }
+            },
+            "keyword": "yarn add peer"
+          },
+          {
+            "name": "精确版本",
+            "cmd": "yarn add -E %{包名}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名             ",
+                "example": "lodash",
+                "notes": "必填"
+              }
+            },
+            "keyword": "yarn add exact"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "包名             ",
+            "example": "lodash",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "yarn remove 移除包",
+      "keyword": "yarn remove 移除",
+      "description": "移除依赖包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "yarn remove %{包名}%",
+        "extensions": [
+          {
+            "name": "移除开发依赖",
+            "cmd": "yarn remove %{包名}% -D",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名             ",
+                "example": "lodash",
+                "notes": "必填"
+              }
+            },
+            "keyword": "yarn remove dev"
+          },
+          {
+            "name": "强制移除",
+            "cmd": "yarn remove %{包名}% --force",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名             ",
+                "example": "lodash",
+                "notes": "必填"
+              }
+            },
+            "keyword": "yarn remove force"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "包名             ",
+            "example": "lodash",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

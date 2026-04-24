@@ -1,0 +1,100 @@
+{
+  "module": "版本控制/Git 子模块",
+  "version": "2.0",
+  "description": "Git 子模块命令集合，涵盖Git 子模块的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/版本控制/",
+      "name": "git submodule add 添加子模块",
+      "keyword": "git submodule add 添加",
+      "description": "添加 Git 子模块。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git submodule add %{仓库}% %{路径}%",
+        "extensions": [
+          {
+            "name": "添加带分支子模块",
+            "cmd": "git submodule add -b %{分支}% %{仓库}% %{路径}%",
+            "params": {
+              "分支": {
+                "type": "string",
+                "required": true,
+                "description": "分支名称",
+                "example": "main",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git submodule branch 分支"
+          },
+          {
+            "name": "添加并初始化子模块",
+            "cmd": "git submodule add %{仓库}% %{路径}% && git submodule update --init --recursive",
+            "params": {},
+            "keyword": "git submodule add init"
+          },
+          {
+            "name": "强制添加子模块",
+            "cmd": "git submodule add -f %{仓库}% %{路径}%",
+            "params": {},
+            "keyword": "git submodule force"
+          },
+          {
+            "name": "添加引用仓库子模块",
+            "cmd": "git submodule add --reference %{引用仓库}% %{仓库}% %{路径}%",
+            "params": {
+              "引用仓库": {
+                "type": "string",
+                "required": true,
+                "description": "引用仓库路径",
+                "example": "/path/to/reference.git",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git submodule reference"
+          }
+        ],
+        "params": {
+          "仓库": {
+            "type": "string",
+            "required": true,
+            "description": "子模块仓库 URL      ",
+            "example": "https://github.com/user/lib.git",
+            "notes": "必填"
+          },
+          "路径": {
+            "type": "string",
+            "required": true,
+            "description": "本地路径           ",
+            "example": "libs/mylib",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git submodule update 更新子模块",
+      "keyword": "git submodule update 更新",
+      "description": "更新子模块到最新提交。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git submodule update --remote %{路径}%",
+        "extensions": [
+          {
+            "name": "初始化子模块",
+            "cmd": "git submodule update --init",
+            "params": {},
+            "keyword": "git submodule init"
+          }
+        ],
+        "params": {
+          "路径": {
+            "type": "string",
+            "required": true,
+            "description": "子模块路径          ",
+            "example": "libs/lib",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

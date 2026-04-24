@@ -1,0 +1,387 @@
+{
+  "module": "版本控制/Git 暂存区管理",
+  "version": "2.0",
+  "description": "Git 暂存区管理命令集合，涵盖Git 暂存区管理的常用操作和最佳实践",
+  "commands": [
+    {
+      "name": "添加所有修改",
+      "cmd": "git add -u",
+      "params": {
+        "dry_run": {
+          "description": "预览哪些文件会被添加，不实际执行"
+        },
+        "verbose": {
+          "description": "显示详细输出信息"
+        },
+        "force": {
+          "description": "强制添加被忽略的文件"
+        },
+        "patch": {
+          "description": "交互式选择文件块添加"
+        }
+      },
+      "extensions": [
+        {
+          "name": "git add -u 预览暂存",
+          "cmd": "git add -u --dry-run",
+          "params": {},
+          "keyword": "git add update dry-run"
+        },
+        {
+          "name": "git add -u 详细输出",
+          "cmd": "git add -u -v",
+          "params": {},
+          "keyword": "git add update verbose"
+        },
+        {
+          "name": "git add -u 强制添加忽略文件",
+          "cmd": "git add -u -f",
+          "params": {},
+          "keyword": "git add force ignore"
+        },
+        {
+          "name": "git add -u 交互式选择块",
+          "cmd": "git add -u -p",
+          "params": {},
+          "keyword": "git add patch interactive"
+        },
+        {
+          "name": "git add -u 更新并显示详情",
+          "cmd": "git add -u -v --dry-run",
+          "params": {},
+          "keyword": "git add update verbose dry-run"
+        },
+        {
+          "name": "git add -u 递归添加子模块",
+          "cmd": "git add -u --recurse-submodules",
+          "params": {},
+          "keyword": "git add submodule recursive"
+        },
+        {
+          "name": "git add -u 忽略权限变更",
+          "cmd": "git add -u --ignore-remove",
+          "params": {},
+          "keyword": "git add ignore removal"
+        },
+        {
+          "name": "git add -u 更新指定路径",
+          "cmd": "git add -u %{path}%",
+          "params": {
+            "path": {
+              "description": "指定要更新的文件或目录路径"
+            }
+          },
+          "keyword": "git add update path"
+        },
+        {
+          "name": "git add -u 预览更新",
+          "cmd": "git add -u -n %{path}%",
+          "params": {
+            "path": {
+              "description": "预览指定路径的更新"
+            }
+          },
+          "keyword": "git add update dry-run path"
+        },
+        {
+          "name": "git add -u 仅添加更新",
+          "cmd": "git add -u --no-walk",
+          "params": {},
+          "keyword": "git add update no-walk"
+        },
+        {
+          "name": "git add -u 显示差异",
+          "cmd": "git add -u --diff",
+          "params": {},
+          "keyword": "git add update diff"
+        }
+      ],
+      "keyword": "git add update",
+      "dirPath": "/版本控制/",
+      "description": "添加所有修改的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要"
+    },
+    {
+      "name": "添加所有文件",
+      "cmd": "git add .",
+      "params": {
+        "verbose": {
+          "description": "显示每个被添加文件的详细信息"
+        },
+        "force": {
+          "description": "强制添加被.gitignore忽略的文件"
+        },
+        "all": {
+          "description": "添加所有文件包括删除的文件"
+        },
+        "patch": {
+          "description": "交互式选择要添加的内容"
+        }
+      },
+      "extensions": [
+        {
+          "name": "git add . 详细模式",
+          "cmd": "git add . -v",
+          "params": {},
+          "keyword": "git add dot verbose"
+        },
+        {
+          "name": "git add . 强制忽略文件",
+          "cmd": "git add . -f",
+          "params": {},
+          "keyword": "git add force ignore"
+        },
+        {
+          "name": "git add -A 添加全部",
+          "cmd": "git add -A",
+          "params": {},
+          "keyword": "git add all"
+        },
+        {
+          "name": "git add . 交互式选择",
+          "cmd": "git add . -i",
+          "params": {},
+          "keyword": "git add interactive"
+        },
+        {
+          "name": "git add . 带更新统计",
+          "cmd": "git add . -u --stat",
+          "params": {},
+          "keyword": "git add update stat"
+        },
+        {
+          "name": "git add . 显示补丁",
+          "cmd": "git add . --patch",
+          "params": {},
+          "keyword": "git add patch hunks"
+        },
+        {
+          "name": "git add -A 包含未跟踪",
+          "cmd": "git add -A --ignore-errors",
+          "params": {},
+          "keyword": "git add all ignore errors"
+        },
+        {
+          "name": "git add . 添加指定路径",
+          "cmd": "git add . %{path}%",
+          "params": {
+            "path": {
+              "description": "指定要添加的文件或目录路径"
+            }
+          },
+          "keyword": "git add dot path"
+        },
+        {
+          "name": "git add . 仅已跟踪",
+          "cmd": "git add . --update",
+          "params": {},
+          "keyword": "git add dot update"
+        },
+        {
+          "name": "git add . 包含删除",
+          "cmd": "git add . --all",
+          "params": {},
+          "keyword": "git add dot all delete"
+        },
+        {
+          "name": "git add . 空操作",
+          "cmd": "git add . --dry-run",
+          "params": {},
+          "keyword": "git add dot dry-run"
+        }
+      ],
+      "keyword": "git add dot",
+      "dirPath": "/版本控制/",
+      "description": "添加所有文件的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要"
+    },
+    {
+      "name": "交互式添加",
+      "cmd": "git add -i",
+      "params": {
+        "verbose": {
+          "description": "显示详细模式信息"
+        },
+        "patch": {
+          "description": "直接进入补丁模式"
+        },
+        "status": {
+          "description": "显示状态概览"
+        }
+      },
+      "extensions": [
+        {
+          "name": "git add -i 查看状态",
+          "cmd": "git add -i --status",
+          "params": {},
+          "keyword": "git interactive status"
+        },
+        {
+          "name": "git add -i 直接进入补丁",
+          "cmd": "git add -i -p",
+          "params": {},
+          "keyword": "git interactive patch"
+        },
+        {
+          "name": "git add -i 详细输出",
+          "cmd": "git add -i -v",
+          "params": {},
+          "keyword": "git interactive verbose"
+        },
+        {
+          "name": "git add --interactive 等同命令",
+          "cmd": "git add --interactive",
+          "params": {},
+          "keyword": "git add interactive long"
+        },
+        {
+          "name": "git add -i 排他性暂存",
+          "cmd": "git add -i --exclude-by-path",
+          "params": {},
+          "keyword": "git interactive exclude path"
+        },
+        {
+          "name": "git add -i 无操作退出",
+          "cmd": "git add -i --quit",
+          "params": {},
+          "keyword": "git interactive quit"
+        },
+        {
+          "name": "git add --patch 直接补丁",
+          "cmd": "git add --patch",
+          "params": {},
+          "keyword": "git patch staged"
+        },
+        {
+          "name": "git add -i 添加指定路径",
+          "cmd": "git add -i %{path}%",
+          "params": {
+            "path": {
+              "description": "指定要交互式添加的路径"
+            }
+          },
+          "keyword": "git interactive path"
+        },
+        {
+          "name": "git add -i 重命名操作",
+          "cmd": "git add -i -r",
+          "params": {},
+          "keyword": "git interactive rename"
+        },
+        {
+          "name": "git add -i 任务选择",
+          "cmd": "git add -i -t %{task}%",
+          "params": {
+            "task": {
+              "description": "选择要处理的任务类型"
+            }
+          },
+          "keyword": "git interactive task"
+        },
+        {
+          "name": "git add -i 版本控制",
+          "cmd": "git add -i --version",
+          "params": {},
+          "keyword": "git interactive version"
+        }
+      ],
+      "keyword": "git add interactive",
+      "dirPath": "/版本控制/",
+      "description": "交互式添加的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要"
+    },
+    {
+      "name": "显示分支",
+      "cmd": "git status -sb",
+      "params": {
+        "branch": {
+          "description": "显示分支信息"
+        },
+        "short": {
+          "description": "使用短格式输出"
+        },
+        "porcelain": {
+          "description": "机器可读输出格式"
+        }
+      },
+      "extensions": [
+        {
+          "name": "git status -sb 详细分支",
+          "cmd": "git status -sb --ahead-behind",
+          "params": {},
+          "keyword": "git status branch ahead behind"
+        },
+        {
+          "name": "git status -sb 包含标签",
+          "cmd": "git status -sb --tags",
+          "params": {},
+          "keyword": "git status branch tags"
+        },
+        {
+          "name": "git status -sb 简洁模式",
+          "cmd": "git status -sb -b",
+          "params": {},
+          "keyword": "git status short branch"
+        },
+        {
+          "name": "git branch -v 详细分支信息",
+          "cmd": "git branch -v",
+          "params": {},
+          "keyword": "git branch verbose"
+        },
+        {
+          "name": "git branch -vv 含上游信息",
+          "cmd": "git branch -vv",
+          "params": {},
+          "keyword": "git branch upstream"
+        },
+        {
+          "name": "git branch 显示所有分支",
+          "cmd": "git branch -a",
+          "params": {},
+          "keyword": "git branch all remote local"
+        },
+        {
+          "name": "git branch 仅列出分支",
+          "cmd": "git branch --list",
+          "params": {},
+          "keyword": "git branch list"
+        },
+        {
+          "name": "git status -sb 短格式",
+          "cmd": "git status -sb -s",
+          "params": {},
+          "keyword": "git status short format"
+        },
+        {
+          "name": "git status -sb 无领先落后",
+          "cmd": "git status -sb --no-ahead-behind",
+          "params": {},
+          "keyword": "git status branch no ahead behind"
+        },
+        {
+          "name": "git status -sb 显示未跟踪",
+          "cmd": "git status -sb -u",
+          "params": {},
+          "keyword": "git status branch untracked"
+        },
+        {
+          "name": "git status -sb 指定分支",
+          "cmd": "git status -sb %{branch}%",
+          "params": {
+            "branch": {
+              "description": "指定要显示的分支名称"
+            }
+          },
+          "keyword": "git status branch specific"
+        },
+        {
+          "name": "git status -sb 分行显示",
+          "cmd": "git status -sb --column",
+          "params": {},
+          "keyword": "git status branch column"
+        }
+      ],
+      "keyword": "git status branch",
+      "dirPath": "/版本控制/",
+      "description": "显示分支的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要"
+    }
+  ]
+}

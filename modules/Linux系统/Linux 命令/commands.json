@@ -1,0 +1,2008 @@
+{
+  "module": "Linux系统/Linux 命令",
+  "version": "1.0",
+  "description": "Linux 命令 模块命令集合，涵盖Linux 命令的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Linux系统/",
+      "name": "ls 列出目录内容",
+      "keyword": "ls 列表",
+      "description": "列出目录内容。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "ls %{选项}% %{目录}%",
+        "extensions": [
+          {
+            "name": "查看所有文件",
+            "cmd": "ls -la",
+            "params": {},
+            "keyword": "ls 所有文件"
+          },
+          {
+            "name": "按时间排序",
+            "cmd": "ls -lt",
+            "params": {},
+            "keyword": "ls 时间排序"
+          },
+          {
+            "name": "按大小排序",
+            "cmd": "ls -lS",
+            "params": {},
+            "keyword": "ls 大小排序"
+          },
+          {
+            "name": "递归显示",
+            "cmd": "ls -lR",
+            "params": {},
+            "keyword": "ls 递归"
+          },
+          {
+            "name": "人类可读大小",
+            "cmd": "ls -lh",
+            "params": {},
+            "keyword": "ls 人类可读"
+          },
+          {
+            "name": "仅显示目录",
+            "cmd": "ls -d */",
+            "params": {},
+            "keyword": "ls 仅目录"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "ls 选项          ",
+            "example": "-la",
+            "notes": "可选"
+          },
+          "目录": {
+            "type": "string",
+            "required": false,
+            "description": "目录路径           ",
+            "example": "/home/user",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "cd 切换目录",
+      "keyword": "cd 进入",
+      "description": "切换当前工作目录。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "cd %{目录}%",
+        "extensions": [
+          {
+            "name": "返回上一次目录",
+            "cmd": "cd -",
+            "params": {},
+            "keyword": "cd 上一次"
+          },
+          {
+            "name": "返回用户主目录",
+            "cmd": "cd ~",
+            "params": {},
+            "keyword": "cd 主目录"
+          },
+          {
+            "name": "上级目录",
+            "cmd": "cd ..",
+            "params": {},
+            "keyword": "cd 上级"
+          },
+          {
+            "name": "上上级目录",
+            "cmd": "cd ../..",
+            "params": {},
+            "keyword": "cd 上两级"
+          }
+        ],
+        "params": {
+          "目录": {
+            "type": "string",
+            "required": true,
+            "description": "目录路径           ",
+            "example": "/var/log",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "pwd 显示当前目录",
+      "keyword": "pwd 当前路径",
+      "description": "显示当前工作目录的完整路径。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "pwd",
+        "extensions": [
+          {
+            "name": "显示物理路径",
+            "cmd": "pwd -P",
+            "params": {},
+            "keyword": "pwd 物理路径"
+          },
+          {
+            "name": "显示逻辑路径",
+            "cmd": "pwd -L",
+            "params": {},
+            "keyword": "pwd 逻辑路径"
+          },
+          {
+            "name": "显示当前目录并格式化",
+            "cmd": "realpath .",
+            "params": {},
+            "keyword": "pwd 真实路径"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "mkdir 创建目录",
+      "keyword": "mkdir 新建目录",
+      "description": "创建新目录。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "mkdir %{选项}% %{目录路径}%",
+        "extensions": [
+          {
+            "name": "创建多级目录",
+            "cmd": "mkdir -p /path/to/dir",
+            "params": {},
+            "keyword": "mkdir 多级目录"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "mkdir 选项       ",
+            "example": "-p",
+            "notes": "可选，-p 用于创建多级目录"
+          },
+          "目录路径": {
+            "type": "string",
+            "required": true,
+            "description": "要创建的目录路径       ",
+            "example": "/home/user/projects",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "rm 删除文件",
+      "keyword": "rm 删除",
+      "description": "删除文件或目录。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "rm %{选项}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "递归删除目录",
+            "cmd": "rm -rf /path/to/dir",
+            "params": {},
+            "keyword": "rm 递归删除"
+          },
+          {
+            "name": "删除前确认",
+            "cmd": "rm -i filename",
+            "params": {},
+            "keyword": "rm 确认删除"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "rm 选项          ",
+            "example": "-rf",
+            "notes": "可选，-r 递归，-f 强制"
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要删除的文件或目录路径    ",
+            "example": "/home/user/file.txt",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "cp 复制文件",
+      "keyword": "cp 复制",
+      "description": "复制文件或目录。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "cp %{选项}% %{源}% %{目标}%",
+        "extensions": [
+          {
+            "name": "递归复制目录",
+            "cmd": "cp -r /source/dir /dest/dir",
+            "params": {},
+            "keyword": "cp 递归复制"
+          },
+          {
+            "name": "复制前确认",
+            "cmd": "cp -i source dest",
+            "params": {},
+            "keyword": "cp 确认复制"
+          },
+          {
+            "name": "保持属性",
+            "cmd": "cp -p source dest",
+            "params": {},
+            "keyword": "cp 保持属性"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "cp 选项          ",
+            "example": "-r",
+            "notes": "可选，-r 递归复制目录"
+          },
+          "源": {
+            "type": "string",
+            "required": true,
+            "description": "源文件或目录路径       ",
+            "example": "/home/user/file.txt",
+            "notes": "必填"
+          },
+          "目标": {
+            "type": "string",
+            "required": true,
+            "description": "目标路径           ",
+            "example": "/backup/file.txt",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "mv 移动/重命名文件",
+      "keyword": "mv 移动 重命名",
+      "description": "移动或重命名文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "mv %{选项}% %{源}% %{目标}%",
+        "extensions": [
+          {
+            "name": "重命名文件",
+            "cmd": "mv oldname newname",
+            "params": {},
+            "keyword": "mv 重命名"
+          },
+          {
+            "name": "移动到目录",
+            "cmd": "mv file /path/to/dir/",
+            "params": {},
+            "keyword": "mv 移动文件"
+          },
+          {
+            "name": "覆盖前确认",
+            "cmd": "mv -i source dest",
+            "params": {},
+            "keyword": "mv 确认覆盖"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "mv 选项          ",
+            "example": "-i",
+            "notes": "可选，-i 覆盖前确认"
+          },
+          "源": {
+            "type": "string",
+            "required": true,
+            "description": "源文件或目录路径       ",
+            "example": "/home/user/file.txt",
+            "notes": "必填"
+          },
+          "目标": {
+            "type": "string",
+            "required": true,
+            "description": "目标路径           ",
+            "example": "/backup/file.txt",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "touch 创建文件",
+      "keyword": "touch 新建文件",
+      "description": "创建空文件或更新文件时间戳。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "touch %{文件路径}%",
+        "extensions": [
+          {
+            "name": "创建多个文件",
+            "cmd": "touch file1 file2 file3",
+            "params": {},
+            "keyword": "touch 多文件"
+          }
+        ],
+        "params": {
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要创建的文件路径       ",
+            "example": "/home/user/project/test.txt",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "cat 查看文件内容",
+      "keyword": "cat 查看",
+      "description": "连接并显示文件内容。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "cat %{文件路径}%",
+        "extensions": [
+          {
+            "name": "显示行号",
+            "cmd": "cat -n filename",
+            "params": {},
+            "keyword": "cat 行号"
+          },
+          {
+            "name": "显示不可打印字符",
+            "cmd": "cat -A filename",
+            "params": {},
+            "keyword": "cat 特殊字符"
+          }
+        ],
+        "params": {
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要查看的文件路径       ",
+            "example": "/home/user/log.txt",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "head 查看文件开头",
+      "keyword": "head 开头",
+      "description": "显示文件开头部分内容。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "head %{选项}% -n %{行数}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "查看前10行",
+            "cmd": "head -n 10 filename",
+            "params": {},
+            "keyword": "head 10行"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "head 选项        ",
+            "example": "-n",
+            "notes": "可选"
+          },
+          "行数": {
+            "type": "string",
+            "required": true,
+            "description": "显示的行数          ",
+            "example": "20",
+            "notes": "必填"
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要查看的文件路径       ",
+            "example": "/var/log/syslog",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "tail 查看文件末尾",
+      "keyword": "tail 末尾",
+      "description": "显示文件末尾部分内容。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "tail %{选项}% -n %{行数}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "实时跟踪日志",
+            "cmd": "tail -f /var/log/syslog",
+            "params": {},
+            "keyword": "tail 实时跟踪"
+          },
+          {
+            "name": "查看后10行",
+            "cmd": "tail -n 10 filename",
+            "params": {},
+            "keyword": "tail 10行"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "tail 选项        ",
+            "example": "-f",
+            "notes": "可选，-f 实时跟踪"
+          },
+          "行数": {
+            "type": "string",
+            "required": true,
+            "description": "显示的行数          ",
+            "example": "20",
+            "notes": "必填"
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要查看的文件路径       ",
+            "example": "/var/log/syslog",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "grep 搜索文件内容",
+      "keyword": "grep 搜索 查找",
+      "description": "在文件中搜索匹配的模式。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "grep %{选项}% \"%{模式}%\" %{文件路径}%",
+        "extensions": [
+          {
+            "name": "递归搜索目录",
+            "cmd": "grep -r \"pattern\" /path/to/dir",
+            "params": {},
+            "keyword": "grep 递归搜索"
+          },
+          {
+            "name": "显示行号",
+            "cmd": "grep -n \"pattern\" filename",
+            "params": {},
+            "keyword": "grep 行号"
+          },
+          {
+            "name": "忽略大小写",
+            "cmd": "grep -i \"pattern\" filename",
+            "params": {},
+            "keyword": "grep 忽略大小写"
+          },
+          {
+            "name": "仅显示文件名",
+            "cmd": "grep -l \"pattern\" *.log",
+            "params": {},
+            "keyword": "grep 文件名"
+          },
+          {
+            "name": "正则表达式搜索",
+            "cmd": "grep -E \"regex\" filename",
+            "params": {},
+            "keyword": "grep 正则"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "grep 选项        ",
+            "example": "-rn",
+            "notes": "常用"
+          },
+          "模式": {
+            "type": "string",
+            "required": true,
+            "description": "要搜索的模式或正则表达式   ",
+            "example": "error",
+            "notes": "必填"
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要搜索的文件路径       ",
+            "example": "/var/log/syslog",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "find 查找文件",
+      "keyword": "find 查找文件",
+      "description": "在目录树中搜索文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "find %{路径}% %{选项}% -name \"%{文件名}%\"",
+        "extensions": [
+          {
+            "name": "按名称查找",
+            "cmd": "find /path -name \"*.log\"",
+            "params": {},
+            "keyword": "find 按名称"
+          },
+          {
+            "name": "按类型查找",
+            "cmd": "find /path -type f -name \"*.txt\"",
+            "params": {},
+            "keyword": "find 文件类型"
+          },
+          {
+            "name": "按大小查找",
+            "cmd": "find /path -size +100M",
+            "params": {},
+            "keyword": "find 按大小"
+          },
+          {
+            "name": "按时间查找",
+            "cmd": "find /path -mtime -7",
+            "params": {},
+            "keyword": "find 修改时间"
+          },
+          {
+            "name": "执行命令",
+            "cmd": "find /path -name \"*.log\" -exec rm {} \\;",
+            "params": {},
+            "keyword": "find 执行命令"
+          }
+        ],
+        "params": {
+          "路径": {
+            "type": "string",
+            "required": true,
+            "description": "搜索的起始路径        ",
+            "example": "/home/user",
+            "notes": "必填"
+          },
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "find 选项        ",
+            "example": "-type f",
+            "notes": "常用"
+          },
+          "文件名": {
+            "type": "string",
+            "required": true,
+            "description": "要查找的文件名模式      ",
+            "example": "*.log",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "chmod 修改权限",
+      "keyword": "chmod 权限",
+      "description": "更改文件或目录的访问权限。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "chmod %{权限}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "添加执行权限",
+            "cmd": "chmod +x script.sh",
+            "params": {},
+            "keyword": "chmod 添加执行"
+          },
+          {
+            "name": "设置755权限",
+            "cmd": "chmod 755 /path/to/dir",
+            "params": {},
+            "keyword": "chmod 755"
+          },
+          {
+            "name": "递归设置权限",
+            "cmd": "chmod -R 644 /path/to/dir",
+            "params": {},
+            "keyword": "chmod 递归"
+          }
+        ],
+        "params": {
+          "权限": {
+            "type": "string",
+            "required": true,
+            "description": "权限模式           ",
+            "example": "755",
+            "notes": "必填"
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "文件或目录路径        ",
+            "example": "/home/user/script.sh",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "chown 修改所有者",
+      "keyword": "chown 所有者",
+      "description": "更改文件或目录的所有者。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "chown %{用户}:%{组}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "修改所有者",
+            "cmd": "chown user /path/to/file",
+            "params": {},
+            "keyword": "chown 用户"
+          },
+          {
+            "name": "修改所有者和组",
+            "cmd": "chown user:group /path/to/file",
+            "params": {},
+            "keyword": "chown 用户组"
+          },
+          {
+            "name": "递归修改",
+            "cmd": "chown -R user:group /path/to/dir",
+            "params": {},
+            "keyword": "chown 递归"
+          }
+        ],
+        "params": {
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "新所有者用户名        ",
+            "example": "www-data",
+            "notes": "必填"
+          },
+          "组": {
+            "type": "string",
+            "required": true,
+            "description": "新组名            ",
+            "example": "www-data",
+            "notes": "必填"
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "文件或目录路径        ",
+            "example": "/var/www/html",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "tar 打包压缩",
+      "keyword": "tar 打包 压缩",
+      "description": "打包和压缩文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "tar %{动作}% %{压缩包}% %{路径}%",
+        "extensions": [
+          {
+            "name": "打包压缩",
+            "cmd": "tar -czvf archive.tar.gz /path/to/dir",
+            "params": {},
+            "keyword": "tar 压缩"
+          },
+          {
+            "name": "解包",
+            "cmd": "tar -xzvf archive.tar.gz",
+            "params": {},
+            "keyword": "tar 解压"
+          },
+          {
+            "name": "查看内容",
+            "cmd": "tar -tzvf archive.tar.gz",
+            "params": {},
+            "keyword": "tar 列出内容"
+          },
+          {
+            "name": "追加文件",
+            "cmd": "tar -rvf archive.tar newfile.txt",
+            "params": {},
+            "keyword": "tar 追加"
+          }
+        ],
+        "params": {
+          "动作": {
+            "type": "string",
+            "required": true,
+            "description": "tar 操作选项       ",
+            "example": "-czvf",
+            "notes": "常用"
+          },
+          "压缩包": {
+            "type": "string",
+            "required": true,
+            "description": "压缩包名称          ",
+            "example": "backup.tar.gz",
+            "notes": "必填"
+          },
+          "路径": {
+            "type": "string",
+            "required": true,
+            "description": "要打包的目录或文件路径    ",
+            "example": "/home/user/data",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "zip/unzip 压缩解压",
+      "keyword": "zip unzip 压缩",
+      "description": "压缩和解压 zip 格式文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "zip %{选项}% %{压缩包名称}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "压缩目录",
+            "cmd": "zip -r archive.zip /path/to/dir",
+            "params": {},
+            "keyword": "zip 压缩目录"
+          },
+          {
+            "name": "解压",
+            "cmd": "unzip archive.zip",
+            "params": {},
+            "keyword": "unzip 解压"
+          },
+          {
+            "name": "解压到目录",
+            "cmd": "unzip archive.zip -d /target/dir",
+            "params": {},
+            "keyword": "unzip 指定目录"
+          },
+          {
+            "name": "查看内容",
+            "cmd": "unzip -l archive.zip",
+            "params": {},
+            "keyword": "unzip 列表"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "zip 选项         ",
+            "example": "-r",
+            "notes": "可选"
+          },
+          "压缩包名称": {
+            "type": "string",
+            "required": true,
+            "description": "压缩包名称          ",
+            "example": "backup.zip",
+            "notes": "必填"
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要压缩的文件或目录路径    ",
+            "example": "/home/user/data",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "gzip/gunzip gzip 压缩",
+      "keyword": "gzip gunzip 压缩",
+      "description": "gzip 压缩和解压。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "gzip %{选项}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "压缩文件",
+            "cmd": "gzip filename",
+            "params": {},
+            "keyword": "gzip 压缩"
+          },
+          {
+            "name": "解压文件",
+            "cmd": "gunzip filename.gz",
+            "params": {},
+            "keyword": "gunzip 解压"
+          },
+          {
+            "name": "保留原文件",
+            "cmd": "gzip -k filename",
+            "params": {},
+            "keyword": "gzip 保留原文件"
+          },
+          {
+            "name": "压缩级别",
+            "cmd": "gzip -9 filename",
+            "params": {},
+            "keyword": "gzip 最高压缩"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "gzip 选项        ",
+            "example": "-d",
+            "notes": "可选"
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要压缩或解压的文件路径    ",
+            "example": "/home/user/data.txt",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "ps 查看进程",
+      "keyword": "ps 进程",
+      "description": "显示当前进程状态。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "ps %{选项}%",
+        "extensions": [
+          {
+            "name": "显示所有进程",
+            "cmd": "ps aux",
+            "params": {},
+            "keyword": "ps 所有进程"
+          },
+          {
+            "name": "显示进程树",
+            "cmd": "ps -ef",
+            "params": {},
+            "keyword": "ps 进程树"
+          },
+          {
+            "name": "按用户过滤",
+            "cmd": "ps -u username",
+            "params": {},
+            "keyword": "ps 用户进程"
+          },
+          {
+            "name": "查找特定进程",
+            "cmd": "ps aux | grep nginx",
+            "params": {},
+            "keyword": "ps 查找进程"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "ps 选项          ",
+            "example": "aux",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "kill 终止进程",
+      "keyword": "kill 终止",
+      "description": "终止或发送信号给进程。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kill %{信号}% %{PID}%",
+        "extensions": [
+          {
+            "name": "强制终止",
+            "cmd": "kill -9 1234",
+            "params": {},
+            "keyword": "kill 强制终止"
+          },
+          {
+            "name": "优雅终止",
+            "cmd": "kill 1234",
+            "params": {},
+            "keyword": "kill 优雅终止"
+          },
+          {
+            "name": "列出信号",
+            "cmd": "kill -l",
+            "params": {},
+            "keyword": "kill 信号列表"
+          }
+        ],
+        "params": {
+          "信号": {
+            "type": "string",
+            "required": false,
+            "description": "信号编号或名称        ",
+            "example": "-9",
+            "notes": "常用"
+          },
+          "PID": {
+            "type": "string",
+            "required": true,
+            "description": "进程 ID          ",
+            "example": "1234",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "top/htop 进程监控",
+      "keyword": "top htop 监控",
+      "description": "实时监控系统进程。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "top %{选项}%",
+        "extensions": [
+          {
+            "name": "交互式监控",
+            "cmd": "htop",
+            "params": {},
+            "keyword": "htop 交互"
+          },
+          {
+            "name": "显示特定用户进程",
+            "cmd": "top -u username",
+            "params": {},
+            "keyword": "top 用户进程"
+          },
+          {
+            "name": "显示特定PID",
+            "cmd": "top -p 1234",
+            "params": {},
+            "keyword": "top 指定PID"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "top 选项         ",
+            "example": "-d 5",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "free 内存使用",
+      "keyword": "free 内存",
+      "description": "显示系统内存使用情况。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "free %{选项}%",
+        "extensions": [
+          {
+            "name": "人类可读格式",
+            "cmd": "free -h",
+            "params": {},
+            "keyword": "free 人类可读"
+          },
+          {
+            "name": "以字节为单位",
+            "cmd": "free -b",
+            "params": {},
+            "keyword": "free 字节"
+          },
+          {
+            "name": "定期刷新",
+            "cmd": "free -s 5",
+            "params": {},
+            "keyword": "free 定期刷新"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "free 选项        ",
+            "example": "-h",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "df 磁盘空间使用情况",
+      "keyword": "df 磁盘",
+      "description": "显示文件系统磁盘空间使用情况。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "df %{选项}%",
+        "extensions": [
+          {
+            "name": "人类可读格式",
+            "cmd": "df -h",
+            "params": {},
+            "keyword": "df 人类可读"
+          },
+          {
+            "name": "显示所有文件系统",
+            "cmd": "df -a",
+            "params": {},
+            "keyword": "df 所有文件系统"
+          },
+          {
+            "name": "指定文件系统类型",
+            "cmd": "df -T -t ext4",
+            "params": {},
+            "keyword": "df 文件系统类型"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "df 选项          ",
+            "example": "-h",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "du 目录大小",
+      "keyword": "du 目录大小",
+      "description": "估算文件或目录的磁盘使用空间。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "du %{选项}% %{路径}%",
+        "extensions": [
+          {
+            "name": "人类可读格式",
+            "cmd": "du -sh /path/to/dir",
+            "params": {},
+            "keyword": "du 人类可读"
+          },
+          {
+            "name": "显示子目录大小",
+            "cmd": "du -h --max-depth=1",
+            "params": {},
+            "keyword": "du 子目录"
+          },
+          {
+            "name": "显示文件大小",
+            "cmd": "du -h filename",
+            "params": {},
+            "keyword": "du 文件"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "du 选项          ",
+            "example": "-sh",
+            "notes": "可选"
+          },
+          "路径": {
+            "type": "string",
+            "required": true,
+            "description": "目录或文件路径        ",
+            "example": "/home/user",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "ssh 远程连接",
+      "keyword": "ssh 远程连接",
+      "description": "安全远程连接主机。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "ssh %{用户}@%{主机}% %{端口参数}%",
+        "extensions": [
+          {
+            "name": "连接指定端口",
+            "cmd": "ssh -p 2222 user@host",
+            "params": {},
+            "keyword": "ssh 指定端口"
+          },
+          {
+            "name": "使用密钥文件",
+            "cmd": "ssh -i /path/to/key user@host",
+            "params": {},
+            "keyword": "ssh 密钥"
+          },
+          {
+            "name": "执行远程命令",
+            "cmd": "ssh user@host \"command\"",
+            "params": {},
+            "keyword": "ssh 执行命令"
+          },
+          {
+            "name": "跳板机连接",
+            "cmd": "ssh -J jump@host user@target",
+            "params": {},
+            "keyword": "ssh 跳板机"
+          }
+        ],
+        "params": {
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "远程用户名          ",
+            "example": "root",
+            "notes": "常用"
+          },
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "远程主机地址         ",
+            "example": "192.168.1.100",
+            "notes": "常用"
+          },
+          "端口参数": {
+            "type": "string",
+            "required": false,
+            "description": "SSH 端口         ",
+            "example": "-p 22",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "scp 远程复制",
+      "keyword": "scp 远程复制",
+      "description": "安全复制文件到远程主机。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "scp %{选项}% %{源文件}% %{用户}@%{主机}%:%{远程路径}%",
+        "extensions": [
+          {
+            "name": "指定端口",
+            "cmd": "scp -P 2222 file.txt user@host:/path/",
+            "params": {},
+            "keyword": "scp 指定端口"
+          },
+          {
+            "name": "递归复制目录",
+            "cmd": "scp -r /local/dir user@host:/remote/dir",
+            "params": {},
+            "keyword": "scp 目录"
+          },
+          {
+            "name": "使用密钥",
+            "cmd": "scp -i /path/to/key file.txt user@host:/path/",
+            "params": {},
+            "keyword": "scp 密钥"
+          },
+          {
+            "name": "从远程复制到本地",
+            "cmd": "scp user@host:/remote/file.txt /local/path/",
+            "params": {},
+            "keyword": "scp 下载"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "scp 选项         ",
+            "example": "-r",
+            "notes": "常用"
+          },
+          "源文件": {
+            "type": "string",
+            "required": true,
+            "description": "源文件路径          ",
+            "example": "/home/user/file.txt",
+            "notes": "常用"
+          },
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "远程用户名          ",
+            "example": "root",
+            "notes": "必填"
+          },
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "远程主机地址         ",
+            "example": "192.168.1.100",
+            "notes": "必填"
+          },
+          "远程路径": {
+            "type": "string",
+            "required": true,
+            "description": "远程目标路径         ",
+            "example": "/backup/",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "wget 下载文件",
+      "keyword": "wget 下载",
+      "description": "从网络下载文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "wget %{选项}% %{URL}%",
+        "extensions": [
+          {
+            "name": "后台下载",
+            "cmd": "wget -b https://example.com/file.zip",
+            "params": {},
+            "keyword": "wget 后台下载"
+          },
+          {
+            "name": "指定文件名",
+            "cmd": "wget -O output.txt https://example.com/data.txt",
+            "params": {},
+            "keyword": "wget 指定名称"
+          },
+          {
+            "name": "断点续传",
+            "cmd": "wget -c https://example.com/largefile.zip",
+            "params": {},
+            "keyword": "wget 续传"
+          },
+          {
+            "name": "递归下载",
+            "cmd": "wget -r -l 2 https://example.com/",
+            "params": {},
+            "keyword": "wget 递归"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "wget 选项        ",
+            "example": "-c",
+            "notes": "可选"
+          },
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "下载链接           ",
+            "example": "https://example.com/file.zip",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "curl HTTP 请求",
+      "keyword": "curl HTTP",
+      "description": "执行 HTTP 请求。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "curl %{选项}% %{URL}%",
+        "extensions": [
+          {
+            "name": "下载文件",
+            "cmd": "curl -O https://example.com/file.zip",
+            "params": {},
+            "keyword": "curl 下载"
+          },
+          {
+            "name": "发送 POST 请求",
+            "cmd": "curl -X POST -d \"data=value\" https://api.example.com",
+            "params": {},
+            "keyword": "curl POST"
+          },
+          {
+            "name": "设置请求头",
+            "cmd": "curl -H \"Content-Type: application/json\" https://api.example.com",
+            "params": {},
+            "keyword": "curl 请求头"
+          },
+          {
+            "name": "跟随重定向",
+            "cmd": "curl -L https://example.com",
+            "params": {},
+            "keyword": "curl 重定向"
+          },
+          {
+            "name": "显示响应头",
+            "cmd": "curl -I https://example.com",
+            "params": {},
+            "keyword": "curl 响应头"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "curl 选项        ",
+            "example": "-X POST",
+            "notes": "可选"
+          },
+          "URL": {
+            "type": "string",
+            "required": true,
+            "description": "请求 URL         ",
+            "example": "https://api.example.com/endpoint",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "ping 测试网络连通性",
+      "keyword": "ping 网络",
+      "description": "测试主机网络连通性。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "ping %{选项}% %{主机或IP}%",
+        "extensions": [
+          {
+            "name": "指定次数",
+            "cmd": "ping -c 4 192.168.1.1",
+            "params": {},
+            "keyword": "ping 指定次数"
+          },
+          {
+            "name": "持续 ping",
+            "cmd": "ping 192.168.1.1",
+            "params": {},
+            "keyword": "ping 持续"
+          },
+          {
+            "name": "设置间隔",
+            "cmd": "ping -i 2 192.168.1.1",
+            "params": {},
+            "keyword": "ping 间隔"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "ping 选项        ",
+            "example": "-c 4",
+            "notes": "可选"
+          },
+          "主机或IP": {
+            "type": "string",
+            "required": true,
+            "description": "目标主机名或 IP 地址   ",
+            "example": "google.com",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "nohup 后台运行",
+      "keyword": "nohup 后台",
+      "description": "在后台运行命令，忽略挂起信号。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "nohup %{命令}% > %{输出文件}% 2>&1 &",
+        "extensions": [
+          {
+            "name": "后台运行脚本",
+            "cmd": "nohup ./script.sh > output.log 2>&1 &",
+            "params": {},
+            "keyword": "nohup 运行脚本"
+          },
+          {
+            "name": "指定输出文件",
+            "cmd": "nohup python app.py > app.log 2>&1 &",
+            "params": {},
+            "keyword": "nohup 输出文件"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "要执行的命令         ",
+            "example": "/home/user/script.sh",
+            "notes": "必填"
+          },
+          "输出文件": {
+            "type": "string",
+            "required": false,
+            "description": "输出日志文件         ",
+            "example": "output.log",
+            "notes": "默认 nohup.out"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "screen 终端会话管理",
+      "keyword": "screen 会话",
+      "description": "终端会话管理器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "screen %{选项}% %{会话名}%",
+        "extensions": [
+          {
+            "name": "创建新会话",
+            "cmd": "screen -S mysession",
+            "params": {},
+            "keyword": "screen 创建"
+          },
+          {
+            "name": "列出会话",
+            "cmd": "screen -ls",
+            "params": {},
+            "keyword": "screen 列表"
+          },
+          {
+            "name": "恢复会话",
+            "cmd": "screen -r mysession",
+            "params": {},
+            "keyword": "screen 恢复"
+          },
+          {
+            "name": "分离会话",
+            "cmd": "screen -d mysession",
+            "params": {},
+            "keyword": "screen 分离"
+          },
+          {
+            "name": "新建窗口",
+            "cmd": "screen",
+            "params": {},
+            "keyword": "screen 新窗口"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "screen 选项      ",
+            "example": "-S",
+            "notes": "可选"
+          },
+          "会话名": {
+            "type": "string",
+            "required": false,
+            "description": "会话名称           ",
+            "example": "mysession",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "tmux 终端复用器",
+      "keyword": "tmux 会话",
+      "description": "终端多路复用器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "tmux %{选项}%",
+        "extensions": [
+          {
+            "name": "创建新会话",
+            "cmd": "tmux new -s mysession",
+            "params": {},
+            "keyword": "tmux 创建会话"
+          },
+          {
+            "name": "列出会话",
+            "cmd": "tmux ls",
+            "params": {},
+            "keyword": "tmux 列表"
+          },
+          {
+            "name": "恢复会话",
+            "cmd": "tmux attach -t mysession",
+            "params": {},
+            "keyword": "tmux 恢复"
+          },
+          {
+            "name": "分离会话",
+            "cmd": "tmux detach",
+            "params": {},
+            "keyword": "tmux 分离"
+          },
+          {
+            "name": "水平分屏",
+            "cmd": "tmux split-window -h",
+            "params": {},
+            "keyword": "tmux 水平分屏"
+          },
+          {
+            "name": "垂直分屏",
+            "cmd": "tmux split-window -v",
+            "params": {},
+            "keyword": "tmux 垂直分屏"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "tmux 选项        ",
+            "example": "new -s session",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "sort 排序",
+      "keyword": "sort 排序",
+      "description": "对文本行进行排序。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "sort %{选项}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "反向排序",
+            "cmd": "sort -r filename",
+            "params": {},
+            "keyword": "sort 反向"
+          },
+          {
+            "name": "数字排序",
+            "cmd": "sort -n filename",
+            "params": {},
+            "keyword": "sort 数字"
+          },
+          {
+            "name": "去重",
+            "cmd": "sort -u filename",
+            "params": {},
+            "keyword": "sort 去重"
+          },
+          {
+            "name": "按列排序",
+            "cmd": "sort -t',' -k2 filename",
+            "params": {},
+            "keyword": "sort 列"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "sort 选项        ",
+            "example": "-r",
+            "notes": "可选"
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要排序的文件路径       ",
+            "example": "/home/user/data.txt",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "uniq 去重",
+      "keyword": "uniq 去重",
+      "description": "显示或忽略重复的行。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "uniq %{选项}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "计数重复行",
+            "cmd": "uniq -c filename",
+            "params": {},
+            "keyword": "uniq 计数"
+          },
+          {
+            "name": "仅显示重复行",
+            "cmd": "uniq -d filename",
+            "params": {},
+            "keyword": "uniq 重复行"
+          },
+          {
+            "name": "忽略比较字段",
+            "cmd": "uniq -f 2 filename",
+            "params": {},
+            "keyword": "uniq 忽略字段"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "uniq 选项        ",
+            "example": "-c",
+            "notes": "可选"
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要处理的文件路径       ",
+            "example": "/home/user/data.txt",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "wc 统计行数",
+      "keyword": "wc 统计",
+      "description": "统计文件的行数、词数和字节数。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "wc %{选项}% %{文件路径}%",
+        "extensions": [
+          {
+            "name": "统计行数",
+            "cmd": "wc -l filename",
+            "params": {},
+            "keyword": "wc 行数"
+          },
+          {
+            "name": "统计词数",
+            "cmd": "wc -w filename",
+            "params": {},
+            "keyword": "wc 词数"
+          },
+          {
+            "name": "统计字符数",
+            "cmd": "wc -c filename",
+            "params": {},
+            "keyword": "wc 字符"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "wc 选项          ",
+            "example": "-l",
+            "notes": "可选"
+          },
+          "文件路径": {
+            "type": "string",
+            "required": true,
+            "description": "要统计的文件路径       ",
+            "example": "/home/user/log.txt",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "useradd 创建用户",
+      "keyword": "useradd 添加用户",
+      "description": "创建新的用户账户。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "useradd %{选项}% %{用户名}%",
+        "extensions": [
+          {
+            "name": "创建用户并创建主目录",
+            "cmd": "useradd -m newuser",
+            "params": {},
+            "keyword": "useradd 主目录"
+          },
+          {
+            "name": "指定用户组",
+            "cmd": "useradd -g groupname username",
+            "params": {},
+            "keyword": "useradd 用户组"
+          },
+          {
+            "name": "指定 shell",
+            "cmd": "useradd -s /bin/bash username",
+            "params": {},
+            "keyword": "useradd shell"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "useradd 选项     ",
+            "example": "-m",
+            "notes": "可选"
+          },
+          "用户名": {
+            "type": "string",
+            "required": true,
+            "description": "新用户名           ",
+            "example": "newuser",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "sudo 以 root 权限执行",
+      "keyword": "sudo 管理员",
+      "description": "以超级用户权限执行命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "sudo %{命令}%",
+        "extensions": [
+          {
+            "name": "以 root 用户运行",
+            "cmd": "sudo su",
+            "params": {},
+            "keyword": "sudo root"
+          },
+          {
+            "name": "编辑系统文件",
+            "cmd": "sudo nano /etc/hosts",
+            "params": {},
+            "keyword": "sudo 编辑"
+          },
+          {
+            "name": "列出权限",
+            "cmd": "sudo -l",
+            "params": {},
+            "keyword": "sudo 权限"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "要执行的命令         ",
+            "example": "apt update",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "ifconfig/ip 网络接口",
+      "keyword": "ifconfig ip 网络",
+      "description": "配置或显示网络接口参数。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "ifconfig %{接口}%",
+        "extensions": [
+          {
+            "name": "显示所有接口",
+            "cmd": "ifconfig -a",
+            "params": {},
+            "keyword": "ifconfig 所有"
+          },
+          {
+            "name": "启用接口",
+            "cmd": "ifconfig eth0 up",
+            "params": {},
+            "keyword": "ifconfig 启用"
+          },
+          {
+            "name": "禁用接口",
+            "cmd": "ifconfig eth0 down",
+            "params": {},
+            "keyword": "ifconfig 禁用"
+          },
+          {
+            "name": "设置 IP",
+            "cmd": "ifconfig eth0 192.168.1.100",
+            "params": {},
+            "keyword": "ifconfig 设置IP"
+          },
+          {
+            "name": "显示 IP 地址",
+            "cmd": "ip addr show",
+            "params": {},
+            "keyword": "ip 地址"
+          },
+          {
+            "name": "显示路由表",
+            "cmd": "ip route show",
+            "params": {},
+            "keyword": "ip 路由"
+          }
+        ],
+        "params": {
+          "接口": {
+            "type": "string",
+            "required": false,
+            "description": "网络接口名称         ",
+            "example": "eth0",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "hostname 主机名",
+      "keyword": "hostname 主机名",
+      "description": "显示或设置主机名。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "hostname %{选项}%",
+        "extensions": [
+          {
+            "name": "显示 IP 地址",
+            "cmd": "hostname -I",
+            "params": {},
+            "keyword": "hostname IP"
+          },
+          {
+            "name": "显示主机名",
+            "cmd": "hostname",
+            "params": {},
+            "keyword": "hostname 显示"
+          },
+          {
+            "name": "设置主机名",
+            "cmd": "hostnamectl set-hostname newname",
+            "params": {},
+            "keyword": "hostname 设置"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "hostname 选项    ",
+            "example": "-I",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "uptime 运行时间",
+      "keyword": "uptime 运行时间",
+      "description": "显示系统运行时间和负载。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "uptime",
+        "extensions": [
+          {
+            "name": "显示当前时间",
+            "cmd": "uptime -s",
+            "params": {},
+            "keyword": "uptime 当前时间"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "uname 系统信息",
+      "keyword": "uname 系统",
+      "description": "显示系统信息。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "uname %{选项}%",
+        "extensions": [
+          {
+            "name": "显示所有信息",
+            "cmd": "uname -a",
+            "params": {},
+            "keyword": "uname 全部"
+          },
+          {
+            "name": "显示内核版本",
+            "cmd": "uname -r",
+            "params": {},
+            "keyword": "uname 内核"
+          },
+          {
+            "name": "显示硬件类型",
+            "cmd": "uname -m",
+            "params": {},
+            "keyword": "uname 硬件"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "uname 选项       ",
+            "example": "-a",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "id 查看用户信息",
+      "keyword": "id 用户信息",
+      "description": "显示用户和组 ID。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "id %{用户名}%",
+        "extensions": [
+          {
+            "name": "显示当前用户",
+            "cmd": "id",
+            "params": {},
+            "keyword": "id 当前"
+          },
+          {
+            "name": "显示指定用户",
+            "cmd": "id username",
+            "params": {},
+            "keyword": "id 指定用户"
+          }
+        ],
+        "params": {
+          "用户名": {
+            "type": "string",
+            "required": false,
+            "description": "用户名            ",
+            "example": "www-data",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "pip Python 包管理",
+      "keyword": "pip Python",
+      "description": "Python 包管理器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "pip %{命令}% %{包名}%",
+        "extensions": [
+          {
+            "name": "安装包",
+            "cmd": "pip install requests",
+            "params": {},
+            "keyword": "pip 安装"
+          },
+          {
+            "name": "安装指定版本",
+            "cmd": "pip install requests==2.28.0",
+            "params": {},
+            "keyword": "pip 版本"
+          },
+          {
+            "name": "升级包",
+            "cmd": "pip install --upgrade requests",
+            "params": {},
+            "keyword": "pip 升级"
+          },
+          {
+            "name": "卸载包",
+            "cmd": "pip uninstall requests",
+            "params": {},
+            "keyword": "pip 卸载"
+          },
+          {
+            "name": "显示已安装包",
+            "cmd": "pip list",
+            "params": {},
+            "keyword": "pip 列表"
+          },
+          {
+            "name": "导出依赖",
+            "cmd": "pip freeze > requirements.txt",
+            "params": {},
+            "keyword": "pip 导出"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "pip 命令         ",
+            "example": "install",
+            "notes": "必填"
+          },
+          "包名": {
+            "type": "string",
+            "required": false,
+            "description": "包名称            ",
+            "example": "requests",
+            "notes": "可选"
+          }
+        }
+      }
+    }
+  ]
+}

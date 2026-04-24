@@ -1,0 +1,477 @@
+{
+  "module": "云平台/AWS-对象存储 S3",
+  "version": "2.0",
+  "description": "AWS S3 存储服务命令行，涵盖AWS S3的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/云平台/",
+      "name": "aws s3 ls 列出存储桶",
+      "keyword": "aws s3 ls 列表",
+      "description": "列出 S3 存储桶。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws s3 ls",
+        "extensions": [
+          {
+            "name": "列出对象",
+            "cmd": "aws s3 ls s3://%{桶名}%/",
+            "params": {
+              "桶名": {
+                "type": "string",
+                "required": true,
+                "description": "存储桶名称          ",
+                "example": "my-bucket",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 ls bucket"
+          },
+          {
+            "name": "递归列出",
+            "cmd": "aws s3 ls s3://%{桶名}% --recursive",
+            "params": {
+              "桶名": {
+                "type": "string",
+                "required": true,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 ls recursive"
+          },
+          {
+            "name": "显示详细信息",
+            "cmd": "aws s3 ls s3://%{桶名}% --human-readable",
+            "params": {
+              "桶名": {
+                "type": "string",
+                "required": true,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 ls human-readable"
+          },
+          {
+            "name": "按前缀过滤",
+            "cmd": "aws s3 ls s3://%{桶名}% --prefix %{前缀}%",
+            "params": {
+              "桶名": {
+                "type": "string",
+                "required": true,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "必填"
+              },
+              "前缀": {
+                "type": "string",
+                "required": true,
+                "description": "对象前缀",
+                "example": "images/",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 ls prefix"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/云平台/",
+      "name": "aws s3 mb 创建存储桶",
+      "keyword": "aws s3 mb 创建桶",
+      "description": "创建 S3 存储桶。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws s3 mb s3://%{桶名}%",
+        "extensions": [
+          {
+            "name": "指定区域创建",
+            "cmd": "aws s3 mb s3://%{桶名}% --region %{区域}%",
+            "params": {
+              "桶名": {
+                "type": "string",
+                "required": true,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "必填"
+              },
+              "区域": {
+                "type": "string",
+                "required": true,
+                "description": "AWS区域",
+                "example": "us-west-2",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 mb region"
+          },
+          {
+            "name": "创建带标签",
+            "cmd": "aws s3 mb s3://%{桶名}% --tag %{标签}%",
+            "params": {
+              "桶名": {
+                "type": "string",
+                "required": true,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "必填"
+              },
+              "标签": {
+                "type": "string",
+                "required": true,
+                "description": "存储桶标签",
+                "example": "environment=production",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 mb tag"
+          }
+        ],
+        "params": {
+          "桶名": {
+            "type": "string",
+            "required": true,
+            "description": "存储桶名称",
+            "example": "my-bucket",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/云平台/",
+      "name": "aws s3 rb 删除存储桶",
+      "keyword": "aws s3 rb 删除桶",
+      "description": "删除 S3 存储桶。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws s3 rb s3://%{桶名}%",
+        "extensions": [
+          {
+            "name": "强制删除(非空桶)",
+            "cmd": "aws s3 rb s3://%{桶名}% --force",
+            "params": {
+              "桶名": {
+                "type": "string",
+                "required": true,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 rb force"
+          },
+          {
+            "name": "指定区域删除",
+            "cmd": "aws s3 rb s3://%{桶名}% --region %{区域}%",
+            "params": {
+              "桶名": {
+                "type": "string",
+                "required": true,
+                "description": "存储桶名称",
+                "example": "my-bucket",
+                "notes": "必填"
+              },
+              "区域": {
+                "type": "string",
+                "required": true,
+                "description": "AWS区域",
+                "example": "us-west-2",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 rb region"
+          }
+        ],
+        "params": {
+          "桶名": {
+            "type": "string",
+            "required": true,
+            "description": "存储桶名称",
+            "example": "my-bucket",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/云平台/",
+      "name": "aws s3 sync 同步文件",
+      "keyword": "aws s3 sync 同步",
+      "description": "同步本地目录与 S3 存储桶。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws s3 sync %{源}% %{目标}%",
+        "extensions": [
+          {
+            "name": "同步并删除目标多余文件",
+            "cmd": "aws s3 sync %{源}% %{目标}% --delete",
+            "params": {
+              "源": {
+                "type": "string",
+                "required": true,
+                "description": "源路径",
+                "example": "./data/",
+                "notes": "必填"
+              },
+              "目标": {
+                "type": "string",
+                "required": true,
+                "description": "目标路径",
+                "example": "s3://my-bucket/data/",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 sync delete"
+          },
+          {
+            "name": "排除文件",
+            "cmd": "aws s3 sync %{源}% %{目标}% --exclude \"%{排除模式}%\"",
+            "params": {
+              "源": {
+                "type": "string",
+                "required": true,
+                "description": "源路径",
+                "example": "./data/",
+                "notes": "必填"
+              },
+              "目标": {
+                "type": "string",
+                "required": true,
+                "description": "目标路径",
+                "example": "s3://my-bucket/data/",
+                "notes": "必填"
+              },
+              "排除模式": {
+                "type": "string",
+                "required": true,
+                "description": "排除模式",
+                "example": "*.tmp",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 sync exclude"
+          },
+          {
+            "name": "只同步指定文件",
+            "cmd": "aws s3 sync %{源}% %{目标}% --include \"%{包含模式}%\"",
+            "params": {
+              "源": {
+                "type": "string",
+                "required": true,
+                "description": "源路径",
+                "example": "./data/",
+                "notes": "必填"
+              },
+              "目标": {
+                "type": "string",
+                "required": true,
+                "description": "目标路径",
+                "example": "s3://my-bucket/data/",
+                "notes": "必填"
+              },
+              "包含模式": {
+                "type": "string",
+                "required": true,
+                "description": "包含模式",
+                "example": "*.jpg",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 sync include"
+          },
+          {
+            "name": "显示进度",
+            "cmd": "aws s3 sync %{源}% %{目标}% --progress",
+            "params": {
+              "源": {
+                "type": "string",
+                "required": true,
+                "description": "源路径",
+                "example": "./data/",
+                "notes": "必填"
+              },
+              "目标": {
+                "type": "string",
+                "required": true,
+                "description": "目标路径",
+                "example": "s3://my-bucket/data/",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 sync progress"
+          },
+          {
+            "name": "存储到S3而非本地",
+            "cmd": "aws s3 sync %{源}% %{目标}% --storage-class %{存储类别}%",
+            "params": {
+              "源": {
+                "type": "string",
+                "required": true,
+                "description": "源路径",
+                "example": "./data/",
+                "notes": "必填"
+              },
+              "目标": {
+                "type": "string",
+                "required": true,
+                "description": "目标路径",
+                "example": "s3://my-bucket/data/",
+                "notes": "必填"
+              },
+              "存储类别": {
+                "type": "string",
+                "required": true,
+                "description": "存储类别",
+                "example": "STANDARD_IA",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 sync storage-class"
+          }
+        ],
+        "params": {
+          "源": {
+            "type": "string",
+            "required": true,
+            "description": "源路径",
+            "example": "./data/",
+            "notes": "必填"
+          },
+          "目标": {
+            "type": "string",
+            "required": true,
+            "description": "目标路径",
+            "example": "s3://my-bucket/data/",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/云平台/",
+      "name": "aws s3 cp 复制文件",
+      "keyword": "aws s3 cp 复制",
+      "description": "复制文件到 S3 或从 S3 复制。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws s3 cp %{源}% %{目标}%",
+        "extensions": [
+          {
+            "name": "递归复制",
+            "cmd": "aws s3 cp %{源}% %{目标}% --recursive",
+            "params": {
+              "源": {
+                "type": "string",
+                "required": true,
+                "description": "源路径            ",
+                "example": "./data/",
+                "notes": "必填"
+              },
+              "目标": {
+                "type": "string",
+                "required": true,
+                "description": "目标路径           ",
+                "example": "s3://my-bucket/data/",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 cp recursive"
+          },
+          {
+            "name": "指定内容类型",
+            "cmd": "aws s3 cp %{源}% %{目标}% --content-type %{内容类型}%",
+            "params": {
+              "源": {
+                "type": "string",
+                "required": true,
+                "description": "源路径",
+                "example": "file.html",
+                "notes": "必填"
+              },
+              "目标": {
+                "type": "string",
+                "required": true,
+                "description": "目标路径",
+                "example": "s3://my-bucket/",
+                "notes": "必填"
+              },
+              "内容类型": {
+                "type": "string",
+                "required": true,
+                "description": "MIME内容类型",
+                "example": "text/html",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 cp content-type"
+          },
+          {
+            "name": "设置缓存控制",
+            "cmd": "aws s3 cp %{源}% %{目标}% --cache-control \"%{缓存控制}%\"",
+            "params": {
+              "源": {
+                "type": "string",
+                "required": true,
+                "description": "源路径",
+                "example": "file.txt",
+                "notes": "必填"
+              },
+              "目标": {
+                "type": "string",
+                "required": true,
+                "description": "目标路径",
+                "example": "s3://my-bucket/",
+                "notes": "必填"
+              },
+              "缓存控制": {
+                "type": "string",
+                "required": true,
+                "description": "缓存控制头",
+                "example": "max-age=3600",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 cp cache-control"
+          },
+          {
+            "name": "加密对象",
+            "cmd": "aws s3 cp %{源}% %{目标}% --sse AES256",
+            "params": {
+              "源": {
+                "type": "string",
+                "required": true,
+                "description": "源路径",
+                "example": "file.txt",
+                "notes": "必填"
+              },
+              "目标": {
+                "type": "string",
+                "required": true,
+                "description": "目标路径",
+                "example": "s3://my-bucket/",
+                "notes": "必填"
+              }
+            },
+            "keyword": "aws s3 cp encrypt"
+          }
+        ],
+        "params": {
+          "源": {
+            "type": "string",
+            "required": true,
+            "description": "源路径            ",
+            "example": "file.txt",
+            "notes": "必填"
+          },
+          "目标": {
+            "type": "string",
+            "required": true,
+            "description": "目标路径           ",
+            "example": "s3://my-bucket/",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

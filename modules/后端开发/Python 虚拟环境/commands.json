@@ -1,0 +1,155 @@
+{
+  "module": "后端开发/Python 虚拟环境",
+  "version": "2.0",
+  "description": "Python 虚拟环境命令集合，涵盖Python 虚拟环境的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/后端开发/",
+      "name": "python -m venv 创建虚拟环境",
+      "keyword": "venv 创建",
+      "description": "创建 Python 虚拟环境。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "python -m venv %{环境名}%",
+        "extensions": [
+          {
+            "name": "指定 Python 版本",
+            "cmd": "python3 -m venv %{环境名}%",
+            "params": {
+              "环境名": {
+                "type": "string",
+                "required": true,
+                "description": "环境名            ",
+                "example": "venv",
+                "notes": "必填"
+              }
+            },
+            "keyword": "venv python3"
+          }
+        ],
+        "params": {
+          "环境名": {
+            "type": "string",
+            "required": true,
+            "description": "虚拟环境目录名        ",
+            "example": "myenv",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/后端开发/",
+      "name": "source activate 激活环境",
+      "keyword": "activate 激活",
+      "description": "激活虚拟环境。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "source %{环境名}%/bin/activate",
+        "extensions": [
+          {
+            "name": "Windows PowerShell 激活",
+            "cmd": "source %{环境名}%/Scripts/activate",
+            "params": {
+              "环境名": {
+                "type": "string",
+                "required": true,
+                "description": "环境目录",
+                "example": "venv",
+                "notes": "必填"
+              }
+            },
+            "keyword": "activate windows powershell"
+          },
+          {
+            "name": "激活并显示环境路径",
+            "cmd": "source %{环境名}%/bin/activate && pwd",
+            "params": {
+              "环境名": {
+                "type": "string",
+                "required": true,
+                "description": "环境目录",
+                "example": "venv",
+                "notes": "必填"
+              }
+            },
+            "keyword": "activate pwd path"
+          },
+          {
+            "name": "激活并检查 Python 版本",
+            "cmd": "source %{环境名}%/bin/activate && python --version",
+            "params": {
+              "环境名": {
+                "type": "string",
+                "required": true,
+                "description": "环境目录",
+                "example": "venv",
+                "notes": "必填"
+              }
+            },
+            "keyword": "activate python version"
+          },
+          {
+            "name": "fish shell 激活",
+            "cmd": "source %{环境名}%/bin/activate.fish",
+            "params": {
+              "环境名": {
+                "type": "string",
+                "required": true,
+                "description": "环境目录",
+                "example": "venv",
+                "notes": "必填"
+              }
+            },
+            "keyword": "activate fish shell"
+          }
+        ],
+        "params": {
+          "环境名": {
+            "type": "string",
+            "required": true,
+            "description": "环境目录",
+            "example": "venv",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/后端开发/",
+      "name": "deactivate 退出环境",
+      "keyword": "deactivate 退出",
+      "description": "退出虚拟环境。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "deactivate",
+        "extensions": [
+          {
+            "name": "退出并显示当前目录",
+            "cmd": "deactivate && pwd",
+            "params": {},
+            "keyword": "deactivate pwd"
+          },
+          {
+            "name": "退出并切换到目录",
+            "cmd": "deactivate && cd %{目录}%",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "目标目录",
+                "example": "/home/user",
+                "notes": "必填"
+              }
+            },
+            "keyword": "deactivate cd"
+          },
+          {
+            "name": "退出后列出当前目录",
+            "cmd": "deactivate && ls",
+            "params": {},
+            "keyword": "deactivate ls"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

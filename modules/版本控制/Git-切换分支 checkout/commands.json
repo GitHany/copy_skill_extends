@@ -1,0 +1,378 @@
+{
+  "module": "版本控制/Git-切换分支 checkout",
+  "version": "2.0",
+  "description": "Git checkout - Switch branches or restore working tree files. Use it when you need to change context, work on a different feature, or discard changes in a file.",
+  "commands": [
+    {
+      "dirPath": "/版本控制/",
+      "name": "git checkout switch branch",
+      "keyword": "git checkout switch",
+      "description": "Switch to an existing branch - your working directory updates to match that branch",
+      "data": {
+        "cmd": "git checkout %{branch}%",
+        "extensions": [
+          {
+            "name": "git checkout previous branch",
+            "description": "Quick switch back to the previous branch",
+            "params": {},
+            "cmd": "git checkout %{branch}%"
+          },
+          {
+            "name": "git checkout to remote branch",
+            "description": "Checkout and track a remote branch",
+            "params": {
+              "remote_branch": {
+                "type": "string",
+                "required": true,
+                "description": "Remote branch to checkout",
+                "example": "origin/feature/login",
+                "notes": "Creates local branch with same name tracking the remote"
+              }
+            },
+            "cmd": "git checkout %{branch}%"
+          }
+        ],
+        "params": {
+          "branch": {
+            "type": "string",
+            "required": true,
+            "description": "Branch name to switch to",
+            "example": "main",
+            "notes": "Branch must exist locally. Use git fetch first if remote-only."
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git checkout create and switch",
+      "keyword": "git checkout new branch",
+      "description": "Create and switch to a new branch in one step - shortcut for git branch + git checkout",
+      "data": {
+        "cmd": "git checkout -b %{new_branch}%",
+        "extensions": [
+          {
+            "name": "git checkout create from remote",
+            "description": "Create branch based on a remote branch",
+            "params": {
+              "new_branch": {
+                "type": "string",
+                "required": true,
+                "description": "New branch name",
+                "example": "feature/dark-mode",
+                "notes": "Will track remote branch"
+              },
+              "remote_branch": {
+                "type": "string",
+                "required": true,
+                "description": "Remote branch to base on",
+                "example": "origin/develop",
+                "notes": "Starting point for new branch"
+              }
+            },
+            "cmd": "git checkout -b %{new_branch}%"
+          },
+          {
+            "name": "git checkout create from commit",
+            "description": "Create and switch to branch at a specific commit",
+            "params": {
+              "new_branch": {
+                "type": "string",
+                "required": true,
+                "description": "New branch name",
+                "example": "debug-issue-123",
+                "notes": "Branch will be at the specified commit"
+              },
+              "commit": {
+                "type": "string",
+                "required": true,
+                "description": "Commit hash to start from",
+                "example": "a1b2c3d",
+                "notes": "Use git log to find commit IDs"
+              }
+            },
+            "cmd": "git checkout -b %{new_branch}%"
+          }
+        ],
+        "params": {
+          "new_branch": {
+            "type": "string",
+            "required": true,
+            "description": "New branch name",
+            "example": "feature/user-auth",
+            "notes": "Creates branch from current HEAD"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git checkout discard file changes",
+      "keyword": "git checkout discard file",
+      "description": "Discard all changes in a specific file - restores file to last commit state",
+      "data": {
+        "cmd": "git checkout -- %{file}%",
+        "extensions": [
+          {
+            "name": "git checkout from HEAD",
+            "description": "Explicitly restore file to last committed state (HEAD)",
+            "params": {
+              "file": {
+                "type": "string",
+                "required": true,
+                "description": "File path to restore",
+                "example": "src/app.js",
+                "notes": "Matches HEAD version"
+              }
+            },
+            "cmd": "git checkout -- %{file}%"
+          },
+          {
+            "name": "git checkout from staging",
+            "description": "Restore file from staging area (index)",
+            "params": {
+              "file": {
+                "type": "string",
+                "required": true,
+                "description": "File to unstage",
+                "example": "config.json",
+                "notes": "Pulls from index instead of HEAD"
+              }
+            },
+            "cmd": "git checkout -- %{file}%"
+          }
+        ],
+        "params": {
+          "file": {
+            "type": "string",
+            "required": true,
+            "description": "File path to discard changes",
+            "example": "src/app.js",
+            "notes": "WARNING: all local changes in this file will be lost"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git checkout restore file",
+      "keyword": "git restore file",
+      "description": "Restore a file to a specific state - newer syntax clearer than git checkout for file operations",
+      "data": {
+        "cmd": "git restore %{file}%",
+        "extensions": [
+          {
+            "name": "git restore to previous version",
+            "description": "Restore file to a specific commit",
+            "params": {
+              "file": {
+                "type": "string",
+                "required": true,
+                "description": "File to restore",
+                "example": "README.md",
+                "notes": "File will match that commit"
+              },
+              "commit": {
+                "type": "string",
+                "required": true,
+                "description": "Commit to restore from",
+                "example": "HEAD~3",
+                "notes": "Can use relative or hash"
+              }
+            },
+            "cmd": "git restore %{file}%"
+          },
+          {
+            "name": "git restore staged file",
+            "description": "Unstage a file while keeping changes",
+            "params": {
+              "file": {
+                "type": "string",
+                "required": true,
+                "description": "File to unstage",
+                "example": "app.js",
+                "notes": "Changes remain in working directory"
+              }
+            },
+            "cmd": "git restore %{file}%"
+          }
+        ],
+        "params": {
+          "file": {
+            "type": "string",
+            "required": true,
+            "description": "File to restore",
+            "example": "config.json",
+            "notes": "Restores to last committed state"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git checkout specific commit",
+      "keyword": "git checkout commit",
+      "description": "Temporarily view repository at a specific commit - enters detached HEAD state",
+      "data": {
+        "cmd": "git checkout %{commit_id}%",
+        "extensions": [
+          {
+            "name": "git checkout tag",
+            "description": "Checkout a tag to view repository at that tag state",
+            "params": {
+              "tag": {
+                "type": "string",
+                "required": true,
+                "description": "Tag name       ",
+                "example": "v1.0.0",
+                "notes": "Tags mark specific versions"
+              }
+            },
+            "cmd": "git checkout %{commit_id}%"
+          },
+          {
+            "name": "git checkout create branch from here",
+            "description": "While in detached HEAD, create a branch to save work",
+            "params": {
+              "new_branch": {
+                "type": "string",
+                "required": true,
+                "description": "Branch name to create",
+                "example": "recovery-branch",
+                "notes": "Do this before switching away to keep commits"
+              }
+            },
+            "cmd": "git checkout %{commit_id}%"
+          }
+        ],
+        "params": {
+          "commit_id": {
+            "type": "string",
+            "required": true,
+            "description": "Commit hash (full or short)",
+            "example": "a1b2c3d",
+            "notes": "Use git log to find commit IDs."
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git checkout paths",
+      "keyword": "git checkout specific paths",
+      "description": "Checkout specific files from another branch - bring single files without switching",
+      "data": {
+        "cmd": "git checkout %{branch}% -- %{paths}%",
+        "extensions": [
+          {
+            "name": "git checkout paths from HEAD",
+            "description": "Restore specific files to their state in the current HEAD commit",
+            "params": {
+              "paths": {
+                "type": "string",
+                "required": true,
+                "description": "File paths to checkout",
+                "example": "src/utils.js README.md",
+                "notes": "Space-separated list of files"
+              }
+            },
+            "cmd": "git checkout HEAD -- %{paths}%"
+          },
+          {
+            "name": "git checkout paths from commit",
+            "description": "Checkout files from a specific commit rather than a branch",
+            "params": {
+              "commit": {
+                "type": "string",
+                "required": true,
+                "description": "Commit to get files from",
+                "example": "a1b2c3d",
+                "notes": "Can use full or short hash"
+              },
+              "paths": {
+                "type": "string",
+                "required": true,
+                "description": "File paths to checkout",
+                "example": "src/utils.js README.md",
+                "notes": "Space-separated list of files"
+              }
+            },
+            "cmd": "git checkout %{commit}% -- %{paths}%"
+          },
+          {
+            "name": "git checkout paths from tag",
+            "description": "Checkout files from a specific tag",
+            "params": {
+              "tag": {
+                "type": "string",
+                "required": true,
+                "description": "Tag name",
+                "example": "v1.0.0",
+                "notes": "Tags mark specific versions"
+              },
+              "paths": {
+                "type": "string",
+                "required": true,
+                "description": "File paths to checkout",
+                "example": "src/utils.js README.md",
+                "notes": "Space-separated list of files"
+              }
+            },
+            "cmd": "git checkout %{tag}% -- %{paths}%"
+          },
+          {
+            "name": "git checkout paths dry run",
+            "description": "Preview which files would be checked out without making changes",
+            "params": {
+              "branch": {
+                "type": "string",
+                "required": true,
+                "description": "Source branch",
+                "example": "main",
+                "notes": "Branch to get file from"
+              },
+              "paths": {
+                "type": "string",
+                "required": true,
+                "description": "File paths to checkout",
+                "example": "src/utils.js README.md",
+                "notes": "Space-separated list of files"
+              }
+            },
+            "cmd": "git checkout --dry-run %{branch}% -- %{paths}%"
+          },
+          {
+            "name": "git checkout paths from staging",
+            "description": "Restore files from staging area instead of from a branch commit",
+            "params": {
+              "paths": {
+                "type": "string",
+                "required": true,
+                "description": "File paths to checkout",
+                "example": "src/utils.js README.md",
+                "notes": "Space-separated list of files"
+              }
+            },
+            "cmd": "git checkout HEAD -- %{paths}%"
+          }
+        ],
+        "params": {
+          "branch": {
+            "type": "string",
+            "required": true,
+            "description": "Source branch",
+            "example": "main",
+            "notes": "Branch to get file from"
+          },
+          "paths": {
+            "type": "string",
+            "required": true,
+            "description": "File paths to checkout",
+            "example": "src/utils.js README.md",
+            "notes": "Space-separated list of files"
+          }
+        }
+      }
+    }
+  ]
+}

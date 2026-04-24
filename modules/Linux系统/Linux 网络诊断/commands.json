@@ -1,0 +1,483 @@
+{
+  "module": "Linux系统/Linux 网络诊断",
+  "version": "2.0",
+  "description": "Linux 网络诊断命令集合，涵盖Linux 网络诊断的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Linux系统/",
+      "name": "ping 测试连通性",
+      "keyword": "ping 连通性",
+      "description": "测试网络主机连通性。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "ping %{主机}%",
+        "extensions": [
+          {
+            "name": "指定次数",
+            "cmd": "ping -c %{次数}% %{主机}%",
+            "params": {
+              "次数": {
+                "type": "string",
+                "required": true,
+                "description": "ping 次数        ",
+                "example": "4",
+                "notes": "必填"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "目标主机           ",
+                "example": "8.8.8.8",
+                "notes": "必填"
+              }
+            },
+            "keyword": "ping count"
+          },
+          {
+            "name": "指定时间间隔",
+            "cmd": "ping -i %{间隔}% %{主机}%",
+            "params": {
+              "间隔": {
+                "type": "string",
+                "required": true,
+                "description": "间隔（秒）",
+                "example": "2",
+                "notes": "必填"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "目标主机",
+                "example": "8.8.8.8",
+                "notes": "必填"
+              }
+            },
+            "keyword": "ping interval"
+          },
+          {
+            "name": "持续ping直到中断",
+            "cmd": "ping %{主机}%",
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "目标主机",
+                "example": "8.8.8.8",
+                "notes": "必填"
+              }
+            },
+            "keyword": "ping continuous"
+          },
+          {
+            "name": "显示详细输出",
+            "cmd": "ping -v %{主机}%",
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "目标主机",
+                "example": "8.8.8.8",
+                "notes": "必填"
+              }
+            },
+            "keyword": "ping verbose"
+          }
+        ],
+        "params": {
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "目标主机或 IP       ",
+            "example": "google.com",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "traceroute 路由追踪",
+      "keyword": "traceroute 路由",
+      "description": "追踪数据包路由。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "traceroute %{主机}%",
+        "extensions": [
+          {
+            "name": "使用ICMP协议",
+            "cmd": "traceroute -I %{主机}%",
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "目标主机",
+                "example": "google.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "traceroute icmp"
+          },
+          {
+            "name": "指定最大跳数",
+            "cmd": "traceroute -m %{跳数}% %{主机}%",
+            "params": {
+              "跳数": {
+                "type": "string",
+                "required": true,
+                "description": "最大跳数",
+                "example": "30",
+                "notes": "必填"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "目标主机",
+                "example": "google.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "traceroute hops"
+          },
+          {
+            "name": "使用UDP协议",
+            "cmd": "traceroute %{主机}%",
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "目标主机",
+                "example": "google.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "traceroute udp"
+          }
+        ],
+        "params": {
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "目标主机           ",
+            "example": "google.com",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "nslookup DNS 查询",
+      "keyword": "nslookup DNS",
+      "description": "查询 DNS 记录。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "nslookup %{域名}%",
+        "extensions": [
+          {
+            "name": "指定DNS服务器查询",
+            "cmd": "nslookup %{域名}% %{DNS服务器}%",
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": true,
+                "description": "域名",
+                "example": "google.com",
+                "notes": "必填"
+              },
+              "DNS服务器": {
+                "type": "string",
+                "required": true,
+                "description": "DNS服务器",
+                "example": "8.8.8.8",
+                "notes": "必填"
+              }
+            },
+            "keyword": "nslookup server"
+          },
+          {
+            "name": "查询MX记录",
+            "cmd": "nslookup -type=mx %{域名}%",
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": true,
+                "description": "域名",
+                "example": "google.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "nslookup mx"
+          },
+          {
+            "name": "查询NS记录",
+            "cmd": "nslookup -type=ns %{域名}%",
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": true,
+                "description": "域名",
+                "example": "google.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "nslookup ns"
+          }
+        ],
+        "params": {
+          "域名": {
+            "type": "string",
+            "required": true,
+            "description": "域名             ",
+            "example": "google.com",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Linux系统/",
+      "name": "dig DNS 查询",
+      "keyword": "dig DNS",
+      "description": "详细 DNS 查询。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "dig %{域名}%",
+        "extensions": [
+          {
+            "name": "指定 DNS 服务器",
+            "cmd": "dig @%{DNS}% %{域名}%",
+            "params": {
+              "DNS": {
+                "type": "string",
+                "required": true,
+                "description": "DNS 服务器        ",
+                "example": "8.8.8.8",
+                "notes": "必填"
+              },
+              "域名": {
+                "type": "string",
+                "required": true,
+                "description": "域名             ",
+                "example": "example.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "dig server"
+          },
+          {
+            "name": "查询MX记录",
+            "cmd": "dig %{域名}% mx",
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": true,
+                "description": "域名",
+                "example": "google.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "dig mx"
+          },
+          {
+            "name": "查询TXT记录",
+            "cmd": "dig %{域名}% txt",
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": true,
+                "description": "域名",
+                "example": "google.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "dig txt"
+          },
+          {
+            "name": "简短输出",
+            "cmd": "dig +short %{域名}%",
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": true,
+                "description": "域名",
+                "example": "google.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "dig short"
+          }
+        ],
+        "params": {
+          "域名": {
+            "type": "string",
+            "required": true,
+            "description": "要查询的域名         ",
+            "example": "google.com",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "cmd": "netstat",
+      "extensions": [
+        {
+          "name": "显示所有端口",
+          "cmd": "netstat -a",
+          "params": {},
+          "keyword": "netstat all"
+        },
+        {
+          "name": "显示TCP端口",
+          "cmd": "netstat -at",
+          "params": {},
+          "keyword": "netstat tcp"
+        },
+        {
+          "name": "显示UDP端口",
+          "cmd": "netstat -au",
+          "params": {},
+          "keyword": "netstat udp"
+        },
+        {
+          "name": "显示监听端口",
+          "cmd": "netstat -l",
+          "params": {},
+          "keyword": "netstat listening"
+        },
+        {
+          "name": "显示进程ID和程序",
+          "cmd": "netstat -tp",
+          "params": {},
+          "keyword": "netstat process"
+        },
+        {
+          "name": "显示路由表",
+          "cmd": "netstat -r",
+          "params": {},
+          "keyword": "netstat route"
+        },
+        {
+          "name": "持续显示网络统计",
+          "cmd": "netstat -c %{间隔}%",
+          "params": {
+            "间隔": {
+              "type": "string",
+              "required": true,
+              "description": "刷新间隔（秒）",
+              "example": "5",
+              "notes": "必填"
+            }
+          },
+          "keyword": "netstat continuous"
+        },
+        {
+          "name": "显示网络接口信息",
+          "cmd": "netstat -i",
+          "params": {},
+          "keyword": "netstat interface"
+        },
+        {
+          "name": "显示端口统计",
+          "cmd": "netstat -s",
+          "params": {},
+          "keyword": "netstat statistics"
+        },
+        {
+          "name": "显示内核路由表",
+          "cmd": "netstat -rn",
+          "params": {},
+          "keyword": "netstat route numeric"
+        },
+        {
+          "name": "显示所有连接（带进程）",
+          "cmd": "netstat -antp",
+          "params": {},
+          "keyword": "netstat all tcp process"
+        },
+        {
+          "name": "显示网络接口统计",
+          "cmd": "netstat -ie",
+          "params": {},
+          "keyword": "netstat interface extended"
+        },
+        {
+          "name": "显示端口占用",
+          "cmd": "netstat -tulpn | grep %{端口}%",
+          "params": {
+            "端口": {
+              "type": "string",
+              "required": true,
+              "description": "端口号",
+              "example": "80",
+              "notes": "必填"
+            }
+          },
+          "keyword": "netstat port"
+        },
+        {
+          "name": "显示TCP连接状态统计",
+          "cmd": "netstat -ant | awk '/^tcp/ {S[$NF]++} END {for(a in S) print a, S[a]}'",
+          "params": {},
+          "keyword": "netstat tcp state"
+        },
+        {
+          "name": "显示网络连接排名前10",
+          "cmd": "netstat -ant | grep ESTABLISHED | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -rn | head -10",
+          "params": {},
+          "keyword": "netstat connections top"
+        },
+        {
+          "name": "显示Unix套接字",
+          "cmd": "netstat -ax",
+          "params": {},
+          "keyword": "netstat unix socket"
+        },
+        {
+          "name": "显示组播成员信息",
+          "cmd": "netstat -g",
+          "params": {},
+          "keyword": "netstat multicast"
+        },
+        {
+          "name": "显示TCP和UDP统计",
+          "cmd": "netstat -stu",
+          "params": {},
+          "keyword": "netstat stats tcp udp"
+        },
+        {
+          "name": "显示未完成的连接",
+          "cmd": "netstat -ant | awk '/^tcp/ && /UNCONN/ {S[$NF]++} END {for(a in S) print a, S[a]}'",
+          "params": {},
+          "keyword": "netstat unconnected"
+        },
+        {
+          "name": "显示进程占用端口",
+          "cmd": "lsof -i :%{端口}%",
+          "params": {
+            "端口": {
+              "type": "string",
+              "required": true,
+              "description": "端口号",
+              "example": "80",
+              "notes": "必填"
+            }
+          },
+          "keyword": "netstat port process"
+        },
+        {
+          "name": "显示网络连接数统计",
+          "cmd": "netstat -n | awk '/^tcp/ {S[$NF]++} END {for(a in S) print a, S[a]}'",
+          "params": {},
+          "keyword": "netstat connection count"
+        }
+      ],
+      "params": {},
+      "dirPath": "/Linux系统/",
+      "name": "netstat 网络统计",
+      "keyword": "netstat 网络",
+      "description": "netstat 显示网络连接、路由表和接口统计",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

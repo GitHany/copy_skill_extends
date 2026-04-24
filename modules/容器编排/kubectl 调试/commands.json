@@ -1,0 +1,199 @@
+{
+  "module": "容器编排/kubectl 调试",
+  "version": "2.0",
+  "description": "kubectl 调试命令集合，涵盖kubectl 调试的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl debug 调试 Pod",
+      "keyword": "kubectl debug 调试",
+      "description": "调试 Pod。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl debug %{Pod名称}% -it --image=%{镜像}%",
+        "extensions": [
+          {
+            "name": "在新容器中调试",
+            "cmd": "kubectl debug %{Pod名称}% -it --image=%{镜像}% --share-processes --copy-to=%{新容器名}%",
+            "params": {
+              "Pod名称": {
+                "type": "string",
+                "required": true,
+                "description": "Pod 名称",
+                "example": "my-pod",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "调试镜像",
+                "example": "busybox",
+                "notes": "必填"
+              },
+              "新容器名": {
+                "type": "string",
+                "required": true,
+                "description": "新容器名称",
+                "example": "debugger",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl debug share-processes"
+          },
+          {
+            "name": "复制文件到 Pod",
+            "cmd": "kubectl debug %{Pod名称}% -it --image=%{镜像}% --copy-to=%{目标Pod}%",
+            "params": {
+              "Pod名称": {
+                "type": "string",
+                "required": true,
+                "description": "Pod 名称",
+                "example": "my-pod",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "调试镜像",
+                "example": "busybox",
+                "notes": "必填"
+              },
+              "目标Pod": {
+                "type": "string",
+                "required": true,
+                "description": "目标 Pod 名",
+                "example": "my-pod-debug",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl debug copy"
+          },
+          {
+            "name": "指定命名空间调试",
+            "cmd": "kubectl debug %{Pod名称}% -it --image=%{镜像}% -n %{命名空间}%",
+            "params": {
+              "Pod名称": {
+                "type": "string",
+                "required": true,
+                "description": "Pod 名称",
+                "example": "my-pod",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "调试镜像",
+                "example": "busybox",
+                "notes": "必填"
+              },
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间",
+                "example": "default",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl debug namespace"
+          },
+          {
+            "name": "使用 root 权限调试",
+            "cmd": "kubectl debug %{Pod名称}% -it --image=%{镜像}% --privileged",
+            "params": {
+              "Pod名称": {
+                "type": "string",
+                "required": true,
+                "description": "Pod 名称",
+                "example": "my-pod",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "调试镜像",
+                "example": "busybox",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl debug privileged"
+          }
+        ],
+        "params": {
+          "Pod名称": {
+            "type": "string",
+            "required": true,
+            "description": "Pod 名称         ",
+            "example": "my-pod",
+            "notes": "必填"
+          },
+          "镜像": {
+            "type": "string",
+            "required": true,
+            "description": "调试镜像           ",
+            "example": "busybox",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl events 查看事件",
+      "keyword": "kubectl events 事件",
+      "description": "查看集群事件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl get events --sort-by=.lastTimestamp",
+        "extensions": [
+          {
+            "name": "查看指定命名空间事件",
+            "cmd": "kubectl get events -n %{命名空间}% --sort-by=.lastTimestamp",
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间",
+                "example": "default",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl events namespace"
+          },
+          {
+            "name": "查看错误事件",
+            "cmd": "kubectl get events --sort-by=.lastTimestamp | grep -i error",
+            "params": {},
+            "keyword": "kubectl events error"
+          },
+          {
+            "name": "查看最近 N 条事件",
+            "cmd": "kubectl get events --sort-by=.lastTimestamp --limit=%{数量}%",
+            "params": {
+              "数量": {
+                "type": "string",
+                "required": true,
+                "description": "事件数量",
+                "example": "20",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl events limit"
+          },
+          {
+            "name": "查看 Pod 相关事件",
+            "cmd": "kubectl get events --sort-by=.lastTimestamp | grep %{Pod名称}%",
+            "params": {
+              "Pod名称": {
+                "type": "string",
+                "required": true,
+                "description": "Pod 名称",
+                "example": "my-pod",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl events pod"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

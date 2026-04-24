@@ -1,0 +1,160 @@
+{
+  "module": "容器编排/Docker-重命名 rename",
+  "version": "2.0",
+  "description": "给 Docker 容器改个名字。很简单的命令，但很有用！当你的容器名字乱糟糟的想整理、或者容器用途变了需要新名字时用。常见场景：统一命名规范、重命名测试容器、给容器起有意义的名字。",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker rename 重命名容器",
+      "keyword": "docker rename 重命名",
+      "description": "给容器改个好记的名字（新手友好）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker rename %{旧名}% %{新名}%",
+        "extensions": [
+          {
+            "name": "docker rename 按项目规范重命名",
+            "description": "按统一格式重命名容器                    ",
+            "params": {
+              "旧名": {
+                "type": "string",
+                "required": true,
+                "description": "当前容器名          ",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "新名": {
+                "type": "string",
+                "required": true,
+                "description": "新容器名           ",
+                "example": "myapp-prod",
+                "notes": "建议格式：项目名-环境"
+              }
+            },
+            "cmd": "docker rename %{旧名}% %{新名}%"
+          },
+          {
+            "name": "docker rename 运行时重命名",
+            "description": "对正在运行的容器进行重命名（不需要停止）          ",
+            "params": {
+              "旧名": {
+                "type": "string",
+                "required": true,
+                "description": "当前容器名          ",
+                "example": "webapp",
+                "notes": "必填：运行时可改名"
+              },
+              "新名": {
+                "type": "string",
+                "required": true,
+                "description": "新容器名           ",
+                "example": "webapp-v2",
+                "notes": "必填"
+              }
+            },
+            "cmd": "docker rename %{旧名}% %{新名}%"
+          },
+          {
+            "name": "docker rename 批量重命名",
+            "description": "按前缀批量重命名多个容器                  ",
+            "params": {
+              "容器名前缀": {
+                "type": "string",
+                "required": true,
+                "description": "要重命名的容器前缀      ",
+                "example": "test-",
+                "notes": "会重命名所有匹配项"
+              },
+              "新前缀": {
+                "type": "string",
+                "required": true,
+                "description": "新前缀            ",
+                "example": "prod-",
+                "notes": "替换后的前缀"
+              }
+            },
+            "cmd": "docker rename %{旧名}% %{新名}%"
+          },
+          {
+            "name": "docker rename 查看容器当前名字",
+            "description": "重命名前先看看容器叫什么                  ",
+            "params": {
+              "容器ID或名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器 ID 或名称      ",
+                "example": "abc123",
+                "notes": "可以用 ID 前几位"
+              }
+            },
+            "cmd": "docker rename %{旧名}% %{新名}%"
+          },
+          {
+            "name": "docker rename 检查名称是否占用",
+            "description": "重命名前检查新名字是否已被使用               ",
+            "params": {
+              "新名字": {
+                "type": "string",
+                "required": true,
+                "description": "想用的新名字         ",
+                "example": "myapp-prod",
+                "notes": "如果已占用会报错"
+              }
+            },
+            "cmd": "docker rename %{旧名}% %{新名}%"
+          },
+          {
+            "name": "docker rename 停止后重命名",
+            "description": "先停止容器再重命名（更安全）                ",
+            "params": {
+              "容器名": {
+                "type": "string",
+                "required": true,
+                "description": "容器名            ",
+                "example": "myapp",
+                "notes": "确保容器已停止"
+              },
+              "新名字": {
+                "type": "string",
+                "required": true,
+                "description": "新名字            ",
+                "example": "myapp-v2",
+                "notes": "必填"
+              }
+            },
+            "cmd": "docker rename %{旧名}% %{新名}%"
+          },
+          {
+            "name": "docker rename 重命名后验证",
+            "description": "确认重命名是否成功                     ",
+            "params": {
+              "新名字": {
+                "type": "string",
+                "required": true,
+                "description": "刚改的新名字         ",
+                "example": "myapp-prod",
+                "notes": "确认容器还在运行"
+              }
+            },
+            "cmd": "docker rename %{旧名}% %{新名}%"
+          }
+        ],
+        "params": {
+          "旧名": {
+            "type": "string",
+            "required": true,
+            "description": "旧名             ",
+            "example": "myapp",
+            "notes": "必填"
+          },
+          "新名": {
+            "type": "string",
+            "required": true,
+            "description": "新名             ",
+            "example": "newapp",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

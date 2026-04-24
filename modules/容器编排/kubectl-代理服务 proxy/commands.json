@@ -1,0 +1,118 @@
+{
+  "module": "容器编排/kubectl-代理服务 proxy",
+  "version": "2.0",
+  "description": "kubectl API 代理，涵盖kubectl proxy的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl proxy 启动代理",
+      "keyword": "kubectl proxy 代理",
+      "description": "启动 Kubernetes API 代理。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl proxy --port=%{端口}%",
+        "extensions": [
+          {
+            "name": "指定端口启动代理",
+            "cmd": "kubectl proxy --port=%{端口}%",
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "代理端口",
+                "example": "8888",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl proxy port"
+          },
+          {
+            "name": "静态文件服务",
+            "cmd": "kubectl proxy --www=%{目录}% --port=%{端口}%",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "静态文件目录",
+                "example": "./static",
+                "notes": "必填"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口",
+                "example": "8001",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl proxy static"
+          },
+          {
+            "name": "禁用Swagger UI",
+            "cmd": "kubectl proxy --port=%{端口}% --omit-headers=kubernetes.io/docs",
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口",
+                "example": "8001",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl proxy disable swagger"
+          },
+          {
+            "name": "指定地址监听",
+            "cmd": "kubectl proxy --address=%{地址}% --port=%{端口}%",
+            "params": {
+              "地址": {
+                "type": "string",
+                "required": true,
+                "description": "监听地址",
+                "example": "0.0.0.0",
+                "notes": "必填"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口",
+                "example": "8001",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl proxy address"
+          },
+          {
+            "name": "API前缀路径",
+            "cmd": "kubectl proxy --prefix=%{前缀}% --port=%{端口}%",
+            "params": {
+              "前缀": {
+                "type": "string",
+                "required": true,
+                "description": "URL前缀",
+                "example": "/api",
+                "notes": "必填"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口",
+                "example": "8001",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl proxy prefix"
+          }
+        ],
+        "params": {
+          "端口": {
+            "type": "string",
+            "required": false,
+            "description": "端口             ",
+            "example": "8001",
+            "notes": "可选"
+          }
+        }
+      }
+    }
+  ]
+}

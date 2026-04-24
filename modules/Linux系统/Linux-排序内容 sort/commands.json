@@ -1,0 +1,128 @@
+{
+  "module": "Linux系统/Linux-排序内容 sort",
+  "version": "2.0",
+  "description": "Linux sort 文本排序命令。对文本文件的行进行排序，支持字母、数字、倒序、多键排序。用于整理数据、配置文件、日志分析。是数据处理和报告生成的常用工具。",
+  "commands": [
+    {
+      "dirPath": "/Linux系统/",
+      "name": "sort 排序",
+      "keyword": "sort 排序",
+      "description": "对文本行排序。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "sort %{文件}%",
+        "extensions": [
+          {
+            "name": "按字母排序",
+            "description": "对文本行按字母顺序排序                   ",
+            "params": {
+              "文件": {
+                "example": "names.txt",
+                "notes": "文件",
+                "description": "               "
+              }
+            },
+            "cmd": "sort %{文件}%"
+          },
+          {
+            "name": "数字排序",
+            "description": "按数字大小排序而非字典序                  ",
+            "params": {
+              "文件": {
+                "example": "scores.txt",
+                "notes": "文件",
+                "description": "               "
+              }
+            },
+            "cmd": "sort -n %{文件}%"
+          },
+          {
+            "name": "倒序排序",
+            "description": "从大到小或Z到A反向排序                  ",
+            "params": {
+              "文件": {
+                "example": "data.txt",
+                "notes": "文件",
+                "description": "               "
+              }
+            },
+            "cmd": "sort -r %{文件}%"
+          },
+          {
+            "name": "去重排序",
+            "description": "排序后移除重复行                      ",
+            "params": {
+              "文件": {
+                "example": "all_ids.txt",
+                "notes": "文件",
+                "description": "               "
+              }
+            },
+            "cmd": "sort -u %{文件}%"
+          },
+          {
+            "name": "按特定列排序",
+            "description": "按第几列的内容进行排序                   ",
+            "params": {
+              "列": {
+                "example": "2",
+                "notes": "列号",
+                "description": "               "
+              },
+              "文件": {
+                "example": "table.csv",
+                "notes": "文件",
+                "description": "               "
+              }
+            },
+            "cmd": "sort -k%{列}% %{文件}%"
+          },
+          {
+            "name": "忽略开头空格",
+            "description": "排序时忽略行首的空白字符                  ",
+            "params": {
+              "文件": {
+                "example": "data.txt",
+                "notes": "文件",
+                "description": "               "
+              }
+            },
+            "cmd": "sort -b %{文件}%"
+          },
+          {
+            "name": "数值倒序",
+            "description": "按数值大小倒序排列                     ",
+            "params": {
+              "文件": {
+                "example": "sales.txt",
+                "notes": "文件",
+                "description": "               "
+              }
+            },
+            "cmd": "sort -rn %{文件}%"
+          },
+          {
+            "name": "随机排序",
+            "description": "打乱行顺序，随机排列                    ",
+            "params": {
+              "文件": {
+                "example": "candidates.txt",
+                "notes": "文件",
+                "description": "               "
+              }
+            },
+            "cmd": "sort -R %{文件}%"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "文件             ",
+            "example": "data.txt",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

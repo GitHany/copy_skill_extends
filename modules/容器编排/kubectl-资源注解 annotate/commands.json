@@ -1,0 +1,181 @@
+{
+  "module": "容器编排/kubectl-资源注解 annotate",
+  "version": "2.0",
+  "description": "kubectl 注解管理，涵盖kubectl annotate的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl annotate 设置注解",
+      "keyword": "kubectl annotate 注解",
+      "description": "给资源添加注解。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl annotate %{类型}% %{名称}% %{键}%=\"%{值}%\"",
+        "extensions": [
+          {
+            "name": "覆盖已有注解",
+            "cmd": "kubectl annotate %{类型}% %{名称}% %{键}%=\"%{值}%\" --overwrite",
+            "params": {
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "类型",
+                "example": "pod",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "名",
+                "example": "my-pod",
+                "notes": "必填"
+              },
+              "键": {
+                "type": "string",
+                "required": true,
+                "description": "键",
+                "example": "description",
+                "notes": "必填"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "值",
+                "example": "Updated description",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl annotate overwrite"
+          },
+          {
+            "name": "删除注解",
+            "cmd": "kubectl annotate %{类型}% %{名称}% %{键}-",
+            "params": {
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "类型",
+                "example": "deployment",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "名",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "键": {
+                "type": "string",
+                "required": true,
+                "description": "要删除的注解键",
+                "example": "description",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl annotate remove"
+          },
+          {
+            "name": "查看资源注解",
+            "cmd": "kubectl annotate %{类型}% %{名称}% --list",
+            "params": {
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "类型",
+                "example": "pod",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "名",
+                "example": "my-pod",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl annotate list"
+          },
+          {
+            "name": "添加多个注解",
+            "cmd": "kubectl annotate %{类型}% %{名称}% %{键1}%=\"%{值1}%\" %{键2}%=\"%{值2}%\"",
+            "params": {
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "类型",
+                "example": "configmap",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "名",
+                "example": "my-config",
+                "notes": "必填"
+              },
+              "键1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个注解键",
+                "example": "version",
+                "notes": "必填"
+              },
+              "值1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个注解值",
+                "example": "v1.0",
+                "notes": "必填"
+              },
+              "键2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个注解键",
+                "example": "owner",
+                "notes": "必填"
+              },
+              "值2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个注解值",
+                "example": "team-a",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl annotate multiple"
+          }
+        ],
+        "params": {
+          "类型": {
+            "type": "string",
+            "required": true,
+            "description": "类型             ",
+            "example": "pod",
+            "notes": "必填"
+          },
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "名              ",
+            "example": "my-pod",
+            "notes": "必填"
+          },
+          "键": {
+            "type": "string",
+            "required": true,
+            "description": "键              ",
+            "example": "description",
+            "notes": "必填"
+          },
+          "值": {
+            "type": "string",
+            "required": true,
+            "description": "值              ",
+            "example": "Production app",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

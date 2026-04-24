@@ -1,0 +1,371 @@
+{
+  "module": "Linux系统/Linux 系统管理",
+  "version": "2.0",
+  "description": "Linux 系统管理命令集合，涵盖Linux 系统管理的常用操作和最佳实践",
+  "commands": [
+    {
+      "name": "停止服务",
+      "cmd": "systemctl stop %{服务}%",
+      "params": {
+        "服务": {
+          "type": "string",
+          "required": true,
+          "description": "服务名称",
+          "example": "nginx",
+          "notes": "必填"
+        }
+      },
+      "keyword": "systemctl stop",
+      "dirPath": "/Linux系统/",
+      "description": "停止服务的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "name": "停止服务并禁用开机启动",
+            "cmd": "systemctl stop %{服务}% && systemctl disable %{服务}%",
+            "params": {
+              "服务": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "systemctl stop disable"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "name": "重启服务",
+      "cmd": "systemctl restart %{服务}%",
+      "params": {
+        "服务": {
+          "type": "string",
+          "required": true,
+          "description": "服务名称",
+          "example": "nginx",
+          "notes": "必填"
+        }
+      },
+      "keyword": "systemctl restart",
+      "dirPath": "/Linux系统/",
+      "description": "重启服务的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "name": "重载配置后重启",
+            "cmd": "systemctl reload %{服务}% && systemctl restart %{服务}%",
+            "params": {
+              "服务": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "systemctl reload restart"
+          },
+          {
+            "name": "强制重启",
+            "cmd": "systemctl restart --force %{服务}%",
+            "params": {
+              "服务": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "systemctl force restart"
+          },
+          {
+            "name": "查看重启状态",
+            "cmd": "systemctl status %{服务}%",
+            "params": {
+              "服务": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "systemctl restart status"
+          },
+          {
+            "name": "重启所有服务",
+            "cmd": "systemctl restart --all",
+            "params": {},
+            "keyword": "systemctl restart all"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "name": "查看状态",
+      "cmd": "systemctl status %{服务}%",
+      "params": {
+        "服务": {
+          "type": "string",
+          "required": true,
+          "description": "服务名称",
+          "example": "nginx",
+          "notes": "必填"
+        }
+      },
+      "keyword": "systemctl status",
+      "dirPath": "/Linux系统/",
+      "description": "查看状态的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "name": "查看状态并跟随日志",
+            "cmd": "systemctl status %{服务}% -f",
+            "params": {
+              "服务": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "systemctl status follow"
+          },
+          {
+            "name": "查看激活的单元文件",
+            "cmd": "systemctl list-units --type=service --state=active",
+            "params": {},
+            "keyword": "systemctl list active"
+          },
+          {
+            "name": "查看失败的单元",
+            "cmd": "systemctl --failed --type=service",
+            "params": {},
+            "keyword": "systemctl failed"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "name": "启用开机启动",
+      "cmd": "systemctl enable %{服务}%",
+      "params": {
+        "服务": {
+          "type": "string",
+          "required": true,
+          "description": "服务名称",
+          "example": "nginx",
+          "notes": "必填"
+        }
+      },
+      "keyword": "systemctl enable",
+      "dirPath": "/Linux系统/",
+      "description": "启用开机启动的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "name": "禁用开机启动",
+            "cmd": "systemctl disable %{服务}%",
+            "params": {
+              "服务": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "systemctl disable"
+          },
+          {
+            "name": "查看服务依赖",
+            "cmd": "systemctl list-dependencies %{服务}%",
+            "params": {
+              "服务": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "systemctl dependencies"
+          },
+          {
+            "name": "查看是否开机启用",
+            "cmd": "systemctl is-enabled %{服务}%",
+            "params": {
+              "服务": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "systemctl is-enabled"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "name": "查看最近日志",
+      "cmd": "journalctl -n %{数量}% -u %{服务}%",
+      "params": {
+        "数量": {
+          "type": "string",
+          "required": true,
+          "description": "日志条数",
+          "example": "50",
+          "notes": "必填"
+        },
+        "服务": {
+          "type": "string",
+          "required": true,
+          "description": "服务名称",
+          "example": "nginx",
+          "notes": "必填"
+        }
+      },
+      "keyword": "journalctl lines",
+      "dirPath": "/Linux系统/",
+      "description": "查看最近日志的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "name": "查看今天日志",
+            "cmd": "journalctl --since today -u %{服务}%",
+            "params": {
+              "服务": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "journalctl today"
+          },
+          {
+            "name": "查看错误级别日志",
+            "cmd": "journalctl -p err -u %{服务}%",
+            "params": {
+              "服务": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "journalctl error"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "name": "service 服务管理",
+      "cmd": "service %{服务}% %{操作}%",
+      "params": {
+        "服务": {
+          "type": "string",
+          "required": true,
+          "description": "服务名称",
+          "example": "nginx",
+          "notes": "必填"
+        },
+        "操作": {
+          "type": "string",
+          "required": true,
+          "description": "操作（start/stop/restart/status）",
+          "example": "status",
+          "notes": "必填"
+        }
+      },
+      "keyword": "service 服务",
+      "dirPath": "/Linux系统/",
+      "description": "service 命令用于管理系统服务",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "name": "查看所有运行的服务",
+            "cmd": "service --status-all",
+            "params": {},
+            "keyword": "service status all"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "name": "crontab 定时任务",
+      "cmd": "crontab %{操作}%",
+      "params": {
+        "操作": {
+          "type": "string",
+          "required": true,
+          "description": "操作（-e编辑/-l查看/-r删除）",
+          "example": "-l",
+          "notes": "必填"
+        }
+      },
+      "keyword": "crontab 定时",
+      "dirPath": "/Linux系统/",
+      "description": "crontab 用于管理定时任务",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "name": "编辑定时任务",
+            "cmd": "crontab -e",
+            "params": {},
+            "keyword": "crontab edit"
+          },
+          {
+            "name": "查看当前用户定时任务",
+            "cmd": "crontab -l",
+            "params": {},
+            "keyword": "crontab list"
+          },
+          {
+            "name": "删除所有定时任务",
+            "cmd": "crontab -r",
+            "params": {},
+            "keyword": "crontab remove"
+          },
+          {
+            "name": "指定用户查看定时任务",
+            "cmd": "crontab -u %{用户}% -l",
+            "params": {
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "root",
+                "notes": "必填"
+              }
+            },
+            "keyword": "crontab user"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

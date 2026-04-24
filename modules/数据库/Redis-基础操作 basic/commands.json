@@ -1,0 +1,657 @@
+{
+  "module": "数据库/Redis-基础操作 basic",
+  "version": "1.0",
+  "description": "Redis 基本操作命令集合，涵盖Redis-基本操作的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/数据库/",
+      "name": "redis ping 测试连接",
+      "keyword": "redis ping",
+      "description": "测试 Redis 连接是否正常。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "redis-cli ping",
+        "extensions": [
+          {
+            "name": "带密码连接",
+            "cmd": "redis-cli -a %{密码}% ping",
+            "params": {
+              "密码": {
+                "type": "string",
+                "required": true,
+                "description": "Redis 密码       ",
+                "example": "yourpassword",
+                "notes": "可选"
+              }
+            },
+            "keyword": "redis 密码"
+          },
+          {
+            "name": "指定主机连接",
+            "cmd": "redis-cli -h %{主机}% ping",
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "Redis 服务器地址    ",
+                "example": "127.0.0.1",
+                "notes": "可选"
+              }
+            },
+            "keyword": "redis 主机"
+          },
+          {
+            "name": "指定端口连接",
+            "cmd": "redis-cli -p %{端口}% ping",
+            "params": {
+              "端口": {
+                "type": "integer",
+                "required": true,
+                "description": "Redis 端口号      ",
+                "example": "6379",
+                "notes": "可选"
+              }
+            },
+            "keyword": "redis 端口"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "redis set 设置键值",
+      "keyword": "redis set",
+      "description": "设置键值对。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "redis-cli SET %{key}% %{value}%",
+        "extensions": [
+          {
+            "name": "设置字符串值",
+            "cmd": "redis-cli SET user:1001:name \"张三\"",
+            "params": {},
+            "keyword": "redis SET 字符串"
+          },
+          {
+            "name": "设置带过期时间",
+            "cmd": "redis-cli SET session:abc %{秒数}% \"token_data\"",
+            "params": {
+              "秒数": {
+                "type": "integer",
+                "required": true,
+                "description": "过期时间（秒）        ",
+                "example": "3600",
+                "notes": "可选"
+              }
+            },
+            "keyword": "redis SET 过期"
+          },
+          {
+            "name": "设置 NX (不存在才设置)",
+            "cmd": "redis-cli SETNX lock:order \"locked\"",
+            "params": {},
+            "keyword": "redis SETNX"
+          },
+          {
+            "name": "设置 XX (存在才覆盖)",
+            "cmd": "redis-cli SET %{key}% %{value}% XX",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": true,
+                "description": "键名             ",
+                "example": "user:1001:name",
+                "notes": "可选"
+              },
+              "value": {
+                "type": "string",
+                "required": true,
+                "description": "值              ",
+                "example": "新数据",
+                "notes": "可选"
+              }
+            },
+            "keyword": "redis SET XX"
+          }
+        ],
+        "params": {
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "键名             ",
+            "example": "user:1001:name",
+            "notes": "常用"
+          },
+          "value": {
+            "type": "string",
+            "required": true,
+            "description": "值              ",
+            "example": "hello",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "redis get 获取值",
+      "keyword": "redis get",
+      "description": "获取键对应的值。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "redis-cli GET %{key}%",
+        "extensions": [
+          {
+            "name": "获取字符串值",
+            "cmd": "redis-cli GET user:1001:name",
+            "params": {},
+            "keyword": "redis GET 字符串"
+          },
+          {
+            "name": "获取多个键",
+            "cmd": "redis-cli MGET user:1001:name user:1001:age",
+            "params": {},
+            "keyword": "redis MGET"
+          }
+        ],
+        "params": {
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "键名             ",
+            "example": "user:1001:name",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "redis del 删除键",
+      "keyword": "redis del",
+      "description": "删除一个或多个键。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "redis-cli DEL %{key}%",
+        "extensions": [
+          {
+            "name": "删除单个键",
+            "cmd": "redis-cli DEL user:1001:session",
+            "params": {},
+            "keyword": "redis DEL 单个"
+          },
+          {
+            "name": "删除多个键",
+            "cmd": "redis-cli DEL user:1001:session user:1001:cache user:1001:temp",
+            "params": {},
+            "keyword": "redis DEL 多个"
+          }
+        ],
+        "params": {
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "键名             ",
+            "example": "user:1001:session",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "redis exists 检查键",
+      "keyword": "redis exists",
+      "description": "检查键是否存在。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "redis-cli EXISTS %{key}%",
+        "extensions": [
+          {
+            "name": "检查单个键",
+            "cmd": "redis-cli EXISTS user:1001:profile",
+            "params": {},
+            "keyword": "redis EXISTS 单个"
+          },
+          {
+            "name": "检查多个键",
+            "cmd": "redis-cli EXISTS user:1001:profile user:1001:session user:1001:cache",
+            "params": {},
+            "keyword": "redis EXISTS 多个"
+          }
+        ],
+        "params": {
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "键名             ",
+            "example": "user:1001:profile",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "redis keys 查找键",
+      "keyword": "redis keys",
+      "description": "查找所有符合模式的键。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "redis-cli KEYS %{pattern}%",
+        "extensions": [
+          {
+            "name": "查找所有键",
+            "cmd": "redis-cli KEYS '*'",
+            "params": {},
+            "keyword": "redis KEYS 全部"
+          },
+          {
+            "name": "查找用户键",
+            "cmd": "redis-cli KEYS 'user:*'",
+            "params": {},
+            "keyword": "redis KEYS 用户"
+          },
+          {
+            "name": "查找带前缀的键",
+            "cmd": "redis-cli KEYS 'cache:*'",
+            "params": {},
+            "keyword": "redis KEYS 前缀"
+          }
+        ],
+        "params": {
+          "pattern": {
+            "type": "string",
+            "required": true,
+            "description": "匹配模式           ",
+            "example": "user:*",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "redis expire 设置过期",
+      "keyword": "redis expire",
+      "description": "设置键的过期时间。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "redis-cli EXPIRE %{key}% %{seconds}%",
+        "extensions": [
+          {
+            "name": "设置过期时间（秒）",
+            "cmd": "redis-cli EXPIRE session:abc 3600",
+            "params": {},
+            "keyword": "redis EXPIRE 秒"
+          },
+          {
+            "name": "设置过期时间（分钟）",
+            "cmd": "redis-cli EXPIRE %{key}% %{minutes}%",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": true,
+                "description": "键名             ",
+                "example": "session:abc",
+                "notes": "可选"
+              },
+              "minutes": {
+                "type": "integer",
+                "required": true,
+                "description": "过期时间（分钟）       ",
+                "example": "30",
+                "notes": "可选"
+              }
+            },
+            "keyword": "redis EXPIRE 分钟"
+          }
+        ],
+        "params": {
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "键名             ",
+            "example": "session:abc",
+            "notes": "常用"
+          },
+          "seconds": {
+            "type": "integer",
+            "required": true,
+            "description": "过期时间（秒）        ",
+            "example": "3600",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "redis ttl 查看过期",
+      "keyword": "redis ttl",
+      "description": "获取键的剩余生存时间。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "redis-cli TTL %{key}%",
+        "extensions": [
+          {
+            "name": "查看剩余生存时间",
+            "cmd": "redis-cli TTL user:1001:session",
+            "params": {},
+            "keyword": "redis TTL"
+          }
+        ],
+        "params": {
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "键名             ",
+            "example": "user:1001:session",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "redis persist 移除过期",
+      "keyword": "redis persist",
+      "description": "移除键的过期时间，使其永久存在。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "redis-cli PERSIST %{key}%",
+        "extensions": [
+          {
+            "name": "移除过期时间",
+            "cmd": "redis-cli PERSIST user:1001:session",
+            "params": {},
+            "keyword": "redis PERSIST"
+          }
+        ],
+        "params": {
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "键名             ",
+            "example": "user:1001:session",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "redis type 查看类型",
+      "keyword": "redis type",
+      "description": "获取键对应的值的数据类型。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "redis-cli TYPE %{key}%",
+        "extensions": [
+          {
+            "name": "查看键类型",
+            "cmd": "redis-cli TYPE user:1001:profile",
+            "params": {},
+            "keyword": "redis TYPE"
+          }
+        ],
+        "params": {
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "键名             ",
+            "example": "user:1001:profile",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "redis rename 重命名键",
+      "keyword": "redis rename",
+      "description": "将键重命名。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "redis-cli RENAME %{oldkey}% %{newkey}%",
+        "extensions": [
+          {
+            "name": "重命名键",
+            "cmd": "redis-cli RENAME user:1001:old_name user:1001:new_name",
+            "params": {},
+            "keyword": "redis RENAME"
+          }
+        ],
+        "params": {
+          "oldkey": {
+            "type": "string",
+            "required": true,
+            "description": "原键名            ",
+            "example": "user:1001:old_name",
+            "notes": "必填"
+          },
+          "newkey": {
+            "type": "string",
+            "required": true,
+            "description": "新键名            ",
+            "example": "user:1001:new_name",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "redis append 追加内容",
+      "keyword": "redis append",
+      "description": "向字符串值追加内容。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "redis-cli APPEND %{key}% %{value}%",
+        "extensions": [
+          {
+            "name": "追加字符串",
+            "cmd": "redis-cli APPEND user:1001:tags \",新标签\"",
+            "params": {},
+            "keyword": "redis APPEND"
+          }
+        ],
+        "params": {
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "键名             ",
+            "example": "user:1001:tags",
+            "notes": "必填"
+          },
+          "value": {
+            "type": "string",
+            "required": true,
+            "description": "追加的值           ",
+            "example": ",新标签",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "redis strlen 获取长度",
+      "keyword": "redis strlen",
+      "description": "获取字符串值的长度。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "redis-cli STRLEN %{key}%",
+        "extensions": [
+          {
+            "name": "获取字符串长度",
+            "cmd": "redis-cli STRLEN user:1001:bio",
+            "params": {},
+            "keyword": "redis STRLEN"
+          }
+        ],
+        "params": {
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "键名             ",
+            "example": "user:1001:bio",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "redis incr 自增",
+      "keyword": "redis incr",
+      "description": "将键值递增 1。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "redis-cli INCR %{key}%",
+        "extensions": [
+          {
+            "name": "键值加 1",
+            "cmd": "redis-cli INCR page:views:2024",
+            "params": {},
+            "keyword": "redis INCR"
+          }
+        ],
+        "params": {
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "键名             ",
+            "example": "page:views:2024",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "redis decr 自减",
+      "keyword": "redis decr",
+      "description": "将键值递减 1。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "redis-cli DECR %{key}%",
+        "extensions": [
+          {
+            "name": "键值减 1",
+            "cmd": "redis-cli DECR stock:product001",
+            "params": {},
+            "keyword": "redis DECR"
+          }
+        ],
+        "params": {
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "键名             ",
+            "example": "stock:product001",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "redis incrby 增量",
+      "keyword": "redis incrby",
+      "description": "将键值增加指定数值。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "redis-cli INCRBY %{key}% %{increment}%",
+        "extensions": [
+          {
+            "name": "键值加指定数",
+            "cmd": "redis-cli INCRBY user:1001:credits 100",
+            "params": {},
+            "keyword": "redis INCRBY"
+          }
+        ],
+        "params": {
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "键名             ",
+            "example": "user:1001:credits",
+            "notes": "必填"
+          },
+          "increment": {
+            "type": "integer",
+            "required": true,
+            "description": "增量数值           ",
+            "example": "100",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "redis decrby 减量",
+      "keyword": "redis decrby",
+      "description": "将键值减少指定数值。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "redis-cli DECRBY %{key}% %{decrement}%",
+        "extensions": [
+          {
+            "name": "键值减指定数",
+            "cmd": "redis-cli DECRBY user:1001:balance 50",
+            "params": {},
+            "keyword": "redis DECRBY"
+          }
+        ],
+        "params": {
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "键名             ",
+            "example": "user:1001:balance",
+            "notes": "必填"
+          },
+          "decrement": {
+            "type": "integer",
+            "required": true,
+            "description": "减量数值           ",
+            "example": "50",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "redis select 切换数据库",
+      "keyword": "redis select",
+      "description": "切换到指定的 Redis 数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "redis-cli SELECT %{index}%",
+        "extensions": [
+          {
+            "name": "切换到数据库 0",
+            "cmd": "redis-cli SELECT 0",
+            "params": {},
+            "keyword": "redis SELECT 0"
+          },
+          {
+            "name": "切换到数据库 1",
+            "cmd": "redis-cli SELECT 1",
+            "params": {},
+            "keyword": "redis SELECT 1"
+          },
+          {
+            "name": "切换到指定数据库",
+            "cmd": "redis-cli SELECT %{index}%",
+            "params": {
+              "index": {
+                "type": "integer",
+                "required": true,
+                "description": "数据库编号          ",
+                "example": "2",
+                "notes": "可选"
+              }
+            },
+            "keyword": "redis SELECT"
+          }
+        ],
+        "params": {
+          "index": {
+            "type": "integer",
+            "required": true,
+            "description": "数据库编号          ",
+            "example": "0",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

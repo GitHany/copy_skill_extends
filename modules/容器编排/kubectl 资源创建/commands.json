@@ -1,0 +1,679 @@
+{
+  "module": "容器编排/kubectl 资源创建",
+  "version": "2.0",
+  "description": "kubectl 资源创建命令集合，涵盖kubectl 资源创建的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl create deployment 创建 deployment",
+      "keyword": "kubectl create deployment 创建",
+      "description": "创建 Kubernetes Deployment 资源。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl create deployment %{名称}% --image=%{镜像}%",
+        "extensions": [
+          {
+            "name": "创建 deployment 并指定副本数",
+            "cmd": "kubectl create deployment %{名称}% --image=%{镜像}% --replicas=%{副本数}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment 名称     ",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "容器镜像           ",
+                "example": "nginx:latest",
+                "notes": "必填"
+              },
+              "副本数": {
+                "type": "string",
+                "required": false,
+                "description": "副本数量           ",
+                "example": "3",
+                "notes": "选填，默认1"
+              }
+            },
+            "keyword": "kubectl create deployment replicas"
+          },
+          {
+            "name": "创建 deployment 并指定端口",
+            "cmd": "kubectl create deployment %{名称}% --image=%{镜像}% --port=%{端口}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment 名称     ",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "容器镜像           ",
+                "example": "nginx:latest",
+                "notes": "必填"
+              },
+              "端口": {
+                "type": "string",
+                "required": false,
+                "description": "容器端口           ",
+                "example": "8080",
+                "notes": "选填"
+              }
+            },
+            "keyword": "kubectl create deployment port"
+          },
+          {
+            "name": "创建 deployment 并设置资源限制",
+            "cmd": "kubectl create deployment %{名称}% --image=%{镜像}% --limits=cpu=%{CPU}%,memory=%{内存}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment 名称     ",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "容器镜像           ",
+                "example": "nginx:latest",
+                "notes": "必填"
+              },
+              "CPU": {
+                "type": "string",
+                "required": false,
+                "description": "CPU 限制           ",
+                "example": "500m",
+                "notes": "选填"
+              },
+              "内存": {
+                "type": "string",
+                "required": false,
+                "description": "内存限制           ",
+                "example": "128Mi",
+                "notes": "选填"
+              }
+            },
+            "keyword": "kubectl create deployment limits"
+          },
+          {
+            "name": "创建 deployment 并指定命名空间",
+            "cmd": "kubectl create deployment %{名称}% --image=%{镜像}% -n %{命名空间}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment 名称     ",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "容器镜像           ",
+                "example": "nginx:latest",
+                "notes": "必填"
+              },
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间           ",
+                "example": "default",
+                "notes": "选填"
+              }
+            },
+            "keyword": "kubectl create deployment namespace"
+          }
+        ],
+        "params": {
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "Deployment 名称     ",
+            "example": "myapp",
+            "notes": "必填"
+          },
+          "镜像": {
+            "type": "string",
+            "required": true,
+            "description": "容器镜像           ",
+            "example": "nginx:latest",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl create service 创建 service",
+      "keyword": "kubectl create service 创建",
+      "description": "创建 Kubernetes Service 资源。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl create service %{类型}% %{名称}% --tcp=%{端口}%",
+        "extensions": [
+          {
+            "name": "创建 ClusterIP 类型 service",
+            "cmd": "kubectl create service clusterip %{名称}% --tcp=%{端口}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Service 名称       ",
+                "example": "myapp-svc",
+                "notes": "必填"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口映射           ",
+                "example": "8080:80",
+                "notes": "必填，格式为主机端口:容器端口"
+              }
+            },
+            "keyword": "kubectl create service clusterip"
+          },
+          {
+            "name": "创建 NodePort 类型 service",
+            "cmd": "kubectl create service nodeport %{名称}% --tcp=%{端口}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Service 名称       ",
+                "example": "myapp-svc",
+                "notes": "必填"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口映射           ",
+                "example": "8080:80",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl create service nodeport"
+          },
+          {
+            "name": "创建 LoadBalancer 类型 service",
+            "cmd": "kubectl create service loadbalancer %{名称}% --tcp=%{端口}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Service 名称       ",
+                "example": "myapp-svc",
+                "notes": "必填"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口映射           ",
+                "example": "8080:80",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl create service loadbalancer"
+          },
+          {
+            "name": "创建 externalname 类型 service",
+            "cmd": "kubectl create service externalname %{名称}% --external-name=%{外部名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Service 名称       ",
+                "example": "myapp-svc",
+                "notes": "必填"
+              },
+              "外部名称": {
+                "type": "string",
+                "required": true,
+                "description": "外部域名           ",
+                "example": "example.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl create service externalname"
+          }
+        ],
+        "params": {
+          "类型": {
+            "type": "string",
+            "required": true,
+            "description": "Service 类型       ",
+            "example": "clusterip",
+            "notes": "必填"
+          },
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "Service 名称       ",
+            "example": "myapp-svc",
+            "notes": "必填"
+          },
+          "端口": {
+            "type": "string",
+            "required": true,
+            "description": "端口映射           ",
+            "example": "8080:80",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl create configmap 创建 configmap",
+      "keyword": "kubectl create configmap 创建",
+      "description": "创建 Kubernetes ConfigMap 资源。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl create configmap %{名称}% --from-literal=%{键值对}%",
+        "extensions": [
+          {
+            "name": "从文件创建 configmap",
+            "cmd": "kubectl create configmap %{名称}% --from-file=%{文件路径}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "ConfigMap 名称     ",
+                "example": "myconfig",
+                "notes": "必填"
+              },
+              "文件路径": {
+                "type": "string",
+                "required": true,
+                "description": "配置文件路径     ",
+                "example": "./config.properties",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl create configmap file"
+          },
+          {
+            "name": "从目录创建 configmap",
+            "cmd": "kubectl create configmap %{名称}% --from-file=%{目录路径}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "ConfigMap 名称     ",
+                "example": "myconfig",
+                "notes": "必填"
+              },
+              "目录路径": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径           ",
+                "example": "./configs/",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl create configmap directory"
+          },
+          {
+            "name": "创建 configmap 并指定命名空间",
+            "cmd": "kubectl create configmap %{名称}% --from-literal=%{键值对}% -n %{命名空间}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "ConfigMap 名称     ",
+                "example": "myconfig",
+                "notes": "必填"
+              },
+              "键值对": {
+                "type": "string",
+                "required": true,
+                "description": "键值对           ",
+                "example": "key1=value1",
+                "notes": "必填"
+              },
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间           ",
+                "example": "default",
+                "notes": "选填"
+              }
+            },
+            "keyword": "kubectl create configmap namespace"
+          }
+        ],
+        "params": {
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "ConfigMap 名称     ",
+            "example": "myconfig",
+            "notes": "必填"
+          },
+          "键值对": {
+            "type": "string",
+            "required": true,
+            "description": "键值对           ",
+            "example": "key1=value1",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl create secret 创建 secret",
+      "keyword": "kubectl create secret 创建",
+      "description": "创建 Kubernetes Secret 资源。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl create secret generic %{名称}% --from-literal=%{键值对}%",
+        "extensions": [
+          {
+            "name": "创建 docker-registry 类型 secret",
+            "cmd": "kubectl create secret docker-registry %{名称}% --docker-server=%{服务器}% --docker-username=%{用户名}% --docker-password=%{密码}% --docker-email=%{邮箱}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Secret 名称        ",
+                "example": "myregcred",
+                "notes": "必填"
+              },
+              "服务器": {
+                "type": "string",
+                "required": true,
+                "description": "Docker 服务器     ",
+                "example": "https://index.docker.io/v1/",
+                "notes": "必填"
+              },
+              "用户名": {
+                "type": "string",
+                "required": true,
+                "description": "Docker 用户名     ",
+                "example": "myuser",
+                "notes": "必填"
+              },
+              "密码": {
+                "type": "string",
+                "required": true,
+                "description": "Docker 密码       ",
+                "example": "mypassword",
+                "notes": "必填"
+              },
+              "邮箱": {
+                "type": "string",
+                "required": false,
+                "description": "邮箱地址           ",
+                "example": "user@example.com",
+                "notes": "选填"
+              }
+            },
+            "keyword": "kubectl create secret docker-registry"
+          },
+          {
+            "name": "从文件创建 secret",
+            "cmd": "kubectl create secret generic %{名称}% --from-file=%{文件路径}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Secret 名称        ",
+                "example": "mysecret",
+                "notes": "必填"
+              },
+              "文件路径": {
+                "type": "string",
+                "required": true,
+                "description": "密钥文件路径     ",
+                "example": "./key.pem",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl create secret file"
+          },
+          {
+            "name": "创建 tls 类型 secret",
+            "cmd": "kubectl create secret tls %{名称}% --cert=%{证书}% --key=%{私钥}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Secret 名称        ",
+                "example": "mytls",
+                "notes": "必填"
+              },
+              "证书": {
+                "type": "string",
+                "required": true,
+                "description": "证书文件路径     ",
+                "example": "./tls.crt",
+                "notes": "必填"
+              },
+              "私钥": {
+                "type": "string",
+                "required": true,
+                "description": "私钥文件路径     ",
+                "example": "./tls.key",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl create secret tls"
+          }
+        ],
+        "params": {
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "Secret 名称        ",
+            "example": "mysecret",
+            "notes": "必填"
+          },
+          "键值对": {
+            "type": "string",
+            "required": true,
+            "description": "键值对           ",
+            "example": "key1=value1",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl create namespace 创建命名空间",
+      "keyword": "kubectl create namespace 创建",
+      "description": "创建 Kubernetes Namespace 资源。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl create namespace %{名称}%",
+        "extensions": [
+          {
+            "name": "创建命名空间并设置标签",
+            "cmd": "kubectl create namespace %{名称}% --labels=%{标签}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间名称     ",
+                "example": "my-namespace",
+                "notes": "必填"
+              },
+              "标签": {
+                "type": "string",
+                "required": false,
+                "description": "标签键值对       ",
+                "example": "env=prod,team=backend",
+                "notes": "选填"
+              }
+            },
+            "keyword": "kubectl create namespace labels"
+          },
+          {
+            "name": "创建命名空间并指定资源配额",
+            "cmd": "kubectl create namespace %{名称}% --quota=cpu=%{CPU}%,memory=%{内存}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间名称     ",
+                "example": "my-namespace",
+                "notes": "必填"
+              },
+              "CPU": {
+                "type": "string",
+                "required": false,
+                "description": "CPU 配额           ",
+                "example": "10",
+                "notes": "选填"
+              },
+              "内存": {
+                "type": "string",
+                "required": false,
+                "description": "内存配额           ",
+                "example": "20Gi",
+                "notes": "选填"
+              }
+            },
+            "keyword": "kubectl create namespace quotas"
+          }
+        ],
+        "params": {
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "命名空间名称     ",
+            "example": "my-namespace",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl create 从文件创建",
+      "keyword": "kubectl create file 创建",
+      "description": "从 YAML/JSON 文件创建 Kubernetes 资源。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl create -f %{文件}%",
+        "extensions": [
+          {
+            "name": "从目录批量创建",
+            "cmd": "kubectl create -f %{目录}%/",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径           ",
+                "example": "./k8s",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl create directory"
+          },
+          {
+            "name": "从多个文件创建",
+            "cmd": "kubectl create -f %{文件1}% -f %{文件2}%",
+            "params": {
+              "文件1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个文件路径 ",
+                "example": "deploy.yaml",
+                "notes": "必填"
+              },
+              "文件2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个文件路径 ",
+                "example": "service.yaml",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl create multiple files"
+          },
+          {
+            "name": "从 URL 创建资源",
+            "cmd": "kubectl create -f %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "远程资源 URL    ",
+                "example": "https://example.com/deploy.yaml",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl create url"
+          },
+          {
+            "name": "创建资源并等待超时",
+            "cmd": "kubectl create -f %{文件}% --timeout=%{超时时间}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "YAML 文件路径     ",
+                "example": "deployment.yaml",
+                "notes": "必填"
+              },
+              "超时时间": {
+                "type": "string",
+                "required": false,
+                "description": "超时时间         ",
+                "example": "30s",
+                "notes": "选填"
+              }
+            },
+            "keyword": "kubectl create timeout"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "YAML 文件路径     ",
+            "example": "deployment.yaml",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl apply 应用配置",
+      "keyword": "kubectl apply 应用",
+      "description": "应用或更新资源配置。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl apply -f %{文件}%",
+        "extensions": [
+          {
+            "name": "目录批量应用",
+            "cmd": "kubectl apply -f %{目录}%/",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径           ",
+                "example": "./k8s",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl apply dir"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "YAML 或 JSON 配置文件",
+            "example": "deploy.yaml",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

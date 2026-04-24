@@ -1,0 +1,277 @@
+{
+  "module": "版本控制/Git 历史与版本",
+  "version": "2.0",
+  "description": "Git 历史与版本命令集合，涵盖Git 历史与版本的常用操作和最佳实践",
+  "commands": [
+    {
+      "cmd": "git log",
+      "extensions": [
+        {
+          "name": "搜索提交内容",
+          "cmd": "git log -S %{关键字}%",
+          "params": {
+            "关键字": {
+              "type": "string",
+              "required": true,
+              "description": "搜索关键字",
+              "example": "TODO",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git log search content"
+        },
+        {
+          "name": "按提交者过滤",
+          "cmd": "git log --committer=%{提交者}%",
+          "params": {
+            "提交者": {
+              "type": "string",
+              "required": true,
+              "description": "提交者名称",
+              "example": "John",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git log committer"
+        },
+        {
+          "name": "显示相对时间",
+          "cmd": "git log --relative-date",
+          "params": {},
+          "keyword": "git log relative date"
+        },
+        {
+          "name": "简洁图形分支",
+          "cmd": "git log --oneline --all --graph --decorate",
+          "params": {},
+          "keyword": "git log graph decorate"
+        },
+        {
+          "name": "单行格式",
+          "cmd": "git log --oneline",
+          "params": {},
+          "keyword": "git log oneline"
+        },
+        {
+          "name": "图形视图",
+          "cmd": "git log --graph --oneline --all",
+          "params": {},
+          "keyword": "git log graph"
+        },
+        {
+          "name": "显示文件历史",
+          "cmd": "git log --follow %{文件}%",
+          "params": {
+            "文件": {
+              "type": "string",
+              "required": true,
+              "description": "文件路径",
+              "example": "README.md",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git log file"
+        },
+        {
+          "name": "限制条数",
+          "cmd": "git log -n %{数量}%",
+          "params": {
+            "数量": {
+              "type": "string",
+              "required": true,
+              "description": "显示条数",
+              "example": "10",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git log limit"
+        },
+        {
+          "name": "显示统计信息",
+          "cmd": "git log --stat",
+          "params": {},
+          "keyword": "git log stat"
+        },
+        {
+          "name": "格式化输出",
+          "cmd": "git log --pretty=fuller",
+          "params": {},
+          "keyword": "git log pretty"
+        },
+        {
+          "name": "按作者过滤",
+          "cmd": "git log --author=%{作者}%",
+          "params": {
+            "作者": {
+              "type": "string",
+              "required": true,
+              "description": "作者名称",
+              "example": "John",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git log author"
+        },
+        {
+          "name": "按日期范围",
+          "cmd": "git log --since=%{开始}% --until=%{结束}%",
+          "params": {
+            "开始": {
+              "type": "string",
+              "required": true,
+              "description": "开始日期",
+              "example": "2024-01-01",
+              "notes": "必填"
+            },
+            "结束": {
+              "type": "string",
+              "required": true,
+              "description": "结束日期",
+              "example": "2024-12-31",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git log date range"
+        },
+        {
+          "name": "显示补丁内容",
+          "cmd": "git log -p %{数量}%",
+          "params": {
+            "数量": {
+              "type": "string",
+              "required": false,
+              "description": "显示条数",
+              "example": "3",
+              "notes": "选填"
+            }
+          },
+          "keyword": "git log patch"
+        },
+        {
+          "name": "显示分支路径",
+          "cmd": "git log --first-parent",
+          "params": {},
+          "keyword": "git log first parent"
+        },
+        {
+          "name": "搜索提交信息",
+          "cmd": "git log --grep=%{关键字}%",
+          "params": {
+            "关键字": {
+              "type": "string",
+              "required": true,
+              "description": "搜索关键字",
+              "example": "fix",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git log grep"
+        },
+        {
+          "name": "显示变更文件列表",
+          "cmd": "git log --name-only",
+          "params": {},
+          "keyword": "git log name only"
+        },
+        {
+          "name": "按分支过滤",
+          "cmd": "git log %{分支}% --oneline",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "origin/main",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git log branch"
+        },
+        {
+          "name": "显示标签",
+          "cmd": "git log --tags --oneline",
+          "params": {},
+          "keyword": "git log tags"
+        },
+        {
+          "name": "显示合并提交",
+          "cmd": "git log --merges --oneline",
+          "params": {},
+          "keyword": "git log merges"
+        },
+        {
+          "name": "排除分支",
+          "cmd": "git log --oneline --exclude=%{分支}%",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "排除的分支",
+              "example": "origin/deploy",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git log exclude branch"
+        },
+        {
+          "name": "显示未合并提交",
+          "cmd": "git log --oneline --left-right %{分支1}%...%{分支2}%",
+          "params": {
+            "分支1": {
+              "type": "string",
+              "required": true,
+              "description": "第一个分支",
+              "example": "main",
+              "notes": "必填"
+            },
+            "分支2": {
+              "type": "string",
+              "required": true,
+              "description": "第二个分支",
+              "example": "feature",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git log unmerged"
+        },
+        {
+          "name": "显示简化的分支历史",
+          "cmd": "git log --simplify-by-decoration",
+          "params": {},
+          "keyword": "git log simplify decorate"
+        },
+        {
+          "name": "显示cherry标记",
+          "cmd": "git log --cherry-mark %{分支1}% %{分支2}%",
+          "params": {
+            "分支1": {
+              "type": "string",
+              "required": true,
+              "description": "分支1",
+              "example": "origin/main",
+              "notes": "必填"
+            },
+            "分支2": {
+              "type": "string",
+              "required": true,
+              "description": "分支2",
+              "example": "feature",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git log cherry"
+        }
+      ],
+      "params": {},
+      "dirPath": "/版本控制/",
+      "name": "Git 历史与版本 命令",
+      "keyword": "Git 历史与版本 命令",
+      "description": "Git 历史与版本 命令的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

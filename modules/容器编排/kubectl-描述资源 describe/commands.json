@@ -1,0 +1,111 @@
+{
+  "module": "容器编排/kubectl-描述资源 describe",
+  "version": "2.0",
+  "description": "kubectl 资源详情描述，涵盖kubectl describe的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl describe 描述资源",
+      "keyword": "kubectl describe 描述",
+      "description": "查看资源详细描述。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl describe %{类型}% %{名称}%",
+        "extensions": [
+          {
+            "name": "描述Pod资源",
+            "cmd": "kubectl describe pod %{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Pod名称",
+                "example": "my-pod",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl describe pod"
+          },
+          {
+            "name": "描述Deployment资源",
+            "cmd": "kubectl describe deployment %{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment名称",
+                "example": "my-deployment",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl describe deployment"
+          },
+          {
+            "name": "描述Service资源",
+            "cmd": "kubectl describe service %{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Service名称",
+                "example": "my-service",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl describe service"
+          },
+          {
+            "name": "描述Node资源",
+            "cmd": "kubectl describe node %{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Node名称",
+                "example": "node-1",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl describe node"
+          },
+          {
+            "name": "按标签筛选描述资源",
+            "cmd": "kubectl describe %{类型}% -l %{标签}%",
+            "params": {
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "资源类型",
+                "example": "pod",
+                "notes": "必填"
+              },
+              "标签": {
+                "type": "string",
+                "required": true,
+                "description": "标签选择器",
+                "example": "app=myapp",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl describe label"
+          }
+        ],
+        "params": {
+          "类型": {
+            "type": "string",
+            "required": true,
+            "description": "资源类型           ",
+            "example": "pod",
+            "notes": "必填"
+          },
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "资源名            ",
+            "example": "my-pod",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

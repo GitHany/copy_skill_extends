@@ -1,0 +1,123 @@
+{
+  "module": "Linux系统/Linux-文件状态 stat",
+  "version": "2.0",
+  "description": "Linux stat 文件详情命令。显示文件或文件系统的详细元信息，包括大小、权限、时间戳、 inode 信息等。比ls -l提供更详细的信息，是文件属性诊断和审计的重要工具。",
+  "commands": [
+    {
+      "dirPath": "/Linux系统/",
+      "name": "stat 文件详情",
+      "keyword": "stat 文件",
+      "description": "显示文件详情。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "stat %{文件}%",
+        "extensions": [
+          {
+            "name": "显示文件详情",
+            "description": "显示文件的所有元数据信息                  ",
+            "params": {
+              "文件": {
+                "example": "document.pdf",
+                "notes": "文件路径",
+                "description": "               "
+              }
+            },
+            "cmd": "stat %{文件}%"
+          },
+          {
+            "name": "显示文件系统状态",
+            "description": "显示包含文件所在文件系统的总体信息             ",
+            "params": {
+              "文件": {
+                "example": "/home",
+                "notes": "文件或目录",
+                "description": "               "
+              }
+            },
+            "cmd": "stat -f %{文件}%"
+          },
+          {
+            "name": "跟随符号链接",
+            "description": "显示符号链接指向文件的详细信息而非链接本身         ",
+            "params": {
+              "文件": {
+                "example": "link_to_file",
+                "notes": "符号链接",
+                "description": "               "
+              }
+            },
+            "cmd": "stat -L %{文件}%"
+          },
+          {
+            "name": "简洁模式输出",
+            "description": "以可解析的格式显示信息，便于脚本处理            ",
+            "params": {
+              "文件": {
+                "example": "data.txt",
+                "notes": "文件",
+                "description": "               "
+              }
+            },
+            "cmd": "stat -c \"%s %Y %f\" %{文件}%"
+          },
+          {
+            "name": "以时间戳显示",
+            "description": "以Unix时间戳格式显示时间                ",
+            "params": {
+              "文件": {
+                "example": "config.cfg",
+                "notes": "文件",
+                "description": "               "
+              }
+            },
+            "cmd": "stat -c \"%Y\" %{文件}%"
+          },
+          {
+            "name": "显示访问权限",
+            "description": "以八进制数字显示文件权限                  ",
+            "params": {
+              "文件": {
+                "example": "script.sh",
+                "notes": "文件",
+                "description": "               "
+              }
+            },
+            "cmd": "stat -c \"%a\" %{文件}%"
+          },
+          {
+            "name": "显示文件大小字节",
+            "description": "以字节为单位显示文件大小                  ",
+            "params": {
+              "文件": {
+                "example": "image.png",
+                "notes": "文件",
+                "description": "               "
+              }
+            },
+            "cmd": "stat -c \"%s\" %{文件}%"
+          },
+          {
+            "name": "显示inode号",
+            "description": "显示文件的inode编号                  ",
+            "params": {
+              "文件": {
+                "example": "file.txt",
+                "notes": "文件",
+                "description": "               "
+              }
+            },
+            "cmd": "stat -c \"%i\" %{文件}%"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "文件             ",
+            "example": "file.txt",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

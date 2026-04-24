@@ -1,0 +1,116 @@
+{
+  "module": "容器编排/Docker 系统管理",
+  "version": "2.0",
+  "description": "Docker 系统管理命令集合，涵盖Docker 系统管理的常用操作和最佳实践",
+  "commands": [
+    {
+      "cmd": "docker system df",
+      "extensions": [
+        {
+          "name": "详细视图",
+          "cmd": "docker system df -v",
+          "params": {},
+          "keyword": "docker system df verbose"
+        },
+        {
+          "name": "查看 Docker 磁盘使用",
+          "cmd": "docker system df",
+          "params": {},
+          "keyword": "docker system df disk"
+        },
+        {
+          "name": "清理未使用数据",
+          "cmd": "docker system prune",
+          "params": {},
+          "keyword": "docker system prune"
+        },
+        {
+          "name": "清理所有未使用数据",
+          "cmd": "docker system prune -a",
+          "params": {},
+          "keyword": "docker system prune all"
+        },
+        {
+          "name": "查看 Docker 详细信息",
+          "cmd": "docker info",
+          "params": {},
+          "keyword": "docker info"
+        },
+        {
+          "name": "查看Docker版本信息",
+          "cmd": "docker version",
+          "params": {},
+          "keyword": "docker version"
+        },
+        {
+          "name": "清理构建缓存",
+          "cmd": "docker system prune --build-cache",
+          "params": {},
+          "keyword": "docker system prune build cache"
+        },
+        {
+          "name": "查看网络列表",
+          "cmd": "docker network ls",
+          "params": {},
+          "keyword": "docker network list"
+        },
+        {
+          "name": "查看volume列表",
+          "cmd": "docker volume ls",
+          "params": {},
+          "keyword": "docker volume list"
+        },
+        {
+          "name": "清理未使用卷",
+          "cmd": "docker volume prune",
+          "params": {},
+          "keyword": "docker volume prune"
+        },
+        {
+          "name": "删除指定卷",
+          "cmd": "docker volume rm %{卷名}%",
+          "params": {
+            "卷名": {
+              "type": "string",
+              "required": true,
+              "description": "卷名称",
+              "example": "myvolume",
+              "notes": "必填"
+            }
+          },
+          "keyword": "docker volume rm"
+        },
+        {
+          "name": "查看系统事件",
+          "cmd": "docker system events",
+          "params": {},
+          "keyword": "docker system events"
+        },
+        {
+          "name": "获取详细Docker信息",
+          "cmd": "docker system info --format %{格式}%",
+          "params": {
+            "格式": {
+              "type": "string",
+              "required": false,
+              "description": "Go模板格式",
+              "example": "{{.ServerVersion}}",
+              "notes": "可选"
+            }
+          },
+          "keyword": "docker system info format"
+        }
+      ],
+      "params": {},
+      "dirPath": "/容器编排/",
+      "name": "Docker 系统管理 命令",
+      "keyword": "Docker 系统管理 命令",
+      "description": "Docker 系统管理 命令的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

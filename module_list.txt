@@ -1,0 +1,309 @@
+﻿.omc
+.venv
+AI_ML工具
+Ansible
+API与认证
+AWS CLI命令
+AWS CloudFormation
+AWS ec2 describe
+AWS EC2 管理
+AWS IAM 身份管理
+AWS Lambda
+AWS S3
+AWS s3 mb
+AWS S3 sync
+AWS S3 存储操作
+Azure CLI
+Bun
+CDN与缓存
+CI_CD 流水线
+Claude Skills-ccg
+Claude Skills-ecc
+Claude Skills-oh-my-claude
+Claude Skills-openspec
+Claude Skills-providers
+Claude Skills-regex
+Claude Skills-superpowers
+Claude Skills-ultrawork
+curl 命令
+Docker attach
+Docker Build
+Docker buildx
+Docker commit
+Docker compose version
+Docker Compose 完整命令
+Docker cp
+Docker create
+Docker create network
+Docker diff
+Docker events
+Docker exec
+Docker export
+Docker history
+Docker images
+Docker info
+Docker Inspect
+Docker kill
+Docker login
+Docker Network
+Docker pause
+Docker prune
+Docker ps
+Docker pull
+Docker push
+Docker rename
+Docker restart
+Docker rm
+Docker rmi
+Docker save
+Docker Service
+Docker start
+Docker stop
+Docker Swarm
+Docker unpause
+Docker update
+Docker version
+Docker Volume
+Docker wait
+Docker 卷
+Docker 命令
+Docker 容器生命周期
+Docker 容器管理
+Docker 日志与监控
+Docker 系统管理
+Docker 网络
+Docker 镜像管理
+DockerCompose
+DockerCompose 高级模式
+Dockerfile 构建
+Elasticsearch
+GCP CLI
+Git add
+Git Archive
+Git Bisect
+Git branch
+Git checkout
+Git Cherry-pick
+Git clone
+Git commit
+Git config
+Git diff
+Git fetch
+Git grep
+Git init
+Git log
+Git merge
+Git mv
+Git pull
+Git push
+Git rebase
+Git Reflog
+Git remote
+Git reset
+Git Revert
+Git rm
+Git show
+Git stash show
+Git status
+Git tag
+Git 分支
+Git 别名与配置
+Git 历史与版本
+Git 变基与合并
+Git 命令
+Git 子模块
+Git 工作区
+Git 忽略文件
+Git 暂存区管理
+Git 暂存管理
+Git 标签
+Git 补丁操作
+Git 远程
+GitHub Actions
+GitHub CLI 命令
+GitHub CLI 高级操作
+GitHubActions
+GitLab CLI
+Git工作流
+Go 命令
+Grafana CLI
+GraphQL 命令
+Helm
+Java Spring Boot
+Jenkins CLI
+kubectl annotate
+kubectl api-resources
+kubectl api-versions
+kubectl apply
+kubectl auth
+kubectl cluster-info
+kubectl config
+kubectl convert
+kubectl cordon
+kubectl cp
+kubectl create
+kubectl delete
+kubectl describe
+kubectl drain
+kubectl edit
+kubectl exec
+kubectl explain
+kubectl expose
+kubectl get
+kubectl label
+kubectl logs
+kubectl patch
+kubectl port-forward
+kubectl proxy
+kubectl Rollout
+kubectl run
+kubectl scale
+kubectl Scaling
+kubectl top
+kubectl uncordon
+kubectl version
+kubectl wait
+kubectl 插件
+kubectl 标签与注解
+kubectl 调试
+kubectl 资源创建
+kubectl 资源编辑
+Kubernetes ConfigMap 与 Secret
+Kubernetes Deployment
+Kubernetes Ingress
+Kubernetes Pod 管理
+Kubernetes Service
+Kubernetes 命令
+Kubernetes 集群管理
+Kubernetes 高级操作
+Linux alias
+Linux awk
+Linux cat
+Linux cd
+Linux chmod
+Linux chown
+Linux cron
+Linux curl
+Linux date
+Linux du
+Linux env
+Linux export
+Linux fdisk
+Linux find
+Linux grep
+Linux gzip
+Linux head
+Linux history
+Linux hostname
+Linux id
+Linux iptables
+Linux journalctl
+Linux ln
+Linux locate
+Linux lsblk
+Linux lsof
+Linux mount
+Linux netstat
+Linux nohup
+Linux pwd
+Linux rsync
+Linux scp
+Linux screen
+Linux sed
+Linux sort
+Linux ss
+Linux ssh-keygen
+Linux stat
+Linux strace
+Linux systemctl
+Linux tail
+Linux tar
+Linux tmux
+Linux touch
+Linux tree
+Linux ulimit
+Linux uname
+Linux uniq
+Linux unzip
+Linux uptime
+Linux watch
+Linux wc
+Linux wget
+Linux which
+Linux whoami
+Linux xargs
+Linux 压缩解压
+Linux 命令
+Linux 文件操作
+Linux 文本处理
+Linux 权限管理
+Linux 用户管理
+Linux 磁盘管理
+Linux 管道与重定向
+Linux 系统监控
+Linux 系统管理
+Linux 网络诊断
+Linux 网络配置
+Linux 进程管理
+Mercurial 命令
+MongoDB 命令
+MySQL mysql
+MySQL 命令
+MySQL 数据库管理
+Nginx 命令
+Nginx命令
+Node.js npm Scripts
+Node.js 后端命令
+NoSQL数据库
+npm 命令
+npm 脚本与包管理
+ORM框架
+Perforce 命令
+pnpm
+PostgreSQL psql
+PostgreSQL 命令
+PostgreSQL 数据库管理
+Prometheus
+Python pip
+Python Web框架
+Python 虚拟环境
+Python命令
+React 命令
+Redis 命令
+Redis 数据结构操作
+Redis-列表操作
+Redis-哈希操作
+Redis-基本操作
+Redis-有序集合
+Redis-服务器命令
+Redis-键管理
+Redis-集合操作
+Rust Cargo
+Serverless与边缘计算
+Shell脚本模板
+SSH 命令
+SSH远程操作
+SVN 命令
+Tailwind CSS
+Terraform
+TypeScript 命令
+Vite
+Vue.js 命令
+Web API工具
+Webpack
+Yarn
+前端包管理器
+包管理器
+安全加固
+容器安全
+微服务架构
+搜索引擎
+测试框架
+消息队列
+监控与可观测性
+移动开发
+系统监控
+编辑器命令
+网络诊断
+负载均衡
+配置管理

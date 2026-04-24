@@ -1,0 +1,428 @@
+{
+  "module": "云平台/GCP-CLI工具 GCP",
+  "version": "2.0",
+  "description": "Google Cloud Platform 命令行工具模块 - gcloud 是 GCP 的官方 CLI，用于管理计算资源、存储、数据库、网络等云服务。适用于云资源管理、自动化部署、监控运维等场景",
+  "commands": [
+    {
+      "dirPath": "/云平台/",
+      "name": "gcloud auth login 登录认证",
+      "keyword": "gcloud auth 登录",
+      "description": "登录 Google Cloud 账户 - 启动浏览器进行身份验证，获取 GCP 资源访问权限。是使用 gcloud CLI 的第一步",
+      "data": {
+        "cmd": "gcloud auth login",
+        "extensions": [
+          {
+            "name": "激活服务账户",
+            "cmd": "gcloud auth activate-service-account --key-file %{密钥文件}%",
+            "params": {
+              "密钥文件": {
+                "type": "string",
+                "required": true,
+                "description": "服务账户密钥 JSON 文件路径",
+                "example": "key.json",
+                "notes": "必填。服务账户密钥文件，用于非交互式认证"
+              }
+            },
+            "keyword": "gcloud auth sa"
+          },
+          {
+            "name": "查看当前认证状态",
+            "cmd": "gcloud auth list",
+            "params": {},
+            "keyword": "gcloud auth list"
+          },
+          {
+            "name": "撤销认证",
+            "cmd": "gcloud auth revoke %{账户}%",
+            "params": {
+              "账户": {
+                "type": "string",
+                "required": false,
+                "description": "要撤销的账户邮箱       ",
+                "example": "user@example.com",
+                "notes": "可选。不指定则撤销当前活动账户"
+              }
+            },
+            "keyword": "gcloud auth revoke"
+          },
+          {
+            "name": "打印当前活跃认证令牌",
+            "cmd": "gcloud auth print-access-token",
+            "params": {},
+            "keyword": "gcloud token"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/云平台/",
+      "name": "gcloud projects 创建项目",
+      "keyword": "gcloud projects 创建",
+      "description": "创建新的 GCP 项目 - 项目是 GCP 资源层次结构的顶层，用于组织和管理所有云资源。每个项目有独立的配额、账单和权限",
+      "data": {
+        "cmd": "gcloud projects create %{项目ID}% --name %{名称}%",
+        "extensions": [
+          {
+            "name": "设置当前项目",
+            "cmd": "gcloud config set project %{项目ID}%",
+            "params": {
+              "项目ID": {
+                "type": "string",
+                "required": true,
+                "description": "项目 ID          ",
+                "example": "my-project-123",
+                "notes": "必填"
+              }
+            },
+            "keyword": "gcloud config project"
+          },
+          {
+            "name": "列出所有项目",
+            "cmd": "gcloud projects list",
+            "params": {},
+            "keyword": "gcloud projects list"
+          },
+          {
+            "name": "查看项目信息",
+            "cmd": "gcloud projects describe %{项目ID}%",
+            "params": {
+              "项目ID": {
+                "type": "string",
+                "required": true,
+                "description": "项目 ID          ",
+                "example": "my-project-123",
+                "notes": "必填"
+              }
+            },
+            "keyword": "gcloud projects describe"
+          },
+          {
+            "name": "删除项目",
+            "cmd": "gcloud projects delete %{项目ID}%",
+            "params": {
+              "项目ID": {
+                "type": "string",
+                "required": true,
+                "description": "项目 ID          ",
+                "example": "my-project-123",
+                "notes": "必填。删除前需先禁用项目"
+              }
+            },
+            "keyword": "gcloud projects delete"
+          }
+        ],
+        "params": {
+          "项目ID": {
+            "type": "string",
+            "required": true,
+            "description": "全局唯一的项目 ID     ",
+            "example": "my-project-123",
+            "notes": "必填。只含小写字母、数字、连字符，6-30字符"
+          },
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "项目的显示名称        ",
+            "example": "My Project",
+            "notes": "必填。支持中文"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/云平台/",
+      "name": "gcloud compute instances 创建实例",
+      "keyword": "gcloud compute 创建",
+      "description": "创建 Compute Engine 虚拟机实例 - 在 GCP 上创建 VM 实例，支持自定义机器类型、镜像、磁盘、网络等配置。适用于运行应用、托管网站、数据处理等场景",
+      "data": {
+        "cmd": "gcloud compute instances create %{实例名}% --zone %{区域}% --machine-type %{类型}% --image-family %{镜像}% --image-project %{项目}%",
+        "extensions": [
+          {
+            "name": "创建带 SSH 密钥的实例",
+            "cmd": "gcloud compute instances create %{实例名}% --zone %{区域}% --ssh-key-file %{公钥文件}%",
+            "params": {
+              "实例名": {
+                "type": "string",
+                "required": true,
+                "description": "实例名称           ",
+                "example": "my-instance",
+                "notes": "必填"
+              },
+              "区域": {
+                "type": "string",
+                "required": true,
+                "description": "区域             ",
+                "example": "us-central1-a",
+                "notes": "必填"
+              },
+              "公钥文件": {
+                "type": "string",
+                "required": true,
+                "description": "SSH 公钥文件路径     ",
+                "example": "~/.ssh/id_rsa.pub",
+                "notes": "必填"
+              }
+            },
+            "keyword": "gcloud compute ssh key"
+          },
+          {
+            "name": "列出实例",
+            "cmd": "gcloud compute instances list",
+            "params": {},
+            "keyword": "gcloud compute instances list"
+          },
+          {
+            "name": "查看实例详情",
+            "cmd": "gcloud compute instances describe %{实例名}% --zone %{区域}%",
+            "params": {
+              "实例名": {
+                "type": "string",
+                "required": true,
+                "description": "实例名称           ",
+                "example": "my-instance",
+                "notes": "必填"
+              },
+              "区域": {
+                "type": "string",
+                "required": true,
+                "description": "区域             ",
+                "example": "us-central1-a",
+                "notes": "必填"
+              }
+            },
+            "keyword": "gcloud compute describe"
+          },
+          {
+            "name": "删除实例",
+            "cmd": "gcloud compute instances delete %{实例名}% --zone %{区域}%",
+            "params": {
+              "实例名": {
+                "type": "string",
+                "required": true,
+                "description": "实例名称           ",
+                "example": "my-instance",
+                "notes": "必填"
+              },
+              "区域": {
+                "type": "string",
+                "required": true,
+                "description": "区域             ",
+                "example": "us-central1-a",
+                "notes": "必填"
+              }
+            },
+            "keyword": "gcloud compute delete"
+          },
+          {
+            "name": "启动/停止实例",
+            "cmd": "gcloud compute instances %{操作}% %{实例名}% --zone %{区域}%",
+            "params": {
+              "操作": {
+                "type": "string",
+                "required": true,
+                "description": "操作类型           ",
+                "example": "start",
+                "notes": "必填。start=启动，stop=停止"
+              },
+              "实例名": {
+                "type": "string",
+                "required": true,
+                "description": "实例名称           ",
+                "example": "my-instance",
+                "notes": "必填"
+              },
+              "区域": {
+                "type": "string",
+                "required": true,
+                "description": "区域             ",
+                "example": "us-central1-a",
+                "notes": "必填"
+              }
+            },
+            "keyword": "gcloud compute start stop"
+          }
+        ],
+        "params": {
+          "实例名": {
+            "type": "string",
+            "required": true,
+            "description": "VM 实例名称        ",
+            "example": "my-instance",
+            "notes": "必填"
+          },
+          "区域": {
+            "type": "string",
+            "required": true,
+            "description": " Compute 区域    ",
+            "example": "us-central1-a",
+            "notes": "必填"
+          },
+          "类型": {
+            "type": "string",
+            "required": true,
+            "description": "机器类型           ",
+            "example": "e2-medium",
+            "notes": "必填。常用：e2-micro, e2-medium, n1-standard-1"
+          },
+          "镜像": {
+            "type": "string",
+            "required": true,
+            "description": "镜像系列           ",
+            "example": "debian-11",
+            "notes": "必填。常用：debian-11, ubuntu-2204-lts, windows-2022"
+          },
+          "项目": {
+            "type": "string",
+            "required": true,
+            "description": "镜像所属项目         ",
+            "example": "debian-cloud",
+            "notes": "必填。debian-cloud, ubuntu-os-cloud, windows-cloud"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/云平台/",
+      "name": "gcloud compute instances list 列表",
+      "keyword": "gcloud compute 列表",
+      "description": "列出 Compute Engine 实例 - 查看当前项目中所有 VM 实例的列表，包含名称、状态、区域、机器类型等信息",
+      "data": {
+        "cmd": "gcloud compute instances list",
+        "extensions": [
+          {
+            "name": "按区域筛选",
+            "cmd": "gcloud compute instances list --filter=\"zone:{区域}%\"",
+            "params": {
+              "区域": {
+                "type": "string",
+                "required": true,
+                "description": "区域名称           ",
+                "example": "us-central1-a",
+                "notes": "必填"
+              }
+            },
+            "keyword": "gcloud compute list zone"
+          },
+          {
+            "name": "显示实例状态",
+            "cmd": "gcloud compute instances list --format=\"table(name,status,zone)\"",
+            "params": {},
+            "keyword": "gcloud compute list format"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/云平台/",
+      "name": "gcloud container clusters 创建集群",
+      "keyword": "gcloud container 创建",
+      "description": "创建 GKE (Google Kubernetes Engine) 集群 - 在 GCP 上托管 Kubernetes 集群，自动配置控制平面和节点池。适合容器化应用部署、微服务架构、CI/CD 流水线",
+      "data": {
+        "cmd": "gcloud container clusters create %{集群名}% --zone %{区域}% --num-nodes %{数量}%",
+        "extensions": [
+          {
+            "name": "获取集群凭证",
+            "cmd": "gcloud container clusters get-credentials %{集群名}% --zone %{区域}%",
+            "params": {
+              "集群名": {
+                "type": "string",
+                "required": true,
+                "description": "集群名称           ",
+                "example": "my-cluster",
+                "notes": "必填。配置 kubectl 上下文"
+              },
+              "区域": {
+                "type": "string",
+                "required": true,
+                "description": "区域             ",
+                "example": "us-central1",
+                "notes": "必填"
+              }
+            },
+            "keyword": "gcloud container credentials"
+          },
+          {
+            "name": "列出集群",
+            "cmd": "gcloud container clusters list",
+            "params": {},
+            "keyword": "gcloud container list"
+          },
+          {
+            "name": "删除集群",
+            "cmd": "gcloud container clusters delete %{集群名}% --zone %{区域}%",
+            "params": {
+              "集群名": {
+                "type": "string",
+                "required": true,
+                "description": "集群名称           ",
+                "example": "my-cluster",
+                "notes": "必填"
+              },
+              "区域": {
+                "type": "string",
+                "required": true,
+                "description": "区域             ",
+                "example": "us-central1",
+                "notes": "必填"
+              }
+            },
+            "keyword": "gcloud container delete"
+          },
+          {
+            "name": "调整集群大小",
+            "cmd": "gcloud container clusters resize %{集群名}% --zone %{区域}% --num-nodes %{节点数}%",
+            "params": {
+              "集群名": {
+                "type": "string",
+                "required": true,
+                "description": "集群名称           ",
+                "example": "my-cluster",
+                "notes": "必填"
+              },
+              "区域": {
+                "type": "string",
+                "required": true,
+                "description": "区域             ",
+                "example": "us-central1",
+                "notes": "必填"
+              },
+              "节点数": {
+                "type": "string",
+                "required": true,
+                "description": "节点数量           ",
+                "example": "5",
+                "notes": "必填"
+              }
+            },
+            "keyword": "gcloud container resize"
+          }
+        ],
+        "params": {
+          "集群名": {
+            "type": "string",
+            "required": true,
+            "description": "GKE 集群名称       ",
+            "example": "my-cluster",
+            "notes": "必填"
+          },
+          "区域": {
+            "type": "string",
+            "required": true,
+            "description": "区域             ",
+            "example": "us-central1",
+            "notes": "必填"
+          },
+          "数量": {
+            "type": "string",
+            "required": true,
+            "description": "节点数量           ",
+            "example": "3",
+            "notes": "必填。默认为 3 个节点"
+          }
+        }
+      }
+    }
+  ]
+}

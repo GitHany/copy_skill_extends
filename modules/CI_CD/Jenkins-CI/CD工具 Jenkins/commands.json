@@ -1,0 +1,197 @@
+{
+  "module": "CI_CD/CD工具 Jenkins",
+  "version": "2.0",
+  "description": "Jenkins 持续集成服务器命令行工具",
+  "commands": [
+    {
+      "dirPath": "/CI_CD/",
+      "name": "jenkins-cli build 构建",
+      "keyword": "jenkins build 构建",
+      "description": "触发 Jenkins 构建。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "java -jar jenkins-cli.jar build %{作业名}%",
+        "extensions": [
+          {
+            "name": "带参数构建",
+            "cmd": "java -jar jenkins-cli.jar build %{作业}% -p %{参数}%=%{值}%",
+            "params": {
+              "作业": {
+                "type": "string",
+                "required": true,
+                "description": "作业名称           ",
+                "example": "my-job",
+                "notes": "必填"
+              },
+              "参数": {
+                "type": "string",
+                "required": true,
+                "description": "参数名            ",
+                "example": "ENV",
+                "notes": "必填"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "参数值            ",
+                "example": "prod",
+                "notes": "必填"
+              }
+            },
+            "keyword": "jenkins build params"
+          }
+        ],
+        "params": {
+          "作业名": {
+            "type": "string",
+            "required": true,
+            "description": "Jenkins 作业名称   ",
+            "example": "my-project",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/CI_CD/",
+      "name": "jenkins-cli list-jobs 列出作业",
+      "keyword": "jenkins list 列表",
+      "description": "列出所有 Jenkins 作业。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "java -jar jenkins-cli.jar list-jobs",
+        "extensions": [
+          {
+            "name": "按名称过滤",
+            "cmd": "java -jar jenkins-cli.jar list-jobs %{过滤词}%",
+            "params": {
+              "过滤词": {
+                "type": "string",
+                "required": false,
+                "description": "作业名称过滤词",
+                "example": "my-project",
+                "notes": "可选"
+              }
+            },
+            "keyword": "jenkins list filter"
+          },
+          {
+            "name": "输出XML格式",
+            "cmd": "java -jar jenkins-cli.jar list-jobs --xml",
+            "params": {},
+            "keyword": "jenkins list xml"
+          },
+          {
+            "name": "包含禁用作业",
+            "cmd": "java -jar jenkins-cli.jar list-jobs -all",
+            "params": {},
+            "keyword": "jenkins list all disabled"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/CI_CD/",
+      "name": "jenkins-cli console 输出",
+      "keyword": "jenkins console 控制台",
+      "description": "查看构建控制台输出。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "java -jar jenkins-cli.jar console %{作业}% %{构建号}%",
+        "extensions": [
+          {
+            "name": "从末尾开始",
+            "cmd": "java -jar jenkins-cli.jar console %{作业}% %{构建号}% -n %{行数}%",
+            "params": {
+              "作业": {
+                "type": "string",
+                "required": true,
+                "description": "作业名",
+                "example": "my-job",
+                "notes": "必填"
+              },
+              "构建号": {
+                "type": "string",
+                "required": true,
+                "description": "构建编号",
+                "example": "42",
+                "notes": "必填"
+              },
+              "行数": {
+                "type": "string",
+                "required": false,
+                "description": "从末尾开始的行数",
+                "example": "100",
+                "notes": "可选"
+              }
+            },
+            "keyword": "jenkins console tail"
+          },
+          {
+            "name": "输出日志文件",
+            "cmd": "java -jar jenkins-cli.jar console %{作业}% %{构建号}% > %{输出文件}%",
+            "params": {
+              "作业": {
+                "type": "string",
+                "required": true,
+                "description": "作业名",
+                "example": "my-job",
+                "notes": "必填"
+              },
+              "构建号": {
+                "type": "string",
+                "required": true,
+                "description": "构建编号",
+                "example": "42",
+                "notes": "必填"
+              },
+              "输出文件": {
+                "type": "string",
+                "required": true,
+                "description": "输出日志文件路径",
+                "example": "/tmp/build.log",
+                "notes": "必填"
+              }
+            },
+            "keyword": "jenkins console file"
+          },
+          {
+            "name": "连续监控输出",
+            "cmd": "java -jar jenkins-cli.jar console %{作业}% %{构建号}% -f",
+            "params": {
+              "作业": {
+                "type": "string",
+                "required": true,
+                "description": "作业名",
+                "example": "my-job",
+                "notes": "必填"
+              },
+              "构建号": {
+                "type": "string",
+                "required": true,
+                "description": "构建编号",
+                "example": "42",
+                "notes": "必填"
+              }
+            },
+            "keyword": "jenkins console follow"
+          }
+        ],
+        "params": {
+          "作业": {
+            "type": "string",
+            "required": true,
+            "description": "作业名",
+            "example": "my-job",
+            "notes": "必填"
+          },
+          "构建号": {
+            "type": "string",
+            "required": true,
+            "description": "构建编号",
+            "example": "42",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

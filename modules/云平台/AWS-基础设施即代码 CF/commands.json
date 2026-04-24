@@ -1,0 +1,122 @@
+{
+  "module": "云平台/AWS-基础设施即代码 CF",
+  "version": "2.0",
+  "description": "AWS CloudFormation命令集合",
+  "commands": [
+    {
+      "dirPath": "/云平台/",
+      "name": "aws cloudformation deploy 部署",
+      "keyword": "aws cloudformation 部署",
+      "description": "部署 CloudFormation 栈。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws cloudformation deploy --template-file %{文件}% --stack-name %{栈名}%",
+        "extensions": [
+          {
+            "name": "带参数部署",
+            "cmd": "aws cloudformation deploy --template-file %{文件}% --stack-name %{栈名}% --parameter-overrides %{参数}%",
+            "params": {
+              "参数": {
+                "type": "string",
+                "required": false,
+                "description": "参数覆盖",
+                "example": "Key=Value",
+                "notes": "可选"
+              }
+            },
+            "keyword": "cf 参数覆盖"
+          },
+          {
+            "name": "静默模式",
+            "cmd": "aws cloudformation deploy --template-file %{文件}% --stack-name %{栈名}% --no-execute-changeset",
+            "params": {},
+            "keyword": "cf 静默部署"
+          },
+          {
+            "name": "查看变更集",
+            "cmd": "aws cloudformation deploy --template-file %{文件}% --stack-name %{栈名}% --review",
+            "params": {},
+            "keyword": "cf 查看变更"
+          },
+          {
+            "name": "指定 Capability",
+            "cmd": "aws cloudformation deploy --template-file %{文件}% --stack-name %{栈名}% --capabilities CAPABILITY_IAM",
+            "params": {},
+            "keyword": "cf IAM权限"
+          },
+          {
+            "name": "回滚配置",
+            "cmd": "aws cloudformation deploy --template-file %{文件}% --stack-name %{栈名}% --rollback-configuration %{回滚配置}%",
+            "params": {
+              "回滚配置": {
+                "type": "string",
+                "required": false,
+                "description": "回滚配置",
+                "example": "RollbackTriggerArns=arn1",
+                "notes": "可选"
+              }
+            },
+            "keyword": "cf 回滚"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "模板文件           ",
+            "example": "template.yaml",
+            "notes": "必填"
+          },
+          "栈名": {
+            "type": "string",
+            "required": true,
+            "description": "栈名             ",
+            "example": "my-stack",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/云平台/",
+      "name": "aws cloudformation list-stacks 列出栈",
+      "keyword": "aws cloudformation 栈",
+      "description": "列出 CloudFormation 栈。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws cloudformation list-stacks",
+        "extensions": [
+          {
+            "name": "查看 CREATE_COMPLETE 状态的栈",
+            "cmd": "aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE",
+            "params": {},
+            "keyword": "cf 已创建栈"
+          },
+          {
+            "name": "查看失败栈",
+            "cmd": "aws cloudformation list-stacks --stack-status-filter CREATE_FAILED",
+            "params": {},
+            "keyword": "cf 失败栈"
+          },
+          {
+            "name": "查看更新中的栈",
+            "cmd": "aws cloudformation list-stacks --stack-status-filter UPDATE_IN_PROGRESS",
+            "params": {},
+            "keyword": "cf 更新中"
+          },
+          {
+            "name": "查看删除的栈",
+            "cmd": "aws cloudformation list-stacks --stack-status-filter DELETE_COMPLETE",
+            "params": {},
+            "keyword": "cf 已删除"
+          },
+          {
+            "name": "列出所有栈状态",
+            "cmd": "aws cloudformation list-stacks --stack-status-filter CREATE_IN_PROGRESS CREATE_COMPLETE CREATE_FAILED",
+            "params": {},
+            "keyword": "cf 所有状态"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

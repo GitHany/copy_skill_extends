@@ -1,0 +1,167 @@
+{
+  "module": "容器编排/kubectl-复制文件 cp",
+  "version": "2.0",
+  "description": "kubectl 文件复制，涵盖kubectl cp的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl cp 复制文件",
+      "keyword": "kubectl cp 复制",
+      "description": "在本地和 Pod 之间复制文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl cp %{Pod}%:%{源}% %{目标}%",
+        "extensions": [
+          {
+            "name": "复制目录",
+            "cmd": "kubectl cp %{Pod}%:%{源目录}% %{目标目录}% -c %{容器}%",
+            "params": {
+              "Pod": {
+                "type": "string",
+                "required": true,
+                "description": "Pod名",
+                "example": "my-pod",
+                "notes": "必填"
+              },
+              "源目录": {
+                "type": "string",
+                "required": true,
+                "description": "源目录路径",
+                "example": "/app/data",
+                "notes": "必填"
+              },
+              "目标目录": {
+                "type": "string",
+                "required": true,
+                "description": "目标目录路径",
+                "example": "./backup",
+                "notes": "必填"
+              },
+              "容器": {
+                "type": "string",
+                "required": false,
+                "description": "容器名(多容器Pod必填)",
+                "example": "main",
+                "notes": "可选"
+              }
+            },
+            "keyword": "kubectl cp directory"
+          },
+          {
+            "name": "排除文件复制",
+            "cmd": "kubectl cp %{Pod}%:%{源}% %{目标}% --exclude=%{排除}%",
+            "params": {
+              "Pod": {
+                "type": "string",
+                "required": true,
+                "description": "Pod名",
+                "example": "my-pod",
+                "notes": "必填"
+              },
+              "源": {
+                "type": "string",
+                "required": true,
+                "description": "源路径",
+                "example": "/app/logs",
+                "notes": "必填"
+              },
+              "目标": {
+                "type": "string",
+                "required": true,
+                "description": "目标路径",
+                "example": "./logs",
+                "notes": "必填"
+              },
+              "排除": {
+                "type": "string",
+                "required": true,
+                "description": "排除的文件(支持通配符)",
+                "example": "*.tmp",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl cp exclude"
+          },
+          {
+            "name": "压缩复制大文件",
+            "cmd": "kubectl exec %{Pod}% -- tar czf - %{源}% | tar xzf - -C %{目标}%",
+            "params": {
+              "Pod": {
+                "type": "string",
+                "required": true,
+                "description": "Pod名",
+                "example": "my-pod",
+                "notes": "必填"
+              },
+              "源": {
+                "type": "string",
+                "required": true,
+                "description": "源路径",
+                "example": "/data",
+                "notes": "必填"
+              },
+              "目标": {
+                "type": "string",
+                "required": true,
+                "description": "目标路径",
+                "example": "/local/backup",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl cp tar"
+          },
+          {
+            "name": "从本地复制到Pod",
+            "cmd": "kubectl cp %{本地文件}% %{Pod}%:%{目标路径}%",
+            "params": {
+              "本地文件": {
+                "type": "string",
+                "required": true,
+                "description": "本地文件路径",
+                "example": "./config.yaml",
+                "notes": "必填"
+              },
+              "Pod": {
+                "type": "string",
+                "required": true,
+                "description": "Pod名",
+                "example": "my-pod",
+                "notes": "必填"
+              },
+              "目标路径": {
+                "type": "string",
+                "required": true,
+                "description": "目标路径",
+                "example": "/app/config.yaml",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl cp to pod"
+          }
+        ],
+        "params": {
+          "Pod": {
+            "type": "string",
+            "required": true,
+            "description": "Pod 名          ",
+            "example": "my-pod",
+            "notes": "必填"
+          },
+          "源": {
+            "type": "string",
+            "required": true,
+            "description": "源路径            ",
+            "example": "/app/logs/",
+            "notes": "必填"
+          },
+          "目标": {
+            "type": "string",
+            "required": true,
+            "description": "目标路径           ",
+            "example": "./logs/",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

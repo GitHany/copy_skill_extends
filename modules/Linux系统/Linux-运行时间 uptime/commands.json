@@ -1,0 +1,67 @@
+{
+  "module": "Linux系统/Linux-运行时间 uptime",
+  "version": "2.0",
+  "description": "Linux uptime 系统运行时间命令。显示系统已运行时间、当前登录用户数、系统负载均值。是监控系统稳定性、判断服务器是否需要重启的快速工具。负载均值显示最近1/5/15分钟的系统繁忙程度。",
+  "commands": [
+    {
+      "dirPath": "/Linux系统/",
+      "name": "uptime 运行时间",
+      "keyword": "uptime 运行",
+      "description": "显示系统运行时间。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "uptime",
+        "extensions": [
+          {
+            "name": "显示完整信息",
+            "description": "显示运行时间、用户数、负载均值               ",
+            "params": {},
+            "cmd": "uptime"
+          },
+          {
+            "name": "显示运行时间",
+            "description": "只显示系统已运行的时间长度                 ",
+            "params": {},
+            "cmd": "uptime -s"
+          },
+          {
+            "name": "显示普及信息",
+            "description": "显示简洁的uptime信息                 ",
+            "params": {},
+            "cmd": "uptime -p"
+          },
+          {
+            "name": "显示时间戳",
+            "description": "显示系统启动的时间戳                    ",
+            "params": {},
+            "cmd": "uptime -s --iso"
+          },
+          {
+            "name": "查看负载值",
+            "description": "快速查看系统当前负载                    ",
+            "params": {},
+            "cmd": "uptime | awk -F'load average:' '{print $2}'"
+          },
+          {
+            "name": "历史负载情况",
+            "description": "查看最近15分钟负载判断趋势                ",
+            "params": {},
+            "cmd": "uptime | grep -o 'load average.*'"
+          },
+          {
+            "name": "检查是否新启动",
+            "description": "检查系统是否是最近重启的                  ",
+            "params": {},
+            "cmd": "uptime | awk '{if ($3 < 1) print \"Recently rebooted\"}'"
+          },
+          {
+            "name": "美化输出",
+            "description": "以更友好的格式显示运行时间                 ",
+            "params": {},
+            "cmd": "uptime -V"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

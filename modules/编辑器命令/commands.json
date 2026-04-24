@@ -1,5 +1,5 @@
 {
-  "module": "编辑器命令",
+  "module": "编辑器命令/编辑器命令",
   "version": "1.0",
   "description": "开发编辑器与 IDE 命令集合，涵盖 Vim/Neovim、VSCode CLI、JetBrains、终端工具及代码质量工具",
   "commands": [
@@ -18,7 +18,7 @@
               "文件名": {
                 "type": "string",
                 "required": false,
-                "description": "要打开的文件路径",
+                "description": "要打开的文件路径       ",
                 "example": "src/main.js",
                 "notes": "可选"
               }
@@ -32,7 +32,7 @@
               "文件名": {
                 "type": "string",
                 "required": false,
-                "description": "要打开的文件路径",
+                "description": "要打开的文件路径       ",
                 "example": "README.md",
                 "notes": "可选"
               }
@@ -50,7 +50,7 @@
           "文件名": {
             "type": "string",
             "required": false,
-            "description": "要打开的文件路径",
+            "description": "要打开的文件路径       ",
             "example": "src/app.js",
             "notes": "可选"
           }
@@ -96,7 +96,7 @@
               "行号": {
                 "type": "string",
                 "required": true,
-                "description": "目标行号",
+                "description": "目标行号           ",
                 "example": "50",
                 "notes": "可选"
               }
@@ -182,7 +182,7 @@
               "N": {
                 "type": "string",
                 "required": true,
-                "description": "要删除的行数",
+                "description": "要删除的行数         ",
                 "example": "3",
                 "notes": "可选"
               }
@@ -232,7 +232,7 @@
               "字符串": {
                 "type": "string",
                 "required": true,
-                "description": "要搜索的字符串",
+                "description": "要搜索的字符串        ",
                 "example": "function",
                 "notes": "可选"
               }
@@ -258,14 +258,14 @@
               "旧字符串": {
                 "type": "string",
                 "required": true,
-                "description": "要被替换的字符串",
+                "description": "要被替换的字符串       ",
                 "example": "foo",
                 "notes": "可选"
               },
               "新字符串": {
                 "type": "string",
                 "required": true,
-                "description": "替换后的字符串",
+                "description": "替换后的字符串        ",
                 "example": "bar",
                 "notes": "可选"
               }
@@ -279,14 +279,14 @@
               "旧字符串": {
                 "type": "string",
                 "required": true,
-                "description": "要被替换的字符串",
+                "description": "要被替换的字符串       ",
                 "example": "foo",
                 "notes": "可选"
               },
               "新字符串": {
                 "type": "string",
                 "required": true,
-                "description": "替换后的字符串",
+                "description": "替换后的字符串        ",
                 "example": "bar",
                 "notes": "可选"
               }
@@ -300,14 +300,14 @@
               "旧字符串": {
                 "type": "string",
                 "required": true,
-                "description": "要被替换的字符串",
+                "description": "要被替换的字符串       ",
                 "example": "foo",
                 "notes": "可选"
               },
               "新字符串": {
                 "type": "string",
                 "required": true,
-                "description": "替换后的字符串",
+                "description": "替换后的字符串        ",
                 "example": "bar",
                 "notes": "可选"
               }
@@ -321,14 +321,14 @@
               "旧字符串": {
                 "type": "string",
                 "required": true,
-                "description": "要被替换的字符串",
+                "description": "要被替换的字符串       ",
                 "example": "foo",
                 "notes": "可选"
               },
               "新字符串": {
                 "type": "string",
                 "required": true,
-                "description": "替换后的字符串",
+                "description": "替换后的字符串        ",
                 "example": "bar",
                 "notes": "可选"
               }
@@ -340,7 +340,7 @@
           "字符串": {
             "type": "string",
             "required": true,
-            "description": "要搜索的字符串",
+            "description": "要搜索的字符串        ",
             "example": "TODO",
             "notes": "常用"
           }
@@ -374,7 +374,7 @@
               "文件名": {
                 "type": "string",
                 "required": true,
-                "description": "新的文件名",
+                "description": "新的文件名          ",
                 "example": "backup.js",
                 "notes": "可选"
               }
@@ -388,7 +388,7 @@
               "文件名": {
                 "type": "string",
                 "required": true,
-                "description": "要打开的文件路径",
+                "description": "要打开的文件路径       ",
                 "example": "src/main.js",
                 "notes": "可选"
               }
@@ -408,7 +408,7 @@
               "编号或名称": {
                 "type": "string",
                 "required": true,
-                "description": "缓冲区编号或名称",
+                "description": "缓冲区编号或名称       ",
                 "example": "2",
                 "notes": "可选"
               }
@@ -422,7 +422,7 @@
               "文件名": {
                 "type": "string",
                 "required": false,
-                "description": "要打开的文件路径",
+                "description": "要打开的文件路径       ",
                 "example": "src/config.js",
                 "notes": "可选"
               }
@@ -436,7 +436,7 @@
               "文件名": {
                 "type": "string",
                 "required": false,
-                "description": "要打开的文件路径",
+                "description": "要打开的文件路径       ",
                 "example": "src/config.js",
                 "notes": "可选"
               }
@@ -462,7 +462,7 @@
               "lsp服务器": {
                 "type": "string",
                 "required": true,
-                "description": "LSP 服务器名称",
+                "description": "LSP 服务器名称      ",
                 "example": "pyright",
                 "notes": "可选"
               }
@@ -476,7 +476,7 @@
               "lsp服务器": {
                 "type": "string",
                 "required": true,
-                "description": "LSP 服务器名称",
+                "description": "LSP 服务器名称      ",
                 "example": "pyright",
                 "notes": "可选"
               }
@@ -526,7 +526,7 @@
               "插件名": {
                 "type": "string",
                 "required": true,
-                "description": "插件名称",
+                "description": "插件名称           ",
                 "example": "vim-fugitive",
                 "notes": "可选"
               }
@@ -618,7 +618,7 @@
               "路径": {
                 "type": "string",
                 "required": false,
-                "description": "文件或目录路径",
+                "description": "文件或目录路径        ",
                 "example": "src",
                 "notes": "可选"
               }
@@ -632,7 +632,7 @@
               "路径": {
                 "type": "string",
                 "required": false,
-                "description": "文件或目录路径",
+                "description": "文件或目录路径        ",
                 "example": "src/app.js",
                 "notes": "可选"
               }
@@ -646,21 +646,21 @@
               "文件": {
                 "type": "string",
                 "required": true,
-                "description": "文件路径",
+                "description": "文件路径           ",
                 "example": "src/app.js",
                 "notes": "可选"
               },
               "行": {
                 "type": "string",
                 "required": true,
-                "description": "行号",
+                "description": "行号             ",
                 "example": "10",
                 "notes": "可选"
               },
               "列": {
                 "type": "string",
                 "required": true,
-                "description": "列号",
+                "description": "列号             ",
                 "example": "5",
                 "notes": "可选"
               }
@@ -674,14 +674,14 @@
               "文件1": {
                 "type": "string",
                 "required": true,
-                "description": "第一个文件路径",
+                "description": "第一个文件路径        ",
                 "example": "a.js",
                 "notes": "可选"
               },
               "文件2": {
                 "type": "string",
                 "required": true,
-                "description": "第二个文件路径",
+                "description": "第二个文件路径        ",
                 "example": "b.js",
                 "notes": "可选"
               }
@@ -693,7 +693,7 @@
           "路径": {
             "type": "string",
             "required": false,
-            "description": "文件或目录路径",
+            "description": "文件或目录路径        ",
             "example": "src/app.js",
             "notes": "可选"
           }
@@ -721,7 +721,7 @@
               "扩展ID": {
                 "type": "string",
                 "required": true,
-                "description": "扩展的唯一标识",
+                "description": "扩展的唯一标识        ",
                 "example": "ms-python.python",
                 "notes": "可选"
               }
@@ -735,7 +735,7 @@
               "扩展ID": {
                 "type": "string",
                 "required": true,
-                "description": "扩展的唯一标识",
+                "description": "扩展的唯一标识        ",
                 "example": "ms-python.python",
                 "notes": "可选"
               }
@@ -749,7 +749,7 @@
               "路径": {
                 "type": "string",
                 "required": false,
-                "description": "文件或目录路径",
+                "description": "文件或目录路径        ",
                 "example": ".",
                 "notes": "可选"
               }
@@ -763,7 +763,7 @@
               "路径": {
                 "type": "string",
                 "required": false,
-                "description": "文件或目录路径",
+                "description": "文件或目录路径        ",
                 "example": ".",
                 "notes": "可选"
               }
@@ -775,7 +775,7 @@
           "扩展ID": {
             "type": "string",
             "required": true,
-            "description": "扩展的唯一标识",
+            "description": "扩展的唯一标识        ",
             "example": "esbenp.prettier-vscode",
             "notes": "常用"
           }
@@ -797,7 +797,7 @@
               "路径": {
                 "type": "string",
                 "required": false,
-                "description": "目录或文件路径",
+                "description": "目录或文件路径        ",
                 "example": "./myproject",
                 "notes": "可选"
               }
@@ -811,7 +811,7 @@
               "路径": {
                 "type": "string",
                 "required": false,
-                "description": "目录或文件路径",
+                "description": "目录或文件路径        ",
                 "example": "./frontend",
                 "notes": "可选"
               }
@@ -825,7 +825,7 @@
               "路径": {
                 "type": "string",
                 "required": false,
-                "description": "目录或文件路径",
+                "description": "目录或文件路径        ",
                 "example": "./myproject",
                 "notes": "可选"
               }
@@ -839,7 +839,7 @@
               "路径": {
                 "type": "string",
                 "required": false,
-                "description": "目录或文件路径",
+                "description": "目录或文件路径        ",
                 "example": "./cpp-project",
                 "notes": "可选"
               }
@@ -853,7 +853,7 @@
               "路径": {
                 "type": "string",
                 "required": false,
-                "description": "目录或文件路径",
+                "description": "目录或文件路径        ",
                 "example": "./dotnet-project",
                 "notes": "可选"
               }
@@ -867,7 +867,7 @@
               "路径": {
                 "type": "string",
                 "required": false,
-                "description": "目录或文件路径",
+                "description": "目录或文件路径        ",
                 "example": "./android-app",
                 "notes": "可选"
               }
@@ -879,7 +879,7 @@
           "路径": {
             "type": "string",
             "required": false,
-            "description": "目录或文件路径",
+            "description": "目录或文件路径        ",
             "example": "./project",
             "notes": "可选"
           }
@@ -907,7 +907,7 @@
               "会话名": {
                 "type": "string",
                 "required": true,
-                "description": "会话名称",
+                "description": "会话名称           ",
                 "example": "dev",
                 "notes": "可选"
               }
@@ -927,7 +927,7 @@
               "会话名": {
                 "type": "string",
                 "required": true,
-                "description": "会话名称",
+                "description": "会话名称           ",
                 "example": "dev",
                 "notes": "可选"
               }
@@ -941,14 +941,14 @@
               "旧名": {
                 "type": "string",
                 "required": true,
-                "description": "当前会话名",
+                "description": "当前会话名          ",
                 "example": "dev",
                 "notes": "可选"
               },
               "新名": {
                 "type": "string",
                 "required": true,
-                "description": "新会话名",
+                "description": "新会话名           ",
                 "example": "project",
                 "notes": "可选"
               }
@@ -960,7 +960,7 @@
           "会话名": {
             "type": "string",
             "required": true,
-            "description": "会话名称",
+            "description": "会话名称           ",
             "example": "dev",
             "notes": "常用"
           }
@@ -1012,7 +1012,7 @@
               "数字": {
                 "type": "string",
                 "required": true,
-                "description": "窗口编号",
+                "description": "窗口编号           ",
                 "example": "0",
                 "notes": "可选"
               }
@@ -1044,7 +1044,7 @@
               "内容": {
                 "type": "string",
                 "required": true,
-                "description": "要搜索的内容",
+                "description": "要搜索的内容         ",
                 "example": "TODO",
                 "notes": "可选"
               }
@@ -1058,7 +1058,7 @@
               "内容": {
                 "type": "string",
                 "required": true,
-                "description": "要搜索的内容",
+                "description": "要搜索的内容         ",
                 "example": "function",
                 "notes": "可选"
               }
@@ -1072,14 +1072,14 @@
               "类型": {
                 "type": "string",
                 "required": true,
-                "description": "文件类型",
+                "description": "文件类型           ",
                 "example": "js",
                 "notes": "可选"
               },
               "内容": {
                 "type": "string",
                 "required": true,
-                "description": "要搜索的内容",
+                "description": "要搜索的内容         ",
                 "example": "TODO",
                 "notes": "可选"
               }
@@ -1093,7 +1093,7 @@
               "内容": {
                 "type": "string",
                 "required": true,
-                "description": "要搜索的内容",
+                "description": "要搜索的内容         ",
                 "example": "error",
                 "notes": "可选"
               }
@@ -1107,14 +1107,14 @@
               "行数": {
                 "type": "string",
                 "required": true,
-                "description": "上下文的行数",
+                "description": "上下文的行数         ",
                 "example": "3",
                 "notes": "可选"
               },
               "内容": {
                 "type": "string",
                 "required": true,
-                "description": "要搜索的内容",
+                "description": "要搜索的内容         ",
                 "example": "TODO",
                 "notes": "可选"
               }
@@ -1128,7 +1128,7 @@
               "内容": {
                 "type": "string",
                 "required": true,
-                "description": "要搜索的内容",
+                "description": "要搜索的内容         ",
                 "example": "TODO",
                 "notes": "可选"
               }
@@ -1142,7 +1142,7 @@
               "正则": {
                 "type": "string",
                 "required": true,
-                "description": "正则表达式",
+                "description": "正则表达式          ",
                 "example": "error\\d+",
                 "notes": "可选"
               }
@@ -1156,7 +1156,7 @@
               "单词": {
                 "type": "string",
                 "required": true,
-                "description": "完整单词",
+                "description": "完整单词           ",
                 "example": "console",
                 "notes": "可选"
               }
@@ -1168,7 +1168,7 @@
           "内容": {
             "type": "string",
             "required": true,
-            "description": "要搜索的内容",
+            "description": "要搜索的内容         ",
             "example": "TODO",
             "notes": "常用"
           }
@@ -1238,7 +1238,7 @@
               "文件名": {
                 "type": "string",
                 "required": true,
-                "description": "文件路径",
+                "description": "文件路径           ",
                 "example": "src/app.js",
                 "notes": "可选"
               }
@@ -1258,7 +1258,7 @@
               "配置文件": {
                 "type": "string",
                 "required": true,
-                "description": "ESLint 配置文件路径",
+                "description": "ESLint 配置文件路径  ",
                 "example": ".eslintrc.js",
                 "notes": "可选"
               }
@@ -1302,7 +1302,7 @@
               "文件名": {
                 "type": "string",
                 "required": true,
-                "description": "文件路径",
+                "description": "文件路径           ",
                 "example": "src/app.js",
                 "notes": "可选"
               }
@@ -1378,7 +1378,7 @@
               "钩子名": {
                 "type": "string",
                 "required": true,
-                "description": "钩子名称",
+                "description": "钩子名称           ",
                 "example": "trailing-whitespace",
                 "notes": "可选"
               }
@@ -1434,14 +1434,14 @@
               "IDE": {
                 "type": "string",
                 "required": true,
-                "description": "IDE 名称",
+                "description": "IDE 名称         ",
                 "example": "idea",
                 "notes": "可选"
               },
               "路径": {
                 "type": "string",
                 "required": false,
-                "description": "项目路径",
+                "description": "项目路径           ",
                 "example": "./project",
                 "notes": "可选"
               }
@@ -1455,21 +1455,21 @@
               "版本": {
                 "type": "string",
                 "required": true,
-                "description": "IDE 版本号",
+                "description": "IDE 版本号        ",
                 "example": "2024.1",
                 "notes": "可选"
               },
               "IDE": {
                 "type": "string",
                 "required": true,
-                "description": "IDE 名称",
+                "description": "IDE 名称         ",
                 "example": "idea",
                 "notes": "可选"
               },
               "路径": {
                 "type": "string",
                 "required": false,
-                "description": "项目路径",
+                "description": "项目路径           ",
                 "example": "./project",
                 "notes": "可选"
               }

@@ -1,0 +1,600 @@
+{
+  "module": "版本控制/Git 变基与合并",
+  "version": "2.0",
+  "description": "Git 变基与合并命令集合，涵盖Git 变基与合并的常用操作和最佳实践",
+  "commands": [
+    {
+      "name": "禁止快进",
+      "cmd": "git merge --no-ff %{分支}%",
+      "params": {
+        "分支": {
+          "type": "string",
+          "required": true,
+          "description": "分支名",
+          "example": "feature",
+          "notes": "必填"
+        }
+      },
+      "keyword": "git merge noff",
+      "dirPath": "/版本控制/",
+      "description": "禁止快进的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "extensions": [
+        {
+          "name": "带提交信息",
+          "cmd": "git merge --no-ff %{分支}% -m \"%{信息}%\"",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "feature",
+              "notes": "必填"
+            },
+            "信息": {
+              "type": "string",
+              "required": true,
+              "description": "提交信息",
+              "example": "Merge branch feature",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git merge noff message"
+        },
+        {
+          "name": "仅获取远程更新",
+          "cmd": "git merge --no-ff %{分支}% --no-commit",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "origin/main",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git merge noff no commit"
+        },
+        {
+          "name": "创建合并提交含签名",
+          "cmd": "git merge --no-ff %{分支}% -S",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "feature",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git merge noff sign"
+        },
+        {
+          "name": "强制合并日志",
+          "cmd": "git merge --no-ff %{分支}% --log --edit",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "feature",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git merge noff log edit"
+        },
+        {
+          "name": "详细输出",
+          "cmd": "git merge --no-ff %{分支}% --verbose",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "feature",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git merge noff verbose"
+        },
+        {
+          "name": "中止合并",
+          "cmd": "git merge --abort",
+          "params": {},
+          "keyword": "git merge abort"
+        },
+        {
+          "name": "保留提交记录",
+          "cmd": "git merge --no-ff %{分支}% --log=%{数量}%",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "feature",
+              "notes": "必填"
+            },
+            "数量": {
+              "type": "string",
+              "required": false,
+              "description": "显示的提交数",
+              "example": "20",
+              "notes": "选填"
+            }
+          },
+          "keyword": "git merge noff log"
+        },
+        {
+          "name": "签名验证",
+          "cmd": "git merge --no-ff %{分支}% --verify-signatures",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "feature",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git merge noff verify"
+        },
+        {
+          "name": "三方合并",
+          "cmd": "git merge --no-ff %{分支}% --no-edit",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "feature",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git merge noff no edit"
+        },
+        {
+          "name": "合并后清理分支",
+          "cmd": "git merge --no-ff %{分支}% && git branch -d %{分支}%",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "feature",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git merge noff delete branch"
+        },
+        {
+          "name": "强制禁用fast-forward",
+          "cmd": "git merge --no-ff --ff %{分支}%",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "feature",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git merge noff no ff"
+        },
+        {
+          "name": "Squash合并到当前分支",
+          "cmd": "git merge --no-ff --squash %{分支}%",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "feature",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git merge noff squash"
+        },
+        {
+          "name": "合并后立即推送",
+          "cmd": "git merge --no-ff %{分支}% && git push",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "main",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git merge noff push"
+        }
+      ],
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "name": "squash 合并",
+      "cmd": "git merge --squash %{分支}%",
+      "params": {
+        "分支": {
+          "type": "string",
+          "required": true,
+          "description": "分支名",
+          "example": "feature",
+          "notes": "必填"
+        }
+      },
+      "keyword": "git merge squash",
+      "dirPath": "/版本控制/",
+      "description": "squash 合并的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "extensions": [
+        {
+          "name": "Squash后强制提交",
+          "cmd": "git merge --squash %{分支}% --no-verify",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "feature",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git merge squash no verify"
+        },
+        {
+          "name": "Squash并指定提交者",
+          "cmd": "git merge --squash %{分支}% --no-commit && git commit --author=\"%{作者}%\"",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "feature",
+              "notes": "必填"
+            },
+            "作者": {
+              "type": "string",
+              "required": true,
+              "description": "作者信息",
+              "example": "John <john@example.com>",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git merge squash author"
+        },
+        {
+          "name": "Squash合并前自动压缩",
+          "cmd": "git merge --squash --autosquash %{分支}%",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "feature",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git merge squash autosquash"
+        },
+        {
+          "name": "带提交信息",
+          "cmd": "git merge --squash %{分支}% -m \"%{信息}%\"",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "feature",
+              "notes": "必填"
+            },
+            "信息": {
+              "type": "string",
+              "required": true,
+              "description": "提交信息",
+              "example": "Squash merge feature branch",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git merge squash message"
+        },
+        {
+          "name": "中止squash",
+          "cmd": "git merge --abort",
+          "params": {},
+          "keyword": "git merge squash abort"
+        },
+        {
+          "name": "详细输出",
+          "cmd": "git merge --squash %{分支}% --verbose",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "feature",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git merge squash verbose"
+        },
+        {
+          "name": "显示差异统计",
+          "cmd": "git merge --squash %{分支}% --stat",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "feature",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git merge squash stat"
+        },
+        {
+          "name": "Squash后提交",
+          "cmd": "git merge --squash %{分支}% && git commit",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "feature",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git merge squash commit"
+        },
+        {
+          "name": "Squash指定消息文件",
+          "cmd": "git merge --squash %{分支}% -F %{文件}%",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "feature",
+              "notes": "必填"
+            },
+            "文件": {
+              "type": "string",
+              "required": true,
+              "description": "消息文件路径",
+              "example": "commit_msg.txt",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git merge squash file"
+        },
+        {
+          "name": "Squash含签名",
+          "cmd": "git merge --squash %{分支}% -S",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "feature",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git merge squash sign"
+        },
+        {
+          "name": "Squash后打标签",
+          "cmd": "git merge --squash %{分支}% && git tag -a %{标签}% -m \"%{说明}%\"",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "feature",
+              "notes": "必填"
+            },
+            "标签": {
+              "type": "string",
+              "required": true,
+              "description": "标签名",
+              "example": "v1.0.0",
+              "notes": "必填"
+            },
+            "说明": {
+              "type": "string",
+              "required": true,
+              "description": "标签说明",
+              "example": "Squash merge feature",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git merge squash tag"
+        },
+        {
+          "name": "Squash合并前压缩",
+          "cmd": "git merge --squash %{分支}% -s recursive -X ours",
+          "params": {
+            "分支": {
+              "type": "string",
+              "required": true,
+              "description": "分支名",
+              "example": "feature",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git merge squash recursive ours"
+        }
+      ],
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "name": "继续变基",
+      "cmd": "git rebase --continue",
+      "params": {},
+      "keyword": "git rebase continue",
+      "dirPath": "/版本控制/",
+      "description": "继续变基的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "extensions": [
+        {
+          "name": "变基时执行测试",
+          "cmd": "git rebase --exec \"%{命令}%\"",
+          "params": {
+            "命令": {
+              "type": "string",
+              "required": true,
+              "description": "要执行的命令",
+              "example": "npm test",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git rebase exec test"
+        },
+        {
+          "name": "变基时自动解决冲突",
+          "cmd": "git rebase --strategy-option=theirs --continue",
+          "params": {},
+          "keyword": "git rebase strategy theirs"
+        },
+        {
+          "name": "跳过当前提交",
+          "cmd": "git rebase --skip",
+          "params": {},
+          "keyword": "git rebase skip"
+        },
+        {
+          "name": "中止变基",
+          "cmd": "git rebase --abort",
+          "params": {},
+          "keyword": "git rebase abort"
+        },
+        {
+          "name": "交互式变基",
+          "cmd": "git rebase -i %{基准}%",
+          "params": {
+            "基准": {
+              "type": "string",
+              "required": true,
+              "description": "基准提交",
+              "example": "HEAD~3",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git rebase interactive"
+        },
+        {
+          "name": "在提交前编辑",
+          "cmd": "git rebase -i %{基准}% --wip",
+          "params": {
+            "基准": {
+              "type": "string",
+              "required": true,
+              "description": "基准提交",
+              "example": "HEAD~3",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git rebase edit"
+        },
+        {
+          "name": "自动变基",
+          "cmd": "git rebase --autosquash %{基准}%",
+          "params": {
+            "基准": {
+              "type": "string",
+              "required": true,
+              "description": "基准提交",
+              "example": "HEAD~5",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git rebase autosquash"
+        },
+        {
+          "name": "变基到远程分支",
+          "cmd": "git rebase --onto %{新基准}% %{旧基准}%",
+          "params": {
+            "新基准": {
+              "type": "string",
+              "required": true,
+              "description": "新的基准分支",
+              "example": "origin/main",
+              "notes": "必填"
+            },
+            "旧基准": {
+              "type": "string",
+              "required": true,
+              "description": "旧的基准提交",
+              "example": "HEAD~3",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git rebase onto"
+        },
+        {
+          "name": "变基时执行Shell",
+          "cmd": "git rebase --exec %{命令}%",
+          "params": {
+            "命令": {
+              "type": "string",
+              "required": true,
+              "description": "Shell命令",
+              "example": "make test",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git rebase exec shell"
+        },
+        {
+          "name": "强制变基",
+          "cmd": "git rebase --force-rebase %{基准}%",
+          "params": {
+            "基准": {
+              "type": "string",
+              "required": true,
+              "description": "基准提交",
+              "example": "origin/main",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git rebase force"
+        },
+        {
+          "name": "变基时保留提交者",
+          "cmd": "git rebase --committer-date-is-author-date --continue",
+          "params": {},
+          "keyword": "git rebase keep committer date"
+        },
+        {
+          "name": "变基后更新远程",
+          "cmd": "git rebase %{基准}% && git push --force-with-lease",
+          "params": {
+            "基准": {
+              "type": "string",
+              "required": true,
+              "description": "基准提交",
+              "example": "origin/main",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git rebase push"
+        },
+        {
+          "name": "变基运行前检查",
+          "cmd": "git rebase --verify --continue",
+          "params": {},
+          "keyword": "git rebase verify"
+        }
+      ],
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

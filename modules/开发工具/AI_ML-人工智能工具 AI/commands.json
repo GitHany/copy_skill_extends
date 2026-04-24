@@ -1,0 +1,1382 @@
+{
+  "module": "开发工具/AI_ML-人工智能工具 AI",
+  "version": "1.0",
+  "description": "AI 与机器学习工具命令集合，覆盖 Python ML 生态、AI CLI 工具、向量数据库、模型服务和 MLOps",
+  "commands": [
+    {
+      "dirPath": "/开发工具/",
+      "name": "pip install 安装 ML 框架",
+      "keyword": "pip install tensorflow pytorch scikit-learn",
+      "description": "安装主流机器学习和深度学习 Python 包。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "pip install %{包名}%",
+        "extensions": [
+          {
+            "name": "安装 scikit-learn",
+            "cmd": "pip install scikit-learn",
+            "params": {},
+            "keyword": "pip install scikit-learn"
+          },
+          {
+            "name": "安装 TensorFlow (CPU)",
+            "cmd": "pip install tensorflow",
+            "params": {},
+            "keyword": "pip install tensorflow"
+          },
+          {
+            "name": "安装 PyTorch",
+            "cmd": "pip install torch",
+            "params": {},
+            "keyword": "pip install torch pytorch"
+          },
+          {
+            "name": "安装 Keras",
+            "cmd": "pip install keras",
+            "params": {},
+            "keyword": "pip install keras"
+          },
+          {
+            "name": "安装 JAX",
+            "cmd": "pip install jax jaxlib",
+            "params": {},
+            "keyword": "pip install jax"
+          },
+          {
+            "name": "安装 transformers",
+            "cmd": "pip install transformers",
+            "params": {},
+            "keyword": "pip install transformers"
+          },
+          {
+            "name": "安装 datasets",
+            "cmd": "pip install datasets",
+            "params": {},
+            "keyword": "pip install datasets"
+          },
+          {
+            "name": "安装 accelerate",
+            "cmd": "pip install accelerate",
+            "params": {},
+            "keyword": "pip install accelerate"
+          },
+          {
+            "name": "指定 CUDA 版本安装 PyTorch",
+            "cmd": "pip install torch --index-url https://download.pytorch.org/whl/cu118",
+            "params": {},
+            "keyword": "pip install torch cuda"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "ML 包名称         ",
+            "example": "tensorflow",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/开发工具/",
+      "name": "python -c 验证 ML 库",
+      "keyword": "python import tensorflow pytorch numpy",
+      "description": "通过 python -c 验证各 ML 库安装状态和版本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "python -c \"import %{模块名}%; print(%{模块名}%.__version__)\"",
+        "extensions": [
+          {
+            "name": "验证 TensorFlow 版本",
+            "cmd": "python -c \"import tensorflow as tf; print(tf.__version__)\"",
+            "params": {},
+            "keyword": "python tensorflow 版本"
+          },
+          {
+            "name": "验证 PyTorch + CUDA 可用性",
+            "cmd": "python -c \"import torch; print('CUDA:', torch.cuda.is_available())\"",
+            "params": {},
+            "keyword": "python pytorch cuda"
+          },
+          {
+            "name": "验证 NumPy 版本",
+            "cmd": "python -c \"import numpy as np; print(np.__version__)\"",
+            "params": {},
+            "keyword": "python numpy 版本"
+          },
+          {
+            "name": "验证 Pandas 版本",
+            "cmd": "python -c \"import pandas as pd; print(pd.__version__)\"",
+            "params": {},
+            "keyword": "python pandas 版本"
+          },
+          {
+            "name": "验证 scikit-learn 版本",
+            "cmd": "python -c \"import sklearn; print(sklearn.__version__)\"",
+            "params": {},
+            "keyword": "python sklearn 版本"
+          },
+          {
+            "name": "验证 transformers 版本",
+            "cmd": "python -c \"import transformers; print(transformers.__version__)\"",
+            "params": {},
+            "keyword": "python transformers 版本"
+          }
+        ],
+        "params": {
+          "模块名": {
+            "type": "string",
+            "required": true,
+            "description": "ML 模块名称        ",
+            "example": "tensorflow",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/开发工具/",
+      "name": "Jupyter 环境命令",
+      "keyword": "jupyter notebook lab",
+      "description": "启动和管理 Jupyter Notebook / JupyterLab 环境",
+      "data": {
+        "cmd": "jupyter %{命令}%",
+        "extensions": [
+          {
+            "name": "启动 Jupyter Notebook",
+            "cmd": "jupyter notebook",
+            "params": {},
+            "keyword": "jupyter notebook 启动"
+          },
+          {
+            "name": "启动 JupyterLab",
+            "cmd": "jupyter lab",
+            "params": {},
+            "keyword": "jupyter lab 启动"
+          },
+          {
+            "name": "指定端口启动",
+            "cmd": "jupyter notebook --port %{端口}%",
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口号            ",
+                "example": "8888",
+                "notes": "可选"
+              }
+            },
+            "keyword": "jupyter notebook 端口"
+          },
+          {
+            "name": "禁止浏览器自动打开",
+            "cmd": "jupyter notebook --no-browser",
+            "params": {},
+            "keyword": "jupyter no-browser"
+          },
+          {
+            "name": "指定工作目录",
+            "cmd": "jupyter notebook --notebook-dir %{目录}%",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "工作目录           ",
+                "example": "~/projects",
+                "notes": "可选"
+              }
+            },
+            "keyword": "jupyter notebook 目录"
+          },
+          {
+            "name": "列出运行中的笔记本",
+            "cmd": "jupyter notebook list",
+            "params": {},
+            "keyword": "jupyter notebook list"
+          },
+          {
+            "name": "停止 Notebook 实例",
+            "cmd": "jupyter notebook stop %{端口}%",
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口号            ",
+                "example": "8888",
+                "notes": "可选"
+              }
+            },
+            "keyword": "jupyter notebook stop"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "Jupyter 子命令    ",
+            "example": "notebook",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/开发工具/",
+      "name": "OpenAI CLI",
+      "keyword": "openai cli api",
+      "description": "OpenAI 命令行工具使用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "openai %{命令}%",
+        "extensions": [
+          {
+            "name": "设置 API Key",
+            "cmd": "openai apikey set %{API密钥}%",
+            "params": {
+              "API密钥": {
+                "type": "string",
+                "required": true,
+                "description": "OpenAI API Key ",
+                "example": "sk-...",
+                "notes": "可选"
+              }
+            },
+            "keyword": "openai api key"
+          },
+          {
+            "name": "查看账户信息",
+            "cmd": "openai whoami",
+            "params": {},
+            "keyword": "openai whoami"
+          },
+          {
+            "name": "调用 chat 模型",
+            "cmd": "openai chat.do \" %{内容}%\"",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "对话内容           ",
+                "example": "Hello",
+                "notes": "可选"
+              }
+            },
+            "keyword": "openai chat"
+          },
+          {
+            "name": "列出可用模型",
+            "cmd": "openai models list",
+            "params": {},
+            "keyword": "openai models"
+          },
+          {
+            "name": "查看工具列表",
+            "cmd": "openai tools",
+            "params": {},
+            "keyword": "openai tools"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "OpenAI 子命令     ",
+            "example": "chat.do",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/开发工具/",
+      "name": "Anthropic CLI (Claude)",
+      "keyword": "claude anthropic api",
+      "description": "Anthropic Claude 命令行工具使用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "claude %{命令}%",
+        "extensions": [
+          {
+            "name": "启动交互式对话",
+            "cmd": "claude",
+            "params": {},
+            "keyword": "claude 交互"
+          },
+          {
+            "name": "发送单条消息",
+            "cmd": "claude \" %{消息}%\"",
+            "params": {
+              "消息": {
+                "type": "string",
+                "required": true,
+                "description": "发送的消息          ",
+                "example": "Explain ML",
+                "notes": "可选"
+              }
+            },
+            "keyword": "claude 消息"
+          },
+          {
+            "name": "指定模型",
+            "cmd": "claude --model %{模型}% \" %{消息}%\"",
+            "params": {
+              "模型": {
+                "type": "string",
+                "required": true,
+                "description": "模型名称           ",
+                "example": "opus",
+                "notes": "可选"
+              },
+              "消息": {
+                "type": "string",
+                "required": true,
+                "description": "发送的消息          ",
+                "example": "Hello",
+                "notes": "可选"
+              }
+            },
+            "keyword": "claude model"
+          },
+          {
+            "name": "流式输出（无彩色）",
+            "cmd": "claude --print \" %{消息}%\"",
+            "params": {
+              "消息": {
+                "type": "string",
+                "required": true,
+                "description": "发送的消息          ",
+                "example": "Hello",
+                "notes": "可选"
+              }
+            },
+            "keyword": "claude print"
+          },
+          {
+            "name": "设置 API Key 环境变量",
+            "cmd": "export ANTHROPIC_API_KEY=%{密钥}%",
+            "params": {
+              "密钥": {
+                "type": "string",
+                "required": true,
+                "description": "Anthropic API Key",
+                "example": "sk-ant-...",
+                "notes": "可选"
+              }
+            },
+            "keyword": "ANTHROPIC_API_KEY"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": false,
+            "description": "Claude 子命令     ",
+            "example": "help",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/开发工具/",
+      "name": "Hugging Face CLI",
+      "keyword": "huggingface hugging face cli download upload",
+      "description": "Hugging Face 命令行工具，管理模型和数据集。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "huggingface-cli %{命令}%",
+        "extensions": [
+          {
+            "name": "登录 Hugging Face 账号",
+            "cmd": "huggingface-cli login",
+            "params": {},
+            "keyword": "huggingface login"
+          },
+          {
+            "name": "下载模型",
+            "cmd": "huggingface-cli download %{模型名}%",
+            "params": {
+              "模型名": {
+                "type": "string",
+                "required": true,
+                "description": "模型标识           ",
+                "example": "bert-base-chinese",
+                "notes": "可选"
+              }
+            },
+            "keyword": "huggingface download 模型"
+          },
+          {
+            "name": "下载数据集",
+            "cmd": "huggingface-cli download --repo-type dataset %{数据集}%",
+            "params": {
+              "数据集": {
+                "type": "string",
+                "required": true,
+                "description": "数据集名称          ",
+                "example": "squad",
+                "notes": "可选"
+              }
+            },
+            "keyword": "huggingface download 数据集"
+          },
+          {
+            "name": "查看缓存路径",
+            "cmd": "huggingface-cli cache-dir",
+            "params": {},
+            "keyword": "huggingface cache-dir"
+          },
+          {
+            "name": "列出本地模型",
+            "cmd": "huggingface-cli ls",
+            "params": {},
+            "keyword": "huggingface ls"
+          },
+          {
+            "name": "上传模型到 Hub",
+            "cmd": "huggingface-cli upload %{本地路径}% %{远程路径}%",
+            "params": {
+              "本地路径": {
+                "type": "string",
+                "required": true,
+                "description": "本地路径           ",
+                "example": "./my-model",
+                "notes": "可选"
+              },
+              "远程路径": {
+                "type": "string",
+                "required": true,
+                "description": "远程路径           ",
+                "example": "username/my-model",
+                "notes": "可选"
+              }
+            },
+            "keyword": "huggingface upload"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "HF CLI 子命令     ",
+            "example": "download",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/开发工具/",
+      "name": "Chroma CLI 向量数据库",
+      "keyword": "chroma vector database",
+      "description": "Chroma 轻量级向量数据库命令行工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "chroma %{命令}%",
+        "extensions": [
+          {
+            "name": "启动 Chroma 服务",
+            "cmd": "chroma run",
+            "params": {},
+            "keyword": "chroma run"
+          },
+          {
+            "name": "指定端口启动",
+            "cmd": "chroma run --port %{端口}%",
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口号            ",
+                "example": "8000",
+                "notes": "可选"
+              }
+            },
+            "keyword": "chroma port"
+          },
+          {
+            "name": "持久化存储模式",
+            "cmd": "chroma run --no-reset",
+            "params": {},
+            "keyword": "chroma persist"
+          },
+          {
+            "name": "查看帮助",
+            "cmd": "chroma --help",
+            "params": {},
+            "keyword": "chroma help"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": false,
+            "description": "Chroma 子命令     ",
+            "example": "run",
+            "notes": "默认 run"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/开发工具/",
+      "name": "Qdrant CLI 向量数据库",
+      "keyword": "qdrant vector database",
+      "description": "Qdrant 高性能向量数据库命令行工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "qdrant %{命令}%",
+        "extensions": [
+          {
+            "name": "启动 Qdrant 嵌入式模式",
+            "cmd": "qdrant",
+            "params": {},
+            "keyword": "qdrant 启动"
+          },
+          {
+            "name": "指定存储路径",
+            "cmd": "qdrant --storage-path %{路径}%",
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "数据目录           ",
+                "example": "./qdrant_storage",
+                "notes": "可选"
+              }
+            },
+            "keyword": "qdrant storage"
+          },
+          {
+            "name": "指定 HTTP 端口",
+            "cmd": "qdrant --http-port %{端口}%",
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "HTTP 端口号       ",
+                "example": "6333",
+                "notes": "可选"
+              }
+            },
+            "keyword": "qdrant port"
+          },
+          {
+            "name": "Docker 方式启动",
+            "cmd": "docker run -p 6333:6333 -p 6334:6334 qdrant/qdrant",
+            "params": {},
+            "keyword": "qdrant docker"
+          },
+          {
+            "name": "查看版本",
+            "cmd": "qdrant --version",
+            "params": {},
+            "keyword": "qdrant version"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": false,
+            "description": "Qdrant 子命令     ",
+            "example": "--version",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/开发工具/",
+      "name": "Milvus CLI 向量数据库",
+      "keyword": "milvus vector database",
+      "description": "Milvus 大规模向量数据库命令行工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "milvus %{命令}%",
+        "extensions": [
+          {
+            "name": "Docker 启动 Milvus",
+            "cmd": "docker run -d -p 19530:19530 milvusdb/milvus",
+            "params": {},
+            "keyword": "milvus docker"
+          },
+          {
+            "name": "Milvus CLI 连接",
+            "cmd": "milvus_cli --host %{主机}% --port %{端口}%",
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "服务器地址          ",
+                "example": "localhost",
+                "notes": "可选"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口号            ",
+                "example": "19530",
+                "notes": "可选"
+              }
+            },
+            "keyword": "milvus cli 连接"
+          },
+          {
+            "name": "Milvus Standalone Docker Compose",
+            "cmd": "docker-compose up -d",
+            "params": {},
+            "keyword": "milvus docker-compose"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": false,
+            "description": "Milvus 子命令     ",
+            "example": "help",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/开发工具/",
+      "name": "pgvector SQL 命令",
+      "keyword": "pgvector postgres postgresql vector embedding",
+      "description": "PostgreSQL pgvector 扩展的向量数据库 SQL 命令",
+      "data": {
+        "cmd": "CREATE EXTENSION IF NOT EXISTS vector;",
+        "extensions": [
+          {
+            "name": "创建向量列",
+            "cmd": "CREATE TABLE items (id bigserial PRIMARY KEY, embedding vector(%{维度}%));",
+            "params": {
+              "维度": {
+                "type": "string",
+                "required": true,
+                "description": "向量维度           ",
+                "example": "1536",
+                "notes": "可选"
+              }
+            },
+            "keyword": "pgvector CREATE TABLE"
+          },
+          {
+            "name": "插入向量",
+            "cmd": "INSERT INTO items (embedding) VALUES ('[%{值}%]');",
+            "params": {
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "向量值            ",
+                "example": "0.1,0.2",
+                "notes": "可选"
+              }
+            },
+            "keyword": "pgvector INSERT"
+          },
+          {
+            "name": "L2 距离最近邻搜索",
+            "cmd": "SELECT * FROM items ORDER BY embedding <-> '[%{查询向量}%]' LIMIT %{数量}%;",
+            "params": {
+              "查询向量": {
+                "type": "string",
+                "required": true,
+                "description": "查询向量           ",
+                "example": "0.1,0.2",
+                "notes": "可选"
+              },
+              "数量": {
+                "type": "string",
+                "required": true,
+                "description": "返回数量           ",
+                "example": "5",
+                "notes": "可选"
+              }
+            },
+            "keyword": "pgvector 搜索 L2"
+          },
+          {
+            "name": "余弦距离搜索",
+            "cmd": "SELECT * FROM items ORDER BY embedding <=> '[%{查询向量}%]' LIMIT %{数量}%;",
+            "params": {
+              "查询向量": {
+                "type": "string",
+                "required": true,
+                "description": "查询向量           ",
+                "example": "0.1,0.2",
+                "notes": "可选"
+              },
+              "数量": {
+                "type": "string",
+                "required": true,
+                "description": "返回数量           ",
+                "example": "5",
+                "notes": "可选"
+              }
+            },
+            "keyword": "pgvector 搜索 cosine"
+          },
+          {
+            "name": "内积搜索",
+            "cmd": "SELECT * FROM items ORDER BY embedding <#> '[%{查询向量}%]' LIMIT %{数量}%;",
+            "params": {
+              "查询向量": {
+                "type": "string",
+                "required": true,
+                "description": "查询向量           ",
+                "example": "0.1,0.2",
+                "notes": "可选"
+              },
+              "数量": {
+                "type": "string",
+                "required": true,
+                "description": "返回数量           ",
+                "example": "5",
+                "notes": "可选"
+              }
+            },
+            "keyword": "pgvector 搜索 内积"
+          },
+          {
+            "name": "查看向量维度",
+            "cmd": "SELECT embedding FROM items LIMIT 1;",
+            "params": {},
+            "keyword": "pgvector dimension"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": false,
+            "description": "SQL 命令         ",
+            "example": "SELECT",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/开发工具/",
+      "name": "FastAPI ML 模型服务",
+      "keyword": "fastapi uvicorn ml serving deploy",
+      "description": "使用 FastAPI + uvicorn 部署 ML 模型服务",
+      "data": {
+        "cmd": "uvicorn %{模块}%:app --host %{主机}% --port %{端口}%",
+        "extensions": [
+          {
+            "name": "启动 FastAPI 服务",
+            "cmd": "uvicorn main:app --host 0.0.0.0 --port 8000",
+            "params": {},
+            "keyword": "uvicorn 启动"
+          },
+          {
+            "name": "开发模式热重载",
+            "cmd": "uvicorn main:app --reload",
+            "params": {},
+            "keyword": "uvicorn reload"
+          },
+          {
+            "name": "多 Worker 模式",
+            "cmd": "uvicorn main:app --workers %{数量}%",
+            "params": {
+              "数量": {
+                "type": "string",
+                "required": true,
+                "description": "Worker 数量      ",
+                "example": "4",
+                "notes": "可选"
+              }
+            },
+            "keyword": "uvicorn workers"
+          },
+          {
+            "name": "HTTPS 启动",
+            "cmd": "uvicorn main:app --ssl-keyfile %{密钥}% --ssl-certfile %{证书}%",
+            "params": {
+              "密钥": {
+                "type": "string",
+                "required": true,
+                "description": "SSL 密钥文件       ",
+                "example": "./key.pem",
+                "notes": "可选"
+              },
+              "证书": {
+                "type": "string",
+                "required": true,
+                "description": "SSL 证书文件       ",
+                "example": "./cert.pem",
+                "notes": "可选"
+              }
+            },
+            "keyword": "uvicorn ssl"
+          },
+          {
+            "name": "健康检查",
+            "cmd": "curl http://localhost:8000/health",
+            "params": {},
+            "keyword": "fastapi health"
+          }
+        ],
+        "params": {
+          "模块": {
+            "type": "string",
+            "required": true,
+            "description": "模块名            ",
+            "example": "main",
+            "notes": "常用"
+          },
+          "主机": {
+            "type": "string",
+            "required": false,
+            "description": "绑定地址           ",
+            "example": "0.0.0.0",
+            "notes": "默认 127.0.0.1"
+          },
+          "端口": {
+            "type": "string",
+            "required": false,
+            "description": "端口号            ",
+            "example": "8000",
+            "notes": "默认 8000"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/开发工具/",
+      "name": "TorchServe 模型服务",
+      "keyword": "torchserve serve model pytorch",
+      "description": "PyTorch 模型服务框架 TorchServe 命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "torchserve %{命令}%",
+        "extensions": [
+          {
+            "name": "启动 TorchServe",
+            "cmd": "torchserve --start",
+            "params": {},
+            "keyword": "torchserve start"
+          },
+          {
+            "name": "停止 TorchServe",
+            "cmd": "torchserve --stop",
+            "params": {},
+            "keyword": "torchserve stop"
+          },
+          {
+            "name": "查看版本",
+            "cmd": "torchserve --version",
+            "params": {},
+            "keyword": "torchserve version"
+          },
+          {
+            "name": "打包 PyTorch 模型",
+            "cmd": "torch-model-archiver --model-name %{名称}% --version %{版本}% --serialized-file %{模型文件}% --handler %{处理器}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "模型名称           ",
+                "example": "mymodel",
+                "notes": "可选"
+              },
+              "版本": {
+                "type": "string",
+                "required": true,
+                "description": "版本号            ",
+                "example": "1.0",
+                "notes": "可选"
+              },
+              "模型文件": {
+                "type": "string",
+                "required": true,
+                "description": "序列化模型文件        ",
+                "example": "model.pt",
+                "notes": "可选"
+              },
+              "处理器": {
+                "type": "string",
+                "required": true,
+                "description": "处理函数           ",
+                "example": "image_classifier",
+                "notes": "可选"
+              }
+            },
+            "keyword": "torch-model-archiver"
+          },
+          {
+            "name": "注册模型",
+            "cmd": "torchserve-register %{模型名}%",
+            "params": {
+              "模型名": {
+                "type": "string",
+                "required": true,
+                "description": "模型名            ",
+                "example": "mymodel",
+                "notes": "可选"
+              }
+            },
+            "keyword": "torchserve register"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": false,
+            "description": "TorchServe 子命令 ",
+            "example": "--start",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/开发工具/",
+      "name": "TensorFlow Serving",
+      "keyword": "tensorflow serving model deploy",
+      "description": "TensorFlow Serving 模型部署服务。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "tensorflow_model_server --port=%{端口}% --model_name=%{名称}% --model_base_path=%{路径}%",
+        "extensions": [
+          {
+            "name": "启动 TF Serving (gRPC)",
+            "cmd": "tensorflow_model_server --port=8501 --model_name=%{名称}% --model_base_path=%{路径}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "模型名称           ",
+                "example": "my_model",
+                "notes": "可选"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "模型路径           ",
+                "example": "/models/my_model",
+                "notes": "可选"
+              }
+            },
+            "keyword": "tensorflow_model_server 启动"
+          },
+          {
+            "name": "同时启用 gRPC 和 REST API",
+            "cmd": "tensorflow_model_server --port=8500 --rest_api_port=8501 --model_name=%{名称}% --model_base_path=%{路径}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "模型名称           ",
+                "example": "my_model",
+                "notes": "可选"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "模型路径           ",
+                "example": "/models/my_model",
+                "notes": "可选"
+              }
+            },
+            "keyword": "tensorflow_model_server rest"
+          },
+          {
+            "name": "指定模型版本",
+            "cmd": "tensorflow_model_server --port=8501 --model_name=%{名称}% --model_base_path=%{路径}% --model_version_policy=specific --model_version=%{版本}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "模型名称           ",
+                "example": "my_model",
+                "notes": "可选"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "模型路径           ",
+                "example": "/models/my_model",
+                "notes": "可选"
+              },
+              "版本": {
+                "type": "string",
+                "required": true,
+                "description": "版本号            ",
+                "example": "1",
+                "notes": "可选"
+              }
+            },
+            "keyword": "tensorflow_model_server version"
+          },
+          {
+            "name": "Docker 启动 TF Serving",
+            "cmd": "docker run -p 8501:8501 --mount type=bind,source=/models,target=/models -e MODEL_NAME=%{名称}% tensorflow/serving",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "模型名称           ",
+                "example": "my_model",
+                "notes": "可选"
+              }
+            },
+            "keyword": "tensorflow serving docker"
+          }
+        ],
+        "params": {
+          "端口": {
+            "type": "string",
+            "required": true,
+            "description": "端口号            ",
+            "example": "8501",
+            "notes": "常用"
+          },
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "模型名称           ",
+            "example": "my_model",
+            "notes": "常用"
+          },
+          "路径": {
+            "type": "string",
+            "required": true,
+            "description": "模型基础路径         ",
+            "example": "/models/my_model",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/开发工具/",
+      "name": "MLflow 命令",
+      "keyword": "mlflow ui run tracking experiment",
+      "description": "MLflow 实验追踪和模型管理命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "mlflow %{命令}%",
+        "extensions": [
+          {
+            "name": "启动 MLflow UI",
+            "cmd": "mlflow ui",
+            "params": {},
+            "keyword": "mlflow ui 启动"
+          },
+          {
+            "name": "指定端口和存储启动",
+            "cmd": "mlflow ui --port %{端口}% --backend-store-uri %{存储}%",
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口号            ",
+                "example": "5000",
+                "notes": "可选"
+              },
+              "存储": {
+                "type": "string",
+                "required": true,
+                "description": "存储 URI         ",
+                "example": "sqlite:///mlflow.db",
+                "notes": "可选"
+              }
+            },
+            "keyword": "mlflow ui port"
+          },
+          {
+            "name": "运行 MLflow 项目",
+            "cmd": "mlflow run %{项目路径}%",
+            "params": {
+              "项目路径": {
+                "type": "string",
+                "required": true,
+                "description": "项目路径           ",
+                "example": "./project",
+                "notes": "可选"
+              }
+            },
+            "keyword": "mlflow run"
+          },
+          {
+            "name": "指定实验运行",
+            "cmd": "mlflow run %{路径}% --experiment-name %{实验名}%",
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "项目路径           ",
+                "example": "./project",
+                "notes": "可选"
+              },
+              "实验名": {
+                "type": "string",
+                "required": true,
+                "description": "实验名称           ",
+                "example": "my_experiment",
+                "notes": "可选"
+              }
+            },
+            "keyword": "mlflow run experiment"
+          },
+          {
+            "name": "列出实验",
+            "cmd": "mlflow experiments list",
+            "params": {},
+            "keyword": "mlflow experiments list"
+          },
+          {
+            "name": "查看运行记录",
+            "cmd": "mlflow runs list --experiment-id %{ID}%",
+            "params": {
+              "ID": {
+                "type": "string",
+                "required": true,
+                "description": "实验 ID          ",
+                "example": "0",
+                "notes": "可选"
+              }
+            },
+            "keyword": "mlflow runs list"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "MLflow 子命令     ",
+            "example": "ui",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/开发工具/",
+      "name": "DVC 命令 - 数据版本控制",
+      "keyword": "dvc init add push pull repro",
+      "description": "Data Version Control 数据与模型版本控制命令",
+      "data": {
+        "cmd": "dvc %{命令}%",
+        "extensions": [
+          {
+            "name": "初始化 DVC",
+            "cmd": "dvc init",
+            "params": {},
+            "keyword": "dvc init"
+          },
+          {
+            "name": "添加数据文件",
+            "cmd": "dvc add %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "数据文件路径         ",
+                "example": "data/raw",
+                "notes": "可选"
+              }
+            },
+            "keyword": "dvc add"
+          },
+          {
+            "name": "提交变更",
+            "cmd": "dvc commit",
+            "params": {},
+            "keyword": "dvc commit"
+          },
+          {
+            "name": "推送到远程存储",
+            "cmd": "dvc push",
+            "params": {},
+            "keyword": "dvc push"
+          },
+          {
+            "name": "从远程拉取",
+            "cmd": "dvc pull",
+            "params": {},
+            "keyword": "dvc pull"
+          },
+          {
+            "name": "展示 Pipeline 依赖图",
+            "cmd": "dvc dag",
+            "params": {},
+            "keyword": "dvc dag"
+          },
+          {
+            "name": "重现 Pipeline 阶段",
+            "cmd": "dvc repro %{阶段}%",
+            "params": {
+              "阶段": {
+                "type": "string",
+                "required": true,
+                "description": "Stage 名称       ",
+                "example": "train",
+                "notes": "可选"
+              }
+            },
+            "keyword": "dvc repro"
+          },
+          {
+            "name": "添加 S3 远程存储",
+            "cmd": "dvc remote add -d myremote s3://mybucket/data",
+            "params": {},
+            "keyword": "dvc remote s3"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "DVC 子命令        ",
+            "example": "init",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/开发工具/",
+      "name": "Kubeflow 命令",
+      "keyword": "kubeflow kubectl tfjob pytorchjob pipeline",
+      "description": "Kubeflow 机器学习平台 Kubernetes 命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl %{命令}% -n kubeflow",
+        "extensions": [
+          {
+            "name": "部署资源",
+            "cmd": "kubectl apply -f %{部署文件}%",
+            "params": {
+              "部署文件": {
+                "type": "string",
+                "required": true,
+                "description": "YAML 部署文件      ",
+                "example": "tfjob.yaml",
+                "notes": "可选"
+              }
+            },
+            "keyword": "kubectl apply"
+          },
+          {
+            "name": "查看 Pods",
+            "cmd": "kubectl get pods -n kubeflow",
+            "params": {},
+            "keyword": "kubectl get pods kubeflow"
+          },
+          {
+            "name": "查看 TensorFlow 训练任务",
+            "cmd": "kubectl get tfjob -n kubeflow",
+            "params": {},
+            "keyword": "kubectl get tfjob"
+          },
+          {
+            "name": "查看 PyTorch 训练任务",
+            "cmd": "kubectl get pytorchjob -n kubeflow",
+            "params": {},
+            "keyword": "kubectl get pytorchjob"
+          },
+          {
+            "name": "查看 Pipeline",
+            "cmd": "kubectl get pipeline -n kubeflow",
+            "params": {},
+            "keyword": "kubectl get pipeline"
+          },
+          {
+            "name": "提交 TF 训练任务",
+            "cmd": "kubectl create -f %{文件}% -n kubeflow",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "TFJob YAML 文件  ",
+                "example": "tfjob.yaml",
+                "notes": "可选"
+              }
+            },
+            "keyword": "kubectl create tfjob"
+          },
+          {
+            "name": "查看训练日志",
+            "cmd": "kubectl logs %{pod名}% -n kubeflow",
+            "params": {
+              "pod名": {
+                "type": "string",
+                "required": true,
+                "description": "Pod 名称         ",
+                "example": "tf-training-worker-0",
+                "notes": "可选"
+              }
+            },
+            "keyword": "kubectl logs kubeflow"
+          },
+          {
+            "name": "缩容/扩容训练任务",
+            "cmd": "kubectl scale tfjob %{任务名}% --replicas=%{副本}% -n kubeflow",
+            "params": {
+              "任务名": {
+                "type": "string",
+                "required": true,
+                "description": "任务名称           ",
+                "example": "my-tfjob",
+                "notes": "可选"
+              },
+              "副本": {
+                "type": "string",
+                "required": true,
+                "description": "副本数量           ",
+                "example": "3",
+                "notes": "可选"
+              }
+            },
+            "keyword": "kubectl scale tfjob"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "kubectl 子命令    ",
+            "example": "get pods",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/开发工具/",
+      "name": "NumPy / Pandas / SciPy 验证命令",
+      "keyword": "numpy pandas scipy matplotlib version",
+      "description": "常用科学计算 Python 库版本验证命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "python -c \"import %{模块}%; print(%{模块}%.__version__)\"",
+        "extensions": [
+          {
+            "name": "NumPy 版本",
+            "cmd": "python -c \"import numpy as np; print(np.__version__)\"",
+            "params": {},
+            "keyword": "numpy version"
+          },
+          {
+            "name": "Pandas 版本",
+            "cmd": "python -c \"import pandas as pd; print(pd.__version__)\"",
+            "params": {},
+            "keyword": "pandas version"
+          },
+          {
+            "name": "SciPy 版本",
+            "cmd": "python -c \"import scipy; print(scipy.__version__)\"",
+            "params": {},
+            "keyword": "scipy version"
+          },
+          {
+            "name": "Matplotlib 版本",
+            "cmd": "python -c \"import matplotlib; print(matplotlib.__version__)\"",
+            "params": {},
+            "keyword": "matplotlib version"
+          }
+        ],
+        "params": {
+          "模块": {
+            "type": "string",
+            "required": true,
+            "description": "模块名称           ",
+            "example": "numpy",
+            "notes": "常用"
+          }
+        }
+      }
+    }
+  ]
+}

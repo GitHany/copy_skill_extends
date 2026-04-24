@@ -1,0 +1,115 @@
+{
+  "module": "容器编排/Docker-卷管理 Volume",
+  "version": "2.0",
+  "description": "Docker Volume命令集合，涵盖Docker Volume的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker volume create 创建卷",
+      "keyword": "docker volume 创建",
+      "description": "创建数据卷。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker volume create %{卷名}%",
+        "extensions": [
+          {
+            "name": "指定驱动",
+            "cmd": "docker volume create --driver %{驱动}% %{卷名}%",
+            "params": {
+              "驱动": {
+                "type": "string",
+                "required": true,
+                "description": "驱动类型",
+                "example": "local",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker volume create driver"
+          },
+          {
+            "name": "指定标签",
+            "cmd": "docker volume create --label %{标签}% %{卷名}%",
+            "params": {
+              "标签": {
+                "type": "string",
+                "required": true,
+                "description": "标签",
+                "example": "env=prod",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker volume create label"
+          },
+          {
+            "name": "指定选项",
+            "cmd": "docker volume create --opt %{选项}% %{卷名}%",
+            "params": {
+              "选项": {
+                "type": "string",
+                "required": true,
+                "description": "选项",
+                "example": "size=100g",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker volume create opt"
+          }
+        ],
+        "params": {
+          "卷名": {
+            "type": "string",
+            "required": true,
+            "description": "卷名",
+            "example": "mydata",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker volume ls 列出卷",
+      "keyword": "docker volume 列表",
+      "description": "列出数据卷。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker volume ls",
+        "extensions": [
+          {
+            "name": "过滤器",
+            "cmd": "docker volume ls --filter 'type=%{类型}%'",
+            "params": {
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "类型",
+                "example": "local",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker volume ls filter"
+          },
+          {
+            "name": "格式化输出",
+            "cmd": "docker volume ls --format '{{.%{格式化}%}}'",
+            "params": {
+              "格式化": {
+                "type": "string",
+                "required": true,
+                "description": "格式化",
+                "example": "Name Driver Name",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker volume ls format"
+          },
+          {
+            "name": "静默模式",
+            "cmd": "docker volume ls -q",
+            "params": {},
+            "keyword": "docker volume ls quiet"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

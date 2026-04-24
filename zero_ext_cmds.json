@@ -1,0 +1,716 @@
+[
+  {
+    "module": "版本控制/Git 历史与版本",
+    "name": "Git 历史与版本 命令",
+    "idx": 0,
+    "file": "版本控制\\Git 历史与版本\\commands.json"
+  },
+  {
+    "module": "版本控制/Git 变基与合并",
+    "name": "禁止快进",
+    "idx": 0,
+    "file": "版本控制\\Git 变基与合并\\commands.json"
+  },
+  {
+    "module": "版本控制/Git 变基与合并",
+    "name": "squash 合并",
+    "idx": 1,
+    "file": "版本控制\\Git 变基与合并\\commands.json"
+  },
+  {
+    "module": "版本控制/Git 变基与合并",
+    "name": "继续变基",
+    "idx": 2,
+    "file": "版本控制\\Git 变基与合并\\commands.json"
+  },
+  {
+    "module": "版本控制/Git 子模块",
+    "name": "git submodule add 添加子模块",
+    "idx": 0,
+    "file": "版本控制\\Git 子模块\\commands.json"
+  },
+  {
+    "module": "版本控制/Git 忽略文件",
+    "name": "git check-ignore 检查忽略",
+    "idx": 0,
+    "file": "版本控制\\Git 忽略文件\\commands.json"
+  },
+  {
+    "module": "版本控制/Git 忽略文件",
+    "name": "git clean -n 预览忽略",
+    "idx": 1,
+    "file": "版本控制\\Git 忽略文件\\commands.json"
+  },
+  {
+    "module": "版本控制/Git 暂存区管理",
+    "name": "添加所有修改",
+    "idx": 0,
+    "file": "版本控制\\Git 暂存区管理\\commands.json"
+  },
+  {
+    "module": "版本控制/Git 暂存区管理",
+    "name": "添加所有文件",
+    "idx": 1,
+    "file": "版本控制\\Git 暂存区管理\\commands.json"
+  },
+  {
+    "module": "版本控制/Git 暂存区管理",
+    "name": "交互式添加",
+    "idx": 2,
+    "file": "版本控制\\Git 暂存区管理\\commands.json"
+  },
+  {
+    "module": "版本控制/Git 暂存区管理",
+    "name": "显示分支",
+    "idx": 3,
+    "file": "版本控制\\Git 暂存区管理\\commands.json"
+  },
+  {
+    "module": "版本控制/Git 暂存管理",
+    "name": "Git 暂存管理 命令",
+    "idx": 0,
+    "file": "版本控制\\Git 暂存管理\\commands.json"
+  },
+  {
+    "module": "版本控制/Git-二分查找 Bisect",
+    "name": "Git Bisect 命令",
+    "idx": 0,
+    "file": "版本控制\\Git-二分查找 Bisect\\commands.json"
+  },
+  {
+    "module": "版本控制/Git-分支管理 branch",
+    "name": "git branch copy",
+    "idx": 5,
+    "file": "版本控制\\Git-分支管理 branch\\commands.json"
+  },
+  {
+    "module": "版本控制/Git-切换分支 checkout",
+    "name": "git checkout paths",
+    "idx": 5,
+    "file": "版本控制\\Git-切换分支 checkout\\commands.json"
+  },
+  {
+    "module": "版本控制/Git-引用日志 Reflog",
+    "name": "git reflog 查看日志",
+    "idx": 0,
+    "file": "版本控制\\Git-引用日志 Reflog\\commands.json"
+  },
+  {
+    "module": "版本控制/Git-引用日志 Reflog",
+    "name": "git reflog expire 过期清理",
+    "idx": 1,
+    "file": "版本控制\\Git-引用日志 Reflog\\commands.json"
+  },
+  {
+    "module": "版本控制/Git-归档文件 Archive",
+    "name": "git archive 创建归档",
+    "idx": 0,
+    "file": "版本控制\\Git-归档文件 Archive\\commands.json"
+  },
+  {
+    "module": "版本控制/Git-撤销提交 Revert",
+    "name": "git revert 撤销提交",
+    "idx": 0,
+    "file": "版本控制\\Git-撤销提交 Revert\\commands.json"
+  },
+  {
+    "module": "版本控制/Git-暂存文件 add",
+    "name": "Git add 命令",
+    "idx": 0,
+    "file": "版本控制\\Git-暂存文件 add\\commands.json"
+  },
+  {
+    "module": "版本控制/Git-配置管理 config",
+    "name": "git config default branch",
+    "idx": 6,
+    "file": "版本控制\\Git-配置管理 config\\commands.json"
+  },
+  {
+    "module": "版本控制/GitHub-动作执行 Actions",
+    "name": "GitHub Actions 命令",
+    "idx": 0,
+    "file": "版本控制\\GitHub-动作执行 Actions\\commands.json"
+  },
+  {
+    "module": "数据库/MySQL 数据库管理",
+    "name": "mysqlimport 导入数据",
+    "idx": 2,
+    "file": "数据库\\MySQL 数据库管理\\commands.json"
+  },
+  {
+    "module": "数据库/Redis-哈希操作 hash",
+    "name": "hmset 批量设置哈希字段",
+    "idx": 2,
+    "file": "数据库\\Redis-哈希操作 hash\\commands.json"
+  },
+  {
+    "module": "数据库/Redis-哈希操作 hash",
+    "name": "hmget 批量获取哈希字段",
+    "idx": 3,
+    "file": "数据库\\Redis-哈希操作 hash\\commands.json"
+  },
+  {
+    "module": "数据库/Redis-哈希操作 hash",
+    "name": "hdel 删除哈希字段",
+    "idx": 4,
+    "file": "数据库\\Redis-哈希操作 hash\\commands.json"
+  },
+  {
+    "module": "数据库/Redis-哈希操作 hash",
+    "name": "hexists 检查哈希字段是否存在",
+    "idx": 5,
+    "file": "数据库\\Redis-哈希操作 hash\\commands.json"
+  },
+  {
+    "module": "数据库/Redis-哈希操作 hash",
+    "name": "hlen 获取哈希字段数量",
+    "idx": 6,
+    "file": "数据库\\Redis-哈希操作 hash\\commands.json"
+  },
+  {
+    "module": "数据库/Redis-哈希操作 hash",
+    "name": "hkeys 获取所有哈希字段名",
+    "idx": 7,
+    "file": "数据库\\Redis-哈希操作 hash\\commands.json"
+  },
+  {
+    "module": "数据库/Redis-哈希操作 hash",
+    "name": "hvals 获取所有哈希值",
+    "idx": 8,
+    "file": "数据库\\Redis-哈希操作 hash\\commands.json"
+  },
+  {
+    "module": "数据库/Redis-哈希操作 hash",
+    "name": "hgetall 获取所有哈希字段和值",
+    "idx": 9,
+    "file": "数据库\\Redis-哈希操作 hash\\commands.json"
+  },
+  {
+    "module": "数据库/Redis-哈希操作 hash",
+    "name": "hincrby 递增哈希字段值",
+    "idx": 10,
+    "file": "数据库\\Redis-哈希操作 hash\\commands.json"
+  },
+  {
+    "module": "数据库/Redis-哈希操作 hash",
+    "name": "hstrlen 获取哈希字段值长度",
+    "idx": 11,
+    "file": "数据库\\Redis-哈希操作 hash\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker Compose 完整命令",
+    "name": "Docker Compose 完整命令 命令",
+    "idx": 0,
+    "file": "容器编排\\Docker Compose 完整命令\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker Compose-版本查询 version",
+    "name": "Docker compose version 命令",
+    "idx": 0,
+    "file": "容器编排\\Docker Compose-版本查询 version\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker 容器生命周期",
+    "name": "后台运行",
+    "idx": 0,
+    "file": "容器编排\\Docker 容器生命周期\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker 容器管理",
+    "name": "docker run 创建容器",
+    "idx": 0,
+    "file": "容器编排\\Docker 容器管理\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker 容器管理",
+    "name": "docker ps 列出容器",
+    "idx": 1,
+    "file": "容器编排\\Docker 容器管理\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker 日志与监控",
+    "name": "最近日志",
+    "idx": 0,
+    "file": "容器编排\\Docker 日志与监控\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker 系统管理",
+    "name": "Docker 系统管理 命令",
+    "idx": 0,
+    "file": "容器编排\\Docker 系统管理\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker 镜像管理",
+    "name": "Docker 镜像管理 命令",
+    "idx": 0,
+    "file": "容器编排\\Docker 镜像管理\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker-保存镜像 save",
+    "name": "docker save 保存镜像",
+    "idx": 0,
+    "file": "容器编排\\Docker-保存镜像 save\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker-保存镜像 save",
+    "name": "docker load 加载镜像",
+    "idx": 1,
+    "file": "容器编排\\Docker-保存镜像 save\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker-卷管理 Volume",
+    "name": "docker volume create 创建卷",
+    "idx": 0,
+    "file": "容器编排\\Docker-卷管理 Volume\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker-卷管理 Volume",
+    "name": "docker volume ls 列出卷",
+    "idx": 1,
+    "file": "容器编排\\Docker-卷管理 Volume\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker-实时事件 events",
+    "name": "docker events 时间范围",
+    "idx": 1,
+    "file": "容器编排\\Docker-实时事件 events\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker-容器差异 diff",
+    "name": "docker diff 查看差异",
+    "idx": 0,
+    "file": "容器编排\\Docker-容器差异 diff\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker-清理资源 prune",
+    "name": "Docker prune 命令",
+    "idx": 0,
+    "file": "容器编排\\Docker-清理资源 prune\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker-版本信息 version",
+    "name": "docker version --client 仅客户端",
+    "idx": 0,
+    "file": "容器编排\\Docker-版本信息 version\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker-版本信息 version",
+    "name": "docker info 查看 Docker 信息",
+    "idx": 1,
+    "file": "容器编排\\Docker-版本信息 version\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker-版本信息 version",
+    "name": "docker version --format json JSON格式",
+    "idx": 2,
+    "file": "容器编排\\Docker-版本信息 version\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker-版本信息 version",
+    "name": "docker --version 查看 CLI 版本",
+    "idx": 3,
+    "file": "容器编排\\Docker-版本信息 version\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker-登录仓库 login",
+    "name": "docker login 登录仓库",
+    "idx": 0,
+    "file": "容器编排\\Docker-登录仓库 login\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker-登录仓库 login",
+    "name": "docker logout 登出",
+    "idx": 1,
+    "file": "容器编排\\Docker-登录仓库 login\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker-等待容器 wait",
+    "name": "docker wait 等待停止",
+    "idx": 0,
+    "file": "容器编排\\Docker-等待容器 wait\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker-网络管理 Network",
+    "name": "docker network create 创建网络",
+    "idx": 0,
+    "file": "容器编排\\Docker-网络管理 Network\\commands.json"
+  },
+  {
+    "module": "容器编排/Docker-网络管理 Network",
+    "name": "docker network ls 列出网络",
+    "idx": 1,
+    "file": "容器编排\\Docker-网络管理 Network\\commands.json"
+  },
+  {
+    "module": "容器编排/Dockerfile 构建",
+    "name": "docker tag 标记镜像",
+    "idx": 1,
+    "file": "容器编排\\Dockerfile 构建\\commands.json"
+  },
+  {
+    "module": "容器编排/K8s-入口路由 Ingress",
+    "name": "kubectl describe ingress 描述 Ingress",
+    "idx": 1,
+    "file": "容器编排\\K8s-入口路由 Ingress\\commands.json"
+  },
+  {
+    "module": "容器编排/K8s-服务管理 Service",
+    "name": "kubectl expose service 暴露",
+    "idx": 0,
+    "file": "容器编排\\K8s-服务管理 Service\\commands.json"
+  },
+  {
+    "module": "容器编排/K8s-部署管理 Deployment",
+    "name": "kubectl create deployment 创建",
+    "idx": 0,
+    "file": "容器编排\\K8s-部署管理 Deployment\\commands.json"
+  },
+  {
+    "module": "容器编排/K8s-部署管理 Deployment",
+    "name": "kubectl rollout status 状态",
+    "idx": 1,
+    "file": "容器编排\\K8s-部署管理 Deployment\\commands.json"
+  },
+  {
+    "module": "容器编排/kubectl 标签与注解",
+    "name": "kubectl annotate 设置注解",
+    "idx": 1,
+    "file": "容器编排\\kubectl 标签与注解\\commands.json"
+  },
+  {
+    "module": "容器编排/kubectl 调试",
+    "name": "kubectl debug 调试 Pod",
+    "idx": 0,
+    "file": "容器编排\\kubectl 调试\\commands.json"
+  },
+  {
+    "module": "容器编排/kubectl 调试",
+    "name": "kubectl events 查看事件",
+    "idx": 1,
+    "file": "容器编排\\kubectl 调试\\commands.json"
+  },
+  {
+    "module": "容器编排/kubectl 资源编辑",
+    "name": "kubectl edit 编辑资源",
+    "idx": 0,
+    "file": "容器编排\\kubectl 资源编辑\\commands.json"
+  },
+  {
+    "module": "容器编排/kubectl 资源编辑",
+    "name": "kubectl patch 修补资源",
+    "idx": 1,
+    "file": "容器编排\\kubectl 资源编辑\\commands.json"
+  },
+  {
+    "module": "容器编排/kubectl-API资源 api-resources",
+    "name": "kubectl api-versions API 版本",
+    "idx": 1,
+    "file": "容器编排\\kubectl-API资源 api-resources\\commands.json"
+  },
+  {
+    "module": "容器编排/kubectl-扩缩容 scaling",
+    "name": "kubectl scale 扩缩容",
+    "idx": 0,
+    "file": "容器编排\\kubectl-扩缩容 scaling\\commands.json"
+  },
+  {
+    "module": "容器编排/kubectl-描述资源 describe",
+    "name": "kubectl describe 描述资源",
+    "idx": 0,
+    "file": "容器编排\\kubectl-描述资源 describe\\commands.json"
+  },
+  {
+    "module": "容器编排/kubectl-版本信息 version",
+    "name": "kubectl version --short 简化版本",
+    "idx": 1,
+    "file": "容器编排\\kubectl-版本信息 version\\commands.json"
+  },
+  {
+    "module": "容器编排/kubectl-编辑资源 edit",
+    "name": "kubectl edit 编辑资源",
+    "idx": 0,
+    "file": "容器编排\\kubectl-编辑资源 edit\\commands.json"
+  },
+  {
+    "module": "容器编排/kubectl-资源监控 top",
+    "name": "kubectl top 命令",
+    "idx": 0,
+    "file": "容器编排\\kubectl-资源监控 top\\commands.json"
+  },
+  {
+    "module": "容器编排/kubectl-配置管理 config",
+    "name": "kubectl config use-context 切换上下文",
+    "idx": 0,
+    "file": "容器编排\\kubectl-配置管理 config\\commands.json"
+  },
+  {
+    "module": "容器编排/kubectl-配置管理 config",
+    "name": "kubectl config get-contexts 查看上下文",
+    "idx": 1,
+    "file": "容器编排\\kubectl-配置管理 config\\commands.json"
+  },
+  {
+    "module": "容器编排/Kubernetes Pod 管理",
+    "name": "Kubernetes Pod 管理 命令",
+    "idx": 0,
+    "file": "容器编排\\Kubernetes Pod 管理\\commands.json"
+  },
+  {
+    "module": "容器编排/Kubernetes 命令",
+    "name": "kubectl create namespace 创建命名空间",
+    "idx": 14,
+    "file": "容器编排\\Kubernetes 命令\\commands.json"
+  },
+  {
+    "module": "容器编排/Kubernetes 命令",
+    "name": "kubectl config use-context 切换上下文",
+    "idx": 24,
+    "file": "容器编排\\Kubernetes 命令\\commands.json"
+  },
+  {
+    "module": "基础设施/Helm-K8s包管理 Helm",
+    "name": "helm history 查看历史",
+    "idx": 9,
+    "file": "基础设施\\Helm-K8s包管理 Helm\\commands.json"
+  },
+  {
+    "module": "后端开发/Python 虚拟环境",
+    "name": "source activate 激活环境",
+    "idx": 1,
+    "file": "后端开发\\Python 虚拟环境\\commands.json"
+  },
+  {
+    "module": "后端开发/Python 虚拟环境",
+    "name": "deactivate 退出环境",
+    "idx": 2,
+    "file": "后端开发\\Python 虚拟环境\\commands.json"
+  },
+  {
+    "module": "后端开发/Python-pip管理 pip",
+    "name": "pip uninstall 卸载包",
+    "idx": 1,
+    "file": "后端开发\\Python-pip管理 pip\\commands.json"
+  },
+  {
+    "module": "前端开发/Node.js-npm脚本 npm",
+    "name": "npm stop 停止应用",
+    "idx": 1,
+    "file": "前端开发\\Node.js-npm脚本 npm\\commands.json"
+  },
+  {
+    "module": "前端开发/Vite-构建工具 Vite",
+    "name": "npm create vite 创建项目",
+    "idx": 0,
+    "file": "前端开发\\Vite-构建工具 Vite\\commands.json"
+  },
+  {
+    "module": "前端开发/Webpack-打包工具 Webpack",
+    "name": "webpack serve 开发服务器",
+    "idx": 1,
+    "file": "前端开发\\Webpack-打包工具 Webpack\\commands.json"
+  },
+  {
+    "module": "前端开发/Webpack-打包工具 Webpack",
+    "name": "webpack watch 监听模式",
+    "idx": 2,
+    "file": "前端开发\\Webpack-打包工具 Webpack\\commands.json"
+  },
+  {
+    "module": "云平台/AWS EC2 管理",
+    "name": "AWS EC2 管理 命令",
+    "idx": 0,
+    "file": "云平台\\AWS EC2 管理\\commands.json"
+  },
+  {
+    "module": "云平台/AWS EC2 管理",
+    "name": "AWS EC2 启动实例",
+    "idx": 1,
+    "file": "云平台\\AWS EC2 管理\\commands.json"
+  },
+  {
+    "module": "云平台/AWS EC2 管理",
+    "name": "AWS EC2 停止实例",
+    "idx": 2,
+    "file": "云平台\\AWS EC2 管理\\commands.json"
+  },
+  {
+    "module": "云平台/AWS S3 存储操作",
+    "name": "aws s3 rm 删除",
+    "idx": 2,
+    "file": "云平台\\AWS S3 存储操作\\commands.json"
+  },
+  {
+    "module": "云平台/AWS-S3同步 sync",
+    "name": "AWS S3 sync 命令",
+    "idx": 0,
+    "file": "云平台\\AWS-S3同步 sync\\commands.json"
+  },
+  {
+    "module": "云平台/AWS-基础设施即代码 CF",
+    "name": "aws cloudformation deploy 部署",
+    "idx": 0,
+    "file": "云平台\\AWS-基础设施即代码 CF\\commands.json"
+  },
+  {
+    "module": "云平台/AWS-基础设施即代码 CF",
+    "name": "aws cloudformation list-stacks 列出栈",
+    "idx": 1,
+    "file": "云平台\\AWS-基础设施即代码 CF\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux 命令",
+    "name": "pwd 显示当前目录",
+    "idx": 2,
+    "file": "Linux系统\\Linux 命令\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux 文件操作",
+    "name": "显示隐藏文件",
+    "idx": 0,
+    "file": "Linux系统\\Linux 文件操作\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux 文本处理",
+    "name": "忽略大小写",
+    "idx": 0,
+    "file": "Linux系统\\Linux 文本处理\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux 磁盘管理",
+    "name": "df 磁盘使用",
+    "idx": 0,
+    "file": "Linux系统\\Linux 磁盘管理\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux 磁盘管理",
+    "name": "fdisk 分区管理",
+    "idx": 1,
+    "file": "Linux系统\\Linux 磁盘管理\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux 磁盘管理",
+    "name": "mkfs 文件系统格式化",
+    "idx": 2,
+    "file": "Linux系统\\Linux 磁盘管理\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux 磁盘管理",
+    "name": "mount 挂载分区",
+    "idx": 3,
+    "file": "Linux系统\\Linux 磁盘管理\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux 磁盘管理",
+    "name": "fsck 文件系统检查",
+    "idx": 4,
+    "file": "Linux系统\\Linux 磁盘管理\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux 管道与重定向",
+    "name": "管道操作",
+    "idx": 0,
+    "file": "Linux系统\\Linux 管道与重定向\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux 系统监控",
+    "name": "Linux 系统监控 命令",
+    "idx": 0,
+    "file": "Linux系统\\Linux 系统监控\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux 系统监控",
+    "name": "htop 交互式进程查看",
+    "idx": 1,
+    "file": "Linux系统\\Linux 系统监控\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux 系统监控",
+    "name": "ps 进程查看",
+    "idx": 2,
+    "file": "Linux系统\\Linux 系统监控\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux 系统监控",
+    "name": "uptime 系统运行时间",
+    "idx": 3,
+    "file": "Linux系统\\Linux 系统监控\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux 系统监控",
+    "name": "free 内存监控",
+    "idx": 4,
+    "file": "Linux系统\\Linux 系统监控\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux 系统管理",
+    "name": "重启服务",
+    "idx": 1,
+    "file": "Linux系统\\Linux 系统管理\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux 网络诊断",
+    "name": "netstat 网络统计",
+    "idx": 4,
+    "file": "Linux系统\\Linux 网络诊断\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux 网络配置",
+    "name": "显示路由表",
+    "idx": 0,
+    "file": "Linux系统\\Linux 网络配置\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux 网络配置",
+    "name": "显示 UDP 连接",
+    "idx": 1,
+    "file": "Linux系统\\Linux 网络配置\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux 网络配置",
+    "name": "清除规则",
+    "idx": 2,
+    "file": "Linux系统\\Linux 网络配置\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux 网络配置",
+    "name": "禁用防火墙",
+    "idx": 3,
+    "file": "Linux系统\\Linux 网络配置\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux 进程管理",
+    "name": "Linux 进程管理 命令",
+    "idx": 0,
+    "file": "Linux系统\\Linux 进程管理\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux-SSH密钥 ssh-keygen",
+    "name": "ssh-keygen 生成密钥",
+    "idx": 0,
+    "file": "Linux系统\\Linux-SSH密钥 ssh-keygen\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux-定时任务 cron",
+    "name": "crontab 时间格式",
+    "idx": 1,
+    "file": "Linux系统\\Linux-定时任务 cron\\commands.json"
+  },
+  {
+    "module": "Linux系统/Linux-资源限制 ulimit",
+    "name": "ulimit 设置限制",
+    "idx": 0,
+    "file": "Linux系统\\Linux-资源限制 ulimit\\commands.json"
+  },
+  {
+    "module": "CI_CD/CD工具 Jenkins",
+    "name": "jenkins-cli list-jobs 列出作业",
+    "idx": 1,
+    "file": "CI_CD\\Jenkins-CI\\CD工具 Jenkins\\commands.json"
+  },
+  {
+    "module": "CI_CD/CD工具 Jenkins",
+    "name": "jenkins-cli console 输出",
+    "idx": 2,
+    "file": "CI_CD\\Jenkins-CI\\CD工具 Jenkins\\commands.json"
+  }
+]

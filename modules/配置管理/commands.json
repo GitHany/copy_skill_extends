@@ -1,5 +1,5 @@
 {
-  "module": "配置管理",
+  "module": "配置管理/配置管理",
   "version": "1.0",
   "description": "配置管理与环境工具模块，涵盖环境变量、密钥管理、包管理器配置和构建工具命令",
   "commands": [
@@ -18,7 +18,7 @@
               "路径": {
                 "type": "string",
                 "required": true,
-                "description": ".env文件路径",
+                "description": ".env文件路径       ",
                 "example": "/data/prod.env",
                 "notes": "可选"
               }
@@ -62,14 +62,14 @@
               "KEY": {
                 "type": "string",
                 "required": true,
-                "description": "变量名",
+                "description": "变量名            ",
                 "example": "DEBUG",
                 "notes": "可选"
               },
               "value": {
                 "type": "string",
                 "required": true,
-                "description": "变量值",
+                "description": "变量值            ",
                 "example": "true",
                 "notes": "可选"
               }
@@ -137,14 +137,14 @@
               "命名空间": {
                 "type": "string",
                 "required": true,
-                "description": "命名空间",
+                "description": "命名空间           ",
                 "example": "myapp",
                 "notes": "可选"
               },
               "变量名": {
                 "type": "string",
                 "required": true,
-                "description": "环境变量名",
+                "description": "环境变量名          ",
                 "example": "API_KEY",
                 "notes": "可选"
               }
@@ -158,7 +158,7 @@
               "命名空间": {
                 "type": "string",
                 "required": true,
-                "description": "命名空间",
+                "description": "命名空间           ",
                 "example": "myapp",
                 "notes": "可选"
               }
@@ -172,7 +172,7 @@
               "命名空间": {
                 "type": "string",
                 "required": true,
-                "description": "命名空间",
+                "description": "命名空间           ",
                 "example": "myapp",
                 "notes": "可选"
               }
@@ -186,7 +186,7 @@
               "命名空间": {
                 "type": "string",
                 "required": true,
-                "description": "命名空间",
+                "description": "命名空间           ",
                 "example": "myapp",
                 "notes": "可选"
               }
@@ -198,7 +198,7 @@
           "命名空间": {
             "type": "string",
             "required": true,
-            "description": "envchain命名空间",
+            "description": "envchain命名空间   ",
             "example": "myapp",
             "notes": "必填"
           }
@@ -226,21 +226,21 @@
               "文件": {
                 "type": "string",
                 "required": true,
-                "description": "加密文件路径",
+                "description": "加密文件路径         ",
                 "example": "secrets.yaml",
                 "notes": "可选"
               },
               "字段": {
                 "type": "string",
                 "required": true,
-                "description": "字段路径",
+                "description": "字段路径           ",
                 "example": "api_key",
                 "notes": "可选"
               },
               "值": {
                 "type": "string",
                 "required": true,
-                "description": "新值",
+                "description": "新值             ",
                 "example": "newvalue",
                 "notes": "可选"
               }
@@ -254,7 +254,7 @@
               "KMS密钥": {
                 "type": "string",
                 "required": true,
-                "description": "KMS密钥ARN",
+                "description": "KMS密钥ARN       ",
                 "example": "arn:aws:kms:us-east-1:123:key/xxx",
                 "notes": "可选"
               }
@@ -284,7 +284,7 @@
           "文件": {
             "type": "string",
             "required": true,
-            "description": "要加密的文件路径",
+            "description": "要加密的文件路径       ",
             "example": "secrets.yaml",
             "notes": "必填"
           }
@@ -306,21 +306,21 @@
               "公钥": {
                 "type": "string",
                 "required": true,
-                "description": "接收者age公钥",
+                "description": "接收者age公钥       ",
                 "example": "age1xxxxxxxx",
                 "notes": "可选"
               },
               "输入文件": {
                 "type": "string",
                 "required": true,
-                "description": "原始文件",
+                "description": "原始文件           ",
                 "example": "in.txt",
                 "notes": "可选"
               },
               "输出文件": {
                 "type": "string",
                 "required": true,
-                "description": "加密输出文件",
+                "description": "加密输出文件         ",
                 "example": "out.enc",
                 "notes": "可选"
               }
@@ -340,7 +340,7 @@
               "密钥文件": {
                 "type": "string",
                 "required": true,
-                "description": "密钥文件路径",
+                "description": "密钥文件路径         ",
                 "example": "key.txt",
                 "notes": "可选"
               }
@@ -372,7 +372,7 @@
               "名称": {
                 "type": "string",
                 "required": true,
-                "description": "密钥名称或邮箱",
+                "description": "密钥名称或邮箱        ",
                 "example": "user@example.com",
                 "notes": "可选"
               }
@@ -392,7 +392,7 @@
               "接收者": {
                 "type": "string",
                 "required": true,
-                "description": "接收者名称或邮箱",
+                "description": "接收者名称或邮箱       ",
                 "example": "user@example.com",
                 "notes": "可选"
               }
@@ -436,7 +436,7 @@
               "条目": {
                 "type": "string",
                 "required": true,
-                "description": "条目名称",
+                "description": "条目名称           ",
                 "example": "SSH Keys",
                 "notes": "可选"
               }
@@ -500,7 +500,7 @@
               "关键词": {
                 "type": "string",
                 "required": true,
-                "description": "搜索关键词",
+                "description": "搜索关键词          ",
                 "example": "api",
                 "notes": "可选"
               }
@@ -584,14 +584,14 @@
           "键": {
             "type": "string",
             "required": true,
-            "description": "Consul KV键路径",
+            "description": "Consul KV键路径   ",
             "example": "config/app/database",
             "notes": "必填"
           },
           "值": {
             "type": "string",
             "required": true,
-            "description": "键值内容",
+            "description": "键值内容           ",
             "example": "mysql://host:3306",
             "notes": "必填"
           }
@@ -647,14 +647,14 @@
           "键": {
             "type": "string",
             "required": true,
-            "description": "etcd键路径",
+            "description": "etcd键路径        ",
             "example": "/config/app/version",
             "notes": "必填"
           },
           "值": {
             "type": "string",
             "required": true,
-            "description": "键值内容",
+            "description": "键值内容           ",
             "example": "1.0.0",
             "notes": "必填"
           }
@@ -716,7 +716,7 @@
           "路径": {
             "type": "string",
             "required": true,
-            "description": "Vault路径",
+            "description": "Vault路径        ",
             "example": "secret/myapp",
             "notes": "必填"
           }
@@ -766,14 +766,14 @@
           "配置项": {
             "type": "string",
             "required": true,
-            "description": "配置项名称",
+            "description": "配置项名称          ",
             "example": "registry",
             "notes": "必填"
           },
           "值": {
             "type": "string",
             "required": true,
-            "description": "配置值",
+            "description": "配置值            ",
             "example": "https://registry.npmmirror.com",
             "notes": "必填"
           }
@@ -859,7 +859,7 @@
           "包名": {
             "type": "string",
             "required": true,
-            "description": "要安装的包名和版本",
+            "description": "要安装的包名和版本      ",
             "example": "node@18",
             "notes": "必填"
           }
@@ -887,7 +887,7 @@
               "配置文件": {
                 "type": "string",
                 "required": true,
-                "description": "配置文件名",
+                "description": "配置文件名          ",
                 "example": "webpack.prod.js",
                 "notes": "可选"
               }
@@ -1013,7 +1013,7 @@
           "输入文件": {
             "type": "string",
             "required": true,
-            "description": "输入文件路径",
+            "description": "输入文件路径         ",
             "example": "app.js",
             "notes": "必填"
           }

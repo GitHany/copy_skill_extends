@@ -1,0 +1,248 @@
+{
+  "module": "容器编排/Docker 镜像管理",
+  "version": "2.0",
+  "description": "Docker 镜像管理命令集合，涵盖Docker 镜像管理的常用操作和最佳实践",
+  "commands": [
+    {
+      "cmd": "docker images",
+      "extensions": [
+        {
+          "name": "显示镜像 ID",
+          "cmd": "docker images -q",
+          "params": {},
+          "keyword": "docker images quiet"
+        },
+        {
+          "name": "显示完整 ID",
+          "cmd": "docker images --no-trunc",
+          "params": {},
+          "keyword": "docker images truncate"
+        },
+        {
+          "name": "过滤镜像",
+          "cmd": "docker images %{过滤器}%",
+          "params": {
+            "过滤器": {
+              "type": "string",
+              "required": true,
+              "description": "过滤器条件",
+              "example": "--filter \"reference=nginx:*\"",
+              "notes": "必填"
+            }
+          },
+          "keyword": "docker images filter"
+        },
+        {
+          "name": "显示镜像大小",
+          "cmd": "docker images --format \"table {{.Repository}}\\t{{.Size}}\"",
+          "params": {},
+          "keyword": "docker images size"
+        },
+        {
+          "name": "只显示悬空镜像",
+          "cmd": "docker images -f \"dangling=true\"",
+          "params": {},
+          "keyword": "docker images dangling"
+        },
+        {
+          "name": "按大小排序显示",
+          "cmd": "docker images --format \"table {{.Repository}}\\t{{.Size}}\" | sort -k2 -h",
+          "params": {},
+          "keyword": "docker images sort size"
+        },
+        {
+          "name": "拉取最新镜像",
+          "cmd": "docker pull %{镜像名}%:%{标签}%",
+          "params": {
+            "镜像名": {
+              "type": "string",
+              "required": true,
+              "description": "镜像名称",
+              "example": "nginx",
+              "notes": "必填"
+            },
+            "标签": {
+              "type": "string",
+              "required": false,
+              "description": "镜像标签",
+              "example": "latest",
+              "notes": "可选，默认为latest"
+            }
+          },
+          "keyword": "docker pull image"
+        },
+        {
+          "name": "删除单个镜像",
+          "cmd": "docker rmi %{镜像名}%",
+          "params": {
+            "镜像名": {
+              "type": "string",
+              "required": true,
+              "description": "镜像名称或ID",
+              "example": "nginx:latest",
+              "notes": "必填"
+            }
+          },
+          "keyword": "docker rmi remove image"
+        },
+        {
+          "name": "构建镜像",
+          "cmd": "docker build -t %{镜像名}%:%{标签}% %{路径}%",
+          "params": {
+            "镜像名": {
+              "type": "string",
+              "required": true,
+              "description": "镜像名称",
+              "example": "myapp",
+              "notes": "必填"
+            },
+            "标签": {
+              "type": "string",
+              "required": false,
+              "description": "镜像标签",
+              "example": "v1.0",
+              "notes": "可选"
+            },
+            "路径": {
+              "type": "string",
+              "required": false,
+              "description": "Dockerfile路径",
+              "example": ".",
+              "notes": "可选，默认为当前目录"
+            }
+          },
+          "keyword": "docker build image"
+        },
+        {
+          "name": "推送镜像到仓库",
+          "cmd": "docker push %{镜像名}%:%{标签}%",
+          "params": {
+            "镜像名": {
+              "type": "string",
+              "required": true,
+              "description": "镜像名称",
+              "example": "registry.example.com/myapp",
+              "notes": "必填"
+            },
+            "标签": {
+              "type": "string",
+              "required": false,
+              "description": "镜像标签",
+              "example": "v1.0",
+              "notes": "可选"
+            }
+          },
+          "keyword": "docker push image"
+        },
+        {
+          "name": "保存镜像为tar文件",
+          "cmd": "docker save -o %{文件名}% %{镜像名}%:%{标签}%",
+          "params": {
+            "文件名": {
+              "type": "string",
+              "required": true,
+              "description": "保存的文件名",
+              "example": "myimage.tar",
+              "notes": "必填"
+            },
+            "镜像名": {
+              "type": "string",
+              "required": true,
+              "description": "镜像名称",
+              "example": "nginx",
+              "notes": "必填"
+            },
+            "标签": {
+              "type": "string",
+              "required": false,
+              "description": "镜像标签",
+              "example": "latest",
+              "notes": "可选"
+            }
+          },
+          "keyword": "docker save image"
+        },
+        {
+          "name": "加载tar文件为镜像",
+          "cmd": "docker load -i %{文件}%",
+          "params": {
+            "文件": {
+              "type": "string",
+              "required": true,
+              "description": "tar文件路径",
+              "example": "myimage.tar",
+              "notes": "必填"
+            }
+          },
+          "keyword": "docker load image"
+        },
+        {
+          "name": "查看镜像历史",
+          "cmd": "docker history %{镜像名}%:%{标签}%",
+          "params": {
+            "镜像名": {
+              "type": "string",
+              "required": true,
+              "description": "镜像名称",
+              "example": "nginx",
+              "notes": "必填"
+            },
+            "标签": {
+              "type": "string",
+              "required": false,
+              "description": "镜像标签",
+              "example": "latest",
+              "notes": "可选"
+            }
+          },
+          "keyword": "docker history image"
+        },
+        {
+          "name": "标记本地镜像",
+          "cmd": "docker tag %{源镜像}%:%{源标签}% %{目标镜像}%:%{目标标签}%",
+          "params": {
+            "源镜像": {
+              "type": "string",
+              "required": true,
+              "description": "源镜像名",
+              "example": "nginx",
+              "notes": "必填"
+            },
+            "源标签": {
+              "type": "string",
+              "required": false,
+              "description": "源标签",
+              "example": "latest",
+              "notes": "可选"
+            },
+            "目标镜像": {
+              "type": "string",
+              "required": true,
+              "description": "目标镜像名",
+              "example": "myrepo/nginx",
+              "notes": "必填"
+            },
+            "目标标签": {
+              "type": "string",
+              "required": false,
+              "description": "目标标签",
+              "example": "v1.0",
+              "notes": "可选"
+            }
+          },
+          "keyword": "docker tag image"
+        }
+      ],
+      "params": {},
+      "dirPath": "/容器编排/",
+      "name": "Docker 镜像管理 命令",
+      "keyword": "Docker 镜像管理 命令",
+      "description": "Docker 镜像管理 命令的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

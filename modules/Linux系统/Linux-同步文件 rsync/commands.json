@@ -1,0 +1,55 @@
+{
+  "module": "Linux系统/Linux-同步文件 rsync",
+  "version": "2.0",
+  "description": "Rsync 文件同步工具，涵盖Linux rsync的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Linux系统/",
+      "name": "rsync 同步文件",
+      "keyword": "rsync 同步",
+      "description": "高效文件同步。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "rsync -av %{源}% %{目标}%",
+        "extensions": [
+          {
+            "name": "删除差异",
+            "cmd": "rsync -av --delete %{源}% %{目标}%",
+            "params": {
+              "源": {
+                "type": "string",
+                "required": true,
+                "description": "源              ",
+                "example": "/data/",
+                "notes": "必填"
+              },
+              "目标": {
+                "type": "string",
+                "required": true,
+                "description": "目标             ",
+                "example": "user@host:/backup/",
+                "notes": "必填"
+              }
+            },
+            "keyword": "rsync delete"
+          }
+        ],
+        "params": {
+          "源": {
+            "type": "string",
+            "required": true,
+            "description": "源路径            ",
+            "example": "/home/user/data/",
+            "notes": "必填"
+          },
+          "目标": {
+            "type": "string",
+            "required": true,
+            "description": "目标路径           ",
+            "example": "backup@server:/backup/",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

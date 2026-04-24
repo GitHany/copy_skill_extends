@@ -1,0 +1,498 @@
+{
+  "module": "容器编排/Docker-多架构构建 buildx",
+  "version": "2.0",
+  "description": "Docker buildx命令集合，涵盖Docker buildx的常用操作和最佳实践",
+  "commands": [
+    {
+      "name": "docker buildx ls 列出构建器",
+      "description": "列出所有可用的 buildx 构建器及其状态。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "params": {},
+      "keyword": "docker buildx ls",
+      "dirPath": "/容器编排/",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "name": "显示所有构建器详细信息",
+            "cmd": "docker buildx ls --all",
+            "params": {},
+            "keyword": "docker buildx ls --all"
+          },
+          {
+            "name": "只显示活跃的构建器",
+            "cmd": "docker buildx ls --filter type=active",
+            "params": {},
+            "keyword": "docker buildx ls --filter"
+          },
+          {
+            "name": "格式化输出构建器列表",
+            "cmd": "docker buildx ls --format \"table {{.Name}}\\t{{.Driver}}\\t{{.Status}}\"",
+            "params": {},
+            "keyword": "docker buildx ls --format"
+          },
+          {
+            "name": "显示详细驱动信息",
+            "cmd": "docker buildx ls -v",
+            "params": {},
+            "keyword": "docker buildx ls -v"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "name": "docker buildx create 创建构建器",
+      "description": "创建新的 buildx 构建器实例，支持 docker-container、kubernetes 等驱动",
+      "params": {
+        "构建器名": {
+          "type": "string",
+          "required": false,
+          "description": "构建器名称",
+          "example": "mybuilder",
+          "notes": "可选，不指定则自动生成"
+        },
+        "驱动类型": {
+          "type": "string",
+          "required": false,
+          "description": "构建器驱动类型",
+          "example": "docker-container",
+          "notes": "可选：docker-container、kubernetes、remote"
+        }
+      },
+      "keyword": "docker buildx create",
+      "dirPath": "/容器编排/",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "name": "创建指定驱动的构建器",
+            "cmd": "docker buildx create --name mybuilder --driver docker-container",
+            "params": {
+              "构建器名": {
+                "type": "string",
+                "required": true,
+                "description": "要创建的构建器名称",
+                "example": "mybuilder",
+                "notes": "必填"
+              },
+              "驱动类型": {
+                "type": "string",
+                "required": true,
+                "description": "构建器驱动类型",
+                "example": "docker-container",
+                "notes": "必填：docker-container、kubernetes、remote"
+              }
+            },
+            "keyword": "docker buildx create --driver"
+          },
+          {
+            "name": "创建构建器并设为默认",
+            "cmd": "docker buildx create --name mybuilder --default",
+            "params": {
+              "构建器名": {
+                "type": "string",
+                "required": true,
+                "description": "要创建的构建器名称",
+                "example": "mybuilder",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker buildx create --default"
+          },
+          {
+            "name": "使用现有节点创建构建器",
+            "cmd": "docker buildx create --node mynode --name mybuilder existing",
+            "params": {
+              "节点名": {
+                "type": "string",
+                "required": true,
+                "description": "节点名称",
+                "example": "mynode",
+                "notes": "必填"
+              },
+              "构建器名": {
+                "type": "string",
+                "required": true,
+                "description": "要创建的构建器名称",
+                "example": "mybuilder",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker buildx create --node"
+          },
+          {
+            "name": "创建远程构建器",
+            "cmd": "docker buildx create --driver remote --name remote-builder tcp://remote:2375",
+            "params": {
+              "构建器名": {
+                "type": "string",
+                "required": true,
+                "description": "远程构建器名称",
+                "example": "remote-builder",
+                "notes": "必填"
+              },
+              "远程地址": {
+                "type": "string",
+                "required": true,
+                "description": "远程 BuildKit 地址",
+                "example": "tcp://remote:2375",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker buildx create remote"
+          },
+          {
+            "name": "创建 Kubernetes 构建器",
+            "cmd": "docker buildx create --driver kubernetes --name k8s-builder --platform linux/amd64,linux/arm64",
+            "params": {
+              "构建器名": {
+                "type": "string",
+                "required": true,
+                "description": "Kubernetes构建器名称",
+                "example": "k8s-builder",
+                "notes": "必填"
+              },
+              "平台": {
+                "type": "string",
+                "required": false,
+                "description": "支持的平台",
+                "example": "linux/amd64,linux/arm64",
+                "notes": "可选"
+              }
+            },
+            "keyword": "docker buildx create kubernetes"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "name": "docker buildx use 切换构建器",
+      "description": "切换到指定的构建器作为默认构建器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "params": {
+        "构建器名": {
+          "type": "string",
+          "required": true,
+          "description": "构建器名称",
+          "example": "default",
+          "notes": "必填，通过 docker buildx ls 查看可用构建器"
+        }
+      },
+      "keyword": "docker buildx use",
+      "dirPath": "/容器编排/",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "name": "切换到指定构建器",
+            "cmd": "docker buildx use mybuilder",
+            "params": {
+              "构建器名": {
+                "type": "string",
+                "required": true,
+                "description": "目标构建器名称",
+                "example": "mybuilder",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker buildx use"
+          },
+          {
+            "name": "切换构建器并设为默认",
+            "cmd": "docker buildx use --default mybuilder",
+            "params": {
+              "构建器名": {
+                "type": "string",
+                "required": true,
+                "description": "目标构建器名称",
+                "example": "mybuilder",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker buildx use --default"
+          },
+          {
+            "name": "切换到默认构建器",
+            "cmd": "docker buildx use default",
+            "params": {},
+            "keyword": "docker buildx use default"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "name": "docker buildx inspect 查看详情",
+      "description": "查看当前构建器的详细信息，包括平台支持、驱动信息等。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "params": {},
+      "keyword": "docker buildx inspect",
+      "dirPath": "/容器编排/",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "name": "显示当前构建器详细信息",
+            "cmd": "docker buildx inspect",
+            "params": {},
+            "keyword": "docker buildx inspect"
+          },
+          {
+            "name": "显示特定构建器信息",
+            "cmd": "docker buildx inspect mybuilder",
+            "params": {
+              "构建器名": {
+                "type": "string",
+                "required": true,
+                "description": "目标构建器名称",
+                "example": "mybuilder",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker buildx inspect mybuilder"
+          },
+          {
+            "name": "显示支持的目标平台",
+            "cmd": "docker buildx inspect --format \"{{.Platforms}}\"",
+            "params": {},
+            "keyword": "docker buildx inspect --format"
+          },
+          {
+            "name": "显示构建器驱动信息",
+            "cmd": "docker buildx inspect --driver",
+            "params": {},
+            "keyword": "docker buildx inspect --driver"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "name": "docker buildx prune 清理缓存",
+      "description": "清理 BuildKit 构建缓存，释放磁盘空间。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "params": {
+        "清除全部": {
+          "type": "boolean",
+          "required": false,
+          "description": "清除所有构建缓存",
+          "example": "-a",
+          "notes": "谨慎使用，会清除所有缓存"
+        }
+      },
+      "keyword": "docker buildx prune",
+      "dirPath": "/容器编排/",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "name": "清除所有构建缓存",
+            "cmd": "docker buildx prune --all",
+            "params": {},
+            "keyword": "docker buildx prune --all"
+          },
+          {
+            "name": "清除特定构建器缓存",
+            "cmd": "docker buildx prune --builder mybuilder",
+            "params": {
+              "构建器名": {
+                "type": "string",
+                "required": true,
+                "description": "目标构建器名称",
+                "example": "mybuilder",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker buildx prune --builder"
+          },
+          {
+            "name": "清除指定时间前的缓存",
+            "cmd": "docker buildx prune --filter \"until=24h\"",
+            "params": {
+              "时间": {
+                "type": "string",
+                "required": true,
+                "description": "清除此时间之前的缓存",
+                "example": "24h",
+                "notes": "必填，格式如24h、72h、168h"
+              }
+            },
+            "keyword": "docker buildx prune --filter"
+          },
+          {
+            "name": "显示清除空间详情",
+            "cmd": "docker buildx prune --verbose",
+            "params": {},
+            "keyword": "docker buildx prune --verbose"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "name": "docker buildx rm 删除构建器",
+      "description": "删除指定的构建器实例。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "params": {
+        "构建器名": {
+          "type": "string",
+          "required": true,
+          "description": "要删除的构建器名称",
+          "example": "mybuilder",
+          "notes": "必填"
+        }
+      },
+      "keyword": "docker buildx rm",
+      "dirPath": "/容器编排/",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "name": "删除指定构建器",
+            "cmd": "docker buildx rm mybuilder",
+            "params": {
+              "构建器名": {
+                "type": "string",
+                "required": true,
+                "description": "要删除的构建器名称",
+                "example": "mybuilder",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker buildx rm"
+          },
+          {
+            "name": "强制删除运行中的构建器",
+            "cmd": "docker buildx rm --force mybuilder",
+            "params": {
+              "构建器名": {
+                "type": "string",
+                "required": true,
+                "description": "要删除的构建器名称",
+                "example": "mybuilder",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker buildx rm --force"
+          },
+          {
+            "name": "删除所有非默认构建器",
+            "cmd": "docker buildx rm $(docker buildx ls --filter type=custom -q)",
+            "params": {},
+            "keyword": "docker buildx rm all custom"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "name": "docker buildx build 多平台构建",
+      "description": "使用 buildx 进行多平台 Docker 镜像构建，支持交叉编译和高级构建选项。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "params": {
+        "镜像名称": {
+          "type": "string",
+          "required": true,
+          "description": "要构建的镜像名称和标签",
+          "example": "myimage:latest",
+          "notes": "必填"
+        }
+      },
+      "keyword": "docker buildx build",
+      "dirPath": "/容器编排/",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "name": "多平台镜像构建",
+            "cmd": "docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t myimage:tag .",
+            "params": {
+              "平台": {
+                "type": "string",
+                "required": true,
+                "description": "目标平台列表",
+                "example": "linux/amd64,linux/arm64",
+                "notes": "必填，支持多平台逗号分隔"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名称和标签",
+                "example": "myimage:latest",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker buildx build --platform"
+          },
+          {
+            "name": "导出到 Docker 镜像",
+            "cmd": "docker buildx build --output type=docker -t myimage:tag .",
+            "params": {
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名称和标签",
+                "example": "myimage:latest",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker buildx build --output docker"
+          },
+          {
+            "name": "构建到本地镜像商店",
+            "cmd": "docker buildx build --output type=image -t myimage:tag .",
+            "params": {
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名称和标签",
+                "example": "myimage:latest",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker buildx build --output type=image"
+          },
+          {
+            "name": "设置构建参数",
+            "cmd": "docker buildx build --build-arg KEY=value --build-arg KEY2=value2 -t myimage:tag .",
+            "params": {
+              "构建参数": {
+                "type": "string",
+                "required": true,
+                "description": "构建参数键值对",
+                "example": "KEY=value",
+                "notes": "必填，可设置多个"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名称和标签",
+                "example": "myimage:latest",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker buildx build --build-arg"
+          },
+          {
+            "name": "使用指定构建器构建",
+            "cmd": "docker buildx build --builder mybuilder -t myimage:tag .",
+            "params": {
+              "构建器": {
+                "type": "string",
+                "required": true,
+                "description": "构建器名称",
+                "example": "mybuilder",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名称和标签",
+                "example": "myimage:latest",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker buildx build --builder"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

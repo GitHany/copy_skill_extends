@@ -1,0 +1,122 @@
+{
+  "module": "监控可观测性/Grafana-可视化 Grafana",
+  "version": "2.0",
+  "description": "Grafana 可视化平台命令行工具，涵盖Grafana CLI的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/监控可观测性/",
+      "name": "grafana-cli admin 重置密码",
+      "keyword": "grafana-cli 密码",
+      "description": "重置管理员密码。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "grafana-cli admin reset-admin-password %{新密码}%",
+        "extensions": [
+          {
+            "name": "重置为强密码（包含特殊字符）",
+            "cmd": "grafana-cli admin reset-admin-password '%{新密码}%'",
+            "params": {
+              "新密码": {
+                "type": "string",
+                "required": true,
+                "description": "包含特殊字符的强密码",
+                "example": "P@ssw0rd!2024",
+                "notes": "必填，建议使用强密码"
+              }
+            },
+            "keyword": "grafana-cli strong password"
+          },
+          {
+            "name": "重置密码并显示详细输出",
+            "cmd": "grafana-cli admin reset-admin-password %{新密码}% --verbose",
+            "params": {
+              "新密码": {
+                "type": "string",
+                "required": true,
+                "description": "新密码",
+                "example": "MySecurePass123",
+                "notes": "必填"
+              }
+            },
+            "keyword": "grafana-cli verbose reset"
+          },
+          {
+            "name": "交互式重置密码（不显示密码）",
+            "cmd": "grafana-cli admin reset-admin-password --interactive",
+            "params": {},
+            "keyword": "grafana-cli interactive password"
+          }
+        ],
+        "params": {
+          "新密码": {
+            "type": "string",
+            "required": true,
+            "description": "新密码",
+            "example": "newpassword123",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/监控可观测性/",
+      "name": "grafana-cli plugins 安装",
+      "keyword": "grafana-cli plugins 安装",
+      "description": "安装 Grafana 插件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "grafana-cli plugins install %{插件ID}%",
+        "extensions": [
+          {
+            "name": "列出已安装插件",
+            "cmd": "grafana-cli plugins ls",
+            "params": {},
+            "keyword": "grafana-cli plugins list"
+          },
+          {
+            "name": "安装插件（详细输出）",
+            "cmd": "grafana-cli plugins install %{插件ID}% --verbose",
+            "params": {
+              "插件ID": {
+                "type": "string",
+                "required": true,
+                "description": "插件 ID",
+                "example": "grafana-clock-panel",
+                "notes": "必填"
+              }
+            },
+            "keyword": "grafana-cli plugins install verbose"
+          },
+          {
+            "name": "安装指定版本插件",
+            "cmd": "grafana-cli plugins install %{插件ID}% --version %{版本号}%",
+            "params": {
+              "插件ID": {
+                "type": "string",
+                "required": true,
+                "description": "插件 ID",
+                "example": "grafana-clock-panel",
+                "notes": "必填"
+              },
+              "版本号": {
+                "type": "string",
+                "required": true,
+                "description": "插件版本号",
+                "example": "1.3.0",
+                "notes": "必填"
+              }
+            },
+            "keyword": "grafana-cli plugins install version"
+          }
+        ],
+        "params": {
+          "插件ID": {
+            "type": "string",
+            "required": true,
+            "description": "插件 ID          ",
+            "example": "grafana-clock-panel",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

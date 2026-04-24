@@ -1,0 +1,144 @@
+{
+  "module": "容器编排/kubectl-格式转换 convert",
+  "version": "2.0",
+  "description": "Convert Kubernetes resource config files between different API versions.",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl convert",
+      "keyword": "kubectl convert api version",
+      "description": "Convert resource config to specified API version",
+      "data": {
+        "cmd": "kubectl convert -f %{file}% --output-version %{version}%",
+        "extensions": [
+          {
+            "name": "Convert to file",
+            "cmd": "kubectl convert -f %{file}% --output-version %{version}% > %{output}%",
+            "params": {
+              "file": {
+                "type": "string",
+                "required": true,
+                "description": "Input file     ",
+                "example": "deploy.yaml",
+                "notes": "Required"
+              },
+              "version": {
+                "type": "string",
+                "required": true,
+                "description": "Target version ",
+                "example": "apps/v1",
+                "notes": "Required"
+              },
+              "output": {
+                "type": "string",
+                "required": true,
+                "description": "Output file    ",
+                "example": "deploy-v1.yaml",
+                "notes": "Save result"
+              }
+            },
+            "keyword": "kubectl convert output file"
+          },
+          {
+            "name": "Batch convert dir",
+            "cmd": "for f in ; do kubectl convert -f \"$f\" --output-version %{version}% > \"${f%.yaml}-converted.yaml\"; done",
+            "params": {
+              "dir": {
+                "type": "string",
+                "required": true,
+                "description": "Directory path ",
+                "example": "./configs",
+                "notes": "Batch process"
+              },
+              "version": {
+                "type": "string",
+                "required": true,
+                "description": "Target version ",
+                "example": "apps/v1",
+                "notes": "Required"
+              }
+            },
+            "keyword": "kubectl convert batch directory"
+          },
+          {
+            "name": "Deployment v1beta1 to v1",
+            "cmd": "kubectl convert -f deploy.yaml --output-version apps/v1",
+            "params": {},
+            "keyword": "kubectl convert deployment v1beta1 to v1"
+          },
+          {
+            "name": "Preview diff",
+            "cmd": "kubectl convert -f %{file}% --output-version %{version}% | diff - %{file}%",
+            "params": {
+              "file": {
+                "type": "string",
+                "required": true,
+                "description": "File path      ",
+                "example": "deploy.yaml",
+                "notes": "View changes"
+              },
+              "version": {
+                "type": "string",
+                "required": true,
+                "description": "Target version ",
+                "example": "apps/v1",
+                "notes": "Required"
+              }
+            },
+            "keyword": "kubectl convert diff preview"
+          },
+          {
+            "name": "Convert and apply",
+            "cmd": "kubectl convert -f %{file}% --output-version %{version}% | kubectl apply -f -",
+            "params": {
+              "file": {
+                "type": "string",
+                "required": true,
+                "description": "Input file     ",
+                "example": "deploy.yaml",
+                "notes": "Apply after convert"
+              }
+            },
+            "keyword": "kubectl convert and apply"
+          },
+          {
+            "name": "Supported types",
+            "cmd": "kubectl convert --help | grep -A5 \"supported resources\"",
+            "params": {},
+            "keyword": "kubectl convert supported types"
+          },
+          {
+            "name": "Validate only",
+            "cmd": "kubectl convert -f %{file}% --dry-run=client",
+            "params": {
+              "file": {
+                "type": "string",
+                "required": true,
+                "description": "File path      ",
+                "example": "deploy.yaml",
+                "notes": "No conversion"
+              }
+            },
+            "keyword": "kubectl convert dry-run client"
+          }
+        ],
+        "params": {
+          "file": {
+            "type": "string",
+            "required": true,
+            "description": "Config file path",
+            "example": "deploy.yaml",
+            "notes": "Required"
+          },
+          "version": {
+            "type": "string",
+            "required": true,
+            "description": "Target API version",
+            "example": "apps/v1",
+            "notes": "Required"
+          }
+        }
+      }
+    }
+  ]
+}

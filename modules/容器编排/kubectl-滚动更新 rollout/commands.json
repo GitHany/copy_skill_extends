@@ -1,0 +1,139 @@
+{
+  "module": "容器编排/kubectl-滚动更新 rollout",
+  "version": "2.0",
+  "description": "Manage Deployment rollout - view history, rollback, pause, resume, and monitor update progress.",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl rollout undo",
+      "keyword": "kubectl rollout undo rollback",
+      "description": "Rollback Deployment to previous version",
+      "data": {
+        "cmd": "kubectl rollout undo deployment/%{name}%",
+        "extensions": [
+          {
+            "name": "Rollback to revision",
+            "cmd": "kubectl rollout undo deployment/%{name}% --to-revision=%{revision}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment name",
+                "example": "myapp",
+                "notes": "Required"
+              },
+              "revision": {
+                "type": "integer",
+                "required": false,
+                "description": "Revision number",
+                "example": 2,
+                "notes": "0=previous, 1=original"
+              }
+            },
+            "keyword": "kubectl rollout undo revision"
+          },
+          {
+            "name": "Rollback and watch",
+            "cmd": "kubectl rollout undo deployment/%{name}% && kubectl rollout status deployment/%{name}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment name",
+                "example": "myapp",
+                "notes": "Required"
+              }
+            },
+            "keyword": "kubectl rollout undo status"
+          },
+          {
+            "name": "View history",
+            "cmd": "kubectl rollout history deployment/%{name}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment name",
+                "example": "myapp",
+                "notes": "Lists all revisions"
+              }
+            },
+            "keyword": "kubectl rollout history"
+          },
+          {
+            "name": "View revision detail",
+            "cmd": "kubectl rollout history deployment/%{name}% --revision=%{revision}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment name",
+                "example": "myapp",
+                "notes": "Required"
+              },
+              "revision": {
+                "type": "integer",
+                "required": false,
+                "description": "Revision number",
+                "example": 3,
+                "notes": "Optional"
+              }
+            },
+            "keyword": "kubectl rollout revision detail"
+          },
+          {
+            "name": "Pause rollout",
+            "cmd": "kubectl rollout pause deployment/%{name}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment name",
+                "example": "myapp",
+                "notes": "Interrupt update"
+              }
+            },
+            "keyword": "kubectl rollout pause"
+          },
+          {
+            "name": "Resume rollout",
+            "cmd": "kubectl rollout resume deployment/%{name}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment name",
+                "example": "myapp",
+                "notes": "Resume paused update"
+              }
+            },
+            "keyword": "kubectl rollout resume"
+          },
+          {
+            "name": "Watch status",
+            "cmd": "kubectl rollout status deployment/%{name}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment name",
+                "example": "myapp",
+                "notes": "Monitor progress"
+              }
+            },
+            "keyword": "kubectl rollout status watch"
+          }
+        ],
+        "params": {
+          "name": {
+            "type": "string",
+            "required": true,
+            "description": "Deployment name",
+            "example": "myapp",
+            "notes": "Required"
+          }
+        }
+      }
+    }
+  ]
+}

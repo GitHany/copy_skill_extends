@@ -1,0 +1,128 @@
+{
+  "module": "Linux系统/Linux 进程管理",
+  "version": "2.0",
+  "description": "Linux 进程管理命令集合，涵盖Linux 进程管理的常用操作和最佳实践",
+  "commands": [
+    {
+      "cmd": "ps aux",
+      "extensions": [
+        {
+          "name": "显示进程树",
+          "cmd": "ps auxf",
+          "params": {},
+          "keyword": "ps tree"
+        },
+        {
+          "name": "按 CPU 排序",
+          "cmd": "ps aux --sort=-%cpu",
+          "params": {},
+          "keyword": "ps cpu"
+        },
+        {
+          "name": "按内存排序",
+          "cmd": "ps aux --sort=-%mem",
+          "params": {},
+          "keyword": "ps memory"
+        },
+        {
+          "name": "显示完整命令行",
+          "cmd": "ps auxf --width 200",
+          "params": {},
+          "keyword": "ps full command"
+        },
+        {
+          "name": "显示指定用户进程",
+          "cmd": "ps -u %{用户}%",
+          "params": {
+            "用户": {
+              "type": "string",
+              "required": true,
+              "description": "用户名",
+              "example": "root",
+              "notes": "必填"
+            }
+          },
+          "keyword": "ps user"
+        },
+        {
+          "name": "实时监控进程",
+          "cmd": "watch -n 1 %{命令}%",
+          "params": {
+            "命令": {
+              "type": "string",
+              "required": true,
+              "description": "监控命令",
+              "example": "ps aux",
+              "notes": "必填"
+            }
+          },
+          "keyword": "ps watch"
+        },
+        {
+          "name": "显示进程线程",
+          "cmd": "ps -eLf",
+          "params": {},
+          "keyword": "ps thread"
+        },
+        {
+          "name": "显示进程启动时间",
+          "cmd": "ps -eo pid,lstart,cmd --sort=start_time",
+          "params": {},
+          "keyword": "ps start time"
+        },
+        {
+          "name": "显示进程占用CPU和内存",
+          "cmd": "ps aux --sort=-%cpu,-%mem | head -20",
+          "params": {},
+          "keyword": "ps cpu mem"
+        },
+        {
+          "name": "显示孤儿进程",
+          "cmd": "ps -eo pid,ppid,cmd,state | awk '$2==1 {print}'",
+          "params": {},
+          "keyword": "ps orphan"
+        },
+        {
+          "name": "显示僵尸进程",
+          "cmd": "ps aux | awk '$8 ~ /Z/ {print}'",
+          "params": {},
+          "keyword": "ps zombie"
+        },
+        {
+          "name": "显示进程用户和组",
+          "cmd": "ps -eo user,group,pid,cmd",
+          "params": {},
+          "keyword": "ps user group"
+        },
+        {
+          "name": "显示进程优先级",
+          "cmd": "ps -eo pid,ni,cmd --sort=-ni",
+          "params": {},
+          "keyword": "ps nice priority"
+        },
+        {
+          "name": "显示进程会话ID",
+          "cmd": "ps -eo pid,sid,cmd",
+          "params": {},
+          "keyword": "ps session"
+        },
+        {
+          "name": "显示进程详细信息",
+          "cmd": "ps -eo pid,ppid,pgid,sid,tty,cmd",
+          "params": {},
+          "keyword": "ps full detail"
+        }
+      ],
+      "params": {},
+      "dirPath": "/Linux系统/",
+      "name": "Linux 进程管理 命令",
+      "keyword": "Linux 进程管理 命令",
+      "description": "Linux 进程管理 命令的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

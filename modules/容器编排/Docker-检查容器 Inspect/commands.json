@@ -1,0 +1,87 @@
+{
+  "module": "容器编排/Docker-检查容器 Inspect",
+  "version": "2.0",
+  "description": "Docker Inspect命令集合，涵盖Docker Inspect的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker inspect 检查容器",
+      "keyword": "docker inspect 检查",
+      "description": "查看容器详细信息。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker inspect %{容器}%",
+        "extensions": [
+          {
+            "name": "获取 IP 地址",
+            "description": "使用 -f 格式化输出容器 IP 地址",
+            "cmd": "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' %{容器}%"
+          },
+          {
+            "name": "获取日志路径",
+            "description": "查看容器的日志文件存放位置",
+            "cmd": "docker inspect -f '{{.LogPath}}' %{容器}%"
+          },
+          {
+            "name": "获取挂载点",
+            "description": "查看容器的挂载点信息",
+            "cmd": "docker inspect -f '{{json .Mounts}}' %{容器}% | jq"
+          },
+          {
+            "name": "获取重启次数",
+            "description": "查看容器重启次数统计",
+            "cmd": "docker inspect -f '{{.RestartCount}}' %{容器}%"
+          }
+        ],
+        "params": {
+          "容器": {
+            "type": "string",
+            "required": true,
+            "description": "容器             ",
+            "example": "myapp",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker inspect 格式化输出",
+      "keyword": "docker inspect 格式",
+      "description": "格式化检查输出。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker inspect -f '{{.State.Status}}' %{容器}%",
+        "extensions": [
+          {
+            "name": "获取端口映射",
+            "description": "格式化输出所有端口映射关系",
+            "cmd": "docker inspect -f '{{json .NetworkSettings.Ports}}' %{容器}% | jq"
+          },
+          {
+            "name": "获取环境变量",
+            "description": "列出容器的所有环境变量",
+            "cmd": "docker inspect -f '{{range .Config.Env}}{{println .}}{{end}}' %{容器}%"
+          },
+          {
+            "name": "获取容器创建时间",
+            "description": "查看容器的创建时间戳",
+            "cmd": "docker inspect -f '{{.Created}}' %{容器}%"
+          },
+          {
+            "name": "获取状态信息",
+            "description": "获取容器运行状态、启动时间、退出码等",
+            "cmd": "docker inspect -f '{{json .State}}' %{容器}% | jq"
+          }
+        ],
+        "params": {
+          "容器": {
+            "type": "string",
+            "required": true,
+            "description": "容器             ",
+            "example": "myapp",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

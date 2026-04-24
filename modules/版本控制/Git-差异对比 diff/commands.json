@@ -1,0 +1,98 @@
+{
+  "module": "版本控制/Git-差异对比 diff",
+  "version": "3.0",
+  "description": "Git diff 用于查看文件之间的差异变化，是代码审查和追踪修改的核心工具。你可以比较工作区与暂存区、暂存区与提交历史、工作区与任意提交之间的差异，帮助你理解代码改动、审查他人修改、回溯问题源头。常见场景：查看未暂存的修改、审查代码变更、对比不同分支、追踪问题引入点。",
+  "commands": [
+    {
+      "dirPath": "/版本控制/",
+      "name": "git diff 差异",
+      "keyword": "git diff 差异",
+      "description": "比较工作区与暂存区的所有差异（未 staged 的修改）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git diff",
+        "extensions": [
+          {
+            "name": "git diff --staged 暂存区差异",
+            "description": "比较暂存区与上一次提交的差异                ",
+            "params": {},
+            "cmd": "git diff"
+          },
+          {
+            "name": "git diff HEAD 比较提交",
+            "description": "比较工作目录与最新提交的差异                ",
+            "params": {},
+            "cmd": "git diff"
+          },
+          {
+            "name": "git diff --name-only 仅显示文件名",
+            "description": "只显示有变更的文件名                    ",
+            "params": {},
+            "cmd": "git diff"
+          },
+          {
+            "name": "git diff 分支间差异",
+            "description": "比较两个分支的差异                     ",
+            "params": {
+              "分支1": {
+                "type": "string",
+                "required": true,
+                "description": "源分支            ",
+                "example": "main",
+                "notes": "必填"
+              },
+              "分支2": {
+                "type": "string",
+                "required": true,
+                "description": "目标分支           ",
+                "example": "feature/login",
+                "notes": "必填"
+              }
+            },
+            "cmd": "git diff"
+          },
+          {
+            "name": "git diff --stat 统计信息",
+            "description": "显示变更统计信息（文件数、增减行数）            ",
+            "params": {},
+            "cmd": "git diff"
+          },
+          {
+            "name": "git diff --shortstat 简短统计",
+            "description": "只显示一行总结：修改文件数、插入行数、删除行数       ",
+            "params": {},
+            "cmd": "git diff"
+          },
+          {
+            "name": "git diff 文件路径 指定文件差异",
+            "description": "只查看特定文件的差异                    ",
+            "params": {
+              "文件路径": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径           ",
+                "example": "src/index.js",
+                "notes": "必填"
+              }
+            },
+            "cmd": "git diff"
+          },
+          {
+            "name": "git diff 提交哈希 提交对比",
+            "description": "比较某个提交与当前工作区的差异               ",
+            "params": {
+              "提交哈希": {
+                "type": "string",
+                "required": true,
+                "description": "提交哈希值          ",
+                "example": "a1b2c3d",
+                "notes": "必填，可使用前7位缩写"
+              }
+            },
+            "cmd": "git diff"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

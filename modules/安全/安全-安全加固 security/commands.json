@@ -1,0 +1,2260 @@
+{
+  "module": "安全/安全-安全加固 security",
+  "version": "1.0",
+  "description": "安全加固 命令模块集合，涵盖安全加固的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/安全/",
+      "name": "iptables 防火墙规则",
+      "keyword": "iptables 防火墙 规则",
+      "description": "Linux 内核防火墙规则管理。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "iptables %{选项}%",
+        "extensions": [
+          {
+            "name": "查看所有规则",
+            "cmd": "iptables -L -n -v",
+            "params": {},
+            "keyword": "iptables 查看规则"
+          },
+          {
+            "name": "允许 SSH 入站",
+            "cmd": "iptables -A INPUT -p tcp --dport 22 -j ACCEPT",
+            "params": {},
+            "keyword": "iptables SSH"
+          },
+          {
+            "name": "允许 HTTP/HTTPS",
+            "cmd": "iptables -A INPUT -p tcp -m multiport --dports 80,443 -j ACCEPT",
+            "params": {},
+            "keyword": "iptables HTTP HTTPS"
+          },
+          {
+            "name": "拒绝入站连接",
+            "cmd": "iptables -A INPUT -j DROP",
+            "params": {},
+            "keyword": "iptables 拒绝"
+          },
+          {
+            "name": "允许已建立连接",
+            "cmd": "iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT",
+            "params": {},
+            "keyword": "iptables 已建立连接"
+          },
+          {
+            "name": "删除规则",
+            "cmd": "iptables -D INPUT %{规则号}%",
+            "params": {
+              "规则号": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "iptables 删除规则"
+          },
+          {
+            "name": "保存规则",
+            "cmd": "iptables-save > /etc/iptables/rules.v4",
+            "params": {},
+            "keyword": "iptables 保存"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "iptables 选项    ",
+            "example": "-L -n -v",
+            "notes": "常用 -A 添加，-D 删除，-L 列表，-F 清空"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "ufw 防火墙管理",
+      "keyword": "ufw 防火墙 Ubuntu",
+      "description": "Ubuntu/Debian 简化的防火墙管理工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "ufw %{动作}%",
+        "extensions": [
+          {
+            "name": "启用防火墙",
+            "cmd": "ufw enable",
+            "params": {},
+            "keyword": "ufw 启用"
+          },
+          {
+            "name": "禁用防火墙",
+            "cmd": "ufw disable",
+            "params": {},
+            "keyword": "ufw 禁用"
+          },
+          {
+            "name": "允许 SSH",
+            "cmd": "ufw allow ssh",
+            "params": {},
+            "keyword": "ufw SSH"
+          },
+          {
+            "name": "允许端口",
+            "cmd": "ufw allow %{端口}%/tcp",
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": false,
+                "description": "端口号            ",
+                "example": "8080",
+                "notes": "可选"
+              }
+            },
+            "keyword": "ufw 允许端口"
+          },
+          {
+            "name": "拒绝端口",
+            "cmd": "ufw deny %{端口}%/tcp",
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": false,
+                "description": "端口号            ",
+                "example": "8080",
+                "notes": "可选"
+              }
+            },
+            "keyword": "ufw 拒绝端口"
+          },
+          {
+            "name": "查看状态",
+            "cmd": "ufw status verbose",
+            "params": {},
+            "keyword": "ufw 状态"
+          },
+          {
+            "name": "允许 IP",
+            "cmd": "ufw allow from %{IP}%",
+            "params": {
+              "IP": {
+                "type": "string",
+                "required": false,
+                "description": "IP 地址          ",
+                "example": "192.168.1.100",
+                "notes": "可选"
+              }
+            },
+            "keyword": "ufw 允许IP"
+          },
+          {
+            "name": "重置防火墙",
+            "cmd": "ufw reset",
+            "params": {},
+            "keyword": "ufw 重置"
+          }
+        ],
+        "params": {
+          "动作": {
+            "type": "string",
+            "required": true,
+            "description": "ufw 操作动作       ",
+            "example": "enable",
+            "notes": "常用 enable, disable, allow, deny, delete"
+          },
+          "端口": {
+            "type": "string",
+            "required": false,
+            "description": "端口号            ",
+            "example": "8080",
+            "notes": "可选"
+          },
+          "IP": {
+            "type": "string",
+            "required": false,
+            "description": "IP 地址          ",
+            "example": "192.168.1.100",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "fail2ban 入侵防御",
+      "keyword": "fail2ban 入侵 防御 暴力破解",
+      "description": "入侵防御系统，自动封禁恶意 IP。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "fail2ban-client %{动作}%",
+        "extensions": [
+          {
+            "name": "启动服务",
+            "cmd": "systemctl start fail2ban",
+            "params": {},
+            "keyword": "fail2ban 启动"
+          },
+          {
+            "name": "查看状态",
+            "cmd": "fail2ban-client status",
+            "params": {},
+            "keyword": "fail2ban 状态"
+          },
+          {
+            "name": "查看监狱状态",
+            "cmd": "fail2ban-client status %{监狱名}%",
+            "params": {
+              "监狱名": {
+                "type": "string",
+                "required": false,
+                "description": "监狱名称           ",
+                "example": "sshd",
+                "notes": "默认监狱包括 sshd, apache-auth 等"
+              }
+            },
+            "keyword": "fail2ban 监狱"
+          },
+          {
+            "name": "手动封禁 IP",
+            "cmd": "fail2ban-client set %{监狱名}% banip %{IP}%",
+            "params": {
+              "监狱名": {
+                "type": "string",
+                "required": false,
+                "description": "监狱名称           ",
+                "example": "sshd",
+                "notes": "默认监狱包括 sshd, apache-auth 等"
+              },
+              "IP": {
+                "type": "string",
+                "required": false,
+                "description": "IP 地址          ",
+                "example": "192.168.1.100",
+                "notes": "可选"
+              }
+            },
+            "keyword": "fail2ban 封禁IP"
+          },
+          {
+            "name": "解除封禁",
+            "cmd": "fail2ban-client set %{监狱名}% unbanip %{IP}%",
+            "params": {
+              "监狱名": {
+                "type": "string",
+                "required": false,
+                "description": "监狱名称           ",
+                "example": "sshd",
+                "notes": "默认监狱包括 sshd, apache-auth 等"
+              },
+              "IP": {
+                "type": "string",
+                "required": false,
+                "description": "IP 地址          ",
+                "example": "192.168.1.100",
+                "notes": "可选"
+              }
+            },
+            "keyword": "fail2ban 解封"
+          },
+          {
+            "name": "重载配置",
+            "cmd": "fail2ban-client reload",
+            "params": {},
+            "keyword": "fail2ban 重载"
+          }
+        ],
+        "params": {
+          "动作": {
+            "type": "string",
+            "required": true,
+            "description": "操作动作           ",
+            "example": "status",
+            "notes": "常用 status, reload, start, stop"
+          },
+          "监狱名": {
+            "type": "string",
+            "required": false,
+            "description": "监狱名称           ",
+            "example": "sshd",
+            "notes": "默认监狱包括 sshd, apache-auth 等"
+          },
+          "IP": {
+            "type": "string",
+            "required": false,
+            "description": "IP 地址          ",
+            "example": "192.168.1.100",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "nmap 端口扫描",
+      "keyword": "nmap 端口 扫描 安全",
+      "description": "网络发现和安全审计工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "nmap %{选项}% %{目标}%",
+        "extensions": [
+          {
+            "name": "扫描常用端口",
+            "cmd": "nmap %{目标}%",
+            "params": {
+              "目标": {
+                "type": "string",
+                "required": false,
+                "description": "目标 IP 或主机名     ",
+                "example": "192.168.1.1",
+                "notes": "可选"
+              }
+            },
+            "keyword": "nmap 快速扫描"
+          },
+          {
+            "name": "详细扫描",
+            "cmd": "nmap -A %{目标}%",
+            "params": {
+              "目标": {
+                "type": "string",
+                "required": false,
+                "description": "目标 IP 或主机名     ",
+                "example": "192.168.1.1",
+                "notes": "可选"
+              }
+            },
+            "keyword": "nmap 详细扫描"
+          },
+          {
+            "name": "指定端口",
+            "cmd": "nmap -p 22,80,443 %{目标}%",
+            "params": {
+              "目标": {
+                "type": "string",
+                "required": false,
+                "description": "目标 IP 或主机名     ",
+                "example": "192.168.1.1",
+                "notes": "可选"
+              }
+            },
+            "keyword": "nmap 指定端口"
+          },
+          {
+            "name": "版本检测",
+            "cmd": "nmap -sV %{目标}%",
+            "params": {
+              "目标": {
+                "type": "string",
+                "required": false,
+                "description": "目标 IP 或主机名     ",
+                "example": "192.168.1.1",
+                "notes": "可选"
+              }
+            },
+            "keyword": "nmap 版本检测"
+          },
+          {
+            "name": "操作系统检测",
+            "cmd": "nmap -O %{目标}%",
+            "params": {
+              "目标": {
+                "type": "string",
+                "required": false,
+                "description": "目标 IP 或主机名     ",
+                "example": "192.168.1.1",
+                "notes": "可选"
+              }
+            },
+            "keyword": "nmap 系统检测"
+          },
+          {
+            "name": "漏洞扫描",
+            "cmd": "nmap --script vuln %{目标}%",
+            "params": {
+              "目标": {
+                "type": "string",
+                "required": false,
+                "description": "目标 IP 或主机名     ",
+                "example": "192.168.1.1",
+                "notes": "可选"
+              }
+            },
+            "keyword": "nmap 漏洞"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "nmap 选项        ",
+            "example": "-sV",
+            "notes": "常用 -sS 扫描，-sV 版本，-O 系统检测，-A 综合"
+          },
+          "目标": {
+            "type": "string",
+            "required": true,
+            "description": "目标 IP 或主机名     ",
+            "example": "192.168.1.1",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "openssl 生成证书",
+      "keyword": "openssl 证书 SSL 生成",
+      "description": "SSL/TLS 证书工具，用于生成密钥和证书。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "openssl %{命令}%",
+        "extensions": [
+          {
+            "name": "生成 RSA 私钥",
+            "cmd": "openssl genrsa -out %{文件名}% 2048",
+            "params": {
+              "文件名": {
+                "type": "string",
+                "required": false,
+                "description": "文件路径           ",
+                "example": "key.pem",
+                "notes": "可选"
+              }
+            },
+            "keyword": "openssl genrsa 私钥"
+          },
+          {
+            "name": "生成 CSR",
+            "cmd": "openssl req -new -key %{私钥文件}% -out %{CSR文件}%",
+            "params": {
+              "私钥文件": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "CSR文件": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "openssl req CSR"
+          },
+          {
+            "name": "生成自签名证书",
+            "cmd": "openssl req -x509 -newkey rsa:2048 -keyout %{私钥文件}% -out %{证书文件}% -days 365",
+            "params": {
+              "私钥文件": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "证书文件": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "openssl 自签名"
+          },
+          {
+            "name": "查看证书信息",
+            "cmd": "openssl x509 -in %{证书文件}% -text -noout",
+            "params": {
+              "证书文件": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "openssl 查看证书"
+          },
+          {
+            "name": "验证证书",
+            "cmd": "openssl verify %{证书文件}%",
+            "params": {
+              "证书文件": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "openssl 验证"
+          },
+          {
+            "name": "加密文件",
+            "cmd": "openssl enc -aes-256-cbc -salt -in %{输入文件}% -out %{输出文件}%",
+            "params": {
+              "输入文件": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "输出文件": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "openssl 加密"
+          },
+          {
+            "name": "计算哈希",
+            "cmd": "openssl dgst -sha256 %{文件名}%",
+            "params": {
+              "文件名": {
+                "type": "string",
+                "required": false,
+                "description": "文件路径           ",
+                "example": "key.pem",
+                "notes": "可选"
+              }
+            },
+            "keyword": "openssl 哈希"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "openssl 子命令    ",
+            "example": "genrsa",
+            "notes": "常用 genrsa, req, x509, dgst, enc"
+          },
+          "文件名": {
+            "type": "string",
+            "required": false,
+            "description": "文件路径           ",
+            "example": "key.pem",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "certbot Let's Encrypt",
+      "keyword": "certbot SSL HTTPS Let's Encrypt",
+      "description": "Let's Encrypt 官方证书申请工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "certbot %{动作}%",
+        "extensions": [
+          {
+            "name": "申请证书 (nginx)",
+            "cmd": "sudo certbot --nginx -d %{域名}%",
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "域名             ",
+                "example": "example.com",
+                "notes": "多个域名用 -d 连接"
+              }
+            },
+            "keyword": "certbot nginx"
+          },
+          {
+            "name": "申请证书 (apache)",
+            "cmd": "sudo certbot --apache -d %{域名}%",
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "域名             ",
+                "example": "example.com",
+                "notes": "多个域名用 -d 连接"
+              }
+            },
+            "keyword": "certbot apache"
+          },
+          {
+            "name": "仅获取证书",
+            "cmd": "sudo certbot certonly --webroot -w %{网站根目录}% -d %{域名}%",
+            "params": {
+              "网站根目录": {
+                "type": "string",
+                "required": false,
+                "description": "网站根目录          ",
+                "example": "/var/www/html",
+                "notes": "可选"
+              },
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "域名             ",
+                "example": "example.com",
+                "notes": "多个域名用 -d 连接"
+              }
+            },
+            "keyword": "certbot 仅证书"
+          },
+          {
+            "name": "续期所有证书",
+            "cmd": "sudo certbot renew",
+            "params": {},
+            "keyword": "certbot 续期"
+          },
+          {
+            "name": "测试续期",
+            "cmd": "sudo certbot renew --dry-run",
+            "params": {},
+            "keyword": "certbot 测试续期"
+          },
+          {
+            "name": "删除证书",
+            "cmd": "sudo certbot delete --cert-name %{域名}%",
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "域名             ",
+                "example": "example.com",
+                "notes": "多个域名用 -d 连接"
+              }
+            },
+            "keyword": "certbot 删除"
+          }
+        ],
+        "params": {
+          "动作": {
+            "type": "string",
+            "required": true,
+            "description": "操作动作           ",
+            "example": "certonly",
+            "notes": "常用 certonly, run, renew, delete"
+          },
+          "域名": {
+            "type": "string",
+            "required": false,
+            "description": "域名             ",
+            "example": "example.com",
+            "notes": "多个域名用 -d 连接"
+          },
+          "网站根目录": {
+            "type": "string",
+            "required": false,
+            "description": "网站根目录          ",
+            "example": "/var/www/html",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "npm audit 安全审计",
+      "keyword": "npm audit 安全 漏洞",
+      "description": "Node.js 项目依赖漏洞扫描。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "npm audit %{选项}%",
+        "extensions": [
+          {
+            "name": "审计依赖",
+            "cmd": "npm audit",
+            "params": {},
+            "keyword": "npm audit"
+          },
+          {
+            "name": "修复漏洞",
+            "cmd": "npm audit fix",
+            "params": {},
+            "keyword": "npm audit 修复"
+          },
+          {
+            "name": "修复并保留版本",
+            "cmd": "npm audit fix --force",
+            "params": {},
+            "keyword": "npm audit 强制修复"
+          },
+          {
+            "name": "JSON 输出",
+            "cmd": "npm audit --json",
+            "params": {},
+            "keyword": "npm audit JSON"
+          },
+          {
+            "name": "生产依赖审计",
+            "cmd": "npm audit --production",
+            "params": {},
+            "keyword": "npm audit production"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "审计选项           ",
+            "example": "fix --force",
+            "notes": "常用 fix, --json, --production, --force"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "yarn audit 安全审计",
+      "keyword": "yarn audit 安全 漏洞",
+      "description": "Yarn 包管理器的依赖安全审计。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "yarn audit %{选项}%",
+        "extensions": [
+          {
+            "name": "审计依赖",
+            "cmd": "yarn audit",
+            "params": {},
+            "keyword": "yarn audit"
+          },
+          {
+            "name": "指定阈值",
+            "cmd": "yarn audit --level %{级别}%",
+            "params": {
+              "级别": {
+                "type": "string",
+                "required": false,
+                "description": "漏洞级别阈值         ",
+                "example": "high",
+                "notes": "可选"
+              }
+            },
+            "keyword": "yarn audit 阈值"
+          },
+          {
+            "name": "JSON 输出",
+            "cmd": "yarn audit --json",
+            "params": {},
+            "keyword": "yarn audit JSON"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "审计选项           ",
+            "example": "--level high",
+            "notes": "常用 --level [critical|high|medium|low], --json"
+          },
+          "级别": {
+            "type": "string",
+            "required": false,
+            "description": "漏洞级别阈值         ",
+            "example": "high",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "snyk 安全测试",
+      "keyword": "snyk 安全 漏洞 测试",
+      "description": "Snyk 漏洞扫描和依赖监控工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "snyk %{命令}%",
+        "extensions": [
+          {
+            "name": "测试漏洞",
+            "cmd": "snyk test",
+            "params": {},
+            "keyword": "snyk test"
+          },
+          {
+            "name": "监控依赖",
+            "cmd": "snyk monitor",
+            "params": {},
+            "keyword": "snyk monitor"
+          },
+          {
+            "name": "测试容器镜像",
+            "cmd": "snyk container test %{镜像名}%",
+            "params": {
+              "镜像名": {
+                "type": "string",
+                "required": false,
+                "description": "Docker 镜像名     ",
+                "example": "nginx:latest",
+                "notes": "可选"
+              }
+            },
+            "keyword": "snyk container"
+          },
+          {
+            "name": "保护代码",
+            "cmd": "snyk code test",
+            "params": {},
+            "keyword": "snyk code"
+          },
+          {
+            "name": "修复漏洞",
+            "cmd": "snyk fix",
+            "params": {},
+            "keyword": "snyk fix"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "Snyk 命令        ",
+            "example": "test",
+            "notes": "常用 test, monitor, container, code, fix"
+          },
+          "镜像名": {
+            "type": "string",
+            "required": false,
+            "description": "Docker 镜像名     ",
+            "example": "nginx:latest",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "helmet.js 安全头",
+      "keyword": "helmet 安全头 HTTP",
+      "description": "Node.js Express 安全头中间件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "npm install helmet",
+        "extensions": [
+          {
+            "name": "基础使用",
+            "cmd": "const helmet = require('helmet'); app.use(helmet());",
+            "params": {},
+            "keyword": "helmet 基础"
+          },
+          {
+            "name": "内容安全策略",
+            "cmd": "app.use(helmet.contentSecurityPolicy({ directives: { defaultSrc: [\"'self'\"] } }));",
+            "params": {},
+            "keyword": "helmet CSP"
+          },
+          {
+            "name": "隐藏 X-Powered-By",
+            "cmd": "app.use(helmet.hidePoweredBy());",
+            "params": {},
+            "keyword": "helmet hidePoweredBy"
+          },
+          {
+            "name": "防止点击劫持",
+            "cmd": "app.use(helmet.frameguard({ action: 'deny' }));",
+            "params": {},
+            "keyword": "helmet frameguard"
+          },
+          {
+            "name": "XSS 防护",
+            "cmd": "app.use(helmet.xssFilter());",
+            "params": {},
+            "keyword": "helmet XSS"
+          },
+          {
+            "name": "HSTS 头",
+            "cmd": "app.use(helmet.hsts({ maxAge: 31536000, includeSubDomains: true }));",
+            "params": {},
+            "keyword": "helmet HSTS"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "hashicorp vault",
+      "keyword": "vault hashicorp 密钥 密文",
+      "description": "HashiCorp Vault 密钥管理。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "vault %{命令}%",
+        "extensions": [
+          {
+            "name": "写入密文",
+            "cmd": "vault kv put secret/%{路径}% key=value",
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": false,
+                "description": "密文路径           ",
+                "example": "myapp/config",
+                "notes": "可选"
+              }
+            },
+            "keyword": "vault put 写入"
+          },
+          {
+            "name": "读取密文",
+            "cmd": "vault kv get secret/%{路径}%",
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": false,
+                "description": "密文路径           ",
+                "example": "myapp/config",
+                "notes": "可选"
+              }
+            },
+            "keyword": "vault get 读取"
+          },
+          {
+            "name": "列出路径",
+            "cmd": "vault kv list secret/%{路径}%",
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": false,
+                "description": "密文路径           ",
+                "example": "myapp/config",
+                "notes": "可选"
+              }
+            },
+            "keyword": "vault list 列表"
+          },
+          {
+            "name": "删除密文",
+            "cmd": "vault kv delete secret/%{路径}%",
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": false,
+                "description": "密文路径           ",
+                "example": "myapp/config",
+                "notes": "可选"
+              }
+            },
+            "keyword": "vault delete 删除"
+          },
+          {
+            "name": "登录认证",
+            "cmd": "vault login -method=userpass username=%{用户}%",
+            "params": {
+              "用户": {
+                "type": "string",
+                "required": false,
+                "description": "用户名            ",
+                "example": "admin",
+                "notes": "可选"
+              }
+            },
+            "keyword": "vault login 登录"
+          },
+          {
+            "name": "查看状态",
+            "cmd": "vault status",
+            "params": {},
+            "keyword": "vault status 状态"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "Vault 命令       ",
+            "example": "kv get",
+            "notes": "常用 kv put/get/list/delete, login, status"
+          },
+          "路径": {
+            "type": "string",
+            "required": false,
+            "description": "密文路径           ",
+            "example": "myapp/config",
+            "notes": "可选"
+          },
+          "用户": {
+            "type": "string",
+            "required": false,
+            "description": "用户名            ",
+            "example": "admin",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "AWS Secrets Manager",
+      "keyword": "aws secrets manager 密钥",
+      "description": "AWS Secrets Manager 命令行管理。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws secretsmanager %{命令}%",
+        "extensions": [
+          {
+            "name": "创建密文",
+            "cmd": "aws secretsmanager create-secret --name %{名称}% --secret-string '{\"key\":\"value\"}'",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": false,
+                "description": "密文名称           ",
+                "example": "myapp/db-creds",
+                "notes": "可选"
+              }
+            },
+            "keyword": "aws secrets create"
+          },
+          {
+            "name": "获取密文",
+            "cmd": "aws secretsmanager get-secret-value --secret-id %{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": false,
+                "description": "密文名称           ",
+                "example": "myapp/db-creds",
+                "notes": "可选"
+              }
+            },
+            "keyword": "aws secrets get"
+          },
+          {
+            "name": "列出密文",
+            "cmd": "aws secretsmanager list-secrets",
+            "params": {},
+            "keyword": "aws secrets list"
+          },
+          {
+            "name": "删除密文",
+            "cmd": "aws secretsmanager delete-secret --secret-id %{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": false,
+                "description": "密文名称           ",
+                "example": "myapp/db-creds",
+                "notes": "可选"
+              }
+            },
+            "keyword": "aws secrets delete"
+          },
+          {
+            "name": "轮转密文",
+            "cmd": "aws secretsmanager rotate-secret --secret-id %{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": false,
+                "description": "密文名称           ",
+                "example": "myapp/db-creds",
+                "notes": "可选"
+              }
+            },
+            "keyword": "aws secrets rotate"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "Secrets Manager 命令",
+            "example": "get-secret-value",
+            "notes": "常用 create-secret, get-secret-value, list-secrets, delete-secret"
+          },
+          "名称": {
+            "type": "string",
+            "required": false,
+            "description": "密文名称           ",
+            "example": "myapp/db-creds",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "git-secrets 防止密钥提交",
+      "keyword": "git-secrets 密钥 扫描",
+      "description": "Git 钩子防止密钥提交到代码库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git secrets --%{动作}%",
+        "extensions": [
+          {
+            "name": "安装钩子",
+            "cmd": "git secrets --install",
+            "params": {},
+            "keyword": "git secrets install"
+          },
+          {
+            "name": "添加禁止模式",
+            "cmd": "git secrets --add --global --literal '%{模式}%'",
+            "params": {
+              "模式": {
+                "type": "string",
+                "required": false,
+                "description": "正则模式           ",
+                "example": "password\\s*=",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git secrets add"
+          },
+          {
+            "name": "添加 AWS 模式",
+            "cmd": "git secrets --add-gLOBAL --allowed --regex 'AKIA[0-9A-Z]{16}'",
+            "params": {},
+            "keyword": "git secrets aws"
+          },
+          {
+            "name": "扫描文件",
+            "cmd": "git secrets --scan %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": false,
+                "description": "文件路径           ",
+                "example": "app.js",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git secrets scan"
+          },
+          {
+            "name": "扫描目录",
+            "cmd": "git secrets --scan -r %{目录}%",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": false,
+                "description": "目录路径           ",
+                "example": "src/",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git secrets 递归扫描"
+          },
+          {
+            "name": "查看配置",
+            "cmd": "git secrets --list",
+            "params": {},
+            "keyword": "git secrets list"
+          }
+        ],
+        "params": {
+          "动作": {
+            "type": "string",
+            "required": true,
+            "description": "操作动作           ",
+            "example": "install",
+            "notes": "常用 install, add, scan, list"
+          },
+          "模式": {
+            "type": "string",
+            "required": false,
+            "description": "正则模式           ",
+            "example": "password\\s*=",
+            "notes": "可选"
+          },
+          "文件": {
+            "type": "string",
+            "required": false,
+            "description": "文件路径           ",
+            "example": "app.js",
+            "notes": "可选"
+          },
+          "目录": {
+            "type": "string",
+            "required": false,
+            "description": "目录路径           ",
+            "example": "src/",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "envchain 环境变量加密",
+      "keyword": "envchain 环境变量 安全",
+      "description": "加密存储环境变量，支持多种云服务密钥。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "envchain %{命名空间}% %{命令}%",
+        "extensions": [
+          {
+            "name": "设置变量",
+            "cmd": "envchain %{命名空间}% %{变量名}=%{值}%",
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间           ",
+                "example": "myapp",
+                "notes": "用于分组管理环境变量"
+              },
+              "值": {
+                "type": "string",
+                "required": false,
+                "description": "变量值            ",
+                "example": "xxxx",
+                "notes": "可选"
+              }
+            },
+            "keyword": "envchain set"
+          },
+          {
+            "name": "运行命令",
+            "cmd": "envchain %{命名空间}% %{命令}%",
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间           ",
+                "example": "myapp",
+                "notes": "用于分组管理环境变量"
+              },
+              "命令": {
+                "type": "string",
+                "required": false,
+                "description": "要执行的命令         ",
+                "example": "node app.js",
+                "notes": "可选"
+              }
+            },
+            "keyword": "envchain run"
+          },
+          {
+            "name": "列出变量",
+            "cmd": "envchain %{命名空间}% env",
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间           ",
+                "example": "myapp",
+                "notes": "用于分组管理环境变量"
+              }
+            },
+            "keyword": "envchain list"
+          },
+          {
+            "name": "交互式设置",
+            "cmd": "envchain --set %{命名空间}% %{变量名}%",
+            "params": {
+              "命名空间": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间           ",
+                "example": "myapp",
+                "notes": "用于分组管理环境变量"
+              },
+              "变量名": {
+                "type": "string",
+                "required": false,
+                "description": "变量名            ",
+                "example": "AWS_SECRET_KEY",
+                "notes": "可选"
+              }
+            },
+            "keyword": "envchain interactive"
+          }
+        ],
+        "params": {
+          "命名空间": {
+            "type": "string",
+            "required": true,
+            "description": "命名空间           ",
+            "example": "myapp",
+            "notes": "用于分组管理环境变量"
+          },
+          "变量名": {
+            "type": "string",
+            "required": false,
+            "description": "变量名            ",
+            "example": "AWS_SECRET_KEY",
+            "notes": "可选"
+          },
+          "值": {
+            "type": "string",
+            "required": false,
+            "description": "变量值            ",
+            "example": "xxxx",
+            "notes": "可选"
+          },
+          "命令": {
+            "type": "string",
+            "required": false,
+            "description": "要执行的命令         ",
+            "example": "node app.js",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "docker scan 镜像扫描",
+      "keyword": "docker scan 镜像 安全 Snyk",
+      "description": "使用 Snyk 扫描 Docker 镜像漏洞。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker scan %{镜像名}%",
+        "extensions": [
+          {
+            "name": "扫描镜像",
+            "cmd": "docker scan %{镜像名}%",
+            "params": {
+              "镜像名": {
+                "type": "string",
+                "required": false,
+                "description": "Docker 镜像名     ",
+                "example": "nginx:latest",
+                "notes": "格式: 镜像名:标签 或 镜像ID"
+              }
+            },
+            "keyword": "docker scan"
+          },
+          {
+            "name": "详细输出",
+            "cmd": "docker scan --json %{镜像名}%",
+            "params": {
+              "镜像名": {
+                "type": "string",
+                "required": false,
+                "description": "Docker 镜像名     ",
+                "example": "nginx:latest",
+                "notes": "格式: 镜像名:标签 或 镜像ID"
+              }
+            },
+            "keyword": "docker scan json"
+          },
+          {
+            "name": "包含基础镜像",
+            "cmd": "docker scan --exclude-base %{镜像名}%",
+            "params": {
+              "镜像名": {
+                "type": "string",
+                "required": false,
+                "description": "Docker 镜像名     ",
+                "example": "nginx:latest",
+                "notes": "格式: 镜像名:标签 或 镜像ID"
+              }
+            },
+            "keyword": "docker scan exclude"
+          }
+        ],
+        "params": {
+          "镜像名": {
+            "type": "string",
+            "required": true,
+            "description": "Docker 镜像名     ",
+            "example": "nginx:latest",
+            "notes": "格式: 镜像名:标签 或 镜像ID"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "trivy 容器漏洞扫描",
+      "keyword": "trivy 容器 漏洞 扫描",
+      "description": "容器镜像综合漏洞扫描工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "trivy %{命令}% %{目标}%",
+        "extensions": [
+          {
+            "name": "扫描镜像",
+            "cmd": "trivy image %{镜像名}%",
+            "params": {
+              "镜像名": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "trivy image"
+          },
+          {
+            "name": "扫描目录",
+            "cmd": "trivy fs %{目录}%",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "trivy fs"
+          },
+          {
+            "name": "输出 JSON",
+            "cmd": "trivy image --format json --output %{输出文件}% %{镜像名}%",
+            "params": {
+              "输出文件": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "镜像名": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "trivy json"
+          },
+          {
+            "name": "扫描严重漏洞",
+            "cmd": "trivy image --severity HIGH,CRITICAL %{镜像名}%",
+            "params": {
+              "镜像名": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "trivy severity"
+          },
+          {
+            "name": "忽略已修复",
+            "cmd": "trivy image --ignore-unfixed %{镜像名}%",
+            "params": {
+              "镜像名": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "trivy ignore"
+          },
+          {
+            "name": "扫描 K8s",
+            "cmd": "trivy k8s --report summary",
+            "params": {},
+            "keyword": "trivy k8s"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "Trivy 命令       ",
+            "example": "image",
+            "notes": "常用 image, fs, k8s, config"
+          },
+          "目标": {
+            "type": "string",
+            "required": true,
+            "description": "扫描目标           ",
+            "example": "nginx:latest",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "docker bench security",
+      "keyword": "docker bench 安全 基线",
+      "description": "Docker 安全基准测试工具 (CIS Docker Benchmark)",
+      "data": {
+        "cmd": "docker run -it --net host --cap-add audit_control -v /var/lib/docker:/var/lib/docker aquasec/docker-bench-security",
+        "extensions": [
+          {
+            "name": "完整扫描",
+            "cmd": "docker run -it --net host --cap-add audit_control -v /var/lib/docker:/var/lib/docker aquasec/docker-bench-security",
+            "params": {},
+            "keyword": "docker bench 完整"
+          },
+          {
+            "name": "特定测试",
+            "cmd": "docker run -it --net host --cap-add audit_control -v /var/lib/docker:/var/lib/docker aquasec/docker-bench-security -c %{测试项}%",
+            "params": {
+              "测试项": {
+                "type": "string",
+                "required": false,
+                "description": "测试项目 ID        ",
+                "example": "1",
+                "notes": "如 1=主机配置, 2=Docker 守护进程配置"
+              }
+            },
+            "keyword": "docker bench 特定"
+          },
+          {
+            "name": "输出 JSON",
+            "cmd": "docker run -it --net host --cap-add audit_control -v /var/lib/docker:/var/lib/docker aquasec/docker-bench-security -f json -o %{输出文件}%",
+            "params": {
+              "输出文件": {
+                "type": "string",
+                "required": false,
+                "description": "输出文件路径         ",
+                "example": "results.json",
+                "notes": "可选"
+              }
+            },
+            "keyword": "docker bench json"
+          }
+        ],
+        "params": {
+          "测试项": {
+            "type": "string",
+            "required": false,
+            "description": "测试项目 ID        ",
+            "example": "1",
+            "notes": "如 1=主机配置, 2=Docker 守护进程配置"
+          },
+          "输出文件": {
+            "type": "string",
+            "required": false,
+            "description": "输出文件路径         ",
+            "example": "results.json",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "Rootless Docker 无 root 运行",
+      "keyword": "rootless docker 安全",
+      "description": "以非 root 用户运行 Docker 容器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker run --rm --privileged usr/%{镜像}%",
+        "extensions": [
+          {
+            "name": "安装 rootless",
+            "cmd": "curl -fsSL https://get.docker.com/rootless | sh",
+            "params": {},
+            "keyword": "rootless 安装"
+          },
+          {
+            "name": "启动 rootless daemon",
+            "cmd": "DOCKER_BUILDKIT=1 dockerd-rootless.sh &",
+            "params": {},
+            "keyword": "rootless daemon"
+          },
+          {
+            "name": "设置环境变量",
+            "cmd": "export DOCKER_HOST=unix:///run/user/$(id -u)/docker.sock",
+            "params": {},
+            "keyword": "rootless env"
+          },
+          {
+            "name": "验证安装",
+            "cmd": "docker info",
+            "params": {},
+            "keyword": "rootless verify"
+          }
+        ],
+        "params": {
+          "镜像": {
+            "type": "string",
+            "required": false,
+            "description": "容器镜像           ",
+            "example": "alpine:latest",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "mkcert 本地 HTTPS",
+      "keyword": "mkcert 本地 SSL HTTPS 开发",
+      "description": "本地开发环境 SSL 证书工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "mkcert %{命令}%",
+        "extensions": [
+          {
+            "name": "安装本地 CA",
+            "cmd": "mkcert -install",
+            "params": {},
+            "keyword": "mkcert install"
+          },
+          {
+            "name": "生成证书",
+            "cmd": "mkcert %{域名}%",
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "域名             ",
+                "example": "localhost",
+                "notes": "多个用空格分隔"
+              }
+            },
+            "keyword": "mkcert generate"
+          },
+          {
+            "name": "多域名证书",
+            "cmd": "mkcert localhost 127.0.0.1 ::1",
+            "params": {},
+            "keyword": "mkcert 多域名"
+          },
+          {
+            "name": "指定输出",
+            "cmd": "mkcert -cert-file %{证书}% -key-file %{密钥}% %{域名}%",
+            "params": {
+              "证书": {
+                "type": "string",
+                "required": false,
+                "description": "证书文件路径         ",
+                "example": "cert.pem",
+                "notes": "可选"
+              },
+              "密钥": {
+                "type": "string",
+                "required": false,
+                "description": "密钥文件路径         ",
+                "example": "key.pem",
+                "notes": "可选"
+              },
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "域名             ",
+                "example": "localhost",
+                "notes": "多个用空格分隔"
+              }
+            },
+            "keyword": "mkcert output"
+          },
+          {
+            "name": "PFX 格式",
+            "cmd": "mkcert -pkcs12 %{域名}%",
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "域名             ",
+                "example": "localhost",
+                "notes": "多个用空格分隔"
+              }
+            },
+            "keyword": "mkcert pfx"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "mkcert 命令      ",
+            "example": "-install",
+            "notes": "常用 -install, 域名"
+          },
+          "域名": {
+            "type": "string",
+            "required": false,
+            "description": "域名             ",
+            "example": "localhost",
+            "notes": "多个用空格分隔"
+          },
+          "证书": {
+            "type": "string",
+            "required": false,
+            "description": "证书文件路径         ",
+            "example": "cert.pem",
+            "notes": "可选"
+          },
+          "密钥": {
+            "type": "string",
+            "required": false,
+            "description": "密钥文件路径         ",
+            "example": "key.pem",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "SSL Labs 测试",
+      "keyword": "SSL labs 测试 SSL 评级",
+      "description": "使用 SSL Labs 在线工具测试 SSL 配置。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "curl -s 'https://www.ssllabs.com/ssltest/analyze.html?d=%{域名}%&hideResults=on&latest=on'",
+        "extensions": [
+          {
+            "name": "测试网站 SSL",
+            "cmd": "curl -s 'https://www.ssllabs.com/ssltest/analyze.html?d=%{域名}%&hideResults=on'",
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "要测试的域名         ",
+                "example": "example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "SSL labs analyze"
+          },
+          {
+            "name": "端口测试",
+            "cmd": "curl -s 'https://www.ssllabs.com/ssltest/analyze.html?d=%{域名}%:8443'",
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "要测试的域名         ",
+                "example": "example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "SSL labs port"
+          },
+          {
+            "name": "深度测试",
+            "cmd": "curl -s 'https://www.ssllabs.com/ssltest/analyze.html?d=%{域名}%&all=on'",
+            "params": {
+              "域名": {
+                "type": "string",
+                "required": false,
+                "description": "要测试的域名         ",
+                "example": "example.com",
+                "notes": "可选"
+              }
+            },
+            "keyword": "SSL labs deep"
+          }
+        ],
+        "params": {
+          "域名": {
+            "type": "string",
+            "required": true,
+            "description": "要测试的域名         ",
+            "example": "example.com",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "dependabot 配置",
+      "keyword": "dependabot 自动更新 安全",
+      "description": "GitHub Dependabot 依赖安全更新配置。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "mkdir -p .github/dependabot.yml",
+        "extensions": [
+          {
+            "name": "npm 依赖更新",
+            "cmd": "mkdir -p .github/dependabot.yml",
+            "params": {},
+            "keyword": "dependabot npm"
+          },
+          {
+            "name": "GitHub Actions 更新",
+            "cmd": "mkdir -p .github/dependabot.yml",
+            "params": {},
+            "keyword": "dependabot actions"
+          },
+          {
+            "name": "Docker 依赖更新",
+            "cmd": "mkdir -p .github/dependabot.yml",
+            "params": {},
+            "keyword": "dependabot docker"
+          },
+          {
+            "name": "pip 依赖更新",
+            "cmd": "mkdir -p .github/dependabot.yml",
+            "params": {},
+            "keyword": "dependabot pip"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "chmod 文件权限加固",
+      "keyword": "chmod 权限 安全",
+      "description": "文件权限安全加固命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "chmod %{权限}% %{文件}%",
+        "extensions": [
+          {
+            "name": "锁定配置文件",
+            "cmd": "chmod 600 %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": false,
+                "description": "文件路径           ",
+                "example": ".env",
+                "notes": "可选"
+              }
+            },
+            "keyword": "chmod 600"
+          },
+          {
+            "name": "可执行文件",
+            "cmd": "chmod 700 %{脚本}%",
+            "params": {
+              "脚本": {
+                "type": "string",
+                "required": false,
+                "description": "脚本文件           ",
+                "example": "backup.sh",
+                "notes": "可选"
+              }
+            },
+            "keyword": "chmod 700"
+          },
+          {
+            "name": "目录权限",
+            "cmd": "chmod 755 %{目录}%",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": false,
+                "description": "目录路径           ",
+                "example": "config/",
+                "notes": "可选"
+              }
+            },
+            "keyword": "chmod 755"
+          },
+          {
+            "name": "移除所有权限",
+            "cmd": "chmod 000 %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": false,
+                "description": "文件路径           ",
+                "example": ".env",
+                "notes": "可选"
+              }
+            },
+            "keyword": "chmod 000"
+          },
+          {
+            "name": "递归设置",
+            "cmd": "chmod -R 600 %{目录}%",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": false,
+                "description": "目录路径           ",
+                "example": "config/",
+                "notes": "可选"
+              }
+            },
+            "keyword": "chmod recursive"
+          },
+          {
+            "name": "只读文件",
+            "cmd": "chmod 444 %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": false,
+                "description": "文件路径           ",
+                "example": ".env",
+                "notes": "可选"
+              }
+            },
+            "keyword": "chmod 444"
+          }
+        ],
+        "params": {
+          "权限": {
+            "type": "string",
+            "required": true,
+            "description": "权限模式           ",
+            "example": "600",
+            "notes": "如 600 (rw-------), 644 (rw-r--r--), 755 (rwxr-xr-x)"
+          },
+          "文件": {
+            "type": "string",
+            "required": false,
+            "description": "文件路径           ",
+            "example": ".env",
+            "notes": "可选"
+          },
+          "目录": {
+            "type": "string",
+            "required": false,
+            "description": "目录路径           ",
+            "example": "config/",
+            "notes": "可选"
+          },
+          "脚本": {
+            "type": "string",
+            "required": false,
+            "description": "脚本文件           ",
+            "example": "backup.sh",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "chown 文件所有者",
+      "keyword": "chown 所有者 安全",
+      "description": "修改文件所有者以加固安全。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "chown %{用户}%:%{组}% %{文件}%",
+        "extensions": [
+          {
+            "name": "设置所有者",
+            "cmd": "chown %{用户}%:%{组}% %{文件}%",
+            "params": {
+              "用户": {
+                "type": "string",
+                "required": false,
+                "description": "用户名            ",
+                "example": "www-data",
+                "notes": "可选"
+              },
+              "组": {
+                "type": "string",
+                "required": false,
+                "description": "组名             ",
+                "example": "www-data",
+                "notes": "默认为用户同名组"
+              },
+              "文件": {
+                "type": "string",
+                "required": false,
+                "description": "文件路径           ",
+                "example": "config.json",
+                "notes": "可选"
+              }
+            },
+            "keyword": "chown 设置"
+          },
+          {
+            "name": "递归设置",
+            "cmd": "chown -R %{用户}%:%{组}% %{目录}%",
+            "params": {
+              "用户": {
+                "type": "string",
+                "required": false,
+                "description": "用户名            ",
+                "example": "www-data",
+                "notes": "可选"
+              },
+              "组": {
+                "type": "string",
+                "required": false,
+                "description": "组名             ",
+                "example": "www-data",
+                "notes": "默认为用户同名组"
+              },
+              "目录": {
+                "type": "string",
+                "required": false,
+                "description": "目录路径           ",
+                "example": "var/",
+                "notes": "可选"
+              }
+            },
+            "keyword": "chown recursive"
+          },
+          {
+            "name": "仅设置用户",
+            "cmd": "chown %{用户}% %{文件}%",
+            "params": {
+              "用户": {
+                "type": "string",
+                "required": false,
+                "description": "用户名            ",
+                "example": "www-data",
+                "notes": "可选"
+              },
+              "文件": {
+                "type": "string",
+                "required": false,
+                "description": "文件路径           ",
+                "example": "config.json",
+                "notes": "可选"
+              }
+            },
+            "keyword": "chown user"
+          },
+          {
+            "name": "安全配置所有者",
+            "cmd": "chown root:root /etc/passwd && chmod 644 /etc/passwd",
+            "params": {},
+            "keyword": "chown 系统文件"
+          }
+        ],
+        "params": {
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "用户名            ",
+            "example": "www-data",
+            "notes": "必填"
+          },
+          "组": {
+            "type": "string",
+            "required": false,
+            "description": "组名             ",
+            "example": "www-data",
+            "notes": "默认为用户同名组"
+          },
+          "文件": {
+            "type": "string",
+            "required": false,
+            "description": "文件路径           ",
+            "example": "config.json",
+            "notes": "可选"
+          },
+          "目录": {
+            "type": "string",
+            "required": false,
+            "description": "目录路径           ",
+            "example": "var/",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "auditd Linux 安全审计",
+      "keyword": "auditd 审计 安全 日志",
+      "description": "Linux 审计守护进程，监控安全相关事件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "auditctl %{选项}%",
+        "extensions": [
+          {
+            "name": "查看规则",
+            "cmd": "auditctl -l",
+            "params": {},
+            "keyword": "auditd list"
+          },
+          {
+            "name": "监控文件",
+            "cmd": "auditctl -w %{文件}% -p rwxa",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": false,
+                "description": "文件路径           ",
+                "example": "/etc/passwd",
+                "notes": "可选"
+              }
+            },
+            "keyword": "auditd watch file"
+          },
+          {
+            "name": "监控目录",
+            "cmd": "auditctl -w %{目录}% -p rwxa -k %{名称}%",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": false,
+                "description": "目录路径           ",
+                "example": "/etc/",
+                "notes": "可选"
+              },
+              "名称": {
+                "type": "string",
+                "required": false,
+                "description": "审计规则名称         ",
+                "example": "config_change",
+                "notes": "可选"
+              }
+            },
+            "keyword": "auditd watch dir"
+          },
+          {
+            "name": "添加规则",
+            "cmd": "auditctl -a always,exit -F arch=b64 -S execve",
+            "params": {},
+            "keyword": "auditd add rule"
+          },
+          {
+            "name": "查看日志",
+            "cmd": "ausearch -k %{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": false,
+                "description": "审计规则名称         ",
+                "example": "config_change",
+                "notes": "可选"
+              }
+            },
+            "keyword": "auditd search"
+          },
+          {
+            "name": "查看报告",
+            "cmd": "aureport",
+            "params": {},
+            "keyword": "auditd report"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "auditctl 选项    ",
+            "example": "-l",
+            "notes": "常用 -l 列表, -w 监控, -a 添加规则, -D 删除所有"
+          },
+          "文件": {
+            "type": "string",
+            "required": false,
+            "description": "文件路径           ",
+            "example": "/etc/passwd",
+            "notes": "可选"
+          },
+          "目录": {
+            "type": "string",
+            "required": false,
+            "description": "目录路径           ",
+            "example": "/etc/",
+            "notes": "可选"
+          },
+          "名称": {
+            "type": "string",
+            "required": false,
+            "description": "审计规则名称         ",
+            "example": "config_change",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/安全/",
+      "name": "Metasploit 渗透测试框架",
+      "keyword": "metasploit msfconsole 渗透测试 安全",
+      "description": "Metasploit Framework 渗透测试框架常用命令",
+      "data": {
+        "cmd": "msfconsole %{选项}%",
+        "extensions": [
+          {
+            "name": "启动控制台",
+            "cmd": "msfconsole",
+            "params": {},
+            "keyword": "msfconsole 启动"
+          },
+          {
+            "name": "搜索模块",
+            "cmd": "search %{关键词}%",
+            "params": {
+              "关键词": {
+                "type": "string",
+                "required": false,
+                "description": "搜索关键词          ",
+                "example": "mysql",
+                "notes": "搜索漏洞模块名称或 CVE 编号"
+              }
+            },
+            "keyword": "msfconsole search"
+          },
+          {
+            "name": "使用模块",
+            "cmd": "use %{模块路径}%",
+            "params": {
+              "模块路径": {
+                "type": "string",
+                "required": false,
+                "description": "模块路径           ",
+                "example": "exploit/linux/samba/usermap_script",
+                "notes": "完整模块路径"
+              }
+            },
+            "keyword": "msfconsole use"
+          },
+          {
+            "name": "查看选项",
+            "cmd": "show options",
+            "params": {},
+            "keyword": "msfconsole options"
+          },
+          {
+            "name": "设置目标",
+            "cmd": "set RHOSTS %{目标IP}%",
+            "params": {
+              "目标IP": {
+                "type": "string",
+                "required": false,
+                "description": "目标 IP 地址       ",
+                "example": "192.168.1.100",
+                "notes": "可选"
+              }
+            },
+            "keyword": "msfconsole set rhosts"
+          },
+          {
+            "name": "设置端口",
+            "cmd": "set RPORT %{端口}%",
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": false,
+                "description": "目标端口           ",
+                "example": "445",
+                "notes": "可选"
+              }
+            },
+            "keyword": "msfconsole set rport"
+          },
+          {
+            "name": "执行攻击",
+            "cmd": "run",
+            "params": {},
+            "keyword": "msfconsole run"
+          },
+          {
+            "name": "返回后台",
+            "cmd": "back",
+            "params": {},
+            "keyword": "msfconsole back"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "msfconsole 选项  ",
+            "example": "-q",
+            "notes": "常用 -q 静默启动, -h 帮助"
+          },
+          "关键词": {
+            "type": "string",
+            "required": false,
+            "description": "搜索关键词          ",
+            "example": "mysql",
+            "notes": "搜索漏洞模块名称或 CVE 编号"
+          },
+          "模块路径": {
+            "type": "string",
+            "required": false,
+            "description": "模块路径           ",
+            "example": "exploit/linux/samba/usermap_script",
+            "notes": "完整模块路径"
+          },
+          "目标IP": {
+            "type": "string",
+            "required": false,
+            "description": "目标 IP 地址       ",
+            "example": "192.168.1.100",
+            "notes": "可选"
+          },
+          "端口": {
+            "type": "string",
+            "required": false,
+            "description": "目标端口           ",
+            "example": "445",
+            "notes": "可选"
+          }
+        }
+      }
+    }
+  ]
+}

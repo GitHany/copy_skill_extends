@@ -1,0 +1,74 @@
+{
+  "module": "容器编排/Docker-等待容器 wait",
+  "version": "2.0",
+  "description": "Docker wait命令集合，涵盖Docker wait的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker wait 等待停止",
+      "keyword": "docker wait 等待",
+      "description": "阻塞直到容器停止并打印退出码。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker wait %{容器}%",
+        "extensions": [
+          {
+            "name": "等待单个容器",
+            "cmd": "docker wait %{容器}%",
+            "params": {
+              "容器": {
+                "type": "string",
+                "required": true,
+                "description": "容器名称或ID",
+                "example": "myapp",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker wait single"
+          },
+          {
+            "name": "等待多个容器",
+            "cmd": "docker wait %{容器1}% %{容器2}%",
+            "params": {
+              "容器1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个容器",
+                "example": "container1",
+                "notes": "必填"
+              },
+              "容器2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个容器",
+                "example": "container2",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker wait multiple"
+          },
+          {
+            "name": "等待容器并获取退出码",
+            "cmd": "docker wait myapp && echo \"容器已停止\"",
+            "params": {},
+            "keyword": "docker wait exit code"
+          },
+          {
+            "name": "后台等待容器",
+            "cmd": "docker wait myapp &",
+            "params": {},
+            "keyword": "docker wait background"
+          }
+        ],
+        "params": {
+          "容器": {
+            "type": "string",
+            "required": true,
+            "description": "容器名称或ID",
+            "example": "myapp",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

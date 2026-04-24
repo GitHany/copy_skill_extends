@@ -1,0 +1,62 @@
+{
+  "module": "Linux系统/Linux-参数构建 xargs",
+  "version": "2.0",
+  "description": "Linux xargs 参数构建命令，涵盖Linux xargs的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Linux系统/",
+      "name": "xargs 构建参数",
+      "keyword": "xargs 参数",
+      "description": "从标准输入构建并执行命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "%{命令1}% | xargs %{命令2}%",
+        "extensions": [
+          {
+            "name": "指定数量",
+            "cmd": "%{命令1}% | xargs -n %{数量}% %{命令2}%",
+            "params": {
+              "命令1": {
+                "type": "string",
+                "required": true,
+                "description": "命令1            ",
+                "example": "cat files.txt",
+                "notes": "必填"
+              },
+              "数量": {
+                "type": "string",
+                "required": true,
+                "description": "每行参数           ",
+                "example": "1",
+                "notes": "必填"
+              },
+              "命令2": {
+                "type": "string",
+                "required": true,
+                "description": "命令2            ",
+                "example": "rm",
+                "notes": "必填"
+              }
+            },
+            "keyword": "xargs n"
+          }
+        ],
+        "params": {
+          "命令1": {
+            "type": "string",
+            "required": true,
+            "description": "输入命令           ",
+            "example": "find . -name '*.log'",
+            "notes": "必填"
+          },
+          "命令2": {
+            "type": "string",
+            "required": true,
+            "description": "执行命令           ",
+            "example": "rm",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

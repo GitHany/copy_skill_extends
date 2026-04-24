@@ -1,0 +1,1367 @@
+{
+  "module": "数据库/Redis-哈希操作 hash",
+  "version": "1.0",
+  "description": "Redis 哈希操作模块命令集合，涵盖Redis-哈希操作的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/数据库/",
+      "name": "hset 设置哈希字段",
+      "keyword": "hset hash",
+      "description": "设置哈希表中字段的值。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "hset %{键名}% %{字段}% %{值}%",
+        "extensions": [
+          {
+            "name": "批量设置",
+            "cmd": "hmset %{键名}% %{字段1}% %{值1}% %{字段2}% %{值2}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "哈希键名           ",
+                "example": "user:1001",
+                "notes": "可选"
+              },
+              "字段1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个字段          ",
+                "example": "name",
+                "notes": "可选"
+              },
+              "值1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个值           ",
+                "example": "张三",
+                "notes": "可选"
+              },
+              "字段2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个字段          ",
+                "example": "age",
+                "notes": "可选"
+              },
+              "值2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个值           ",
+                "example": "25",
+                "notes": "可选"
+              }
+            },
+            "keyword": "hmset 批量"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名           ",
+            "example": "user:1001",
+            "notes": "常用"
+          },
+          "字段": {
+            "type": "string",
+            "required": true,
+            "description": "哈希字段名          ",
+            "example": "name",
+            "notes": "必填"
+          },
+          "值": {
+            "type": "string",
+            "required": true,
+            "description": "字段值            ",
+            "example": "张三",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "hget 获取哈希字段",
+      "keyword": "hget hash",
+      "description": "获取哈希表中字段的值。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "hget %{键名}% %{字段}%",
+        "extensions": [
+          {
+            "name": "设置多个字段",
+            "cmd": "hset %{键名}% %{字段1}% %{值1}% %{字段2}% %{值2}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "哈希键名",
+                "example": "user:1001",
+                "notes": "必填"
+              },
+              "字段1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个字段",
+                "example": "name",
+                "notes": "必填"
+              },
+              "值1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个值",
+                "example": "张三",
+                "notes": "必填"
+              },
+              "字段2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个字段",
+                "example": "age",
+                "notes": "必填"
+              },
+              "值2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个值",
+                "example": "25",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hset multiple"
+          },
+          {
+            "name": "仅当字段不存在时设置",
+            "cmd": "hsetnx %{键名}% %{字段}% %{值}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "哈希键名",
+                "example": "user:1001",
+                "notes": "必填"
+              },
+              "字段": {
+                "type": "string",
+                "required": true,
+                "description": "字段名",
+                "example": "name",
+                "notes": "必填"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "字段值",
+                "example": "张三",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hsetnx"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名",
+            "example": "user:1001",
+            "notes": "常用"
+          },
+          "字段": {
+            "type": "string",
+            "required": true,
+            "description": "字段名",
+            "example": "name",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "hmset 批量设置哈希字段",
+      "keyword": "hmset hash batch",
+      "description": "批量设置哈希表中多个字段的值。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "hmset %{键名}% %{field_value_pairs}%",
+        "extensions": [
+          {
+            "name": "批量设置多个键值对",
+            "cmd": "hmset %{键名}% %{字段1}% %{值1}% %{字段2}% %{值2}% %{字段3}% %{值3}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "哈希键名",
+                "example": "user:1001",
+                "notes": "必填"
+              },
+              "字段1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个字段",
+                "example": "name",
+                "notes": "必填"
+              },
+              "值1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个值",
+                "example": "张三",
+                "notes": "必填"
+              },
+              "字段2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个字段",
+                "example": "age",
+                "notes": "必填"
+              },
+              "值2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个值",
+                "example": "25",
+                "notes": "必填"
+              },
+              "字段3": {
+                "type": "string",
+                "required": false,
+                "description": "第三个字段",
+                "example": "city",
+                "notes": "可选"
+              },
+              "值3": {
+                "type": "string",
+                "required": false,
+                "description": "第三个值",
+                "example": "北京",
+                "notes": "可选"
+              }
+            },
+            "keyword": "hmset multiple fields"
+          },
+          {
+            "name": "设置用户完整信息",
+            "cmd": "hmset user:%{用户ID}% name %{姓名}% email %{邮箱}% phone %{电话}% address %{地址}%",
+            "params": {
+              "用户ID": {
+                "type": "string",
+                "required": true,
+                "description": "用户ID",
+                "example": "1001",
+                "notes": "必填"
+              },
+              "姓名": {
+                "type": "string",
+                "required": true,
+                "description": "用户姓名",
+                "example": "张三",
+                "notes": "必填"
+              },
+              "邮箱": {
+                "type": "string",
+                "required": true,
+                "description": "电子邮箱",
+                "example": "zhangsan@example.com",
+                "notes": "必填"
+              },
+              "电话": {
+                "type": "string",
+                "required": false,
+                "description": "联系电话",
+                "example": "13800138000",
+                "notes": "可选"
+              },
+              "地址": {
+                "type": "string",
+                "required": false,
+                "description": "收货地址",
+                "example": "北京市朝阳区",
+                "notes": "可选"
+              }
+            },
+            "keyword": "hmset user profile"
+          },
+          {
+            "name": "设置配置信息",
+            "cmd": "hmset config:%{配置名}% host %{主机}% port %{端口}% timeout %{超时}% debug %{调试}%",
+            "params": {
+              "配置名": {
+                "type": "string",
+                "required": true,
+                "description": "配置项名称",
+                "example": "database",
+                "notes": "必填"
+              },
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机地址",
+                "example": "localhost",
+                "notes": "必填"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口号",
+                "example": "6379",
+                "notes": "必填"
+              },
+              "超时": {
+                "type": "string",
+                "required": false,
+                "description": "超时时间（秒）",
+                "example": "30",
+                "notes": "可选"
+              },
+              "调试": {
+                "type": "string",
+                "required": false,
+                "description": "调试模式",
+                "example": "true",
+                "notes": "可选"
+              }
+            },
+            "keyword": "hmset config settings"
+          },
+          {
+            "name": "设置商品信息",
+            "cmd": "hmset product:%{商品ID}% name %{名称}% price %{价格}% stock %{库存}% category %{分类}%",
+            "params": {
+              "商品ID": {
+                "type": "string",
+                "required": true,
+                "description": "商品ID",
+                "example": "SKU001",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "商品名称",
+                "example": "iPhone 15",
+                "notes": "必填"
+              },
+              "价格": {
+                "type": "string",
+                "required": true,
+                "description": "商品价格",
+                "example": "5999",
+                "notes": "必填"
+              },
+              "库存": {
+                "type": "string",
+                "required": true,
+                "description": "库存数量",
+                "example": "100",
+                "notes": "必填"
+              },
+              "分类": {
+                "type": "string",
+                "required": false,
+                "description": "商品分类",
+                "example": "手机",
+                "notes": "可选"
+              }
+            },
+            "keyword": "hmset product inventory"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名",
+            "example": "user:1001",
+            "notes": "必填"
+          },
+          "field_value_pairs": {
+            "type": "string",
+            "required": true,
+            "description": "字段值对列表（交替排列）",
+            "example": "name 张三 age 25 city 北京",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "hmget 批量获取哈希字段",
+      "keyword": "hmget hash batch",
+      "description": "批量获取哈希表中多个字段的值。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "hmget %{键名}% %{字段1}% %{字段2}%",
+        "extensions": [
+          {
+            "name": "获取多个指定字段",
+            "cmd": "hmget %{键名}% %{字段1}% %{字段2}% %{字段3}% %{字段4}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "哈希键名",
+                "example": "user:1001",
+                "notes": "必填"
+              },
+              "字段1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个字段",
+                "example": "name",
+                "notes": "必填"
+              },
+              "字段2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个字段",
+                "example": "age",
+                "notes": "必填"
+              },
+              "字段3": {
+                "type": "string",
+                "required": false,
+                "description": "第三个字段",
+                "example": "city",
+                "notes": "可选"
+              },
+              "字段4": {
+                "type": "string",
+                "required": false,
+                "description": "第四个字段",
+                "example": "email",
+                "notes": "可选"
+              }
+            },
+            "keyword": "hmget multiple fields"
+          },
+          {
+            "name": "获取用户信息",
+            "cmd": "hmget user:%{用户ID}% name email phone address",
+            "params": {
+              "用户ID": {
+                "type": "string",
+                "required": true,
+                "description": "用户ID",
+                "example": "1001",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hmget user profile"
+          },
+          {
+            "name": "获取配置信息",
+            "cmd": "hmget config:%{配置名}% host port timeout password",
+            "params": {
+              "配置名": {
+                "type": "string",
+                "required": true,
+                "description": "配置项名称",
+                "example": "database",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hmget config settings"
+          },
+          {
+            "name": "获取商品完整信息",
+            "cmd": "hmget product:%{商品ID}% name price stock category brand",
+            "params": {
+              "商品ID": {
+                "type": "string",
+                "required": true,
+                "description": "商品ID",
+                "example": "SKU001",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hmget product details"
+          },
+          {
+            "name": "检查多个字段是否存在",
+            "cmd": "hmget %{键名}% %{字段1}% %{字段2}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "哈希键名",
+                "example": "user:1001",
+                "notes": "必填"
+              },
+              "字段1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个字段",
+                "example": "name",
+                "notes": "必填"
+              },
+              "字段2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个字段",
+                "example": "email",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hmget check exists"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名",
+            "example": "user:1001",
+            "notes": "必填"
+          },
+          "字段1": {
+            "type": "string",
+            "required": true,
+            "description": "第一个字段",
+            "example": "name",
+            "notes": "必填"
+          },
+          "字段2": {
+            "type": "string",
+            "required": true,
+            "description": "第二个字段",
+            "example": "age",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "hdel 删除哈希字段",
+      "keyword": "hdel hash delete",
+      "description": "删除哈希表中一个或多个字段。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "hdel %{键名}% %{字段1}% %{字段2}%",
+        "extensions": [
+          {
+            "name": "删除单个字段",
+            "cmd": "hdel %{键名}% %{字段}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "哈希键名",
+                "example": "user:1001",
+                "notes": "必填"
+              },
+              "字段": {
+                "type": "string",
+                "required": true,
+                "description": "要删除的字段",
+                "example": "email",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hdel single field"
+          },
+          {
+            "name": "删除多个字段",
+            "cmd": "hdel %{键名}% %{字段1}% %{字段2}% %{字段3}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "哈希键名",
+                "example": "user:1001",
+                "notes": "必填"
+              },
+              "字段1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个字段",
+                "example": "email",
+                "notes": "必填"
+              },
+              "字段2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个字段",
+                "example": "phone",
+                "notes": "必填"
+              },
+              "字段3": {
+                "type": "string",
+                "required": false,
+                "description": "第三个字段",
+                "example": "address",
+                "notes": "可选"
+              }
+            },
+            "keyword": "hdel multiple fields"
+          },
+          {
+            "name": "清理过期用户数据",
+            "cmd": "hdel inactive_users %{用户ID}%",
+            "params": {
+              "用户ID": {
+                "type": "string",
+                "required": true,
+                "description": "用户ID",
+                "example": "1001",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hdel cleanup user"
+          },
+          {
+            "name": "删除商品过时信息",
+            "cmd": "hdel product:%{商品ID}% old_price old_stock clearance",
+            "params": {
+              "商品ID": {
+                "type": "string",
+                "required": true,
+                "description": "商品ID",
+                "example": "SKU001",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hdel product cleanup"
+          },
+          {
+            "name": "批量删除缓存键字段",
+            "cmd": "hdel cache:%{缓存键}% expired_field1 expired_field2 temp_data",
+            "params": {
+              "缓存键": {
+                "type": "string",
+                "required": true,
+                "description": "缓存键名",
+                "example": "session",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hdel cache cleanup"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名",
+            "example": "user:1001",
+            "notes": "必填"
+          },
+          "字段1": {
+            "type": "string",
+            "required": true,
+            "description": "第一个字段",
+            "example": "email",
+            "notes": "必填"
+          },
+          "字段2": {
+            "type": "string",
+            "required": false,
+            "description": "第二个字段",
+            "example": "phone",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "hexists 检查哈希字段是否存在",
+      "keyword": "hexists hash exists",
+      "description": "检查哈希表中指定字段是否存在。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "hexists %{键名}% %{字段}%",
+        "extensions": [
+          {
+            "name": "检查用户是否存在",
+            "cmd": "hexists user:%{用户ID}% name",
+            "params": {
+              "用户ID": {
+                "type": "string",
+                "required": true,
+                "description": "用户ID",
+                "example": "1001",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hexists check user"
+          },
+          {
+            "name": "检查配置项是否存在",
+            "cmd": "hexists config:%{配置名}% %{配置项}%",
+            "params": {
+              "配置名": {
+                "type": "string",
+                "required": true,
+                "description": "配置名称",
+                "example": "database",
+                "notes": "必填"
+              },
+              "配置项": {
+                "type": "string",
+                "required": true,
+                "description": "配置项名称",
+                "example": "host",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hexists config item"
+          },
+          {
+            "name": "检查商品特定属性",
+            "cmd": "hexists product:%{商品ID}% discount_price",
+            "params": {
+              "商品ID": {
+                "type": "string",
+                "required": true,
+                "description": "商品ID",
+                "example": "SKU001",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hexists product attribute"
+          },
+          {
+            "name": "验证会话字段",
+            "cmd": "hexists session:%{会话ID}% expires_at",
+            "params": {
+              "会话ID": {
+                "type": "string",
+                "required": true,
+                "description": "会话ID",
+                "example": "abc123",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hexists session check"
+          },
+          {
+            "name": "检查字段并返回数量",
+            "cmd": "hexists %{键名}% %{字段1}% %{字段2}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "哈希键名",
+                "example": "user:1001",
+                "notes": "必填"
+              },
+              "字段1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个字段",
+                "example": "name",
+                "notes": "必填"
+              },
+              "字段2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个字段",
+                "example": "email",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hexists multiple check"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名",
+            "example": "user:1001",
+            "notes": "必填"
+          },
+          "字段": {
+            "type": "string",
+            "required": true,
+            "description": "字段名",
+            "example": "name",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "hlen 获取哈希字段数量",
+      "keyword": "hlen hash length",
+      "description": "获取哈希表中字段的数量。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "hlen %{键名}%",
+        "extensions": [
+          {
+            "name": "获取用户哈希字段数量",
+            "cmd": "hlen user:%{用户ID}%",
+            "params": {
+              "用户ID": {
+                "type": "string",
+                "required": true,
+                "description": "用户ID",
+                "example": "1001",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hlen user count"
+          },
+          {
+            "name": "获取商品哈希字段数量",
+            "cmd": "hlen product:%{商品ID}%",
+            "params": {
+              "商品ID": {
+                "type": "string",
+                "required": true,
+                "description": "商品ID",
+                "example": "SKU001",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hlen product count"
+          },
+          {
+            "name": "获取配置哈希字段数量",
+            "cmd": "hlen config:%{配置名}%",
+            "params": {
+              "配置名": {
+                "type": "string",
+                "required": true,
+                "description": "配置项名称",
+                "example": "database",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hlen config count"
+          },
+          {
+            "name": "获取会话哈希字段数量",
+            "cmd": "hlen session:%{会话ID}%",
+            "params": {
+              "会话ID": {
+                "type": "string",
+                "required": true,
+                "description": "会话ID",
+                "example": "abc123",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hlen session count"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名",
+            "example": "user:1001",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "hkeys 获取所有哈希字段名",
+      "keyword": "hkeys hash keys",
+      "description": "获取哈希表中所有字段名。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "hkeys %{键名}%",
+        "extensions": [
+          {
+            "name": "获取用户所有字段名",
+            "cmd": "hkeys user:%{用户ID}%",
+            "params": {
+              "用户ID": {
+                "type": "string",
+                "required": true,
+                "description": "用户ID",
+                "example": "1001",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hkeys user fields"
+          },
+          {
+            "name": "获取商品所有字段名",
+            "cmd": "hkeys product:%{商品ID}%",
+            "params": {
+              "商品ID": {
+                "type": "string",
+                "required": true,
+                "description": "商品ID",
+                "example": "SKU001",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hkeys product fields"
+          },
+          {
+            "name": "获取配置所有字段名",
+            "cmd": "hkeys config:%{配置名}%",
+            "params": {
+              "配置名": {
+                "type": "string",
+                "required": true,
+                "description": "配置项名称",
+                "example": "database",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hkeys config fields"
+          },
+          {
+            "name": "遍历哈希表所有字段",
+            "cmd": "hkeys %{键名}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "哈希键名",
+                "example": "cache:data",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hkeys iterate fields"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名",
+            "example": "user:1001",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "hvals 获取所有哈希值",
+      "keyword": "hvals hash values",
+      "description": "获取哈希表中所有字段的值。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "hvals %{键名}%",
+        "extensions": [
+          {
+            "name": "获取用户所有属性值",
+            "cmd": "hvals user:%{用户ID}%",
+            "params": {
+              "用户ID": {
+                "type": "string",
+                "required": true,
+                "description": "用户ID",
+                "example": "1001",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hvals user profile"
+          },
+          {
+            "name": "获取配置所有值",
+            "cmd": "hvals config:%{配置名}%",
+            "params": {
+              "配置名": {
+                "type": "string",
+                "required": true,
+                "description": "配置名称",
+                "example": "database",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hvals config values"
+          },
+          {
+            "name": "获取商品所有属性值",
+            "cmd": "hvals product:%{商品ID}%",
+            "params": {
+              "商品ID": {
+                "type": "string",
+                "required": true,
+                "description": "商品ID",
+                "example": "SKU001",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hvals product attributes"
+          },
+          {
+            "name": "获取会话所有数据",
+            "cmd": "hvals session:%{会话ID}%",
+            "params": {
+              "会话ID": {
+                "type": "string",
+                "required": true,
+                "description": "会话ID",
+                "example": "abc123",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hvals session data"
+          },
+          {
+            "name": "检查哈希表是否为空",
+            "cmd": "hlen %{键名}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "哈希键名",
+                "example": "user:1001",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hlen check empty"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名",
+            "example": "user:1001",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "hgetall 获取所有哈希字段和值",
+      "keyword": "hgetall hash all",
+      "description": "获取哈希表中所有的字段和值。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "hgetall %{键名}%",
+        "extensions": [
+          {
+            "name": "获取用户完整信息",
+            "cmd": "hgetall user:%{用户ID}%",
+            "params": {
+              "用户ID": {
+                "type": "string",
+                "required": true,
+                "description": "用户ID",
+                "example": "1001",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hgetall user profile"
+          },
+          {
+            "name": "获取商品完整信息",
+            "cmd": "hgetall product:%{商品ID}%",
+            "params": {
+              "商品ID": {
+                "type": "string",
+                "required": true,
+                "description": "商品ID",
+                "example": "SKU001",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hgetall product details"
+          },
+          {
+            "name": "获取配置完整信息",
+            "cmd": "hgetall config:%{配置名}%",
+            "params": {
+              "配置名": {
+                "type": "string",
+                "required": true,
+                "description": "配置项名称",
+                "example": "database",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hgetall config settings"
+          },
+          {
+            "name": "获取会话完整数据",
+            "cmd": "hgetall session:%{会话ID}%",
+            "params": {
+              "会话ID": {
+                "type": "string",
+                "required": true,
+                "description": "会话ID",
+                "example": "abc123",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hgetall session data"
+          },
+          {
+            "name": "验证哈希表是否存在",
+            "cmd": "exists %{键名}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "哈希键名",
+                "example": "user:1001",
+                "notes": "必填"
+              }
+            },
+            "keyword": "exists check key"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名",
+            "example": "user:1001",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "hincrby 递增哈希字段值",
+      "keyword": "hincrby hash increment",
+      "description": "将哈希表中字段的整数值增加指定增量。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "hincrby %{键名}% %{字段}% %{增量}%",
+        "extensions": [
+          {
+            "name": "递增用户年龄",
+            "cmd": "hincrby user:%{用户ID}% age %{增量}%",
+            "params": {
+              "用户ID": {
+                "type": "string",
+                "required": true,
+                "description": "用户ID",
+                "example": "1001",
+                "notes": "必填"
+              },
+              "增量": {
+                "type": "integer",
+                "required": true,
+                "description": "增量值",
+                "example": "1",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hincrby user age"
+          },
+          {
+            "name": "递增商品库存",
+            "cmd": "hincrby product:%{商品ID}% stock %{增量}%",
+            "params": {
+              "商品ID": {
+                "type": "string",
+                "required": true,
+                "description": "商品ID",
+                "example": "SKU001",
+                "notes": "必填"
+              },
+              "增量": {
+                "type": "integer",
+                "required": true,
+                "description": "增量值",
+                "example": "10",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hincrby product stock"
+          },
+          {
+            "name": "递减用户积分",
+            "cmd": "hincrby user:%{用户ID}% points %{负增量}%",
+            "params": {
+              "用户ID": {
+                "type": "string",
+                "required": true,
+                "description": "用户ID",
+                "example": "1001",
+                "notes": "必填"
+              },
+              "负增量": {
+                "type": "integer",
+                "required": true,
+                "description": "负增量值（递减）",
+                "example": "-5",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hincrby decrease points"
+          },
+          {
+            "name": "递增访问计数",
+            "cmd": "hincrby cache:%{缓存键}% access_count %{增量}%",
+            "params": {
+              "缓存键": {
+                "type": "string",
+                "required": true,
+                "description": "缓存键名",
+                "example": "page_views",
+                "notes": "必填"
+              },
+              "增量": {
+                "type": "integer",
+                "required": true,
+                "description": "增量值",
+                "example": "1",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hincrby access count"
+          },
+          {
+            "name": "批量递增多个字段",
+            "cmd": "hincrby %{键名}% field1 %{增量1}% field2 %{增量2}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "哈希键名",
+                "example": "user:1001",
+                "notes": "必填"
+              },
+              "增量1": {
+                "type": "integer",
+                "required": true,
+                "description": "第一个增量",
+                "example": "1",
+                "notes": "必填"
+              },
+              "增量2": {
+                "type": "integer",
+                "required": true,
+                "description": "第二个增量",
+                "example": "2",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hincrby multiple fields"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名",
+            "example": "user:1001",
+            "notes": "必填"
+          },
+          "字段": {
+            "type": "string",
+            "required": true,
+            "description": "字段名",
+            "example": "age",
+            "notes": "必填"
+          },
+          "增量": {
+            "type": "integer",
+            "required": true,
+            "description": "增量值（负数为递减）",
+            "example": "1",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "hstrlen 获取哈希字段值长度",
+      "keyword": "hstrlen hash strlen",
+      "description": "获取哈希表中字段值的字符串长度。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "hstrlen %{键名}% %{字段}%",
+        "extensions": [
+          {
+            "name": "获取用户名长度",
+            "cmd": "hstrlen user:%{用户ID}% name",
+            "params": {
+              "用户ID": {
+                "type": "string",
+                "required": true,
+                "description": "用户ID",
+                "example": "1001",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hstrlen user name"
+          },
+          {
+            "name": "获取商品描述长度",
+            "cmd": "hstrlen product:%{商品ID}% description",
+            "params": {
+              "商品ID": {
+                "type": "string",
+                "required": true,
+                "description": "商品ID",
+                "example": "SKU001",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hstrlen product desc"
+          },
+          {
+            "name": "获取配置值长度",
+            "cmd": "hstrlen config:%{配置名}% %{配置项}%",
+            "params": {
+              "配置名": {
+                "type": "string",
+                "required": true,
+                "description": "配置项名称",
+                "example": "database",
+                "notes": "必填"
+              },
+              "配置项": {
+                "type": "string",
+                "required": true,
+                "description": "配置项",
+                "example": "password",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hstrlen config value"
+          },
+          {
+            "name": "获取会话数据长度",
+            "cmd": "hstrlen session:%{会话ID}% data",
+            "params": {
+              "会话ID": {
+                "type": "string",
+                "required": true,
+                "description": "会话ID",
+                "example": "abc123",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hstrlen session data"
+          },
+          {
+            "name": "获取缓存内容长度",
+            "cmd": "hstrlen cache:%{缓存键}% content",
+            "params": {
+              "缓存键": {
+                "type": "string",
+                "required": true,
+                "description": "缓存键名",
+                "example": "html_content",
+                "notes": "必填"
+              }
+            },
+            "keyword": "hstrlen cache content"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "哈希键名",
+            "example": "user:1001",
+            "notes": "必填"
+          },
+          "字段": {
+            "type": "string",
+            "required": true,
+            "description": "字段名",
+            "example": "name",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

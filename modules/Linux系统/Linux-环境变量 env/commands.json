@@ -1,0 +1,101 @@
+{
+  "module": "Linux系统/Linux-环境变量 env",
+  "version": "2.0",
+  "description": "Linux env 环境变量命令。显示所有环境变量，或在自定义环境中运行命令。环境变量存储系统配置和用户偏好，如PATH、PWD、HOME。用于查看配置、调试脚本、设置运行环境。",
+  "commands": [
+    {
+      "dirPath": "/Linux系统/",
+      "name": "env 环境变量",
+      "keyword": "env 环境",
+      "description": "显示环境变量。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "env",
+        "extensions": [
+          {
+            "name": "显示所有环境变量",
+            "description": "列出当前会话的所有环境变量                 ",
+            "params": {},
+            "cmd": "env"
+          },
+          {
+            "name": "显示特定变量",
+            "description": "查看单个环境变量的值                    ",
+            "params": {
+              "变量": {
+                "example": "PATH",
+                "notes": "变量名",
+                "description": "               "
+              }
+            },
+            "cmd": "echo $%{变量}%"
+          },
+          {
+            "name": "设置临时环境变量",
+            "description": "设置一个临时变量运行命令，结束后变量消失          ",
+            "params": {
+              "变量名": {
+                "example": "DEBUG",
+                "notes": "变量名",
+                "description": "               "
+              },
+              "值": {
+                "example": "1",
+                "notes": "变量值",
+                "description": "               "
+              },
+              "命令": {
+                "example": "python app.py",
+                "notes": "要执行的命令",
+                "description": "               "
+              }
+            },
+            "cmd": "env %{变量名}%=%{值}% %{命令}%"
+          },
+          {
+            "name": "清除环境变量运行",
+            "description": "在没有环境变量的情况下运行命令               ",
+            "params": {
+              "命令": {
+                "example": "python",
+                "notes": "命令",
+                "description": "               "
+              }
+            },
+            "cmd": "env -i %{命令}%"
+          },
+          {
+            "name": "显示PATH目录",
+            "description": "查看可执行文件搜索路径的所有目录              ",
+            "params": {},
+            "cmd": "echo $PATH | tr ':' '\\n'"
+          },
+          {
+            "name": "添加路径到PATH",
+            "description": "临时将新目录添加到PATH开头               ",
+            "params": {
+              "路径": {
+                "example": "/usr/local/bin",
+                "notes": "目录路径",
+                "description": "               "
+              }
+            },
+            "cmd": "export PATH=%{路径}%:$PATH"
+          },
+          {
+            "name": "显示SHELL信息",
+            "description": "查看当前使用的Shell类型                ",
+            "params": {},
+            "cmd": "echo $SHELL"
+          },
+          {
+            "name": "显示用户目录",
+            "description": "查看当前用户的主目录路径                  ",
+            "params": {},
+            "cmd": "echo $HOME"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

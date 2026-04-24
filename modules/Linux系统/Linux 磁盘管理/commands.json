@@ -1,0 +1,1403 @@
+{
+  "module": "Linux系统/Linux 磁盘管理",
+  "version": "2.0",
+  "description": "Linux 磁盘管理命令集合，涵盖Linux 磁盘管理的常用操作和最佳实践",
+  "commands": [
+    {
+      "cmd": "df -h",
+      "extensions": [
+        {
+          "name": "查看 inode",
+          "cmd": "df -i",
+          "params": {},
+          "keyword": "df inode"
+        },
+        {
+          "name": "指定文件系统",
+          "cmd": "df -h -t %{类型}%",
+          "params": {
+            "类型": {
+              "type": "string",
+              "required": true,
+              "description": "文件系统类型",
+              "example": "ext4",
+              "notes": "必填"
+            }
+          },
+          "keyword": "df type"
+        },
+        {
+          "name": "查看目录所在文件系统",
+          "cmd": "df -h %{目录}%",
+          "params": {
+            "目录": {
+              "type": "string",
+              "required": true,
+              "description": "目录路径",
+              "example": "/home",
+              "notes": "必填"
+            }
+          },
+          "keyword": "df directory"
+        },
+        {
+          "name": "以字节为单位显示",
+          "cmd": "df -B1 %{目录}%",
+          "params": {
+            "目录": {
+              "type": "string",
+              "required": true,
+              "description": "目录路径",
+              "example": "/",
+              "notes": "必填"
+            }
+          },
+          "keyword": "df bytes"
+        },
+        {
+          "name": "显示本地文件系统",
+          "cmd": "df -h -l",
+          "params": {},
+          "keyword": "df local"
+        },
+        {
+          "name": "显示磁盘使用情况并排序",
+          "cmd": "df -h --sort=used",
+          "params": {},
+          "keyword": "df sort"
+        },
+        {
+          "name": "显示所有文件系统包括伪文件系统",
+          "cmd": "df -a",
+          "params": {},
+          "keyword": "df all"
+        },
+        {
+          "name": "显示磁盘使用百分比",
+          "cmd": "df -h --output=source,size,used,avail,pcent,target",
+          "params": {},
+          "keyword": "df output"
+        },
+        {
+          "name": "不显示标题行",
+          "cmd": "df --no-header",
+          "params": {},
+          "keyword": "df no-header"
+        },
+        {
+          "name": "显示文件系统类型",
+          "cmd": "df -T",
+          "params": {},
+          "keyword": "df type-filesystem"
+        },
+        {
+          "name": "以可移植格式输出",
+          "cmd": "df --portability",
+          "params": {},
+          "keyword": "df portable"
+        },
+        {
+          "name": "以1K块为单位显示",
+          "cmd": "df -k",
+          "params": {},
+          "keyword": "df 1k-blocks"
+        },
+        {
+          "name": "使用颜色输出",
+          "cmd": "df --color=auto",
+          "params": {},
+          "keyword": "df color"
+        },
+        {
+          "name": "排除特定文件系统",
+          "cmd": "df -h -x %{类型}%",
+          "params": {
+            "类型": {
+              "type": "string",
+              "required": true,
+              "description": "文件系统类型",
+              "example": "tmpfs",
+              "notes": "必填"
+            }
+          },
+          "keyword": "df exclude"
+        },
+        {
+          "name": "显示本地磁盘使用情况",
+          "cmd": "df -h -l --output=source,size,used,avail,pcent,target",
+          "params": {},
+          "keyword": "df local output"
+        },
+        {
+          "name": "以inode数显示",
+          "cmd": "df -i --output=source,itotal,iused,iavail,ipcent,target",
+          "params": {},
+          "keyword": "df inode output"
+        },
+        {
+          "name": "显示总使用量",
+          "cmd": "df -h --total",
+          "params": {},
+          "keyword": "df total"
+        },
+        {
+          "name": "同步后显示磁盘使用",
+          "cmd": "df -h --sync",
+          "params": {},
+          "keyword": "df sync"
+        },
+        {
+          "name": "排除伪文件系统",
+          "cmd": "df -h -x %{类型}%",
+          "params": {
+            "类型": {
+              "type": "string",
+              "required": true,
+              "description": "文件系统类型",
+              "example": "tmpfs",
+              "notes": "必填"
+            }
+          },
+          "keyword": "df exclude-type"
+        },
+        {
+          "name": "显示inode信息可读格式",
+          "cmd": "df -hi",
+          "params": {},
+          "keyword": "df inode human"
+        },
+        {
+          "name": "显示所有挂载点使用情况",
+          "cmd": "df -ha",
+          "params": {},
+          "keyword": "df all mount"
+        }
+      ],
+      "params": {},
+      "dirPath": "/Linux系统/",
+      "name": "df 磁盘使用",
+      "keyword": "df disk",
+      "description": "df 命令显示磁盘空间使用情况",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "cmd": "fdisk",
+      "extensions": [
+        {
+          "name": "列出所有分区",
+          "cmd": "fdisk -l",
+          "params": {},
+          "keyword": "fdisk list"
+        },
+        {
+          "name": "查看特定磁盘分区",
+          "cmd": "fdisk -l %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sda",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fdisk device"
+        },
+        {
+          "name": "进入交互模式",
+          "cmd": "fdisk %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fdisk interactive"
+        },
+        {
+          "name": "显示分区表类型",
+          "cmd": "fdisk -l -t %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sda",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fdisk type"
+        },
+        {
+          "name": "获取分区大小信息",
+          "cmd": "fdisk -s %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sda1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fdisk size"
+        },
+        {
+          "name": "显示分区ID",
+          "cmd": "fdisk -l -x %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sda",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fdisk list-id"
+        },
+        {
+          "name": "列出所有磁盘分区",
+          "cmd": "fdisk -L",
+          "params": {},
+          "keyword": "fdisk list-all"
+        },
+        {
+          "name": "显示设备大小",
+          "cmd": "fdisk -s %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sda",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fdisk device-size"
+        },
+        {
+          "name": "以字节为单位显示分区大小",
+          "cmd": "fdisk -l -b %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sda",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fdisk bytes"
+        },
+        {
+          "name": "显示分区起始扇区",
+          "cmd": "fdisk -l -u %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sda",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fdisk sector"
+        },
+        {
+          "name": "列出指定数量的分区",
+          "cmd": "fdisk -l %{设备}% -I %{数量}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sda",
+              "notes": "必填"
+            },
+            "数量": {
+              "type": "string",
+              "required": true,
+              "description": "分区数量",
+              "example": "5",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fdisk limit"
+        },
+        {
+          "name": "显示分区起始柱面",
+          "cmd": "fdisk -l -C %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sda",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fdisk cylinder"
+        },
+        {
+          "name": "以扇区为单位显示分区",
+          "cmd": "fdisk -l -u %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sda",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fdisk sector units"
+        },
+        {
+          "name": "仅列出GPT分区",
+          "cmd": "fdisk -l -t gpt %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sda",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fdisk gpt"
+        },
+        {
+          "name": "显示分区大小单位",
+          "cmd": "fdisk -l --bytes %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sda",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fdisk bytes unit"
+        },
+        {
+          "name": "以柱面为单位显示分区",
+          "cmd": "fdisk -l -C %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sda",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fdisk cylinder units"
+        },
+        {
+          "name": "显示分区起始结束柱面",
+          "cmd": "fdisk -l -E %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sda",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fdisk extent"
+        },
+        {
+          "name": "打印分区但不保存",
+          "cmd": "fdisk -l -N %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sda",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fdisk print only"
+        },
+        {
+          "name": "显示分区系统ID",
+          "cmd": "fdisk -l -p %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sda",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fdisk partition type"
+        }
+      ],
+      "params": {},
+      "dirPath": "/Linux系统/",
+      "name": "fdisk 分区管理",
+      "keyword": "fdisk 分区",
+      "description": "fdisk 是磁盘分区工具",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "cmd": "mkfs",
+      "extensions": [
+        {
+          "name": "格式化为ext4",
+          "cmd": "mkfs -t ext4 %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mkfs ext4"
+        },
+        {
+          "name": "快速格式化",
+          "cmd": "mkfs -T %{类型}% %{设备}%",
+          "params": {
+            "类型": {
+              "type": "string",
+              "required": true,
+              "description": "文件系统类型",
+              "example": "ext4",
+              "notes": "必填"
+            },
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mkfs quick"
+        },
+        {
+          "name": "格式化并设置卷标",
+          "cmd": "mkfs -L %{卷标}% %{设备}%",
+          "params": {
+            "卷标": {
+              "type": "string",
+              "required": true,
+              "description": "卷标名称",
+              "example": "DATA",
+              "notes": "必填"
+            },
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mkfs label"
+        },
+        {
+          "name": "格式化xfs文件系统",
+          "cmd": "mkfs.xfs %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mkfs xfs"
+        },
+        {
+          "name": "格式化btrfs文件系统",
+          "cmd": "mkfs.btrfs %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mkfs btrfs"
+        },
+        {
+          "name": "格式化vfat文件系统",
+          "cmd": "mkfs.vfat %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mkfs vfat"
+        },
+        {
+          "name": "检查文件系统一致性",
+          "cmd": "mkfs -pc %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mkfs check"
+        },
+        {
+          "name": "详细输出模式",
+          "cmd": "mkfs -V %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mkfs verbose"
+        },
+        {
+          "name": "格式化ext2",
+          "cmd": "mkfs -t ext2 %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mkfs ext2"
+        },
+        {
+          "name": "设置块大小",
+          "cmd": "mkfs -b %{块大小}% %{设备}%",
+          "params": {
+            "块大小": {
+              "type": "string",
+              "required": true,
+              "description": "块大小",
+              "example": "4096",
+              "notes": "必填"
+            },
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mkfs blocksize"
+        },
+        {
+          "name": "设置inode比率",
+          "cmd": "mkfs -i %{比率}% %{设备}%",
+          "params": {
+            "比率": {
+              "type": "string",
+              "required": true,
+              "description": "inode比率",
+              "example": "8192",
+              "notes": "必填"
+            },
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mkfs inode-ratio"
+        },
+        {
+          "name": "格式化ntfs文件系统",
+          "cmd": "mkfs.ntfs %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mkfs ntfs"
+        },
+        {
+          "name": "格式化exfat文件系统",
+          "cmd": "mkfs.exfat %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mkfs exfat"
+        },
+        {
+          "name": "格式化前先卸载",
+          "cmd": "umount %{设备}% && mkfs -t %{类型}% %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            },
+            "类型": {
+              "type": "string",
+              "required": true,
+              "description": "文件系统类型",
+              "example": "ext4",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mkfs umount first"
+        },
+        {
+          "name": "设置保留块百分比",
+          "cmd": "mkfs -m %{百分比}% %{设备}%",
+          "params": {
+            "百分比": {
+              "type": "string",
+              "required": true,
+              "description": "保留块百分比",
+              "example": "5",
+              "notes": "必填"
+            },
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mkfs reserved-blocks"
+        },
+        {
+          "name": "格式化前检测坏块",
+          "cmd": "mkfs -c %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mkfs badblocks"
+        },
+        {
+          "name": "格式化minix文件系统",
+          "cmd": "mkfs.minix %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mkfs minix"
+        },
+        {
+          "name": "创建journaling文件系统",
+          "cmd": "mkfs -J %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mkfs journal"
+        },
+        {
+          "name": "格式化iso9660文件系统",
+          "cmd": "mkfs -t iso9660 %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mkfs iso9660"
+        }
+      ],
+      "params": {},
+      "dirPath": "/Linux系统/",
+      "name": "mkfs 文件系统格式化",
+      "keyword": "mkfs 格式化",
+      "description": "mkfs 用于创建文件系统",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "cmd": "mount",
+      "extensions": [
+        {
+          "name": "挂载分区",
+          "cmd": "mount %{设备}% %{目录}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            },
+            "目录": {
+              "type": "string",
+              "required": true,
+              "description": "挂载点",
+              "example": "/mnt/data",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mount device"
+        },
+        {
+          "name": "挂载并指定文件系统",
+          "cmd": "mount -t %{类型}% %{设备}% %{目录}%",
+          "params": {
+            "类型": {
+              "type": "string",
+              "required": true,
+              "description": "文件系统类型",
+              "example": "ext4",
+              "notes": "必填"
+            },
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            },
+            "目录": {
+              "type": "string",
+              "required": true,
+              "description": "挂载点",
+              "example": "/mnt/data",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mount type"
+        },
+        {
+          "name": "以只读方式挂载",
+          "cmd": "mount -o ro %{设备}% %{目录}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            },
+            "目录": {
+              "type": "string",
+              "required": true,
+              "description": "挂载点",
+              "example": "/mnt/data",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mount read-only"
+        },
+        {
+          "name": "查看所有挂载",
+          "cmd": "mount",
+          "params": {},
+          "keyword": "mount list"
+        },
+        {
+          "name": "卸载分区",
+          "cmd": "umount %{目录}%",
+          "params": {
+            "目录": {
+              "type": "string",
+              "required": true,
+              "description": "挂载点",
+              "example": "/mnt/data",
+              "notes": "必填"
+            }
+          },
+          "keyword": "umount"
+        },
+        {
+          "name": "重新挂载",
+          "cmd": "mount -o remount %{目录}%",
+          "params": {
+            "目录": {
+              "type": "string",
+              "required": true,
+              "description": "挂载点",
+              "example": "/",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mount remount"
+        },
+        {
+          "name": "延迟挂载",
+          "cmd": "mount --lazy %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mount lazy"
+        },
+        {
+          "name": "绑定挂载目录",
+          "cmd": "mount --bind %{源目录}% %{目标目录}%",
+          "params": {
+            "源目录": {
+              "type": "string",
+              "required": true,
+              "description": "源目录",
+              "example": "/home",
+              "notes": "必填"
+            },
+            "目标目录": {
+              "type": "string",
+              "required": true,
+              "description": "目标目录",
+              "example": "/mnt/home",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mount bind"
+        },
+        {
+          "name": "显示挂载选项",
+          "cmd": "mount -l",
+          "params": {},
+          "keyword": "mount list-options"
+        },
+        {
+          "name": "以读写方式挂载",
+          "cmd": "mount -o rw %{设备}% %{目录}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            },
+            "目录": {
+              "type": "string",
+              "required": true,
+              "description": "挂载点",
+              "example": "/mnt/data",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mount read-write"
+        },
+        {
+          "name": "挂载ISO镜像",
+          "cmd": "mount -o loop %{ISO文件}% %{目录}%",
+          "params": {
+            "ISO文件": {
+              "type": "string",
+              "required": true,
+              "description": "ISO镜像路径",
+              "example": "/tmp/image.iso",
+              "notes": "必填"
+            },
+            "目录": {
+              "type": "string",
+              "required": true,
+              "description": "挂载点",
+              "example": "/mnt/iso",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mount iso"
+        },
+        {
+          "name": "显示所有挂载点",
+          "cmd": "mount -a",
+          "params": {},
+          "keyword": "mount all"
+        },
+        {
+          "name": "卸载所有挂载点",
+          "cmd": "umount -a",
+          "params": {},
+          "keyword": "umount all"
+        },
+        {
+          "name": "查找挂载点",
+          "cmd": "findmnt %{目录}%",
+          "params": {
+            "目录": {
+              "type": "string",
+              "required": true,
+              "description": "目录路径",
+              "example": "/mnt/data",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mount find"
+        },
+        {
+          "name": "显示挂载UUID",
+          "cmd": "mount -l -t %{类型}% | grep %{目录}%",
+          "params": {
+            "类型": {
+              "type": "string",
+              "required": true,
+              "description": "文件系统类型",
+              "example": "ext4",
+              "notes": "必填"
+            },
+            "目录": {
+              "type": "string",
+              "required": true,
+              "description": "挂载点",
+              "example": "/mnt/data",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mount uuid"
+        },
+        {
+          "name": "递归挂载目录",
+          "cmd": "mount --rbind %{源目录}% %{目标目录}%",
+          "params": {
+            "源目录": {
+              "type": "string",
+              "required": true,
+              "description": "源目录",
+              "example": "/home",
+              "notes": "必填"
+            },
+            "目标目录": {
+              "type": "string",
+              "required": true,
+              "description": "目标目录",
+              "example": "/mnt/home",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mount recursive bind"
+        },
+        {
+          "name": "挂载并设置默认选项",
+          "cmd": "mount -o defaults %{设备}% %{目录}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            },
+            "目录": {
+              "type": "string",
+              "required": true,
+              "description": "挂载点",
+              "example": "/mnt/data",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mount defaults"
+        },
+        {
+          "name": "显示所有挂载详细信息",
+          "cmd": "mount -l --verbose",
+          "params": {},
+          "keyword": "mount verbose"
+        },
+        {
+          "name": "挂载禁止执行",
+          "cmd": "mount -o noexec %{设备}% %{目录}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            },
+            "目录": {
+              "type": "string",
+              "required": true,
+              "description": "挂载点",
+              "example": "/mnt/data",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mount noexec"
+        },
+        {
+          "name": "使用UUID挂载",
+          "cmd": "mount UUID=%{UUID}% %{目录}%",
+          "params": {
+            "UUID": {
+              "type": "string",
+              "required": true,
+              "description": "分区UUID",
+              "example": "1234-ABCD",
+              "notes": "必填"
+            },
+            "目录": {
+              "type": "string",
+              "required": true,
+              "description": "挂载点",
+              "example": "/mnt/data",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mount uuid"
+        },
+        {
+          "name": "挂载并设置nosuid",
+          "cmd": "mount -o nosuid %{设备}% %{目录}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            },
+            "目录": {
+              "type": "string",
+              "required": true,
+              "description": "挂载点",
+              "example": "/mnt/data",
+              "notes": "必填"
+            }
+          },
+          "keyword": "mount nosuid"
+        },
+        {
+          "name": "显示挂载详细信息",
+          "cmd": "mount -v",
+          "params": {},
+          "keyword": "mount verbose detail"
+        }
+      ],
+      "params": {},
+      "dirPath": "/Linux系统/",
+      "name": "mount 挂载分区",
+      "keyword": "mount 挂载",
+      "description": "mount 命令用于挂载文件系统",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    },
+    {
+      "cmd": "fsck",
+      "extensions": [
+        {
+          "name": "检查ext4文件系统",
+          "cmd": "fsck -t ext4 %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fsck ext4"
+        },
+        {
+          "name": "自动修复",
+          "cmd": "fsck -a %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fsck auto"
+        },
+        {
+          "name": "检查并提示修复",
+          "cmd": "fsck -r %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fsck repair"
+        },
+        {
+          "name": "强制检查",
+          "cmd": "fsck -f %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fsck force"
+        },
+        {
+          "name": "预检查模拟运行",
+          "cmd": "fsck -N %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fsck dry-run"
+        },
+        {
+          "name": "详细输出模式",
+          "cmd": "fsck -V %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fsck verbose"
+        },
+        {
+          "name": "仅检查root文件系统",
+          "cmd": "fsck -R %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fsck root"
+        },
+        {
+          "name": "显示进度条",
+          "cmd": "fsck -C %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fsck progress"
+        },
+        {
+          "name": "检查xfs文件系统",
+          "cmd": "fsck.xfs %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fsck xfs"
+        },
+        {
+          "name": "仅检查不修复",
+          "cmd": "fsck -n %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fsck no-fix"
+        },
+        {
+          "name": "显示版本信息",
+          "cmd": "fsck -V",
+          "params": {},
+          "keyword": "fsck version"
+        },
+        {
+          "name": "检查磁盘使用情况",
+          "cmd": "fsck -s %{设备}%",
+          "params": {
+            "设备": {
+              "type": "string",
+              "required": true,
+              "description": "设备名",
+              "example": "/dev/sdb1",
+              "notes": "必填"
+            }
+          },
+          "keyword": "fsck stats"
+        }
+      ],
+      "params": {},
+      "dirPath": "/Linux系统/",
+      "name": "fsck 文件系统检查",
+      "keyword": "fsck 检查",
+      "description": "fsck 用于检查和修复文件系统",
+      "data": {
+        "cmd": "fsck %{设备}%",
+        "extensions": [
+          {
+            "name": "检查 ext4 文件系统完整性",
+            "cmd": "fsck -t ext4 %{设备}%",
+            "params": {
+              "设备": {
+                "type": "string",
+                "required": true,
+                "description": "要检查的设备路径",
+                "example": "/dev/sdb1",
+                "notes": "必填。设备必须已卸载"
+              }
+            },
+            "keyword": "fsck ext4 integrity"
+          },
+          {
+            "name": "自动修复文件系统错误",
+            "cmd": "fsck -a %{设备}%",
+            "params": {
+              "设备": {
+                "type": "string",
+                "required": true,
+                "description": "要修复的设备路径",
+                "example": "/dev/sdb1",
+                "notes": "必填。自动回答所有问题为是"
+              }
+            },
+            "keyword": "fsck auto repair"
+          },
+          {
+            "name": "强制检查即使文件系统标记为干净",
+            "cmd": "fsck -f %{设备}%",
+            "params": {
+              "设备": {
+                "type": "string",
+                "required": true,
+                "description": "要强制检查的设备路径",
+                "example": "/dev/sdb1",
+                "notes": "必填。绕过干净标记强制检查"
+              }
+            },
+            "keyword": "fsck force check"
+          },
+          {
+            "name": "显示详细检查过程",
+            "cmd": "fsck -V -f %{设备}%",
+            "params": {
+              "设备": {
+                "type": "string",
+                "required": true,
+                "description": "要详细检查的设备路径",
+                "example": "/dev/sdb1",
+                "notes": "必填。显示命令但不执行"
+              }
+            },
+            "keyword": "fsck verbose progress"
+          },
+          {
+            "name": "检查 xfs 文件系统",
+            "cmd": "fsck.xfs %{设备}%",
+            "params": {
+              "设备": {
+                "type": "string",
+                "required": true,
+                "description": "要检查的 xfs 设备路径",
+                "example": "/dev/sdb1",
+                "notes": "必填。xfs 文件系统通常只需检查"
+              }
+            },
+            "keyword": "fsck xfs filesystem"
+          }
+        ],
+        "params": {
+          "设备": {
+            "type": "string",
+            "required": true,
+            "description": "要检查或修复的设备路径",
+            "example": "/dev/sdb1",
+            "notes": "必填。设备路径"
+          }
+        }
+      }
+    }
+  ]
+}

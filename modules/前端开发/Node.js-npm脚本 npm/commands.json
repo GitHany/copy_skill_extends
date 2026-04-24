@@ -1,0 +1,148 @@
+{
+  "module": "前端开发/Node.js-npm脚本 npm",
+  "version": "2.0",
+  "description": "Node.js 常用 npm scripts 命令",
+  "commands": [
+    {
+      "dirPath": "/前端开发/",
+      "name": "npm start 启动应用",
+      "keyword": "npm start 启动",
+      "description": "启动 Node.js 应用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "npm start",
+        "extensions": [
+          {
+            "name": "传递参数",
+            "cmd": "npm start -- %{参数}%",
+            "params": {
+              "参数": {
+                "type": "string",
+                "required": true,
+                "description": "传递的参数         ",
+                "example": "--verbose",
+                "notes": "必填"
+              }
+            },
+            "keyword": "npm start args"
+          },
+          {
+            "name": "环境变量",
+            "cmd": "PORT=3000 npm start",
+            "params": {},
+            "keyword": "npm start env"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "npm stop 停止应用",
+      "keyword": "npm stop 停止",
+      "description": "停止 Node.js 应用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "npm stop",
+        "extensions": [
+          {
+            "name": "强制停止",
+            "cmd": "npm stop --force",
+            "params": {},
+            "keyword": "npm stop force"
+          },
+          {
+            "name": "停止并显示输出",
+            "cmd": "npm stop 2>&1",
+            "params": {},
+            "keyword": "npm stop output"
+          },
+          {
+            "name": "停止并显示进程状态",
+            "cmd": "npm stop && ps aux | grep npm",
+            "params": {},
+            "keyword": "npm stop process"
+          },
+          {
+            "name": "停止所有相关进程",
+            "cmd": "pkill -f node && npm stop",
+            "params": {},
+            "keyword": "npm stop pkill"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "npm restart 重启应用",
+      "keyword": "npm restart 重启",
+      "description": "重启 Node.js 应用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "npm restart",
+        "extensions": [
+          {
+            "name": "传递参数",
+            "cmd": "npm restart -- %{参数}%",
+            "params": {
+              "参数": {
+                "type": "string",
+                "required": true,
+                "description": "传递的参数         ",
+                "example": "--force",
+                "notes": "必填"
+              }
+            },
+            "keyword": "npm restart args"
+          },
+          {
+            "name": "环境变量",
+            "cmd": "NODE_ENV=production npm restart",
+            "params": {},
+            "keyword": "npm restart env"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "npm version 版本管理",
+      "keyword": "npm version 版本",
+      "description": "管理应用版本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "npm version %{类型}%",
+        "extensions": [
+          {
+            "name": "打标签",
+            "cmd": "npm version %{类型}% -m \"%{消息}%\"",
+            "params": {
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "版本类型           ",
+                "example": "patch",
+                "notes": "必填"
+              },
+              "消息": {
+                "type": "string",
+                "required": true,
+                "description": "提交消息           ",
+                "example": "Release %s",
+                "notes": "必填"
+              }
+            },
+            "keyword": "npm version message"
+          }
+        ],
+        "params": {
+          "类型": {
+            "type": "string",
+            "required": true,
+            "description": "版本更新类型         ",
+            "example": "minor",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

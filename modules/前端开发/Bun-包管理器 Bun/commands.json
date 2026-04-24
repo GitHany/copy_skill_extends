@@ -1,0 +1,120 @@
+{
+  "module": "前端开发/Bun-包管理器 Bun",
+  "version": "2.0",
+  "description": "Bun JavaScript 运行时和工具",
+  "commands": [
+    {
+      "dirPath": "/前端开发/",
+      "name": "bun install 安装",
+      "keyword": "bun install 安装",
+      "description": "安装依赖。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "bun install",
+        "extensions": [
+          {
+            "name": "离线安装",
+            "cmd": "bun install --offline",
+            "params": {},
+            "keyword": "bun install offline"
+          },
+          {
+            "name": "仅生产依赖",
+            "cmd": "bun install --production",
+            "params": {},
+            "keyword": "bun install prod"
+          },
+          {
+            "name": "强制重新安装",
+            "cmd": "bun install --force",
+            "params": {},
+            "keyword": "bun install force"
+          },
+          {
+            "name": "全局安装",
+            "cmd": "bun add -g %{包名}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名             ",
+                "example": "typescript",
+                "notes": "必填"
+              }
+            },
+            "keyword": "bun add global"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "bun run 运行",
+      "keyword": "bun run 运行",
+      "description": "运行脚本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "bun run %{脚本}%",
+        "extensions": [
+          {
+            "name": "传递参数",
+            "cmd": "bun run %{脚本}% -- %{参数}%",
+            "params": {
+              "脚本": {
+                "type": "string",
+                "required": true,
+                "description": "脚本名            ",
+                "example": "dev",
+                "notes": "必填"
+              },
+              "参数": {
+                "type": "string",
+                "required": true,
+                "description": "传递的参数         ",
+                "example": "--verbose",
+                "notes": "必填"
+              }
+            },
+            "keyword": "bun run args"
+          },
+          {
+            "name": "环境变量",
+            "cmd": "bun run %{脚本}%",
+            "params": {
+              "脚本": {
+                "type": "string",
+                "required": true,
+                "description": "脚本名            ",
+                "example": "dev",
+                "notes": "必填"
+              }
+            },
+            "keyword": "bun run env"
+          },
+          {
+            "name": "Watch模式",
+            "cmd": "bun run %{脚本}% --watch",
+            "params": {
+              "脚本": {
+                "type": "string",
+                "required": true,
+                "description": "脚本名            ",
+                "example": "dev",
+                "notes": "必填"
+              }
+            },
+            "keyword": "bun run watch"
+          }
+        ],
+        "params": {
+          "脚本": {
+            "type": "string",
+            "required": true,
+            "description": "脚本名            ",
+            "example": "dev",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

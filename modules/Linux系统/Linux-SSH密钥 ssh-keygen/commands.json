@@ -1,0 +1,102 @@
+{
+  "module": "Linux系统/Linux-SSH密钥 ssh-keygen",
+  "version": "2.0",
+  "description": "SSH 密钥生成管理，涵盖Linux ssh-keygen的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Linux系统/",
+      "name": "ssh-keygen 生成密钥",
+      "keyword": "ssh-keygen 密钥",
+      "description": "生成 SSH 密钥对。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "ssh-keygen -t %{类型}% -f %{文件}% -C %{注释}%",
+        "extensions": [
+          {
+            "name": "生成 RSA 密钥",
+            "cmd": "ssh-keygen -t rsa -f ~/.ssh/id_rsa -C \"user@email.com\"",
+            "params": {},
+            "keyword": "ssh-keygen rsa"
+          },
+          {
+            "name": "生成 ED25519 密钥",
+            "cmd": "ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -C \"user@email.com\"",
+            "params": {},
+            "keyword": "ssh-keygen ed25519"
+          },
+          {
+            "name": "查看公钥",
+            "cmd": "cat ~/.ssh/%{公钥文件}%.pub",
+            "params": {
+              "公钥文件": {
+                "type": "string",
+                "required": true,
+                "description": "公钥文件名",
+                "example": "id_rsa.pub",
+                "notes": "必填"
+              }
+            },
+            "keyword": "ssh-keygen view"
+          },
+          {
+            "name": "更改密钥注释",
+            "cmd": "ssh-keygen -c -f %{密钥文件}% -C %{新注释}%",
+            "params": {
+              "密钥文件": {
+                "type": "string",
+                "required": true,
+                "description": "密钥文件路径",
+                "example": "~/.ssh/id_rsa",
+                "notes": "必填"
+              },
+              "新注释": {
+                "type": "string",
+                "required": true,
+                "description": "新的注释内容",
+                "example": "new_comment@email.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "ssh-keygen comment"
+          },
+          {
+            "name": "删除密钥",
+            "cmd": "rm ~/.ssh/%{密钥文件}%",
+            "params": {
+              "密钥文件": {
+                "type": "string",
+                "required": true,
+                "description": "密钥文件名",
+                "example": "id_rsa",
+                "notes": "必填"
+              }
+            },
+            "keyword": "ssh-keygen delete"
+          }
+        ],
+        "params": {
+          "类型": {
+            "type": "string",
+            "required": true,
+            "description": "密钥类型",
+            "example": "rsa",
+            "notes": "必填"
+          },
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "文件路径",
+            "example": "~/.ssh/id_rsa",
+            "notes": "必填"
+          },
+          "注释": {
+            "type": "string",
+            "required": true,
+            "description": "注释",
+            "example": "user@email.com",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

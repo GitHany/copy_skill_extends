@@ -1,0 +1,180 @@
+{
+  "module": "Linux系统/Linux-查看头部 head",
+  "version": "2.0",
+  "description": "Linux head 文件头部查看命令。显示文件的开头部分，默认显示前10行。用于快速预览文件内容、检查日志最新条目、分析数据文件的表头。适合在查看大文件前先了解文件结构。",
+  "commands": [
+    {
+      "dirPath": "/Linux系统/",
+      "name": "head 查看头部",
+      "keyword": "head 头部",
+      "description": "查看文件开头内容。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "head -n %{行}% %{文件}%",
+        "extensions": [
+          {
+            "name": "查看前N行",
+            "description": "显示文件的前N行内容                    ",
+            "params": {
+              "行": {
+                "example": "20",
+                "notes": "行数",
+                "description": "               "
+              },
+              "文件": {
+                "example": "data.csv",
+                "notes": "文件名",
+                "description": "               "
+              }
+            },
+            "cmd": "head -n %{行}% %{文件}%"
+          },
+          {
+            "name": "查看前N字节",
+            "description": "按字节数而非行数显示文件开头                ",
+            "params": {
+              "字节": {
+                "example": "1024",
+                "notes": "字节数",
+                "description": "               "
+              },
+              "文件": {
+                "example": "binary.dat",
+                "notes": "文件名",
+                "description": "               "
+              }
+            },
+            "cmd": "head -c %{字节}% %{文件}%"
+          },
+          {
+            "name": "查看多个文件头部",
+            "description": "同时显示多个文件的前几行                  ",
+            "params": {
+              "行": {
+                "example": "5",
+                "notes": "行数",
+                "description": "               "
+              },
+              "文件1": {
+                "example": "file1.txt",
+                "notes": "文件1",
+                "description": "               "
+              },
+              "文件2": {
+                "example": "file2.txt",
+                "notes": "文件2",
+                "description": "               "
+              }
+            },
+            "cmd": "head -n %{行}% %{文件1}% %{文件2}%"
+          },
+          {
+            "name": "显示文件名标题",
+            "description": "显示多个文件时，在每个内容前标注文件名           ",
+            "params": {
+              "行": {
+                "example": "10",
+                "notes": "行数",
+                "description": "               "
+              },
+              "文件1": {
+                "example": "log1.txt",
+                "notes": "文件1",
+                "description": "               "
+              },
+              "文件2": {
+                "example": "log2.txt",
+                "notes": "文件2",
+                "description": "               "
+              }
+            },
+            "cmd": "head -v -n %{行}% %{文件1}% %{文件2}%"
+          },
+          {
+            "name": "静默模式",
+            "description": "不显示文件头部的文件名标识                 ",
+            "params": {
+              "行": {
+                "example": "15",
+                "notes": "行数",
+                "description": "               "
+              },
+              "文件": {
+                "example": "data.txt",
+                "notes": "文件",
+                "description": "               "
+              }
+            },
+            "cmd": "head -q -n %{行}% %{文件}%"
+          },
+          {
+            "name": "默认显示10行",
+            "description": "不指定行数时，默认显示前10行               ",
+            "params": {
+              "文件": {
+                "example": "README.md",
+                "notes": "文件",
+                "description": "               "
+              }
+            },
+            "cmd": "head %{文件}%"
+          },
+          {
+            "name": "查看日志最新条目",
+            "description": "倒序看日志文件的最新记录                  ",
+            "params": {
+              "行": {
+                "example": "50",
+                "notes": "行数",
+                "description": "               "
+              },
+              "文件": {
+                "example": "/var/log/syslog",
+                "notes": "日志文件",
+                "description": "               "
+              }
+            },
+            "cmd": "tail -r | head -n %{行}% %{文件}%"
+          },
+          {
+            "name": "配合grep过滤",
+            "description": "查看匹配行的前几行上下文                  ",
+            "params": {
+              "行": {
+                "example": "20",
+                "notes": "行数",
+                "description": "               "
+              },
+              "模式": {
+                "example": "ERROR",
+                "notes": "关键词",
+                "description": "               "
+              },
+              "文件": {
+                "example": "app.log",
+                "notes": "文件",
+                "description": "               "
+              }
+            },
+            "cmd": "grep \"%{模式}%\" %{文件}% | head -n %{行}%"
+          }
+        ],
+        "params": {
+          "行": {
+            "type": "string",
+            "required": true,
+            "description": "行数             ",
+            "example": "10",
+            "notes": "必填"
+          },
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "文件             ",
+            "example": "log.txt",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

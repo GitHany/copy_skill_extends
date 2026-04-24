@@ -1,0 +1,85 @@
+{
+  "module": "容器编排/kubectl-API版本 api-versions",
+  "version": "2.0",
+  "description": "List API groups and versions supported by the Kubernetes cluster.",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl api-versions",
+      "keyword": "kubectl api versions api-resources",
+      "description": "List all API versions supported by cluster",
+      "data": {
+        "cmd": "kubectl api-versions",
+        "extensions": [
+          {
+            "name": "Filter by group",
+            "cmd": "kubectl api-versions | grep '%{group}%'",
+            "params": {
+              "group": {
+                "type": "string",
+                "required": false,
+                "description": "API group name ",
+                "example": "apps/",
+                "notes": "Optional filter"
+              }
+            },
+            "keyword": "kubectl api-versions group filter"
+          },
+          {
+            "name": "Check resource version",
+            "cmd": "kubectl api-resources -o wide | grep \"%{resource}%\"",
+            "params": {
+              "resource": {
+                "type": "string",
+                "required": false,
+                "description": "Resource name  ",
+                "example": "deployment",
+                "notes": "View version info"
+              }
+            },
+            "keyword": "kubectl api-resources version"
+          },
+          {
+            "name": "Core APIs only",
+            "cmd": "kubectl api-versions | grep -v \"/\"",
+            "params": {},
+            "keyword": "kubectl api-versions core"
+          },
+          {
+            "name": "Resources by group",
+            "cmd": "kubectl api-resources --api-group=%{group}%",
+            "params": {
+              "group": {
+                "type": "string",
+                "required": false,
+                "description": "API group name ",
+                "example": "apps",
+                "notes": "List group resources"
+              }
+            },
+            "keyword": "kubectl api-resources group"
+          },
+          {
+            "name": "Deployment versions",
+            "cmd": "kubectl api-resources | grep deployments",
+            "params": {},
+            "keyword": "kubectl api-resources deployments"
+          },
+          {
+            "name": "All abbreviations",
+            "cmd": "kubectl api-resources -o wide",
+            "params": {},
+            "keyword": "kubectl api-resources abbreviations"
+          },
+          {
+            "name": "CRD version check",
+            "cmd": "kubectl get crd | awk '{print $1}' | xargs -I {} sh -c 'echo {}; kubectl get {} -o jsonpath=\"{.spec.versions[*].name}\" 2>/dev/null || echo N/A'",
+            "params": {},
+            "keyword": "kubectl crd versions"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

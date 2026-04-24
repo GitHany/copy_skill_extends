@@ -1,0 +1,222 @@
+{
+  "dirPath": "/Claude Skills/superpowers/",
+  "name": "superpowers 超级能力",
+  "keyword": "/superpowers",
+  "description": "高级开发超级能力集合，涵盖Claude Skills-superpowers的常用操作和最佳实践",
+  "data": {
+    "commands": [
+      {
+        "dirPath": "/Claude Skills/superpowers/",
+        "name": "brainstorming 头脑风暴",
+        "keyword": "/brainstorming",
+        "description": "通过头脑风暴明确需求和方案",
+        "data": {
+          "cmd": "/brainstorming %{需求}%",
+          "extensions": [],
+          "params": {
+            "需求": {
+              "type": "string",
+              "required": true,
+              "description": "需要头脑风暴的需求",
+              "example": "实现实时聊天功能",
+              "notes": "通过系统性提问明确需求和方案"
+            }
+          }
+        }
+      },
+      {
+        "dirPath": "/Claude Skills/superpowers/",
+        "name": "writing-plans 编写计划",
+        "keyword": "/superpowers:writing-plans",
+        "description": "编写详细的开发计划，分解任务为可执行步骤",
+        "data": {
+          "cmd": "/superpowers:writing-plans %{任务描述}%",
+          "extensions": [],
+          "params": {
+            "任务描述": {
+              "type": "string",
+              "required": true,
+              "description": "需要编写计划的任务",
+              "example": "实现用户认证功能",
+              "notes": "会分解为可执行的步骤"
+            }
+          }
+        }
+      },
+      {
+        "dirPath": "/Claude Skills/superpowers/",
+        "name": "subagent-driven-development 子 Agent 开发",
+        "keyword": "/superpowers:subagent-driven-development",
+        "description": "使用子 agent 驱动的开发流程，并行执行多个任务",
+        "data": {
+          "cmd": "/superpowers:subagent-driven-development %{任务描述}%",
+          "extensions": [],
+          "params": {
+            "任务描述": {
+              "type": "string",
+              "required": true,
+              "description": "要并行执行的任务",
+              "example": "重构并测试所有模块",
+              "notes": "任务会被分解并最大并行执行"
+            }
+          }
+        }
+      },
+      {
+        "dirPath": "/Claude Skills/superpowers/",
+        "name": "executing-plans 执行计划",
+        "keyword": "/superpowers:executing-plans",
+        "description": "按照计划执行实现任务",
+        "data": {
+          "cmd": "/superpowers:executing-plans %{计划内容}%",
+          "extensions": [],
+          "params": {
+            "计划内容": {
+              "type": "string",
+              "required": true,
+              "description": "要执行的计划",
+              "example": "按照开发计划完成用户模块",
+              "notes": "按步骤顺序执行"
+            }
+          }
+        }
+      },
+      {
+        "dirPath": "/Claude Skills/superpowers/",
+        "name": "finishing-a-development-branch 完成分支",
+        "keyword": "/superpowers:finishing-a-development-branch",
+        "description": "完成开发分支前的最终验证和清理",
+        "data": {
+          "cmd": "/superpowers:finishing-a-development-branch %{操作}%",
+          "extensions": [],
+          "params": {
+            "操作": {
+              "type": "string",
+              "required": true,
+              "description": "完成分支后的操作",
+              "example": "合并到主分支",
+              "notes": "会执行最终验证和清理"
+            }
+          }
+        }
+      },
+      {
+        "dirPath": "/Claude Skills/superpowers/",
+        "name": "skill-creator 技能创建",
+        "keyword": "/superpowers:skill-creator",
+        "description": "创建新的 Claude Skills 技能",
+        "data": {
+          "cmd": "/superpowers:skill-creator %{技能描述}%",
+          "extensions": [],
+          "params": {
+            "技能描述": {
+              "type": "string",
+              "required": true,
+              "description": "要创建的技能描述",
+              "example": "创建一个 Git 提交辅助技能",
+              "notes": "按照最佳实践创建技能"
+            }
+          }
+        }
+      },
+      {
+        "dirPath": "/Claude Skills/superpowers/",
+        "name": "writing-skills 编写技能",
+        "keyword": "/superpowers:writing-skills",
+        "description": "编写和编辑 Claude Skills 技能文件",
+        "data": {
+          "cmd": "/superpowers:writing-skills %{技能名称}%",
+          "extensions": [],
+          "params": {
+            "技能名称": {
+              "type": "string",
+              "required": true,
+              "description": "要编写的技能名称",
+              "example": "编写 Git 提交规范技能",
+              "notes": "编辑技能文件"
+            }
+          }
+        }
+      },
+      {
+        "dirPath": "/Claude Skills/superpowers/",
+        "name": "using-superpowers 使用超级能力",
+        "keyword": "/superpowers:using-superpowers",
+        "description": "启动超级能力工作流",
+        "data": {
+          "cmd": "/superpowers:using-superpowers %{工作流类型}%",
+          "extensions": [],
+          "params": {
+            "工作流类型": {
+              "type": "string",
+              "required": true,
+              "description": "工作流类型",
+              "example": "启动 TDD 开发流程",
+              "notes": ""
+            }
+          }
+        }
+      },
+      {
+        "dirPath": "/Claude Skills/superpowers/",
+        "name": "find-skills 查找技能",
+        "keyword": "/superpowers:find-skills",
+        "description": "搜索和发现可用的 Claude Skills",
+        "data": {
+          "cmd": "/superpowers:find-skills %{搜索关键词}%",
+          "extensions": [],
+          "params": {
+            "搜索关键词": {
+              "type": "string",
+              "required": true,
+              "description": "搜索关键词",
+              "example": "Git 操作",
+              "notes": "搜索相关技能"
+            }
+          }
+        }
+      },
+      {
+        "dirPath": "/Claude Skills/superpowers/",
+        "name": "dispatching-parallel-agents 并行代理调度",
+        "keyword": "/superpowers:dispatching-parallel-agents",
+        "description": "并行调度多个子代理执行任务",
+        "data": {
+          "cmd": "/superpowers:dispatching-parallel-agents %{任务列表}%",
+          "extensions": [],
+          "params": {
+            "任务列表": {
+              "type": "string",
+              "required": true,
+              "description": "要并行执行的任务列表",
+              "example": "模块 A 重构、模块 B 测试、模块 C 文档",
+              "notes": "用逗号分隔多个任务"
+            }
+          }
+        }
+      },
+      {
+        "dirPath": "/Claude Skills/superpowers/",
+        "name": "changelog-generator 变更日志生成",
+        "keyword": "/superpowers:changelog-generator",
+        "description": "自动生成项目变更日志",
+        "data": {
+          "cmd": "/superpowers:changelog-generator %{版本范围}%",
+          "extensions": [],
+          "params": {
+            "版本范围": {
+              "type": "string",
+              "required": true,
+              "description": "版本范围",
+              "example": "v1.0.0..v1.1.0",
+              "notes": ""
+            }
+          }
+        }
+      }
+    ]
+  },
+  "module": "开发工具/Claude-Superpowers super",
+  "version": "2.0",
+  "commands": []
+}

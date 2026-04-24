@@ -1,0 +1,1240 @@
+{
+  "module": "前端开发/Node.js 后端命令",
+  "version": "1.0",
+  "description": "Node.js 后端开发命令模块，涵盖包管理、框架脚手架、API开发、数据库连接、认证安全、生产部署等",
+  "commands": [
+    {
+      "dirPath": "/前端开发/",
+      "name": "npm install 安装依赖",
+      "keyword": "npm install 安装依赖",
+      "description": "安装 npm 包到项目依赖。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "npm install %{包名称}%",
+        "extensions": [
+          {
+            "name": "安装生产依赖",
+            "cmd": "npm install %{包名}% --save",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称            ",
+                "example": "express",
+                "notes": "常用"
+              }
+            },
+            "keyword": "npm install 生产依赖"
+          },
+          {
+            "name": "安装开发依赖",
+            "cmd": "npm install %{包名}% --save-dev",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称            ",
+                "example": "nodemon",
+                "notes": "常用"
+              }
+            },
+            "keyword": "npm install 开发依赖"
+          },
+          {
+            "name": "全局安装",
+            "cmd": "npm install -g %{包名}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称            ",
+                "example": "pm2",
+                "notes": "常用"
+              }
+            },
+            "keyword": "npm install 全局"
+          },
+          {
+            "name": "安装特定版本",
+            "cmd": "npm install %{包名}%@%{版本号}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称            ",
+                "example": "express",
+                "notes": "常用"
+              },
+              "版本号": {
+                "type": "string",
+                "required": true,
+                "description": "版本号            ",
+                "example": "4.18.0",
+                "notes": "常用"
+              }
+            },
+            "keyword": "npm install 指定版本"
+          },
+          {
+            "name": "安装所有依赖",
+            "cmd": "npm install",
+            "params": {},
+            "keyword": "npm install 全部"
+          }
+        ],
+        "params": {
+          "包名称": {
+            "type": "string",
+            "required": true,
+            "description": "要安装的包名称        ",
+            "example": "express",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "npm audit 安全审计",
+      "keyword": "npm audit 安全审计",
+      "description": "检查项目依赖中的安全漏洞。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "npm audit",
+        "extensions": [
+          {
+            "name": "修复安全漏洞",
+            "cmd": "npm audit fix",
+            "params": {},
+            "keyword": "npm audit fix 修复"
+          },
+          {
+            "name": "强制修复",
+            "cmd": "npm audit fix --force",
+            "params": {},
+            "keyword": "npm audit 强制修复"
+          },
+          {
+            "name": "检查过时的包",
+            "cmd": "npm outdated",
+            "params": {},
+            "keyword": "npm outdated 过时"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "npm ci 干净安装",
+      "keyword": "npm ci 干净安装",
+      "description": "在 CI 环境中干净安装依赖，根据 package-lock.json",
+      "data": {
+        "cmd": "npm ci",
+        "extensions": [
+          {
+            "name": "忽略 peer 依赖冲突",
+            "cmd": "npm ci --legacy-peer-deps",
+            "params": {},
+            "keyword": "npm ci legacy-peer-deps"
+          },
+          {
+            "name": "跳过开发依赖",
+            "cmd": "npm ci --omit=dev",
+            "params": {},
+            "keyword": "npm ci 仅生产"
+          },
+          {
+            "name": "跳过生命周期脚本",
+            "cmd": "npm ci --ignore-scripts",
+            "params": {},
+            "keyword": "npm ci 跳过脚本"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "yarn/pnpm 安装依赖",
+      "keyword": "yarn pnpm 安装",
+      "description": "使用 yarn 或 pnpm 安装项目依赖。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "yarn install",
+        "extensions": [
+          {
+            "name": "pnpm 安装",
+            "cmd": "pnpm install",
+            "params": {},
+            "keyword": "pnpm 安装"
+          },
+          {
+            "name": "yarn 添加依赖",
+            "cmd": "yarn add %{包名}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称            ",
+                "example": "express",
+                "notes": "常用"
+              }
+            },
+            "keyword": "yarn add 添加"
+          },
+          {
+            "name": "pnpm 添加开发依赖",
+            "cmd": "pnpm add %{包名}% -D",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称            ",
+                "example": "nodemon",
+                "notes": "常用"
+              }
+            },
+            "keyword": "pnpm add dev"
+          },
+          {
+            "name": "yarn 删除依赖",
+            "cmd": "yarn remove %{包名}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名称            ",
+                "example": "lodash",
+                "notes": "常用"
+              }
+            },
+            "keyword": "yarn remove 删除"
+          },
+          {
+            "name": "pnpm 更新依赖",
+            "cmd": "pnpm update",
+            "params": {},
+            "keyword": "pnpm update 更新"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "nvm 安装切换 Node 版本",
+      "keyword": "nvm node 版本",
+      "description": "使用 nvm 安装和切换 Node.js 版本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "nvm install %{版本号}%",
+        "extensions": [
+          {
+            "name": "安装 LTS 版本",
+            "cmd": "nvm install --lts",
+            "params": {},
+            "keyword": "nvm install lts"
+          },
+          {
+            "name": "使用特定版本",
+            "cmd": "nvm use %{版本号}%",
+            "params": {
+              "版本号": {
+                "type": "string",
+                "required": true,
+                "description": "Node 版本号       ",
+                "example": "18.16.0",
+                "notes": "常用"
+              }
+            },
+            "keyword": "nvm use 切换"
+          },
+          {
+            "name": "设为默认版本",
+            "cmd": "nvm alias default %{版本号}%",
+            "params": {
+              "版本号": {
+                "type": "string",
+                "required": true,
+                "description": "Node 版本号       ",
+                "example": "18.16.0",
+                "notes": "常用"
+              }
+            },
+            "keyword": "nvm alias default 默认"
+          },
+          {
+            "name": "列出已安装版本",
+            "cmd": "nvm ls",
+            "params": {},
+            "keyword": "nvm ls 列表"
+          },
+          {
+            "name": "卸载指定版本",
+            "cmd": "nvm uninstall %{版本号}%",
+            "params": {
+              "版本号": {
+                "type": "string",
+                "required": true,
+                "description": "Node 版本号       ",
+                "example": "16.0.0",
+                "notes": "可选"
+              }
+            },
+            "keyword": "nvm uninstall 卸载"
+          }
+        ],
+        "params": {
+          "版本号": {
+            "type": "string",
+            "required": true,
+            "description": "Node.js 版本号    ",
+            "example": "18.16.0",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "n 轻量版本管理",
+      "keyword": "n 版本管理",
+      "description": "使用 n 轻量管理 Node.js 版本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "n %{版本号}%",
+        "extensions": [
+          {
+            "name": "安装最新 LTS",
+            "cmd": "n lts",
+            "params": {},
+            "keyword": "n lts"
+          },
+          {
+            "name": "安装最新版",
+            "cmd": "n latest",
+            "params": {},
+            "keyword": "n latest 最新版"
+          },
+          {
+            "name": "交互式选择版本",
+            "cmd": "n",
+            "params": {},
+            "keyword": "n 交互"
+          }
+        ],
+        "params": {
+          "版本号": {
+            "type": "string",
+            "required": true,
+            "description": "Node 版本号       ",
+            "example": "18.16.0",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "Express generator 脚手架",
+      "keyword": "express-generator 脚手架",
+      "description": "使用 express-generator 生成 Express 项目",
+      "data": {
+        "cmd": "npx express-generator %{项目名称}%",
+        "extensions": [
+          {
+            "name": "指定视图引擎",
+            "cmd": "npx express-generator --view=ejs %{项目名}%",
+            "params": {
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称           ",
+                "example": "myapp",
+                "notes": "常用"
+              }
+            },
+            "keyword": "express-generator ejs"
+          },
+          {
+            "name": "指定 pug 模板",
+            "cmd": "npx express-generator --view=pug %{项目名}%",
+            "params": {
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称           ",
+                "example": "myapp",
+                "notes": "常用"
+              }
+            },
+            "keyword": "express-generator pug"
+          },
+          {
+            "name": "当前目录生成",
+            "cmd": "npx express-generator .",
+            "params": {},
+            "keyword": "express-generator 当前目录"
+          }
+        ],
+        "params": {
+          "项目名称": {
+            "type": "string",
+            "required": true,
+            "description": "项目名称           ",
+            "example": "myapp",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "NestJS CLI 创建项目",
+      "keyword": "nest new 创建项目",
+      "description": "使用 NestJS CLI 创建新项目。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "nest new %{项目名称}%",
+        "extensions": [
+          {
+            "name": "指定 npm 包管理器",
+            "cmd": "nest new %{项目名}% --package-manager npm",
+            "params": {
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称           ",
+                "example": "my-nest-app",
+                "notes": "常用"
+              }
+            },
+            "keyword": "nest new npm"
+          },
+          {
+            "name": "跳过安装依赖",
+            "cmd": "nest new %{项目名}% --skip-git",
+            "params": {
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称           ",
+                "example": "my-nest-app",
+                "notes": "可选"
+              }
+            },
+            "keyword": "nest new 跳过 git"
+          }
+        ],
+        "params": {
+          "项目名称": {
+            "type": "string",
+            "required": true,
+            "description": "项目名称           ",
+            "example": "my-nest-app",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "NestJS generate 生成代码",
+      "keyword": "nest generate 生成",
+      "description": "使用 NestJS CLI 生成模块、控制器、服务等。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "nest g resource %{资源名称}%",
+        "extensions": [
+          {
+            "name": "生成模块",
+            "cmd": "nest g module %{模块名}%",
+            "params": {
+              "模块名": {
+                "type": "string",
+                "required": true,
+                "description": "模块名称           ",
+                "example": "auth",
+                "notes": "常用"
+              }
+            },
+            "keyword": "nest g module 模块"
+          },
+          {
+            "name": "生成控制器",
+            "cmd": "nest g controller %{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "控制器名称          ",
+                "example": "users",
+                "notes": "常用"
+              }
+            },
+            "keyword": "nest g controller 控制器"
+          },
+          {
+            "name": "生成服务",
+            "cmd": "nest g service %{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称           ",
+                "example": "users",
+                "notes": "常用"
+              }
+            },
+            "keyword": "nest g service 服务"
+          },
+          {
+            "name": "生成守卫",
+            "cmd": "nest g guard %{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "守卫名称           ",
+                "example": "auth",
+                "notes": "常用"
+              }
+            },
+            "keyword": "nest g guard 守卫"
+          }
+        ],
+        "params": {
+          "资源名称": {
+            "type": "string",
+            "required": true,
+            "description": "资源名称（生成 REST CRUD 模块）",
+            "example": "users",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "NestJS build start 构建启动",
+      "keyword": "nest build start 启动",
+      "description": "构建和启动 NestJS 项目。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "nest build",
+        "extensions": [
+          {
+            "name": "启动开发服务器",
+            "cmd": "nest start",
+            "params": {},
+            "keyword": "nest start 开发"
+          },
+          {
+            "name": "热重载开发模式",
+            "cmd": "nest start --watch",
+            "params": {},
+            "keyword": "nest start watch 热重载"
+          },
+          {
+            "name": "生产环境启动",
+            "cmd": "nest start --prod",
+            "params": {},
+            "keyword": "nest start prod 生产"
+          },
+          {
+            "name": "指定入口文件",
+            "cmd": "node dist/main.js",
+            "params": {},
+            "keyword": "node dist 入口"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "Koa generator 脚手架",
+      "keyword": "koa generator 脚手架",
+      "description": "使用 koa-generator 生成 Koa.js 项目。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "npx koa-generator %{项目名称}%",
+        "extensions": [
+          {
+            "name": "指定 ejs 模板",
+            "cmd": "npx koa-generator --ejs %{项目名}%",
+            "params": {
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称           ",
+                "example": "myapp",
+                "notes": "常用"
+              }
+            },
+            "keyword": "koa-generator ejs"
+          },
+          {
+            "name": "当前目录创建",
+            "cmd": "npx koa-generator .",
+            "params": {},
+            "keyword": "koa-generator 当前目录"
+          }
+        ],
+        "params": {
+          "项目名称": {
+            "type": "string",
+            "required": true,
+            "description": "项目名称           ",
+            "example": "myapp",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "Node.js 调试模式",
+      "keyword": "node --inspect 调试",
+      "description": "使用 Node.js 内置调试器调试应用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "node --inspect %{文件}%",
+        "extensions": [
+          {
+            "name": "首行断点暂停",
+            "cmd": "node --inspect-brk %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "入口文件           ",
+                "example": "app.js",
+                "notes": "常用"
+              }
+            },
+            "keyword": "node --inspect-brk 断点"
+          },
+          {
+            "name": "远程调试",
+            "cmd": "node --inspect=0.0.0.0:9229 %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "入口文件           ",
+                "example": "app.js",
+                "notes": "常用"
+              }
+            },
+            "keyword": "node inspect 远程"
+          },
+          {
+            "name": "追踪警告",
+            "cmd": "node --trace-warnings %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "入口文件           ",
+                "example": "app.js",
+                "notes": "常用"
+              }
+            },
+            "keyword": "node --trace-warnings 警告"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "Node.js 入口文件   ",
+            "example": "app.js",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "PM2 启动管理进程",
+      "keyword": "pm2 start 启动",
+      "description": "使用 PM2 启动和管理 Node.js 进程。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "pm2 start %{入口文件}%",
+        "extensions": [
+          {
+            "name": "命名启动",
+            "cmd": "pm2 start %{文件}% --name %{名称}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "入口文件           ",
+                "example": "app.js",
+                "notes": "常用"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "进程名称           ",
+                "example": "api-server",
+                "notes": "常用"
+              }
+            },
+            "keyword": "pm2 start 命名"
+          },
+          {
+            "name": "列出所有进程",
+            "cmd": "pm2 list",
+            "params": {},
+            "keyword": "pm2 list 列表"
+          },
+          {
+            "name": "实时监控",
+            "cmd": "pm2 monit",
+            "params": {},
+            "keyword": "pm2 monit 监控"
+          },
+          {
+            "name": "重启进程",
+            "cmd": "pm2 restart %{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "进程名称或 ID       ",
+                "example": "api-server",
+                "notes": "常用"
+              }
+            },
+            "keyword": "pm2 restart 重启"
+          },
+          {
+            "name": "停止进程",
+            "cmd": "pm2 stop %{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "进程名称或 ID       ",
+                "example": "api-server",
+                "notes": "常用"
+              }
+            },
+            "keyword": "pm2 stop 停止"
+          },
+          {
+            "name": "删除进程",
+            "cmd": "pm2 delete %{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "进程名称或 ID       ",
+                "example": "api-server",
+                "notes": "常用"
+              }
+            },
+            "keyword": "pm2 delete 删除"
+          },
+          {
+            "name": "保存进程列表",
+            "cmd": "pm2 save",
+            "params": {},
+            "keyword": "pm2 save 保存"
+          },
+          {
+            "name": "配置开机自启",
+            "cmd": "pm2 startup",
+            "params": {},
+            "keyword": "pm2 startup 自启"
+          }
+        ],
+        "params": {
+          "入口文件": {
+            "type": "string",
+            "required": true,
+            "description": "Node.js 入口文件   ",
+            "example": "app.js",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "PM2 集群模式",
+      "keyword": "pm2 集群 cluster",
+      "description": "使用 PM2 集群模式充分利用多核 CPU。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "pm2 start %{文件}% -i max",
+        "extensions": [
+          {
+            "name": "指定实例数",
+            "cmd": "pm2 start %{文件}% -i %{数量}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "入口文件           ",
+                "example": "app.js",
+                "notes": "常用"
+              },
+              "数量": {
+                "type": "string",
+                "required": true,
+                "description": "实例数量           ",
+                "example": "4",
+                "notes": "常用"
+              }
+            },
+            "keyword": "pm2 -i 指定实例"
+          },
+          {
+            "name": "零停机重载",
+            "cmd": "pm2 reload all",
+            "params": {},
+            "keyword": "pm2 reload 重载"
+          },
+          {
+            "name": "查看集群状态",
+            "cmd": "pm2 list",
+            "params": {},
+            "keyword": "pm2 list 集群状态"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "入口文件           ",
+            "example": "app.js",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "PM2 日志管理",
+      "keyword": "pm2 logs 日志",
+      "description": "查看和管理 PM2 进程日志。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "pm2 logs",
+        "extensions": [
+          {
+            "name": "查看实时日志",
+            "cmd": "pm2 logs %{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "进程名称           ",
+                "example": "api-server",
+                "notes": "常用"
+              }
+            },
+            "keyword": "pm2 logs 实时"
+          },
+          {
+            "name": "查看错误日志",
+            "cmd": "pm2 logs --err",
+            "params": {},
+            "keyword": "pm2 logs 错误"
+          },
+          {
+            "name": "清空日志",
+            "cmd": "pm2 flush",
+            "params": {},
+            "keyword": "pm2 flush 清空"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "PostgreSQL pg 连接",
+      "keyword": "pg postgres 连接",
+      "description": "使用 pg 库连接 PostgreSQL 数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "npm install pg --save",
+        "extensions": [
+          {
+            "name": "创建连接池",
+            "cmd": "const { Pool } = require('pg'); const pool = new Pool({ connectionString: 'postgresql://user:pass@localhost:5432/db' })",
+            "params": {},
+            "keyword": "pg pool 连接池"
+          },
+          {
+            "name": "执行查询",
+            "cmd": "await pool.query('SELECT * FROM users')",
+            "params": {},
+            "keyword": "pg query 查询"
+          },
+          {
+            "name": "事务处理",
+            "cmd": "const client = await pool.connect(); try { await client.query('BEGIN'); ... await client.query('COMMIT'); } catch (e) { await client.query('ROLLBACK'); }",
+            "params": {},
+            "keyword": "pg 事务 transaction"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "MySQL2 连接数据库",
+      "keyword": "mysql2 mysql 连接",
+      "description": "使用 mysql2 库连接 MySQL 数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "npm install mysql2 --save",
+        "extensions": [
+          {
+            "name": "创建连接池",
+            "cmd": "const mysql = require('mysql2'); const pool = mysql.createPool({ host: 'localhost', user: 'root', password: 'pass', database: 'mydb' })",
+            "params": {},
+            "keyword": "mysql2 pool 连接池"
+          },
+          {
+            "name": "预处理语句防注入",
+            "cmd": "await pool.execute('SELECT * FROM users WHERE id = ?', [id])",
+            "params": {},
+            "keyword": "mysql2 execute 预处理"
+          },
+          {
+            "name": "Promise 风格",
+            "cmd": "const promisePool = pool.promise(); await promisePool.query('SELECT * FROM users')",
+            "params": {},
+            "keyword": "mysql2 promise"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "MongoDB mongoose 连接",
+      "keyword": "mongoose mongodb 连接",
+      "description": "使用 mongoose 连接 MongoDB 数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "npm install mongoose --save",
+        "extensions": [
+          {
+            "name": "连接数据库",
+            "cmd": "mongoose.connect('mongodb://localhost:27017/mydb')",
+            "params": {},
+            "keyword": "mongoose connect 连接"
+          },
+          {
+            "name": "定义模型",
+            "cmd": "const User = mongoose.model('User', new mongoose.Schema({ name: String, email: String }))",
+            "params": {},
+            "keyword": "mongoose model 模型"
+          },
+          {
+            "name": "异步保存",
+            "cmd": "await new User({ name: 'John' }).save()",
+            "params": {},
+            "keyword": "mongoose save 保存"
+          },
+          {
+            "name": "断开连接",
+            "cmd": "mongoose.disconnect()",
+            "params": {},
+            "keyword": "mongoose disconnect 断开"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "Passport 认证配置",
+      "keyword": "passport 认证",
+      "description": "使用 Passport 配置身份认证。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "npm install passport passport-local passport-jwt --save",
+        "extensions": [
+          {
+            "name": "初始化 Passport",
+            "cmd": "app.use(passport.initialize()); app.use(passport.session())",
+            "params": {},
+            "keyword": "passport initialize 初始化"
+          },
+          {
+            "name": "本地策略",
+            "cmd": "passport.use(new LocalStrategy((username, password, done) => { ... }))",
+            "params": {},
+            "keyword": "passport local strategy 本地策略"
+          },
+          {
+            "name": "JWT 策略",
+            "cmd": "passport.use(new JwtStrategy({ jwtFromRequest: ..., secretOrKey: 'secret' }, (payload, done) => { ... }))",
+            "params": {},
+            "keyword": "passport jwt 策略"
+          },
+          {
+            "name": "路由保护",
+            "cmd": "router.get('/profile', passport.authenticate('jwt', { session: false }), (req, res) => { ... })",
+            "params": {},
+            "keyword": "passport authenticate 保护"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "JWT jsonwebtoken 生成验证",
+      "keyword": "jwt token 生成验证",
+      "description": "使用 jsonwebtoken 生成和验证 Token。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "npm install jsonwebtoken --save",
+        "extensions": [
+          {
+            "name": "生成 Token",
+            "cmd": "const token = jwt.sign({ userId: 1 }, 'secret', { expiresIn: '1h' })",
+            "params": {},
+            "keyword": "jwt sign 生成"
+          },
+          {
+            "name": "验证 Token",
+            "cmd": "jwt.verify(token, 'secret')",
+            "params": {},
+            "keyword": "jwt verify 验证"
+          },
+          {
+            "name": "解码 Token",
+            "cmd": "jwt.decode(token)",
+            "params": {},
+            "keyword": "jwt decode 解码"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "CORS 跨域配置",
+      "keyword": "cors 跨域",
+      "description": "配置 Express 应用支持跨域请求。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "npm install cors --save",
+        "extensions": [
+          {
+            "name": "允许所有来源",
+            "cmd": "app.use(cors())",
+            "params": {},
+            "keyword": "cors 允许所有"
+          },
+          {
+            "name": "限制来源",
+            "cmd": "app.use(cors({ origin: 'http://localhost:3000' }))",
+            "params": {},
+            "keyword": "cors 限制来源"
+          },
+          {
+            "name": "允许凭证",
+            "cmd": "app.use(cors({ origin: true, credentials: true }))",
+            "params": {},
+            "keyword": "cors credentials 凭证"
+          },
+          {
+            "name": "允许所有来源和所有方法",
+            "cmd": "app.use(cors({ origin: '*', methods: ['GET', 'POST', 'PUT', 'DELETE'] }))",
+            "params": {},
+            "keyword": "cors 方法"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "Helmet 安全头配置",
+      "keyword": "helmet 安全头",
+      "description": "使用 Helmet 配置 HTTP 安全头。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "npm install helmet --save",
+        "extensions": [
+          {
+            "name": "启用所有安全头",
+            "cmd": "app.use(helmet())",
+            "params": {},
+            "keyword": "helmet 所有安全头"
+          },
+          {
+            "name": "内容安全策略",
+            "cmd": "app.use(helmet.contentSecurityPolicy({ directives: { defaultSrc: [\"'self'\"] } }))",
+            "params": {},
+            "keyword": "helmet csp"
+          },
+          {
+            "name": "隐藏技术栈",
+            "cmd": "app.use(helmet.hidePoweredBy())",
+            "params": {},
+            "keyword": "helmet hidePoweredBy"
+          },
+          {
+            "name": "强制 HTTPS",
+            "cmd": "app.use(helmet.hsts({ maxAge: 31536000, includeSubDomains: true }))",
+            "params": {},
+            "keyword": "helmet hsts"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "Joi 数据验证",
+      "keyword": "joi 验证",
+      "description": "使用 Joi 进行请求数据验证。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "npm install joi --save",
+        "extensions": [
+          {
+            "name": "定义 schema",
+            "cmd": "const schema = Joi.object({ name: Joi.string().required(), email: Joi.string().email().required() })",
+            "params": {},
+            "keyword": "joi schema 定义"
+          },
+          {
+            "name": "验证数据",
+            "cmd": "const { error, value } = schema.validate(req.body)",
+            "params": {},
+            "keyword": "joi validate 验证"
+          },
+          {
+            "name": "自定义错误消息",
+            "cmd": "Joi.object({ name: Joi.string().required().messages({ 'string.empty': '名称不能为空' }) })",
+            "params": {},
+            "keyword": "joi messages 自定义消息"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "Zod 数据验证",
+      "keyword": "zod 验证",
+      "description": "使用 Zod 进行类型安全的请求数据验证。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "npm install zod --save",
+        "extensions": [
+          {
+            "name": "定义 schema",
+            "cmd": "const UserSchema = z.object({ name: z.string(), email: z.string().email() })",
+            "params": {},
+            "keyword": "zod schema 定义"
+          },
+          {
+            "name": "验证数据",
+            "cmd": "const result = UserSchema.safeParse(data)",
+            "params": {},
+            "keyword": "zod safeParse 验证"
+          },
+          {
+            "name": "推断类型",
+            "cmd": "type User = z.infer<typeof UserSchema>",
+            "params": {},
+            "keyword": "zod infer 类型推断"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "express-validator 验证",
+      "keyword": "express-validator 验证",
+      "description": "使用 express-validator 进行请求验证。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "npm install express-validator --save",
+        "extensions": [
+          {
+            "name": "验证邮箱",
+            "cmd": "body('email').isEmail().withMessage('无效的邮箱')",
+            "params": {},
+            "keyword": "express-validator isEmail"
+          },
+          {
+            "name": "自定义验证",
+            "cmd": "body('password').custom(value => value.length >= 8).withMessage('密码至少8位')",
+            "params": {},
+            "keyword": "express-validator custom"
+          },
+          {
+            "name": "获取验证结果",
+            "cmd": "const errors = validationResult(req); if (!errors.isEmpty()) return res.status(400).json(errors.array())",
+            "params": {},
+            "keyword": "express-validator validationResult"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "Node.js 内存泄漏检测",
+      "keyword": "heapdump 内存泄漏",
+      "description": "检测 Node.js 应用内存泄漏。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "npm install heapdump --save",
+        "extensions": [
+          {
+            "name": "生成堆快照",
+            "cmd": "heapdump.writeSnapshot('./heapdump-' + Date.now() + '.heapsnapshot')",
+            "params": {},
+            "keyword": "heapdump snapshot 快照"
+          },
+          {
+            "name": "请求时触发快照",
+            "cmd": "app.get('/heap-snapshot', (req, res) => { heapdump.writeSnapshot(...); res.send('done') })",
+            "params": {},
+            "keyword": "heapdump route 路由"
+          },
+          {
+            "name": "使用 Chrome DevTools",
+            "cmd": "1. 访问 chrome://inspect 2. 点击 Open dedicated DevTools for Node 3. Memory -> Load Snapshot",
+            "params": {},
+            "keyword": "chrome devtools 内存分析"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "Node.js 性能分析",
+      "keyword": "node --prof 性能分析",
+      "description": "使用 Node.js 内置性能分析工具。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "node --prof %{文件}%",
+        "extensions": [
+          {
+            "name": "处理分析日志",
+            "cmd": "node --prof-process isolate-*.log",
+            "params": {},
+            "keyword": "node --prof-process 分析日志"
+          },
+          {
+            "name": "查看内存使用",
+            "cmd": "node -e \"console.log(process.memoryUsage())\"",
+            "params": {},
+            "keyword": "process.memoryUsage 内存"
+          },
+          {
+            "name": "打印 V8 堆统计",
+            "cmd": "node --expose-gc -e \"gc(); console.log(process.memoryUsage())\"",
+            "params": {},
+            "keyword": "gc 垃圾回收"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "入口文件           ",
+            "example": "app.js",
+            "notes": "常用"
+          }
+        }
+      }
+    }
+  ]
+}

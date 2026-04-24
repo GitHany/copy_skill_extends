@@ -1,0 +1,138 @@
+{
+  "module": "版本控制/Git 忽略文件",
+  "version": "2.0",
+  "description": "Git 忽略文件命令集合，涵盖Git 忽略文件的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/版本控制/",
+      "name": "git check-ignore 检查忽略",
+      "keyword": "git ignore 检查",
+      "description": "检查文件是否被忽略。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git check-ignore -v %{文件}%",
+        "extensions": [
+          {
+            "name": "检查多个文件",
+            "cmd": "git check-ignore %{文件1}% %{文件2}% %{文件3}%",
+            "params": {
+              "文件1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个文件路径",
+                "example": "debug.log",
+                "notes": "必填"
+              },
+              "文件2": {
+                "type": "string",
+                "required": false,
+                "description": "第二个文件路径",
+                "example": "temp.txt",
+                "notes": "可选"
+              },
+              "文件3": {
+                "type": "string",
+                "required": false,
+                "description": "第三个文件路径",
+                "example": "cache.ini",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git check-ignore multiple"
+          },
+          {
+            "name": "安静模式检查",
+            "cmd": "git check-ignore -q %{文件}%",
+            "params": {},
+            "keyword": "git check-ignore quiet"
+          },
+          {
+            "name": "检查目录",
+            "cmd": "git check-ignore -v %{目录}%/",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "目录路径",
+                "example": "node_modules",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git check-ignore directory"
+          },
+          {
+            "name": "检查忽略规则源",
+            "cmd": "git check-ignore -v --no-warn %{文件}%",
+            "params": {},
+            "keyword": "git check-ignore source"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "文件路径           ",
+            "example": "debug.log",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git clean -n 预览忽略",
+      "keyword": "git clean 预览",
+      "description": "预览将被清理的文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git clean -ndX",
+        "extensions": [
+          {
+            "name": "预览清理所有未跟踪",
+            "cmd": "git clean -nd",
+            "params": {},
+            "keyword": "git clean preview all"
+          },
+          {
+            "name": "预览清理未跟踪文件和目录",
+            "cmd": "git clean -ndff",
+            "params": {},
+            "keyword": "git clean preview force"
+          },
+          {
+            "name": "预览清理特定路径",
+            "cmd": "git clean -nd -e %{排除路径}% %{目标路径}%",
+            "params": {
+              "排除路径": {
+                "type": "string",
+                "required": false,
+                "description": "排除的路径",
+                "example": "node_modules",
+                "notes": "可选"
+              },
+              "目标路径": {
+                "type": "string",
+                "required": true,
+                "description": "目标路径",
+                "example": "src",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git clean preview path"
+          },
+          {
+            "name": "预览只清理忽略文件",
+            "cmd": "git clean -ndX",
+            "params": {},
+            "keyword": "git clean preview ignored"
+          },
+          {
+            "name": "预览清理包括ignored",
+            "cmd": "git clean -ndx",
+            "params": {},
+            "keyword": "git clean preview ignored all"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

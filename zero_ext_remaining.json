@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Git 历史与版本 命令",
+    "file": "版本控制\\Git 历史与版本\\commands.json"
+  },
+  {
+    "name": "禁止快进",
+    "file": "版本控制\\Git 变基与合并\\commands.json"
+  },
+  {
+    "name": "squash 合并",
+    "file": "版本控制\\Git 变基与合并\\commands.json"
+  },
+  {
+    "name": "继续变基",
+    "file": "版本控制\\Git 变基与合并\\commands.json"
+  },
+  {
+    "name": "添加所有修改",
+    "file": "版本控制\\Git 暂存区管理\\commands.json"
+  },
+  {
+    "name": "添加所有文件",
+    "file": "版本控制\\Git 暂存区管理\\commands.json"
+  },
+  {
+    "name": "交互式添加",
+    "file": "版本控制\\Git 暂存区管理\\commands.json"
+  },
+  {
+    "name": "显示分支",
+    "file": "版本控制\\Git 暂存区管理\\commands.json"
+  },
+  {
+    "name": "Git 暂存管理 命令",
+    "file": "版本控制\\Git 暂存管理\\commands.json"
+  },
+  {
+    "name": "Git Bisect 命令",
+    "file": "版本控制\\Git-二分查找 Bisect\\commands.json"
+  },
+  {
+    "name": "Git add 命令",
+    "file": "版本控制\\Git-暂存文件 add\\commands.json"
+  },
+  {
+    "name": "GitHub Actions 命令",
+    "file": "版本控制\\GitHub-动作执行 Actions\\commands.json"
+  },
+  {
+    "name": "Docker Compose 完整命令 命令",
+    "file": "容器编排\\Docker Compose 完整命令\\commands.json"
+  },
+  {
+    "name": "Docker compose version 命令",
+    "file": "容器编排\\Docker Compose-版本查询 version\\commands.json"
+  },
+  {
+    "name": "Docker 系统管理 命令",
+    "file": "容器编排\\Docker 系统管理\\commands.json"
+  },
+  {
+    "name": "Docker 镜像管理 命令",
+    "file": "容器编排\\Docker 镜像管理\\commands.json"
+  },
+  {
+    "name": "df 磁盘使用",
+    "file": "Linux系统\\Linux 磁盘管理\\commands.json"
+  },
+  {
+    "name": "fdisk 分区管理",
+    "file": "Linux系统\\Linux 磁盘管理\\commands.json"
+  },
+  {
+    "name": "mkfs 文件系统格式化",
+    "file": "Linux系统\\Linux 磁盘管理\\commands.json"
+  },
+  {
+    "name": "mount 挂载分区",
+    "file": "Linux系统\\Linux 磁盘管理\\commands.json"
+  },
+  {
+    "name": "Linux 系统监控 命令",
+    "file": "Linux系统\\Linux 系统监控\\commands.json"
+  },
+  {
+    "name": "htop 交互式进程查看",
+    "file": "Linux系统\\Linux 系统监控\\commands.json"
+  },
+  {
+    "name": "ps 进程查看",
+    "file": "Linux系统\\Linux 系统监控\\commands.json"
+  },
+  {
+    "name": "uptime 系统运行时间",
+    "file": "Linux系统\\Linux 系统监控\\commands.json"
+  },
+  {
+    "name": "free 内存监控",
+    "file": "Linux系统\\Linux 系统监控\\commands.json"
+  },
+  {
+    "name": "netstat 网络统计",
+    "file": "Linux系统\\Linux 网络诊断\\commands.json"
+  },
+  {
+    "name": "Linux 进程管理 命令",
+    "file": "Linux系统\\Linux 进程管理\\commands.json"
+  }
+]

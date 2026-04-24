@@ -1,0 +1,57 @@
+{
+  "module": "版本控制/Git-撤销提交 Revert",
+  "version": "2.0",
+  "description": "Git 撤销提交命令，涵盖Git Revert的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/版本控制/",
+      "name": "git revert 撤销提交",
+      "keyword": "git revert 撤销",
+      "description": "创建一个新提交来撤销指定提交。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git revert %{提交}%",
+        "extensions": [
+          {
+            "name": "撤销多个提交",
+            "cmd": "git revert %{起始提交}%..%{结束提交}%",
+            "params": {},
+            "keyword": "revert 范围"
+          },
+          {
+            "name": "不自动提交",
+            "cmd": "git revert %{提交}% --no-commit",
+            "params": {},
+            "keyword": "revert no-commit"
+          },
+          {
+            "name": "撤销并编辑",
+            "cmd": "git revert %{提交}% --edit",
+            "params": {},
+            "keyword": "revert edit"
+          },
+          {
+            "name": "继续撤销操作",
+            "cmd": "git revert --continue",
+            "params": {},
+            "keyword": "revert continue"
+          },
+          {
+            "name": "中止撤销操作",
+            "cmd": "git revert --abort",
+            "params": {},
+            "keyword": "revert abort"
+          }
+        ],
+        "params": {
+          "提交": {
+            "type": "string",
+            "required": true,
+            "description": "提交哈希",
+            "example": "abc123",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

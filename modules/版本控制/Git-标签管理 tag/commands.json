@@ -1,0 +1,90 @@
+{
+  "module": "版本控制/Git-标签管理 tag",
+  "version": "2.0",
+  "description": "Git 标签管理命令。创建、列出、删除标签，常用于标记发布版本点（如 v1.0.0）。轻量标签只是一个指针，附注标签包含完整信息。常见场景：标记发布版本、管理版本历史、创建发布分支基线。",
+  "commands": [
+    {
+      "dirPath": "/版本控制/",
+      "name": "git tag 标签",
+      "keyword": "git tag 标签",
+      "description": "创建或列出标签。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git tag %{标签}%",
+        "extensions": [
+          {
+            "name": "git tag -a 附注标签",
+            "description": "创建带注释的标签                      ",
+            "params": {
+              "标签": {
+                "type": "string",
+                "required": true,
+                "description": "标签名            ",
+                "example": "v1.0.0",
+                "notes": "必填"
+              },
+              "提交": {
+                "type": "string",
+                "required": false,
+                "description": "提交哈希           ",
+                "example": "HEAD",
+                "notes": "可选"
+              }
+            },
+            "cmd": "git tag %{标签}%"
+          },
+          {
+            "name": "git tag -d 删除标签",
+            "description": "删除本地标签                        ",
+            "params": {
+              "标签": {
+                "type": "string",
+                "required": true,
+                "description": "标签名            ",
+                "example": "v1.0.0",
+                "notes": "必填"
+              }
+            },
+            "cmd": "git tag %{标签}%"
+          },
+          {
+            "name": "git tag 推送标签到远程",
+            "description": "推送标签到远程仓库                     ",
+            "params": {
+              "标签": {
+                "type": "string",
+                "required": true,
+                "description": "标签名            ",
+                "example": "v1.0.0",
+                "notes": "必填"
+              }
+            },
+            "cmd": "git tag %{标签}%"
+          },
+          {
+            "name": "git tag -l 列出标签",
+            "description": "列出所有或匹配模式的标签                  ",
+            "params": {
+              "模式": {
+                "type": "string",
+                "required": false,
+                "description": "匹配模式           ",
+                "example": "v1.*",
+                "notes": "可选"
+              }
+            },
+            "cmd": "git tag %{标签}%"
+          }
+        ],
+        "params": {
+          "标签": {
+            "type": "string",
+            "required": true,
+            "description": "标签名            ",
+            "example": "v1.0.0",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

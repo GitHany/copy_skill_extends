@@ -1,5 +1,5 @@
 {
-  "module": "移动开发",
+  "module": "移动开发/移动开发",
   "version": "1.0",
   "description": "移动端跨平台开发命令模块，包含 React Native、Flutter、Ionic、Capacitor、Cordova、Tauri 及 Android SDK、Xcode 工具命令",
   "commands": [
@@ -18,7 +18,7 @@
               "项目名称": {
                 "type": "string",
                 "required": true,
-                "description": "项目名称",
+                "description": "项目名称           ",
                 "example": "MyReactApp",
                 "notes": "常用"
               }
@@ -32,7 +32,7 @@
               "项目名称": {
                 "type": "string",
                 "required": true,
-                "description": "项目名称",
+                "description": "项目名称           ",
                 "example": "MyReactApp",
                 "notes": "可选"
               },
@@ -51,7 +51,7 @@
           "项目名称": {
             "type": "string",
             "required": true,
-            "description": "项目名称",
+            "description": "项目名称           ",
             "example": "MyReactApp",
             "notes": "常用"
           }
@@ -73,7 +73,7 @@
               "项目名称": {
                 "type": "string",
                 "required": true,
-                "description": "项目名称",
+                "description": "项目名称           ",
                 "example": "MyProject",
                 "notes": "常用"
               }
@@ -101,7 +101,7 @@
               "项目名称": {
                 "type": "string",
                 "required": true,
-                "description": "项目名称",
+                "description": "项目名称           ",
                 "example": "MyProject",
                 "notes": "常用"
               }
@@ -113,7 +113,7 @@
           "项目名称": {
             "type": "string",
             "required": true,
-            "description": "项目名称",
+            "description": "项目名称           ",
             "example": "MyProject",
             "notes": "常用"
           }
@@ -135,7 +135,7 @@
               "设备ID": {
                 "type": "string",
                 "required": true,
-                "description": "设备 ID",
+                "description": "设备 ID          ",
                 "example": "emulator-5554",
                 "notes": "常用"
               }
@@ -185,7 +185,7 @@
               "模拟器名": {
                 "type": "string",
                 "required": true,
-                "description": "模拟器名称",
+                "description": "模拟器名称          ",
                 "example": "iPhone 15",
                 "notes": "常用"
               }
@@ -199,7 +199,7 @@
               "设备名": {
                 "type": "string",
                 "required": true,
-                "description": "设备名称",
+                "description": "设备名称           ",
                 "example": "iPhone",
                 "notes": "可选"
               }
@@ -253,21 +253,21 @@
           "平台": {
             "type": "string",
             "required": true,
-            "description": "目标平台",
+            "description": "目标平台           ",
             "example": "ios",
             "notes": "常用"
           },
           "输出路径": {
             "type": "string",
             "required": true,
-            "description": "Bundle 输出路径",
+            "description": "Bundle 输出路径    ",
             "example": "ios/main.jsbundle",
             "notes": "常用"
           },
           "资源目录": {
             "type": "string",
             "required": true,
-            "description": "资源输出目录",
+            "description": "资源输出目录         ",
             "example": "ios",
             "notes": "常用"
           }
@@ -295,7 +295,7 @@
               "端口": {
                 "type": "number",
                 "required": true,
-                "description": "端口号",
+                "description": "端口号            ",
                 "example": "8082",
                 "notes": "可选"
               }
@@ -357,7 +357,7 @@
               "更新说明": {
                 "type": "string",
                 "required": true,
-                "description": "更新描述",
+                "description": "更新描述           ",
                 "example": "修复登录问题",
                 "notes": "可选"
               }
@@ -387,7 +387,7 @@
           "命令": {
             "type": "string",
             "required": true,
-            "description": "Expo 子命令",
+            "description": "Expo 子命令       ",
             "example": "start",
             "notes": "常用"
           }
@@ -409,7 +409,7 @@
               "项目名称": {
                 "type": "string",
                 "required": true,
-                "description": "项目名称",
+                "description": "项目名称           ",
                 "example": "my_app",
                 "notes": "常用"
               }
@@ -423,7 +423,7 @@
               "组织名": {
                 "type": "string",
                 "required": true,
-                "description": "组织名（包名）",
+                "description": "组织名（包名）        ",
                 "example": "com.example",
                 "notes": "可选"
               }
@@ -437,7 +437,7 @@
               "项目名称": {
                 "type": "string",
                 "required": true,
-                "description": "项目名称",
+                "description": "项目名称           ",
                 "example": "my_app",
                 "notes": "常用"
               }
@@ -451,7 +451,7 @@
               "项目名称": {
                 "type": "string",
                 "required": true,
-                "description": "项目名称",
+                "description": "项目名称           ",
                 "example": "my_app",
                 "notes": "可选"
               }
@@ -465,7 +465,7 @@
               "项目名称": {
                 "type": "string",
                 "required": true,
-                "description": "项目名称",
+                "description": "项目名称           ",
                 "example": "my_app",
                 "notes": "可选"
               }
@@ -477,7 +477,7 @@
           "项目名称": {
             "type": "string",
             "required": true,
-            "description": "项目名称",
+            "description": "项目名称           ",
             "example": "my_app",
             "notes": "常用"
           }
@@ -505,7 +505,7 @@
               "设备ID": {
                 "type": "string",
                 "required": true,
-                "description": "设备 ID",
+                "description": "设备 ID          ",
                 "example": "chrome",
                 "notes": "常用"
               }
@@ -687,7 +687,7 @@
               "依赖名": {
                 "type": "string",
                 "required": true,
-                "description": "包名",
+                "description": "包名             ",
                 "example": "http",
                 "notes": "常用"
               }
@@ -707,7 +707,7 @@
               "脚本名": {
                 "type": "string",
                 "required": true,
-                "description": "脚本文件名",
+                "description": "脚本文件名          ",
                 "example": "main",
                 "notes": "常用"
               }
@@ -793,7 +793,7 @@
               "apk路径": {
                 "type": "string",
                 "required": true,
-                "description": "APK 文件路径",
+                "description": "APK 文件路径       ",
                 "example": "./app-debug.apk",
                 "notes": "常用"
               }
@@ -807,7 +807,7 @@
               "apk路径": {
                 "type": "string",
                 "required": true,
-                "description": "APK 文件路径",
+                "description": "APK 文件路径       ",
                 "example": "./app-debug.apk",
                 "notes": "常用"
               }
@@ -821,7 +821,7 @@
               "包名": {
                 "type": "string",
                 "required": true,
-                "description": "应用包名",
+                "description": "应用包名           ",
                 "example": "com.example.app",
                 "notes": "常用"
               }
@@ -835,7 +835,7 @@
               "本地路径": {
                 "type": "string",
                 "required": true,
-                "description": "本地文件路径",
+                "description": "本地文件路径         ",
                 "example": "./data.txt",
                 "notes": "常用"
               }
@@ -849,7 +849,7 @@
               "设备路径": {
                 "type": "string",
                 "required": true,
-                "description": "设备文件路径",
+                "description": "设备文件路径         ",
                 "example": "/sdcard/data.txt",
                 "notes": "常用"
               }
@@ -869,7 +869,7 @@
               "包名": {
                 "type": "string",
                 "required": true,
-                "description": "应用包名",
+                "description": "应用包名           ",
                 "example": "com.example.app",
                 "notes": "常用"
               }
@@ -883,7 +883,7 @@
               "设备IP": {
                 "type": "string",
                 "required": true,
-                "description": "设备 IP 地址",
+                "description": "设备 IP 地址       ",
                 "example": "192.168.1.100",
                 "notes": "常用"
               }
@@ -907,7 +907,7 @@
           "子命令": {
             "type": "string",
             "required": true,
-            "description": "adb 子命令",
+            "description": "adb 子命令        ",
             "example": "devices",
             "notes": "常用"
           }
@@ -941,7 +941,7 @@
               "设备名": {
                 "type": "string",
                 "required": true,
-                "description": "设备名称",
+                "description": "设备名称           ",
                 "example": "MyiPhone",
                 "notes": "可选"
               }
@@ -955,7 +955,7 @@
               "设备UUID": {
                 "type": "string",
                 "required": true,
-                "description": "设备 UUID",
+                "description": "设备 UUID        ",
                 "example": "XXXX-XXXX",
                 "notes": "可选"
               }
@@ -969,7 +969,7 @@
               "设备UUID": {
                 "type": "string",
                 "required": true,
-                "description": "设备 UUID",
+                "description": "设备 UUID        ",
                 "example": "XXXX-XXXX",
                 "notes": "可选"
               }
@@ -995,7 +995,7 @@
               "项目名": {
                 "type": "string",
                 "required": true,
-                "description": "项目名",
+                "description": "项目名            ",
                 "example": "App",
                 "notes": "常用"
               }
@@ -1009,7 +1009,7 @@
               "项目名": {
                 "type": "string",
                 "required": true,
-                "description": "项目名",
+                "description": "项目名            ",
                 "example": "App",
                 "notes": "常用"
               }
@@ -1033,28 +1033,28 @@
           "项目名": {
             "type": "string",
             "required": true,
-            "description": "项目名（不含扩展名）",
+            "description": "项目名（不含扩展名）     ",
             "example": "App",
             "notes": "常用"
           },
           "scheme": {
             "type": "string",
             "required": true,
-            "description": "Scheme 名称",
+            "description": "Scheme 名称      ",
             "example": "App",
             "notes": "常用"
           },
           "sdk": {
             "type": "string",
             "required": true,
-            "description": "SDK 类型",
+            "description": "SDK 类型         ",
             "example": "iphonesimulator",
             "notes": "常用"
           },
           "目标": {
             "type": "string",
             "required": true,
-            "description": "目标位置",
+            "description": "目标位置           ",
             "example": "platform=iOS Simulator,name=iPhone 15",
             "notes": "常用"
           }
@@ -1076,7 +1076,7 @@
               "项目名称": {
                 "type": "string",
                 "required": true,
-                "description": "项目名称",
+                "description": "项目名称           ",
                 "example": "my-app",
                 "notes": "常用"
               }
@@ -1090,7 +1090,7 @@
               "项目名称": {
                 "type": "string",
                 "required": true,
-                "description": "项目名称",
+                "description": "项目名称           ",
                 "example": "my-app",
                 "notes": "常用"
               }
@@ -1104,7 +1104,7 @@
               "项目名称": {
                 "type": "string",
                 "required": true,
-                "description": "项目名称",
+                "description": "项目名称           ",
                 "example": "my-app",
                 "notes": "可选"
               }
@@ -1118,7 +1118,7 @@
               "项目名称": {
                 "type": "string",
                 "required": true,
-                "description": "项目名称",
+                "description": "项目名称           ",
                 "example": "my-app",
                 "notes": "常用"
               }
@@ -1130,14 +1130,14 @@
           "项目名称": {
             "type": "string",
             "required": true,
-            "description": "项目名称",
+            "description": "项目名称           ",
             "example": "my-app",
             "notes": "常用"
           },
           "模板": {
             "type": "string",
             "required": true,
-            "description": "模板类型",
+            "description": "模板类型           ",
             "example": "blank",
             "notes": "常用"
           }
@@ -1171,7 +1171,7 @@
               "平台": {
                 "type": "string",
                 "required": true,
-                "description": "平台名称",
+                "description": "平台名称           ",
                 "example": "android",
                 "notes": "常用"
               }
@@ -1203,7 +1203,7 @@
               "端口": {
                 "type": "number",
                 "required": true,
-                "description": "端口号",
+                "description": "端口号            ",
                 "example": "8100",
                 "notes": "常用"
               }
@@ -1235,14 +1235,14 @@
               "应用名": {
                 "type": "string",
                 "required": true,
-                "description": "应用显示名称",
+                "description": "应用显示名称         ",
                 "example": "MyApp",
                 "notes": "常用"
               },
               "包名": {
                 "type": "string",
                 "required": true,
-                "description": "包名/ID",
+                "description": "包名/ID          ",
                 "example": "com.example.myapp",
                 "notes": "常用"
               }
@@ -1278,14 +1278,14 @@
           "应用名": {
             "type": "string",
             "required": true,
-            "description": "应用显示名称",
+            "description": "应用显示名称         ",
             "example": "MyApp",
             "notes": "常用"
           },
           "包名": {
             "type": "string",
             "required": true,
-            "description": "包名/ID",
+            "description": "包名/ID          ",
             "example": "com.example.myapp",
             "notes": "常用"
           }
@@ -1377,7 +1377,7 @@
           "平台": {
             "type": "string",
             "required": true,
-            "description": "平台名称",
+            "description": "平台名称           ",
             "example": "ios",
             "notes": "常用"
           }
@@ -1421,7 +1421,7 @@
           "平台": {
             "type": "string",
             "required": true,
-            "description": "平台名称",
+            "description": "平台名称           ",
             "example": "ios",
             "notes": "常用"
           }
@@ -1465,7 +1465,7 @@
           "平台": {
             "type": "string",
             "required": true,
-            "description": "平台名称",
+            "description": "平台名称           ",
             "example": "ios",
             "notes": "常用"
           }
@@ -1487,7 +1487,7 @@
               "插件名": {
                 "type": "string",
                 "required": true,
-                "description": "插件名称",
+                "description": "插件名称           ",
                 "example": "@capacitor/camera",
                 "notes": "常用"
               }
@@ -1507,7 +1507,7 @@
               "插件名": {
                 "type": "string",
                 "required": true,
-                "description": "插件名称",
+                "description": "插件名称           ",
                 "example": "@capacitor/camera",
                 "notes": "常用"
               }
@@ -1521,7 +1521,7 @@
               "关键词": {
                 "type": "string",
                 "required": true,
-                "description": "搜索关键词",
+                "description": "搜索关键词          ",
                 "example": "camera",
                 "notes": "常用"
               }
@@ -1533,7 +1533,7 @@
           "插件名": {
             "type": "string",
             "required": true,
-            "description": "插件名称",
+            "description": "插件名称           ",
             "example": "@capacitor/camera",
             "notes": "常用"
           }
@@ -1555,7 +1555,7 @@
               "项目名称": {
                 "type": "string",
                 "required": true,
-                "description": "项目名称",
+                "description": "项目名称           ",
                 "example": "my-tauri-app",
                 "notes": "常用"
               }
@@ -1569,7 +1569,7 @@
               "项目名称": {
                 "type": "string",
                 "required": true,
-                "description": "项目名称",
+                "description": "项目名称           ",
                 "example": "my-tauri-app",
                 "notes": "常用"
               }
@@ -1583,7 +1583,7 @@
               "项目名称": {
                 "type": "string",
                 "required": true,
-                "description": "项目名称",
+                "description": "项目名称           ",
                 "example": "my-tauri-app",
                 "notes": "常用"
               }
@@ -1597,7 +1597,7 @@
               "项目名称": {
                 "type": "string",
                 "required": true,
-                "description": "项目名称",
+                "description": "项目名称           ",
                 "example": "my-tauri-app",
                 "notes": "常用"
               }
@@ -1611,7 +1611,7 @@
               "项目名称": {
                 "type": "string",
                 "required": true,
-                "description": "项目名称",
+                "description": "项目名称           ",
                 "example": "my-tauri-app",
                 "notes": "常用"
               }
@@ -1623,7 +1623,7 @@
           "项目名称": {
             "type": "string",
             "required": true,
-            "description": "项目名称",
+            "description": "项目名称           ",
             "example": "my-tauri-app",
             "notes": "常用"
           }
@@ -1693,7 +1693,7 @@
               "应用名": {
                 "type": "string",
                 "required": true,
-                "description": "应用名称",
+                "description": "应用名称           ",
                 "example": "MyApp",
                 "notes": "常用"
               }

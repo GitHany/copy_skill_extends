@@ -1,0 +1,55 @@
+{
+  "module": "容器编排/kubectl-恢复调度 uncordon",
+  "version": "2.0",
+  "description": "kubectl 恢复调度命令。将节点从不可调度状态恢复为可调度状态，允许新的 Pod 被调度到该节点。通常在节点维护完成后使用，与 cordon/drain 配合使用。常见场景：维护完成后恢复节点、故障节点修复后重新启用、资源紧张时激活备用节点。",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl uncordon 恢复调度",
+      "keyword": "kubectl uncordon 恢复",
+      "description": "将节点恢复为可调度状态。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl uncordon %{节点}%",
+        "extensions": [
+          {
+            "name": "kubectl uncordon 恢复单个节点",
+            "description": "将节点恢复为可调度状态                   ",
+            "params": {
+              "节点": {
+                "type": "string",
+                "required": true,
+                "description": "节点名            ",
+                "example": "node1",
+                "notes": "必填"
+              }
+            },
+            "cmd": "kubectl uncordon %{节点}%"
+          },
+          {
+            "name": "kubectl uncordon 批量恢复节点",
+            "description": "同时恢复多个节点的调度                   ",
+            "params": {
+              "节点列表": {
+                "type": "string",
+                "required": true,
+                "description": "多个节点名          ",
+                "example": "node1 node2 node3",
+                "notes": "必填"
+              }
+            },
+            "cmd": "kubectl uncordon %{节点}%"
+          }
+        ],
+        "params": {
+          "节点": {
+            "type": "string",
+            "required": true,
+            "description": "节点             ",
+            "example": "node1",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

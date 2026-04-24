@@ -1,0 +1,146 @@
+{
+  "module": "版本控制/Git-代码搜索 grep",
+  "version": "3.0",
+  "description": "Git grep search tool in repository",
+  "commands": [
+    {
+      "dirPath": "/版本控制/",
+      "name": "git grep sousuo",
+      "keyword": "git grep sousuo",
+      "description": "Search in Git repo。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git grep '%{moshi}%'",
+        "extensions": [
+          {
+            "name": "git grep -i case insensitive",
+            "description": "Case insensitive search       ",
+            "params": {
+              "moshi": {
+                "type": "string",
+                "required": true,
+                "description": "Pattern        ",
+                "example": "TODO",
+                "notes": "Required"
+              }
+            },
+            "cmd": "git grep '%{moshi}%'"
+          },
+          {
+            "name": "git grep -n line numbers",
+            "description": "Show line numbers             ",
+            "params": {
+              "moshi": {
+                "type": "string",
+                "required": true,
+                "description": "Pattern        ",
+                "example": "function",
+                "notes": "Required"
+              }
+            },
+            "cmd": "git grep '%{moshi}%'"
+          },
+          {
+            "name": "git grep --count count",
+            "description": "Count matches per file        ",
+            "params": {
+              "moshi": {
+                "type": "string",
+                "required": true,
+                "description": "Pattern        ",
+                "example": "error",
+                "notes": "Required"
+              }
+            },
+            "cmd": "git grep '%{moshi}%'"
+          },
+          {
+            "name": "git grep --all-match all patterns",
+            "description": "Match all patterns            ",
+            "params": {
+              "moshi": {
+                "type": "string",
+                "required": true,
+                "description": "Pattern        ",
+                "example": "TODO",
+                "notes": "Required"
+              }
+            },
+            "cmd": "git grep '%{moshi}%'"
+          },
+          {
+            "name": "git grep branch search",
+            "description": "Search in branch              ",
+            "params": {
+              "moshi": {
+                "type": "string",
+                "required": true,
+                "description": "Pattern        ",
+                "example": "login",
+                "notes": "Required"
+              },
+              "fenzhi": {
+                "type": "string",
+                "required": false,
+                "description": "Branch name    ",
+                "example": "main",
+                "notes": "Optional"
+              }
+            },
+            "cmd": "git grep '%{moshi}%'"
+          },
+          {
+            "name": "git grep -w whole word",
+            "description": "Match whole word only         ",
+            "params": {
+              "moshi": {
+                "type": "string",
+                "required": true,
+                "description": "Word           ",
+                "example": "export",
+                "notes": "Required"
+              }
+            },
+            "cmd": "git grep '%{moshi}%'"
+          },
+          {
+            "name": "git grep -e regex",
+            "description": "Use regex search              ",
+            "params": {
+              "zhengze": {
+                "type": "string",
+                "required": true,
+                "description": "Regex pattern  ",
+                "example": "^function",
+                "notes": "Required"
+              }
+            },
+            "cmd": "git grep '%{moshi}%'"
+          },
+          {
+            "name": "git grep -c file count",
+            "description": "Count lines per file          ",
+            "params": {
+              "moshi": {
+                "type": "string",
+                "required": true,
+                "description": "Pattern        ",
+                "example": "TODO",
+                "notes": "Required"
+              }
+            },
+            "cmd": "git grep '%{moshi}%'"
+          }
+        ],
+        "params": {
+          "moshi": {
+            "type": "string",
+            "required": true,
+            "description": "Pattern        ",
+            "example": "TODO",
+            "notes": "Required"
+          }
+        }
+      }
+    }
+  ]
+}

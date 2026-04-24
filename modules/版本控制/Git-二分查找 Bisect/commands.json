@@ -1,0 +1,180 @@
+{
+  "module": "版本控制/Git-二分查找 Bisect",
+  "version": "2.0",
+  "description": "Git Bisect命令集合，涵盖Git Bisect的常用操作和最佳实践",
+  "commands": [
+    {
+      "cmd": "git bisect start",
+      "extensions": [
+        {
+          "name": "标记坏提交",
+          "cmd": "git bisect bad %{提交}%",
+          "params": {
+            "提交": {
+              "type": "string",
+              "required": true,
+              "description": "提交",
+              "example": "HEAD",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git bisect bad"
+        },
+        {
+          "name": "标记好提交",
+          "cmd": "git bisect good %{提交}%",
+          "params": {
+            "提交": {
+              "type": "string",
+              "required": true,
+              "description": "提交",
+              "example": "v1.0.0",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git bisect good"
+        },
+        {
+          "name": "重置二分查找",
+          "cmd": "git bisect reset %{提交}%",
+          "params": {
+            "提交": {
+              "type": "string",
+              "required": false,
+              "description": "提交",
+              "example": "HEAD",
+              "notes": "可选，默认返回HEAD"
+            }
+          },
+          "keyword": "git bisect reset stop"
+        },
+        {
+          "name": "跳过当前提交",
+          "cmd": "git bisect skip %{提交}%",
+          "params": {
+            "提交": {
+              "type": "string",
+              "required": false,
+              "description": "提交",
+              "example": "HEAD",
+              "notes": "可选，默认跳过当前"
+            }
+          },
+          "keyword": "git bisect skip"
+        },
+        {
+          "name": "自动执行二分查找",
+          "cmd": "git bisect run %{命令}%",
+          "params": {
+            "命令": {
+              "type": "string",
+              "required": true,
+              "description": "测试命令",
+              "example": "npm test",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git bisect run auto"
+        },
+        {
+          "name": "开始二分查找",
+          "cmd": "git bisect start",
+          "params": {},
+          "keyword": "git bisect start begin"
+        },
+        {
+          "name": "查看二分查找状态",
+          "cmd": "git bisect status",
+          "params": {},
+          "keyword": "git bisect status view"
+        },
+        {
+          "name": "查看二分查找日志",
+          "cmd": "git bisect log",
+          "params": {},
+          "keyword": "git bisect log history"
+        },
+        {
+          "name": "二分查找可视化状态",
+          "cmd": "git bisect visualize",
+          "description": "以图形方式显示二分查找进度",
+          "params": {},
+          "keyword": "git bisect visualize graph"
+        },
+        {
+          "name": "二分查找结果导出",
+          "cmd": "git bisect log > %{文件路径}%",
+          "params": {
+            "文件路径": {
+              "type": "string",
+              "required": true,
+              "description": "导出文件路径",
+              "example": "bisect-log.txt",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git bisect log export"
+        },
+        {
+          "name": "二分查找结果导入",
+          "cmd": "git bisect replay %{文件路径}%",
+          "params": {
+            "文件路径": {
+              "type": "string",
+              "required": true,
+              "description": "日志文件路径",
+              "example": "bisect-log.txt",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git bisect replay import"
+        },
+        {
+          "name": "自动二分查找多个提交",
+          "cmd": "git bisect start %{坏提交}% %{好提交}% -- %{测试脚本}%",
+          "params": {
+            "坏提交": {
+              "type": "string",
+              "required": true,
+              "description": "已知有问题的提交",
+              "example": "HEAD",
+              "notes": "必填"
+            },
+            "好提交": {
+              "type": "string",
+              "required": true,
+              "description": "正常的提交版本",
+              "example": "v1.0.0",
+              "notes": "必填"
+            },
+            "测试脚本": {
+              "type": "string",
+              "required": true,
+              "description": "测试脚本路径",
+              "example": "./test.sh",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git bisect auto multiple"
+        },
+        {
+          "name": "查看二分查找帮助",
+          "cmd": "git bisect help",
+          "description": "显示二分查找命令帮助信息",
+          "params": {},
+          "keyword": "git bisect help"
+        }
+      ],
+      "params": {},
+      "dirPath": "/版本控制/",
+      "name": "Git Bisect 命令",
+      "keyword": "Git Bisect 命令",
+      "description": "Git Bisect 命令的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

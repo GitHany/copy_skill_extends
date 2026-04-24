@@ -1,0 +1,199 @@
+{
+  "module": "容器编排/Kubernetes 集群管理",
+  "version": "2.0",
+  "description": "Kubernetes 集群级别管理命令，涵盖Kubernetes 集群管理的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl cluster-info 集群信息",
+      "keyword": "kubectl cluster 集群",
+      "description": "查看集群信息。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl cluster-info",
+        "extensions": [
+          {
+            "name": "显示集群详细信息",
+            "cmd": "kubectl cluster-info dump",
+            "params": {},
+            "keyword": "kubectl cluster-info dump"
+          },
+          {
+            "name": "显示 Kubernetes 服务信息",
+            "cmd": "kubectl cluster-info - kubernetes",
+            "params": {},
+            "keyword": "kubectl cluster-info kubernetes"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl get nodes 查看节点",
+      "keyword": "kubectl nodes 节点",
+      "description": "查看集群节点。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl get nodes",
+        "extensions": [
+          {
+            "name": "显示详细信息",
+            "cmd": "kubectl get nodes -o wide",
+            "params": {},
+            "keyword": "kubectl nodes wide"
+          },
+          {
+            "name": "显示节点标签",
+            "cmd": "kubectl get nodes --show-labels",
+            "params": {},
+            "keyword": "kubectl nodes labels"
+          },
+          {
+            "name": "以 YAML 格式输出",
+            "cmd": "kubectl get nodes -o yaml",
+            "params": {},
+            "keyword": "kubectl nodes yaml"
+          },
+          {
+            "name": "显示 Ready 状态的节点",
+            "cmd": "kubectl get nodes --field-selector status.condition=Ready",
+            "params": {},
+            "keyword": "kubectl nodes ready"
+          },
+          {
+            "name": "查看节点资源使用详情",
+            "cmd": "kubectl top nodes %{节点名称}%",
+            "params": {
+              "节点名称": {
+                "type": "string",
+                "required": false,
+                "description": "节点名称         ",
+                "example": "node1",
+                "notes": "选填"
+              }
+            },
+            "keyword": "kubectl nodes top"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl top nodes 节点资源",
+      "keyword": "kubectl top 资源",
+      "description": "查看节点资源使用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl top nodes",
+        "extensions": [
+          {
+            "name": "查看指定节点资源使用",
+            "cmd": "kubectl top nodes %{节点名称}%",
+            "params": {
+              "节点名称": {
+                "type": "string",
+                "required": false,
+                "description": "节点名称         ",
+                "example": "node1",
+                "notes": "选填"
+              }
+            },
+            "keyword": "kubectl top nodes specific"
+          },
+          {
+            "name": "显示 pods 资源使用",
+            "cmd": "kubectl top nodes --show-pods",
+            "params": {},
+            "keyword": "kubectl top nodes pods"
+          },
+          {
+            "name": "按 CPU 使用排序",
+            "cmd": "kubectl top nodes --sort-by=cpu",
+            "params": {},
+            "keyword": "kubectl top nodes sort cpu"
+          },
+          {
+            "name": "按内存使用排序",
+            "cmd": "kubectl top nodes --sort-by=memory",
+            "params": {},
+            "keyword": "kubectl top nodes sort memory"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl get namespaces 查看命名空间",
+      "keyword": "kubectl namespaces 命名空间",
+      "description": "列出所有命名空间。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl get namespaces",
+        "extensions": [
+          {
+            "name": "显示命名空间详情",
+            "cmd": "kubectl get namespaces -o wide",
+            "params": {},
+            "keyword": "kubectl namespaces wide"
+          },
+          {
+            "name": "以 YAML 格式输出",
+            "cmd": "kubectl get namespaces -o yaml",
+            "params": {},
+            "keyword": "kubectl namespaces yaml"
+          },
+          {
+            "name": "显示默认命名空间",
+            "cmd": "kubectl get namespaces default",
+            "params": {},
+            "keyword": "kubectl namespaces default"
+          },
+          {
+            "name": "按名称排序",
+            "cmd": "kubectl get namespaces --sort-by=.metadata.name",
+            "params": {},
+            "keyword": "kubectl namespaces sort"
+          },
+          {
+            "name": "显示命名空间状态",
+            "cmd": "kubectl get namespaces -o custom-columns=NAME:.metadata.name,STATUS:.status.phase",
+            "params": {},
+            "keyword": "kubectl namespaces status"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl api-versions API 版本",
+      "keyword": "kubectl api API",
+      "description": "查看支持的 API 版本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl api-versions",
+        "extensions": [
+          {
+            "name": "排序显示 API 版本",
+            "cmd": "kubectl api-versions | sort",
+            "params": {},
+            "keyword": "kubectl api-versions sort"
+          },
+          {
+            "name": "查找特定 API 组",
+            "cmd": "kubectl api-versions | grep %{API组}%",
+            "params": {
+              "API组": {
+                "type": "string",
+                "required": false,
+                "description": "API 组名称       ",
+                "example": "apps",
+                "notes": "选填"
+              }
+            },
+            "keyword": "kubectl api-versions grep"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

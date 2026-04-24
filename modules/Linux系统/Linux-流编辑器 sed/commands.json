@@ -1,0 +1,192 @@
+{
+  "module": "Linux系统/Linux-流编辑器 sed",
+  "version": "2.0",
+  "description": "Linux sed 流编辑器。强大的文本替换和转换工具，逐行处理输入。用于批量修改配置文件、查找替换文本、删除特定行。常见场景：批量替换服务器地址、删除日志中的特定行、格式化文本。",
+  "commands": [
+    {
+      "dirPath": "/Linux系统/",
+      "name": "sed 替换文本",
+      "keyword": "sed 替换",
+      "description": "流编辑器文本替换。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "sed -i 's/%{原}%/%{新}%/g' %{文件}%",
+        "extensions": [
+          {
+            "name": "替换文本",
+            "description": "将文件中所有匹配的文本替换为新文本             ",
+            "params": {
+              "原": {
+                "example": "localhost",
+                "notes": "原文本",
+                "description": "               "
+              },
+              "新": {
+                "example": "127.0.0.1",
+                "notes": "新文本",
+                "description": "               "
+              },
+              "文件": {
+                "example": "config.txt",
+                "notes": "目标文件",
+                "description": "               "
+              }
+            },
+            "cmd": "sed -i 's/%{原}%/%{新}%/g' %{文件}%"
+          },
+          {
+            "name": "删除匹配行",
+            "description": "删除包含特定模式的行                    ",
+            "params": {
+              "模式": {
+                "example": "^#",
+                "notes": "要删除的行模式",
+                "description": "               "
+              },
+              "文件": {
+                "example": "config.cfg",
+                "notes": "目标文件",
+                "description": "               "
+              }
+            },
+            "cmd": "sed -i '/%{模式}%/d' %{文件}%"
+          },
+          {
+            "name": "在行首添加",
+            "description": "在每行开头添加指定文本                   ",
+            "params": {
+              "文本": {
+                "example": "//",
+                "notes": "添加的文本",
+                "description": "               "
+              },
+              "文件": {
+                "example": "script.js",
+                "notes": "文件",
+                "description": "               "
+              }
+            },
+            "cmd": "sed -i 's/^/%{文本}%/' %{文件}%"
+          },
+          {
+            "name": "在行尾添加",
+            "description": "在每行末尾添加指定文本                   ",
+            "params": {
+              "文本": {
+                "example": ";",
+                "notes": "添加的文本",
+                "description": "               "
+              },
+              "文件": {
+                "example": "data.csv",
+                "notes": "文件",
+                "description": "               "
+              }
+            },
+            "cmd": "sed -i 's/$/%{文本}%/' %{文件}%"
+          },
+          {
+            "name": "显示特定行",
+            "description": "只显示文件中的特定行，如第5行               ",
+            "params": {
+              "行号": {
+                "example": "5",
+                "notes": "行号",
+                "description": "               "
+              },
+              "文件": {
+                "example": "log.txt",
+                "notes": "文件",
+                "description": "               "
+              }
+            },
+            "cmd": "sed -n '%{行号}%p' %{文件}%"
+          },
+          {
+            "name": "替换第N次出现",
+            "description": "每行只替换第N次匹配的内容                 ",
+            "params": {
+              "原": {
+                "example": "old",
+                "notes": "原文本",
+                "description": "               "
+              },
+              "新": {
+                "example": "new",
+                "notes": "新文本",
+                "description": "               "
+              },
+              "次数": {
+                "example": "1",
+                "notes": "第几次匹配",
+                "description": "               "
+              },
+              "文件": {
+                "example": "data.txt",
+                "notes": "文件",
+                "description": "               "
+              }
+            },
+            "cmd": "sed -i 's/%{原}%/%{新}%/%{次数}%' %{文件}%"
+          },
+          {
+            "name": "多点批量替换",
+            "description": "一次执行多个替换操作                    ",
+            "params": {
+              "文件": {
+                "example": "config.json",
+                "notes": "文件",
+                "description": "               "
+              }
+            },
+            "cmd": "sed -i -e 's/foo/bar/g' -e 's/aaa/bbb/g' %{文件}%"
+          },
+          {
+            "name": "在特定行后插入",
+            "description": "在匹配行的后面插入新行                   ",
+            "params": {
+              "模式": {
+                "example": "^\\[server\\]",
+                "notes": "匹配模式",
+                "description": "               "
+              },
+              "内容": {
+                "example": "port=8080",
+                "notes": "插入内容",
+                "description": "               "
+              },
+              "文件": {
+                "example": "nginx.conf",
+                "notes": "文件",
+                "description": "               "
+              }
+            },
+            "cmd": "sed -i '/%{模式}%a\\%{内容}%' %{文件}%"
+          }
+        ],
+        "params": {
+          "原": {
+            "type": "string",
+            "required": true,
+            "description": "原文本            ",
+            "example": "foo",
+            "notes": "必填"
+          },
+          "新": {
+            "type": "string",
+            "required": true,
+            "description": "新文本            ",
+            "example": "bar",
+            "notes": "必填"
+          },
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "文件             ",
+            "example": "file.txt",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

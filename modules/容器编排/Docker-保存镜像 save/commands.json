@@ -1,0 +1,201 @@
+{
+  "module": "容器编排/Docker-保存镜像 save",
+  "version": "2.0",
+  "description": "Docker 镜像保存加载，涵盖Docker save的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker save 保存镜像",
+      "keyword": "docker save 保存",
+      "description": "将镜像保存为 tar 文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker save -o %{文件}% %{镜像}%",
+        "extensions": [
+          {
+            "name": "保存多个镜像为一个tar包",
+            "cmd": "docker save -o backup.tar %{镜像1}% %{镜像2}% %{镜像3}%",
+            "params": {
+              "镜像1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个要保存的镜像名称",
+                "example": "nginx:latest",
+                "notes": "必填，镜像名称格式为 name:tag"
+              },
+              "镜像2": {
+                "type": "string",
+                "required": false,
+                "description": "第二个要保存的镜像名称",
+                "example": "redis:alpine",
+                "notes": "可选，用于批量保存多个镜像"
+              },
+              "镜像3": {
+                "type": "string",
+                "required": false,
+                "description": "第三个要保存的镜像名称",
+                "example": "mysql:8.0",
+                "notes": "可选，用于批量保存多个镜像"
+              }
+            },
+            "keyword": "docker save multiple images"
+          },
+          {
+            "name": "使用 gzip 压缩保存镜像",
+            "cmd": "docker save %{镜像}% | gzip > %{文件}%.tar.gz",
+            "params": {
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "要保存的镜像名称",
+                "example": "nginx:latest",
+                "notes": "必填"
+              },
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "输出文件路径（不含扩展名）",
+                "example": "image_backup",
+                "notes": "必填，将自动添加 .tar.gz 扩展名"
+              }
+            },
+            "keyword": "docker save gzip compress"
+          },
+          {
+            "name": "保存时显示详细输出",
+            "cmd": "docker save -o %{文件}% %{镜像}% --quiet",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "输出文件路径",
+                "example": "image.tar",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "要保存的镜像名称",
+                "example": "nginx:latest",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker save verbose quiet"
+          },
+          {
+            "name": "保存镜像并包含所有元数据",
+            "cmd": "docker save -o %{文件}% $(docker images -q %{镜像}%)",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "输出文件路径",
+                "example": "image.tar",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名称或ID（支持部分匹配）",
+                "example": "nginx",
+                "notes": "必填，支持镜像名、ID或部分ID前缀"
+              }
+            },
+            "keyword": "docker save all tags metadata"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "输出 tar 文件的路径",
+            "example": "image.tar",
+            "notes": "必填，建议使用 .tar 扩展名"
+          },
+          "镜像": {
+            "type": "string",
+            "required": true,
+            "description": "要保存的镜像名称",
+            "example": "nginx:latest",
+            "notes": "必填，格式为 name:tag"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker load 加载镜像",
+      "keyword": "docker load 加载",
+      "description": "从 tar 文件加载镜像。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker load -i %{文件}%",
+        "extensions": [
+          {
+            "name": "从 gzip 压缩文件加载镜像",
+            "cmd": "gunzip -c %{文件}%.tar.gz | docker load",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "压缩文件路径（不含扩展名）",
+                "example": "image_backup",
+                "notes": "必填，文件应为 .tar.gz 格式"
+              }
+            },
+            "keyword": "docker load gzip decompress"
+          },
+          {
+            "name": "加载镜像并显示详细进度",
+            "cmd": "docker load -i %{文件}% --input /dev/stdin",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "要加载的 tar 文件路径",
+                "example": "image.tar",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker load verbose progress"
+          },
+          {
+            "name": "静默模式加载镜像",
+            "cmd": "docker load -i %{文件}% --quiet",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "要加载的 tar 文件路径",
+                "example": "image.tar",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker load quiet silent"
+          },
+          {
+            "name": "从标准输入加载压缩镜像",
+            "cmd": "cat %{文件}%.tar.gz | docker load",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "压缩的 tar.gz 文件路径",
+                "example": "/backup/image",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker load stdin pipe"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "要加载的 tar 文件路径",
+            "example": "image.tar",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

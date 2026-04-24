@@ -1,5 +1,5 @@
 {
-  "module": "网络诊断",
+  "module": "网络诊断/网络诊断",
   "version": "1.0",
   "description": "网络诊断 命令模块集合，涵盖网络诊断的常用操作和最佳实践",
   "commands": [
@@ -18,7 +18,7 @@
               "主机": {
                 "type": "string",
                 "required": false,
-                "description": "",
+                "description": "               ",
                 "example": "",
                 "notes": "可选"
               }
@@ -32,7 +32,7 @@
               "主机": {
                 "type": "string",
                 "required": false,
-                "description": "",
+                "description": "               ",
                 "example": "",
                 "notes": "可选"
               }
@@ -46,7 +46,7 @@
               "主机": {
                 "type": "string",
                 "required": false,
-                "description": "",
+                "description": "               ",
                 "example": "",
                 "notes": "可选"
               }
@@ -60,7 +60,7 @@
               "主机": {
                 "type": "string",
                 "required": false,
-                "description": "",
+                "description": "               ",
                 "example": "",
                 "notes": "可选"
               }
@@ -74,7 +74,7 @@
               "主机": {
                 "type": "string",
                 "required": false,
-                "description": "",
+                "description": "               ",
                 "example": "",
                 "notes": "可选"
               }
@@ -86,14 +86,14 @@
           "选项": {
             "type": "string",
             "required": false,
-            "description": "ping 选项",
+            "description": "ping 选项        ",
             "example": "-c 4",
             "notes": "可选，如 -c 次数，-i 间隔"
           },
           "主机或IP": {
             "type": "string",
             "required": true,
-            "description": "目标主机名或 IP 地址",
+            "description": "目标主机名或 IP 地址   ",
             "example": "google.com",
             "notes": "必填"
           }
@@ -115,7 +115,7 @@
               "主机": {
                 "type": "string",
                 "required": false,
-                "description": "目标主机或 IP",
+                "description": "目标主机或 IP       ",
                 "example": "google.com",
                 "notes": "可选"
               }
@@ -129,7 +129,7 @@
               "主机": {
                 "type": "string",
                 "required": false,
-                "description": "目标主机或 IP",
+                "description": "目标主机或 IP       ",
                 "example": "google.com",
                 "notes": "可选"
               }
@@ -143,7 +143,7 @@
               "主机": {
                 "type": "string",
                 "required": false,
-                "description": "目标主机或 IP",
+                "description": "目标主机或 IP       ",
                 "example": "google.com",
                 "notes": "可选"
               }
@@ -157,7 +157,7 @@
               "主机": {
                 "type": "string",
                 "required": false,
-                "description": "目标主机或 IP",
+                "description": "目标主机或 IP       ",
                 "example": "google.com",
                 "notes": "可选"
               }
@@ -171,7 +171,7 @@
               "主机": {
                 "type": "string",
                 "required": false,
-                "description": "目标主机或 IP",
+                "description": "目标主机或 IP       ",
                 "example": "google.com",
                 "notes": "可选"
               }
@@ -183,14 +183,14 @@
           "选项": {
             "type": "string",
             "required": false,
-            "description": "traceroute 选项",
+            "description": "traceroute 选项  ",
             "example": "-m 30",
             "notes": "可选"
           },
           "主机": {
             "type": "string",
             "required": true,
-            "description": "目标主机或 IP",
+            "description": "目标主机或 IP       ",
             "example": "google.com",
             "notes": "必填"
           }
@@ -252,7 +252,7 @@
           "选项": {
             "type": "string",
             "required": false,
-            "description": "netstat 选项",
+            "description": "netstat 选项     ",
             "example": "-tulpn",
             "notes": "常用 -t TCP，-u UDP，-l 监听，-p 进程，-n 数字"
           }
@@ -274,7 +274,7 @@
               "域名": {
                 "type": "string",
                 "required": false,
-                "description": "要查询的域名",
+                "description": "要查询的域名         ",
                 "example": "google.com",
                 "notes": "可选"
               }
@@ -288,7 +288,7 @@
               "域名": {
                 "type": "string",
                 "required": false,
-                "description": "要查询的域名",
+                "description": "要查询的域名         ",
                 "example": "google.com",
                 "notes": "可选"
               }
@@ -302,7 +302,7 @@
               "域名": {
                 "type": "string",
                 "required": false,
-                "description": "要查询的域名",
+                "description": "要查询的域名         ",
                 "example": "google.com",
                 "notes": "可选"
               }
@@ -316,7 +316,7 @@
               "域名": {
                 "type": "string",
                 "required": false,
-                "description": "要查询的域名",
+                "description": "要查询的域名         ",
                 "example": "google.com",
                 "notes": "可选"
               }
@@ -334,14 +334,14 @@
           "域名": {
             "type": "string",
             "required": true,
-            "description": "要查询的域名",
+            "description": "要查询的域名         ",
             "example": "google.com",
             "notes": "必填"
           },
           "DNS服务器": {
             "type": "string",
             "required": false,
-            "description": "指定的 DNS 服务器",
+            "description": "指定的 DNS 服务器    ",
             "example": "8.8.8.8",
             "notes": "可选"
           }
@@ -363,7 +363,7 @@
               "域名": {
                 "type": "string",
                 "required": false,
-                "description": "要查询的域名",
+                "description": "要查询的域名         ",
                 "example": "google.com",
                 "notes": "可选"
               }
@@ -377,7 +377,7 @@
               "域名": {
                 "type": "string",
                 "required": false,
-                "description": "要查询的域名",
+                "description": "要查询的域名         ",
                 "example": "google.com",
                 "notes": "可选"
               }
@@ -391,7 +391,7 @@
               "域名": {
                 "type": "string",
                 "required": false,
-                "description": "要查询的域名",
+                "description": "要查询的域名         ",
                 "example": "google.com",
                 "notes": "可选"
               }
@@ -405,7 +405,7 @@
               "域名": {
                 "type": "string",
                 "required": false,
-                "description": "要查询的域名",
+                "description": "要查询的域名         ",
                 "example": "google.com",
                 "notes": "可选"
               }
@@ -419,7 +419,7 @@
               "域名": {
                 "type": "string",
                 "required": false,
-                "description": "要查询的域名",
+                "description": "要查询的域名         ",
                 "example": "google.com",
                 "notes": "可选"
               }
@@ -433,7 +433,7 @@
               "域名": {
                 "type": "string",
                 "required": false,
-                "description": "要查询的域名",
+                "description": "要查询的域名         ",
                 "example": "google.com",
                 "notes": "可选"
               }
@@ -447,7 +447,7 @@
               "域名": {
                 "type": "string",
                 "required": false,
-                "description": "要查询的域名",
+                "description": "要查询的域名         ",
                 "example": "google.com",
                 "notes": "可选"
               }
@@ -459,14 +459,14 @@
           "选项": {
             "type": "string",
             "required": false,
-            "description": "dig 选项",
+            "description": "dig 选项         ",
             "example": "+short",
             "notes": "可选"
           },
           "域名": {
             "type": "string",
             "required": true,
-            "description": "要查询的域名",
+            "description": "要查询的域名         ",
             "example": "google.com",
             "notes": "必填"
           }
@@ -488,7 +488,7 @@
               "URL": {
                 "type": "string",
                 "required": false,
-                "description": "请求 URL",
+                "description": "请求 URL         ",
                 "example": "https://api.example.com",
                 "notes": "可选"
               }
@@ -502,14 +502,14 @@
               "文件名": {
                 "type": "string",
                 "required": false,
-                "description": "",
+                "description": "               ",
                 "example": "",
                 "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
-                "description": "请求 URL",
+                "description": "请求 URL         ",
                 "example": "https://api.example.com",
                 "notes": "可选"
               }
@@ -523,14 +523,14 @@
               "数据": {
                 "type": "string",
                 "required": false,
-                "description": "",
+                "description": "               ",
                 "example": "",
                 "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
-                "description": "请求 URL",
+                "description": "请求 URL         ",
                 "example": "https://api.example.com",
                 "notes": "可选"
               }
@@ -544,7 +544,7 @@
               "URL": {
                 "type": "string",
                 "required": false,
-                "description": "请求 URL",
+                "description": "请求 URL         ",
                 "example": "https://api.example.com",
                 "notes": "可选"
               }
@@ -558,7 +558,7 @@
               "URL": {
                 "type": "string",
                 "required": false,
-                "description": "请求 URL",
+                "description": "请求 URL         ",
                 "example": "https://api.example.com",
                 "notes": "可选"
               }
@@ -572,7 +572,7 @@
               "URL": {
                 "type": "string",
                 "required": false,
-                "description": "请求 URL",
+                "description": "请求 URL         ",
                 "example": "https://api.example.com",
                 "notes": "可选"
               }
@@ -586,7 +586,7 @@
               "URL": {
                 "type": "string",
                 "required": false,
-                "description": "请求 URL",
+                "description": "请求 URL         ",
                 "example": "https://api.example.com",
                 "notes": "可选"
               }
@@ -600,7 +600,7 @@
               "URL": {
                 "type": "string",
                 "required": false,
-                "description": "请求 URL",
+                "description": "请求 URL         ",
                 "example": "https://api.example.com",
                 "notes": "可选"
               }
@@ -614,7 +614,7 @@
               "URL": {
                 "type": "string",
                 "required": false,
-                "description": "请求 URL",
+                "description": "请求 URL         ",
                 "example": "https://api.example.com",
                 "notes": "可选"
               }
@@ -626,14 +626,14 @@
           "选项": {
             "type": "string",
             "required": false,
-            "description": "curl 选项",
+            "description": "curl 选项        ",
             "example": "-X POST",
             "notes": "可选"
           },
           "URL": {
             "type": "string",
             "required": true,
-            "description": "请求 URL",
+            "description": "请求 URL         ",
             "example": "https://api.example.com",
             "notes": "必填"
           }
@@ -655,14 +655,14 @@
               "文件名": {
                 "type": "string",
                 "required": false,
-                "description": "",
+                "description": "               ",
                 "example": "",
                 "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
-                "description": "下载链接",
+                "description": "下载链接           ",
                 "example": "https://example.com/file.zip",
                 "notes": "可选"
               }
@@ -676,7 +676,7 @@
               "URL": {
                 "type": "string",
                 "required": false,
-                "description": "下载链接",
+                "description": "下载链接           ",
                 "example": "https://example.com/file.zip",
                 "notes": "可选"
               }
@@ -690,7 +690,7 @@
               "URL": {
                 "type": "string",
                 "required": false,
-                "description": "下载链接",
+                "description": "下载链接           ",
                 "example": "https://example.com/file.zip",
                 "notes": "可选"
               }
@@ -704,7 +704,7 @@
               "URL": {
                 "type": "string",
                 "required": false,
-                "description": "下载链接",
+                "description": "下载链接           ",
                 "example": "https://example.com/file.zip",
                 "notes": "可选"
               }
@@ -718,7 +718,7 @@
               "URL": {
                 "type": "string",
                 "required": false,
-                "description": "下载链接",
+                "description": "下载链接           ",
                 "example": "https://example.com/file.zip",
                 "notes": "可选"
               }
@@ -732,21 +732,21 @@
               "用户": {
                 "type": "string",
                 "required": false,
-                "description": "",
+                "description": "               ",
                 "example": "",
                 "notes": "可选"
               },
               "密码": {
                 "type": "string",
                 "required": false,
-                "description": "",
+                "description": "               ",
                 "example": "",
                 "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": false,
-                "description": "下载链接",
+                "description": "下载链接           ",
                 "example": "https://example.com/file.zip",
                 "notes": "可选"
               }
@@ -760,7 +760,7 @@
               "文件": {
                 "type": "string",
                 "required": false,
-                "description": "",
+                "description": "               ",
                 "example": "",
                 "notes": "可选"
               }
@@ -774,7 +774,7 @@
               "URL": {
                 "type": "string",
                 "required": false,
-                "description": "下载链接",
+                "description": "下载链接           ",
                 "example": "https://example.com/file.zip",
                 "notes": "可选"
               }
@@ -786,14 +786,14 @@
           "选项": {
             "type": "string",
             "required": false,
-            "description": "wget 选项",
+            "description": "wget 选项        ",
             "example": "-c",
             "notes": "可选"
           },
           "URL": {
             "type": "string",
             "required": true,
-            "description": "下载链接",
+            "description": "下载链接           ",
             "example": "https://example.com/file.zip",
             "notes": "必填"
           }
@@ -815,7 +815,7 @@
               "主机": {
                 "type": "string",
                 "required": false,
-                "description": "目标主机或 IP",
+                "description": "目标主机或 IP       ",
                 "example": "smtp.gmail.com",
                 "notes": "可选"
               }
@@ -829,7 +829,7 @@
               "主机": {
                 "type": "string",
                 "required": false,
-                "description": "目标主机或 IP",
+                "description": "目标主机或 IP       ",
                 "example": "smtp.gmail.com",
                 "notes": "可选"
               }
@@ -843,7 +843,7 @@
               "主机": {
                 "type": "string",
                 "required": false,
-                "description": "目标主机或 IP",
+                "description": "目标主机或 IP       ",
                 "example": "smtp.gmail.com",
                 "notes": "可选"
               }
@@ -857,7 +857,7 @@
               "主机": {
                 "type": "string",
                 "required": false,
-                "description": "目标主机或 IP",
+                "description": "目标主机或 IP       ",
                 "example": "smtp.gmail.com",
                 "notes": "可选"
               }
@@ -871,7 +871,7 @@
               "主机": {
                 "type": "string",
                 "required": false,
-                "description": "目标主机或 IP",
+                "description": "目标主机或 IP       ",
                 "example": "smtp.gmail.com",
                 "notes": "可选"
               }
@@ -885,7 +885,7 @@
               "主机": {
                 "type": "string",
                 "required": false,
-                "description": "目标主机或 IP",
+                "description": "目标主机或 IP       ",
                 "example": "smtp.gmail.com",
                 "notes": "可选"
               }
@@ -897,14 +897,14 @@
           "主机": {
             "type": "string",
             "required": true,
-            "description": "目标主机或 IP",
+            "description": "目标主机或 IP       ",
             "example": "smtp.gmail.com",
             "notes": "必填"
           },
           "端口": {
             "type": "string",
             "required": true,
-            "description": "目标端口",
+            "description": "目标端口           ",
             "example": "80",
             "notes": "必填"
           }
@@ -926,14 +926,14 @@
               "主机": {
                 "type": "string",
                 "required": false,
-                "description": "目标主机或 IP",
+                "description": "目标主机或 IP       ",
                 "example": "example.com",
                 "notes": "监听模式可省略"
               },
               "端口": {
                 "type": "string",
                 "required": false,
-                "description": "端口号",
+                "description": "端口号            ",
                 "example": "80",
                 "notes": "可选"
               }
@@ -947,7 +947,7 @@
               "主机": {
                 "type": "string",
                 "required": false,
-                "description": "目标主机或 IP",
+                "description": "目标主机或 IP       ",
                 "example": "example.com",
                 "notes": "监听模式可省略"
               }
@@ -961,14 +961,14 @@
               "端口": {
                 "type": "string",
                 "required": false,
-                "description": "端口号",
+                "description": "端口号            ",
                 "example": "80",
                 "notes": "可选"
               },
               "文件名": {
                 "type": "string",
                 "required": false,
-                "description": "",
+                "description": "               ",
                 "example": "",
                 "notes": "可选"
               }
@@ -982,21 +982,21 @@
               "主机": {
                 "type": "string",
                 "required": false,
-                "description": "目标主机或 IP",
+                "description": "目标主机或 IP       ",
                 "example": "example.com",
                 "notes": "监听模式可省略"
               },
               "端口": {
                 "type": "string",
                 "required": false,
-                "description": "端口号",
+                "description": "端口号            ",
                 "example": "80",
                 "notes": "可选"
               },
               "文件": {
                 "type": "string",
                 "required": false,
-                "description": "",
+                "description": "               ",
                 "example": "",
                 "notes": "可选"
               }
@@ -1010,7 +1010,7 @@
               "端口": {
                 "type": "string",
                 "required": false,
-                "description": "端口号",
+                "description": "端口号            ",
                 "example": "80",
                 "notes": "可选"
               }
@@ -1024,14 +1024,14 @@
               "主机": {
                 "type": "string",
                 "required": false,
-                "description": "目标主机或 IP",
+                "description": "目标主机或 IP       ",
                 "example": "example.com",
                 "notes": "监听模式可省略"
               },
               "端口": {
                 "type": "string",
                 "required": false,
-                "description": "端口号",
+                "description": "端口号            ",
                 "example": "80",
                 "notes": "可选"
               }
@@ -1045,14 +1045,14 @@
               "主机": {
                 "type": "string",
                 "required": false,
-                "description": "目标主机或 IP",
+                "description": "目标主机或 IP       ",
                 "example": "example.com",
                 "notes": "监听模式可省略"
               },
               "端口": {
                 "type": "string",
                 "required": false,
-                "description": "端口号",
+                "description": "端口号            ",
                 "example": "80",
                 "notes": "可选"
               }
@@ -1066,7 +1066,7 @@
               "主机": {
                 "type": "string",
                 "required": false,
-                "description": "目标主机或 IP",
+                "description": "目标主机或 IP       ",
                 "example": "example.com",
                 "notes": "监听模式可省略"
               }
@@ -1080,14 +1080,14 @@
               "主机": {
                 "type": "string",
                 "required": false,
-                "description": "目标主机或 IP",
+                "description": "目标主机或 IP       ",
                 "example": "example.com",
                 "notes": "监听模式可省略"
               },
               "端口": {
                 "type": "string",
                 "required": false,
-                "description": "端口号",
+                "description": "端口号            ",
                 "example": "80",
                 "notes": "可选"
               }
@@ -1099,21 +1099,21 @@
           "选项": {
             "type": "string",
             "required": false,
-            "description": "nc 选项",
+            "description": "nc 选项          ",
             "example": "-zv",
             "notes": "常用 -z 扫描，-v 详细，-l 监听"
           },
           "主机": {
             "type": "string",
             "required": false,
-            "description": "目标主机或 IP",
+            "description": "目标主机或 IP       ",
             "example": "example.com",
             "notes": "监听模式可省略"
           },
           "端口": {
             "type": "string",
             "required": true,
-            "description": "端口号",
+            "description": "端口号            ",
             "example": "80",
             "notes": "必填"
           }

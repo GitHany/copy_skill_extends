@@ -1,0 +1,55 @@
+{
+  "module": "容器编排/kubectl-应用配置 apply",
+  "version": "2.0",
+  "description": "kubectl 应用资源配置，涵盖kubectl apply的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl apply 应用配置",
+      "keyword": "kubectl apply 应用",
+      "description": "应用 YAML 配置。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl apply -f %{文件}%",
+        "extensions": [
+          {
+            "name": "目录批量",
+            "cmd": "kubectl apply -f %{目录}%/",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "目录             ",
+                "example": "./k8s/",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl apply dir"
+          },
+          {
+            "name": "查看差异",
+            "cmd": "kubectl apply -f %{文件}% --dry-run=server",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件             ",
+                "example": "deploy.yaml",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl apply dryrun"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "YAML 文件        ",
+            "example": "deployment.yaml",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

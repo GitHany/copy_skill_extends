@@ -1,0 +1,141 @@
+{
+  "module": "前端开发/Webpack-打包工具 Webpack",
+  "version": "2.0",
+  "description": "Webpack 模块打包工具，涵盖Webpack的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/前端开发/",
+      "name": "webpack 构建",
+      "keyword": "webpack build 构建",
+      "description": "使用 Webpack 构建。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "webpack",
+        "extensions": [
+          {
+            "name": "生产模式",
+            "cmd": "webpack --mode production",
+            "params": {},
+            "keyword": "webpack mode"
+          },
+          {
+            "name": "开发模式",
+            "cmd": "webpack --mode development",
+            "params": {},
+            "keyword": "webpack dev"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "webpack serve 开发服务器",
+      "keyword": "webpack serve 服务器",
+      "description": "启动 Webpack 开发服务器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "webpack serve",
+        "extensions": [
+          {
+            "name": "指定端口",
+            "cmd": "webpack serve --port %{端口}%",
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口号",
+                "example": "8080",
+                "notes": "必填"
+              }
+            },
+            "keyword": "webpack port"
+          },
+          {
+            "name": "开发模式",
+            "cmd": "webpack serve --mode development",
+            "params": {},
+            "keyword": "webpack dev mode"
+          },
+          {
+            "name": "热更新",
+            "cmd": "webpack serve --hot",
+            "params": {},
+            "keyword": "webpack hot"
+          },
+          {
+            "name": "打开浏览器",
+            "cmd": "webpack serve --open",
+            "params": {},
+            "keyword": "webpack open browser"
+          },
+          {
+            "name": "指定主机",
+            "cmd": "webpack serve --host %{主机}%",
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机地址",
+                "example": "0.0.0.0",
+                "notes": "必填"
+              }
+            },
+            "keyword": "webpack host"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "webpack watch 监听模式",
+      "keyword": "webpack watch 监听",
+      "description": "启动监听模式。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "webpack --watch",
+        "extensions": [
+          {
+            "name": "监视特定文件",
+            "cmd": "webpack --watch --watch-files %{文件路径}%",
+            "params": {
+              "文件路径": {
+                "type": "string",
+                "required": true,
+                "description": "要监视的文件或目录路径",
+                "example": "./src/**/*.js",
+                "notes": "必填"
+              }
+            },
+            "keyword": "webpack watch files"
+          },
+          {
+            "name": "轮询模式监视",
+            "cmd": "webpack --watch --watch-poll %{轮询间隔}%",
+            "params": {
+              "轮询间隔": {
+                "type": "string",
+                "required": true,
+                "description": "轮询间隔时间",
+                "example": "1000",
+                "notes": "必填"
+              }
+            },
+            "keyword": "webpack poll watch"
+          },
+          {
+            "name": "开发模式监听",
+            "cmd": "webpack --watch --mode development",
+            "params": {},
+            "keyword": "webpack watch dev mode"
+          },
+          {
+            "name": "生产模式监听",
+            "cmd": "webpack --watch --mode production",
+            "params": {},
+            "keyword": "webpack watch prod mode"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

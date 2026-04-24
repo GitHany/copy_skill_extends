@@ -1,0 +1,90 @@
+{
+  "module": "Linux系统/Linux-文件搜索 find",
+  "version": "2.0",
+  "description": "Linux find 文件查找命令，涵盖Linux find的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Linux系统/",
+      "name": "find 查找文件",
+      "keyword": "find 查找",
+      "description": "在目录树中查找文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "find %{路径}% -name %{名称}%",
+        "extensions": [
+          {
+            "name": "按类型查找",
+            "cmd": "find %{路径}% -type %{类型}% -name %{名称}%",
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "路径             ",
+                "example": "/home",
+                "notes": "必填"
+              },
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "类型 f/d         ",
+                "example": "f",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "文件名            ",
+                "example": "*.log",
+                "notes": "必填"
+              }
+            },
+            "keyword": "find type"
+          },
+          {
+            "name": "执行命令",
+            "cmd": "find %{路径}% -name %{名称}% -exec %{命令}% {} \\;",
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "路径             ",
+                "example": ".",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "名              ",
+                "example": "*.tmp",
+                "notes": "必填"
+              },
+              "命令": {
+                "type": "string",
+                "required": true,
+                "description": "命令             ",
+                "example": "rm",
+                "notes": "必填"
+              }
+            },
+            "keyword": "find exec"
+          }
+        ],
+        "params": {
+          "路径": {
+            "type": "string",
+            "required": true,
+            "description": "搜索路径           ",
+            "example": "/var/log",
+            "notes": "必填"
+          },
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "文件名模式          ",
+            "example": "*.txt",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

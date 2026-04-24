@@ -1,0 +1,69 @@
+{
+  "module": "容器编排/Docker Build",
+  "version": "2.0",
+  "description": "Docker 镜像构建命令，涵盖Docker Build的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker build 构建镜像",
+      "keyword": "docker build 构建",
+      "description": "从 Dockerfile 构建镜像。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker build -t %{镜像}% .",
+        "extensions": [
+          {
+            "name": "无缓存构建",
+            "cmd": "docker build --no-cache -t %{镜像}% .",
+            "params": {
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名            ",
+                "example": "myapp:latest",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker build no-cache"
+          },
+          {
+            "name": "构建参数",
+            "cmd": "docker build --build-arg %{arg}%=%{val}% -t %{镜像}% .",
+            "params": {
+              "arg": {
+                "type": "string",
+                "required": true,
+                "description": "参数名            ",
+                "example": "NODE_ENV",
+                "notes": "必填"
+              },
+              "val": {
+                "type": "string",
+                "required": true,
+                "description": "值              ",
+                "example": "production",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像             ",
+                "example": "myapp",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker build arg"
+          }
+        ],
+        "params": {
+          "镜像": {
+            "type": "string",
+            "required": true,
+            "description": "镜像标签           ",
+            "example": "myapp:v1.0",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

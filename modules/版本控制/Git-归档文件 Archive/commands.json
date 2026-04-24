@@ -1,0 +1,71 @@
+{
+  "module": "版本控制/Git-归档文件 Archive",
+  "version": "2.0",
+  "description": "Git Archive命令集合，涵盖Git Archive的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/版本控制/",
+      "name": "git archive 创建归档",
+      "keyword": "git archive 归档",
+      "description": "创建归档文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git archive --format=%{格式}% -o %{文件}% %{分支}%",
+        "extensions": [
+          {
+            "name": "创建tar.gz归档",
+            "cmd": "git archive --format=tar.gz -o %{文件}% %{分支}%",
+            "params": {},
+            "keyword": "archive targz"
+          },
+          {
+            "name": "包含子目录",
+            "cmd": "git archive --format=zip -o %{文件}% %{分支}% --prefix=%{前缀}%",
+            "params": {},
+            "keyword": "archive prefix"
+          },
+          {
+            "name": "排除特定文件",
+            "cmd": "git archive --format=%{格式}% -o %{文件}% %{分支}% -- .gitignore",
+            "params": {},
+            "keyword": "archive exclude"
+          },
+          {
+            "name": "列出归档内容",
+            "cmd": "git archive --list",
+            "params": {},
+            "keyword": "archive list"
+          },
+          {
+            "name": "远程分支归档",
+            "cmd": "git archive --remote=ssh://%{主机}%/%{路径}% --format=%{格式}% -o %{文件}% %{分支}%",
+            "params": {},
+            "keyword": "archive remote"
+          }
+        ],
+        "params": {
+          "格式": {
+            "type": "string",
+            "required": true,
+            "description": "格式",
+            "example": "zip",
+            "notes": "必填"
+          },
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "输出文件",
+            "example": "release.zip",
+            "notes": "必填"
+          },
+          "分支": {
+            "type": "string",
+            "required": true,
+            "description": "分支",
+            "example": "main",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

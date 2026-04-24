@@ -1,0 +1,130 @@
+{
+  "module": "前端开发/Vite-构建工具 Vite",
+  "version": "2.0",
+  "description": "Vite命令集合，涵盖Vite的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/前端开发/",
+      "name": "npm create vite 创建项目",
+      "keyword": "vite create 创建",
+      "description": "创建 Vite 项目。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "npm create vite@latest %{项目名}% -- --template %{模板}%",
+        "extensions": [
+          {
+            "name": "创建Vue项目",
+            "cmd": "npm create vite@latest %{项目名}% -- --template vue",
+            "params": {
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称",
+                "example": "my-vue-app",
+                "notes": "必填"
+              }
+            },
+            "keyword": "vite vue project"
+          },
+          {
+            "name": "创建React项目",
+            "cmd": "npm create vite@latest %{项目名}% -- --template react",
+            "params": {
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称",
+                "example": "my-react-app",
+                "notes": "必填"
+              }
+            },
+            "keyword": "vite react project"
+          },
+          {
+            "name": "创建TypeScript项目",
+            "cmd": "npm create vite@latest %{项目名}% -- --template vue-ts",
+            "params": {
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称",
+                "example": "my-ts-app",
+                "notes": "必填"
+              }
+            },
+            "keyword": "vite typescript"
+          },
+          {
+            "name": "创建React TypeScript项目",
+            "cmd": "npm create vite@latest %{项目名}% -- --template react-ts",
+            "params": {
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称",
+                "example": "my-react-ts-app",
+                "notes": "必填"
+              }
+            },
+            "keyword": "vite react-ts"
+          },
+          {
+            "name": "创建Vanilla项目",
+            "cmd": "npm create vite@latest %{项目名}% -- --template vanilla",
+            "params": {
+              "项目名": {
+                "type": "string",
+                "required": true,
+                "description": "项目名称",
+                "example": "my-vanilla-app",
+                "notes": "必填"
+              }
+            },
+            "keyword": "vite vanilla"
+          }
+        ],
+        "params": {
+          "项目名": {
+            "type": "string",
+            "required": true,
+            "description": "项目名称",
+            "example": "my-app",
+            "notes": "必填"
+          },
+          "模板": {
+            "type": "string",
+            "required": true,
+            "description": "模板类型",
+            "example": "vue",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "vite dev 启动开发服务器",
+      "keyword": "vite dev 开发",
+      "description": "启动开发服务器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "vite",
+        "extensions": [
+          {
+            "name": "指定端口",
+            "cmd": "vite --port %{端口}%",
+            "params": {
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口号            ",
+                "example": "3000",
+                "notes": "必填"
+              }
+            },
+            "keyword": "vite port"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

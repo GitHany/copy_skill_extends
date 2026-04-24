@@ -1,0 +1,101 @@
+{
+  "module": "容器编排/kubectl-API资源 api-resources",
+  "version": "2.0",
+  "description": "kubectl API 资源列表，涵盖kubectl api-resources的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl api-resources 查看资源",
+      "keyword": "kubectl api-resources 资源",
+      "description": "列出所有 API 资源类型。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl api-resources",
+        "extensions": [
+          {
+            "name": "显示动词",
+            "cmd": "kubectl api-resources -o wide",
+            "params": {},
+            "keyword": "kubectl api-resources wide"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl api-versions API 版本",
+      "keyword": "kubectl api-versions 版本",
+      "description": "列出所有 API 版本。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl api-versions",
+        "extensions": [
+          {
+            "name": "排序输出",
+            "cmd": "kubectl api-versions | sort",
+            "params": {},
+            "keyword": "kubectl api-versions sort"
+          },
+          {
+            "name": "统计版本数量",
+            "cmd": "kubectl api-versions | wc -l",
+            "params": {},
+            "keyword": "kubectl api-versions count"
+          },
+          {
+            "name": "过滤特定组",
+            "cmd": "kubectl api-versions | grep %{组名}%",
+            "params": {
+              "组名": {
+                "type": "string",
+                "required": false,
+                "description": "API组名",
+                "example": "apps",
+                "notes": "可选"
+              }
+            },
+            "keyword": "kubectl api-versions filter"
+          },
+          {
+            "name": "显示v1版本",
+            "cmd": "kubectl api-versions | grep ^v1$",
+            "params": {},
+            "keyword": "kubectl api-versions v1"
+          },
+          {
+            "name": "过滤apps组版本",
+            "cmd": "kubectl api-versions | grep ^apps/",
+            "params": {},
+            "keyword": "kubectl api-versions apps group"
+          },
+          {
+            "name": "过滤core组版本",
+            "cmd": "kubectl api-versions | grep ^core$",
+            "params": {},
+            "keyword": "kubectl api-versions core group"
+          },
+          {
+            "name": "检查特定API版本是否存在",
+            "cmd": "kubectl api-versions | grep %{API版本}%",
+            "params": {
+              "API版本": {
+                "type": "string",
+                "required": true,
+                "description": "要检查的API版本",
+                "example": "apps/v1",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl api-versions check version"
+          },
+          {
+            "name": "统计各组版本数量",
+            "cmd": "kubectl api-versions | cut -d'/' -f1 | sort | uniq -c | sort -rn",
+            "params": {},
+            "keyword": "kubectl api-versions group count"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

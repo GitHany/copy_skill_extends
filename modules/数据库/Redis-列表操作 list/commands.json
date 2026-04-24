@@ -1,0 +1,1280 @@
+{
+  "module": "数据库/Redis-列表操作 list",
+  "version": "2.0",
+  "description": "Redis-列表操作命令集合，涵盖Redis-列表操作的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/数据库/",
+      "name": "lpush 左侧插入",
+      "keyword": "lpush 列表 左插入",
+      "description": "将一个或多个值插入列表左侧。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "lpush %{键名}% %{值}%",
+        "extensions": [
+          {
+            "name": "右侧插入",
+            "cmd": "rpush %{键名}% %{值}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "要插入的值          ",
+                "example": "hello",
+                "notes": "可选"
+              }
+            },
+            "keyword": "rpush 右插"
+          },
+          {
+            "name": "查看列表",
+            "cmd": "lrange %{键名}% 0 -1",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              }
+            },
+            "keyword": "lrange 查看"
+          },
+          {
+            "name": "批量左侧插入",
+            "cmd": "lpush %{键名}% %{值1}% %{值2}% %{值3}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              },
+              "值1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个要插入的值      ",
+                "example": "value1",
+                "notes": "必填"
+              },
+              "值2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个要插入的值      ",
+                "example": "value2",
+                "notes": "必填"
+              },
+              "值3": {
+                "type": "string",
+                "required": true,
+                "description": "第三个要插入的值      ",
+                "example": "value3",
+                "notes": "必填"
+              }
+            },
+            "keyword": "lpush 批量 多个"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "列表键名           ",
+            "example": "mylist",
+            "notes": "常用"
+          },
+          "值": {
+            "type": "string",
+            "required": true,
+            "description": "要插入的值          ",
+            "example": "world",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "rpush 右侧插入",
+      "keyword": "rpush 列表 右插入",
+      "description": "将一个或多个值插入列表右侧。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "rpush %{键名}% %{值}%",
+        "extensions": [
+          {
+            "name": "左侧插入",
+            "cmd": "lpush %{键名}% %{值}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "要插入的值          ",
+                "example": "hello",
+                "notes": "可选"
+              }
+            },
+            "keyword": "lpush 左插"
+          },
+          {
+            "name": "查看列表",
+            "cmd": "lrange %{键名}% 0 -1",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              }
+            },
+            "keyword": "lrange 查看"
+          },
+          {
+            "name": "批量右侧插入",
+            "cmd": "rpush %{键名}% %{值1}% %{值2}% %{值3}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              },
+              "值1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个要插入的值      ",
+                "example": "value1",
+                "notes": "必填"
+              },
+              "值2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个要插入的值      ",
+                "example": "value2",
+                "notes": "必填"
+              },
+              "值3": {
+                "type": "string",
+                "required": true,
+                "description": "第三个要插入的值      ",
+                "example": "value3",
+                "notes": "必填"
+              }
+            },
+            "keyword": "rpush 批量 多个"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "列表键名           ",
+            "example": "mylist",
+            "notes": "常用"
+          },
+          "值": {
+            "type": "string",
+            "required": true,
+            "description": "要插入的值          ",
+            "example": "world",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "lpop 左侧弹出",
+      "keyword": "lpop 列表 左弹出",
+      "description": "移除并返回列表左侧第一个元素。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "lpop %{键名}%",
+        "extensions": [
+          {
+            "name": "右侧弹出",
+            "cmd": "rpop %{键名}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "可选"
+              }
+            },
+            "keyword": "rpop 右弹出"
+          },
+          {
+            "name": "阻塞右弹出",
+            "cmd": "brpop %{键名}% 0",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "可选"
+              }
+            },
+            "keyword": "brpop 阻塞"
+          },
+          {
+            "name": "弹出前N个元素",
+            "cmd": "lrange %{键名}% 0 %{数量减一}% | ltrim %{键名}% %{数量}% -1",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              },
+              "数量减一": {
+                "type": "integer",
+                "required": true,
+                "description": "要弹出的元素数量减一     ",
+                "example": "4",
+                "notes": "如需弹出5个则填4"
+              },
+              "数量": {
+                "type": "integer",
+                "required": true,
+                "description": "要弹出的元素数量       ",
+                "example": "5",
+                "notes": "必填"
+              }
+            },
+            "keyword": "lpop 弹出多个"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "列表键名           ",
+            "example": "mylist",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "rpop 右侧弹出",
+      "keyword": "rpop 列表 右弹出",
+      "description": "移除并返回列表右侧第一个元素。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "rpop %{键名}%",
+        "extensions": [
+          {
+            "name": "左侧弹出",
+            "cmd": "lpop %{键名}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              }
+            },
+            "keyword": "lpop 左弹出"
+          },
+          {
+            "name": "阻塞左弹出",
+            "cmd": "blpop %{键名}% 0",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "可选"
+              }
+            },
+            "keyword": "blpop 阻塞"
+          },
+          {
+            "name": "弹出后N个元素",
+            "cmd": "lrange %{键名}% -%{数量}% -1 | ltrim %{键名}% 0 -%{数量加一}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              },
+              "数量": {
+                "type": "integer",
+                "required": true,
+                "description": "要弹出的元素数量       ",
+                "example": "3",
+                "notes": "必填"
+              },
+              "数量加一": {
+                "type": "integer",
+                "required": true,
+                "description": "要保留的数量加一       ",
+                "example": "2",
+                "notes": "如需弹出3个则填2"
+              }
+            },
+            "keyword": "rpop 弹出多个"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "列表键名           ",
+            "example": "mylist",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "lrange 查看列表",
+      "keyword": "lrange 列表 查看 范围",
+      "description": "获取列表指定区间内的元素。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "lrange %{键名}% 0 -1",
+        "extensions": [
+          {
+            "name": "获取前N个元素",
+            "cmd": "lrange %{键名}% 0 %{数量减一}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "可选"
+              },
+              "数量减一": {
+                "type": "integer",
+                "required": true,
+                "description": "要获取的元素数量减一     ",
+                "example": "9",
+                "notes": "如需获取10个则填9"
+              }
+            },
+            "keyword": "lrange 前N个"
+          },
+          {
+            "name": "获取最后N个元素",
+            "cmd": "lrange %{键名}% -%{数量}% -1",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              },
+              "数量": {
+                "type": "integer",
+                "required": true,
+                "description": "要获取的元素数量       ",
+                "example": "5",
+                "notes": "必填"
+              }
+            },
+            "keyword": "lrange 最后N个"
+          },
+          {
+            "name": "获取中间范围",
+            "cmd": "lrange %{键名}% %{开始索引}% %{结束索引}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              },
+              "开始索引": {
+                "type": "integer",
+                "required": true,
+                "description": "起始索引           ",
+                "example": "2",
+                "notes": "必填"
+              },
+              "结束索引": {
+                "type": "integer",
+                "required": true,
+                "description": "结束索引           ",
+                "example": "5",
+                "notes": "必填"
+              }
+            },
+            "keyword": "lrange 中间范围"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "列表键名           ",
+            "example": "mylist",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "llen 列表长度",
+      "keyword": "llen 列表 长度",
+      "description": "返回列表的长度。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "llen %{键名}%",
+        "extensions": [
+          {
+            "name": "检查列表是否存在",
+            "cmd": "exists %{键名}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              }
+            },
+            "keyword": "exists 检查存在"
+          },
+          {
+            "name": "获取列表类型",
+            "cmd": "type %{键名}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              }
+            },
+            "keyword": "type 类型"
+          },
+          {
+            "name": "判断列表是否为空",
+            "cmd": "llen %{键名}% | ifeq 0",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              }
+            },
+            "keyword": "判断为空"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "列表键名           ",
+            "example": "mylist",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "lindex 按索引获取",
+      "keyword": "lindex 列表 索引 获取",
+      "description": "通过索引获取列表中的元素。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "lindex %{键名}% %{索引}%",
+        "extensions": [
+          {
+            "name": "获取首元素",
+            "cmd": "lindex %{键名}% 0",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "可选"
+              }
+            },
+            "keyword": "lindex 首元素"
+          },
+          {
+            "name": "获取尾元素",
+            "cmd": "lindex %{键名}% -1",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "可选"
+              }
+            },
+            "keyword": "lindex 尾元素"
+          },
+          {
+            "name": "获取第二个元素",
+            "cmd": "lindex %{键名}% 1",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              }
+            },
+            "keyword": "lindex 第二个"
+          },
+          {
+            "name": "获取倒数第二个元素",
+            "cmd": "lindex %{键名}% -2",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              }
+            },
+            "keyword": "lindex 倒数第二个"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "列表键名           ",
+            "example": "mylist",
+            "notes": "必填"
+          },
+          "索引": {
+            "type": "integer",
+            "required": true,
+            "description": "元素索引，0为第一个，-1为最后一个",
+            "example": "0",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "lset 设置元素",
+      "keyword": "lset 列表 设置",
+      "description": "通过索引设置列表中元素的值。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "lset %{键名}% %{索引}% %{值}%",
+        "extensions": [
+          {
+            "name": "设置首元素",
+            "cmd": "lset %{键名}% 0 %{新值}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              },
+              "新值": {
+                "type": "string",
+                "required": true,
+                "description": "新值             ",
+                "example": "newfirst",
+                "notes": "必填"
+              }
+            },
+            "keyword": "lset 首元素 0"
+          },
+          {
+            "name": "设置尾元素",
+            "cmd": "lset %{键名}% -1 %{新值}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              },
+              "新值": {
+                "type": "string",
+                "required": true,
+                "description": "新值             ",
+                "example": "newlast",
+                "notes": "必填"
+              }
+            },
+            "keyword": "lset 尾元素 -1"
+          },
+          {
+            "name": "先验证索引再设置",
+            "cmd": "llen %{键名}% | ifge %{索引}% | lset %{键名}% %{索引}% %{新值}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              },
+              "索引": {
+                "type": "integer",
+                "required": true,
+                "description": "元素索引           ",
+                "example": "5",
+                "notes": "必填"
+              },
+              "新值": {
+                "type": "string",
+                "required": true,
+                "description": "新值             ",
+                "example": "newvalue",
+                "notes": "必填"
+              }
+            },
+            "keyword": "lset 验证安全"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "列表键名           ",
+            "example": "mylist",
+            "notes": "必填"
+          },
+          "索引": {
+            "type": "integer",
+            "required": true,
+            "description": "元素索引           ",
+            "example": "0",
+            "notes": "必填"
+          },
+          "值": {
+            "type": "string",
+            "required": true,
+            "description": "新值             ",
+            "example": "newvalue",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "ltrim 修剪列表",
+      "keyword": "ltrim 列表 修剪",
+      "description": "对一个列表进行修剪，保留指定区间内的元素。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "ltrim %{键名}% %{开始}% %{结束}%",
+        "extensions": [
+          {
+            "name": "保留前N个元素",
+            "cmd": "ltrim %{键名}% 0 %{数量减一}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "可选"
+              },
+              "数量减一": {
+                "type": "integer",
+                "required": true,
+                "description": "要保留的元素数量减一     ",
+                "example": "9",
+                "notes": "如需保留10个则填9"
+              }
+            },
+            "keyword": "ltrim 前N个"
+          },
+          {
+            "name": "保留最后N个元素",
+            "cmd": "ltrim %{键名}% -%{数量}% -1",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              },
+              "数量": {
+                "type": "integer",
+                "required": true,
+                "description": "要保留的元素数量       ",
+                "example": "5",
+                "notes": "必填"
+              }
+            },
+            "keyword": "ltrim 最后N个"
+          },
+          {
+            "name": "删除列表前面元素",
+            "cmd": "ltrim %{键名}% %{跳过数量}% -1",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              },
+              "跳过数量": {
+                "type": "integer",
+                "required": true,
+                "description": "要跳过的元素数量       ",
+                "example": "3",
+                "notes": "必填"
+              }
+            },
+            "keyword": "ltrim 跳过前面"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "列表键名           ",
+            "example": "mylist",
+            "notes": "必填"
+          },
+          "开始": {
+            "type": "integer",
+            "required": true,
+            "description": "起始索引           ",
+            "example": "0",
+            "notes": "必填"
+          },
+          "结束": {
+            "type": "integer",
+            "required": true,
+            "description": "结束索引           ",
+            "example": "-1",
+            "notes": "-1表示到末尾"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "lrem 移除元素",
+      "keyword": "lrem 列表 移除 删除",
+      "description": "移除列表中与值相等的元素。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "lrem %{键名}% %{数量}% %{值}%",
+        "extensions": [
+          {
+            "name": "移除所有匹配元素",
+            "cmd": "lrem %{键名}% 0 %{值}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "要移除的值          ",
+                "example": "hello",
+                "notes": "必填"
+              }
+            },
+            "keyword": "lrem 移除所有 0"
+          },
+          {
+            "name": "从头部开始移除N个",
+            "cmd": "lrem %{键名}% %{数量}% %{值}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              },
+              "数量": {
+                "type": "integer",
+                "required": true,
+                "description": "要移除的数量，正数从头到尾",
+                "example": "1",
+                "notes": "正数从头到尾"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "要移除的值          ",
+                "example": "hello",
+                "notes": "必填"
+              }
+            },
+            "keyword": "lrem 头部移除 正数"
+          },
+          {
+            "name": "从尾部开始移除N个",
+            "cmd": "lrem %{键名}% -%{数量}% %{值}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              },
+              "数量": {
+                "type": "integer",
+                "required": true,
+                "description": "要移除的数量，负数从尾到头",
+                "example": "1",
+                "notes": "负数从尾到头"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "要移除的值          ",
+                "example": "hello",
+                "notes": "必填"
+              }
+            },
+            "keyword": "lrem 尾部移除 负数"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "列表键名           ",
+            "example": "mylist",
+            "notes": "必填"
+          },
+          "数量": {
+            "type": "integer",
+            "required": true,
+            "description": "要移除的元素数量，正数从头到尾，负数从尾到头",
+            "example": "1",
+            "notes": "0表示移除所有"
+          },
+          "值": {
+            "type": "string",
+            "required": true,
+            "description": "要移除的值          ",
+            "example": "hello",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "linsert 插入元素",
+      "keyword": "linsert 列表 插入",
+      "description": "在列表中某个元素前后插入新元素。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "linsert %{键名}% BEFORE %{基准值}% %{新值}%",
+        "extensions": [
+          {
+            "name": "在基准值之后插入",
+            "cmd": "linsert %{键名}% AFTER %{基准值}% %{新值}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "可选"
+              },
+              "基准值": {
+                "type": "string",
+                "required": true,
+                "description": "参照值            ",
+                "example": "pivot",
+                "notes": "可选"
+              },
+              "新值": {
+                "type": "string",
+                "required": true,
+                "description": "要插入的新值         ",
+                "example": "newitem",
+                "notes": "可选"
+              }
+            },
+            "keyword": "linsert AFTER 之后"
+          },
+          {
+            "name": "在首元素前插入",
+            "cmd": "linsert %{键名}% BEFORE %{首元素}% %{新值}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              },
+              "首元素": {
+                "type": "string",
+                "required": true,
+                "description": "列表第一个元素的值     ",
+                "example": "first",
+                "notes": "必填"
+              },
+              "新值": {
+                "type": "string",
+                "required": true,
+                "description": "要插入的新值         ",
+                "example": "newfirst",
+                "notes": "必填"
+              }
+            },
+            "keyword": "linsert 首元素前"
+          },
+          {
+            "name": "在尾元素后插入",
+            "cmd": "linsert %{键名}% AFTER %{尾元素}% %{新值}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              },
+              "尾元素": {
+                "type": "string",
+                "required": true,
+                "description": "列表最后一个元素的值     ",
+                "example": "last",
+                "notes": "必填"
+              },
+              "新值": {
+                "type": "string",
+                "required": true,
+                "description": "要插入的新值         ",
+                "example": "newlast",
+                "notes": "必填"
+              }
+            },
+            "keyword": "linsert 尾元素后"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "列表键名           ",
+            "example": "mylist",
+            "notes": "必填"
+          },
+          "基准值": {
+            "type": "string",
+            "required": true,
+            "description": "参照值，新元素将插入到此值之前或之后",
+            "example": "pivot",
+            "notes": "必填"
+          },
+          "新值": {
+            "type": "string",
+            "required": true,
+            "description": "要插入的新值         ",
+            "example": "newitem",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "lpushx 左侧插入（存在时）",
+      "keyword": "lpushx 列表 左侧 插入 存在",
+      "description": "将一个值插入列表左侧，仅当列表存在时执行。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "lpushx %{键名}% %{值}%",
+        "extensions": [
+          {
+            "name": "右侧插入（存在时）",
+            "cmd": "rpushx %{键名}% %{值}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "要插入的值          ",
+                "example": "hello",
+                "notes": "必填"
+              }
+            },
+            "keyword": "rpushx 右插 存在"
+          },
+          {
+            "name": "查看列表长度",
+            "cmd": "llen %{键名}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              }
+            },
+            "keyword": "llen 长度"
+          },
+          {
+            "name": "先检查是否存在",
+            "cmd": "exists %{键名}% | ifeq 1 | lpushx %{键名}% %{值}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "要插入的值          ",
+                "example": "hello",
+                "notes": "必填"
+              }
+            },
+            "keyword": "lpushx 先检查"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "列表键名           ",
+            "example": "mylist",
+            "notes": "必填"
+          },
+          "值": {
+            "type": "string",
+            "required": true,
+            "description": "要插入的值          ",
+            "example": "world",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "rpushx 右侧插入（存在时）",
+      "keyword": "rpushx 列表 右侧 插入 存在",
+      "description": "将一个值插入列表右侧，仅当列表存在时执行。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "rpushx %{键名}% %{值}%",
+        "extensions": [
+          {
+            "name": "左侧插入（存在时）",
+            "cmd": "lpushx %{键名}% %{值}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "要插入的值          ",
+                "example": "hello",
+                "notes": "必填"
+              }
+            },
+            "keyword": "lpushx 左插 存在"
+          },
+          {
+            "name": "查看列表长度",
+            "cmd": "llen %{键名}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              }
+            },
+            "keyword": "llen 长度"
+          },
+          {
+            "name": "先检查是否存在",
+            "cmd": "exists %{键名}% | ifeq 1 | rpushx %{键名}% %{值}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "常用"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "要插入的值          ",
+                "example": "hello",
+                "notes": "必填"
+              }
+            },
+            "keyword": "rpushx 先检查"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "列表键名           ",
+            "example": "mylist",
+            "notes": "必填"
+          },
+          "值": {
+            "type": "string",
+            "required": true,
+            "description": "要插入的值          ",
+            "example": "world",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "blpop 阻塞左弹出",
+      "keyword": "blpop 列表 阻塞 左弹出",
+      "description": "移出并获取列表左侧第一个元素，如果列表为空则阻塞等待。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "blpop %{键名}% %{超时}%",
+        "extensions": [
+          {
+            "name": "阻塞右弹出",
+            "cmd": "brpop %{键名}% %{超时}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "可选"
+              },
+              "超时": {
+                "type": "integer",
+                "required": true,
+                "description": "超时时间（秒），0表示无限等待",
+                "example": "0",
+                "notes": "可选"
+              }
+            },
+            "keyword": "brpop 阻塞 右"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "列表键名           ",
+            "example": "mylist",
+            "notes": "必填"
+          },
+          "超时": {
+            "type": "integer",
+            "required": true,
+            "description": "超时时间（秒），0表示无限等待",
+            "example": "0",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "brpop 阻塞右弹出",
+      "keyword": "brpop 列表 阻塞 右弹出",
+      "description": "移出并获取列表右侧第一个元素，如果列表为空则阻塞等待。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "brpop %{键名}% %{超时}%",
+        "extensions": [
+          {
+            "name": "阻塞左弹出",
+            "cmd": "blpop %{键名}% %{超时}%",
+            "params": {
+              "键名": {
+                "type": "string",
+                "required": true,
+                "description": "列表键名           ",
+                "example": "mylist",
+                "notes": "可选"
+              },
+              "超时": {
+                "type": "integer",
+                "required": true,
+                "description": "超时时间（秒），0表示无限等待",
+                "example": "0",
+                "notes": "可选"
+              }
+            },
+            "keyword": "blpop 阻塞 左"
+          }
+        ],
+        "params": {
+          "键名": {
+            "type": "string",
+            "required": true,
+            "description": "列表键名           ",
+            "example": "mylist",
+            "notes": "必填"
+          },
+          "超时": {
+            "type": "integer",
+            "required": true,
+            "description": "超时时间（秒），0表示无限等待",
+            "example": "0",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

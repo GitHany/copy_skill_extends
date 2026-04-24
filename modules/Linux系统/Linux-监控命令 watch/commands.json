@@ -1,0 +1,128 @@
+{
+  "module": "Linux系统/Linux-监控命令 watch",
+  "version": "2.0",
+  "description": "Linux watch 定期执行命令工具。重复运行指定命令并全屏显示结果，按间隔刷新。用于实时监控系统状态、网络流量、日志更新。非常适合需要持续观察变化的场景。",
+  "commands": [
+    {
+      "dirPath": "/Linux系统/",
+      "name": "watch 定期执行",
+      "keyword": "watch 定期",
+      "description": "定期执行命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "watch %{命令}%",
+        "extensions": [
+          {
+            "name": "监控磁盘使用",
+            "description": "每2秒刷新显示磁盘空间                   ",
+            "params": {
+              "命令": {
+                "example": "df -h",
+                "notes": "监控命令",
+                "description": "               "
+              }
+            },
+            "cmd": "watch %{命令}%"
+          },
+          {
+            "name": "设置刷新间隔",
+            "description": "指定命令执行的时间间隔                   ",
+            "params": {
+              "间隔": {
+                "example": "5",
+                "notes": "秒数",
+                "description": "               "
+              },
+              "命令": {
+                "example": "netstat -tuln",
+                "notes": "命令",
+                "description": "               "
+              }
+            },
+            "cmd": "watch -n %{间隔}% %{命令}%"
+          },
+          {
+            "name": "高亮差异",
+            "description": "高亮显示与上次执行相比的变化                ",
+            "params": {
+              "命令": {
+                "example": "tail -20 /var/log/syslog",
+                "notes": "命令",
+                "description": "               "
+              }
+            },
+            "cmd": "watch -d %{命令}%"
+          },
+          {
+            "name": "不显示标题",
+            "description": "隐藏watch的标题行和时间戳               ",
+            "params": {
+              "命令": {
+                "example": "ps aux",
+                "notes": "命令",
+                "description": "               "
+              }
+            },
+            "cmd": "watch -t %{命令}%"
+          },
+          {
+            "name": "监控内存使用",
+            "description": "持续监控内存使用情况                    ",
+            "params": {
+              "命令": {
+                "example": "free -h",
+                "notes": "命令",
+                "description": "               "
+              }
+            },
+            "cmd": "watch -n 1 %{命令}%"
+          },
+          {
+            "name": "监控进程变化",
+            "description": "观察特定进程数量变化                    ",
+            "params": {
+              "进程": {
+                "example": "python",
+                "notes": "进程名",
+                "description": "               "
+              }
+            },
+            "cmd": "watch -n 2 'ps aux | grep %{进程}% | grep -v grep'"
+          },
+          {
+            "name": "监控用户登录",
+            "description": "持续观察登录事件                      ",
+            "params": {
+              "命令": {
+                "example": "who",
+                "notes": "命令",
+                "description": "               "
+              }
+            },
+            "cmd": "watch %{命令}%"
+          },
+          {
+            "name": "监控服务端口",
+            "description": "持续监控端口变化                      ",
+            "params": {
+              "命令": {
+                "example": "ss -tuln",
+                "notes": "命令",
+                "description": "               "
+              }
+            },
+            "cmd": "watch -n 5 %{命令}%"
+          }
+        ],
+        "params": {
+          "命令": {
+            "type": "string",
+            "required": true,
+            "description": "命令             ",
+            "example": "df -h",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

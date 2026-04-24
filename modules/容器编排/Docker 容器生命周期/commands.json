@@ -1,0 +1,232 @@
+{
+  "module": "容器编排/Docker 容器生命周期",
+  "version": "2.0",
+  "description": "Docker 容器生命周期命令集合，涵盖Docker 容器生命周期的常用操作和最佳实践",
+  "commands": [
+    {
+      "name": "后台运行",
+      "cmd": "docker run -d --name %{名称}% -p %{宿主机端口}%:%{容器端口}% %{镜像}%",
+      "params": {
+        "名称": {
+          "type": "string",
+          "required": true,
+          "description": "容器名",
+          "example": "web",
+          "notes": "必填"
+        },
+        "宿主机端口": {
+          "type": "string",
+          "required": true,
+          "description": "宿主机端口",
+          "example": "8080",
+          "notes": "必填"
+        },
+        "容器端口": {
+          "type": "string",
+          "required": true,
+          "description": "容器端口",
+          "example": "80",
+          "notes": "必填"
+        },
+        "镜像": {
+          "type": "string",
+          "required": true,
+          "description": "镜像",
+          "example": "nginx",
+          "notes": "必填"
+        }
+      },
+      "keyword": "docker run detached",
+      "dirPath": "/容器编排/",
+      "description": "后台运行的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "name": "带环境变量运行",
+            "cmd": "docker run -d --name %{名称}% -e %{环境变量}%=%{变量值}% -p %{宿主机端口}%:%{容器端口}% %{镜像}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名",
+                "example": "web",
+                "notes": "必填"
+              },
+              "环境变量": {
+                "type": "string",
+                "required": true,
+                "description": "环境变量名",
+                "example": "MYSQL_ROOT_PASSWORD",
+                "notes": "必填"
+              },
+              "变量值": {
+                "type": "string",
+                "required": true,
+                "description": "环境变量值",
+                "example": "secretpassword",
+                "notes": "必填"
+              },
+              "宿主机端口": {
+                "type": "string",
+                "required": true,
+                "description": "宿主机端口",
+                "example": "8080",
+                "notes": "必填"
+              },
+              "容器端口": {
+                "type": "string",
+                "required": true,
+                "description": "容器端口",
+                "example": "80",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker run env"
+          },
+          {
+            "name": "挂载卷运行",
+            "cmd": "docker run -d --name %{名称}% -v %{主机路径}%:%{容器路径}% -p %{宿主机端口}%:%{容器端口}% %{镜像}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名",
+                "example": "web",
+                "notes": "必填"
+              },
+              "主机路径": {
+                "type": "string",
+                "required": true,
+                "description": "宿主机目录路径",
+                "example": "/data/nginx",
+                "notes": "必填"
+              },
+              "容器路径": {
+                "type": "string",
+                "required": true,
+                "description": "容器内挂载路径",
+                "example": "/var/log/nginx",
+                "notes": "必填"
+              },
+              "宿主机端口": {
+                "type": "string",
+                "required": true,
+                "description": "宿主机端口",
+                "example": "8080",
+                "notes": "必填"
+              },
+              "容器端口": {
+                "type": "string",
+                "required": true,
+                "description": "容器端口",
+                "example": "80",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker run volume"
+          },
+          {
+            "name": "指定网络运行",
+            "cmd": "docker run -d --name %{名称}% --network %{网络名称}% -p %{宿主机端口}%:%{容器端口}% %{镜像}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名",
+                "example": "web",
+                "notes": "必填"
+              },
+              "网络名称": {
+                "type": "string",
+                "required": true,
+                "description": "Docker网络名称",
+                "example": "myapp_network",
+                "notes": "必填"
+              },
+              "宿主机端口": {
+                "type": "string",
+                "required": true,
+                "description": "宿主机端口",
+                "example": "8080",
+                "notes": "必填"
+              },
+              "容器端口": {
+                "type": "string",
+                "required": true,
+                "description": "容器端口",
+                "example": "80",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker run network"
+          },
+          {
+            "name": "带资源限制运行",
+            "cmd": "docker run -d --name %{名称}% --memory %{内存限制}% -p %{宿主机端口}%:%{容器端口}% %{镜像}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名",
+                "example": "web",
+                "notes": "必填"
+              },
+              "内存限制": {
+                "type": "string",
+                "required": true,
+                "description": "内存限制大小",
+                "example": "512m",
+                "notes": "必填"
+              },
+              "宿主机端口": {
+                "type": "string",
+                "required": true,
+                "description": "宿主机端口",
+                "example": "8080",
+                "notes": "必填"
+              },
+              "容器端口": {
+                "type": "string",
+                "required": true,
+                "description": "容器端口",
+                "example": "80",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker run memory"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

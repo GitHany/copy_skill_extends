@@ -1,0 +1,105 @@
+{
+  "module": "Linux系统/Linux-进程文件 lsof",
+  "version": "2.0",
+  "description": "Linux lsof (list open files) 查看打开文件命令。列出当前系统所有打开的文件和网络连接，包括进程打开了哪些文件、网络端口使用情况。是排查端口冲突、查看进程详情、分析网络连接的利器。",
+  "commands": [
+    {
+      "dirPath": "/Linux系统/",
+      "name": "lsof 打开文件",
+      "keyword": "lsof 文件",
+      "description": "查看打开的文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "lsof -i :%{端口}%",
+        "extensions": [
+          {
+            "name": "查看端口占用",
+            "description": "查看特定端口被哪个进程占用                 ",
+            "params": {
+              "端口": {
+                "example": "8080",
+                "notes": "端口号",
+                "description": "               "
+              }
+            },
+            "cmd": "lsof -i :%{端口}%"
+          },
+          {
+            "name": "查看网络连接",
+            "description": "显示所有网络连接信息                    ",
+            "params": {},
+            "cmd": "lsof -i"
+          },
+          {
+            "name": "查看文件占用",
+            "description": "查看哪个进程正在使用某文件                 ",
+            "params": {
+              "文件": {
+                "example": "/var/log/syslog",
+                "notes": "文件路径",
+                "description": "               "
+              }
+            },
+            "cmd": "lsof %{文件}%"
+          },
+          {
+            "name": "查看用户打开的文件",
+            "description": "查看指定用户打开的所有文件                 ",
+            "params": {
+              "用户": {
+                "example": "www-data",
+                "notes": "用户名",
+                "description": "               "
+              }
+            },
+            "cmd": "lsof -u %{用户}%"
+          },
+          {
+            "name": "查看进程打开的文件",
+            "description": "查看指定进程ID打开的所有文件               ",
+            "params": {
+              "PID": {
+                "example": "1234",
+                "notes": "进程ID",
+                "description": "               "
+              }
+            },
+            "cmd": "lsof -p %{PID}%"
+          },
+          {
+            "name": "查看所有TCP连接",
+            "description": "列出所有TCP网络连接                   ",
+            "params": {},
+            "cmd": "lsof -i tcp"
+          },
+          {
+            "name": "查看所有UDP连接",
+            "description": "列出所有UDP网络连接                   ",
+            "params": {},
+            "cmd": "lsof -i udp"
+          },
+          {
+            "name": "查看正在使用的目录",
+            "description": "找出当前工作目录在特定目录的所有进程            ",
+            "params": {
+              "目录": {
+                "example": "/var/log",
+                "notes": "目录路径",
+                "description": "               "
+              }
+            },
+            "cmd": "lsof +D %{目录}%"
+          }
+        ],
+        "params": {
+          "端口": {
+            "type": "string",
+            "required": true,
+            "description": "端口             ",
+            "example": "8080",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

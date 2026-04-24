@@ -1,5 +1,5 @@
 {
-  "module": "测试框架",
+  "module": "测试框架/测试框架",
   "version": "1.0",
   "description": "测试框架命令 模块命令集合，涵盖测试框架的常用操作和最佳实践",
   "commands": [
@@ -32,7 +32,7 @@
               "测试文件路径": {
                 "type": "string",
                 "required": true,
-                "description": "测试文件路径",
+                "description": "测试文件路径         ",
                 "example": "src/__tests__/math.test.ts",
                 "notes": "常用"
               }
@@ -46,7 +46,7 @@
               "测试名称模式": {
                 "type": "string",
                 "required": true,
-                "description": "测试名称模式",
+                "description": "测试名称模式         ",
                 "example": "toBe",
                 "notes": "可选"
               }
@@ -152,7 +152,7 @@
               "源码路径": {
                 "type": "string",
                 "required": true,
-                "description": "源码路径",
+                "description": "源码路径           ",
                 "example": "src",
                 "notes": "常用"
               }
@@ -167,7 +167,7 @@
               "标记名": {
                 "type": "string",
                 "required": true,
-                "description": "测试标记名",
+                "description": "测试标记名          ",
                 "example": "slow",
                 "notes": "常用"
               }
@@ -213,7 +213,7 @@
               "测试类名": {
                 "type": "string",
                 "required": true,
-                "description": "测试类名",
+                "description": "测试类名           ",
                 "example": "AppTest",
                 "notes": "常用"
               }
@@ -251,7 +251,7 @@
               "测试类名": {
                 "type": "string",
                 "required": true,
-                "description": "测试类全名",
+                "description": "测试类全名          ",
                 "example": "com.example.AppTest",
                 "notes": "常用"
               }
@@ -290,7 +290,7 @@
               "测试文件": {
                 "type": "string",
                 "required": true,
-                "description": "测试文件路径",
+                "description": "测试文件路径         ",
                 "example": "tests/login.spec.ts",
                 "notes": "常用"
               }
@@ -311,7 +311,7 @@
               "URL": {
                 "type": "string",
                 "required": true,
-                "description": "目标 URL",
+                "description": "目标 URL         ",
                 "example": "https://example.com",
                 "notes": "常用"
               }
@@ -333,7 +333,7 @@
               "浏览器名": {
                 "type": "string",
                 "required": true,
-                "description": "浏览器名称",
+                "description": "浏览器名称          ",
                 "example": "chromium",
                 "notes": "常用"
               }
@@ -347,7 +347,7 @@
               "数量": {
                 "type": "string",
                 "required": true,
-                "description": "并行数量",
+                "description": "并行数量           ",
                 "example": "4",
                 "notes": "常用"
               }
@@ -381,7 +381,7 @@
               "测试文件": {
                 "type": "string",
                 "required": true,
-                "description": "测试文件路径",
+                "description": "测试文件路径         ",
                 "example": "cypress/e2e/login.cy.js",
                 "notes": "常用"
               }
@@ -395,7 +395,7 @@
               "浏览器名": {
                 "type": "string",
                 "required": true,
-                "description": "浏览器名称",
+                "description": "浏览器名称          ",
                 "example": "chrome",
                 "notes": "可选"
               }
@@ -441,14 +441,14 @@
               "集合文件": {
                 "type": "string",
                 "required": true,
-                "description": "Postman 集合文件",
+                "description": "Postman 集合文件   ",
                 "example": "collection.json",
                 "notes": "常用"
               },
               "环境文件": {
                 "type": "string",
                 "required": true,
-                "description": "环境配置文件",
+                "description": "环境配置文件         ",
                 "example": "env.json",
                 "notes": "常用"
               }
@@ -462,7 +462,7 @@
               "集合文件": {
                 "type": "string",
                 "required": true,
-                "description": "Postman 集合文件",
+                "description": "Postman 集合文件   ",
                 "example": "collection.json",
                 "notes": "常用"
               }
@@ -477,7 +477,7 @@
               "集合文件": {
                 "type": "string",
                 "required": true,
-                "description": "Postman 集合文件",
+                "description": "Postman 集合文件   ",
                 "example": "collection.json",
                 "notes": "常用"
               }
@@ -492,14 +492,14 @@
               "集合文件": {
                 "type": "string",
                 "required": true,
-                "description": "Postman 集合文件",
+                "description": "Postman 集合文件   ",
                 "example": "collection.json",
                 "notes": "常用"
               },
               "数据文件": {
                 "type": "string",
                 "required": true,
-                "description": "CSV 数据文件",
+                "description": "CSV 数据文件       ",
                 "example": "data.csv",
                 "notes": "常用"
               }
@@ -514,14 +514,14 @@
               "集合文件": {
                 "type": "string",
                 "required": true,
-                "description": "Postman 集合文件",
+                "description": "Postman 集合文件   ",
                 "example": "collection.json",
                 "notes": "常用"
               },
               "毫秒": {
                 "type": "string",
                 "required": true,
-                "description": "超时时间(毫秒)",
+                "description": "超时时间(毫秒)       ",
                 "example": "30000",
                 "notes": "可选"
               }
@@ -533,7 +533,7 @@
           "集合文件": {
             "type": "string",
             "required": true,
-            "description": "Postman 集合文件路径",
+            "description": "Postman 集合文件路径 ",
             "example": "collection.json",
             "notes": "常用"
           }
@@ -555,14 +555,14 @@
               "URL": {
                 "type": "string",
                 "required": true,
-                "description": "请求 URL",
+                "description": "请求 URL         ",
                 "example": "https://api.example.com/users",
                 "notes": "常用"
               },
               "JSON数据": {
                 "type": "string",
                 "required": true,
-                "description": "JSON 请求体",
+                "description": "JSON 请求体       ",
                 "example": "{\"name\":\"test\"}",
                 "notes": "常用"
               }
@@ -576,14 +576,14 @@
               "请求头": {
                 "type": "string",
                 "required": true,
-                "description": "HTTP 请求头",
+                "description": "HTTP 请求头       ",
                 "example": "Authorization: Bearer token123",
                 "notes": "常用"
               },
               "URL": {
                 "type": "string",
                 "required": true,
-                "description": "请求 URL",
+                "description": "请求 URL         ",
                 "example": "https://api.example.com/users",
                 "notes": "常用"
               }
@@ -598,7 +598,7 @@
               "URL": {
                 "type": "string",
                 "required": true,
-                "description": "请求 URL",
+                "description": "请求 URL         ",
                 "example": "https://api.example.com",
                 "notes": "常用"
               }
@@ -613,7 +613,7 @@
               "URL": {
                 "type": "string",
                 "required": true,
-                "description": "请求 URL",
+                "description": "请求 URL         ",
                 "example": "https://api.example.com",
                 "notes": "常用"
               }
@@ -627,21 +627,21 @@
               "用户名": {
                 "type": "string",
                 "required": true,
-                "description": "用户名",
+                "description": "用户名            ",
                 "example": "admin",
                 "notes": "可选"
               },
               "密码": {
                 "type": "string",
                 "required": true,
-                "description": "密码",
+                "description": "密码             ",
                 "example": "password",
                 "notes": "可选"
               },
               "URL": {
                 "type": "string",
                 "required": true,
-                "description": "请求 URL",
+                "description": "请求 URL         ",
                 "example": "https://api.example.com",
                 "notes": "常用"
               }
@@ -654,7 +654,7 @@
           "URL": {
             "type": "string",
             "required": true,
-            "description": "请求 URL",
+            "description": "请求 URL         ",
             "example": "https://api.example.com",
             "notes": "常用"
           }
@@ -703,7 +703,7 @@
               "阈值": {
                 "type": "string",
                 "required": true,
-                "description": "分支覆盖率阈值",
+                "description": "分支覆盖率阈值        ",
                 "example": "80",
                 "notes": "常用"
               }
@@ -718,7 +718,7 @@
               "文件或目录": {
                 "type": "string",
                 "required": true,
-                "description": "排除的文件或目录",
+                "description": "排除的文件或目录       ",
                 "example": "**/node_modules/**",
                 "notes": "可选"
               }
@@ -730,7 +730,7 @@
           "命令": {
             "type": "string",
             "required": true,
-            "description": "要执行的测试命令",
+            "description": "要执行的测试命令       ",
             "example": "jest",
             "notes": "常用"
           }
@@ -780,7 +780,7 @@
               "阈值": {
                 "type": "string",
                 "required": true,
-                "description": "覆盖率阈值",
+                "description": "覆盖率阈值          ",
                 "example": "80",
                 "notes": "常用"
               }
@@ -822,7 +822,7 @@
               "覆盖率文件": {
                 "type": "string",
                 "required": true,
-                "description": "覆盖率数据文件",
+                "description": "覆盖率数据文件        ",
                 "example": "coverage/lcov.info",
                 "notes": "常用"
               }
@@ -836,7 +836,7 @@
               "COMMIT_SHA": {
                 "type": "string",
                 "required": true,
-                "description": "Git 提交 SHA",
+                "description": "Git 提交 SHA     ",
                 "example": "abc123def456",
                 "notes": "可选"
               }
@@ -913,7 +913,7 @@
           "公共目录": {
             "type": "string",
             "required": true,
-            "description": "公共资源目录",
+            "description": "公共资源目录         ",
             "example": "public/",
             "notes": "常用"
           }
@@ -949,7 +949,7 @@
               "覆盖文件": {
                 "type": "string",
                 "required": true,
-                "description": "覆盖率输出文件",
+                "description": "覆盖率输出文件        ",
                 "example": "coverage.out",
                 "notes": "可选"
               }
@@ -1067,7 +1067,7 @@
               "进程数": {
                 "type": "string",
                 "required": true,
-                "description": "并行进程数",
+                "description": "并行进程数          ",
                 "example": "4",
                 "notes": "常用"
               }
@@ -1105,14 +1105,14 @@
               "浏览器名": {
                 "type": "string",
                 "required": true,
-                "description": "浏览器名称",
+                "description": "浏览器名称          ",
                 "example": "chrome",
                 "notes": "常用"
               },
               "项目文件": {
                 "type": "string",
                 "required": true,
-                "description": "Selenium 项目文件",
+                "description": "Selenium 项目文件  ",
                 "example": "tests/my-project.side",
                 "notes": "常用"
               }
@@ -1133,7 +1133,7 @@
               "项目文件": {
                 "type": "string",
                 "required": true,
-                "description": "Selenium 项目文件",
+                "description": "Selenium 项目文件  ",
                 "example": "tests/my-project.side",
                 "notes": "常用"
               }

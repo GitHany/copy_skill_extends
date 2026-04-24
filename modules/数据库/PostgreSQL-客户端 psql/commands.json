@@ -1,0 +1,320 @@
+{
+  "module": "数据库/PostgreSQL-客户端 psql",
+  "version": "2.0",
+  "description": "PostgreSQL 数据库 psql 客户端",
+  "commands": [
+    {
+      "dirPath": "/数据库/",
+      "name": "psql 连接数据库",
+      "keyword": "psql 连接",
+      "description": "连接 PostgreSQL 数据库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "psql -h %{主机}% -U %{用户}% -d %{数据库名}%",
+        "extensions": [
+          {
+            "name": "指定端口连接",
+            "cmd": "psql -h %{主机}% -U %{用户}% -p %{端口}% -d %{数据库名}%",
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "数据库主机",
+                "example": "localhost",
+                "notes": "必填"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "postgres",
+                "notes": "必填"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "端口",
+                "example": "5432",
+                "notes": "必填"
+              },
+              "数据库名": {
+                "type": "string",
+                "required": true,
+                "description": "数据库名",
+                "example": "mydb",
+                "notes": "必填"
+              }
+            },
+            "keyword": "psql 端口"
+          },
+          {
+            "name": "SSL 连接",
+            "cmd": "psql -h %{主机}% -U %{用户}% -d %{数据库名}% sslmode=require",
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "数据库主机",
+                "example": "localhost",
+                "notes": "必填"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "postgres",
+                "notes": "必填"
+              },
+              "数据库名": {
+                "type": "string",
+                "required": true,
+                "description": "数据库名",
+                "example": "mydb",
+                "notes": "必填"
+              }
+            },
+            "keyword": "psql ssl"
+          },
+          {
+            "name": "使用密码文件",
+            "cmd": "psql -h %{主机}% -U %{用户}% -d %{数据库名}% --passwordfile=%{密码文件}%",
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "数据库主机",
+                "example": "localhost",
+                "notes": "必填"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "postgres",
+                "notes": "必填"
+              },
+              "数据库名": {
+                "type": "string",
+                "required": true,
+                "description": "数据库名",
+                "example": "mydb",
+                "notes": "必填"
+              },
+              "密码文件": {
+                "type": "string",
+                "required": true,
+                "description": "密码文件路径",
+                "example": "~/.pgpass",
+                "notes": "必填"
+              }
+            },
+            "keyword": "psql passwordfile"
+          },
+          {
+            "name": "执行单条命令退出",
+            "cmd": "psql -h %{主机}% -U %{用户}% -d %{数据库名}% -c \"%{SQL}%\"",
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "数据库主机",
+                "example": "localhost",
+                "notes": "必填"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户名",
+                "example": "postgres",
+                "notes": "必填"
+              },
+              "数据库名": {
+                "type": "string",
+                "required": true,
+                "description": "数据库名",
+                "example": "mydb",
+                "notes": "必填"
+              },
+              "SQL": {
+                "type": "string",
+                "required": true,
+                "description": "SQL 语句",
+                "example": "SELECT version();",
+                "notes": "必填"
+              }
+            },
+            "keyword": "psql 单条命令"
+          }
+        ],
+        "params": {
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "数据库主机          ",
+            "example": "localhost",
+            "notes": "必填"
+          },
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "用户名            ",
+            "example": "postgres",
+            "notes": "必填"
+          },
+          "数据库名": {
+            "type": "string",
+            "required": true,
+            "description": "数据库名           ",
+            "example": "mydb",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/数据库/",
+      "name": "psql 执行 SQL",
+      "keyword": "psql SQL",
+      "description": "执行 SQL 文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "psql -h %{主机}% -U %{用户}% -d %{数据库}% -f %{文件}%",
+        "extensions": [
+          {
+            "name": "输出为 CSV 格式",
+            "cmd": "psql -h %{主机}% -U %{用户}% -d %{数据库}% -f %{文件}% -A -F\",\"",
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机",
+                "example": "localhost",
+                "notes": "必填"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户",
+                "example": "postgres",
+                "notes": "必填"
+              },
+              "数据库": {
+                "type": "string",
+                "required": true,
+                "description": "数据库",
+                "example": "mydb",
+                "notes": "必填"
+              },
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "SQL 文件",
+                "example": "query.sql",
+                "notes": "必填"
+              }
+            },
+            "keyword": "psql csv"
+          },
+          {
+            "name": "安静模式",
+            "cmd": "psql -h %{主机}% -U %{用户}% -d %{数据库}% -f %{文件}% -q",
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机",
+                "example": "localhost",
+                "notes": "必填"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户",
+                "example": "postgres",
+                "notes": "必填"
+              },
+              "数据库": {
+                "type": "string",
+                "required": true,
+                "description": "数据库",
+                "example": "mydb",
+                "notes": "必填"
+              },
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "SQL 文件",
+                "example": "script.sql",
+                "notes": "必填"
+              }
+            },
+            "keyword": "psql quiet"
+          },
+          {
+            "name": "单事务执行",
+            "cmd": "psql -h %{主机}% -U %{用户}% -d %{数据库}% -f %{文件}% -1",
+            "params": {
+              "主机": {
+                "type": "string",
+                "required": true,
+                "description": "主机",
+                "example": "localhost",
+                "notes": "必填"
+              },
+              "用户": {
+                "type": "string",
+                "required": true,
+                "description": "用户",
+                "example": "postgres",
+                "notes": "必填"
+              },
+              "数据库": {
+                "type": "string",
+                "required": true,
+                "description": "数据库",
+                "example": "mydb",
+                "notes": "必填"
+              },
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "SQL 文件",
+                "example": "script.sql",
+                "notes": "必填"
+              }
+            },
+            "keyword": "psql single transaction"
+          }
+        ],
+        "params": {
+          "主机": {
+            "type": "string",
+            "required": true,
+            "description": "主机             ",
+            "example": "localhost",
+            "notes": "必填"
+          },
+          "用户": {
+            "type": "string",
+            "required": true,
+            "description": "用户             ",
+            "example": "postgres",
+            "notes": "必填"
+          },
+          "数据库": {
+            "type": "string",
+            "required": true,
+            "description": "数据库            ",
+            "example": "mydb",
+            "notes": "必填"
+          },
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "SQL 文件         ",
+            "example": "query.sql",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

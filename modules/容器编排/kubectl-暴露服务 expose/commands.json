@@ -1,0 +1,222 @@
+{
+  "module": "容器编排/kubectl-暴露服务 expose",
+  "version": "2.0",
+  "description": "为 Deployment、Pod、ReplicaSet 等资源创建 Service，自动暴露端口使集群内部或外部可以访问。最快捷的服务暴露方式，无需编写完整 Service YAML。",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl expose 暴露服务",
+      "keyword": "kubectl expose 服务 暴露 端口",
+      "description": "为资源创建 ClusterIP Service，通过端口映射使集群内其他应用可以访问",
+      "data": {
+        "cmd": "kubectl expose deployment %{名称}% --port=%{端口}% --target-port=%{目标端口}%",
+        "extensions": [
+          {
+            "name": "创建 NodePort Service（对外暴露）",
+            "cmd": "kubectl expose deployment %{名称}% --port=%{端口}% --target-port=%{目标端口}% --type=NodePort",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment 名称  ",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "Service 暴露端口   ",
+                "example": "80",
+                "notes": "集群内部访问的端口"
+              },
+              "目标端口": {
+                "type": "string",
+                "required": true,
+                "description": "容器监听端口         ",
+                "example": "8080",
+                "notes": "Pod 内容器实际监听的端口"
+              }
+            },
+            "keyword": "kubectl expose nodeport",
+            "description": "创建 NodePort Service，通过节点 IP:NodePort 访问，适用于开发测试环境"
+          },
+          {
+            "name": "创建 LoadBalancer Service（云环境）",
+            "cmd": "kubectl expose deployment %{名称}% --port=%{端口}% --target-port=%{目标端口}% --type=LoadBalancer",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment 名称  ",
+                "example": "myapp",
+                "notes": "必填，在云环境中会自动创建云负载均衡器"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "Service 暴露端口   ",
+                "example": "80",
+                "notes": "外部访问的端口"
+              },
+              "目标端口": {
+                "type": "string",
+                "required": true,
+                "description": "容器监听端口         ",
+                "example": "8080",
+                "notes": "容器实际端口"
+              }
+            },
+            "keyword": "kubectl expose loadbalancer",
+            "description": "创建 LoadBalancer Service，适用于云环境（AWS/GCP/Azure）自动配置外部负载均衡"
+          },
+          {
+            "name": "使用 label 选择器创建 Service",
+            "cmd": "kubectl expose deployment %{名称}% --port=%{端口}% --selector=%{标签选择器}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment 名称  ",
+                "example": "myapp",
+                "notes": "必填，但实际路由由 selector 决定"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "Service 端口     ",
+                "example": "80",
+                "notes": "必填"
+              },
+              "标签选择器": {
+                "type": "string",
+                "required": true,
+                "description": "Pod 标签选择器      ",
+                "example": "app=myapp",
+                "notes": "Service 会路由到匹配该标签的所有 Pod"
+              }
+            },
+            "keyword": "kubectl expose selector",
+            "description": "通过标签选择器自定义 Service 的后端 Pod，可以跨 Deployment 路由流量"
+          },
+          {
+            "name": "指定服务名称",
+            "cmd": "kubectl expose deployment %{名称}% --port=%{端口}% --target-port=%{目标端口}% --name=%{服务名}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment 名称  ",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "Service 端口     ",
+                "example": "80",
+                "notes": "必填"
+              },
+              "目标端口": {
+                "type": "string",
+                "required": true,
+                "description": "容器端口           ",
+                "example": "8080",
+                "notes": "必填"
+              },
+              "服务名": {
+                "type": "string",
+                "required": false,
+                "description": "自定义 Service 名称 ",
+                "example": "myapp-service",
+                "notes": "不指定则默认使用 Deployment 名称"
+              }
+            },
+            "keyword": "kubectl expose 自定义名称",
+            "description": "创建 Service 时指定自定义名称，避免与 Deployment 同名导致混淆"
+          },
+          {
+            "name": "查看已创建的 Service",
+            "cmd": "kubectl get svc %{服务名}% -o yaml",
+            "params": {
+              "服务名": {
+                "type": "string",
+                "required": true,
+                "description": "Service 名称     ",
+                "example": "myapp",
+                "notes": "查看完整的 Service 配置"
+              }
+            },
+            "keyword": "kubectl expose 查看服务",
+            "description": "查看已创建 Service 的完整 YAML 配置，用于导出或理解 Service 结构"
+          },
+          {
+            "name": "创建 Ingress 关联 Service",
+            "cmd": "kubectl expose deployment %{名称}% --port=%{端口}% --target-port=%{目标端口}% && kubectl create ingress %{ingress名}% --rule=\"%{域名}%/=%{服务名}%:%{端口}%\"",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment 名称  ",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "端口": {
+                "type": "string",
+                "required": true,
+                "description": "Service 端口     ",
+                "example": "80",
+                "notes": "必填"
+              },
+              "目标端口": {
+                "type": "string",
+                "required": true,
+                "description": "容器端口           ",
+                "example": "8080",
+                "notes": "必填"
+              },
+              "ingress名": {
+                "type": "string",
+                "required": true,
+                "description": "Ingress 名称     ",
+                "example": "myapp-ingress",
+                "notes": "必填"
+              },
+              "域名": {
+                "type": "string",
+                "required": true,
+                "description": "访问域名           ",
+                "example": "myapp.example.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl expose ingress",
+            "description": "快速创建 Service 并关联 Ingress，实现外部 HTTP/HTTPS 访问"
+          }
+        ],
+        "params": {
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "Deployment/Pod/Service 名称",
+            "example": "myapp",
+            "notes": "必填"
+          },
+          "端口": {
+            "type": "string",
+            "required": true,
+            "description": "Service 暴露的端口  ",
+            "example": "80",
+            "notes": "集群内部访问的端口"
+          },
+          "目标端口": {
+            "type": "string",
+            "required": true,
+            "description": "容器实际监听的端口      ",
+            "example": "8080",
+            "notes": "Pod 内应用监听的端口"
+          }
+        }
+      }
+    }
+  ]
+}

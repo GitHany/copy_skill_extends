@@ -1,0 +1,85 @@
+{
+  "module": "版本控制/Git-初始化仓库 init",
+  "version": "3.0",
+  "description": "Git init 用于在本地目录初始化一个新的 Git 仓库，会创建 .git 隐藏文件夹，从此开始版本控制之旅。适合新项目开始时使用，或在已有代码的文件夹中启用 Git。初始化后需要做初次提交才能记录历史。常见场景：开始新的 Git 项目、创建本地开发仓库、将已有项目纳入 Git 管理、创建共享仓库。",
+  "commands": [
+    {
+      "dirPath": "/版本控制/",
+      "name": "git init 初始化",
+      "keyword": "git init 初始化",
+      "description": "在当前目录初始化 Git 仓库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git init",
+        "extensions": [
+          {
+            "name": "git init 初始化为裸仓库",
+            "description": "创建裸仓库（用于共享仓库）                 ",
+            "params": {},
+            "cmd": "git init"
+          },
+          {
+            "name": "git init --initial-commit 初始提交",
+            "description": "创建仓库并创建初始提交                   ",
+            "params": {},
+            "cmd": "git init"
+          },
+          {
+            "name": "git init 指定目录 初始化子目录",
+            "description": "在指定目录初始化仓库                    ",
+            "params": {
+              "目录": {
+                "type": "string",
+                "required": false,
+                "description": "目录路径           ",
+                "example": "subproject",
+                "notes": "可选"
+              }
+            },
+            "cmd": "git init"
+          },
+          {
+            "name": "git init -b 指定分支 初始化并指定初始分支",
+            "description": "初始化时指定初始分支名称                  ",
+            "params": {
+              "分支名": {
+                "type": "string",
+                "required": true,
+                "description": "分支名称           ",
+                "example": "master",
+                "notes": "必填，Git 2.28+ 支持"
+              }
+            },
+            "cmd": "git init"
+          },
+          {
+            "name": "git init --shared=group 共享仓库",
+            "description": "创建组内共享的仓库，多人可共同推送             ",
+            "params": {},
+            "cmd": "git init"
+          },
+          {
+            "name": "git init -u 远程地址 关联远程仓库",
+            "description": "初始化并关联到远程仓库地址                 ",
+            "params": {
+              "远程地址": {
+                "type": "string",
+                "required": true,
+                "description": "远程仓库 URL       ",
+                "example": "git@github.com:user/repo.git",
+                "notes": "必填"
+              }
+            },
+            "cmd": "git init"
+          },
+          {
+            "name": "git init --quiet 静默模式",
+            "description": "静默执行，不输出任何信息                  ",
+            "params": {},
+            "cmd": "git init"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

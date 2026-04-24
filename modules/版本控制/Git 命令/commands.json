@@ -1,0 +1,1748 @@
+{
+  "module": "版本控制/Git 命令",
+  "version": "2.0",
+  "description": "Git 命令模块命令集合，涵盖Git 命令的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/版本控制/",
+      "name": "git clone 克隆仓库",
+      "keyword": "git clone 克隆",
+      "description": "克隆远程仓库到本地。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git clone %{仓库URL}%",
+        "extensions": [
+          {
+            "name": "克隆指定分支",
+            "cmd": "git clone -b %{分支名}% %{URL}%",
+            "params": {
+              "分支名": {
+                "type": "string",
+                "required": true,
+                "description": "分支名称           ",
+                "example": "develop",
+                "notes": "可选"
+              },
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "仓库地址           ",
+                "example": "https://github.com/user/repo.git",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git clone 分支"
+          },
+          {
+            "name": "浅克隆",
+            "cmd": "git clone --depth 1 %{URL}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "仓库地址           ",
+                "example": "https://github.com/user/repo.git",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git clone 浅克隆"
+          },
+          {
+            "name": "克隆到指定目录",
+            "cmd": "git clone %{URL}% %{目录}%",
+            "params": {
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "仓库地址           ",
+                "example": "https://github.com/user/repo.git",
+                "notes": "可选"
+              },
+              "目录": {
+                "type": "string",
+                "required": true,
+                "description": "本地目录路径         ",
+                "example": "./myproject",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git clone 目录"
+          }
+        ],
+        "params": {
+          "仓库URL": {
+            "type": "string",
+            "required": true,
+            "description": "仓库地址           ",
+            "example": "https://github.com/user/repo.git",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git init 初始化仓库",
+      "keyword": "git init 初始化",
+      "description": "初始化一个新的 Git 仓库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git init",
+        "extensions": [
+          {
+            "name": "初始化为裸仓库",
+            "cmd": "git init --bare",
+            "params": {},
+            "keyword": "git init 裸仓库"
+          },
+          {
+            "name": "初始化并指定分支名",
+            "cmd": "git init -b %{分支名}%",
+            "params": {
+              "分支名": {
+                "type": "string",
+                "required": true,
+                "description": "初始分支名称         ",
+                "example": "main",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git init 分支名"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git status 查看状态",
+      "keyword": "git status 状态",
+      "description": "显示工作区状态。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git status",
+        "extensions": [
+          {
+            "name": "简短输出",
+            "cmd": "git status -s",
+            "params": {},
+            "keyword": "git status 简短"
+          },
+          {
+            "name": "显示分支信息",
+            "cmd": "git status -b",
+            "params": {},
+            "keyword": "git status 分支"
+          },
+          {
+            "name": "忽略子模块",
+            "cmd": "git status --ignore-submodules",
+            "params": {},
+            "keyword": "git status 忽略子模块"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git add 添加文件到暂存区",
+      "keyword": "git add 添加",
+      "description": "将文件添加到暂存区。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git add %{文件}%",
+        "extensions": [
+          {
+            "name": "添加所有文件",
+            "cmd": "git add .",
+            "params": {},
+            "keyword": "git add 所有文件"
+          },
+          {
+            "name": "交互式添加",
+            "cmd": "git add -p",
+            "params": {},
+            "keyword": "git add 交互式"
+          },
+          {
+            "name": "添加已跟踪文件",
+            "cmd": "git add -u",
+            "params": {},
+            "keyword": "git add 已跟踪"
+          },
+          {
+            "name": "强制添加忽略文件",
+            "cmd": "git add -f %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径           ",
+                "example": "src/index.js",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git add 强制添加"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "文件路径           ",
+            "example": "src/app.js",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git commit 提交变更",
+      "keyword": "git commit 提交",
+      "description": "提交暂存区变更。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git commit -m \"%{提交信息}%\"",
+        "extensions": [
+          {
+            "name": "添加并提交",
+            "cmd": "git commit -am \"%{提交信息}%\"",
+            "params": {
+              "提交信息": {
+                "type": "string",
+                "required": true,
+                "description": "提交说明           ",
+                "example": "修复登录bug",
+                "notes": "常用"
+              }
+            },
+            "keyword": "git commit 添加提交"
+          },
+          {
+            "name": "修改上次提交",
+            "cmd": "git commit --amend",
+            "params": {},
+            "keyword": "git commit 修改"
+          },
+          {
+            "name": "交互式提交",
+            "cmd": "git commit -p",
+            "params": {},
+            "keyword": "git commit 交互式"
+          },
+          {
+            "name": "跳过 Hooks",
+            "cmd": "git commit --no-verify",
+            "params": {},
+            "keyword": "git commit 跳过钩子"
+          },
+          {
+            "name": "签名提交",
+            "cmd": "git commit -S",
+            "params": {},
+            "keyword": "git commit 签名"
+          }
+        ],
+        "params": {
+          "提交信息": {
+            "type": "string",
+            "required": true,
+            "description": "提交说明           ",
+            "example": "添加新功能",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git push 推送变更",
+      "keyword": "git push 推送",
+      "description": "推送本地提交到远程仓库。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git push origin %{分支名}%",
+        "extensions": [
+          {
+            "name": "设置上游分支",
+            "cmd": "git push -u origin %{分支名}%",
+            "params": {
+              "分支名": {
+                "type": "string",
+                "required": true,
+                "description": "分支名称           ",
+                "example": "main",
+                "notes": "常用"
+              }
+            },
+            "keyword": "git push 上游"
+          },
+          {
+            "name": "强制推送",
+            "cmd": "git push --force-with-lease",
+            "params": {},
+            "keyword": "git push 强制"
+          },
+          {
+            "name": "推送所有分支",
+            "cmd": "git push --all",
+            "params": {},
+            "keyword": "git push 所有分支"
+          },
+          {
+            "name": "推送标签",
+            "cmd": "git push --tags",
+            "params": {},
+            "keyword": "git push 标签"
+          },
+          {
+            "name": "删除远程分支",
+            "cmd": "git push origin --delete %{分支名}%",
+            "params": {
+              "分支名": {
+                "type": "string",
+                "required": true,
+                "description": "分支名称           ",
+                "example": "feature-old",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git push 删除远程分支"
+          }
+        ],
+        "params": {
+          "分支名": {
+            "type": "string",
+            "required": true,
+            "description": "分支名称           ",
+            "example": "develop",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git pull 拉取并合并",
+      "keyword": "git pull 拉取",
+      "description": "拉取远程更新并合并到当前分支。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git pull origin %{分支名}%",
+        "extensions": [
+          {
+            "name": "拉取并变基",
+            "cmd": "git pull --rebase origin %{分支名}%",
+            "params": {
+              "分支名": {
+                "type": "string",
+                "required": true,
+                "description": "分支名称           ",
+                "example": "main",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git pull rebase"
+          },
+          {
+            "name": "仅拉取不合并",
+            "cmd": "git fetch origin",
+            "params": {},
+            "keyword": "git pull 仅拉取"
+          },
+          {
+            "name": "拉取所有远程",
+            "cmd": "git pull --all",
+            "params": {},
+            "keyword": "git pull 所有"
+          }
+        ],
+        "params": {
+          "分支名": {
+            "type": "string",
+            "required": true,
+            "description": "分支名称           ",
+            "example": "main",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git fetch 获取远程更新",
+      "keyword": "git fetch 获取",
+      "description": "获取远程更新不合并。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git fetch origin",
+        "extensions": [
+          {
+            "name": "获取并修剪远程分支",
+            "cmd": "git fetch --prune",
+            "params": {},
+            "keyword": "git fetch 修剪"
+          },
+          {
+            "name": "获取所有远程",
+            "cmd": "git fetch --all",
+            "params": {},
+            "keyword": "git fetch 所有"
+          },
+          {
+            "name": "获取指定远程",
+            "cmd": "git fetch %{远程名}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程仓库名称         ",
+                "example": "origin",
+                "notes": "常用"
+              }
+            },
+            "keyword": "git fetch 指定远程"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git merge 合并分支",
+      "keyword": "git merge 合并",
+      "description": "合并另一个分支到当前分支。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git merge %{分支名}%",
+        "extensions": [
+          {
+            "name": "中止合并",
+            "cmd": "git merge --abort",
+            "params": {},
+            "keyword": "git merge 中止"
+          },
+          {
+            "name": "合并不自动提交",
+            "cmd": "git merge --no-commit %{分支名}%",
+            "params": {
+              "分支名": {
+                "type": "string",
+                "required": true,
+                "description": "分支名称           ",
+                "example": "feature/login",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git merge 不提交"
+          },
+          {
+            "name": "squash 合并",
+            "cmd": "git merge --squash %{分支名}%",
+            "params": {
+              "分支名": {
+                "type": "string",
+                "required": true,
+                "description": "分支名称           ",
+                "example": "feature/login",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git merge squash"
+          },
+          {
+            "name": "继续合并",
+            "cmd": "git merge --continue",
+            "params": {},
+            "keyword": "git merge 继续"
+          }
+        ],
+        "params": {
+          "分支名": {
+            "type": "string",
+            "required": true,
+            "description": "分支名称           ",
+            "example": "develop",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git rebase 变基",
+      "keyword": "git rebase 变基",
+      "description": "将提交变基到另一个分支之上。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git rebase %{分支名}%",
+        "extensions": [
+          {
+            "name": "中止变基",
+            "cmd": "git rebase --abort",
+            "params": {},
+            "keyword": "git rebase 中止"
+          },
+          {
+            "name": "继续变基",
+            "cmd": "git rebase --continue",
+            "params": {},
+            "keyword": "git rebase 继续"
+          },
+          {
+            "name": "跳过当前提交",
+            "cmd": "git rebase --skip",
+            "params": {},
+            "keyword": "git rebase 跳过"
+          },
+          {
+            "name": "交互式变基",
+            "cmd": "git rebase -i %{分支名}%",
+            "params": {
+              "分支名": {
+                "type": "string",
+                "required": true,
+                "description": "分支名称           ",
+                "example": "HEAD~3",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git rebase 交互式"
+          },
+          {
+            "name": "在变基时压缩提交",
+            "cmd": "git rebase -i HEAD~%{数量}%",
+            "params": {
+              "数量": {
+                "type": "string",
+                "required": true,
+                "description": "要变基的提交数量       ",
+                "example": "5",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git rebase 压缩"
+          }
+        ],
+        "params": {
+          "分支名": {
+            "type": "string",
+            "required": true,
+            "description": "分支名称           ",
+            "example": "main",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git checkout 切换分支",
+      "keyword": "git checkout 切换",
+      "description": "切换分支或恢复工作区文件。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git checkout %{分支名}%",
+        "extensions": [
+          {
+            "name": "创建并切换到新分支",
+            "cmd": "git checkout -b %{新分支名}%",
+            "params": {
+              "新分支名": {
+                "type": "string",
+                "required": true,
+                "description": "新分支名称          ",
+                "example": "feature/new",
+                "notes": "常用"
+              }
+            },
+            "keyword": "git checkout 新分支"
+          },
+          {
+            "name": "切换到上一个分支",
+            "cmd": "git checkout -",
+            "params": {},
+            "keyword": "git checkout 上一个"
+          },
+          {
+            "name": "检出特定提交",
+            "cmd": "git checkout %{提交SHA}%",
+            "params": {
+              "提交SHA": {
+                "type": "string",
+                "required": true,
+                "description": "提交哈希值          ",
+                "example": "a1b2c3d",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git checkout 提交"
+          },
+          {
+            "name": "恢复文件到暂存区版本",
+            "cmd": "git checkout %{文件名}%",
+            "params": {
+              "文件名": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径           ",
+                "example": "src/app.js",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git checkout 恢复文件"
+          },
+          {
+            "name": "强制检出覆盖本地修改",
+            "cmd": "git checkout --force %{分支名}%",
+            "params": {
+              "分支名": {
+                "type": "string",
+                "required": true,
+                "description": "分支名称           ",
+                "example": "main",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git checkout 强制"
+          }
+        ],
+        "params": {
+          "分支名": {
+            "type": "string",
+            "required": true,
+            "description": "分支名称           ",
+            "example": "develop",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git switch 切换分支（新版）",
+      "keyword": "git switch 切换",
+      "description": "切换分支（新语法，比 checkout 更安全）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git switch %{分支名}%",
+        "extensions": [
+          {
+            "name": "创建并切换到新分支",
+            "cmd": "git switch -c %{新分支名}%",
+            "params": {
+              "新分支名": {
+                "type": "string",
+                "required": true,
+                "description": "新分支名称          ",
+                "example": "feature/login",
+                "notes": "常用"
+              }
+            },
+            "keyword": "git switch 新分支"
+          },
+          {
+            "name": "切换到远程分支",
+            "cmd": "git switch %{远程分支名}%",
+            "params": {
+              "远程分支名": {
+                "type": "string",
+                "required": true,
+                "description": "远程分支名称         ",
+                "example": "origin/main",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git switch 远程分支"
+          },
+          {
+            "name": "强制切换覆盖本地修改",
+            "cmd": "git switch --discard-changes %{分支名}%",
+            "params": {
+              "分支名": {
+                "type": "string",
+                "required": true,
+                "description": "分支名称           ",
+                "example": "main",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git switch 强制"
+          }
+        ],
+        "params": {
+          "分支名": {
+            "type": "string",
+            "required": true,
+            "description": "分支名称           ",
+            "example": "develop",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git branch 分支操作",
+      "keyword": "git branch 分支",
+      "description": "列出、创建或删除分支。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git branch %{分支名}%",
+        "extensions": [
+          {
+            "name": "查看所有分支",
+            "cmd": "git branch -a",
+            "params": {},
+            "keyword": "git branch 列表"
+          },
+          {
+            "name": "删除分支",
+            "cmd": "git branch -d %{分支名}%",
+            "params": {
+              "分支名": {
+                "type": "string",
+                "required": true,
+                "description": "分支名称           ",
+                "example": "feature-old",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git branch 删除"
+          },
+          {
+            "name": "强制删除分支",
+            "cmd": "git branch -D %{分支名}%",
+            "params": {
+              "分支名": {
+                "type": "string",
+                "required": true,
+                "description": "分支名称           ",
+                "example": "feature-abandon",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git branch 强制删除"
+          },
+          {
+            "name": "重命名分支",
+            "cmd": "git branch -m %{旧分支名}% %{新分支名}%",
+            "params": {
+              "旧分支名": {
+                "type": "string",
+                "required": true,
+                "description": "原分支名称          ",
+                "example": "old-name",
+                "notes": "可选"
+              },
+              "新分支名": {
+                "type": "string",
+                "required": true,
+                "description": "新分支名称          ",
+                "example": "new-name",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git branch 重命名"
+          },
+          {
+            "name": "查看已合并的分支",
+            "cmd": "git branch --merged",
+            "params": {},
+            "keyword": "git branch 已合并"
+          },
+          {
+            "name": "查看未合并的分支",
+            "cmd": "git branch --no-merged",
+            "params": {},
+            "keyword": "git branch 未合并"
+          }
+        ],
+        "params": {
+          "分支名": {
+            "type": "string",
+            "required": true,
+            "description": "分支名称           ",
+            "example": "feature/login",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git tag 标签管理",
+      "keyword": "git tag 标签",
+      "description": "创建、列出或删除标签。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git tag %{标签名}%",
+        "extensions": [
+          {
+            "name": "创建带注释标签",
+            "cmd": "git tag -a %{标签名}% -m \"%{说明}%\"",
+            "params": {
+              "标签名": {
+                "type": "string",
+                "required": true,
+                "description": "标签名称           ",
+                "example": "v1.0.0",
+                "notes": "可选"
+              },
+              "说明": {
+                "type": "string",
+                "required": true,
+                "description": "标签说明           ",
+                "example": "正式发布版本",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git tag 注释"
+          },
+          {
+            "name": "查看所有标签",
+            "cmd": "git tag -l",
+            "params": {},
+            "keyword": "git tag 列表"
+          },
+          {
+            "name": "查看标签详情",
+            "cmd": "git tag -d %{标签名}%",
+            "params": {
+              "标签名": {
+                "type": "string",
+                "required": true,
+                "description": "标签名称           ",
+                "example": "v1.0.0",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git tag 详情"
+          },
+          {
+            "name": "删除本地标签",
+            "cmd": "git tag -d %{标签名}%",
+            "params": {
+              "标签名": {
+                "type": "string",
+                "required": true,
+                "description": "标签名称           ",
+                "example": "v1.0.0",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git tag 删除"
+          },
+          {
+            "name": "删除远程标签",
+            "cmd": "git push origin --delete tag/%{标签名}%",
+            "params": {
+              "标签名": {
+                "type": "string",
+                "required": true,
+                "description": "标签名称           ",
+                "example": "v1.0.0",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git tag 删除远程"
+          },
+          {
+            "name": "推送单个标签",
+            "cmd": "git push origin %{标签名}%",
+            "params": {
+              "标签名": {
+                "type": "string",
+                "required": true,
+                "description": "标签名称           ",
+                "example": "v1.0.0",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git tag 推送"
+          },
+          {
+            "name": "推送所有标签",
+            "cmd": "git push origin --tags",
+            "params": {},
+            "keyword": "git tag 推送全部"
+          },
+          {
+            "name": "给历史提交打标签",
+            "cmd": "git tag -a %{标签名}% %{提交SHA}% -m \"%{说明}%\"",
+            "params": {
+              "标签名": {
+                "type": "string",
+                "required": true,
+                "description": "标签名称           ",
+                "example": "v0.9.0",
+                "notes": "可选"
+              },
+              "提交SHA": {
+                "type": "string",
+                "required": true,
+                "description": "提交哈希值          ",
+                "example": "a1b2c3d",
+                "notes": "可选"
+              },
+              "说明": {
+                "type": "string",
+                "required": true,
+                "description": "标签说明           ",
+                "example": "历史版本",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git tag 历史提交"
+          }
+        ],
+        "params": {
+          "标签名": {
+            "type": "string",
+            "required": true,
+            "description": "标签名称           ",
+            "example": "v1.0.0",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git stash 暂存变更",
+      "keyword": "git stash 暂存",
+      "description": "暂存工作区和暂存区的变更。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git stash",
+        "extensions": [
+          {
+            "name": "查看暂存列表",
+            "cmd": "git stash list",
+            "params": {},
+            "keyword": "git stash 列表"
+          },
+          {
+            "name": "应用最近暂存并删除",
+            "cmd": "git stash pop",
+            "params": {},
+            "keyword": "git stash 应用并删除"
+          },
+          {
+            "name": "应用最近暂存保留",
+            "cmd": "git stash apply",
+            "params": {},
+            "keyword": "git stash 应用"
+          },
+          {
+            "name": "应用指定暂存",
+            "cmd": "git stash apply %{暂存名}%",
+            "params": {
+              "暂存名": {
+                "type": "string",
+                "required": true,
+                "description": "暂存名称           ",
+                "example": "stash@{0}",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git stash 应用指定"
+          },
+          {
+            "name": "查看暂存内容",
+            "cmd": "git stash show -p",
+            "params": {},
+            "keyword": "git stash 查看"
+          },
+          {
+            "name": "创建带消息的暂存",
+            "cmd": "git stash push -m \"%{暂存消息}%\"",
+            "params": {
+              "暂存消息": {
+                "type": "string",
+                "required": true,
+                "description": "暂存说明           ",
+                "example": "临时保存登录功能",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git stash 消息"
+          },
+          {
+            "name": "暂存未跟踪文件",
+            "cmd": "git stash -u",
+            "params": {},
+            "keyword": "git stash 未跟踪"
+          },
+          {
+            "name": "暂存所有文件包括忽略",
+            "cmd": "git stash -a",
+            "params": {},
+            "keyword": "git stash 全部"
+          },
+          {
+            "name": "删除指定暂存",
+            "cmd": "git stash drop %{暂存名}%",
+            "params": {
+              "暂存名": {
+                "type": "string",
+                "required": true,
+                "description": "暂存名称           ",
+                "example": "stash@{0}",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git stash 删除"
+          },
+          {
+            "name": "清空所有暂存",
+            "cmd": "git stash clear",
+            "params": {},
+            "keyword": "git stash 清空"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git reset 重置",
+      "keyword": "git reset 重置",
+      "description": "重置当前 HEAD 到指定状态。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git reset --hard %{目标}%",
+        "extensions": [
+          {
+            "name": "软重置保留变更",
+            "cmd": "git reset --soft %{目标}%",
+            "params": {
+              "目标": {
+                "type": "string",
+                "required": true,
+                "description": "目标提交或引用        ",
+                "example": "HEAD~1",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git reset 软"
+          },
+          {
+            "name": "混合重置暂存区",
+            "cmd": "git reset --mixed %{目标}%",
+            "params": {
+              "目标": {
+                "type": "string",
+                "required": true,
+                "description": "目标提交或引用        ",
+                "example": "HEAD~1",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git reset 混合"
+          },
+          {
+            "name": "仅重置暂存区",
+            "cmd": "git reset HEAD",
+            "params": {},
+            "keyword": "git reset 暂存区"
+          },
+          {
+            "name": "重置单个文件",
+            "cmd": "git reset HEAD %{文件名}%",
+            "params": {
+              "文件名": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径           ",
+                "example": "src/app.js",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git reset 单个文件"
+          }
+        ],
+        "params": {
+          "目标": {
+            "type": "string",
+            "required": true,
+            "description": "目标提交或引用        ",
+            "example": "HEAD~1",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git revert 撤销提交",
+      "keyword": "git revert 撤销",
+      "description": "创建一个新提交来撤销指定提交。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git revert %{提交SHA}%",
+        "extensions": [
+          {
+            "name": "撤销不自动提交",
+            "cmd": "git revert --no-commit %{提交SHA}%",
+            "params": {
+              "提交SHA": {
+                "type": "string",
+                "required": true,
+                "description": "提交哈希值          ",
+                "example": "a1b2c3d",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git revert 不提交"
+          },
+          {
+            "name": "撤销多个提交",
+            "cmd": "git revert %{提交1}% %{提交2}%",
+            "params": {
+              "提交1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个提交哈希        ",
+                "example": "a1b2c3d",
+                "notes": "可选"
+              },
+              "提交2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个提交哈希        ",
+                "example": "e4f5g6h",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git revert 多个"
+          },
+          {
+            "name": "撤销范围提交",
+            "cmd": "git revert %{起始SHA}%..%{结束SHA}%",
+            "params": {
+              "起始SHA": {
+                "type": "string",
+                "required": true,
+                "description": "起始提交哈希         ",
+                "example": "a1b2c3d",
+                "notes": "可选"
+              },
+              "结束SHA": {
+                "type": "string",
+                "required": true,
+                "description": "结束提交哈希         ",
+                "example": "e4f5g6h",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git revert 范围"
+          },
+          {
+            "name": "继续 revert",
+            "cmd": "git revert --continue",
+            "params": {},
+            "keyword": "git revert 继续"
+          },
+          {
+            "name": "中止 revert",
+            "cmd": "git revert --abort",
+            "params": {},
+            "keyword": "git revert 中止"
+          }
+        ],
+        "params": {
+          "提交SHA": {
+            "type": "string",
+            "required": true,
+            "description": "提交哈希值          ",
+            "example": "a1b2c3d",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git cherry-pick 拣选提交",
+      "keyword": "git cherry-pick 拣选",
+      "description": "拣选一个或多个提交到当前分支。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git cherry-pick %{提交SHA}%",
+        "extensions": [
+          {
+            "name": "拣选多个提交",
+            "cmd": "git cherry-pick %{提交1}% %{提交2}%",
+            "params": {
+              "提交1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个提交哈希        ",
+                "example": "a1b2c3d",
+                "notes": "可选"
+              },
+              "提交2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个提交哈希        ",
+                "example": "e4f5g6h",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git cherry-pick 多个"
+          },
+          {
+            "name": "拣选提交范围",
+            "cmd": "git cherry-pick %{起始SHA}%..%{结束SHA}%",
+            "params": {
+              "起始SHA": {
+                "type": "string",
+                "required": true,
+                "description": "起始提交哈希         ",
+                "example": "a1b2c3d",
+                "notes": "可选"
+              },
+              "结束SHA": {
+                "type": "string",
+                "required": true,
+                "description": "结束提交哈希         ",
+                "example": "e4f5g6h",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git cherry-pick 范围"
+          },
+          {
+            "name": "拣选不自动提交",
+            "cmd": "git cherry-pick --no-commit %{提交SHA}%",
+            "params": {
+              "提交SHA": {
+                "type": "string",
+                "required": true,
+                "description": "提交哈希值          ",
+                "example": "a1b2c3d",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git cherry-pick 不提交"
+          },
+          {
+            "name": "继续拣选",
+            "cmd": "git cherry-pick --continue",
+            "params": {},
+            "keyword": "git cherry-pick 继续"
+          },
+          {
+            "name": "中止拣选",
+            "cmd": "git cherry-pick --abort",
+            "params": {},
+            "keyword": "git cherry-pick 中止"
+          }
+        ],
+        "params": {
+          "提交SHA": {
+            "type": "string",
+            "required": true,
+            "description": "提交哈希值          ",
+            "example": "a1b2c3d",
+            "notes": "常用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git diff 查看差异",
+      "keyword": "git diff 差异",
+      "description": "显示文件之间的变更。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git diff",
+        "extensions": [
+          {
+            "name": "查看暂存区与最新提交差异",
+            "cmd": "git diff --staged",
+            "params": {},
+            "keyword": "git diff 暂存区"
+          },
+          {
+            "name": "比较两个分支差异",
+            "cmd": "git diff %{分支1}% %{分支2}%",
+            "params": {
+              "分支1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个分支          ",
+                "example": "main",
+                "notes": "可选"
+              },
+              "分支2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个分支          ",
+                "example": "develop",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git diff 分支"
+          },
+          {
+            "name": "比较文件差异",
+            "cmd": "git diff %{文件名}%",
+            "params": {
+              "文件名": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径           ",
+                "example": "src/app.js",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git diff 文件"
+          },
+          {
+            "name": "显示变更统计",
+            "cmd": "git diff --stat",
+            "params": {},
+            "keyword": "git diff 统计"
+          },
+          {
+            "name": "比较提交间差异",
+            "cmd": "git diff %{提交1}% %{提交2}%",
+            "params": {
+              "提交1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个提交          ",
+                "example": "HEAD~1",
+                "notes": "可选"
+              },
+              "提交2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个提交          ",
+                "example": "HEAD",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git diff 提交"
+          },
+          {
+            "name": "忽略空白字符差异",
+            "cmd": "git diff -w",
+            "params": {},
+            "keyword": "git diff 忽略空白"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git log 查看提交历史",
+      "keyword": "git log 历史",
+      "description": "显示提交历史记录。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git log",
+        "extensions": [
+          {
+            "name": "单行显示",
+            "cmd": "git log --oneline",
+            "params": {},
+            "keyword": "git log 单行"
+          },
+          {
+            "name": "图形化显示分支",
+            "cmd": "git log --graph --oneline --all",
+            "params": {},
+            "keyword": "git log 图形"
+          },
+          {
+            "name": "显示最近 N 条",
+            "cmd": "git log -n %{数量}%",
+            "params": {
+              "数量": {
+                "type": "string",
+                "required": true,
+                "description": "显示条数           ",
+                "example": "10",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git log 最近"
+          },
+          {
+            "name": "按作者过滤",
+            "cmd": "git log --author=\"%{作者}%\"",
+            "params": {
+              "作者": {
+                "type": "string",
+                "required": true,
+                "description": "作者名称或邮箱        ",
+                "example": "zhangsan",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git log 作者"
+          },
+          {
+            "name": "按日期范围过滤",
+            "cmd": "git log --after=\"%{开始日期}%\" --before=\"%{结束日期}%\"",
+            "params": {
+              "开始日期": {
+                "type": "string",
+                "required": true,
+                "description": "开始日期           ",
+                "example": "2024-01-01",
+                "notes": "可选"
+              },
+              "结束日期": {
+                "type": "string",
+                "required": true,
+                "description": "结束日期           ",
+                "example": "2024-12-31",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git log 日期"
+          },
+          {
+            "name": "显示变更文件统计",
+            "cmd": "git log --stat",
+            "params": {},
+            "keyword": "git log 统计"
+          },
+          {
+            "name": "显示提交详细补丁",
+            "cmd": "git log -p",
+            "params": {},
+            "keyword": "git log 补丁"
+          },
+          {
+            "name": "搜索提交信息",
+            "cmd": "git log --grep=\"%{关键词}%\"",
+            "params": {
+              "关键词": {
+                "type": "string",
+                "required": true,
+                "description": "搜索关键词          ",
+                "example": "fix",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git log 搜索"
+          },
+          {
+            "name": "显示文件历史",
+            "cmd": "git log --follow %{文件名}%",
+            "params": {
+              "文件名": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径           ",
+                "example": "src/app.js",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git log 文件历史"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git reflog 操作日志",
+      "keyword": "git reflog 操作日志",
+      "description": "显示所有操作的引用日志。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git reflog",
+        "extensions": [
+          {
+            "name": "显示最近 N 条",
+            "cmd": "git reflog -n %{数量}%",
+            "params": {
+              "数量": {
+                "type": "string",
+                "required": true,
+                "description": "显示条数           ",
+                "example": "20",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git reflog 最近"
+          },
+          {
+            "name": "显示指定分支日志",
+            "cmd": "git reflog show %{分支名}%",
+            "params": {
+              "分支名": {
+                "type": "string",
+                "required": true,
+                "description": "分支名称           ",
+                "example": "main",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git reflog 分支"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git remote 远程仓库管理",
+      "keyword": "git remote 远程",
+      "description": "管理远程仓库别名。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git remote -v",
+        "extensions": [
+          {
+            "name": "添加远程仓库",
+            "cmd": "git remote add %{远程名}% %{URL}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名称           ",
+                "example": "origin",
+                "notes": "常用"
+              },
+              "URL": {
+                "type": "string",
+                "required": true,
+                "description": "仓库地址           ",
+                "example": "https://github.com/user/repo.git",
+                "notes": "常用"
+              }
+            },
+            "keyword": "git remote 添加"
+          },
+          {
+            "name": "修改远程仓库地址",
+            "cmd": "git remote set-url %{远程名}% %{新URL}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名称           ",
+                "example": "origin",
+                "notes": "常用"
+              },
+              "新URL": {
+                "type": "string",
+                "required": true,
+                "description": "新仓库地址          ",
+                "example": "https://github.com/user/repo.git",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git remote 修改"
+          },
+          {
+            "name": "删除远程仓库",
+            "cmd": "git remote remove %{远程名}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名称           ",
+                "example": "origin",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git remote 删除"
+          },
+          {
+            "name": "重命名远程",
+            "cmd": "git remote rename %{旧名}% %{新名}%",
+            "params": {
+              "旧名": {
+                "type": "string",
+                "required": true,
+                "description": "原远程名           ",
+                "example": "origin",
+                "notes": "可选"
+              },
+              "新名": {
+                "type": "string",
+                "required": true,
+                "description": "新远程名           ",
+                "example": "upstream",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git remote 重命名"
+          },
+          {
+            "name": "查看远程信息",
+            "cmd": "git remote show %{远程名}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程名称           ",
+                "example": "origin",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git remote 信息"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git bisect 二分查找",
+      "keyword": "git bisect 二分",
+      "description": "使用二分法查找问题提交。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git bisect start",
+        "extensions": [
+          {
+            "name": "开始二分查找",
+            "cmd": "git bisect start %{坏提交}% %{好提交}%",
+            "params": {
+              "坏提交": {
+                "type": "string",
+                "required": true,
+                "description": "问题提交的哈希        ",
+                "example": "HEAD",
+                "notes": "可选"
+              },
+              "好提交": {
+                "type": "string",
+                "required": true,
+                "description": "正常提交的哈希        ",
+                "example": "v1.0.0",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git bisect 开始"
+          },
+          {
+            "name": "标记当前提交为好",
+            "cmd": "git bisect good",
+            "params": {},
+            "keyword": "git bisect 好"
+          },
+          {
+            "name": "标记当前提交为坏",
+            "cmd": "git bisect bad",
+            "params": {},
+            "keyword": "git bisect 坏"
+          },
+          {
+            "name": "中止二分查找",
+            "cmd": "git bisect reset",
+            "params": {},
+            "keyword": "git bisect 重置"
+          },
+          {
+            "name": "自动二分查找",
+            "cmd": "git bisect run %{测试命令}%",
+            "params": {
+              "测试命令": {
+                "type": "string",
+                "required": true,
+                "description": "自动化测试命令        ",
+                "example": "npm test",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git bisect 自动"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/版本控制/",
+      "name": "git worktree 工作树管理",
+      "keyword": "git worktree 工作树",
+      "description": "管理多个工作树。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git worktree list",
+        "extensions": [
+          {
+            "name": "创建工作树",
+            "cmd": "git worktree add %{路径}% %{分支名}%",
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "工作树路径          ",
+                "example": "../feature-checkout",
+                "notes": "可选"
+              },
+              "分支名": {
+                "type": "string",
+                "required": true,
+                "description": "分支名称           ",
+                "example": "feature/login",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git worktree 创建"
+          },
+          {
+            "name": "创建并切换新分支",
+            "cmd": "git worktree add -b %{新分支}% %{路径}%",
+            "params": {
+              "新分支": {
+                "type": "string",
+                "required": true,
+                "description": "新分支名称          ",
+                "example": "feature/temp",
+                "notes": "可选"
+              },
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "工作树路径          ",
+                "example": "../feature-checkout",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git worktree 新分支"
+          },
+          {
+            "name": "移除工作树",
+            "cmd": "git worktree remove %{路径}%",
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "工作树路径          ",
+                "example": "../feature-checkout",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git worktree 移除"
+          },
+          {
+            "name": "清理工作树",
+            "cmd": "git worktree prune",
+            "params": {},
+            "keyword": "git worktree 清理"
+          },
+          {
+            "name": "锁定工作树",
+            "cmd": "git worktree lock %{路径}%",
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "工作树路径          ",
+                "example": "../feature-checkout",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git worktree 锁定"
+          },
+          {
+            "name": "解锁工作树",
+            "cmd": "git worktree unlock %{路径}%",
+            "params": {
+              "路径": {
+                "type": "string",
+                "required": true,
+                "description": "工作树路径          ",
+                "example": "../feature-checkout",
+                "notes": "可选"
+              }
+            },
+            "keyword": "git worktree 解锁"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

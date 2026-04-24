@@ -1,0 +1,3792 @@
+{
+  "module": "DevOps工具/Serverless-无服务器 serverless",
+  "version": "1.0",
+  "description": "Serverless 与边缘计算命令模块，覆盖 AWS Lambda、SAM CLI、Serverless Framework、Vercel、Netlify、Cloudflare Workers、Deno Deploy、Supabase Edge Functions",
+  "commands": [
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "aws lambda create-function 创建函数",
+      "keyword": "aws lambda create-function",
+      "description": "创建新的 AWS Lambda 函数。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws lambda create-function --function-name %{function_name}% --runtime %{runtime}% --role %{role_arn}% --handler %{handler}% --zip-file %{zip_file}%",
+        "extensions": [
+          {
+            "name": "创建 Node.js 函数",
+            "cmd": "aws lambda create-function --function-name %{function_name}% --runtime nodejs18.x --role %{role_arn}% --handler index.handler --zip-file fileb://%{zip_file}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "role_arn": {
+                "type": "string",
+                "required": false,
+                "description": "IAM 执行角色 ARN   ",
+                "example": "arn:aws:iam::123456789012:role/lambda-ex",
+                "notes": "常用，必填"
+              },
+              "zip_file": {
+                "type": "string",
+                "required": false,
+                "description": "部署包 ZIP 文件路径   ",
+                "example": "function.zip",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "aws lambda create-function nodejs"
+          },
+          {
+            "name": "创建 Python 函数",
+            "cmd": "aws lambda create-function --function-name %{function_name}% --runtime python3.11 --role %{role_arn}% --handler app.lambda_handler --zip-file fileb://%{zip_file}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "role_arn": {
+                "type": "string",
+                "required": false,
+                "description": "IAM 执行角色 ARN   ",
+                "example": "arn:aws:iam::123456789012:role/lambda-ex",
+                "notes": "常用，必填"
+              },
+              "zip_file": {
+                "type": "string",
+                "required": false,
+                "description": "部署包 ZIP 文件路径   ",
+                "example": "function.zip",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "aws lambda create-function python"
+          },
+          {
+            "name": "指定环境变量",
+            "cmd": "aws lambda create-function --function-name %{function_name}% --runtime %{runtime}% --role %{role_arn}% --handler %{handler}% --environment Variables={ENV}=prod --zip-file fileb://%{zip_file}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "runtime": {
+                "type": "string",
+                "required": false,
+                "description": "运行时环境          ",
+                "example": "nodejs18.x",
+                "notes": "必填，可选: nodejs18.x, python3.11, java17, go1.x, ruby3.2 等"
+              },
+              "role_arn": {
+                "type": "string",
+                "required": false,
+                "description": "IAM 执行角色 ARN   ",
+                "example": "arn:aws:iam::123456789012:role/lambda-ex",
+                "notes": "常用，必填"
+              },
+              "handler": {
+                "type": "string",
+                "required": false,
+                "description": "处理程序函数         ",
+                "example": "index.handler",
+                "notes": "常用，必填，格式: 文件名.导出函数名"
+              },
+              "zip_file": {
+                "type": "string",
+                "required": false,
+                "description": "部署包 ZIP 文件路径   ",
+                "example": "function.zip",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "aws lambda create-function 环境变量"
+          },
+          {
+            "name": "指定 VPC 配置",
+            "cmd": "aws lambda create-function --function-name %{function_name}% --runtime %{runtime}% --role %{role_arn}% --handler %{handler}% --vpc-config SubnetIds=[%{subnet_ids}%],SecurityGroupIds=[%{sg_ids}%] --zip-file fileb://%{zip_file}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "runtime": {
+                "type": "string",
+                "required": false,
+                "description": "运行时环境          ",
+                "example": "nodejs18.x",
+                "notes": "必填，可选: nodejs18.x, python3.11, java17, go1.x, ruby3.2 等"
+              },
+              "role_arn": {
+                "type": "string",
+                "required": false,
+                "description": "IAM 执行角色 ARN   ",
+                "example": "arn:aws:iam::123456789012:role/lambda-ex",
+                "notes": "常用，必填"
+              },
+              "handler": {
+                "type": "string",
+                "required": false,
+                "description": "处理程序函数         ",
+                "example": "index.handler",
+                "notes": "常用，必填，格式: 文件名.导出函数名"
+              },
+              "subnet_ids": {
+                "type": "string",
+                "required": false,
+                "description": "子网 ID（逗号分隔）    ",
+                "example": "subnet-0abcd1234efgh5678",
+                "notes": "VPC 配置时必填"
+              },
+              "sg_ids": {
+                "type": "string",
+                "required": false,
+                "description": "安全组 ID（逗号分隔）   ",
+                "example": "sg-0abcd1234efgh5678",
+                "notes": "VPC 配置时必填"
+              },
+              "zip_file": {
+                "type": "string",
+                "required": false,
+                "description": "部署包 ZIP 文件路径   ",
+                "example": "function.zip",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "aws lambda create-function vpc"
+          },
+          {
+            "name": "指定超时和内存",
+            "cmd": "aws lambda create-function --function-name %{function_name}% --runtime %{runtime}% --role %{role_arn}% --handler %{handler}% --timeout %{timeout}% --memory-size %{memory_size}% --zip-file fileb://%{zip_file}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "runtime": {
+                "type": "string",
+                "required": false,
+                "description": "运行时环境          ",
+                "example": "nodejs18.x",
+                "notes": "必填，可选: nodejs18.x, python3.11, java17, go1.x, ruby3.2 等"
+              },
+              "role_arn": {
+                "type": "string",
+                "required": false,
+                "description": "IAM 执行角色 ARN   ",
+                "example": "arn:aws:iam::123456789012:role/lambda-ex",
+                "notes": "常用，必填"
+              },
+              "handler": {
+                "type": "string",
+                "required": false,
+                "description": "处理程序函数         ",
+                "example": "index.handler",
+                "notes": "常用，必填，格式: 文件名.导出函数名"
+              },
+              "timeout": {
+                "type": "number",
+                "required": false,
+                "description": "超时时间（秒）        ",
+                "example": "30",
+                "notes": "可选，默认 3 秒"
+              },
+              "memory_size": {
+                "type": "number",
+                "required": false,
+                "description": "内存大小（MB）       ",
+                "example": "256",
+                "notes": "可选，默认 128MB"
+              },
+              "zip_file": {
+                "type": "string",
+                "required": false,
+                "description": "部署包 ZIP 文件路径   ",
+                "example": "function.zip",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "aws lambda create-function 内存"
+          },
+          {
+            "name": "使用 ARM64 架构",
+            "cmd": "aws lambda create-function --function-name %{function_name}% --runtime %{runtime}% --role %{role_arn}% --handler %{handler}% --architectures arm64 --zip-file fileb://%{zip_file}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "runtime": {
+                "type": "string",
+                "required": false,
+                "description": "运行时环境          ",
+                "example": "nodejs18.x",
+                "notes": "必填，可选: nodejs18.x, python3.11, java17, go1.x, ruby3.2 等"
+              },
+              "role_arn": {
+                "type": "string",
+                "required": false,
+                "description": "IAM 执行角色 ARN   ",
+                "example": "arn:aws:iam::123456789012:role/lambda-ex",
+                "notes": "常用，必填"
+              },
+              "handler": {
+                "type": "string",
+                "required": false,
+                "description": "处理程序函数         ",
+                "example": "index.handler",
+                "notes": "常用，必填，格式: 文件名.导出函数名"
+              },
+              "zip_file": {
+                "type": "string",
+                "required": false,
+                "description": "部署包 ZIP 文件路径   ",
+                "example": "function.zip",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "aws lambda create-function arm64"
+          }
+        ],
+        "params": {
+          "function_name": {
+            "type": "string",
+            "required": true,
+            "description": "函数名称           ",
+            "example": "my-lambda-function",
+            "notes": "常用，必填"
+          },
+          "runtime": {
+            "type": "string",
+            "required": true,
+            "description": "运行时环境          ",
+            "example": "nodejs18.x",
+            "notes": "必填，可选: nodejs18.x, python3.11, java17, go1.x, ruby3.2 等"
+          },
+          "role_arn": {
+            "type": "string",
+            "required": true,
+            "description": "IAM 执行角色 ARN   ",
+            "example": "arn:aws:iam::123456789012:role/lambda-ex",
+            "notes": "常用，必填"
+          },
+          "handler": {
+            "type": "string",
+            "required": true,
+            "description": "处理程序函数         ",
+            "example": "index.handler",
+            "notes": "常用，必填，格式: 文件名.导出函数名"
+          },
+          "zip_file": {
+            "type": "string",
+            "required": true,
+            "description": "部署包 ZIP 文件路径   ",
+            "example": "function.zip",
+            "notes": "常用，必填"
+          },
+          "timeout": {
+            "type": "number",
+            "required": false,
+            "description": "超时时间（秒）        ",
+            "example": "30",
+            "notes": "可选，默认 3 秒"
+          },
+          "memory_size": {
+            "type": "number",
+            "required": false,
+            "description": "内存大小（MB）       ",
+            "example": "256",
+            "notes": "可选，默认 128MB"
+          },
+          "subnet_ids": {
+            "type": "string",
+            "required": false,
+            "description": "子网 ID（逗号分隔）    ",
+            "example": "subnet-0abcd1234efgh5678",
+            "notes": "VPC 配置时必填"
+          },
+          "sg_ids": {
+            "type": "string",
+            "required": false,
+            "description": "安全组 ID（逗号分隔）   ",
+            "example": "sg-0abcd1234efgh5678",
+            "notes": "VPC 配置时必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "aws lambda invoke 调用函数",
+      "keyword": "aws lambda invoke",
+      "description": "调用 AWS Lambda 函数。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws lambda invoke --function-name %{function_name}% %{output_file}%",
+        "extensions": [
+          {
+            "name": "同步调用并获取日志",
+            "cmd": "aws lambda invoke --function-name %{function_name}% --payload '%{payload}%' --log-type Tail %{output_file}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "payload": {
+                "type": "string",
+                "required": false,
+                "description": "JSON 格式请求负载    ",
+                "example": "{\"name\": \"world\"}",
+                "notes": "可选"
+              },
+              "output_file": {
+                "type": "string",
+                "required": false,
+                "description": "输出文件路径         ",
+                "example": "output.json",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "aws lambda invoke 日志"
+          },
+          {
+            "name": "异步调用",
+            "cmd": "aws lambda invoke --function-name %{function_name}% --invocation-type Event %{output_file}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "output_file": {
+                "type": "string",
+                "required": false,
+                "description": "输出文件路径         ",
+                "example": "output.json",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "aws lambda invoke async"
+          },
+          {
+            "name": "指定版本别名调用",
+            "cmd": "aws lambda invoke --function-name %{function_name}% --qualifier %{qualifier}% %{output_file}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "qualifier": {
+                "type": "string",
+                "required": false,
+                "description": "版本或别名          ",
+                "example": "prod",
+                "notes": "可选: $LATEST 或版本号"
+              },
+              "output_file": {
+                "type": "string",
+                "required": false,
+                "description": "输出文件路径         ",
+                "example": "output.json",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "aws lambda invoke qualifier"
+          },
+          {
+            "name": "从文件读取 Payload",
+            "cmd": "aws lambda invoke --function-name %{function_name}% --payload file://%{payload_file}% %{output_file}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "payload_file": {
+                "type": "string",
+                "required": false,
+                "description": "负载文件路径         ",
+                "example": "event.json",
+                "notes": "可选"
+              },
+              "output_file": {
+                "type": "string",
+                "required": false,
+                "description": "输出文件路径         ",
+                "example": "output.json",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "aws lambda invoke payload文件"
+          },
+          {
+            "name": "Dry Run 验证",
+            "cmd": "aws lambda invoke --function-name %{function_name}% --invocation-type DryRun %{output_file}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "output_file": {
+                "type": "string",
+                "required": false,
+                "description": "输出文件路径         ",
+                "example": "output.json",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "aws lambda invoke dryrun"
+          }
+        ],
+        "params": {
+          "function_name": {
+            "type": "string",
+            "required": true,
+            "description": "函数名称           ",
+            "example": "my-lambda-function",
+            "notes": "常用，必填"
+          },
+          "output_file": {
+            "type": "string",
+            "required": true,
+            "description": "输出文件路径         ",
+            "example": "output.json",
+            "notes": "常用，必填"
+          },
+          "payload": {
+            "type": "string",
+            "required": false,
+            "description": "JSON 格式请求负载    ",
+            "example": "{\"name\": \"world\"}",
+            "notes": "可选"
+          },
+          "qualifier": {
+            "type": "string",
+            "required": false,
+            "description": "版本或别名          ",
+            "example": "prod",
+            "notes": "可选: $LATEST 或版本号"
+          },
+          "payload_file": {
+            "type": "string",
+            "required": false,
+            "description": "负载文件路径         ",
+            "example": "event.json",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "aws lambda update-function-code 更新函数代码",
+      "keyword": "aws lambda update-function-code",
+      "description": "更新 Lambda 函数代码。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws lambda update-function-code --function-name %{function_name}% --zip-file %{zip_file}%",
+        "extensions": [
+          {
+            "name": "通过 S3 更新",
+            "cmd": "aws lambda update-function-code --function-name %{function_name}% --s3-bucket %{bucket}% --s3-key %{key}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "bucket": {
+                "type": "string",
+                "required": false,
+                "description": "S3 存储桶名称       ",
+                "example": "my-bucket",
+                "notes": "可选，与 zip_file 参数二选一"
+              },
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "S3 对象键         ",
+                "example": "function.zip",
+                "notes": "可选"
+              }
+            },
+            "keyword": "aws lambda update-function-code s3"
+          },
+          {
+            "name": "指定 S3 对象版本",
+            "cmd": "aws lambda update-function-code --function-name %{function_name}% --s3-bucket %{bucket}% --s3-key %{key}% --s3-object-version %{version}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "bucket": {
+                "type": "string",
+                "required": false,
+                "description": "S3 存储桶名称       ",
+                "example": "my-bucket",
+                "notes": "可选，与 zip_file 参数二选一"
+              },
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "S3 对象键         ",
+                "example": "function.zip",
+                "notes": "可选"
+              },
+              "version": {
+                "type": "string",
+                "required": false,
+                "description": "S3 对象版本 ID     ",
+                "example": "abc123",
+                "notes": "可选"
+              }
+            },
+            "keyword": "aws lambda update-function-code s3版本"
+          },
+          {
+            "name": "本地 ZIP 文件更新",
+            "cmd": "aws lambda update-function-code --function-name %{function_name}% --zip-file fileb://%{zip_file}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "zip_file": {
+                "type": "string",
+                "required": false,
+                "description": "本地 ZIP 文件路径    ",
+                "example": "function.zip",
+                "notes": "可选，与 S3 参数二选一"
+              }
+            },
+            "keyword": "aws lambda update-function-code zip"
+          },
+          {
+            "name": "指定新处理程序",
+            "cmd": "aws lambda update-function-code --function-name %{function_name}% --zip-file fileb://%{zip_file}% --handler %{handler}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "zip_file": {
+                "type": "string",
+                "required": false,
+                "description": "本地 ZIP 文件路径    ",
+                "example": "function.zip",
+                "notes": "可选，与 S3 参数二选一"
+              },
+              "handler": {
+                "type": "string",
+                "required": false,
+                "description": "新的处理程序函数       ",
+                "example": "new_handler.handler",
+                "notes": "可选"
+              }
+            },
+            "keyword": "aws lambda update-function-code handler"
+          }
+        ],
+        "params": {
+          "function_name": {
+            "type": "string",
+            "required": true,
+            "description": "函数名称           ",
+            "example": "my-lambda-function",
+            "notes": "常用，必填"
+          },
+          "zip_file": {
+            "type": "string",
+            "required": false,
+            "description": "本地 ZIP 文件路径    ",
+            "example": "function.zip",
+            "notes": "可选，与 S3 参数二选一"
+          },
+          "bucket": {
+            "type": "string",
+            "required": false,
+            "description": "S3 存储桶名称       ",
+            "example": "my-bucket",
+            "notes": "可选，与 zip_file 参数二选一"
+          },
+          "key": {
+            "type": "string",
+            "required": false,
+            "description": "S3 对象键         ",
+            "example": "function.zip",
+            "notes": "可选"
+          },
+          "version": {
+            "type": "string",
+            "required": false,
+            "description": "S3 对象版本 ID     ",
+            "example": "abc123",
+            "notes": "可选"
+          },
+          "handler": {
+            "type": "string",
+            "required": false,
+            "description": "新的处理程序函数       ",
+            "example": "new_handler.handler",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "aws lambda update-function-configuration 更新函数配置",
+      "keyword": "aws lambda update-function-configuration",
+      "description": "更新 Lambda 函数配置（内存、超时、环境变量等）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "aws lambda update-function-configuration --function-name %{function_name}%",
+        "extensions": [
+          {
+            "name": "更新内存大小",
+            "cmd": "aws lambda update-function-configuration --function-name %{function_name}% --memory-size %{memory_size}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "memory_size": {
+                "type": "number",
+                "required": false,
+                "description": "内存大小（MB）       ",
+                "example": "512",
+                "notes": "可选，范围: 128-10240"
+              }
+            },
+            "keyword": "aws lambda update-function-configuration 内存"
+          },
+          {
+            "name": "更新超时时间",
+            "cmd": "aws lambda update-function-configuration --function-name %{function_name}% --timeout %{timeout}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "timeout": {
+                "type": "number",
+                "required": false,
+                "description": "超时时间（秒）        ",
+                "example": "60",
+                "notes": "可选，范围: 1-900"
+              }
+            },
+            "keyword": "aws lambda update-function-configuration 超时"
+          },
+          {
+            "name": "更新环境变量",
+            "cmd": "aws lambda update-function-configuration --function-name %{function_name}% --environment Variables={%{key}%}=%{value}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "环境变量键名         ",
+                "example": "ENV",
+                "notes": "可选"
+              },
+              "value": {
+                "type": "string",
+                "required": false,
+                "description": "环境变量值          ",
+                "example": "production",
+                "notes": "可选"
+              }
+            },
+            "keyword": "aws lambda update-function-configuration 环境变量"
+          },
+          {
+            "name": "更新 VPC 配置",
+            "cmd": "aws lambda update-function-configuration --function-name %{function_name}% --vpc-config SubnetIds=[%{subnet_ids}%],SecurityGroupIds=[%{sg_ids}%]",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "subnet_ids": {
+                "type": "string",
+                "required": false,
+                "description": "子网 ID（逗号分隔）    ",
+                "example": "subnet-0abcd1234efgh5678",
+                "notes": "可选"
+              },
+              "sg_ids": {
+                "type": "string",
+                "required": false,
+                "description": "安全组 ID（逗号分隔）   ",
+                "example": "sg-0abcd1234efgh5678",
+                "notes": "可选"
+              }
+            },
+            "keyword": "aws lambda update-function-configuration vpc"
+          },
+          {
+            "name": "更新并发限制",
+            "cmd": "aws lambda update-function-configuration --function-name %{function_name}% --reserved-concurrent-executions %{count}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "my-lambda-function",
+                "notes": "常用，必填"
+              },
+              "count": {
+                "type": "number",
+                "required": false,
+                "description": "保留并发执行数        ",
+                "example": "100",
+                "notes": "可选，0 表示禁用"
+              }
+            },
+            "keyword": "aws lambda update-function-configuration 并发"
+          }
+        ],
+        "params": {
+          "function_name": {
+            "type": "string",
+            "required": true,
+            "description": "函数名称           ",
+            "example": "my-lambda-function",
+            "notes": "常用，必填"
+          },
+          "memory_size": {
+            "type": "number",
+            "required": false,
+            "description": "内存大小（MB）       ",
+            "example": "512",
+            "notes": "可选，范围: 128-10240"
+          },
+          "timeout": {
+            "type": "number",
+            "required": false,
+            "description": "超时时间（秒）        ",
+            "example": "60",
+            "notes": "可选，范围: 1-900"
+          },
+          "key": {
+            "type": "string",
+            "required": false,
+            "description": "环境变量键名         ",
+            "example": "ENV",
+            "notes": "可选"
+          },
+          "value": {
+            "type": "string",
+            "required": false,
+            "description": "环境变量值          ",
+            "example": "production",
+            "notes": "可选"
+          },
+          "subnet_ids": {
+            "type": "string",
+            "required": false,
+            "description": "子网 ID（逗号分隔）    ",
+            "example": "subnet-0abcd1234efgh5678",
+            "notes": "可选"
+          },
+          "sg_ids": {
+            "type": "string",
+            "required": false,
+            "description": "安全组 ID（逗号分隔）   ",
+            "example": "sg-0abcd1234efgh5678",
+            "notes": "可选"
+          },
+          "count": {
+            "type": "number",
+            "required": false,
+            "description": "保留并发执行数        ",
+            "example": "100",
+            "notes": "可选，0 表示禁用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "sam init 初始化项目",
+      "keyword": "sam init",
+      "description": "初始化 AWS SAM 项目。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "sam init",
+        "extensions": [
+          {
+            "name": "指定运行时初始化",
+            "cmd": "sam init --name %{project_name}% --runtime %{runtime}%",
+            "params": {
+              "project_name": {
+                "type": "string",
+                "required": false,
+                "description": "项目名称           ",
+                "example": "my-sam-app",
+                "notes": "可选"
+              },
+              "runtime": {
+                "type": "string",
+                "required": false,
+                "description": "运行时环境          ",
+                "example": "python3.11",
+                "notes": "可选: python3.11, nodejs18.x, java17, go1.x 等"
+              }
+            },
+            "keyword": "sam init 运行时"
+          },
+          {
+            "name": "无交互式初始化",
+            "cmd": "sam init --name %{project_name}% --runtime %{runtime}% --app-template hello-world --no-interactive",
+            "params": {
+              "project_name": {
+                "type": "string",
+                "required": false,
+                "description": "项目名称           ",
+                "example": "my-sam-app",
+                "notes": "可选"
+              },
+              "runtime": {
+                "type": "string",
+                "required": false,
+                "description": "运行时环境          ",
+                "example": "python3.11",
+                "notes": "可选: python3.11, nodejs18.x, java17, go1.x 等"
+              }
+            },
+            "keyword": "sam init 自动化"
+          },
+          {
+            "name": "生成 TypeScript 项目",
+            "cmd": "sam init --name %{project_name}% --runtime nodejs18.x --app-template hello-world-typescript",
+            "params": {
+              "project_name": {
+                "type": "string",
+                "required": false,
+                "description": "项目名称           ",
+                "example": "my-sam-app",
+                "notes": "可选"
+              }
+            },
+            "keyword": "sam init typescript"
+          },
+          {
+            "name": "基于镜像初始化",
+            "cmd": "sam init --name %{project_name}% --package-type Image --base-image %{base_image}%",
+            "params": {
+              "project_name": {
+                "type": "string",
+                "required": false,
+                "description": "项目名称           ",
+                "example": "my-sam-app",
+                "notes": "可选"
+              },
+              "base_image": {
+                "type": "string",
+                "required": false,
+                "description": "基础镜像           ",
+                "example": "amazon/python3.11-base",
+                "notes": "可选"
+              }
+            },
+            "keyword": "sam init 镜像"
+          },
+          {
+            "name": "指定依赖管理器",
+            "cmd": "sam init --name %{project_name}% --runtime %{runtime}% --dependency-layer --cmake",
+            "params": {
+              "project_name": {
+                "type": "string",
+                "required": false,
+                "description": "项目名称           ",
+                "example": "my-sam-app",
+                "notes": "可选"
+              },
+              "runtime": {
+                "type": "string",
+                "required": false,
+                "description": "运行时环境          ",
+                "example": "python3.11",
+                "notes": "可选: python3.11, nodejs18.x, java17, go1.x 等"
+              }
+            },
+            "keyword": "sam init cmake"
+          }
+        ],
+        "params": {
+          "project_name": {
+            "type": "string",
+            "required": false,
+            "description": "项目名称           ",
+            "example": "my-sam-app",
+            "notes": "可选"
+          },
+          "runtime": {
+            "type": "string",
+            "required": false,
+            "description": "运行时环境          ",
+            "example": "python3.11",
+            "notes": "可选: python3.11, nodejs18.x, java17, go1.x 等"
+          },
+          "base_image": {
+            "type": "string",
+            "required": false,
+            "description": "基础镜像           ",
+            "example": "amazon/python3.11-base",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "sam build 构建应用",
+      "keyword": "sam build",
+      "description": "构建 AWS SAM 应用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "sam build",
+        "extensions": [
+          {
+            "name": "使用容器构建",
+            "cmd": "sam build --use-container --container-env-var FILE_ENV={file}",
+            "params": {},
+            "keyword": "sam build 容器"
+          },
+          {
+            "name": "指定构建目录",
+            "cmd": "sam build --build-dir %{build_dir}%",
+            "params": {
+              "build_dir": {
+                "type": "string",
+                "required": false,
+                "description": "构建输出目录         ",
+                "example": "./build",
+                "notes": "可选"
+              }
+            },
+            "keyword": "sam build 目录"
+          },
+          {
+            "name": "指定模板文件",
+            "cmd": "sam build -t %{template_file}%",
+            "params": {
+              "template_file": {
+                "type": "string",
+                "required": false,
+                "description": "SAM 模板文件路径     ",
+                "example": "template.yaml",
+                "notes": "可选"
+              }
+            },
+            "keyword": "sam build 模板"
+          },
+          {
+            "name": "构建单个函数",
+            "cmd": "sam build --function-identifier %{function_name}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数标识符          ",
+                "example": "HelloWorldFunction",
+                "notes": "可选"
+              }
+            },
+            "keyword": "sam build 函数"
+          },
+          {
+            "name": "清理后重新构建",
+            "cmd": "sam build --clean",
+            "params": {},
+            "keyword": "sam build clean"
+          }
+        ],
+        "params": {
+          "build_dir": {
+            "type": "string",
+            "required": false,
+            "description": "构建输出目录         ",
+            "example": "./build",
+            "notes": "可选"
+          },
+          "template_file": {
+            "type": "string",
+            "required": false,
+            "description": "SAM 模板文件路径     ",
+            "example": "template.yaml",
+            "notes": "可选"
+          },
+          "function_name": {
+            "type": "string",
+            "required": false,
+            "description": "函数标识符          ",
+            "example": "HelloWorldFunction",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "sam deploy 部署应用",
+      "keyword": "sam deploy",
+      "description": "部署 AWS SAM 应用到云端。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "sam deploy --guided",
+        "extensions": [
+          {
+            "name": "非交互式部署",
+            "cmd": "sam deploy --no-confirm-changeset --stack-name %{stack_name}%",
+            "params": {
+              "stack_name": {
+                "type": "string",
+                "required": false,
+                "description": "CloudFormation 栈名称",
+                "example": "my-sam-app",
+                "notes": "可选"
+              }
+            },
+            "keyword": "sam deploy 自动"
+          },
+          {
+            "name": "指定参数部署",
+            "cmd": "sam deploy --parameter-overrides ParameterKey=Environment,ParameterValue=%{env}%",
+            "params": {
+              "env": {
+                "type": "string",
+                "required": false,
+                "description": "环境参数值          ",
+                "example": "production",
+                "notes": "可选"
+              }
+            },
+            "keyword": "sam deploy 参数"
+          },
+          {
+            "name": "授予 IAM 权限部署",
+            "cmd": "sam deploy --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM",
+            "params": {},
+            "keyword": "sam deploy iam"
+          },
+          {
+            "name": "指定 S3 桶部署",
+            "cmd": "sam deploy --s3-bucket %{bucket}% --s3-prefix %{prefix}%",
+            "params": {
+              "bucket": {
+                "type": "string",
+                "required": false,
+                "description": "部署包 S3 存储桶     ",
+                "example": "my-deploy-bucket",
+                "notes": "可选"
+              },
+              "prefix": {
+                "type": "string",
+                "required": false,
+                "description": "S3 对象前缀        ",
+                "example": "sam-app",
+                "notes": "可选"
+              }
+            },
+            "keyword": "sam deploy s3"
+          },
+          {
+            "name": "本地调用测试",
+            "cmd": "sam local invoke %{function_name}% --event %{event_file}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "HelloWorldFunction",
+                "notes": "可选"
+              },
+              "event_file": {
+                "type": "string",
+                "required": false,
+                "description": "事件数据文件         ",
+                "example": "event.json",
+                "notes": "可选"
+              }
+            },
+            "keyword": "sam deploy local"
+          }
+        ],
+        "params": {
+          "stack_name": {
+            "type": "string",
+            "required": false,
+            "description": "CloudFormation 栈名称",
+            "example": "my-sam-app",
+            "notes": "可选"
+          },
+          "env": {
+            "type": "string",
+            "required": false,
+            "description": "环境参数值          ",
+            "example": "production",
+            "notes": "可选"
+          },
+          "bucket": {
+            "type": "string",
+            "required": false,
+            "description": "部署包 S3 存储桶     ",
+            "example": "my-deploy-bucket",
+            "notes": "可选"
+          },
+          "prefix": {
+            "type": "string",
+            "required": false,
+            "description": "S3 对象前缀        ",
+            "example": "sam-app",
+            "notes": "可选"
+          },
+          "function_name": {
+            "type": "string",
+            "required": false,
+            "description": "函数名称           ",
+            "example": "HelloWorldFunction",
+            "notes": "可选"
+          },
+          "event_file": {
+            "type": "string",
+            "required": false,
+            "description": "事件数据文件         ",
+            "example": "event.json",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "serverless config credentials 配置凭证",
+      "keyword": "serverless config credentials",
+      "description": "配置 Serverless Framework 云服务凭证。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "serverless config credentials --provider %{provider}% --key %{key}% --secret %{secret}%",
+        "extensions": [
+          {
+            "name": "配置 AWS 凭证",
+            "cmd": "serverless config credentials --provider aws --key %{access_key}% --secret %{secret_key}%",
+            "params": {
+              "access_key": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              },
+              "secret_key": {
+                "type": "string",
+                "required": false,
+                "description": "               ",
+                "example": "",
+                "notes": "可选"
+              }
+            },
+            "keyword": "serverless config aws"
+          },
+          {
+            "name": "使用 Profile 配置",
+            "cmd": "serverless config credentials --provider aws --key %{key}% --secret %{secret}% --profile %{profile}%",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "访问密钥           ",
+                "example": "AKIAIOSFODNN7EXAMPLE",
+                "notes": "常用，必填"
+              },
+              "secret": {
+                "type": "string",
+                "required": false,
+                "description": "访问密钥密码         ",
+                "example": "xxx",
+                "notes": "常用，必填"
+              },
+              "profile": {
+                "type": "string",
+                "required": false,
+                "description": "Profile 名称     ",
+                "example": "my-profile",
+                "notes": "可选"
+              }
+            },
+            "keyword": "serverless config profile"
+          },
+          {
+            "name": "配置阿里云凭证",
+            "cmd": "serverless config credentials --provider aliyun --key %{key}% --secret %{secret}%",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "访问密钥           ",
+                "example": "AKIAIOSFODNN7EXAMPLE",
+                "notes": "常用，必填"
+              },
+              "secret": {
+                "type": "string",
+                "required": false,
+                "description": "访问密钥密码         ",
+                "example": "xxx",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "serverless config aliyun"
+          },
+          {
+            "name": "配置腾讯云凭证",
+            "cmd": "serverless config credentials --provider tencent --key %{key}% --secret %{secret}%",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "访问密钥           ",
+                "example": "AKIAIOSFODNN7EXAMPLE",
+                "notes": "常用，必填"
+              },
+              "secret": {
+                "type": "string",
+                "required": false,
+                "description": "访问密钥密码         ",
+                "example": "xxx",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "serverless config tencent"
+          }
+        ],
+        "params": {
+          "provider": {
+            "type": "string",
+            "required": true,
+            "description": "云服务商           ",
+            "example": "aws",
+            "notes": "常用，必填: aws, aliyun, tencent, google, azure 等"
+          },
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "访问密钥           ",
+            "example": "AKIAIOSFODNN7EXAMPLE",
+            "notes": "常用，必填"
+          },
+          "secret": {
+            "type": "string",
+            "required": true,
+            "description": "访问密钥密码         ",
+            "example": "xxx",
+            "notes": "常用，必填"
+          },
+          "profile": {
+            "type": "string",
+            "required": false,
+            "description": "Profile 名称     ",
+            "example": "my-profile",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "serverless create 创建服务",
+      "keyword": "serverless create",
+      "description": "从模板创建新的 Serverless Framework 服务",
+      "data": {
+        "cmd": "serverless create --template %{template}% --path %{path}%",
+        "extensions": [
+          {
+            "name": "创建 AWS Node.js 项目",
+            "cmd": "serverless create --template aws-nodejs --path %{path}%",
+            "params": {
+              "path": {
+                "type": "string",
+                "required": false,
+                "description": "项目目录路径         ",
+                "example": "./my-service",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "serverless create nodejs"
+          },
+          {
+            "name": "创建 AWS Python 项目",
+            "cmd": "serverless create --template aws-python --path %{path}%",
+            "params": {
+              "path": {
+                "type": "string",
+                "required": false,
+                "description": "项目目录路径         ",
+                "example": "./my-service",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "serverless create python"
+          },
+          {
+            "name": "使用 GitHub 模板创建",
+            "cmd": "serverless create --template-url %{url}% --path %{path}%",
+            "params": {
+              "url": {
+                "type": "string",
+                "required": false,
+                "description": "GitHub 模板 URL  ",
+                "example": "https://github.com/serverless/serverless-gcp",
+                "notes": "可选"
+              },
+              "path": {
+                "type": "string",
+                "required": false,
+                "description": "项目目录路径         ",
+                "example": "./my-service",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "serverless create 模板"
+          },
+          {
+            "name": "创建并指定服务名",
+            "cmd": "serverless create --template %{template}% --name %{service_name}% --path %{path}%",
+            "params": {
+              "template": {
+                "type": "string",
+                "required": false,
+                "description": "模板名称           ",
+                "example": "aws-nodejs",
+                "notes": "常用，必填: aws-nodejs, aws-python, aws-go, aliyun-python 等"
+              },
+              "service_name": {
+                "type": "string",
+                "required": false,
+                "description": "服务名称           ",
+                "example": "my-service",
+                "notes": "可选"
+              },
+              "path": {
+                "type": "string",
+                "required": false,
+                "description": "项目目录路径         ",
+                "example": "./my-service",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "serverless create 名称"
+          },
+          {
+            "name": "创建阿里云 Python 项目",
+            "cmd": "serverless create --template aliyun-python --path %{path}%",
+            "params": {
+              "path": {
+                "type": "string",
+                "required": false,
+                "description": "项目目录路径         ",
+                "example": "./my-service",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "serverless create aliyun"
+          }
+        ],
+        "params": {
+          "template": {
+            "type": "string",
+            "required": true,
+            "description": "模板名称           ",
+            "example": "aws-nodejs",
+            "notes": "常用，必填: aws-nodejs, aws-python, aws-go, aliyun-python 等"
+          },
+          "path": {
+            "type": "string",
+            "required": true,
+            "description": "项目目录路径         ",
+            "example": "./my-service",
+            "notes": "常用，必填"
+          },
+          "url": {
+            "type": "string",
+            "required": false,
+            "description": "GitHub 模板 URL  ",
+            "example": "https://github.com/serverless/serverless-gcp",
+            "notes": "可选"
+          },
+          "service_name": {
+            "type": "string",
+            "required": false,
+            "description": "服务名称           ",
+            "example": "my-service",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "serverless deploy 部署服务",
+      "keyword": "serverless deploy",
+      "description": "部署 Serverless Framework 服务。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "serverless deploy",
+        "extensions": [
+          {
+            "name": "指定阶段部署",
+            "cmd": "serverless deploy --stage %{stage}%",
+            "params": {
+              "stage": {
+                "type": "string",
+                "required": false,
+                "description": "阶段名称           ",
+                "example": "prod",
+                "notes": "可选: dev, staging, prod 等"
+              }
+            },
+            "keyword": "serverless deploy 阶段"
+          },
+          {
+            "name": "指定区域部署",
+            "cmd": "serverless deploy --region %{region}%",
+            "params": {
+              "region": {
+                "type": "string",
+                "required": false,
+                "description": "AWS 区域         ",
+                "example": "us-east-1",
+                "notes": "可选"
+              }
+            },
+            "keyword": "serverless deploy 区域"
+          },
+          {
+            "name": "部署单个函数",
+            "cmd": "serverless deploy --function %{function_name}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello",
+                "notes": "可选"
+              }
+            },
+            "keyword": "serverless deploy 函数"
+          },
+          {
+            "name": "详细输出部署",
+            "cmd": "serverless deploy --verbose",
+            "params": {},
+            "keyword": "serverless deploy verbose"
+          },
+          {
+            "name": "强制部署",
+            "cmd": "serverless deploy --force",
+            "params": {},
+            "keyword": "serverless deploy force"
+          }
+        ],
+        "params": {
+          "stage": {
+            "type": "string",
+            "required": false,
+            "description": "阶段名称           ",
+            "example": "prod",
+            "notes": "可选: dev, staging, prod 等"
+          },
+          "region": {
+            "type": "string",
+            "required": false,
+            "description": "AWS 区域         ",
+            "example": "us-east-1",
+            "notes": "可选"
+          },
+          "function_name": {
+            "type": "string",
+            "required": false,
+            "description": "函数名称           ",
+            "example": "hello",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "serverless package 打包服务",
+      "keyword": "serverless package",
+      "description": "将 Serverless 服务打包为 CloudFormation 模板",
+      "data": {
+        "cmd": "serverless package",
+        "extensions": [
+          {
+            "name": "指定输出目录",
+            "cmd": "serverless package --package %{package_dir}%",
+            "params": {
+              "package_dir": {
+                "type": "string",
+                "required": false,
+                "description": "输出打包目录         ",
+                "example": "./.serverless",
+                "notes": "可选"
+              }
+            },
+            "keyword": "serverless package 目录"
+          },
+          {
+            "name": "指定阶段打包",
+            "cmd": "serverless package --stage %{stage}%",
+            "params": {
+              "stage": {
+                "type": "string",
+                "required": false,
+                "description": "阶段名称           ",
+                "example": "prod",
+                "notes": "可选"
+              }
+            },
+            "keyword": "serverless package 阶段"
+          },
+          {
+            "name": "指定区域打包",
+            "cmd": "serverless package --region %{region}%",
+            "params": {
+              "region": {
+                "type": "string",
+                "required": false,
+                "description": "AWS 区域         ",
+                "example": "us-east-1",
+                "notes": "可选"
+              }
+            },
+            "keyword": "serverless package 区域"
+          }
+        ],
+        "params": {
+          "package_dir": {
+            "type": "string",
+            "required": false,
+            "description": "输出打包目录         ",
+            "example": "./.serverless",
+            "notes": "可选"
+          },
+          "stage": {
+            "type": "string",
+            "required": false,
+            "description": "阶段名称           ",
+            "example": "prod",
+            "notes": "可选"
+          },
+          "region": {
+            "type": "string",
+            "required": false,
+            "description": "AWS 区域         ",
+            "example": "us-east-1",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "serverless invoke 调用函数",
+      "keyword": "serverless invoke",
+      "description": "调用已部署的 Serverless 函数。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "serverless invoke --function %{function_name}%",
+        "extensions": [
+          {
+            "name": "传入 Payload 调用",
+            "cmd": "serverless invoke --function %{function_name}% --data '%{payload}%'",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello",
+                "notes": "常用，必填"
+              },
+              "payload": {
+                "type": "string",
+                "required": false,
+                "description": "JSON 格式数据      ",
+                "example": "{\"name\": \"test\"}",
+                "notes": "可选"
+              }
+            },
+            "keyword": "serverless invoke data"
+          },
+          {
+            "name": "从文件读取调用",
+            "cmd": "serverless invoke --function %{function_name}% --path %{payload_file}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello",
+                "notes": "常用，必填"
+              },
+              "payload_file": {
+                "type": "string",
+                "required": false,
+                "description": "请求数据文件路径       ",
+                "example": "./event.json",
+                "notes": "可选"
+              }
+            },
+            "keyword": "serverless invoke file"
+          },
+          {
+            "name": "指定阶段调用",
+            "cmd": "serverless invoke --function %{function_name}% --stage %{stage}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello",
+                "notes": "常用，必填"
+              },
+              "stage": {
+                "type": "string",
+                "required": false,
+                "description": "阶段名称           ",
+                "example": "prod",
+                "notes": "可选"
+              }
+            },
+            "keyword": "serverless invoke stage"
+          },
+          {
+            "name": "查看函数日志",
+            "cmd": "serverless logs --function %{function_name}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "serverless invoke logs"
+          }
+        ],
+        "params": {
+          "function_name": {
+            "type": "string",
+            "required": true,
+            "description": "函数名称           ",
+            "example": "hello",
+            "notes": "常用，必填"
+          },
+          "payload": {
+            "type": "string",
+            "required": false,
+            "description": "JSON 格式数据      ",
+            "example": "{\"name\": \"test\"}",
+            "notes": "可选"
+          },
+          "payload_file": {
+            "type": "string",
+            "required": false,
+            "description": "请求数据文件路径       ",
+            "example": "./event.json",
+            "notes": "可选"
+          },
+          "stage": {
+            "type": "string",
+            "required": false,
+            "description": "阶段名称           ",
+            "example": "prod",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "serverless logs 查看日志",
+      "keyword": "serverless logs",
+      "description": "查看 Serverless 函数执行日志。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "serverless logs --function %{function_name}%",
+        "extensions": [
+          {
+            "name": "实时跟踪日志",
+            "cmd": "serverless logs --function %{function_name}% --tail",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "serverless logs tail"
+          },
+          {
+            "name": "指定时间范围",
+            "cmd": "serverless logs --function %{function_name}% --startTime %{start_time}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello",
+                "notes": "常用，必填"
+              },
+              "start_time": {
+                "type": "string",
+                "required": false,
+                "description": "开始时间           ",
+                "example": "1h ago",
+                "notes": "可选: ISO8601 时间或相对时间"
+              }
+            },
+            "keyword": "serverless logs 时间"
+          },
+          {
+            "name": "限制日志行数",
+            "cmd": "serverless logs --function %{function_name}% --limit %{lines}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello",
+                "notes": "常用，必填"
+              },
+              "lines": {
+                "type": "number",
+                "required": false,
+                "description": "返回日志行数         ",
+                "example": "100",
+                "notes": "可选"
+              }
+            },
+            "keyword": "serverless logs limit"
+          },
+          {
+            "name": "指定阶段日志",
+            "cmd": "serverless logs --function %{function_name}% --stage %{stage}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello",
+                "notes": "常用，必填"
+              },
+              "stage": {
+                "type": "string",
+                "required": false,
+                "description": "阶段名称           ",
+                "example": "prod",
+                "notes": "可选"
+              }
+            },
+            "keyword": "serverless logs stage"
+          }
+        ],
+        "params": {
+          "function_name": {
+            "type": "string",
+            "required": true,
+            "description": "函数名称           ",
+            "example": "hello",
+            "notes": "常用，必填"
+          },
+          "start_time": {
+            "type": "string",
+            "required": false,
+            "description": "开始时间           ",
+            "example": "1h ago",
+            "notes": "可选: ISO8601 时间或相对时间"
+          },
+          "lines": {
+            "type": "number",
+            "required": false,
+            "description": "返回日志行数         ",
+            "example": "100",
+            "notes": "可选"
+          },
+          "stage": {
+            "type": "string",
+            "required": false,
+            "description": "阶段名称           ",
+            "example": "prod",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "vercel 部署项目",
+      "keyword": "vercel",
+      "description": "部署项目到 Vercel 平台。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "vercel",
+        "extensions": [
+          {
+            "name": "部署到生产环境",
+            "cmd": "vercel --prod",
+            "params": {},
+            "keyword": "vercel prod"
+          },
+          {
+            "name": "指定项目部署",
+            "cmd": "vercel --scope %{scope}%",
+            "params": {
+              "scope": {
+                "type": "string",
+                "required": false,
+                "description": "团队/用户名         ",
+                "example": "my-team",
+                "notes": "可选"
+              }
+            },
+            "keyword": "vercel scope"
+          },
+          {
+            "name": "部署并设置名称",
+            "cmd": "vercel --name %{project_name}%",
+            "params": {
+              "project_name": {
+                "type": "string",
+                "required": false,
+                "description": "项目名称           ",
+                "example": "my-project",
+                "notes": "可选"
+              }
+            },
+            "keyword": "vercel name"
+          },
+          {
+            "name": "跳过 Git 直接部署",
+            "cmd": "vercel --yes --no-git",
+            "params": {},
+            "keyword": "vercel nogit"
+          },
+          {
+            "name": "CI/CD Token 部署",
+            "cmd": "vercel --token %{token}%",
+            "params": {
+              "token": {
+                "type": "string",
+                "required": false,
+                "description": "Vercel Access Token",
+                "example": "xxxxxxxxxxxxxx",
+                "notes": "可选，CI/CD 场景使用"
+              }
+            },
+            "keyword": "vercel token"
+          },
+          {
+            "name": "强制新部署",
+            "cmd": "vercel --force",
+            "params": {},
+            "keyword": "vercel force"
+          }
+        ],
+        "params": {
+          "scope": {
+            "type": "string",
+            "required": false,
+            "description": "团队/用户名         ",
+            "example": "my-team",
+            "notes": "可选"
+          },
+          "project_name": {
+            "type": "string",
+            "required": false,
+            "description": "项目名称           ",
+            "example": "my-project",
+            "notes": "可选"
+          },
+          "token": {
+            "type": "string",
+            "required": false,
+            "description": "Vercel Access Token",
+            "example": "xxxxxxxxxxxxxx",
+            "notes": "可选，CI/CD 场景使用"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "vercel env 环境变量管理",
+      "keyword": "vercel env",
+      "description": "管理 Vercel 项目环境变量。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "vercel env pull %{file}%",
+        "extensions": [
+          {
+            "name": "拉取环境变量",
+            "cmd": "vercel env pull %{file}%",
+            "params": {
+              "file": {
+                "type": "string",
+                "required": false,
+                "description": "输出文件路径         ",
+                "example": ".env.local",
+                "notes": "可选"
+              }
+            },
+            "keyword": "vercel env pull"
+          },
+          {
+            "name": "添加环境变量",
+            "cmd": "vercel env add %{name}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "环境变量名称         ",
+                "example": "DATABASE_URL",
+                "notes": "可选"
+              }
+            },
+            "keyword": "vercel env add"
+          },
+          {
+            "name": "列出环境变量",
+            "cmd": "vercel env ls",
+            "params": {},
+            "keyword": "vercel env ls"
+          },
+          {
+            "name": "删除环境变量",
+            "cmd": "vercel env rm %{name}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "环境变量名称         ",
+                "example": "DATABASE_URL",
+                "notes": "可选"
+              }
+            },
+            "keyword": "vercel env rm"
+          },
+          {
+            "name": "拉取生产环境变量",
+            "cmd": "vercel env pull %{file}% --environment production",
+            "params": {
+              "file": {
+                "type": "string",
+                "required": false,
+                "description": "输出文件路径         ",
+                "example": ".env.local",
+                "notes": "可选"
+              }
+            },
+            "keyword": "vercel env production"
+          }
+        ],
+        "params": {
+          "file": {
+            "type": "string",
+            "required": false,
+            "description": "输出文件路径         ",
+            "example": ".env.local",
+            "notes": "可选"
+          },
+          "name": {
+            "type": "string",
+            "required": false,
+            "description": "环境变量名称         ",
+            "example": "DATABASE_URL",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "vercel secrets 密钥管理",
+      "keyword": "vercel secrets",
+      "description": "管理 Vercel 全局密钥（已迁移到 env）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "vercel secrets add %{name}% %{value}%",
+        "extensions": [
+          {
+            "name": "添加密钥",
+            "cmd": "vercel secrets add %{name}% %{value}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "密钥名称           ",
+                "example": "API_KEY",
+                "notes": "常用，必填"
+              },
+              "value": {
+                "type": "string",
+                "required": false,
+                "description": "密钥值            ",
+                "example": "my-secret-value",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "vercel secrets add"
+          },
+          {
+            "name": "列出所有密钥",
+            "cmd": "vercel secrets ls",
+            "params": {},
+            "keyword": "vercel secrets ls"
+          },
+          {
+            "name": "重命名密钥",
+            "cmd": "vercel secrets rename %{old_name}% %{new_name}%",
+            "params": {
+              "old_name": {
+                "type": "string",
+                "required": false,
+                "description": "原密钥名称          ",
+                "example": "OLD_KEY",
+                "notes": "可选"
+              },
+              "new_name": {
+                "type": "string",
+                "required": false,
+                "description": "新密钥名称          ",
+                "example": "NEW_KEY",
+                "notes": "可选"
+              }
+            },
+            "keyword": "vercel secrets rename"
+          },
+          {
+            "name": "删除密钥",
+            "cmd": "vercel secrets remove %{name}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "密钥名称           ",
+                "example": "API_KEY",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "vercel secrets remove"
+          }
+        ],
+        "params": {
+          "name": {
+            "type": "string",
+            "required": true,
+            "description": "密钥名称           ",
+            "example": "API_KEY",
+            "notes": "常用，必填"
+          },
+          "value": {
+            "type": "string",
+            "required": true,
+            "description": "密钥值            ",
+            "example": "my-secret-value",
+            "notes": "常用，必填"
+          },
+          "old_name": {
+            "type": "string",
+            "required": false,
+            "description": "原密钥名称          ",
+            "example": "OLD_KEY",
+            "notes": "可选"
+          },
+          "new_name": {
+            "type": "string",
+            "required": false,
+            "description": "新密钥名称          ",
+            "example": "NEW_KEY",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "vercel logs 查看日志",
+      "keyword": "vercel logs",
+      "description": "查看 Vercel 部署日志。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "vercel logs %{url}%",
+        "extensions": [
+          {
+            "name": "实时查看日志",
+            "cmd": "vercel logs %{url}% --follow",
+            "params": {
+              "url": {
+                "type": "string",
+                "required": false,
+                "description": "部署 URL         ",
+                "example": "my-project.vercel.app",
+                "notes": "可选"
+              }
+            },
+            "keyword": "vercel logs follow"
+          },
+          {
+            "name": "指定部署查看",
+            "cmd": "vercel logs %{url}% --deployment-id %{deployment_id}%",
+            "params": {
+              "url": {
+                "type": "string",
+                "required": false,
+                "description": "部署 URL         ",
+                "example": "my-project.vercel.app",
+                "notes": "可选"
+              },
+              "deployment_id": {
+                "type": "string",
+                "required": false,
+                "description": "部署 ID          ",
+                "example": "dpl_abc123",
+                "notes": "可选"
+              }
+            },
+            "keyword": "vercel logs deployment"
+          },
+          {
+            "name": "按数量限制日志",
+            "cmd": "vercel logs %{url}% --limit %{count}%",
+            "params": {
+              "url": {
+                "type": "string",
+                "required": false,
+                "description": "部署 URL         ",
+                "example": "my-project.vercel.app",
+                "notes": "可选"
+              },
+              "count": {
+                "type": "number",
+                "required": false,
+                "description": "日志条数           ",
+                "example": "50",
+                "notes": "可选"
+              }
+            },
+            "keyword": "vercel logs limit"
+          },
+          {
+            "name": "查看函数日志",
+            "cmd": "vercel logs --function %{function_name}%",
+            "params": {
+              "function_name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "api/index",
+                "notes": "可选"
+              }
+            },
+            "keyword": "vercel logs function"
+          }
+        ],
+        "params": {
+          "url": {
+            "type": "string",
+            "required": false,
+            "description": "部署 URL         ",
+            "example": "my-project.vercel.app",
+            "notes": "可选"
+          },
+          "deployment_id": {
+            "type": "string",
+            "required": false,
+            "description": "部署 ID          ",
+            "example": "dpl_abc123",
+            "notes": "可选"
+          },
+          "count": {
+            "type": "number",
+            "required": false,
+            "description": "日志条数           ",
+            "example": "50",
+            "notes": "可选"
+          },
+          "function_name": {
+            "type": "string",
+            "required": false,
+            "description": "函数名称           ",
+            "example": "api/index",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "vercel inspect 查看部署详情",
+      "keyword": "vercel inspect",
+      "description": "查看 Vercel 部署详情。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "vercel inspect %{deployment_id}%",
+        "extensions": [
+          {
+            "name": "查看最新部署",
+            "cmd": "vercel inspect",
+            "params": {},
+            "keyword": "vercel inspect 最新"
+          },
+          {
+            "name": "查看指定部署",
+            "cmd": "vercel inspect %{deployment_id}%",
+            "params": {
+              "deployment_id": {
+                "type": "string",
+                "required": false,
+                "description": "部署 ID          ",
+                "example": "dpl_abc123",
+                "notes": "可选"
+              }
+            },
+            "keyword": "vercel inspect id"
+          },
+          {
+            "name": "JSON 格式输出",
+            "cmd": "vercel inspect %{deployment_id}% --json",
+            "params": {
+              "deployment_id": {
+                "type": "string",
+                "required": false,
+                "description": "部署 ID          ",
+                "example": "dpl_abc123",
+                "notes": "可选"
+              }
+            },
+            "keyword": "vercel inspect json"
+          }
+        ],
+        "params": {
+          "deployment_id": {
+            "type": "string",
+            "required": false,
+            "description": "部署 ID          ",
+            "example": "dpl_abc123",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "vercel remove 删除部署",
+      "keyword": "vercel remove",
+      "description": "删除 Vercel 部署。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "vercel remove %{deployment_id}%",
+        "extensions": [
+          {
+            "name": "删除指定部署",
+            "cmd": "vercel remove %{deployment_id}%",
+            "params": {
+              "deployment_id": {
+                "type": "string",
+                "required": false,
+                "description": "部署 ID          ",
+                "example": "dpl_abc123",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "vercel remove id"
+          },
+          {
+            "name": "删除所有预览部署",
+            "cmd": "vercel remove --yes --all-previews",
+            "params": {},
+            "keyword": "vercel remove all"
+          },
+          {
+            "name": "强制删除",
+            "cmd": "vercel remove %{deployment_id}% --force",
+            "params": {
+              "deployment_id": {
+                "type": "string",
+                "required": false,
+                "description": "部署 ID          ",
+                "example": "dpl_abc123",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "vercel remove force"
+          }
+        ],
+        "params": {
+          "deployment_id": {
+            "type": "string",
+            "required": true,
+            "description": "部署 ID          ",
+            "example": "dpl_abc123",
+            "notes": "常用，必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "netlify init 初始化站点",
+      "keyword": "netlify init",
+      "description": "初始化 Netlify 站点。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "netlify init",
+        "extensions": [
+          {
+            "name": "自动初始化",
+            "cmd": "netlify init --auto-init",
+            "params": {},
+            "keyword": "netlify init auto"
+          },
+          {
+            "name": "指定站点名称",
+            "cmd": "netlify init --name %{site_name}%",
+            "params": {
+              "site_name": {
+                "type": "string",
+                "required": false,
+                "description": "站点名称           ",
+                "example": "my-site",
+                "notes": "可选"
+              }
+            },
+            "keyword": "netlify init name"
+          },
+          {
+            "name": "连接现有站点",
+            "cmd": "netlify init --id %{site_id}%",
+            "params": {
+              "site_id": {
+                "type": "string",
+                "required": false,
+                "description": "站点 ID          ",
+                "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                "notes": "可选"
+              }
+            },
+            "keyword": "netlify init id"
+          },
+          {
+            "name": "指定构建命令",
+            "cmd": "netlify init --build-command %{command}%",
+            "params": {
+              "command": {
+                "type": "string",
+                "required": false,
+                "description": "构建命令           ",
+                "example": "npm run build",
+                "notes": "可选"
+              }
+            },
+            "keyword": "netlify init build"
+          },
+          {
+            "name": "指定发布目录",
+            "cmd": "netlify init --dir %{dir}%",
+            "params": {
+              "dir": {
+                "type": "string",
+                "required": false,
+                "description": "发布目录           ",
+                "example": "dist",
+                "notes": "可选"
+              }
+            },
+            "keyword": "netlify init dir"
+          }
+        ],
+        "params": {
+          "site_name": {
+            "type": "string",
+            "required": false,
+            "description": "站点名称           ",
+            "example": "my-site",
+            "notes": "可选"
+          },
+          "site_id": {
+            "type": "string",
+            "required": false,
+            "description": "站点 ID          ",
+            "example": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "notes": "可选"
+          },
+          "command": {
+            "type": "string",
+            "required": false,
+            "description": "构建命令           ",
+            "example": "npm run build",
+            "notes": "可选"
+          },
+          "dir": {
+            "type": "string",
+            "required": false,
+            "description": "发布目录           ",
+            "example": "dist",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "netlify deploy 部署",
+      "keyword": "netlify deploy",
+      "description": "部署到 Netlify。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "netlify deploy",
+        "extensions": [
+          {
+            "name": "部署到生产环境",
+            "cmd": "netlify deploy --prod",
+            "params": {},
+            "keyword": "netlify deploy prod"
+          },
+          {
+            "name": "指定发布目录",
+            "cmd": "netlify deploy --dir %{dir}%",
+            "params": {
+              "dir": {
+                "type": "string",
+                "required": false,
+                "description": "发布目录           ",
+                "example": "./public",
+                "notes": "可选"
+              }
+            },
+            "keyword": "netlify deploy dir"
+          },
+          {
+            "name": "指定构建命令",
+            "cmd": "netlify deploy --build-command %{command}%",
+            "params": {
+              "command": {
+                "type": "string",
+                "required": false,
+                "description": "构建命令           ",
+                "example": "npm run build",
+                "notes": "可选"
+              }
+            },
+            "keyword": "netlify deploy build"
+          },
+          {
+            "name": "添加部署信息",
+            "cmd": "netlify deploy --message \"%{message}%\"",
+            "params": {
+              "message": {
+                "type": "string",
+                "required": false,
+                "description": "部署信息           ",
+                "example": "Update homepage",
+                "notes": "可选"
+              }
+            },
+            "keyword": "netlify deploy message"
+          },
+          {
+            "name": "指定函数目录",
+            "cmd": "netlify deploy --functions %{func_dir}%",
+            "params": {
+              "func_dir": {
+                "type": "string",
+                "required": false,
+                "description": "函数目录           ",
+                "example": "./functions",
+                "notes": "可选"
+              }
+            },
+            "keyword": "netlify deploy functions"
+          }
+        ],
+        "params": {
+          "dir": {
+            "type": "string",
+            "required": false,
+            "description": "发布目录           ",
+            "example": "./public",
+            "notes": "可选"
+          },
+          "command": {
+            "type": "string",
+            "required": false,
+            "description": "构建命令           ",
+            "example": "npm run build",
+            "notes": "可选"
+          },
+          "message": {
+            "type": "string",
+            "required": false,
+            "description": "部署信息           ",
+            "example": "Update homepage",
+            "notes": "可选"
+          },
+          "func_dir": {
+            "type": "string",
+            "required": false,
+            "description": "函数目录           ",
+            "example": "./functions",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "netlify functions 函数管理",
+      "keyword": "netlify functions",
+      "description": "管理 Netlify Serverless Functions",
+      "data": {
+        "cmd": "netlify functions:create %{name}%",
+        "extensions": [
+          {
+            "name": "创建新函数",
+            "cmd": "netlify functions:create %{name}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "netlify functions create"
+          },
+          {
+            "name": "列出所有函数",
+            "cmd": "netlify functions:list",
+            "params": {},
+            "keyword": "netlify functions list"
+          },
+          {
+            "name": "本地调用测试",
+            "cmd": "netlify functions:invoke %{name}% --no-open",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "netlify functions invoke"
+          },
+          {
+            "name": "删除函数",
+            "cmd": "netlify functions:remove %{name}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "netlify functions remove"
+          },
+          {
+            "name": "设置函数超时",
+            "cmd": "netlify functions:create %{name}% --timeout %{seconds}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello",
+                "notes": "常用，必填"
+              },
+              "seconds": {
+                "type": "number",
+                "required": false,
+                "description": "超时秒数           ",
+                "example": "20",
+                "notes": "可选，默认 10 秒"
+              }
+            },
+            "keyword": "netlify functions timeout"
+          }
+        ],
+        "params": {
+          "name": {
+            "type": "string",
+            "required": true,
+            "description": "函数名称           ",
+            "example": "hello",
+            "notes": "常用，必填"
+          },
+          "seconds": {
+            "type": "number",
+            "required": false,
+            "description": "超时秒数           ",
+            "example": "20",
+            "notes": "可选，默认 10 秒"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "netlify env 环境变量",
+      "keyword": "netlify env",
+      "description": "管理 Netlify 环境变量。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "netlify env:list",
+        "extensions": [
+          {
+            "name": "列出所有环境变量",
+            "cmd": "netlify env:list",
+            "params": {},
+            "keyword": "netlify env list"
+          },
+          {
+            "name": "设置环境变量",
+            "cmd": "netlify env:set %{key}% %{value}%",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "环境变量名称         ",
+                "example": "DATABASE_URL",
+                "notes": "常用，必填"
+              },
+              "value": {
+                "type": "string",
+                "required": false,
+                "description": "环境变量值          ",
+                "example": "postgres://...",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "netlify env set"
+          },
+          {
+            "name": "获取环境变量",
+            "cmd": "netlify env:get %{key}%",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "环境变量名称         ",
+                "example": "DATABASE_URL",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "netlify env get"
+          },
+          {
+            "name": "删除环境变量",
+            "cmd": "netlify env:unset %{key}%",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "环境变量名称         ",
+                "example": "DATABASE_URL",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "netlify env unset"
+          },
+          {
+            "name": "导入 .env 文件",
+            "cmd": "netlify env:import %{file}%",
+            "params": {
+              "file": {
+                "type": "string",
+                "required": false,
+                "description": ".env 文件路径      ",
+                "example": ".env",
+                "notes": "可选"
+              }
+            },
+            "keyword": "netlify env import"
+          }
+        ],
+        "params": {
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "环境变量名称         ",
+            "example": "DATABASE_URL",
+            "notes": "常用，必填"
+          },
+          "value": {
+            "type": "string",
+            "required": true,
+            "description": "环境变量值          ",
+            "example": "postgres://...",
+            "notes": "常用，必填"
+          },
+          "file": {
+            "type": "string",
+            "required": false,
+            "description": ".env 文件路径      ",
+            "example": ".env",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "netlify edge-functions 边缘函数",
+      "keyword": "netlify edge-functions",
+      "description": "管理 Netlify Edge Functions。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "netlify edge-functions:create %{name}%",
+        "extensions": [
+          {
+            "name": "创建边缘函数",
+            "cmd": "netlify edge-functions:create %{name}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "边缘函数名称         ",
+                "example": "geo-redirect",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "netlify edge-functions create"
+          },
+          {
+            "name": "列出边缘函数",
+            "cmd": "netlify edge-functions:list",
+            "params": {},
+            "keyword": "netlify edge-functions list"
+          },
+          {
+            "name": "本地测试边缘函数",
+            "cmd": "netlify dev --edge-functions %{dir}%",
+            "params": {
+              "dir": {
+                "type": "string",
+                "required": false,
+                "description": "函数目录           ",
+                "example": "./edge-functions",
+                "notes": "可选"
+              }
+            },
+            "keyword": "netlify edge-functions dev"
+          },
+          {
+            "name": "模拟请求测试",
+            "cmd": "netlify edge-functions:invoke %{name}% --request %{request}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "边缘函数名称         ",
+                "example": "geo-redirect",
+                "notes": "常用，必填"
+              },
+              "request": {
+                "type": "string",
+                "required": false,
+                "description": "请求配置           ",
+                "example": "{\"url\":\"https://example.com\"}",
+                "notes": "可选"
+              }
+            },
+            "keyword": "netlify edge-functions invoke"
+          }
+        ],
+        "params": {
+          "name": {
+            "type": "string",
+            "required": true,
+            "description": "边缘函数名称         ",
+            "example": "geo-redirect",
+            "notes": "常用，必填"
+          },
+          "dir": {
+            "type": "string",
+            "required": false,
+            "description": "函数目录           ",
+            "example": "./edge-functions",
+            "notes": "可选"
+          },
+          "request": {
+            "type": "string",
+            "required": false,
+            "description": "请求配置           ",
+            "example": "{\"url\":\"https://example.com\"}",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "wrangler init 初始化项目",
+      "keyword": "wrangler init",
+      "description": "初始化 Cloudflare Workers 项目。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "wrangler init %{name}%",
+        "extensions": [
+          {
+            "name": "初始化 Worker 项目",
+            "cmd": "wrangler init %{name}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "项目名称           ",
+                "example": "my-worker",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "wrangler init 项目"
+          },
+          {
+            "name": "在当前目录初始化",
+            "cmd": "wrangler init .",
+            "params": {},
+            "keyword": "wrangler init 当前目录"
+          },
+          {
+            "name": "指定类型初始化",
+            "cmd": "wrangler init %{name}% --type %{type}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "项目名称           ",
+                "example": "my-worker",
+                "notes": "常用，必填"
+              },
+              "type": {
+                "type": "string",
+                "required": false,
+                "description": "项目类型           ",
+                "example": "webpack",
+                "notes": "可选: webpack, rollup, etc."
+              }
+            },
+            "keyword": "wrangler init type"
+          },
+          {
+            "name": "指定 GitHub 模板",
+            "cmd": "wrangler init %{name}% --template %{template}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "项目名称           ",
+                "example": "my-worker",
+                "notes": "常用，必填"
+              },
+              "template": {
+                "type": "string",
+                "required": false,
+                "description": "GitHub 模板      ",
+                "example": "github:cloudflare/worker-template",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wrangler init template"
+          }
+        ],
+        "params": {
+          "name": {
+            "type": "string",
+            "required": true,
+            "description": "项目名称           ",
+            "example": "my-worker",
+            "notes": "常用，必填"
+          },
+          "type": {
+            "type": "string",
+            "required": false,
+            "description": "项目类型           ",
+            "example": "webpack",
+            "notes": "可选: webpack, rollup, etc."
+          },
+          "template": {
+            "type": "string",
+            "required": false,
+            "description": "GitHub 模板      ",
+            "example": "github:cloudflare/worker-template",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "wrangler dev 本地开发",
+      "keyword": "wrangler dev",
+      "description": "本地启动 Cloudflare Workers 开发服务器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "wrangler dev",
+        "extensions": [
+          {
+            "name": "指定端口启动",
+            "cmd": "wrangler dev --port %{port}%",
+            "params": {
+              "port": {
+                "type": "number",
+                "required": false,
+                "description": "端口号            ",
+                "example": "8787",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wrangler dev port"
+          },
+          {
+            "name": "指定环境变量",
+            "cmd": "wrangler dev --env %{env}%",
+            "params": {
+              "env": {
+                "type": "string",
+                "required": false,
+                "description": "环境名称           ",
+                "example": "production",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wrangler dev env"
+          },
+          {
+            "name": "启用本地 KV",
+            "cmd": "wrangler dev --kv %{namespace}%",
+            "params": {
+              "namespace": {
+                "type": "string",
+                "required": false,
+                "description": "KV 命名空间名称      ",
+                "example": "MY_KV",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wrangler dev kv"
+          },
+          {
+            "name": "本地热重载模式",
+            "cmd": "wrangler dev --local",
+            "params": {},
+            "keyword": "wrangler dev local"
+          },
+          {
+            "name": "指定 Worker 名称",
+            "cmd": "wrangler dev --name %{worker_name}%",
+            "params": {
+              "worker_name": {
+                "type": "string",
+                "required": false,
+                "description": "Worker 名称      ",
+                "example": "my-worker",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wrangler dev name"
+          }
+        ],
+        "params": {
+          "port": {
+            "type": "number",
+            "required": false,
+            "description": "端口号            ",
+            "example": "8787",
+            "notes": "可选"
+          },
+          "env": {
+            "type": "string",
+            "required": false,
+            "description": "环境名称           ",
+            "example": "production",
+            "notes": "可选"
+          },
+          "namespace": {
+            "type": "string",
+            "required": false,
+            "description": "KV 命名空间名称      ",
+            "example": "MY_KV",
+            "notes": "可选"
+          },
+          "worker_name": {
+            "type": "string",
+            "required": false,
+            "description": "Worker 名称      ",
+            "example": "my-worker",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "wrangler deploy 部署",
+      "keyword": "wrangler deploy",
+      "description": "部署 Cloudflare Workers 到生产环境。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "wrangler deploy",
+        "extensions": [
+          {
+            "name": "指定环境部署",
+            "cmd": "wrangler deploy --env %{env}%",
+            "params": {
+              "env": {
+                "type": "string",
+                "required": false,
+                "description": "环境名称           ",
+                "example": "staging",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wrangler deploy env"
+          },
+          {
+            "name": "自定义路由部署",
+            "cmd": "wrangler deploy --routes \"%{routes}%\"",
+            "params": {
+              "routes": {
+                "type": "string",
+                "required": false,
+                "description": "自定义路由          ",
+                "example": "example.com/*",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wrangler deploy routes"
+          },
+          {
+            "name": "指定兼容日期",
+            "cmd": "wrangler deploy --compatibility-date %{date}%",
+            "params": {
+              "date": {
+                "type": "string",
+                "required": false,
+                "description": "兼容日期           ",
+                "example": "2024-01-01",
+                "notes": "可选"
+              }
+            },
+            "keyword": "wrangler deploy compatibility"
+          },
+          {
+            "name": "不上传 secrets",
+            "cmd": "wrangler deploy --no-bundle",
+            "params": {},
+            "keyword": "wrangler deploy nobundle"
+          }
+        ],
+        "params": {
+          "env": {
+            "type": "string",
+            "required": false,
+            "description": "环境名称           ",
+            "example": "staging",
+            "notes": "可选"
+          },
+          "routes": {
+            "type": "string",
+            "required": false,
+            "description": "自定义路由          ",
+            "example": "example.com/*",
+            "notes": "可选"
+          },
+          "date": {
+            "type": "string",
+            "required": false,
+            "description": "兼容日期           ",
+            "example": "2024-01-01",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "wrangler kv KV 存储",
+      "keyword": "wrangler kv",
+      "description": "管理 Cloudflare Workers KV 存储。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "wrangler kv:namespace create %{name}%",
+        "extensions": [
+          {
+            "name": "创建 KV 命名空间",
+            "cmd": "wrangler kv:namespace create %{name}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间名称         ",
+                "example": "MY_KV",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "wrangler kv create"
+          },
+          {
+            "name": "列出所有 KV 命名空间",
+            "cmd": "wrangler kv:namespace list",
+            "params": {},
+            "keyword": "wrangler kv list"
+          },
+          {
+            "name": "写入 KV 数据",
+            "cmd": "wrangler kv:key put %{key}% %{value}% --namespace-id %{namespace_id}%",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "键名             ",
+                "example": "my-key",
+                "notes": "常用，必填"
+              },
+              "value": {
+                "type": "string",
+                "required": false,
+                "description": "值              ",
+                "example": "my-value",
+                "notes": "常用，必填"
+              },
+              "namespace_id": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间 ID        ",
+                "example": "xxxxxxxxxxxxxxxxxxxxxx",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "wrangler kv put"
+          },
+          {
+            "name": "读取 KV 数据",
+            "cmd": "wrangler kv:key get %{key}% --namespace-id %{namespace_id}%",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "键名             ",
+                "example": "my-key",
+                "notes": "常用，必填"
+              },
+              "namespace_id": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间 ID        ",
+                "example": "xxxxxxxxxxxxxxxxxxxxxx",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "wrangler kv get"
+          },
+          {
+            "name": "列出所有键",
+            "cmd": "wrangler kv:key list --namespace-id %{namespace_id}%",
+            "params": {
+              "namespace_id": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间 ID        ",
+                "example": "xxxxxxxxxxxxxxxxxxxxxx",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "wrangler kv keys"
+          },
+          {
+            "name": "删除 KV 数据",
+            "cmd": "wrangler kv:key delete %{key}% --namespace-id %{namespace_id}%",
+            "params": {
+              "key": {
+                "type": "string",
+                "required": false,
+                "description": "键名             ",
+                "example": "my-key",
+                "notes": "常用，必填"
+              },
+              "namespace_id": {
+                "type": "string",
+                "required": false,
+                "description": "命名空间 ID        ",
+                "example": "xxxxxxxxxxxxxxxxxxxxxx",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "wrangler kv delete"
+          }
+        ],
+        "params": {
+          "name": {
+            "type": "string",
+            "required": true,
+            "description": "命名空间名称         ",
+            "example": "MY_KV",
+            "notes": "常用，必填"
+          },
+          "key": {
+            "type": "string",
+            "required": true,
+            "description": "键名             ",
+            "example": "my-key",
+            "notes": "常用，必填"
+          },
+          "value": {
+            "type": "string",
+            "required": true,
+            "description": "值              ",
+            "example": "my-value",
+            "notes": "常用，必填"
+          },
+          "namespace_id": {
+            "type": "string",
+            "required": true,
+            "description": "命名空间 ID        ",
+            "example": "xxxxxxxxxxxxxxxxxxxxxx",
+            "notes": "常用，必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "wrangler secret 密钥管理",
+      "keyword": "wrangler secret",
+      "description": "管理 Cloudflare Workers 环境密钥。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "wrangler secret put %{name}%",
+        "extensions": [
+          {
+            "name": "设置密钥",
+            "cmd": "wrangler secret put %{name}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "密钥名称           ",
+                "example": "API_TOKEN",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "wrangler secret put"
+          },
+          {
+            "name": "删除密钥",
+            "cmd": "wrangler secret delete %{name}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "密钥名称           ",
+                "example": "API_TOKEN",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "wrangler secret delete"
+          },
+          {
+            "name": "列出密钥",
+            "cmd": "wrangler secret list",
+            "params": {},
+            "keyword": "wrangler secret list"
+          }
+        ],
+        "params": {
+          "name": {
+            "type": "string",
+            "required": true,
+            "description": "密钥名称           ",
+            "example": "API_TOKEN",
+            "notes": "常用，必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "deployctl deploy 部署 Deno 项目",
+      "keyword": "deployctl deploy",
+      "description": "部署 Deno 应用到 Deno Deploy。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "deployctl deploy --project=%{project}% ./%{file}%",
+        "extensions": [
+          {
+            "name": "部署到生产",
+            "cmd": "deployctl deploy --project=%{project}% ./%{file}%",
+            "params": {
+              "project": {
+                "type": "string",
+                "required": false,
+                "description": "项目名称           ",
+                "example": "my-deno-app",
+                "notes": "可选"
+              },
+              "file": {
+                "type": "string",
+                "required": false,
+                "description": "入口文件           ",
+                "example": "server.ts",
+                "notes": "可选"
+              }
+            },
+            "keyword": "deployctl deploy 生产"
+          },
+          {
+            "name": "指定入口 URL",
+            "cmd": "deployctl deploy --entry-url=%{entry_url}% ./%{file}%",
+            "params": {
+              "entry_url": {
+                "type": "string",
+                "required": false,
+                "description": "自定义入口 URL      ",
+                "example": "/api",
+                "notes": "可选"
+              },
+              "file": {
+                "type": "string",
+                "required": false,
+                "description": "入口文件           ",
+                "example": "server.ts",
+                "notes": "可选"
+              }
+            },
+            "keyword": "deployctl deploy url"
+          },
+          {
+            "name": "带权限部署",
+            "cmd": "deployctl deploy --allow-net=%{allow_net}% --allow-read ./%{file}%",
+            "params": {
+              "allow_net": {
+                "type": "string",
+                "required": false,
+                "description": "允许的网络          ",
+                "example": ":8000",
+                "notes": "可选"
+              },
+              "file": {
+                "type": "string",
+                "required": false,
+                "description": "入口文件           ",
+                "example": "server.ts",
+                "notes": "可选"
+              }
+            },
+            "keyword": "deployctl deploy 权限"
+          },
+          {
+            "name": "列出部署项目",
+            "cmd": "deployctl projects list",
+            "params": {},
+            "keyword": "deployctl projects"
+          },
+          {
+            "name": "查看部署日志",
+            "cmd": "deployctl logs --project=%{project}%",
+            "params": {
+              "project": {
+                "type": "string",
+                "required": false,
+                "description": "项目名称           ",
+                "example": "my-deno-app",
+                "notes": "可选"
+              }
+            },
+            "keyword": "deployctl logs"
+          }
+        ],
+        "params": {
+          "project": {
+            "type": "string",
+            "required": false,
+            "description": "项目名称           ",
+            "example": "my-deno-app",
+            "notes": "可选"
+          },
+          "file": {
+            "type": "string",
+            "required": false,
+            "description": "入口文件           ",
+            "example": "server.ts",
+            "notes": "可选"
+          },
+          "entry_url": {
+            "type": "string",
+            "required": false,
+            "description": "自定义入口 URL      ",
+            "example": "/api",
+            "notes": "可选"
+          },
+          "allow_net": {
+            "type": "string",
+            "required": false,
+            "description": "允许的网络          ",
+            "example": ":8000",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "supabase functions new 创建函数",
+      "keyword": "supabase functions new",
+      "description": "创建新的 Supabase Edge Function。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "supabase functions new %{name}%",
+        "extensions": [
+          {
+            "name": "创建新函数",
+            "cmd": "supabase functions new %{name}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello-world",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "supabase functions new 创建"
+          },
+          {
+            "name": "使用模板创建",
+            "cmd": "supabase functions new %{name}% --template-url %{url}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello-world",
+                "notes": "常用，必填"
+              },
+              "url": {
+                "type": "string",
+                "required": false,
+                "description": "模板 URL         ",
+                "example": "https://github.com/supabase-community/supabase-by-example",
+                "notes": "可选"
+              }
+            },
+            "keyword": "supabase functions new 模板"
+          },
+          {
+            "name": "禁用 JWT 验证",
+            "cmd": "supabase functions new %{name}% --no-verify-jwt",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello-world",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "supabase functions new nojwt"
+          }
+        ],
+        "params": {
+          "name": {
+            "type": "string",
+            "required": true,
+            "description": "函数名称           ",
+            "example": "hello-world",
+            "notes": "常用，必填"
+          },
+          "url": {
+            "type": "string",
+            "required": false,
+            "description": "模板 URL         ",
+            "example": "https://github.com/supabase-community/supabase-by-example",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "supabase functions serve 本地运行",
+      "keyword": "supabase functions serve",
+      "description": "本地启动 Supabase Edge Function 开发服务器",
+      "data": {
+        "cmd": "supabase functions serve %{name}%",
+        "extensions": [
+          {
+            "name": "启动函数服务",
+            "cmd": "supabase functions serve %{name}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello-world",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "supabase functions serve 启动"
+          },
+          {
+            "name": "加载环境变量文件",
+            "cmd": "supabase functions serve %{name}% --env-file ./env.json",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello-world",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "supabase functions serve env"
+          },
+          {
+            "name": "指定端口",
+            "cmd": "supabase functions serve %{name}% --port %{port}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello-world",
+                "notes": "常用，必填"
+              },
+              "port": {
+                "type": "number",
+                "required": false,
+                "description": "端口号            ",
+                "example": "3000",
+                "notes": "可选"
+              }
+            },
+            "keyword": "supabase functions serve port"
+          },
+          {
+            "name": "热重载模式",
+            "cmd": "supabase functions serve %{name}% --reload",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello-world",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "supabase functions serve reload"
+          }
+        ],
+        "params": {
+          "name": {
+            "type": "string",
+            "required": true,
+            "description": "函数名称           ",
+            "example": "hello-world",
+            "notes": "常用，必填"
+          },
+          "port": {
+            "type": "number",
+            "required": false,
+            "description": "端口号            ",
+            "example": "3000",
+            "notes": "可选"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "supabase functions deploy 部署函数",
+      "keyword": "supabase functions deploy",
+      "description": "部署 Supabase Edge Function 到生产环境",
+      "data": {
+        "cmd": "supabase functions deploy %{name}%",
+        "extensions": [
+          {
+            "name": "部署单个函数",
+            "cmd": "supabase functions deploy %{name}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello-world",
+                "notes": "可选，不指定则部署所有"
+              }
+            },
+            "keyword": "supabase functions deploy 单个"
+          },
+          {
+            "name": "部署所有函数",
+            "cmd": "supabase functions deploy",
+            "params": {},
+            "keyword": "supabase functions deploy 所有"
+          },
+          {
+            "name": "禁用 JWT 验证部署",
+            "cmd": "supabase functions deploy %{name}% --no-verify-jwt",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello-world",
+                "notes": "可选，不指定则部署所有"
+              }
+            },
+            "keyword": "supabase functions deploy nojwt"
+          },
+          {
+            "name": "注入环境密钥",
+            "cmd": "supabase functions deploy %{name}% --env-secrets FILE=./secrets.toml",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello-world",
+                "notes": "可选，不指定则部署所有"
+              }
+            },
+            "keyword": "supabase functions deploy secrets"
+          }
+        ],
+        "params": {
+          "name": {
+            "type": "string",
+            "required": false,
+            "description": "函数名称           ",
+            "example": "hello-world",
+            "notes": "可选，不指定则部署所有"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/DevOps工具/",
+      "name": "supabase functions logs 查看日志",
+      "keyword": "supabase functions logs",
+      "description": "查看 Supabase Edge Function 执行日志",
+      "data": {
+        "cmd": "supabase functions logs %{name}%",
+        "extensions": [
+          {
+            "name": "查看函数日志",
+            "cmd": "supabase functions logs %{name}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello-world",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "supabase functions logs 查看"
+          },
+          {
+            "name": "指定时间范围",
+            "cmd": "supabase functions logs %{name}% --since %{duration}%",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello-world",
+                "notes": "常用，必填"
+              },
+              "duration": {
+                "type": "string",
+                "required": false,
+                "description": "时间范围           ",
+                "example": "1h",
+                "notes": "可选: 1h, 24h, 7d 等"
+              }
+            },
+            "keyword": "supabase functions logs 时间"
+          },
+          {
+            "name": "实时跟踪日志",
+            "cmd": "supabase functions logs %{name}% --follow",
+            "params": {
+              "name": {
+                "type": "string",
+                "required": false,
+                "description": "函数名称           ",
+                "example": "hello-world",
+                "notes": "常用，必填"
+              }
+            },
+            "keyword": "supabase functions logs follow"
+          }
+        ],
+        "params": {
+          "name": {
+            "type": "string",
+            "required": true,
+            "description": "函数名称           ",
+            "example": "hello-world",
+            "notes": "常用，必填"
+          },
+          "duration": {
+            "type": "string",
+            "required": false,
+            "description": "时间范围           ",
+            "example": "1h",
+            "notes": "可选: 1h, 24h, 7d 等"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "module": "版本控制/Git-重置提交 reset",
+  "version": "2.0",
+  "description": "Git 重置操作 - 用于撤销提交、移动 HEAD 指针或取消暂存文件。常见场景包括：修改提交信息、取消暂存的文件、撤销错误的修改或与他人同步代码。注意：软重置保留更改在暂存区，硬重置会丢失工作区的修改。",
+  "commands": [
+    {
+      "dirPath": "/版本控制/",
+      "name": "git reset 软重置",
+      "keyword": "git reset 重置",
+      "description": "软重置到指定提交，保留更改在暂存区。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git reset --soft %{提交}%",
+        "extensions": [
+          {
+            "name": "软重置（保留更改）",
+            "cmd": "git reset --soft %{提交}%",
+            "params": {
+              "提交": {
+                "type": "string",
+                "required": true,
+                "description": "目标提交           ",
+                "example": "HEAD~1",
+                "notes": "常用 HEAD~1 撤销上一次提交"
+              }
+            }
+          },
+          {
+            "name": "混合重置（取消暂存）",
+            "cmd": "git reset --mixed %{提交}%",
+            "params": {
+              "提交": {
+                "type": "string",
+                "required": true,
+                "description": "目标提交           ",
+                "example": "HEAD",
+                "notes": "默认模式，取消暂存但保留修改"
+              }
+            }
+          },
+          {
+            "name": "硬重置（丢弃更改）",
+            "cmd": "git reset --hard %{提交}%",
+            "params": {
+              "提交": {
+                "type": "string",
+                "required": true,
+                "description": "目标提交           ",
+                "example": "HEAD~2",
+                "notes": "危险操作，会丢失所有未提交的修改"
+              }
+            }
+          },
+          {
+            "name": "取消暂存单个文件",
+            "cmd": "git reset %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": true,
+                "description": "文件路径           ",
+                "example": "app.js",
+                "notes": "相当于 git reset --mixed HEAD -- file"
+              }
+            }
+          },
+          {
+            "name": "查看重置后的状态",
+            "cmd": "git reset --soft HEAD~1 --verbose",
+            "params": {}
+          },
+          {
+            "name": "重置到远程分支状态",
+            "cmd": "git reset --hard %{远程名}/%{分支}%",
+            "params": {
+              "远程名": {
+                "type": "string",
+                "required": true,
+                "description": "远程仓库名称         ",
+                "example": "origin",
+                "notes": "必填"
+              },
+              "分支": {
+                "type": "string",
+                "required": true,
+                "description": "分支名称           ",
+                "example": "main",
+                "notes": "必填"
+              }
+            }
+          },
+          {
+            "name": "仅移动 HEAD（不修改暂存区）",
+            "cmd": "git reset --keep %{提交}%",
+            "params": {
+              "提交": {
+                "type": "string",
+                "required": true,
+                "description": "目标提交           ",
+                "example": "HEAD~1",
+                "notes": "保留未暂存的修改"
+              }
+            }
+          },
+          {
+            "name": "重置并查看差异",
+            "cmd": "git reset -p %{文件}%",
+            "params": {
+              "文件": {
+                "type": "string",
+                "required": false,
+                "description": "文件路径           ",
+                "example": "app.js",
+                "notes": "交互式地重置文件的某些部分"
+              }
+            }
+          }
+        ],
+        "params": {
+          "提交": {
+            "type": "string",
+            "required": true,
+            "description": "目标提交           ",
+            "example": "HEAD~1",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

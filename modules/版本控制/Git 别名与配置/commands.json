@@ -1,0 +1,76 @@
+{
+  "module": "版本控制/Git 别名与配置",
+  "version": "2.0",
+  "description": "Git 别名和配置命令，涵盖Git 别名与配置的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/版本控制/",
+      "name": "git config 配置 Git",
+      "keyword": "git config 配置",
+      "description": "配置 Git 选项。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git config --global %{键}% \"%{值}%\"",
+        "extensions": [
+          {
+            "name": "本地配置",
+            "cmd": "git config --local %{键}% \"%{值}%\"",
+            "params": {
+              "键": {
+                "type": "string",
+                "required": true,
+                "description": "配置键            ",
+                "example": "user.name",
+                "notes": "必填"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "配置值            ",
+                "example": "John Doe",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git config local"
+          },
+          {
+            "name": "添加别名",
+            "cmd": "git config --global alias.%{别名}% \"%{命令}%\"",
+            "params": {
+              "别名": {
+                "type": "string",
+                "required": true,
+                "description": "别名             ",
+                "example": "st",
+                "notes": "必填"
+              },
+              "命令": {
+                "type": "string",
+                "required": true,
+                "description": "原命令            ",
+                "example": "status",
+                "notes": "必填"
+              }
+            },
+            "keyword": "git alias"
+          }
+        ],
+        "params": {
+          "键": {
+            "type": "string",
+            "required": true,
+            "description": "配置项键名          ",
+            "example": "user.email",
+            "notes": "必填"
+          },
+          "值": {
+            "type": "string",
+            "required": true,
+            "description": "配置值            ",
+            "example": "john@example.com",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

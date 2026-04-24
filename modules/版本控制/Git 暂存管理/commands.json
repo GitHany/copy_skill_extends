@@ -1,0 +1,190 @@
+{
+  "module": "版本控制/Git 暂存管理",
+  "version": "2.0",
+  "description": "Git 暂存管理命令集合，涵盖Git 暂存管理的常用操作和最佳实践",
+  "commands": [
+    {
+      "cmd": "git stash",
+      "extensions": [
+        {
+          "name": "带消息暂存",
+          "cmd": "git stash push -m \"%{消息}%\"",
+          "params": {
+            "消息": {
+              "type": "string",
+              "required": true,
+              "description": "暂存消息",
+              "example": "WIP: feature login",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git stash message"
+        },
+        {
+          "name": "暂存未跟踪文件",
+          "cmd": "git stash -u",
+          "params": {},
+          "keyword": "git stash untracked"
+        },
+        {
+          "name": "暂存所有",
+          "cmd": "git stash -a",
+          "params": {},
+          "keyword": "git stash all"
+        },
+        {
+          "name": "恢复暂存",
+          "cmd": "git stash pop",
+          "params": {},
+          "keyword": "git stash pop restore"
+        },
+        {
+          "name": "查看暂存列表",
+          "cmd": "git stash list",
+          "params": {},
+          "keyword": "git stash list show"
+        },
+        {
+          "name": "删除暂存",
+          "cmd": "git stash drop %{索引}%",
+          "params": {
+            "索引": {
+              "type": "string",
+              "required": true,
+              "description": "暂存索引",
+              "example": "stash@{0}",
+              "notes": "必填"
+            }
+          },
+          "keyword": "git stash drop delete"
+        },
+        {
+          "name": "清空所有暂存",
+          "cmd": "git stash clear",
+          "params": {},
+          "keyword": "git stash clear all"
+        },
+        {
+          "name": "查看暂存内容",
+          "cmd": "git stash show %{索引}%",
+          "params": {
+            "索引": {
+              "type": "string",
+              "required": false,
+              "description": "暂存索引",
+              "example": "stash@{0}",
+              "notes": "可选，默认查看最新"
+            }
+          },
+          "keyword": "git stash show content"
+        },
+        {
+          "name": "暂存并创建分支",
+          "cmd": "git stash branch %{分支名}% %{索引}%",
+          "params": {
+            "分支名": {
+              "type": "string",
+              "required": true,
+              "description": "新分支名称",
+              "example": "feature/temp",
+              "notes": "必填"
+            },
+            "索引": {
+              "type": "string",
+              "required": false,
+              "description": "暂存索引",
+              "example": "stash@{0}",
+              "notes": "可选，默认使用最新"
+            }
+          },
+          "keyword": "git stash branch create"
+        },
+        {
+          "name": "暂存追踪文件",
+          "cmd": "git stash -k",
+          "params": {},
+          "keyword": "git stash keep"
+        },
+        {
+          "name": "暂存包括ignored文件",
+          "cmd": "git stash --include-untracked",
+          "params": {},
+          "keyword": "git stash ignore"
+        },
+        {
+          "name": "暂存并保留暂存区",
+          "cmd": "git stash --keep-index",
+          "description": "暂存已暂存的文件并保留在暂存区",
+          "params": {},
+          "keyword": "git stash keep index"
+        },
+        {
+          "name": "暂存忽略权限变化",
+          "cmd": "git stash --no-ignore-permissions",
+          "description": "暂存时忽略文件权限变化",
+          "params": {},
+          "keyword": "git stash permission"
+        },
+        {
+          "name": "暂存区统计",
+          "cmd": "git stash list --统计",
+          "description": "显示暂存数量统计信息",
+          "params": {},
+          "keyword": "git stash statistics"
+        },
+        {
+          "name": "暂存最近提交",
+          "cmd": "git stash push -m \"%{消息}%\" -- %{文件路径}%",
+          "params": {
+            "消息": {
+              "type": "string",
+              "required": true,
+              "description": "暂存消息",
+              "example": "WIP feature",
+              "notes": "必填"
+            },
+            "文件路径": {
+              "type": "string",
+              "required": false,
+              "description": "特定文件路径",
+              "example": "src/app.js",
+              "notes": "可选，指定文件"
+            }
+          },
+          "keyword": "git stash message file"
+        },
+        {
+          "name": "应用暂存到新分支",
+          "cmd": "git stash branch %{分支名}% stash@{ %{索引}% }",
+          "params": {
+            "分支名": {
+              "type": "string",
+              "required": true,
+              "description": "新分支名称",
+              "example": "feature/temp",
+              "notes": "必填"
+            },
+            "索引": {
+              "type": "string",
+              "required": false,
+              "description": "暂存索引",
+              "example": "0",
+              "notes": "可选，默认0"
+            }
+          },
+          "keyword": "git stash branch new"
+        }
+      ],
+      "params": {},
+      "dirPath": "/版本控制/",
+      "name": "Git 暂存管理 命令",
+      "keyword": "Git 暂存管理 命令",
+      "description": "Git 暂存管理 命令的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [],
+        "params": {}
+      }
+    }
+  ]
+}

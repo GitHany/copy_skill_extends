@@ -1,0 +1,615 @@
+{
+  "module": "开发工具/Claude-正则表达式 regex",
+  "version": "2.0",
+  "description": "Claude Skills-regex命令集合",
+  "commands": [
+    {
+      "dirPath": "/开发工具/",
+      "name": "regex 邮箱验证",
+      "keyword": "/regex 邮箱",
+      "description": "验证邮箱格式。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "/regex email %{内容}%",
+        "extensions": [
+          {
+            "name": "全局匹配",
+            "cmd": "/regex email %{内容}% --global",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的内容         ",
+                "example": "test@example.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex email global"
+          },
+          {
+            "name": "忽略大小写",
+            "cmd": "/regex email %{内容}% --ignore-case",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的内容         ",
+                "example": "TEST@EXAMPLE.COM",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex email ignore-case"
+          },
+          {
+            "name": "验证并提取",
+            "cmd": "/regex email %{内容}% --extract",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的内容         ",
+                "example": "contact: test@example.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex email extract"
+          },
+          {
+            "name": "严格模式",
+            "cmd": "/regex email %{内容}% --strict",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的内容         ",
+                "example": "test@example.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex email strict"
+          }
+        ],
+        "params": {
+          "内容": {
+            "type": "string",
+            "required": true,
+            "description": "要验证的内容         ",
+            "example": "test@example.com",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/开发工具/",
+      "name": "regex 手机号验证",
+      "keyword": "/regex 手机",
+      "description": "验证手机号格式。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "/regex phone %{内容}%",
+        "extensions": [
+          {
+            "name": "国际格式",
+            "cmd": "/regex phone %{内容}% --international",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的内容         ",
+                "example": "+86 13812345678",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex phone international"
+          },
+          {
+            "name": "国内格式",
+            "cmd": "/regex phone %{内容}% --cn",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的内容         ",
+                "example": "13812345678",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex phone cn"
+          },
+          {
+            "name": "验证格式",
+            "cmd": "/regex phone %{内容}% --validate",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的内容         ",
+                "example": "13812345678",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex phone validate"
+          },
+          {
+            "name": "宽松模式",
+            "cmd": "/regex phone %{内容}% --loose",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的内容         ",
+                "example": "138-1234-5678",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex phone loose"
+          }
+        ],
+        "params": {
+          "内容": {
+            "type": "string",
+            "required": true,
+            "description": "要验证的内容         ",
+            "example": "13812345678",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/开发工具/",
+      "name": "regex URL 匹配",
+      "keyword": "/regex url",
+      "description": "验证和匹配 URL。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "/regex url %{内容}%",
+        "extensions": [
+          {
+            "name": "严格匹配",
+            "cmd": "/regex url %{内容}% --strict",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要匹配的内容         ",
+                "example": "https://www.example.com/path",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex url strict"
+          },
+          {
+            "name": "提取域名",
+            "cmd": "/regex url %{内容}% --domain",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要匹配的内容         ",
+                "example": "https://www.example.com/path",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex url domain"
+          },
+          {
+            "name": "提取路径",
+            "cmd": "/regex url %{内容}% --path",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要匹配的内容         ",
+                "example": "https://www.example.com/path",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex url path"
+          },
+          {
+            "name": "HTTP/HTTPS",
+            "cmd": "/regex url %{内容}% --secure",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要匹配的内容         ",
+                "example": "https://www.example.com",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex url secure"
+          }
+        ],
+        "params": {
+          "内容": {
+            "type": "string",
+            "required": true,
+            "description": "要匹配的内容         ",
+            "example": "https://www.example.com/path",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/开发工具/",
+      "name": "regex 密码强度",
+      "keyword": "/regex 密码",
+      "description": "验证密码强度。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "/regex password %{内容}%",
+        "extensions": [
+          {
+            "name": "强密码",
+            "cmd": "/regex password %{内容}% --strong",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的密码         ",
+                "example": "Abc123!@#",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex password strong"
+          },
+          {
+            "name": "中等密码",
+            "cmd": "/regex password %{内容}% --medium",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的密码         ",
+                "example": "Abc123",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex password medium"
+          },
+          {
+            "name": "严格模式",
+            "cmd": "/regex password %{内容}% --strict",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的密码         ",
+                "example": "Abc123!@#",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex password strict"
+          },
+          {
+            "name": "无特殊字符",
+            "cmd": "/regex password %{内容}% --no-special",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的密码         ",
+                "example": "Abc12345",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex password no-special"
+          }
+        ],
+        "params": {
+          "内容": {
+            "type": "string",
+            "required": true,
+            "description": "要验证的密码         ",
+            "example": "Abc123!@#",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/开发工具/",
+      "name": "regex 日期格式",
+      "keyword": "/regex 日期",
+      "description": "验证日期格式。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "/regex date %{内容}%",
+        "extensions": [
+          {
+            "name": "ISO 格式",
+            "cmd": "/regex date %{内容}% --iso",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的日期         ",
+                "example": "2024-01-15",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex date iso"
+          },
+          {
+            "name": "中国格式",
+            "cmd": "/regex date %{内容}% --cn",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的日期         ",
+                "example": "2024年01月15日",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex date cn"
+          },
+          {
+            "name": "时间戳",
+            "cmd": "/regex date %{内容}% --timestamp",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的日期         ",
+                "example": "1704067200",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex date timestamp"
+          },
+          {
+            "name": "美国格式",
+            "cmd": "/regex date %{内容}% --us",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的日期         ",
+                "example": "01/15/2024",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex date us"
+          }
+        ],
+        "params": {
+          "内容": {
+            "type": "string",
+            "required": true,
+            "description": "要验证的日期         ",
+            "example": "2024-01-15",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/开发工具/",
+      "name": "regex IP 地址",
+      "keyword": "/regex ip",
+      "description": "验证 IP 地址格式。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "/regex ip %{内容}%",
+        "extensions": [
+          {
+            "name": "IPv4",
+            "cmd": "/regex ip %{内容}% --ipv4",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的 IP 地址     ",
+                "example": "192.168.1.1",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex ip ipv4"
+          },
+          {
+            "name": "IPv6",
+            "cmd": "/regex ip %{内容}% --ipv6",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的 IP 地址     ",
+                "example": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex ip ipv6"
+          },
+          {
+            "name": "私网地址",
+            "cmd": "/regex ip %{内容}% --private",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的 IP 地址     ",
+                "example": "192.168.1.1",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex ip private"
+          },
+          {
+            "name": "公网地址",
+            "cmd": "/regex ip %{内容}% --public",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的 IP 地址     ",
+                "example": "8.8.8.8",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex ip public"
+          }
+        ],
+        "params": {
+          "内容": {
+            "type": "string",
+            "required": true,
+            "description": "要验证的 IP 地址     ",
+            "example": "192.168.1.1",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/开发工具/",
+      "name": "regex 身份证号",
+      "keyword": "/regex 身份证",
+      "description": "验证中国身份证号。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "/regex idcard %{内容}%",
+        "extensions": [
+          {
+            "name": "18位身份证",
+            "cmd": "/regex idcard %{内容}% --18bit",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的身份证号       ",
+                "example": "110101199001011234",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex idcard 18bit"
+          },
+          {
+            "name": "15位身份证",
+            "cmd": "/regex idcard %{内容}% --15bit",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的身份证号       ",
+                "example": "110101900101234",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex idcard 15bit"
+          },
+          {
+            "name": "验证出生日期",
+            "cmd": "/regex idcard %{内容}% --birthday",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的身份证号       ",
+                "example": "110101199001011234",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex idcard birthday"
+          },
+          {
+            "name": "提取地区",
+            "cmd": "/regex idcard %{内容}% --region",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要验证的身份证号       ",
+                "example": "110101199001011234",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex idcard region"
+          }
+        ],
+        "params": {
+          "内容": {
+            "type": "string",
+            "required": true,
+            "description": "要验证的身份证号       ",
+            "example": "110101199001011234",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/开发工具/",
+      "name": "regex HTML 标签",
+      "keyword": "/regex html",
+      "description": "匹配 HTML 标签。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "/regex html %{内容}%",
+        "extensions": [
+          {
+            "name": "提取内容",
+            "cmd": "/regex html %{内容}% --extract",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要提取的内容         ",
+                "example": "<div class=\"test\">content</div>",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex html extract"
+          },
+          {
+            "name": "自闭合标签",
+            "cmd": "/regex html %{内容}% --self-closing",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要提取的内容         ",
+                "example": "<img src=\"test.png\" />",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex html self-closing"
+          },
+          {
+            "name": "嵌套标签",
+            "cmd": "/regex html %{内容}% --nested",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要提取的内容         ",
+                "example": "<div><span>text</span></div>",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex html nested"
+          },
+          {
+            "name": "匹配属性",
+            "cmd": "/regex html %{内容}% --attr",
+            "params": {
+              "内容": {
+                "type": "string",
+                "required": true,
+                "description": "要提取的内容         ",
+                "example": "<a href=\"url\" title=\"link\">",
+                "notes": "必填"
+              }
+            },
+            "keyword": "regex html attr"
+          }
+        ],
+        "params": {
+          "内容": {
+            "type": "string",
+            "required": true,
+            "description": "要提取的内容         ",
+            "example": "<div class=\"test\">content</div>",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

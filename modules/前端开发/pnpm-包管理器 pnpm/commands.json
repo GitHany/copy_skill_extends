@@ -1,0 +1,119 @@
+{
+  "module": "前端开发/pnpm-包管理器 pnpm",
+  "version": "2.0",
+  "description": "pnpm 高性能包管理器，涵盖pnpm的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/前端开发/",
+      "name": "pnpm install 安装",
+      "keyword": "pnpm install 安装",
+      "description": "安装依赖。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "pnpm install",
+        "extensions": [
+          {
+            "name": "离线安装",
+            "cmd": "pnpm install --offline",
+            "params": {},
+            "keyword": "pnpm install offline"
+          },
+          {
+            "name": "仅生产依赖",
+            "cmd": "pnpm install --production",
+            "params": {},
+            "keyword": "pnpm install prod"
+          },
+          {
+            "name": "强制重新安装",
+            "cmd": "pnpm install --force",
+            "params": {},
+            "keyword": "pnpm install force"
+          },
+          {
+            "name": "仅开发依赖",
+            "cmd": "pnpm install --dev",
+            "params": {},
+            "keyword": "pnpm install dev"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/前端开发/",
+      "name": "pnpm add 添加",
+      "keyword": "pnpm add 添加",
+      "description": "添加依赖。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "pnpm add %{包名}%",
+        "extensions": [
+          {
+            "name": "开发依赖",
+            "cmd": "pnpm add -D %{包名}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名             ",
+                "example": "typescript",
+                "notes": "必填"
+              }
+            },
+            "keyword": "pnpm add dev"
+          },
+          {
+            "name": "全局安装",
+            "cmd": "pnpm add -g %{包名}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名             ",
+                "example": "typescript",
+                "notes": "必填"
+              }
+            },
+            "keyword": "pnpm add global"
+          },
+          {
+            "name": "可选依赖",
+            "cmd": "pnpm add -O %{包名}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名             ",
+                "example": "optional-dep",
+                "notes": "必填"
+              }
+            },
+            "keyword": "pnpm add optional"
+          },
+          {
+            "name": "对等依赖",
+            "cmd": "pnpm add -P %{包名}%",
+            "params": {
+              "包名": {
+                "type": "string",
+                "required": true,
+                "description": "包名             ",
+                "example": "peer-dep",
+                "notes": "必填"
+              }
+            },
+            "keyword": "pnpm add peer"
+          }
+        ],
+        "params": {
+          "包名": {
+            "type": "string",
+            "required": true,
+            "description": "包名             ",
+            "example": "express",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

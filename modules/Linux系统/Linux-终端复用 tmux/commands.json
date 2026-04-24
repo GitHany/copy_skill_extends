@@ -1,0 +1,87 @@
+{
+  "module": "Linux系统/Linux-终端复用 tmux",
+  "version": "2.0",
+  "description": "Linux tmux 终端复用器。创建多个可分离的终端会话，每个会话可有多窗口和面板。远程连接不易中断，可在后台运行任务，小屏可分屏。是高级用户和运维工程师的常用工具。",
+  "commands": [
+    {
+      "dirPath": "/Linux系统/",
+      "name": "tmux 会话管理",
+      "keyword": "tmux 会话",
+      "description": "终端复用管理器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "tmux new -s %{名称}%",
+        "extensions": [
+          {
+            "name": "创建命名会话",
+            "description": "创建一个带名称的新tmux会话               ",
+            "params": {
+              "名称": {
+                "example": "work",
+                "notes": "会话名称",
+                "description": "               "
+              }
+            },
+            "cmd": "tmux new -s %{名称}%"
+          },
+          {
+            "name": "列出所有会话",
+            "description": "显示当前所有tmux会话                  ",
+            "params": {},
+            "cmd": "tmux ls"
+          },
+          {
+            "name": "分离当前会话",
+            "description": "将会话放到后台，进程继续运行                ",
+            "params": {},
+            "cmd": "tmux detach"
+          },
+          {
+            "name": "恢复会话",
+            "description": "重新连接到指定会话                     ",
+            "params": {
+              "名称": {
+                "example": "work",
+                "notes": "会话名",
+                "description": "               "
+              }
+            },
+            "cmd": "tmux attach -t %{名称}%"
+          },
+          {
+            "name": "创建垂直分屏",
+            "description": "在当前窗口垂直分割成两个面板                ",
+            "params": {},
+            "cmd": "tmux split-window -v"
+          },
+          {
+            "name": "创建水平分屏",
+            "description": "在当前窗口水平分割成两个面板                ",
+            "params": {},
+            "cmd": "tmux split-window -h"
+          },
+          {
+            "name": "切换面板",
+            "description": "在tmux中切换到上一个活动面板              ",
+            "params": {},
+            "cmd": "Ctrl+b ;"
+          },
+          {
+            "name": "关闭面板",
+            "description": "关闭当前面板                        ",
+            "params": {},
+            "cmd": "tmux kill-pane"
+          }
+        ],
+        "params": {
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "会话名            ",
+            "example": "work",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

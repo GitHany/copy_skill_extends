@@ -1,0 +1,219 @@
+{
+  "module": "容器编排/Docker-集群模式 Swarm",
+  "version": "2.0",
+  "description": "Docker Swarm命令集合，涵盖Docker Swarm的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker swarm init 初始化集群",
+      "keyword": "docker swarm init 初始化",
+      "description": "初始化 Docker Swarm。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker swarm init --advertise-addr %{地址}%",
+        "extensions": [
+          {
+            "name": "指定监听端口",
+            "cmd": "docker swarm init --advertise-addr %{地址}% --listen-addr %{监听地址}%",
+            "params": {
+              "地址": {
+                "type": "string",
+                "required": true,
+                "description": "广播地址           ",
+                "example": "192.168.1.100",
+                "notes": "必填"
+              },
+              "监听地址": {
+                "type": "string",
+                "required": true,
+                "description": "监听地址           ",
+                "example": "0.0.0.0:2377",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker swarm init listen"
+          },
+          {
+            "name": "启用自动锁定",
+            "cmd": "docker swarm init --advertise-addr %{地址}% --autolock",
+            "params": {
+              "地址": {
+                "type": "string",
+                "required": true,
+                "description": "广播地址           ",
+                "example": "192.168.1.100",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker swarm init autolock"
+          },
+          {
+            "name": "获取worker令牌",
+            "cmd": "docker swarm join-token worker",
+            "params": {},
+            "keyword": "docker swarm join-token worker"
+          },
+          {
+            "name": "获取manager令牌",
+            "cmd": "docker swarm join-token manager",
+            "params": {},
+            "keyword": "docker swarm join-token manager"
+          }
+        ],
+        "params": {
+          "地址": {
+            "type": "string",
+            "required": true,
+            "description": "广播地址           ",
+            "example": "192.168.1.100",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker swarm join 加入集群",
+      "keyword": "docker swarm join 加入",
+      "description": "加入 Swarm 集群。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker swarm join --token %{令牌}% %{地址}%",
+        "extensions": [
+          {
+            "name": "作为worker节点加入",
+            "cmd": "docker swarm join --token %{worker令牌}% %{地址}%",
+            "params": {
+              "worker令牌": {
+                "type": "string",
+                "required": true,
+                "description": "Worker加入令牌     ",
+                "example": "SWMTKN-...",
+                "notes": "必填"
+              },
+              "地址": {
+                "type": "string",
+                "required": true,
+                "description": "管理器地址          ",
+                "example": "192.168.1.100:2377",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker swarm join worker"
+          },
+          {
+            "name": "作为manager节点加入",
+            "cmd": "docker swarm join --token %{manager令牌}% %{地址}%",
+            "params": {
+              "manager令牌": {
+                "type": "string",
+                "required": true,
+                "description": "Manager加入令牌     ",
+                "example": "SWMTKN-...",
+                "notes": "必填"
+              },
+              "地址": {
+                "type": "string",
+                "required": true,
+                "description": "管理器地址          ",
+                "example": "192.168.1.100:2377",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker swarm join manager"
+          }
+        ],
+        "params": {
+          "令牌": {
+            "type": "string",
+            "required": true,
+            "description": "加入令牌           ",
+            "example": "SWMTKN-...",
+            "notes": "必填"
+          },
+          "地址": {
+            "type": "string",
+            "required": true,
+            "description": "管理器地址          ",
+            "example": "192.168.1.100:2377",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker swarm leave 离开集群",
+      "keyword": "docker swarm leave 离开",
+      "description": "离开 Swarm 集群。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker swarm leave",
+        "extensions": [
+          {
+            "name": "强制离开集群",
+            "cmd": "docker swarm leave --force",
+            "params": {},
+            "keyword": "docker swarm leave force"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker swarm unlock 解锁集群",
+      "keyword": "docker swarm unlock 解锁",
+      "description": "解锁 Swarm 集群。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker swarm unlock --key %{解锁密钥}%",
+        "extensions": [
+          {
+            "name": "使用解锁密钥",
+            "cmd": "docker swarm unlock --key %{解锁密钥}%",
+            "params": {
+              "解锁密钥": {
+                "type": "string",
+                "required": true,
+                "description": "解锁密钥           ",
+                "example": "xxx-xxx-xxx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker swarm unlock key"
+          }
+        ],
+        "params": {
+          "解锁密钥": {
+            "type": "string",
+            "required": true,
+            "description": "解锁密钥           ",
+            "example": "xxx-xxx-xxx",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker swarm unlock-key 管理解锁密钥",
+      "keyword": "docker swarm unlock-key 解锁密钥",
+      "description": "管理 Swarm 解锁密钥。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker swarm unlock-key --print",
+        "extensions": [
+          {
+            "name": "打印解锁密钥",
+            "cmd": "docker swarm unlock-key --print",
+            "params": {},
+            "keyword": "docker swarm unlock-key print"
+          },
+          {
+            "name": "轮换解锁密钥",
+            "cmd": "docker swarm unlock-key --rotate",
+            "params": {},
+            "keyword": "docker swarm unlock-key rotate"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

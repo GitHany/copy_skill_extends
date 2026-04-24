@@ -1,0 +1,428 @@
+{
+  "module": "容器编排/Docker-服务管理 Service",
+  "version": "2.0",
+  "description": "Docker Service命令集合，涵盖Docker Service的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker service create 创建服务",
+      "keyword": "docker service create 创建",
+      "description": "创建 Swarm 服务。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker service create --name %{名称}% %{镜像}%",
+        "extensions": [
+          {
+            "name": "指定副本数",
+            "cmd": "docker service create --name %{名称}% --replicas %{数量}% %{镜像}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "服务名            ",
+                "example": "web",
+                "notes": "必填"
+              },
+              "数量": {
+                "type": "string",
+                "required": true,
+                "description": "副本数            ",
+                "example": "3",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像             ",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker service replicas"
+          },
+          {
+            "name": "指定端口映射",
+            "cmd": "docker service create --name %{名称}% -p %{主机端口}%:%{容器端口}% %{镜像}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "服务名            ",
+                "example": "web",
+                "notes": "必填"
+              },
+              "主机端口": {
+                "type": "string",
+                "required": true,
+                "description": "主机端口          ",
+                "example": "8080",
+                "notes": "必填"
+              },
+              "容器端口": {
+                "type": "string",
+                "required": true,
+                "description": "容器端口          ",
+                "example": "80",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像             ",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker service port"
+          },
+          {
+            "name": "设置环境变量",
+            "cmd": "docker service create --name %{名称}% -e %{环境变量}%=%{值}% %{镜像}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "服务名            ",
+                "example": "web",
+                "notes": "必填"
+              },
+              "环境变量": {
+                "type": "string",
+                "required": true,
+                "description": "环境变量名        ",
+                "example": "NODE_ENV",
+                "notes": "必填"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "环境变量值        ",
+                "example": "production",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像             ",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker service env"
+          },
+          {
+            "name": "限制资源使用",
+            "cmd": "docker service create --name %{名称}% --limit-memory %{内存}% --limit-cpu %{CPU}% %{镜像}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "服务名            ",
+                "example": "web",
+                "notes": "必填"
+              },
+              "内存": {
+                "type": "string",
+                "required": true,
+                "description": "内存限制          ",
+                "example": "512m",
+                "notes": "必填"
+              },
+              "CPU": {
+                "type": "string",
+                "required": true,
+                "description": "CPU限制           ",
+                "example": "0.5",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像             ",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker service resource"
+          },
+          {
+            "name": "挂载卷",
+            "cmd": "docker service create --name %{名称}% --mount type=volume,src=%{卷名}%,dst=%{容器路径}% %{镜像}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "服务名            ",
+                "example": "web",
+                "notes": "必填"
+              },
+              "卷名": {
+                "type": "string",
+                "required": true,
+                "description": "卷名称           ",
+                "example": "mydata",
+                "notes": "必填"
+              },
+              "容器路径": {
+                "type": "string",
+                "required": true,
+                "description": "容器挂载路径      ",
+                "example": "/data",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像             ",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker service volume"
+          }
+        ],
+        "params": {
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "服务名称           ",
+            "example": "myapp",
+            "notes": "必填"
+          },
+          "镜像": {
+            "type": "string",
+            "required": true,
+            "description": "容器镜像           ",
+            "example": "nginx:latest",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker service ls 列出服务",
+      "keyword": "docker service ls 列表",
+      "description": "列出 Swarm 服务。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker service ls",
+        "extensions": [
+          {
+            "name": "格式化输出",
+            "cmd": "docker service ls --format %{格式}%",
+            "params": {
+              "格式": {
+                "type": "string",
+                "required": true,
+                "description": "输出格式          ",
+                "example": "{{.Name}}\\t{{.Replicas}}",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker service ls format"
+          },
+          {
+            "name": "过滤名称",
+            "cmd": "docker service ls --filter name=%{名称}%",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称过滤      ",
+                "example": "web",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker service ls filter"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker service inspect 查看服务详情",
+      "keyword": "docker service inspect 查看",
+      "description": "查看 Swarm 服务详情。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker service inspect %{服务名}%",
+        "extensions": [
+          {
+            "name": "格式化输出",
+            "cmd": "docker service inspect --format %{格式}% %{服务名}%",
+            "params": {
+              "格式": {
+                "type": "string",
+                "required": true,
+                "description": "输出格式          ",
+                "example": "{{json .Spec}}",
+                "notes": "必填"
+              },
+              "服务名": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称          ",
+                "example": "web",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker service inspect format"
+          },
+          {
+            "name": "查看简洁信息",
+            "cmd": "docker service inspect --pretty %{服务名}%",
+            "params": {
+              "服务名": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称          ",
+                "example": "web",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker service inspect pretty"
+          }
+        ],
+        "params": {
+          "服务名": {
+            "type": "string",
+            "required": true,
+            "description": "服务名称          ",
+            "example": "myapp",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker service scale 扩缩容",
+      "keyword": "docker service scale 扩缩容",
+      "description": "扩缩容 Swarm 服务。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker service scale %{服务名}%=%{副本数}%",
+        "extensions": [
+          {
+            "name": "多服务扩缩容",
+            "cmd": "docker service scale %{服务1}%=%{副本1}% %{服务2}%=%{副本2}%",
+            "params": {
+              "服务1": {
+                "type": "string",
+                "required": true,
+                "description": "服务1名称         ",
+                "example": "web",
+                "notes": "必填"
+              },
+              "副本1": {
+                "type": "string",
+                "required": true,
+                "description": "服务1副本数       ",
+                "example": "5",
+                "notes": "必填"
+              },
+              "服务2": {
+                "type": "string",
+                "required": true,
+                "description": "服务2名称         ",
+                "example": "api",
+                "notes": "必填"
+              },
+              "副本2": {
+                "type": "string",
+                "required": true,
+                "description": "服务2副本数       ",
+                "example": "3",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker service scale multi"
+          }
+        ],
+        "params": {
+          "服务名": {
+            "type": "string",
+            "required": true,
+            "description": "服务名称          ",
+            "example": "myapp",
+            "notes": "必填"
+          },
+          "副本数": {
+            "type": "string",
+            "required": true,
+            "description": "副本数量          ",
+            "example": "3",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker service logs 查看日志",
+      "keyword": "docker service logs 日志",
+      "description": "查看 Swarm 服务日志。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker service logs %{服务名}%",
+        "extensions": [
+          {
+            "name": "跟踪日志",
+            "cmd": "docker service logs -f %{服务名}%",
+            "params": {
+              "服务名": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称          ",
+                "example": "web",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker service logs follow"
+          },
+          {
+            "name": "查看最近日志",
+            "cmd": "docker service logs --tail %{行数}% %{服务名}%",
+            "params": {
+              "行数": {
+                "type": "string",
+                "required": true,
+                "description": "日志行数          ",
+                "example": "100",
+                "notes": "必填"
+              },
+              "服务名": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称          ",
+                "example": "web",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker service logs tail"
+          },
+          {
+            "name": "显示时间戳",
+            "cmd": "docker service logs --timestamps %{服务名}%",
+            "params": {
+              "服务名": {
+                "type": "string",
+                "required": true,
+                "description": "服务名称          ",
+                "example": "web",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker service logs timestamps"
+          }
+        ],
+        "params": {
+          "服务名": {
+            "type": "string",
+            "required": true,
+            "description": "服务名称          ",
+            "example": "myapp",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

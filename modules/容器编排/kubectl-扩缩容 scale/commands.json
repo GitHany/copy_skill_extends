@@ -1,0 +1,139 @@
+{
+  "module": "容器编排/kubectl-扩缩容 scale",
+  "version": "2.0",
+  "description": "kubectl 扩缩容命令。调整 Deployment、StatefulSet、ReplicaSet 等资源的副本数，实现应用的水平扩缩容。适用于负载高峰期扩容、活动期间临时扩容、故障时快速缩容等场景。常见场景：大促前扩容、迁移时缩容、节省成本减少副本。",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl scale 扩缩容",
+      "keyword": "kubectl scale 扩缩",
+      "description": "调整 Deployment 副本数。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl scale deployment %{名称}% --replicas=%{副本}%",
+        "extensions": [
+          {
+            "name": "kubectl scale 扩容到多个副本",
+            "description": "将 Deployment 扩容到指定副本数         ",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment 名   ",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "副本": {
+                "type": "string",
+                "required": true,
+                "description": "副本数            ",
+                "example": "10",
+                "notes": "必填"
+              }
+            },
+            "cmd": "kubectl scale deployment %{名称}% --replicas=%{副本}%"
+          },
+          {
+            "name": "kubectl scale 缩容到单副本",
+            "description": "将应用缩容到最小配置                    ",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment 名   ",
+                "example": "myapp",
+                "notes": "必填"
+              }
+            },
+            "cmd": "kubectl scale deployment %{名称}% --replicas=%{副本}%"
+          },
+          {
+            "name": "kubectl scale 扩缩容StatefulSet",
+            "description": "调整 StatefulSet 的副本数",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "StatefulSet 名",
+                "example": "mysql",
+                "notes": "必填"
+              },
+              "副本": {
+                "type": "string",
+                "required": true,
+                "description": "副本数",
+                "example": "3",
+                "notes": "必填"
+              }
+            },
+            "cmd": "kubectl scale statefulset %{名称}% --replicas=%{副本}%"
+          },
+          {
+            "name": "kubectl scale 指定命名空间",
+            "description": "在指定命名空间中调整副本数",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "Deployment 名",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "命名空间": {
+                "type": "string",
+                "required": true,
+                "description": "命名空间",
+                "example": "production",
+                "notes": "必填"
+              },
+              "副本": {
+                "type": "string",
+                "required": true,
+                "description": "副本数",
+                "example": "5",
+                "notes": "必填"
+              }
+            },
+            "cmd": "kubectl scale deployment %{名称}% -n %{命名空间}% --replicas=%{副本}%"
+          },
+          {
+            "name": "kubectl scale 批量调整多个 Deployment",
+            "description": "同时调整多个 Deployment 的副本数        ",
+            "params": {
+              "Deployment列表": {
+                "type": "string",
+                "required": true,
+                "description": "多个 Deployment 名",
+                "example": "myapp1 myapp2 myapp3",
+                "notes": "必填"
+              },
+              "副本": {
+                "type": "string",
+                "required": true,
+                "description": "副本数            ",
+                "example": "3",
+                "notes": "必填"
+              }
+            },
+            "cmd": "kubectl scale deployment %{名称}% --replicas=%{副本}%"
+          }
+        ],
+        "params": {
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "Deployment 名   ",
+            "example": "myapp",
+            "notes": "必填"
+          },
+          "副本": {
+            "type": "string",
+            "required": true,
+            "description": "副本数            ",
+            "example": "3",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

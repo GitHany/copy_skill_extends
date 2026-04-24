@@ -1,0 +1,342 @@
+{
+  "module": "容器编排/Docker-创建容器 create",
+  "version": "2.0",
+  "description": "Docker 容器创建命令。从镜像创建一个新的容器，但不启动它。这是 Docker 容器生命周期的第一步。\n\n【与 docker run 的区别】：docker run = docker create + docker start，而 docker create 只创建容器不启动，给你机会在启动前修改配置。\n\n【适用场景】：\n- 预先配置容器环境（设置环境变量、挂载卷、配置网络）后再启动\n- 创建测试用的基础容器模板\n- 批量准备容器，稍后统一启动\n- 创建后不立即运行，保持待命状态\n\n【新手常见用途】：\n- 准备一个预配置的应用容器，等需要时再启动\n- 创建带有持久化存储的数据库容器\n- 预先配置好网络，数据卷的容器",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker create 创建容器",
+      "keyword": "docker create 创建",
+      "description": "从镜像创建新容器（不启动）。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker create --name %{名称}% %{镜像}%",
+        "extensions": [
+          {
+            "name": "docker create -it 交互式容器",
+            "description": "创建并进入交互式容器（分配伪终端）。适用于需要终端交互的应用，如调试、shell操作。创建后使用 docker start -i 启动。",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名            ",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名            ",
+                "example": "ubuntu",
+                "notes": "必填"
+              }
+            },
+            "cmd": "docker create --name %{名称}% %{镜像}%"
+          },
+          {
+            "name": "docker create --env 设置环境变量",
+            "description": "创建时设置环境变量。环境变量在容器运行时可用，适用于配置应用行为、传递密钥等。",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名            ",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名            ",
+                "example": "nginx",
+                "notes": "必填"
+              },
+              "环境变量": {
+                "type": "string",
+                "required": false,
+                "description": "环境变量 KEY=VALUE 格式，多个用空格分隔",
+                "example": "DEBUG=true NODE_ENV=production",
+                "notes": "可选，如：-e DB_HOST=localhost -e DB_PORT=5432"
+              }
+            },
+            "cmd": "docker create --name %{名称}% %{镜像}%"
+          },
+          {
+            "name": "docker create -p 端口映射",
+            "description": "将容器端口映射到主机端口。容器内的应用对外提供服务时需要。格式：主机端口:容器端口",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名            ",
+                "example": "webapp",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名            ",
+                "example": "nginx",
+                "notes": "必填"
+              },
+              "主机端口": {
+                "type": "string",
+                "required": true,
+                "description": "主机上的端口         ",
+                "example": "8080",
+                "notes": "必填"
+              },
+              "容器端口": {
+                "type": "string",
+                "required": true,
+                "description": "容器内的端口         ",
+                "example": "80",
+                "notes": "必填"
+              }
+            },
+            "cmd": "docker create --name %{名称}% %{镜像}%"
+          },
+          {
+            "name": "docker create -v 持久化存储",
+            "description": "挂载主机目录作为数据卷。数据卷数据存储在主机上，容器删除后数据不丢失。适用于数据库、日志、文件存储等需要持久化的场景。",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名            ",
+                "example": "db",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名            ",
+                "example": "postgres",
+                "notes": "必填"
+              },
+              "主机路径": {
+                "type": "string",
+                "required": true,
+                "description": "主机上的目录路径       ",
+                "example": "/data/postgres",
+                "notes": "必填"
+              },
+              "容器路径": {
+                "type": "string",
+                "required": true,
+                "description": "容器内的挂载点        ",
+                "example": "/var/lib/postgresql/data",
+                "notes": "必填"
+              }
+            },
+            "cmd": "docker create --name %{名称}% %{镜像}%"
+          },
+          {
+            "name": "docker create --network 网络连接",
+            "description": "将容器连接到指定网络。同一网络的容器可以相互通信，适用于微服务架构、数据库+应用分离部署等场景。",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名            ",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名            ",
+                "example": "redis",
+                "notes": "必填"
+              },
+              "网络名": {
+                "type": "string",
+                "required": true,
+                "description": "Docker 网络名称    ",
+                "example": "my-network",
+                "notes": "必填，先用 docker network create 创建网络"
+              }
+            },
+            "cmd": "docker create --name %{名称}% %{镜像}%"
+          },
+          {
+            "name": "docker create --restart 自动重启",
+            "description": "设置容器自动重启策略。服务器重启或容器意外停止时自动恢复服务，生产环境推荐使用。",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名            ",
+                "example": "webapp",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名            ",
+                "example": "nginx",
+                "notes": "必填"
+              },
+              "重启策略": {
+                "type": "string",
+                "required": false,
+                "description": "重启策略           ",
+                "example": "always",
+                "notes": "可选：no(不重启), always(总是重启), on-failure(失败时重启), unless-stopped(除非手动停止)"
+              }
+            },
+            "cmd": "docker create --name %{名称}% %{镜像}%"
+          },
+          {
+            "name": "docker create -w 工作目录",
+            "description": "设置容器的工作目录。容器启动后默认所在的目录，适用于需要指定工作目录的应用。",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名            ",
+                "example": "builder",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名            ",
+                "example": "node",
+                "notes": "必填"
+              },
+              "工作目录": {
+                "type": "string",
+                "required": false,
+                "description": "工作目录路径         ",
+                "example": "/app",
+                "notes": "可选"
+              }
+            },
+            "cmd": "docker create --name %{名称}% %{镜像}%"
+          },
+          {
+            "name": "docker create --user 指定用户",
+            "description": "以指定用户身份运行容器。增强安全性，避免容器以 root 权限运行。",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名            ",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名            ",
+                "example": "nginx",
+                "notes": "必填"
+              },
+              "用户名": {
+                "type": "string",
+                "required": false,
+                "description": "用户名或 UID       ",
+                "example": "nobody",
+                "notes": "可选"
+              }
+            },
+            "cmd": "docker create --name %{名称}% %{镜像}%"
+          },
+          {
+            "name": "docker create --name 自定义容器名",
+            "description": "为容器指定一个易记的名称。默认随机生成，推荐使用有意义的名称便于管理。",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名            ",
+                "example": "my-nginx",
+                "notes": "必填，名称唯一"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名            ",
+                "example": "nginx",
+                "notes": "必填"
+              }
+            },
+            "cmd": "docker create --name %{名称}% %{镜像}%"
+          },
+          {
+            "name": "docker create --hostname 设置主机名",
+            "description": "设置容器内部的主机名。容器内部可以看到此名称，适用于网络标识。",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名            ",
+                "example": "webapp",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名            ",
+                "example": "nginx",
+                "notes": "必填"
+              },
+              "主机名": {
+                "type": "string",
+                "required": false,
+                "description": "容器主机名          ",
+                "example": "webapp-host",
+                "notes": "可选"
+              }
+            },
+            "cmd": "docker create --name %{名称}% %{镜像}%"
+          },
+          {
+            "name": "docker create --link 容器链接",
+            "description": "链接到另一个容器，实现容器间通信（旧式方式）。新代码推荐使用 --network 代替。",
+            "params": {
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "容器名            ",
+                "example": "webapp",
+                "notes": "必填"
+              },
+              "镜像": {
+                "type": "string",
+                "required": true,
+                "description": "镜像名            ",
+                "example": "nginx",
+                "notes": "必填"
+              },
+              "目标容器": {
+                "type": "string",
+                "required": true,
+                "description": "要链接的目标容器名:别名   ",
+                "example": "db:database",
+                "notes": "必填"
+              }
+            },
+            "cmd": "docker create --name %{名称}% %{镜像}%"
+          }
+        ],
+        "params": {
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "容器名            ",
+            "example": "myapp",
+            "notes": "必填"
+          },
+          "镜像": {
+            "type": "string",
+            "required": true,
+            "description": "镜像名            ",
+            "example": "nginx",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

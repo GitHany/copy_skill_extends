@@ -1,0 +1,102 @@
+{
+  "module": "Linux系统/Linux-日期时间 date",
+  "version": "2.0",
+  "description": "Linux date 显示和设置系统日期时间命令。显示当前日期时间，或按指定格式输出。支持自定义输出格式、设置系统时间、计算时间差。用于脚本时间戳、日志分析、定时任务配置。",
+  "commands": [
+    {
+      "dirPath": "/Linux系统/",
+      "name": "date 日期时间",
+      "keyword": "date 日期",
+      "description": "显示或设置日期时间。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "date",
+        "extensions": [
+          {
+            "name": "显示当前日期时间",
+            "description": "显示当前系统的完整日期和时间                ",
+            "params": {},
+            "cmd": "date"
+          },
+          {
+            "name": "格式化输出日期",
+            "description": "按指定格式显示日期，如年-月-日 时:分:秒        ",
+            "params": {
+              "格式": {
+                "example": "\"%Y-%m-%d %H:%M:%S\"",
+                "notes": "格式字符串",
+                "description": "               "
+              }
+            },
+            "cmd": "date +\"%{格式}%\""
+          },
+          {
+            "name": "显示UTC时间",
+            "description": "显示协调世界时时间                     ",
+            "params": {},
+            "cmd": "date -u"
+          },
+          {
+            "name": "显示昨天日期",
+            "description": "计算并显示昨天的日期                    ",
+            "params": {},
+            "cmd": "date -d \"yesterday\""
+          },
+          {
+            "name": "显示明天日期",
+            "description": "计算并显示明天的日期                    ",
+            "params": {},
+            "cmd": "date -d \"tomorrow\""
+          },
+          {
+            "name": "显示指定日期",
+            "description": "显示特定日期的信息                     ",
+            "params": {
+              "日期": {
+                "example": "\"2024-01-15\"",
+                "notes": "日期字符串",
+                "description": "               "
+              }
+            },
+            "cmd": "date -d \"%{日期}%\""
+          },
+          {
+            "name": "设置系统时间",
+            "description": "设置系统日期和时间，需要root权限            ",
+            "params": {
+              "时间": {
+                "example": "\"20240115 10:30:00\"",
+                "notes": "设置的时间值",
+                "description": "               "
+              }
+            },
+            "cmd": "sudo date -s \"%{时间}%\""
+          },
+          {
+            "name": "显示时间戳",
+            "description": "显示自1970年以来的秒数或毫秒数             ",
+            "params": {
+              "类型": {
+                "example": "%s",
+                "notes": "秒",
+                "description": "               "
+              },
+              "类型MS": {
+                "example": "%s%3N",
+                "notes": "毫秒",
+                "description": "               "
+              }
+            },
+            "cmd": "date +%{类型}%"
+          },
+          {
+            "name": "显示周几",
+            "description": "显示日期是星期几                      ",
+            "params": {},
+            "cmd": "date +%A"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

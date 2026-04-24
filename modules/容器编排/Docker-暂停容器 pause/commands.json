@@ -1,0 +1,125 @@
+{
+  "module": "容器编排/Docker-暂停容器 pause",
+  "version": "2.0",
+  "description": "Docker 容器暂停命令。暂停一个或多个运行中的容器，容器内所有进程被冻结。\n\n【与 docker stop 的区别】：\n- docker pause：冻结进程，保持内存状态，容器状态完整保留，随时可恢复\n- docker stop：等待优雅退出，清理进程，释放资源\n\n【适用场景】：\n- 临时暂停测试环境，节省资源\n- 冻结资源占用，排查问题前先暂停\n- 多人协作时临时释放容器\n- CI/CD 流水线中暂停部署\n- 不想删除但暂时不需要的容器\n\n【优点】：暂停的容器不消耗 CPU，只占用内存，可随时恢复。\n\n【注意】：不适合长时间暂停，容器进程可能被超时机制终止。",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker pause 暂停",
+      "keyword": "docker pause 暂停",
+      "description": "暂停运行中的容器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker pause %{容器}%",
+        "extensions": [
+          {
+            "name": "docker pause 批量暂停",
+            "description": "同时暂停多个容器。一次性暂停多个容器用于批量操作。     ",
+            "params": {
+              "容器列表": {
+                "type": "string",
+                "required": true,
+                "description": "多个容器名（空格分隔）    ",
+                "example": "container1 container2",
+                "notes": "必填"
+              }
+            },
+            "cmd": "docker pause %{容器}%"
+          },
+          {
+            "name": "docker pause 配合日志查看",
+            "description": "暂停后查看容器日志。暂停后进程静止，更容易分析日志。    ",
+            "params": {
+              "容器": {
+                "type": "string",
+                "required": true,
+                "description": "容器名或ID         ",
+                "example": "myapp",
+                "notes": "必填"
+              }
+            },
+            "cmd": "docker pause %{容器}%"
+          },
+          {
+            "name": "docker unpause 恢复容器",
+            "description": "恢复被暂停的容器。docker pause 的反向操作，恢复容器运行。",
+            "params": {
+              "容器": {
+                "type": "string",
+                "required": true,
+                "description": "容器名或ID         ",
+                "example": "myapp",
+                "notes": "必填"
+              }
+            },
+            "cmd": "docker pause %{容器}%"
+          },
+          {
+            "name": "docker pause 配合 docker exec",
+            "description": "暂停后进入容器排查。进程暂停时更适合做状态检查。      ",
+            "params": {
+              "容器": {
+                "type": "string",
+                "required": true,
+                "description": "容器名或ID         ",
+                "example": "myapp",
+                "notes": "必填"
+              }
+            },
+            "cmd": "docker pause %{容器}%"
+          },
+          {
+            "name": "docker pause 批量管理",
+            "description": "暂停同一服务相关的多个容器。微服务架构中暂停整个服务栈。  ",
+            "params": {
+              "服务容器列表": {
+                "type": "string",
+                "required": true,
+                "description": "多个容器名（空格分隔）    ",
+                "example": "api web db cache",
+                "notes": "必填"
+              }
+            },
+            "cmd": "docker pause %{容器}%"
+          },
+          {
+            "name": "docker pause 临时释放资源",
+            "description": "暂停容器以释放内存和 CPU 资源。配合 docker unpause 快速恢复。",
+            "params": {
+              "容器": {
+                "type": "string",
+                "required": true,
+                "description": "容器名或ID         ",
+                "example": "dev-server",
+                "notes": "必填"
+              }
+            },
+            "cmd": "docker pause %{容器}%"
+          },
+          {
+            "name": "docker stats 查看暂停状态",
+            "description": "查看容器状态，包括已暂停的容器。docker stats 显示所有容器实时资源使用。",
+            "params": {
+              "容器": {
+                "type": "string",
+                "required": true,
+                "description": "容器名或ID         ",
+                "example": "myapp",
+                "notes": "必填"
+              }
+            },
+            "cmd": "docker pause %{容器}%"
+          }
+        ],
+        "params": {
+          "容器": {
+            "type": "string",
+            "required": true,
+            "description": "容器名或ID         ",
+            "example": "myapp",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

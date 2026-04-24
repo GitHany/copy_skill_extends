@@ -1,0 +1,99 @@
+{
+  "module": "容器编排/Docker 日志与监控",
+  "version": "2.0",
+  "description": "Docker 日志与监控命令集合，涵盖Docker 日志与监控的常用操作和最佳实践",
+  "commands": [
+    {
+      "name": "最近日志",
+      "cmd": "docker logs --tail %{数量}% %{容器}%",
+      "params": {
+        "数量": {
+          "type": "string",
+          "required": true,
+          "description": "行数",
+          "example": "100",
+          "notes": "必填"
+        },
+        "容器": {
+          "type": "string",
+          "required": true,
+          "description": "容器",
+          "example": "myapp",
+          "notes": "必填"
+        }
+      },
+      "keyword": "docker logs tail",
+      "dirPath": "/容器编排/",
+      "description": "最近日志的详细说明。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "",
+        "extensions": [
+          {
+            "name": "跟踪日志输出",
+            "cmd": "docker logs -f %{容器}%",
+            "params": {
+              "容器": {
+                "type": "string",
+                "required": true,
+                "description": "容器名",
+                "example": "myapp",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker logs follow"
+          },
+          {
+            "name": "显示时间戳",
+            "cmd": "docker logs -t %{容器}%",
+            "params": {
+              "容器": {
+                "type": "string",
+                "required": true,
+                "description": "容器名",
+                "example": "myapp",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker logs timestamp"
+          },
+          {
+            "name": "查看最后指定行数",
+            "cmd": "docker logs --tail %{数量}% %{容器}%",
+            "params": {
+              "数量": {
+                "type": "string",
+                "required": true,
+                "description": "行数",
+                "example": "100",
+                "notes": "必填"
+              },
+              "容器": {
+                "type": "string",
+                "required": true,
+                "description": "容器名",
+                "example": "myapp",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker logs tail lines"
+          },
+          {
+            "name": "跟踪最近30行",
+            "cmd": "docker logs --tail 30 -f %{容器}%",
+            "params": {
+              "容器": {
+                "type": "string",
+                "required": true,
+                "description": "容器名",
+                "example": "myapp",
+                "notes": "必填"
+              }
+            },
+            "keyword": "docker logs tail follow"
+          }
+        ],
+        "params": {}
+      }
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "module": "Linux系统/Linux-归档打包 tar",
+  "version": "2.0",
+  "description": "Linux tar 打包归档工具。将多个文件或目录打包成一个归档文件，可配合 gzip/bzip2 实现压缩。保留文件权限和属性，适用于备份、日志归档、代码分发、环境迁移。是最常用的文件打包压缩工具。",
+  "commands": [
+    {
+      "dirPath": "/Linux系统/",
+      "name": "tar 打包压缩",
+      "keyword": "tar 打包",
+      "description": "tar 打包并压缩目录 - 创建 .tar.gz (gzip 压缩) 归档文件，保留文件权限和属性。适用于整目录备份、日志归档、代码打包分发",
+      "data": {
+        "cmd": "tar -czvf %{文件}% %{目录}%",
+        "extensions": [
+          {
+            "name": "解压归档",
+            "description": "解压 .tar.gz 归档文件到当前目录          ",
+            "params": {
+              "文件": {
+                "example": "backup.tar.gz",
+                "notes": "归档文件",
+                "description": "               "
+              }
+            },
+            "cmd": "tar -xzvf %{文件}%"
+          },
+          {
+            "name": "解压到指定目录",
+            "description": "将归档文件解压到特定目录                  ",
+            "params": {
+              "文件": {
+                "example": "backup.tar.gz",
+                "notes": "归档文件",
+                "description": "               "
+              },
+              "目标目录": {
+                "example": "/tmp/restore",
+                "notes": "目标目录",
+                "description": "               "
+              }
+            },
+            "cmd": "tar -xzvf %{文件}% -C %{目标目录}%"
+          },
+          {
+            "name": "仅打包不压缩",
+            "description": "创建 tar 归档但不压缩，适合大文件快速打包       ",
+            "params": {
+              "文件": {
+                "example": "backup.tar",
+                "notes": "输出文件",
+                "description": "               "
+              },
+              "目录": {
+                "example": "/data",
+                "notes": "要打包的目录",
+                "description": "               "
+              }
+            },
+            "cmd": "tar -cvf %{文件}% %{目录}%"
+          },
+          {
+            "name": "查看归档内容",
+            "description": "列出归档内的文件，不实际解压                ",
+            "params": {
+              "文件": {
+                "example": "backup.tar.gz",
+                "notes": "归档文件",
+                "description": "               "
+              }
+            },
+            "cmd": "tar -tzf %{文件}%"
+          },
+          {
+            "name": "追加文件到归档",
+            "description": "向已存在的 tar 文件追加新文件             ",
+            "params": {
+              "归档文件": {
+                "example": "backup.tar",
+                "notes": "已有归档",
+                "description": "               "
+              },
+              "新文件": {
+                "example": "newfile.txt",
+                "notes": "要追加的文件",
+                "description": "               "
+              }
+            },
+            "cmd": "tar -rvf %{归档文件}% %{新文件}%"
+          },
+          {
+            "name": "排除特定文件",
+            "description": "打包时排除匹配模式的文件                  ",
+            "params": {
+              "文件": {
+                "example": "backup.tar.gz",
+                "notes": "输出文件",
+                "description": "               "
+              },
+              "目录": {
+                "example": "/project",
+                "notes": "源目录",
+                "description": "               "
+              },
+              "排除模式": {
+                "example": "*.log",
+                "notes": "排除模式",
+                "description": "               "
+              }
+            },
+            "cmd": "tar -czvf %{文件}% %{目录}% --exclude=%{排除模式}%"
+          },
+          {
+            "name": "解压 .tar.bz2 文件",
+            "description": "解压使用 bzip2 压缩的 tar 文件         ",
+            "params": {
+              "文件": {
+                "example": "backup.tar.bz2",
+                "notes": "归档文件",
+                "description": "               "
+              }
+            },
+            "cmd": "tar -xjvf %{文件}%"
+          },
+          {
+            "name": "显示详细过程",
+            "description": "解压时显示每个文件的处理过程                ",
+            "params": {
+              "文件": {
+                "example": "data.tar.gz",
+                "notes": "归档文件",
+                "description": "               "
+              }
+            },
+            "cmd": "tar -xvvf %{文件}%"
+          }
+        ],
+        "params": {
+          "文件": {
+            "type": "string",
+            "required": true,
+            "description": "输出归档文件名        ",
+            "example": "archive.tar.gz",
+            "notes": "必填。.tar.gz 或 .tgz 后缀表示 gzip 压缩"
+          },
+          "目录": {
+            "type": "string",
+            "required": true,
+            "description": "要打包的目录路径       ",
+            "example": "/data",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

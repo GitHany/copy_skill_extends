@@ -1,0 +1,181 @@
+{
+  "module": "容器编排/kubectl-管理标签 label",
+  "version": "2.0",
+  "description": "kubectl 标签管理，涵盖kubectl label的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "kubectl label 设置标签",
+      "keyword": "kubectl label 标签",
+      "description": "给资源添加或更新标签。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "kubectl label %{类型}% %{名称}% %{键}%=%{值}%",
+        "extensions": [
+          {
+            "name": "覆盖标签",
+            "cmd": "kubectl label --overwrite %{类型}% %{名称}% %{键}%=%{值}%",
+            "params": {
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "类型             ",
+                "example": "pod",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "名              ",
+                "example": "my-pod",
+                "notes": "必填"
+              },
+              "键": {
+                "type": "string",
+                "required": true,
+                "description": "键              ",
+                "example": "env",
+                "notes": "必填"
+              },
+              "值": {
+                "type": "string",
+                "required": true,
+                "description": "值              ",
+                "example": "production",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl label overwrite"
+          },
+          {
+            "name": "删除标签",
+            "cmd": "kubectl label %{类型}% %{名称}% %{键}-",
+            "params": {
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "资源类型",
+                "example": "pod",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "资源名",
+                "example": "my-pod",
+                "notes": "必填"
+              },
+              "键": {
+                "type": "string",
+                "required": true,
+                "description": "要删除的标签键",
+                "example": "env",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl label remove"
+          },
+          {
+            "name": "列出带标签的资源",
+            "cmd": "kubectl get %{类型}% -l %{标签表达式}%",
+            "params": {
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "资源类型",
+                "example": "pods",
+                "notes": "必填"
+              },
+              "标签表达式": {
+                "type": "string",
+                "required": true,
+                "description": "标签选择器",
+                "example": "env=production,tier=frontend",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl label list"
+          },
+          {
+            "name": "添加多个标签",
+            "cmd": "kubectl label %{类型}% %{名称}% %{键1}%=%{值1}% %{键2}%=%{值2}%",
+            "params": {
+              "类型": {
+                "type": "string",
+                "required": true,
+                "description": "资源类型",
+                "example": "deployment",
+                "notes": "必填"
+              },
+              "名称": {
+                "type": "string",
+                "required": true,
+                "description": "资源名",
+                "example": "myapp",
+                "notes": "必填"
+              },
+              "键1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个标签键",
+                "example": "env",
+                "notes": "必填"
+              },
+              "值1": {
+                "type": "string",
+                "required": true,
+                "description": "第一个标签值",
+                "example": "production",
+                "notes": "必填"
+              },
+              "键2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个标签键",
+                "example": "tier",
+                "notes": "必填"
+              },
+              "值2": {
+                "type": "string",
+                "required": true,
+                "description": "第二个标签值",
+                "example": "frontend",
+                "notes": "必填"
+              }
+            },
+            "keyword": "kubectl label multiple"
+          }
+        ],
+        "params": {
+          "类型": {
+            "type": "string",
+            "required": true,
+            "description": "资源类型           ",
+            "example": "deployment",
+            "notes": "必填"
+          },
+          "名称": {
+            "type": "string",
+            "required": true,
+            "description": "资源名            ",
+            "example": "myapp",
+            "notes": "必填"
+          },
+          "键": {
+            "type": "string",
+            "required": true,
+            "description": "标签键            ",
+            "example": "tier",
+            "notes": "必填"
+          },
+          "值": {
+            "type": "string",
+            "required": true,
+            "description": "标签值            ",
+            "example": "frontend",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}

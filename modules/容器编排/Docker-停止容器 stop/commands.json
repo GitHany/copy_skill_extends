@@ -1,0 +1,41 @@
+{
+  "module": "容器编排/Docker-停止容器 stop",
+  "version": "2.0",
+  "description": "Docker 容器停止命令（Stop Containers）。优雅地停止运行中的容器，先发送 SIGTERM 信号通知进程安全退出，若超时未退出则发送 SIGKILL 强制终止。入门提示：尽量使用 docker stop 而非 docker kill，让应用有时间完成清理工作。新手常见错误：直接关电脑或 docker kill 导致数据丢失。",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker stop 停止容器",
+      "keyword": "docker stop 停止",
+      "description": "优雅停止运行中的容器。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker stop %{容器}%",
+        "extensions": [
+          {
+            "name": "docker ps 查看运行中的容器",
+            "description": "查看当前正在运行的容器（确认要停止哪些）          ",
+            "params": {
+              "过滤条件": {
+                "type": "string",
+                "required": false,
+                "description": "按名称过滤          ",
+                "example": "name=nginx",
+                "notes": "可选：只显示名称包含关键词的容器"
+              }
+            },
+            "cmd": "docker stop %{容器}%"
+          }
+        ],
+        "params": {
+          "容器": {
+            "type": "string",
+            "required": true,
+            "description": "容器名或ID         ",
+            "example": "myapp",
+            "notes": "必填：可用 docker ps 查看运行中的容器"
+          }
+        }
+      }
+    }
+  ]
+}

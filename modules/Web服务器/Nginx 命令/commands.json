@@ -1,0 +1,147 @@
+{
+  "module": "Web服务器/Nginx 命令",
+  "version": "2.0",
+  "description": "Nginx Web 服务器命令，涵盖Nginx 命令的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/Web服务器/",
+      "name": "nginx 启动服务",
+      "keyword": "nginx 启动",
+      "description": "启动 Nginx。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "nginx",
+        "extensions": [
+          {
+            "name": "测试配置",
+            "cmd": "nginx -t",
+            "params": {},
+            "keyword": "nginx test"
+          },
+          {
+            "name": "指定配置",
+            "cmd": "nginx -c %{配置}%",
+            "params": {
+              "配置": {
+                "type": "string",
+                "required": true,
+                "description": "配置文件           ",
+                "example": "/etc/nginx/nginx.conf",
+                "notes": "必填"
+              }
+            },
+            "keyword": "nginx config"
+          }
+        ],
+        "params": {}
+      }
+    },
+    {
+      "dirPath": "/Web服务器/",
+      "name": "nginx -s 信号控制",
+      "keyword": "nginx 信号",
+      "description": "发送信号到 Nginx。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "nginx -s %{信号}%",
+        "extensions": [
+          {
+            "name": "重载配置",
+            "cmd": "nginx -s reload",
+            "params": {},
+            "keyword": "nginx reload"
+          },
+          {
+            "name": "优雅停止",
+            "cmd": "nginx -s quit",
+            "params": {},
+            "keyword": "nginx quit"
+          },
+          {
+            "name": "强制停止",
+            "cmd": "nginx -s stop",
+            "params": {},
+            "keyword": "nginx stop"
+          },
+          {
+            "name": "重新打开日志",
+            "cmd": "nginx -s reopen",
+            "params": {},
+            "keyword": "nginx reopen"
+          },
+          {
+            "name": "查看nginx进程",
+            "cmd": "ps aux | grep nginx",
+            "params": {},
+            "keyword": "nginx 进程"
+          }
+        ],
+        "params": {
+          "信号": {
+            "type": "string",
+            "required": true,
+            "description": "信号类型           ",
+            "example": "reload",
+            "notes": "必填"
+          }
+        }
+      }
+    },
+    {
+      "dirPath": "/Web服务器/",
+      "name": "nginx 进程管理",
+      "keyword": "nginx 进程 管理",
+      "description": "Nginx 进程管理命令。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "nginx %{选项}%",
+        "extensions": [
+          {
+            "name": "查看进程",
+            "cmd": "ps aux | grep nginx",
+            "params": {},
+            "keyword": "nginx ps"
+          },
+          {
+            "name": "检查配置语法",
+            "cmd": "nginx -t",
+            "params": {},
+            "keyword": "nginx 测试"
+          },
+          {
+            "name": "指定配置文件",
+            "cmd": "nginx -c %{配置}%",
+            "params": {
+              "配置": {
+                "type": "string",
+                "required": true,
+                "description": "配置文件路径         ",
+                "example": "/etc/nginx/nginx.conf",
+                "notes": "必填"
+              }
+            },
+            "keyword": "nginx 指定配置"
+          },
+          {
+            "name": "显示版本",
+            "cmd": "nginx -v",
+            "params": {},
+            "keyword": "nginx 版本"
+          },
+          {
+            "name": "显示版本和编译参数",
+            "cmd": "nginx -V",
+            "params": {},
+            "keyword": "nginx 编译参数"
+          }
+        ],
+        "params": {
+          "选项": {
+            "type": "string",
+            "required": false,
+            "description": "nginx 选项        ",
+            "example": "-t",
+            "notes": "可选"
+          }
+        }
+      }
+    }
+  ]
+}

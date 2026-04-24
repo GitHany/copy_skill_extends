@@ -1,0 +1,99 @@
+{
+  "module": "版本控制/Git-变基操作 rebase",
+  "version": "2.0",
+  "description": "Git 变基操作 — 将当前分支的提交在另一个分支的基础上重新应用，产生线性历史。常用于整理提交（交互式变基）、保持分支历史清晰、合并上游更新。常见场景：整理 feature 分支的多个提交、合并 main 最新代码到功能分支、清理 push 前的提交历史。",
+  "commands": [
+    {
+      "dirPath": "/版本控制/",
+      "name": "git rebase 变基",
+      "keyword": "git rebase 变基",
+      "description": "将当前分支在目标分支上重新应用。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "git rebase %{分支}%",
+        "extensions": [
+          {
+            "name": "交互式变基（整理提交）",
+            "cmd": "git rebase -i %{分支}%",
+            "params": {
+              "分支": {
+                "type": "string",
+                "required": true,
+                "description": "目标分支           ",
+                "example": "main",
+                "notes": "可对提交进行重排序、合并、修改、删除"
+              }
+            },
+            "keyword": "git rebase interactive squash fixup"
+          },
+          {
+            "name": "继续变基",
+            "cmd": "git rebase --continue",
+            "params": {},
+            "keyword": "git rebase continue 继续"
+          },
+          {
+            "name": "中止变基",
+            "cmd": "git rebase --abort",
+            "params": {},
+            "keyword": "git rebase abort 取消"
+          },
+          {
+            "name": "跳过当前提交",
+            "cmd": "git rebase --skip",
+            "params": {},
+            "keyword": "git rebase skip 跳过"
+          },
+          {
+            "name": "变基到远程最新",
+            "cmd": "git rebase %{远程}%/%{分支}%",
+            "params": {
+              "远程": {
+                "type": "string",
+                "required": true,
+                "description": "远程仓库           ",
+                "example": "origin",
+                "notes": "将本地分支基于远程最新代码"
+              }
+            },
+            "keyword": "git rebase remote upstream"
+          },
+          {
+            "name": "在变基时执行 autosquash",
+            "cmd": "git rebase --autosquash",
+            "params": {},
+            "keyword": "git rebase autosquash auto merge"
+          },
+          {
+            "name": "保留合并提交",
+            "cmd": "git rebase --preserve-merges",
+            "params": {},
+            "keyword": "git rebase preserve merges"
+          },
+          {
+            "name": "变基到特定提交",
+            "cmd": "git rebase -i %{分支}%~%{数量}%",
+            "params": {
+              "分支": {
+                "type": "string",
+                "required": true,
+                "description": "目标分支           ",
+                "example": "main",
+                "notes": "从目标分支往前数 N 个提交进行变基"
+              }
+            },
+            "keyword": "git rebase back commits"
+          }
+        ],
+        "params": {
+          "分支": {
+            "type": "string",
+            "required": true,
+            "description": "目标分支（变基到的分支）   ",
+            "example": "main",
+            "notes": "必填，当前分支的提交将基于此分支重新应用"
+          }
+        }
+      }
+    }
+  ]
+}

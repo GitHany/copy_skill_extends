@@ -1,0 +1,54 @@
+{
+  "module": "容器编排/Docker-提交容器 commit",
+  "version": "2.0",
+  "description": "Docker 从容器创建镜像，涵盖Docker commit的常用操作和最佳实践",
+  "commands": [
+    {
+      "dirPath": "/容器编排/",
+      "name": "docker commit 创建镜像",
+      "keyword": "docker commit 提交",
+      "description": "从容器创建新镜像。该命令是相关技术栈中的常用操作，掌握其用法对于日常开发和运维工作非常重要",
+      "data": {
+        "cmd": "docker commit %{容器}% %{镜像}%",
+        "extensions": [
+          {
+            "name": "提交并指定作者",
+            "description": "使用 -a 参数指定镜像作者信息",
+            "cmd": "docker commit -a \"%{作者}%\" %{容器}% %{镜像}%"
+          },
+          {
+            "name": "提交时暂停容器",
+            "description": "使用 -p 参数在提交过程中暂停容器，确保数据一致性",
+            "cmd": "docker commit -p %{容器}% %{镜像}%"
+          },
+          {
+            "name": "提交时带变更说明",
+            "description": "使用 -c 参数在创建镜像时应用 Dockerfile 指令",
+            "cmd": "docker commit -c 'ENV DEBUG=false' %{容器}% %{镜像}%"
+          },
+          {
+            "name": "增量提交带标签",
+            "description": "组合使用作者、暂停、标签进行完整提交",
+            "cmd": "docker commit -a \"%{作者}%\" -p -m \"%{说明}%\" %{容器}% %{镜像}%:%{标签}%"
+          }
+        ],
+        "params": {
+          "容器": {
+            "type": "string",
+            "required": true,
+            "description": "容器             ",
+            "example": "myapp",
+            "notes": "必填"
+          },
+          "镜像": {
+            "type": "string",
+            "required": true,
+            "description": "新镜像名           ",
+            "example": "myapp:v1",
+            "notes": "必填"
+          }
+        }
+      }
+    }
+  ]
+}
