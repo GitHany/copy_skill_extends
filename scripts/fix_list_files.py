@@ -1,7 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-处理列表格式的 commands.json 文件，转换为标准格式并增强内容
-"""
+转换工具 - 处理列表格式的 commands.json 文件
+功能：
+  1. 检测列表格式的 commands.json 文件
+  2. 转换为标准格式
+  3. 增强内容完整性
+  4. 包含 Redis 相关参数知识库
+
+使用方法：python scripts/fix_list_files.py
+说明：
+  - 专门处理非标准列表格式
+  - 自动转换为标准 JSON 格式
+  - 补充缺失的参数信息
 
 import json
 import sys

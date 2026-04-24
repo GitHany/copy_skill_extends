@@ -81,16 +81,31 @@ copy_skill_extends/
 │   ├── 网络诊断/
 │   ├── 配置管理/
 │   └── Serverless与边缘计算/
-├── scripts/                          # 工具脚本目录
-│   ├── merge_commands.py             # 合并所有模块为最终 commands.json
-│   ├── enhance_all.py                # 批量增强命令描述和参数
-│   ├── fix_list_files.py            # 修复列表格式文件
-│   ├── fix_unknown_format.py        # 修复非标准格式文件
-│   ├── validate_all.py              # 验证 JSON 格式正确性
-│   ├── check_params.py              # 检查参数完整性
-│   ├── enhance_commands.py          # 命令增强脚本
-│   ├── fix_params.py                # 参数修复脚本
-│   └── split_commands.py           # 命令拆分脚本
+├── scripts/                          # 工具脚本目录 (18个工具脚本)
+│   ├── 01_分析工具/                  # 代码分析
+│   │   └── analyze_commands.py       # 命令分析工具，检查格式和内容错误
+│   ├── 02_修复工具/                  # 错误修复
+│   │   ├── fix_all_json.py           # 批量修复 module 和 dirPath 字段
+│   │   ├── fix_commands.py           # 批量修复命令内容错误
+│   │   ├── fix_params.py             # 修复参数格式问题
+│   │   ├── fix_list_files.py         # 列表格式转换工具
+│   │   ├── fix_unknown_format.py     # 修复非标准格式文件
+│   │   └── fix_remaining.py          # 处理未分类模块的重组
+│   ├── 03_增强工具/                  # 内容增强
+│   │   ├── enhance_all.py            # 批量增强命令描述和参数
+│   │   ├── enhance_commands.py        # 标准增强工具
+│   │   └── check_params.py           # 参数完整性检查工具
+│   ├── 04_合并与分离/                # 数据合并
+│   │   ├── merge_commands.py         # 合并所有模块（使用注册表）
+│   │   ├── merge_all_commands.py     # 合并所有模块（遍历目录）
+│   │   └── split_commands.py         # 分离合并文件为模块化结构
+│   ├── 05_重组工具/                  # 目录重组
+│   │   └── reorganize_modules.py     # 模块重组脚本，创建二级分类结构
+│   ├── 06_验证工具/                  # 格式验证
+│   │   ├── validate_all.py           # 批量验证 JSON 格式
+│   │   ├── validate_cloud.py         # 云平台目录验证工具
+│   │   └── test_verify.py            # 容器编排验证工具
+│   └── README.md                     # 脚本工具详细文档
 ├── docs/
 │   └── public/
 │       └── commands.json            # 聚合后的最终文件（由 merge_commands.py 生成）
@@ -113,17 +128,56 @@ copy_skill_extends/
 
 ### scripts/ 目录
 
+scripts/ 目录包含 18 个工具脚本，分为 6 大类：
+
+#### 📊 01_分析工具
+
 | 脚本 | 功能 |
 |------|------|
-| `merge_commands.py` | 合并所有模块的 commands.json 为最终的 docs/public/commands.json |
-| `enhance_all.py` | 批量增强所有命令的描述深度、参数注释和示例完整性 |
-| `fix_list_files.py` | 修复列表格式的 commands.json 文件（转换为标准格式） |
-| `fix_unknown_format.py` | 修复非标准格式的 commands.json 文件（转换为标准格式） |
-| `validate_all.py` | 验证所有 commands.json 文件的 JSON 格式正确性 |
-| `check_params.py` | 检查命令参数的完整性和正确性 |
-| `enhance_commands.py` | 命令增强脚本（增强描述和参数） |
-| `fix_params.py` | 参数修复脚本 |
-| `split_commands.py` | 命令拆分脚本 |
+| `analyze_commands.py` | 命令分析工具，检查 6 类错误（扩展命令空、描述短、参数描述短、备注空、JSON无效、命令名数字前缀） |
+
+#### 🔧 02_修复工具
+
+| 脚本 | 功能 |
+|------|------|
+| `fix_all_json.py` | 批量修复 module 和 dirPath 字段格式 |
+| `fix_commands.py` | 批量修复命令内容错误（空命令、描述短、备注空等） |
+| `fix_params.py` | 修复参数格式问题（列表→字典转换、占位符问题） |
+| `fix_list_files.py` | 修复列表格式文件，转换为标准 JSON 格式 |
+| `fix_unknown_format.py` | 修复非标准格式文件，补充模块元信息 |
+| `fix_remaining.py` | 处理未分类模块，按映射表重新分配分类 |
+
+#### ✨ 03_增强工具
+
+| 脚本 | 功能 |
+|------|------|
+| `enhance_all.py` | 批量增强命令描述、参数注释和示例完整性（包含参数知识库） |
+| `enhance_commands.py` | 标准增强工具，参考 commands_standard.json 标准 |
+| `check_params.py` | 参数完整性检查，检测占位符使用情况 |
+
+#### 📦 04_合并与分离
+
+| 脚本 | 功能 |
+|------|------|
+| `merge_commands.py` | 合并所有模块（使用 _registry.json 注册表）→ docs/public/commands.json |
+| `merge_all_commands.py` | 合并所有模块（遍历目录结构）→ commands_merged.json |
+| `split_commands.py` | 分离合并文件为模块化结构（反向操作） |
+
+#### 🏗️ 05_重组工具
+
+| 脚本 | 功能 |
+|------|------|
+| `reorganize_modules.py` | 模块重组脚本，创建二级分类结构（分类/模块） |
+
+#### ✅ 06_验证工具
+
+| 脚本 | 功能 |
+|------|------|
+| `validate_all.py` | 批量验证所有 commands.json 的 JSON 格式正确性 |
+| `validate_cloud.py` | 云平台目录结构验证工具（AWS/Azure/GCP） |
+| `test_verify.py` | 容器编排目录结构验证工具 |
+
+**详细文档**：请参考 `scripts/README.md` 获取完整的使用说明和使用流程。
 
 ### modules/ 目录
 

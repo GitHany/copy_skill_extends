@@ -1,7 +1,16 @@
 # -*- coding: utf-8 -*-
-import json
-import os
-import re
+"""
+修复工具 - 修复参数相关错误
+功能：
+  1. 修复列表格式的参数定义
+  2. 转换参数格式为标准字典格式
+  3. 检测并修复参数占位符问题
+
+使用方法：python scripts/fix_params.py
+说明：
+  - 专门修复参数格式问题
+  - 处理列表和字典混合格式
+  - 自动规范化参数定义
 
 modules_dir = 'modules'
 placeholder_pattern = re.compile(r'%\{([^}]+)\}%')

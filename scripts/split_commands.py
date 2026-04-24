@@ -1,7 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-将 commands.json 分离成模块化的 JSON 文件，并关联 Markdown 文档
-"""
+分离工具 - 将合并的 commands.json 分离成模块化的文件
+功能：
+  1. 读取合并后的 commands.json
+  2. 按 dirPath 分离为不同模块
+  3. 关联 Markdown 文档
+  4. 恢复模块化结构
+
+使用方法：python scripts/split_commands.py
+说明：
+  - 是 merge_commands.py 的反向操作
+  - 从 docs/public/commands.json 读取
+  - 按模块目录结构重新分离
 
 import json
 import shutil

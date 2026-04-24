@@ -1,8 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-批量完善所有模块的 commands.json
-按照标准自动增强：描述深度、参数注释、示例完整性
-"""
+增强工具 - 批量完善所有模块的 commands.json
+功能：
+  1. 按照标准自动增强命令描述（深度）
+  2. 完善参数注释
+  3. 补充示例完整性
+  4. 包含完整的参数知识库 (PARAM_KNOWLEDGE)
+
+使用方法：python scripts/enhance_all.py
+说明：
+  - 预定义常见参数的详细描述、示例和备注
+  - 批量应用参数知识库到所有模块
+  - 自动补充缺失的参数信息
 
 import json
 import sys

@@ -1,7 +1,16 @@
 # -*- coding: utf-8 -*-
-import json
-import os
-import re
+"""
+检查工具 - 检查参数完整性和占位符使用
+功能：
+  1. 检测参数占位符使用情况（%{参数名}% 格式）
+  2. 统计未填写参数的情况
+  3. 检查参数定义的完整性
+
+使用方法：python scripts/check_params.py
+说明：
+  - 遍历所有模块的 commands.json
+  - 检查扩展命令中的参数使用
+  - 统计参数定义缺失情况
 
 modules_dir = 'modules'
 issues = []

@@ -1,7 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-修复非标准格式的 commands.json 文件
-"""
+修复工具 - 修复非标准格式的 commands.json 文件
+功能：
+  1. 检测非标准格式的 commands.json
+  2. 修复为标准格式
+  3. 补充模块名称和描述
+  4. 包含 Claude Skills 模块映射表
+
+使用方法：python scripts/fix_unknown_format.py
+说明：
+  - 专门处理未知格式的模块
+  - 自动补充模块元信息
+  - 包含完整的模块名称和描述映射
 
 import json
 import sys

@@ -1,8 +1,16 @@
 # -*- coding: utf-8 -*-
 """
-批量完善所有模块的 commands.json
-按照 commands_standard.json 的标准自动增强内容
-"""
+增强工具 - 批量完善所有模块的 commands.json（标准版）
+功能：
+  1. 按照 commands_standard.json 的标准自动增强内容
+  2. 包含完整的参数增强知识库
+  3. 批量应用标准规范到所有模块
+
+使用方法：python scripts/enhance_commands.py
+说明：
+  - 预定义常见参数的详细描述、示例和备注
+  - 参考 commands_standard.json 标准进行增强
+  - 自动补充缺失的参数信息
 
 import json
 import sys

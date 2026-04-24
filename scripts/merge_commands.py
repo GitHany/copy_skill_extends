@@ -1,6 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-合并所有模块的 commands.json 为最终的 commands.json
+合并工具 - 合并所有模块的 commands.json 为最终的 commands.json
+功能：
+  1. 读取 _registry.json 注册表
+  2. 遍历所有注册的模块
+  3. 合并所有命令到单一 JSON 文件
+  4. 输出到 docs/public/commands.json
+
+使用方法：python scripts/merge_commands.py
+说明：
+  - 使用 _registry.json 作为模块注册表
+  - 按注册表顺序合并
+  - 生成最终的公开版本
 """
 
 import json
